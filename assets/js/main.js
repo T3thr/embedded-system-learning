@@ -47,10 +47,11 @@ function initMobileNav() {
 
   if (toggleBtn && drawer) {
     toggleBtn.addEventListener('click', () => {
-      drawer.classList.toggle('active');
+      const isActive = drawer.classList.toggle('active');
+      drawer.style.display = isActive ? 'block' : 'none';
       const icon = toggleBtn.querySelector('i');
       if (icon) {
-        icon.className = drawer.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
+        icon.className = isActive ? 'fas fa-times' : 'fas fa-bars';
       }
     });
 
@@ -58,6 +59,7 @@ function initMobileNav() {
     drawer.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         drawer.classList.remove('active');
+        drawer.style.display = 'none';
         const icon = toggleBtn.querySelector('i');
         if (icon) icon.className = 'fas fa-bars';
       });

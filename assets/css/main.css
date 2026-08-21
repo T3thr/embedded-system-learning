@@ -291,14 +291,14 @@ a:hover {
 }
 
 .mobile-nav-toggle {
-  display: none;
+  display: none !important;
 }
 
 /* Mobile Drawer Menu */
 .mobile-drawer {
   display: none;
   position: fixed;
-  top: 60px;
+  top: 58px;
   left: 0;
   right: 0;
   background: var(--bg-card);
@@ -309,7 +309,7 @@ a:hover {
 }
 
 .mobile-drawer.active {
-  display: block;
+  display: block !important;
 }
 
 .mobile-drawer ul {
@@ -546,15 +546,22 @@ a:hover {
 }
 
 /* Responsive Media Queries */
+@media (min-width: 841px) {
+  .mobile-nav-toggle,
+  .mobile-drawer {
+    display: none !important;
+  }
+}
+
 @media (max-width: 840px) {
   .hero-title {
     font-size: 1.85rem;
   }
   .nav-menu {
-    display: none;
+    display: none !important;
   }
   .mobile-nav-toggle {
-    display: flex;
+    display: flex !important;
   }
   .portal-grid {
     grid-template-columns: 1fr;
@@ -582,3 +589,4 @@ a:hover {
     align-items: flex-start;
   }
 }
+

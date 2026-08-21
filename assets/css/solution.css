@@ -623,15 +623,22 @@
 }
 
 /* Responsive Breakpoints */
+@media (min-width: 961px) {
+  .floating-toc-btn,
+  .mobile-toc-modal {
+    display: none !important;
+  }
+}
+
 @media (max-width: 960px) {
   .content-layout {
     grid-template-columns: 1fr;
   }
   .sidebar-toc {
-    display: none;
+    display: none !important;
   }
   .floating-toc-btn {
-    display: flex;
+    display: flex !important;
   }
 }
 
