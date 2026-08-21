@@ -8,8 +8,8 @@
   
   <!-- Stylesheets -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="../../../assets/css/main.css?v=2.2">
-  <link rel="stylesheet" href="../../../assets/css/solution.css?v=2.2">
+  <link rel="stylesheet" href="../../../assets/css/main.css?v=2.3">
+  <link rel="stylesheet" href="../../../assets/css/solution.css?v=2.3">
 </head>
 <body>
 
@@ -289,47 +289,49 @@
               </div>
               <div class="content-block">
                 <p>ควรตอบในรูปแบบตารางเปรียบเทียบโครงสร้างฮาร์ดแวร์และการนำไปใช้งานจริง:</p>
-                <table class="custom-table">
-                  <thead>
-                    <tr>
-                      <th style="width: 28%;">มิติการเปรียบเทียบ</th>
-                      <th style="width: 36%;">Microprocessor (MPU)</th>
-                      <th style="width: 36%;">Microcontroller (MCU)</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><strong>1. โครงสร้างชิป (Architecture)</strong></td>
-                      <td>มีเฉพาะ <strong>CPU Only</strong> (ALU, CU, Registers) ไม่มี RAM, ROM, I/O บนชิป</td>
-                      <td>เป็น <strong>Single-Chip Computer</strong> รวม CPU, RAM, ROM/Flash, I/O, Timers, Interrupts ไว้ในชิปเดียว</td>
-                    </tr>
-                    <tr>
-                      <td><strong>2. การต่อใช้งาน (System Connection)</strong></td>
-                      <td>ต้องต่อชิปภายนอกเพิ่ม (External RAM, ROM, I/O Controller) ผ่าน Bus</td>
-                      <td>มีอุปกรณ์ต่อพ่วงเบ็ดเสร็จในตัว ไม่จำเป็นต้องต่อชิปภายนอกเพิ่ม</td>
-                    </tr>
-                    <tr>
-                      <td><strong>3. วัตถุประสงค์ (Application)</strong></td>
-                      <td><strong>General-Purpose</strong> (คอมพิวเตอร์ PC, Laptop, Server รันโปรแกรมหลากหลาย)</td>
-                      <td><strong>Dedicated / Embedded Control</strong> (เครื่องซักผ้า, แอร์, รีโมท, ECU รถยนต์)</td>
-                    </tr>
-                    <tr>
-                      <td><strong>4. ความยืดหยุ่น (Flexibility)</strong></td>
-                      <td><strong>ยืดหยุ่นสูง</strong> สามารถเพิ่ม/เปลี่ยนขนาด RAM, SSD, การ์ดจอได้ตามต้องการ</td>
-                      <td><strong>สเปกคงที่</strong> ขนาด RAM, ROM, ขา I/O ถูกกำหนดตายตัวตามเบอร์ชิป</td>
-                    </tr>
-                    <tr>
-                      <td><strong>5. การใช้พลังงาน & ขนาด</strong></td>
-                      <td>ใช้ไฟสูง (หลายวัตต์ถึงร้อยวัตต์) เกิดความร้อนสูง บอร์ดขนาดใหญ่</td>
-                      <td>กินไฟต่ำมาก (หลักมิลลิวัตต์/ไมโครแอมป์) ทำงานด้วยแบตเตอรี่ได้ ขนาดเล็ก</td>
-                    </tr>
-                    <tr>
-                      <td><strong>6. ต้นทุนระบบรวม</strong></td>
-                      <td>ต้นทุนรวมสูงเนื่องจากต้องใช้อุปกรณ์เสริมภายนอกหลายชิ้น</td>
-                      <td>ต้นทุนต่อหน่วยต่ำมาก เหมาะกับการผลิตเชิงอุตสาหกรรมจำนวนมาก</td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div class="table-responsive">
+                  <table class="custom-table">
+                    <thead>
+                      <tr>
+                        <th style="width: 28%;">มิติการเปรียบเทียบ</th>
+                        <th style="width: 36%;">Microprocessor (MPU)</th>
+                        <th style="width: 36%;">Microcontroller (MCU)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>1. โครงสร้างชิป (Architecture)</strong></td>
+                        <td>มีเฉพาะ <strong>CPU Only</strong> (ALU, CU, Registers) ไม่มี RAM, ROM, I/O บนชิป</td>
+                        <td>เป็น <strong>Single-Chip Computer</strong> รวม CPU, RAM, ROM/Flash, I/O, Timers, Interrupts ไว้ในชิปเดียว</td>
+                      </tr>
+                      <tr>
+                        <td><strong>2. การต่อใช้งาน (System Connection)</strong></td>
+                        <td>ต้องต่อชิปภายนอกเพิ่ม (External RAM, ROM, I/O Controller) ผ่าน Bus</td>
+                        <td>มีอุปกรณ์ต่อพ่วงเบ็ดเสร็จในตัว ไม่จำเป็นต้องต่อชิปภายนอกเพิ่ม</td>
+                      </tr>
+                      <tr>
+                        <td><strong>3. วัตถุประสงค์ (Application)</strong></td>
+                        <td><strong>General-Purpose</strong> (คอมพิวเตอร์ PC, Laptop, Server รันโปรแกรมหลากหลาย)</td>
+                        <td><strong>Dedicated / Embedded Control</strong> (เครื่องซักผ้า, แอร์, รีโมท, ECU รถยนต์)</td>
+                      </tr>
+                      <tr>
+                        <td><strong>4. ความยืดหยุ่น (Flexibility)</strong></td>
+                        <td><strong>ยืดหยุ่นสูง</strong> สามารถเพิ่ม/เปลี่ยนขนาด RAM, SSD, การ์ดจอได้ตามต้องการ</td>
+                        <td><strong>สเปกคงที่</strong> ขนาด RAM, ROM, ขา I/O ถูกกำหนดตายตัวตามเบอร์ชิป</td>
+                      </tr>
+                      <tr>
+                        <td><strong>5. การใช้พลังงาน & ขนาด</strong></td>
+                        <td>ใช้ไฟสูง (หลายวัตต์ถึงร้อยวัตต์) เกิดความร้อนสูง บอร์ดขนาดใหญ่</td>
+                        <td>กินไฟต่ำมาก (หลักมิลลิวัตต์/ไมโครแอมป์) ทำงานด้วยแบตเตอรี่ได้ ขนาดเล็ก</td>
+                      </tr>
+                      <tr>
+                        <td><strong>6. ต้นทุนระบบรวม</strong></td>
+                        <td>ต้นทุนรวมสูงเนื่องจากต้องใช้อุปกรณ์เสริมภายนอกหลายชิ้น</td>
+                        <td>ต้นทุนต่อหน่วยต่ำมาก เหมาะกับการผลิตเชิงอุตสาหกรรมจำนวนมาก</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
 
               <div class="diagram-card">
@@ -619,52 +621,54 @@
                   <strong>ชื่อเต็ม:</strong> <strong>Program Status Word (PSW)</strong><br>
                   เป็นรีจิสเตอร์ SFR ขนาด 8 บิต อยู่ที่แอดเดรส <strong><code>D0H</code></strong> (Bit-addressable) ทำหน้าที่เก็บสถานะของ ALU หลังการประมวลผลคำสั่ง:
                 </p>
-                <table class="custom-table">
-                  <thead>
-                    <tr>
-                      <th style="width: 15%;">ชื่อบิต</th>
-                      <th style="width: 30%;">ความหมายเต็ม</th>
-                      <th style="width: 55%;">หน้าที่และการทำงาน</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><strong><code>CY</code> (PSW.7)</strong></td>
-                      <td>Carry Flag</td>
-                      <td>เป็น <code>1</code> เมื่อเกิดตัวทด/ตัวยืมจากบิต 7 ในการบวกลบเลข หรือใช้เป็น Bit Accumulator</td>
-                    </tr>
-                    <tr>
-                      <td><strong><code>AC</code> (PSW.6)</strong></td>
-                      <td>Auxiliary Carry Flag</td>
-                      <td>เป็น <code>1</code> เมื่อเกิดตัวทดจากบิต 3 ไปบิต 4 (Half-carry) สำหรับคำสั่งปรับค่า BCD (<code>DA A</code>)</td>
-                    </tr>
-                    <tr>
-                      <td><strong><code>F0</code> (PSW.5)</strong></td>
-                      <td>Flag 0</td>
-                      <td>แฟลกสารพัดประโยชน์ที่ผู้ใช้กำหนดค่าเองได้ (<code>SETB F0</code> / <code>CLR F0</code>)</td>
-                    </tr>
-                    <tr>
-                      <td><strong><code>RS1, RS0</code> (PSW.4, 3)</strong></td>
-                      <td>Register Bank Select</td>
-                      <td><strong>เลือก Bank 0-3:</strong> <code>00</code>=Bank 0 (<code>00-07H</code>), <code>01</code>=Bank 1 (<code>08-0FH</code>), <code>10</code>=Bank 2 (<code>10-17H</code>), <code>11</code>=Bank 3 (<code>18-1FH</code>)</td>
-                    </tr>
-                    <tr>
-                      <td><strong><code>OV</code> (PSW.2)</strong></td>
-                      <td>Overflow Flag</td>
-                      <td>เป็น <code>1</code> เมื่อเกิดการล้นของเลขมีเครื่องหมาย (Signed Overflow เกินช่วง -128 ถึง +127)</td>
-                    </tr>
-                    <tr>
-                      <td><strong><code>UD</code> (PSW.1)</strong></td>
-                      <td>User-defined / Reserved</td>
-                      <td>บิตสำรองสำหรับการใช้งานทั่วไป</td>
-                    </tr>
-                    <tr>
-                      <td><strong><code>P</code> (PSW.0)</strong></td>
-                      <td>Parity Flag</td>
-                      <td>เป็น <code>1</code> ถ้าจำนวนบิต 1 ใน Accumulator เป็น <strong>เลขคี่ (Odd)</strong> และเป็น <code>0</code> ถ้าเป็น <strong>เลขคู่ (Even)</strong></td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div class="table-responsive">
+                  <table class="custom-table">
+                    <thead>
+                      <tr>
+                        <th style="width: 15%;">ชื่อบิต</th>
+                        <th style="width: 30%;">ความหมายเต็ม</th>
+                        <th style="width: 55%;">หน้าที่และการทำงาน</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong><code>CY</code> (PSW.7)</strong></td>
+                        <td>Carry Flag</td>
+                        <td>เป็น <code>1</code> เมื่อเกิดตัวทด/ตัวยืมจากบิต 7 ในการบวกลบเลข หรือใช้เป็น Bit Accumulator</td>
+                      </tr>
+                      <tr>
+                        <td><strong><code>AC</code> (PSW.6)</strong></td>
+                        <td>Auxiliary Carry Flag</td>
+                        <td>เป็น <code>1</code> เมื่อเกิดตัวทดจากบิต 3 ไปบิต 4 (Half-carry) สำหรับคำสั่งปรับค่า BCD (<code>DA A</code>)</td>
+                      </tr>
+                      <tr>
+                        <td><strong><code>F0</code> (PSW.5)</strong></td>
+                        <td>Flag 0</td>
+                        <td>แฟลกสารพัดประโยชน์ที่ผู้ใช้กำหนดค่าเองได้ (<code>SETB F0</code> / <code>CLR F0</code>)</td>
+                      </tr>
+                      <tr>
+                        <td><strong><code>RS1, RS0</code> (PSW.4, 3)</strong></td>
+                        <td>Register Bank Select</td>
+                        <td><strong>เลือก Bank 0-3:</strong> <code>00</code>=Bank 0 (<code>00-07H</code>), <code>01</code>=Bank 1 (<code>08-0FH</code>), <code>10</code>=Bank 2 (<code>10-17H</code>), <code>11</code>=Bank 3 (<code>18-1FH</code>)</td>
+                      </tr>
+                      <tr>
+                        <td><strong><code>OV</code> (PSW.2)</strong></td>
+                        <td>Overflow Flag</td>
+                        <td>เป็น <code>1</code> เมื่อเกิดการล้นของเลขมีเครื่องหมาย (Signed Overflow เกินช่วง -128 ถึง +127)</td>
+                      </tr>
+                      <tr>
+                        <td><strong><code>UD</code> (PSW.1)</strong></td>
+                        <td>User-defined / Reserved</td>
+                        <td>บิตสำรองสำหรับการใช้งานทั่วไป</td>
+                      </tr>
+                      <tr>
+                        <td><strong><code>P</code> (PSW.0)</strong></td>
+                        <td>Parity Flag</td>
+                        <td>เป็น <code>1</code> ถ้าจำนวนบิต 1 ใน Accumulator เป็น <strong>เลขคี่ (Odd)</strong> และเป็น <code>0</code> ถ้าเป็น <strong>เลขคู่ (Even)</strong></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
 
               <div class="diagram-card">
@@ -1147,6 +1151,6 @@
     </div>
   </footer>
 
-  <script src="../../../assets/js/main.js?v=2.2"></script>
+  <script src="../../../assets/js/main.js?v=2.3"></script>
 </body>
 </html>
