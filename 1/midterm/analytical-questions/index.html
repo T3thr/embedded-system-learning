@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03. บทเรียนแนวข้อสอบวิเคราะห์พลิกแพลง (Lecture 1–4) | 305341 Embedded Systems 1</title>
+  <meta name="description" content="บทเรียนวิเคราะห์แนวข้อสอบและคำถามเก็งพลิกแพลงวิชา 305341 ระบบสมองกลฝังตัว 1 (Lecture 1-4) ครอบคลุมสถาปัตยกรรม 8051, I/O Port, Memory Map, Stack, SFR, และ Assembly พร้อมไดอะแกรมและเฉลยละเอียด">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../../../assets/css/main.css?v=2.3">
+  <link rel="stylesheet" href="../../../assets/css/solution.css?v=2.3">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="../../../index.html" class="brand">
+        <div class="brand-icon"><i class="fas fa-microchip"></i></div>
+        <div class="brand-title">
+          <span>EMBEDDED SYSTEMS</span>
+          <span>LEARNING PORTAL</span>
+        </div>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="../../../index.html" class="nav-link">หน้าแรก</a></li>
+        <li><a href="../../index.html" class="nav-link">305341 Embedded 1</a></li>
+        <li><a href="../index.html" class="nav-link">ข้อสอบ Midterm</a></li>
+        <li><a href="../recalled-questions/index.html" class="nav-link">01. แนวข้อสอบ 26 ข้อ</a></li>
+        <li><a href="../real-exam-2561/index.html" class="nav-link">02. ข้อสอบจริง 2561</a></li>
+        <li><a href="index.html" class="nav-link active">03. บทเรียนแนวข้อสอบวิเคราะห์</a></li>
+        <li><a href="https://github.com/T3thr/embedded-system-learning" target="_blank" class="nav-link"><i class="fab fa-github"></i> GitHub</a></li>
+      </ul>
+
+      <div class="nav-controls">
+        <button id="theme-toggle" class="btn-icon" title="สลับโหมดมืด/สว่าง">
+          <i class="fas fa-sun"></i>
+        </button>
+        <button class="btn-icon mobile-nav-toggle" title="เมนูนำทาง">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" id="mobile-drawer" style="display: none;">
+    <ul>
+      <li><a href="../../../index.html" class="nav-link">หน้าแรก</a></li>
+      <li><a href="../../index.html" class="nav-link">305341 Embedded 1</a></li>
+      <li><a href="../index.html" class="nav-link">ข้อสอบ Midterm</a></li>
+      <li><a href="../recalled-questions/index.html" class="nav-link">01. แนวข้อสอบ 26 ข้อ</a></li>
+      <li><a href="../real-exam-2561/index.html" class="nav-link">02. ข้อสอบจริง 2561</a></li>
+      <li><a href="index.html" class="nav-link active">03. บทเรียนแนวข้อสอบวิเคราะห์</a></li>
+      <li><a href="https://github.com/T3thr/embedded-system-learning" target="_blank" class="nav-link"><i class="fab fa-github"></i> GitHub</a></li>
+    </ul>
+  </div>
+
+  <main class="container" style="padding-bottom: 4rem;">
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs">
+      <a href="../../../index.html"><i class="fas fa-home"></i> หน้าแรก</a>
+      <span class="separator"><i class="fas fa-chevron-right"></i></span>
+      <a href="../../index.html">305341 Embedded Systems 1</a>
+      <span class="separator"><i class="fas fa-chevron-right"></i></span>
+      <a href="../index.html">ข้อสอบ Midterm</a>
+      <span class="separator"><i class="fas fa-chevron-right"></i></span>
+      <span class="current">03. บทเรียนแนวข้อสอบวิเคราะห์พลิกแพลง</span>
+    </nav>
+
+    <!-- Header Summary -->
+    <section class="hero" style="padding: 1rem 0 1.5rem; text-align: left;">
+      <div class="hero-badge" style="background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3);">
+        <i class="fas fa-lightbulb"></i> Learning from Zero & Advanced Analytical Review
+      </div>
+      <h1 class="hero-title">03. บทเรียนแนวข้อสอบวิเคราะห์พลิกแพลง (Lecture 1–4)</h1>
+      <p class="hero-subtitle">
+        สังเคราะห์จากเอกสารการสอน <code>Lecture 1–4</code>, พื้นฐานเชิงลึก <code>Learning from Zero</code>, และคลังข้อสอบจริง ถอดเป็นโจทย์คำถามเชิงวิเคราะห์และข้อสอบเก็ง 16 ข้อใหญ่ที่อาจารย์อาจดัดแปลงมาออกข้อสอบ เพื่อความเข้าใจเชิงสถาปัตยกรรมและเทคนิคการเขียนคำตอบอย่างแม่นยำ
+      </p>
+    </section>
+
+    <!-- Quick Stats Grid -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon purple"><i class="fas fa-cubes"></i></div>
+        <div class="stat-info">
+          <h4>หมวดหมู่คำถาม</h4>
+          <p>6 ธีมหลัก (16 ข้อ)</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon blue"><i class="fas fa-microchip"></i></div>
+        <div class="stat-info">
+          <h4>เนื้อหาครอบคลุม</h4>
+          <p>Lecture 1 ถึง 4</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon green"><i class="fas fa-image"></i></div>
+        <div class="stat-info">
+          <h4>สื่อไดอะแกรม</h4>
+          <p>15+ ภาพประกอบ</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon amber"><i class="fas fa-code"></i></div>
+        <div class="stat-info">
+          <h4>โค้ดและการคำนวณ</h4>
+          <p>วิธีคิดละเอียด 100%</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filter & Search Toolbar -->
+    <div class="toolbar">
+      <div class="toolbar-top">
+        <div class="search-box">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" id="question-search" class="search-input" placeholder="ค้นหาข้อสอบ, คำสั่ง, รีจิสเตอร์ (เช่น Harvard, PSW, SP, MOVX, Delay)...">
+        </div>
+        <div class="search-count" style="font-size: 0.85rem; color: var(--text-muted);">
+          แสดงผล: <strong id="visible-count" style="color: var(--accent-blue);">16</strong> ข้อ
+        </div>
+      </div>
+      
+      <div class="filter-pills-wrapper">
+        <div class="filter-pills" id="category-filters">
+          <button class="filter-btn active" data-category="all">ทั้งหมด (All 16)</button>
+          <button class="filter-btn" data-category="architecture">1. สถาปัตยกรรม & บัส (Architecture)</button>
+          <button class="filter-btn" data-category="hardware">2. วงจร I/O & ไทมิ่ง (Hardware/IO)</button>
+          <button class="filter-btn" data-category="memory">3. หน่วยความจำ & SFR (Memory/SFR)</button>
+          <button class="filter-btn" data-category="instruction">4. ชุดคำสั่ง & Addressing (Assembly)</button>
+          <button class="filter-btn" data-category="timing">5. การคำนวณลูป & Jump (Loops/Timing)</button>
+          <button class="filter-btn" data-category="advanced">6. ขั้นสูง & Hex/Interrupt (Advanced)</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content Layout (Sidebar TOC + Question Cards) -->
+    <div class="content-layout">
+      
+      <!-- Sticky Sidebar Table of Contents -->
+      <aside class="sidebar-toc" id="sidebar-toc">
+        <div class="toc-title"><i class="fas fa-list-ol"></i> สารบัญคำถามวิเคราะห์</div>
+        <ul class="toc-list" id="toc-list">
+          <li class="toc-item"><a href="#q1-8bit-vs-16bit-bus">ข้อ 1: 8-bit MCU vs 16-bit Address</a></li>
+          <li class="toc-item"><a href="#q2-harvard-bus-signals">ข้อ 2: Harvard Bus Signals (PSEN vs RD/WR)</a></li>
+          <li class="toc-item"><a href="#q3-embedded-constraints">ข้อ 3: ข้อจำกัด 5 มิติของ Embedded System</a></li>
+          <li class="toc-item"><a href="#q4-active-high-low-pullup">ข้อ 4: วงจร Active-HIGH vs LOW & Pull-up</a></li>
+          <li class="toc-item"><a href="#q5-crystal-frequency-baud">ข้อ 5: ทำไมใช้ Crystal 11.0592 MHz ใน Serial</a></li>
+          <li class="toc-item"><a href="#q6-ale-multiplexed-bus">ข้อ 6: กลไก Address Latch Enable (ALE)</a></li>
+          <li class="toc-item"><a href="#q7-8052-memory-overlap">ข้อ 7: วิเคราะห์แอดเดรส 80H-FFH ใน 8052</a></li>
+          <li class="toc-item"><a href="#q8-stack-collision-sp">ข้อ 8: Stack Collision กับ Bank 1 & การแก้ปัญหา</a></li>
+          <li class="toc-item"><a href="#q9-psw-bank-switching">ข้อ 9: ผลกระทบของการเปลี่ยน Bank ใน Subroutine</a></li>
+          <li class="toc-item"><a href="#q10-addressing-modes-deep">ข้อ 10: เจาะลึก 4 คำสั่ง Addressing Modes</a></li>
+          <li class="toc-item"><a href="#q11-bit-addressing-ram-sfr">ข้อ 11: Bit Addressing ใน RAM vs SFR</a></li>
+          <li class="toc-item"><a href="#q12-math-flags-trace">ข้อ 12: Trace คำสั่งคณิตศาสตร์ & ธง PSW</a></li>
+          <li class="toc-item"><a href="#q13-sjmp-relative-offset">ข้อ 13: คำนวณ Relative Jump Offset (SJMP)</a></li>
+          <li class="toc-item"><a href="#q14-nested-delay-calculation">ข้อ 14: คำนวณเวลา Nested Delay Loops แม่นยำ</a></li>
+          <li class="toc-item"><a href="#q15-ret-vs-reti-deep">ข้อ 15: เจาะลึกความต่าง RET vs RETI</a></li>
+          <li class="toc-item"><a href="#q16-intel-hex-structure">ข้อ 16: โครงสร้างและ Checksum ของ Intel HEX</a></li>
+        </ul>
+      </aside>
+
+      <!-- Solutions Master Container -->
+      <div class="solutions-container" id="solutions-container">
+
+        <!-- ========================================== -->
+        <!-- THEME 1: SYSTEM ARCHITECTURE & FOUNDATIONS -->
+        <!-- ========================================== -->
+        <div class="category-divider" style="margin: 0.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--accent-cyan); color: var(--accent-cyan); font-weight: 700; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">
+          <i class="fas fa-layer-group"></i> ธีมที่ 1: สถาปัตยกรรมระบบ & มิติเปรียบเทียบเชิงวิศวกรรม (Lecture 1 & Foundations)
+        </div>
+
+        <!-- Question 1 -->
+        <article class="solution-card" id="q1-8bit-vs-16bit-bus" data-category="architecture analytical">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge red">ข้อ 1</span>
+              <h3 class="card-title">เหตุใด 8051 จึงเป็นไมโครคอนโทรลเลอร์ 8 บิต แต่มี Address Bus กว้าง 16 บิต และอ้างอิงหน่วยความจำได้ถึง 64 KB?</h3>
+            </div>
+            <span class="ref-pill">Data Path Width vs Address Path Width</span>
+          </div>
+          <div class="card-body">
+            
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-question-circle"></i> คำถามเก็งพลิกแพลงเชิงวิศวกรรม:</div>
+              <div class="section-recalled-text">
+                "จงอธิบายความหมายของคำว่า '8-bit Microcontroller' ใน 8051 เหตุใดจึงไม่ขัดแย้งกับการที่ตัวประมวลผลมี Program Counter (PC) และ Data Pointer (DPTR) ขนาด 16 บิต ซึ่งสามารถเข้าถึงพื้นที่หน่วยความจำภายนอกได้สูงสุด 64 KBytes (0000H – FFFFH)?"
+              </div>
+            </div>
+
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-microchip"></i> แนวทางการวิเคราะห์เชิงระบบ:</div>
+              <div class="section-senior-content">
+                <ul>
+                  <li><strong>ความสับสนที่พบบ่อย:</strong> นักศึกษามักคิดว่าสถาปัตยกรรม 8 บิตจะต้องมีขนาด Address 8 บิต (เข้าถึงได้แค่ 256 ไบต์) ซึ่งเป็นความเข้าใจที่ผิด</li>
+                  <li><strong>หลักการแยกมิติ:</strong> ต้องแยกชัดเจนระหว่าง <strong>Data Path (ขนาดข้อมูลที่ประมวลผลต่อคำสั่ง)</strong> กับ <strong>Address Path (ขนาดความกว้างของบัสที่ใช้ชี้ตำแหน่งหน่วยความจำ)</strong></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> คำตอบและคำอธิบายฉบับสมบูรณ์ (Official Solution)</div>
+              </div>
+              <div class="content-block">
+                <p>การจัดหมวดหมู่ 8051 เป็น <strong>8-bit Microcontroller</strong> พิจารณาจากคุณสมบัติของ <strong>Data Path ภายในตัวประมวลผล</strong>:</p>
+                <ul>
+                  <li><strong>ขนาดรีจิสเตอร์ข้อมูลและหน่วยคำนวณ (ALU):</strong> หน่วยประมวลผล ALU, Accumulator (A), รีจิสเตอร์ B, และ General Purpose Registers (R0–R7) มีขนาด <strong>8 บิต</strong> ทำการบวก ลบ และดำเนินการทางตรรกะครั้งละ 8 บิต</li>
+                  <li><strong>ขนาดของบัสข้อมูลภายใน (Internal Data Bus):</strong> มีความกว้าง <strong>8 บิต</strong> ส่งข้อมูลแบบ Byte-by-Byte</li>
+                  <li><strong>ในขณะที่ Address Path ถูกออกแบบเป็น 16 บิต:</strong> เพื่อให้มีความสามารถในการเข้าถึงโปรแกรมและข้อมูลขนาดใหญ่ ตัวประมวลผลจึงใช้รีจิสเตอร์ชี้ตำแหน่งขนาด 16 บิต ได้แก่ <code>PC (Program Counter)</code> และ <code>DPTR (Data Pointer)</code> ทำให้สามารถสร้าง Address ได้ตั้งแต่ <code>0000H</code> ถึง <code>FFFFH</code> ($2^{16} = 65,536\text{ Bytes} = 64\text{ KB}$)</li>
+                </ul>
+              </div>
+
+              <div class="diagram-card">
+                <img src="../../../assets/images/diagrams/8051-memory-spaces.png" alt="8051 Separate Memory Spaces Diagram">
+                <div class="diagram-caption"><i class="fas fa-image"></i> แผนภาพผัง Address Spaces ของ 8051: Program Memory 64 KB vs External Data RAM 64 KB</div>
+              </div>
+            </div>
+
+            <div class="box-warning">
+              <div class="box-warning-header"><i class="fas fa-exclamation-triangle"></i> จุดตัดคะแนนสำคัญ:</div>
+              <div class="box-warning-text">
+                ต้องระบุคำว่า <strong>"ALU และ Data Bus กว้าง 8 บิต"</strong> เปรียบเทียบกับ <strong>"PC และ DPTR กว้าง 16 บิต ($2^{16} = 64\text{ KB}$)"</strong> อย่าตอบเพียงสั้นๆ ว่า "เพราะมีขา Address 16 ขา"
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- Question 2 -->
+        <article class="solution-card" id="q2-harvard-bus-signals" data-category="architecture instruction">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge red">ข้อ 2</span>
+              <h3 class="card-title">วิเคราะห์สัญญาณควบคุมฮาร์ดแวร์ของสถาปัตยกรรม Harvard ใน 8051: ทำไมการเข้าถึง Program ROM กับ Data RAM จึงใช้สัญญาณบัสและคำสั่งคนละชุด?</h3>
+            </div>
+            <span class="ref-pill">PSEN vs RD/WR & MOVC vs MOVX</span>
+          </div>
+          <div class="card-body">
+            
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-question-circle"></i> คำถามเก็งพลิกแพลงเชิงวิศวกรรม:</div>
+              <div class="section-recalled-text">
+                "ในสถาปัตยกรรม 8051 ซึ่งเป็น Harvard Architecture จงอธิบายสัญญาณควบคุมทางฮาร์ดแวร์และชุดคำสั่ง Assembly ที่ใช้ในการเข้าถึง (1) Program Memory ภายนอก และ (2) Data Memory ภายนอก พร้อมอธิบายเหตุผลว่าทำไม CPU จึงไม่เกิดความสับสนเมื่อแอดเดรสของ ROM และ RAM อยู่ที่ตำแหน่ง <code>1000H</code> เหมือนกัน?"
+              </div>
+            </div>
+
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> คำตอบและคำอธิบายฉบับสมบูรณ์ (Official Solution)</div>
+              </div>
+              <div class="content-block">
+                <p>8051 แยกพื้นที่ <strong>Program Memory (Code)</strong> และ <strong>Data Memory (RAM)</strong> ออกจากกันอย่างเด็ดขาดทั้งในเชิง Logical Address และ Physical Control Signals:</p>
+                
+                <div class="table-responsive">
+                  <table class="custom-table">
+                    <thead>
+                      <tr>
+                        <th style="width: 25%;">มิติการทำงาน</th>
+                        <th style="width: 38%;">Program Memory (Code Space)</th>
+                        <th style="width: 37%;">External Data Memory (XDATA Space)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>คำสั่งภาษาแอสเซมบลี</strong></td>
+                        <td><code>MOVC A, @A+DPTR</code> หรือ <code>MOVC A, @A+PC</code></td>
+                        <td><code>MOVX A, @DPTR</code> หรือ <code>MOVX @DPTR, A</code></td>
+                      </tr>
+                      <tr>
+                        <td><strong>สัญญาณควบคุมฮาร์ดแวร์</strong></td>
+                        <td>ขา <strong><code>PSEN</code> (Program Store Enable)</strong> ทำงาน Active-LOW</td>
+                        <td>ขา <strong><code>RD</code> (P3.7)</strong> และ <strong><code>WR</code> (P3.6)</strong> ทำงาน Active-LOW</td>
+                      </tr>
+                      <tr>
+                        <td><strong>สิทธิในการเข้าถึง</strong></td>
+                        <td><strong>Read-Only</strong> (อ่านคำสั่งและตารางค่าคงที่ Lookup Table)</td>
+                        <td><strong>Read / Write</strong> (อ่านและบันทึกตัวแปรขณะโปรแกรมทำงาน)</td>
+                      </tr>
+                      <tr>
+                        <td><strong>การแยกแยะที่ Address เดียวกัน (เช่น 1000H)</strong></td>
+                        <td colspan="2">เมื่อ CPU ต้องการอ่าน ROM สัญญาณ <code>PSEN</code> จะถูกดึงลง LOW (สัญญาณ <code>RD</code> เป็น HIGH) ชิป ROM จึงทำงาน<br>เมื่อ CPU รันคำสั่ง <code>MOVX</code> สัญญาณ <code>RD</code> หรือ <code>WR</code> จะถูกดึงลง LOW (สัญญาณ <code>PSEN</code> เป็น HIGH) ชิป RAM จึงทำงาน</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div class="diagram-card">
+                <img src="../../../assets/images/lecture/lecture1-von-neumann-vs-harvard.png" alt="Harvard vs Von Neumann Architecture Diagram">
+                <div class="diagram-caption"><i class="fas fa-image"></i> โครงสร้างการแยกบัสของสถาปัตยกรรม Harvard ใน MCS-51 (Lecture 1)</div>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- Question 3 -->
+        <article class="solution-card" id="q3-embedded-constraints" data-category="architecture">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge red">ข้อ 3</span>
+              <h3 class="card-title">วิเคราะห์ข้อจำกัด 5 มิติของระบบสมองกลฝังตัว (Embedded System Constraints) เมื่อเทียบกับคอมพิวเตอร์ทั่วไป</h3>
+            </div>
+            <span class="ref-pill">Real-Time & Resource Constraints</span>
+          </div>
+          <div class="card-body">
+            
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-question-circle"></i> คำถามเก็งพลิกแพลงเชิงวิศวกรรม:</div>
+              <div class="section-recalled-text">
+                "ในงานออกแบบระบบสมองกลฝังตัว คำตอบที่ถูกต้องเพียงอย่างเดียวไม่เพียงพอ แต่ต้อง 'ถูกต้องทันเวลา (Timeliness)' จงอธิบายข้อจำกัด 5 มิติหลักที่วิศวกรต้องคำนึงถึงในการออกแบบระบบ Embedded System"
+              </div>
+            </div>
+
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> คำตอบและคำอธิบายฉบับสมบูรณ์ (Official Solution)</div>
+              </div>
+              <div class="content-block">
+                <ol>
+                  <li><strong>Real-Time Constraint & Latency (ข้อจำกัดด้านเวลาจริง):</strong> ผลลัพธ์ต้องเสร็จสิ้นภายในเส้นตาย (Deadline) เช่น ระบบถุงลมนิรภัย (Airbag ECU) หรือเบรก ABS การประมวลผลช้าแม้เพียงไม่กี่มิลลิวินาทีถือว่าระบบล้มเหลว (System Failure)</li>
+                  <li><strong>Resource & Memory Limitations (ทรัพยากรหน่วยความจำจำกัด):</strong> มี RAM และ Flash ROM ในระดับกิโลไบต์ (KB) นักพัฒนาจึงต้องบริหารจัดการตัวแปรและ Stack อย่างประหยัดสูงสุด</li>
+                  <li><strong>Power Consumption & Thermal (การใช้พลังงานและความร้อน):</strong> อุปกรณ์จำนวนมากทำงานด้วยแบตเตอรี่หรืออยู่ในพื้นที่ปิด จึงต้องออกแบบให้กินไฟต่ำ (Low Power / Sleep Modes)</li>
+                  <li><strong>Reliability & Safety-Critical (ความเสถียรและความปลอดภัย):</strong> ระบบต้องทำงานต่อเนื่องได้ 24/7 โดยไม่แฮงก์ (ต้องมีระบบ Watchdog Timer คอยรีเซ็ตเมื่อเกิดข้อผิดพลาด)</li>
+                  <li><strong>Cost & Physical Size (ต้นทุนต่อหน่วยและขนาด):</strong> ชิ้นงานเชิงอุตสาหกรรมผลิตจำนวนมาก ต้นทุนชิปและอุปกรณ์ต่อพ่วงทุกชิ้นมีผลต่อความอยู่รอดของผลิตภัณฑ์</li>
+                </ol>
+              </div>
+
+              <div class="diagram-card">
+                <img src="../../../assets/images/diagrams/embedded-system-context.png" alt="Embedded System Context Diagram">
+                <div class="diagram-caption"><i class="fas fa-image"></i> โครงสร้างการเชื่อมต่อระหว่างโลกจริง (Sensors/Actuators) กับ Embedded Controller (Learning from Zero)</div>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- ========================================== -->
+        <!-- THEME 2: HARDWARE I/O & TIMING -->
+        <!-- ========================================== -->
+        <div class="category-divider" style="margin: 2rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--accent-blue); color: var(--accent-blue); font-weight: 700; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">
+          <i class="fas fa-bolt"></i> ธีมที่ 2: โครงสร้างฮาร์ดแวร์ พอร์ต I/O & วงจรอินเทอร์เฟซ (Lecture 2)
+        </div>
+
+        <!-- Question 4 -->
+        <article class="solution-card" id="q4-active-high-low-pullup" data-category="hardware analytical">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge blue">ข้อ 4</span>
+              <h3 class="card-title">เปรียบเทียบวงจรขับ LED แบบ Active-HIGH vs Active-LOW บนพอร์ต 8051 และเหตุผลที่ Port 0 ต้องมี Pull-up ภายนอก</h3>
+            </div>
+            <span class="ref-pill">Sink Current vs Source Current</span>
+          </div>
+          <div class="card-body">
+            
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-question-circle"></i> คำถามเก็งพลิกแพลงเชิงวิศวกรรม:</div>
+              <div class="section-recalled-text">
+                "จงเปรียบเทียบความสามารถในการจ่ายกระแส (Current Sourcing) และรับกระแส (Current Sinking) ของพอร์ต 8051 เหตุใดในทางปฏิบัตินิยมต่อ LED แบบ Active-LOW มากกว่า Active-HIGH และเหตุใด Port 0 จึงมีพฤติกรรมเป็น Open-Drain เมื่อใช้งานเป็น Quasi-bidirectional I/O?"
+              </div>
+            </div>
+
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> คำตอบและคำอธิบายฉบับสมบูรณ์ (Official Solution)</div>
+              </div>
+              <div class="content-block">
+                <ul>
+                  <li><strong>โครงสร้างภายในพอร์ต 8051 (Quasi-Bidirectional I/O):</strong>
+                    <ul>
+                      <li><strong>Sink Current (รับกระแสเข้าขาพอร์ตเมื่อส่งลอจิก 0):</strong> ทรานซิสเตอร์ FET ภายในดึงลง Ground โดยตรง สามารถรับกระแสได้สูงถึง <strong>$10\text{ mA} - 20\text{ mA}$</strong> ทำให้ขับ LED สว่างเต็มที่</li>
+                      <li><strong>Source Current (จ่ายกระแสออกจากขาพอร์ตเมื่อส่งลอจิก 1):</strong> จ่ายผ่าน Internal Pull-up Resistor ซึ่งมีค่าสูง ($R \approx 20\text{ k}\Omega - 40\text{ k}\Omega$) ทำให้จ่ายกระแสได้ต่ำมากเพียงไม่กี่ร้อยไมโครแอมป์ ($\approx 100 - 300\ \mu\text{A}$) จึงไม่สามารถขับ LED แบบ Active-HIGH ให้สว่างได้ดีโดยตรง</li>
+                    </ul>
+                  </li>
+                  <li><strong>ทำไม Port 0 ต้องต่อ Pull-up ภายนอก (External Pull-up $4.7\text{ k}\Omega - 10\text{ k}\Omega$):</strong>
+                    Port 0 ไม่มี Internal Pull-up Resistor ในตัว (เป็น Open-Drain Driver) เมื่อใช้เป็นพอร์ต I/O ทั่วไป หากส่งลอจิก <code>1</code> ขาพอร์ตจะลอยตัว (High-Impedance: Hi-Z) จึงต้องต่อ Pull-up ภายนอกเพื่อดึงระดับแรงดันขึ้นสู่ $V_{CC} (+5\text{V})$ เสมอ</li>
+                </ul>
+              </div>
+
+              <div class="diagram-card">
+                <img src="../../../assets/images/lecture/lecture2-8051-pinout.png" alt="8051 Pinout Configuration">
+                <div class="diagram-caption"><i class="fas fa-image"></i> โครงสร้างขาพอร์ต P0.0-P0.7 (Open Drain) และ P1, P2, P3 (Internal Pull-up) (Lecture 2)</div>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- Question 5 -->
+        <article class="solution-card" id="q5-crystal-frequency-baud" data-category="hardware timing">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge blue">ข้อ 5</span>
+              <h3 class="card-title">ทำไมในระบบสมองกลฝังตัวที่ใช้สื่อสารอนุกรม (UART Serial) จึงนิยมใช้ Crystal 11.0592 MHz มากกว่า 12 MHz?</h3>
+            </div>
+            <span class="ref-pill">UART Baud Rate Division & 0% Error</span>
+          </div>
+          <div class="card-body">
+            
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-question-circle"></i> คำถามเก็งพลิกแพลงเชิงวิศวกรรม:</div>
+              <div class="section-recalled-text">
+                "แม้ว่า Crystal 12 MHz จะทำให้ Machine Cycle คิดเลขง่าย ($1\ \mu\text{s}$) แต่ในงานสื่อสารอนุกรม (Serial Port Communication) เหตุใดวิศวกรจึงเลือกใช้ Crystal 11.0592 MHz เสมอ จงแสดงวิธีคำนวณทางคณิตศาสตร์"
+              </div>
+            </div>
+
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> คำตอบและคำอธิบายฉบับสมบูรณ์ (Official Solution)</div>
+              </div>
+              <div class="content-block">
+                <p>ในการสื่อสารอนุกรมแบบ UART อัตราบอดมาตรฐานสากล (Standard Baud Rates) คือ 9600, 4800, 2400, 1200 bps ซึ่งสร้างจากวงจรหารความถี่ของ 8051 Timer 1 (Mode 2 Auto-reload):</p>
+                <div class="code-wrapper">
+                  <div class="code-header"><span>Baud Rate Formula in MCS-51 Mode 2</span></div>
+                  <pre class="code-content">Baud Rate = (2^SMOD / 32) * (f_osc / (12 * (256 - TH1)))</pre>
+                </div>
+                <ul>
+                  <li><strong>กรณีใช้ Crystal 11.0592 MHz (สมมติ SMOD = 0):</strong>
+                    <br>ความถี่หลังผ่านตัวหาร 384 ($32 \times 12$) คือ $11,059,200 / 384 = \mathbf{28,800\text{ Hz}}$
+                    <br>เมื่อต้องการ 9600 Baud: ค่า Reload Value $256 - \text{TH1} = 28,800 / 9600 = \mathbf{3}$ (ลงตัวจำนวนเต็มพอดี!) $\rightarrow \text{TH1} = 256 - 3 = 253 = \mathbf{FDH}$
+                    <br><strong>Baud Rate Error = 0.00% (ไม่มีความผิดพลาดในการส่งข้อมูล)</strong>
+                  </li>
+                  <li><strong>กรณีใช้ Crystal 12.0000 MHz:</strong>
+                    <br>$12,000,000 / 384 = 31,250\text{ Hz}$
+                    <br>เมื่อต้องการ 9600 Baud: $31,250 / 9600 \approx \mathbf{3.2552}$ (ไม่ลงตัว!)
+                    <br>หากปัดเศษเป็น 3 จะได้ Baud Rate $= 10,416.6\text{ Baud}$ (Error สูงถึง $+8.5\%$ ทำให้ข้อมูลตัวอักษรเสียหาย / Framing Error)
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- Question 6 -->
+        <article class="solution-card" id="q6-ale-multiplexed-bus" data-category="hardware architecture">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge blue">ข้อ 6</span>
+              <h3 class="card-title">กลไกการแยกแอดเดรสและข้อมูลบนบัส Port 0 ด้วยสัญญาณ ALE (Address Latch Enable)</h3>
+            </div>
+            <span class="ref-pill">Multiplexed Bus & 74HC573 Latch</span>
+          </div>
+          <div class="card-body">
+            
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-question-circle"></i> คำถามเก็งพลิกแพลงเชิงวิศวกรรม:</div>
+              <div class="section-recalled-text">
+                "เหตุใด Port 0 ของ 8051 จึงทำหน้าที่เป็นได้ทั้งบัสแอดเดรสส่วนต่ำ (A0–A7) และบัสข้อมูล (D0–D7) สัญญาณ ALE มีบทบาทอย่างไร และในวงจรฮาร์ดแวร์ภายนอกต้องใช้อุปกรณ์ใดร่วมด้วย?"
+              </div>
+            </div>
+
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> คำตอบและคำอธิบายฉบับสมบูรณ์ (Official Solution)</div>
+              </div>
+              <div class="content-block">
+                <ol>
+                  <li><strong>การแชร์ขาพอร์ต (Multiplexing):</strong> เพื่อประหยัดจำนวนขาไอซี (Pin Count) บนชิป 40 ขา 8051 จึงกำหนดให้ Port 0 ทำหน้าที่สองอย่างสลับกันตามคาบเวลา (Time Multiplexed):
+                    <ul>
+                      <li><strong>ช่วงต้นรอบสัญญาณ (Address Phase):</strong> ส่งบัสแอดเดรสบิต 0–7 (<code>A0–A7</code>) ออกมา</li>
+                      <li><strong>ช่วงท้ายรอบสัญญาณ (Data Phase):</strong> สลับมารับหรือส่งบัสข้อมูล 8 บิต (<code>D0–D7</code>)</li>
+                    </ul>
+                  </li>
+                  <li><strong>การทำงานของสัญญาณ ALE:</strong> ขา <strong>ALE (Address Latch Enable)</strong> จะส่งสัญญาณพัลส์ Active-HIGH ออกมาในจังหวะที่ Port 0 ปล่อยแอดเดรส <code>A0–A7</code> เพื่อสั่งให้ไอซี Latch ภายนอก (เบอร์ <strong>74HC573</strong> หรือ <strong>74HC373</strong>) ทำการ "ล็อกค่าแอดเดรส" ค้างไว้</li>
+                  <li><strong>ประโยชน์:</strong> เมื่อ Port 0 สลับไปส่งข้อมูล <code>D0–D7</code> แอดเดรส <code>A0–A7</code> จะยังคงถูกจ่ายนิ่งอยู่ที่ขา Output ของ 74HC573 ทำให้ชิปหน่วยความจำภายนอกรับแอดเดรสได้ถูกต้องตลอดรอบการทำงาน</li>
+                </ol>
+              </div>
+
+              <div class="diagram-card">
+                <img src="../../../assets/images/lecture/lecture2-port-bus-functions.png" alt="Port Bus Functions and Multiplexing">
+                <div class="diagram-caption"><i class="fas fa-image"></i> โครงสร้างการเชื่อมต่อบัส Multiplexed ระหว่าง Port 0, ALE, และ External Memory (Lecture 2)</div>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- ========================================== -->
+        <!-- THEME 3: MEMORY ORGANIZATION & SFR -->
+        <!-- ========================================== -->
+        <div class="category-divider" style="margin: 2rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--accent-green); color: var(--accent-green); font-weight: 700; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">
+          <i class="fas fa-memory"></i> ธีมที่ 3: ผังหน่วยความจำ & รีจิสเตอร์พิเศษ SFR (Lecture 3)
+        </div>
+
+        <!-- Question 7 -->
+        <article class="solution-card" id="q7-8052-memory-overlap" data-category="memory instruction analytical">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge green">ข้อ 7</span>
+              <h3 class="card-title">วิเคราะห์การทับซ้อนของแอดเดรส 80H–FFH ใน 8052: คำสั่ง Direct vs Indirect แยกแยะระหว่าง SFR กับ Upper Data RAM อย่างไร?</h3>
+            </div>
+            <span class="ref-pill">Direct SFR vs Indirect RAM (@R0)</span>
+          </div>
+          <div class="card-body">
+            
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-question-circle"></i> คำถามเก็งพลิกแพลงเชิงวิศวกรรม:</div>
+              <div class="section-recalled-text">
+                "ในไมโครคอนโทรลเลอร์ 8052 มี Internal Data RAM ขนาด 256 ไบต์ (00H–FFH) และมี SFRs อยู่ที่แอดเดรส 80H–FFH ซ้อนทับกันอยู่ หากโปรแกรมเมอร์สั่ง:<br>
+                (1) <code>MOV 90H, #55H</code><br>
+                (2) <code>MOV R0, #90H</code> แล้วตามด้วย <code>MOV @R0, #55H</code><br>
+                ข้อมูล 55H จะถูกนำไปเก็บไว้ที่ใดในแต่ละกรณี จงอธิบายกลไกของสถาปัตยกรรมอย่างละเอียด"
+              </div>
+            </div>
+
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> คำตอบและคำอธิบายฉบับสมบูรณ์ (Official Solution)</div>
+              </div>
+              <div class="content-block">
+                <p>ใน 8052 ฮาร์ดแวร์ใช้ <strong>Addressing Mode</strong> เป็นตัวเลือกปลายทางในการเข้าถึงพื้นที่ <code>80H - FFH</code>:</p>
+                <ul>
+                  <li><strong>กรณีที่ (1) คำสั่ง <code>MOV 90H, #55H</code> (Direct Addressing):</strong>
+                    <br>คำสั่งแบบ Direct Address จะเข้าถึง <strong>Special Function Register (SFR)</strong> เสมอ! แอดเดรส <code>90H</code> คือรีจิสเตอร์ของ <strong>Port 1 (P1)</strong> ข้อมูล <code>55H</code> (<code>01010101B</code>) จึงถูกส่งออกไปยังขาพอร์ต P1 ทันที
+                  </li>
+                  <li><strong>กรณีที่ (2) คำสั่ง <code>MOV @R0, #55H</code> (Indirect Addressing ผ่าน <code>@R0</code> หรือ <code>@R1</code>):</strong>
+                    <br>คำสั่งแบบ Indirect Address จะเข้าถึง <strong>Upper 128 Bytes Internal Data RAM</strong> เสมอ! ข้อมูล <code>55H</code> จึงถูกนำไปบันทึกไว้ใน RAM ตำแหน่ง 90H โดยไม่มีผลกระทบใดๆ ต่อขาพอร์ต P1
+                  </li>
+                </ul>
+              </div>
+
+              <div class="diagram-card">
+                <img src="../../../assets/images/lecture/lecture3-memory-organization.png" alt="8052 Internal RAM Memory Map">
+                <div class="diagram-caption"><i class="fas fa-image"></i> แผนภาพผังหน่วยความจำภายใน 8052: Lower 128B, Upper 128B (Indirect), และ SFR (Direct) (Lecture 3)</div>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- Question 8 -->
+        <article class="solution-card" id="q8-stack-collision-sp" data-category="memory analytical">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge green">ข้อ 8</span>
+              <h3 class="card-title">วิเคราะห์ปัญหา Stack Pointer ชนพื้นที่ Register Bank 1 หลัง Reset และวิธีป้องกัน</h3>
+            </div>
+            <span class="ref-pill">SP Default = 07H & Stack Overflow Prevention</span>
+          </div>
+          <div class="card-body">
+            
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-question-circle"></i> คำถามเก็งพลิกแพลงเชิงวิศวกรรม:</div>
+              <div class="section-recalled-text">
+                "เมื่อ 8051 ถูก Reset ค่าเริ่มต้นของ Stack Pointer (SP) จะเท่ากับ <code>07H</code> หากโปรแกรมเริ่มทำงานแล้วมีการใช้คำสั่ง <code>LCALL</code> หรือ <code>PUSH</code> โดยไม่ได้เปลี่ยนค่า SP ข้อมูลจะถูกเขียนทับลงในพื้นที่หน่วยความจำใด และเหตุใดโปรแกรมเมอร์จึงต้องสั่ง <code>MOV SP, #30H</code> หรือ <code>#5FH</code> ในส่วนเริ่มต้นโปรแกรม (Init Section) เสมอ?"
+              </div>
+            </div>
+
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> คำตอบและคำอธิบายฉบับสมบูรณ์ (Official Solution)</div>
+              </div>
+              <div class="content-block">
+                <ul>
+                  <li><strong>พฤติกรรมของคำสั่ง PUSH และ CALL:</strong> เมื่อมีการ PUSH ข้อมูล ตัวประมวลผลจะทำการเพิ่มค่า SP ก่อน 1 ค่า (<code>SP = SP + 1</code>) แล้วจึงนำข้อมูลไปวาง ณ แอดเดรสที่ SP ชี้</li>
+                  <li><strong>ผลกระทบเมื่อ SP = 07H (Default Reset):</strong>
+                    <br>เมื่อเกิดการ PUSH ตัวแรก ข้อมูลจะถูกเขียนที่แอดเดรส <code>08H</code> ซึ่งเป็นตำแหน่งของรีจิสเตอร์ <strong>R0 ของ Register Bank 1</strong> (ช่วงแอดเดรส <code>08H - 0FH</code>)
+                    <br>หากโปรแกรมมีการสลับไปใช้ Bank 1 หรือมีการเก็บตัวแปรใน R0–R7 ของ Bank 1 ข้อมูลจะถูก Stack เขียนทับ (Data Corruption) ส่งผลให้ค่าตัวแปรสูญหายหรือ Return Address เพี้ยนจนระบบค้าง (Crash)
+                  </li>
+                  <li><strong>วิธีแก้ไขมาตรฐานในงานวิศวกรรม:</strong>
+                    ต้องกำหนดค่า SP ใหม่ในส่วนต้นของโปรแกรมให้พ้นจากพื้นที่ <strong>Register Banks 0-3 (00H-1FH)</strong> และ <strong>Bit-Addressable RAM (20H-2FH)</strong> เช่น:
+                    <div class="code-wrapper">
+                      <div class="code-header"><span>Assembly Code</span><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+                      <pre class="code-content"><span class="opcode">MOV</span> <span class="operand">SP</span>, <span class="immediate">#2FH</span>  <span class="comment">; ให้ Stack เริ่มโตที่ 30H เป็นต้นไป ปลอดภัย 100%</span></pre>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="diagram-card">
+                <img src="../../../assets/images/diagrams/stack-on-interrupt.png" alt="Stack Operation Diagram">
+                <div class="diagram-caption"><i class="fas fa-image"></i> โครงสร้างการเติบโตของ Stack บน Internal RAM เมื่อมีการเรียก Subroutine หรือ Interrupt (Learning from Zero)</div>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- Question 9 -->
+        <article class="solution-card" id="q9-psw-bank-switching" data-category="memory instruction">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge green">ข้อ 9</span>
+              <h3 class="card-title">ผลกระทบของการสลับ Register Bank ผ่านบิต RS1:RS0 ใน Subroutine หรือ ISR โดยไม่ได้คืนค่าเดิม</h3>
+            </div>
+            <span class="ref-pill">PSW Context Saving (PUSH/POP PSW)</span>
+          </div>
+          <div class="card-body">
+            
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-question-circle"></i> คำถามเก็งพลิกแพลงเชิงวิศวกรรม:</div>
+              <div class="section-recalled-text">
+                "ในโปรแกรมหลักกำลังทำงานอยู่ที่ Register Bank 0 (00H-07H) และเก็บค่าสำคัญไว้ใน R5 ต่อมาเกิด Interrupt หรือมีการเรียก Subroutine ซึ่งสั่ง <code>SETB RS0</code> เพื่อสลับไปใช้ Bank 1 หากก่อนจบ Subroutine โปรแกรมเมอร์ลืมคืนค่าบิต RS0 ให้เป็น 0 จะเกิดข้อผิดพลาดใดในโปรแกรมหลัก และแนวทาง Context Switching ที่ปลอดภัยที่สุดคืออะไร?"
+              </div>
+            </div>
+
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> คำตอบและคำอธิบายฉบับสมบูรณ์ (Official Solution)</div>
+              </div>
+              <div class="content-block">
+                <ul>
+                  <li><strong>ผลกระทบในโปรแกรมหลัก:</strong> เมื่อกลับสู่โปรแกรมหลัก บิต <code>RS0</code> ยังคงเป็น <code>1</code> ทำให้คำสั่งถัดไปที่อ้างอิง <code>R5</code> จะชี้ไปยังแอดเดรส <code>0DH</code> (R5 ของ Bank 1) แทนที่จะเป็น <code>05H</code> (R5 ของ Bank 0) ทำให้โปรแกรมหลักอ่านค่าตัวแปรผิดชุด และเกิด Bug ร้ายแรงที่ตรวจจับได้ยาก</li>
+                  <li><strong>แนวทาง Context Switching ที่ถูกต้อง:</strong>
+                    เมื่อต้องการสลับ Bank ใน Subroutine หรือ ISR ต้องทำการ <strong>PUSH PSW</strong> เก็บไว้บน Stack เสมอ และ <strong>POP PSW</strong> คืนค่าก่อนกลับ:
+                    <div class="code-wrapper">
+                      <div class="code-header"><span>Safe Bank Switching Pattern</span><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+                      <pre class="code-content"><span class="directive">MY_SUBROUTINE:</span>
+    <span class="opcode">PUSH</span> <span class="operand">PSW</span>         <span class="comment">; 1. บันทึกสถานะ PSW เดิม (รวม RS1:RS0 และ Flags)</span>
+    <span class="opcode">MOV</span>  <span class="operand">PSW</span>, <span class="immediate">#08H</span>   <span class="comment">; 2. สลับไปใช้ Bank 1 (RS0=1, RS1=0)</span>
+    <span class="comment">; ... ประมวลผลโดยใช้ R0-R7 ของ Bank 1 ...</span>
+    <span class="opcode">POP</span>  <span class="operand">PSW</span>         <span class="comment">; 3. คืนค่า PSW เดิมอย่างสมบูรณ์</span>
+    <span class="opcode">RET</span>              <span class="comment">; 4. กลับสู่โปรแกรมหลักอย่างปลอดภัย</span></pre>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="diagram-card">
+                <img src="../../../assets/images/lecture/lecture2-psw.png" alt="PSW Register Structure">
+                <div class="diagram-caption"><i class="fas fa-image"></i> ผังบิตใน Program Status Word (PSW.4 = RS1, PSW.3 = RS0) (Lecture 2)</div>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- ========================================== -->
+        <!-- THEME 4: INSTRUCTION SET & ADDRESSING -->
+        <!-- ========================================== -->
+        <div class="category-divider" style="margin: 2rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--accent-amber); color: var(--accent-amber); font-weight: 700; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">
+          <i class="fas fa-code"></i> ธีมที่ 4: การวิเคราะห์และแกะรอยคำสั่งภาษาแอสเซมบลี (Lecture 4)
+        </div>
+
+        <!-- Question 10 -->
+        <article class="solution-card" id="q10-addressing-modes-deep" data-category="instruction">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge amber">ข้อ 10</span>
+              <h3 class="card-title">เปรียบเทียบเจาะลึก 4 คำสั่ง Addressing Modes: MOV A, #30H vs MOV A, 30H vs MOV A, @R0 vs MOVX A, @DPTR</h3>
+            </div>
+            <span class="ref-pill">Immediate, Direct, Indirect, External</span>
+          </div>
+          <div class="card-body">
+            
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-question-circle"></i> คำถามเก็งพลิกแพลงเชิงวิศวกรรม:</div>
+              <div class="section-recalled-text">
+                "สมมติให้ <code>R0 = 30H</code>, <code>DPTR = 1000H</code>, ใน Internal RAM แอดเดรส <code>30H</code> มีค่า <code>7AH</code> บันทึกอยู่, และใน External RAM แอดเดรส <code>1000H</code> มีค่า <code>9FH</code> บันทึกอยู่ จงระบุค่าใน Accumulator (A) หลังรันแต่ละคำสั่งต่อไปนี้อย่างอิสระจากกัน พร้อมระบุชื่อ Addressing Mode"
+              </div>
+            </div>
+
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> คำตอบและคำอธิบายฉบับสมบูรณ์ (Official Solution)</div>
+              </div>
+              <div class="content-block">
+                <div class="table-responsive">
+                  <table class="custom-table">
+                    <thead>
+                      <tr>
+                        <th style="width: 25%;">คำสั่ง</th>
+                        <th style="width: 28%;">ชื่อโหมดการอ้างแอดเดรส</th>
+                        <th style="width: 15%;">ค่าใน A</th>
+                        <th style="width: 32%;">คำอธิบายการทำงาน</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><code>MOV A, #30H</code></td>
+                        <td><strong>Immediate Addressing</strong></td>
+                        <td><strong><code>30H</code></strong></td>
+                        <td>สัญลักษณ์ <code>#</code> หมายถึงนำค่าคงที่ 30H โหลดเข้า A โดยตรง</td>
+                      </tr>
+                      <tr>
+                        <td><code>MOV A, 30H</code></td>
+                        <td><strong>Direct Addressing</strong></td>
+                        <td><strong><code>7AH</code></strong></td>
+                        <td>อ่านข้อมูลจาก Internal Data RAM แอดเดรส <code>30H</code> เข้าสู่ A</td>
+                      </tr>
+                      <tr>
+                        <td><code>MOV A, @R0</code></td>
+                        <td><strong>Indirect Addressing</strong></td>
+                        <td><strong><code>7AH</code></strong></td>
+                        <td>ใช้ค่าใน R0 (30H) เป็นพอยน์เตอร์ชี้ไปอ่าน Internal RAM แอดเดรส <code>30H</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>MOVX A, @DPTR</code></td>
+                        <td><strong>External Data Indirect</strong></td>
+                        <td><strong><code>9FH</code></strong></td>
+                        <td>สร้างสัญญาณบัส <code>RD</code> อ่านข้อมูลจาก External Data RAM แอดเดรส <code>1000H</code></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- Question 11 -->
+        <article class="solution-card" id="q11-bit-addressing-ram-sfr" data-category="instruction memory">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge amber">ข้อ 11</span>
+              <h3 class="card-title">การอ้างอิงระดับบิต (Bit-Level Manipulation): SETB 00H vs SETB 20H.0 vs SETB 80H มีผลต่อบิตใดใน RAM / SFR?</h3>
+            </div>
+            <span class="ref-pill">Bit-Addressable RAM (20H-2FH) vs SFR Bits</span>
+          </div>
+          <div class="card-body">
+            
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-question-circle"></i> คำถามเก็งพลิกแพลงเชิงวิศวกรรม:</div>
+              <div class="section-recalled-text">
+                "ในระบบชุดคำสั่ง 8051 มีคำสั่งควบคุมบิตเดี่ยว (Single-bit instructions) จงอธิบายว่าคำสั่ง <code>SETB 00H</code>, <code>SETB 20H.0</code>, และ <code>SETB 80H</code> มีผลต่อบิตใด และเหตุใด Bit Address <code>00H</code> จึงไม่ได้หมายถึงบิต 0 ของ Register R0 ใน Bank 0?"
+              </div>
+            </div>
+
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> คำตอบและคำอธิบายฉบับสมบูรณ์ (Official Solution)</div>
+              </div>
+              <div class="content-block">
+                <ul>
+                  <li><strong>ผัง Bit Address ใน 8051:</strong> มี 2 ส่วนหลักคือ
+                    <ol>
+                      <li><strong>พื้นที่ใน RAM ช่วง 20H – 2FH (16 ไบต์ $\times$ 8 = 128 บิต):</strong> ถูกกำหนด Bit Address ตั้งแต่ <strong><code>00H</code> ถึง <code>7FH</code></strong></li>
+                      <li><strong>บิตใน SFR ที่ลงท้ายด้วย 0 หรือ 8 (Bit-addressable SFRs):</strong> มี Bit Address ตั้งแต่ <strong><code>80H</code> ถึง <code>FFH</code></strong></li>
+                    </ol>
+                  </li>
+                  <li><strong>วิเคราะห์แต่ละคำสั่ง:</strong>
+                    <ul>
+                      <li><code>SETB 00H</code>: สั่งให้บิตหมายเลข <code>00H</code> เป็น 1 ซึ่งตรงกับ <strong>บิต 0 ของ Byte Address 20H ใน RAM</strong></li>
+                      <li><code>SETB 20H.0</code>: เป็นการเขียนแบบ Dot Notation ที่ Assembler แปลงเป็นคำสั่งเดียวกันกับ <code>SETB 00H</code> (ตั้งค่าบิต 0 ของไบต์ 20H ใน RAM ให้เป็น 1)</li>
+                      <li><code>SETB 80H</code> (หรือ <code>SETB P0.0</code>): สั่งให้บิต <strong>P0.0 (ขาพอร์ต 0 บิตที่ 0)</strong> ของ SFR Port 0 (แอดเดรส 80H) กลายเป็น <code>1</code></li>
+                    </ul>
+                  </li>
+                  <li><strong>ทำไม Bit Address 00H จึงไม่ใช่ R0 ของ Bank 0:</strong> เพราะพื้นที่ <code>00H - 1FH</code> (Register Banks 0-3) เป็น Byte-addressable เท่านั้น ไม่สามารถสั่งคำสั่งแบบ Bit เดี่ยวได้โดยตรง</li>
+                </ul>
+              </div>
+
+              <div class="diagram-card">
+                <img src="../../../assets/images/lecture/lecture3-bit-addressable-area.png" alt="Bit Addressable Area Map">
+                <div class="diagram-caption"><i class="fas fa-image"></i> ตารางความสัมพันธ์ระหว่าง Byte Address (20H-2FH) และ Bit Address (00H-7FH) (Lecture 3)</div>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- Question 12 -->
+        <article class="solution-card" id="q12-math-flags-trace" data-category="instruction analytical">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge amber">ข้อ 12</span>
+              <h3 class="card-title">แกะรอยการทำงานของคำสั่งทางคณิตศาสตร์และตรรกศาสตร์ (ADDC, SUBB, MUL, DIV, DA A) พร้อมระบุธง CY, AC, OV, P</h3>
+            </div>
+            <span class="ref-pill">BCD Arithmetic & Status Flags</span>
+          </div>
+          <div class="card-body">
+            
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-question-circle"></i> คำถามเก็งพลิกแพลงเชิงวิศวกรรม:</div>
+              <div class="section-recalled-text">
+                "สมมติสภาพเริ่มต้น <code>A = 38H</code>, <code>B = 49H</code>, และ <code>CY = 1</code> จงหาค่าใน Accumulator และสถานะของธง <code>CY</code>, <code>AC</code> หลังการรันคำสั่งต่อไปนี้ตามลำดับ:<br>
+                (1) <code>ADD A, #49H</code><br>
+                (2) ตามด้วยคำสั่ง <code>DA A</code> (Decimal Adjust Accumulator)"
+              </div>
+            </div>
+
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> คำตอบและคำอธิบายฉบับสมบูรณ์ (Official Solution)</div>
+              </div>
+              <div class="content-block">
+                <ol>
+                  <li><strong>ขั้นตอนที่ (1) คำสั่ง <code>ADD A, #49H</code>:</strong>
+                    <br>คำนวณเลขฐานสิบหก: $38\text{H} + 49\text{H}$
+                    <br>บวกหลักล่าง (Nibble ล่าง): $8 + 9 = 17 = 11\text{H}$ (ได้ผลลัพธ์ $1$ เกิดตัวทดจากบิต 3 ไปบิต 4 $\rightarrow$ <strong><code>AC = 1</code></strong>)
+                    <br>บวกหลักบน (Nibble บน): $3 + 4 + 1\text{ (ทด)} = 8 = 8\text{H}$ (ไม่ล้นบิต 7 $\rightarrow$ <strong><code>CY = 0</code></strong>)
+                    <br><strong>ผลลัพธ์หลังข้อ (1):</strong> <strong><code>A = 81H</code></strong>, <strong><code>CY = 0</code></strong>, <strong><code>AC = 1</code></strong>
+                  </li>
+                  <li><strong>ขั้นตอนที่ (2) คำสั่ง <code>DA A</code> (ปรับค่าให้เป็นเลขฐานสิบ BCD):</strong>
+                    <br>กฎของคำสั่ง <code>DA A</code>:
+                    <ul>
+                      <li>ถ้าหลักล่าง $> 9$ หรือ <code>AC = 1</code>: ให้บวก <code>06H</code> เข้าไป</li>
+                      <li>ในที่นี้ <code>AC = 1</code> $\rightarrow$ บวก <code>06H</code>: $81\text{H} + 06\text{H} = \mathbf{87\text{H}}$</li>
+                      <li>หลักบนเท่ากับ $8$ (ไม่เกิน 9) และ <code>CY = 0</code> จึงไม่ต้องบวก <code>60H</code></li>
+                    </ul>
+                    <br><strong>ผลลัพธ์สุดท้ายหลังข้อ (2):</strong> <strong><code>A = 87H</code></strong> (ตรงกับการบวก BCD: $38 + 49 = \mathbf{87}$ ในฐานสิบ!), <strong><code>CY = 0</code></strong>
+                  </li>
+                </ol>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- ========================================== -->
+        <!-- THEME 5: LOOPS, DELAYS & BRANCHING -->
+        <!-- ========================================== -->
+        <div class="category-divider" style="margin: 2rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--accent-purple); color: var(--accent-purple); font-weight: 700; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">
+          <i class="fas fa-history"></i> ธีมที่ 5: การควบคุมโฟลว์โปรแกรม ลูป และดีเลย์ (Lecture 4 & Timing)
+        </div>
+
+        <!-- Question 13 -->
+        <article class="solution-card" id="q13-sjmp-relative-offset" data-category="timing instruction analytical">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge purple">ข้อ 13</span>
+              <h3 class="card-title">วิธีคำนวณ Relative Jump Offset ของคำสั่ง SJMP ทั้งแบบกระโดดไปข้างหน้า (Forward) และกระโดดถอยหลัง (Backward)</h3>
+            </div>
+            <span class="ref-pill">Two's Complement & Target Address Formula</span>
+          </div>
+          <div class="card-body">
+            
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-question-circle"></i> คำถามเก็งพลิกแพลงเชิงวิศวกรรม:</div>
+              <div class="section-recalled-text">
+                "คำสั่ง <code>SJMP</code> มีขนาด 2 ไบต์ (Opcode = 80H, ตามด้วย Relative Offset 1 ไบต์แบบ Signed Number ตั้งแต่ -128 ถึง +127) จงแสดงวิธีคำนวณ Machine Code ใน 2 กรณีต่อไปนี้:<br>
+                (1) คำสั่ง <code>SJMP NEXT</code> อยู่ที่ Address <code>0040H</code> โดย Label <code>NEXT</code> อยู่ที่ Address <code>0055H</code><br>
+                (2) คำสั่ง <code>SJMP LOOP</code> อยู่ที่ Address <code>0040H</code> โดย Label <code>LOOP</code> อยู่ที่ Address <code>003AH</code>"
+              </div>
+            </div>
+
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> คำตอบและคำอธิบายฉบับสมบูรณ์ (Official Solution)</div>
+              </div>
+              <div class="content-block">
+                <p>สูตรสากลของสถาปัตยกรรม MCS-51: $\text{Offset} = \text{Target Address} - \text{PC}_{\text{next}}$ (โดย $\text{PC}_{\text{next}} = \text{Address ของคำสั่ง SJMP} + 2$)</p>
+                
+                <ol>
+                  <li><strong>กรณีที่ (1) กระโดดไปข้างหน้า (Forward Jump ไปที่ 0055H):</strong>
+                    <ul>
+                      <li>$\text{PC}_{\text{next}} = 0040\text{H} + 2 = 0042\text{H}$</li>
+                      <li>$\text{Offset} = 0055\text{H} - 0042\text{H} = \mathbf{13\text{H}}$ (ฐานสิบคือ $+19$ ไบต์)</li>
+                      <li><strong>Machine Code:</strong> <code>80 13</code></li>
+                    </ul>
+                  </li>
+                  <li><strong>กรณีที่ (2) กระโดดถอยหลัง (Backward Jump ไปที่ 003AH):</strong>
+                    <ul>
+                      <li>$\text{PC}_{\text{next}} = 0040\text{H} + 2 = 0042\text{H}$</li>
+                      <li>$\text{Offset} = 003A\text{H} - 0042\text{H} = -8$ (ในฐานสิบ)</li>
+                      <li>แปลง $-8$ เป็นเลข 8-bit Two's Complement:
+                        <br>$+8 = 00001000\text{B} \rightarrow \text{Invert} = 11110111\text{B} \rightarrow +1 = 11111000\text{B} = \mathbf{F8\text{H}}$
+                      </li>
+                      <li><strong>Machine Code:</strong> <code>80 F8</code></li>
+                    </ul>
+                  </li>
+                </ol>
+              </div>
+
+              <div class="diagram-card">
+                <img src="../../../assets/images/lecture/lecture4-jump-call.png" alt="Jump and Call Instructions in 8051">
+                <div class="diagram-caption"><i class="fas fa-image"></i> โครงสร้างคำสั่ง Jump/Branch: SJMP (2B Relative), AJMP (2B Block), LJMP (3B Absolute) (Lecture 4)</div>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- Question 14 -->
+        <article class="solution-card" id="q14-nested-delay-calculation" data-category="timing instruction">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge purple">ข้อ 14</span>
+              <h3 class="card-title">การเขียนโปรแกรมลูปหน่วงเวลาซ้อนกัน (Nested Delay Loops) และคำนวณเวลาอย่างแม่นยำ</h3>
+            </div>
+            <span class="ref-pill">Machine Cycle Counting & Precise Timing</span>
+          </div>
+          <div class="card-body">
+            
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-question-circle"></i> คำถามเก็งพลิกแพลงเชิงวิศวกรรม:</div>
+              <div class="section-recalled-text">
+                "กำหนดให้ 8051 ใช้ Crystal $12\text{ MHz}$ ($1\text{ Machine Cycle} = 1\ \mu\text{s}$) จงคำนวณเวลาหน่วงรวม (Total Delay Time) ของฟังก์ชันย่อยต่อไปนี้อย่างละเอียดเป็นไมโครวินาที"
+              </div>
+            </div>
+
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> คำตอบและคำอธิบายฉบับสมบูรณ์ (Official Solution)</div>
+              </div>
+              <div class="content-block">
+                <div class="code-wrapper">
+                  <div class="code-header"><span>Assembly Delay Subroutine</span><button class="btn-copy" onclick="copyCode(this)">Copy</button></div>
+                  <pre class="code-content"><span class="directive">DELAY_SUB:</span>               <span class="comment">; ถูกเรียกด้วย LCALL (2 MC)</span>
+    <span class="opcode">MOV</span>  <span class="operand">R2</span>, <span class="immediate">#200</span>        <span class="comment">; 1 MC (รัน 1 ครั้ง)</span>
+<span class="directive">LOOP1:</span>
+    <span class="opcode">MOV</span>  <span class="operand">R1</span>, <span class="immediate">#250</span>        <span class="comment">; 1 MC (รัน 200 ครั้ง)</span>
+<span class="directive">LOOP2:</span>
+    <span class="opcode">NOP</span>                  <span class="comment">; 1 MC (รัน 200 * 250 ครั้ง)</span>
+    <span class="opcode">DJNZ</span> <span class="operand">R1</span>, <span class="directive">LOOP2</span>      <span class="comment">; 2 MC (รัน 200 * 250 ครั้ง)</span>
+    <span class="opcode">DJNZ</span> <span class="operand">R2</span>, <span class="directive">LOOP1</span>      <span class="comment">; 2 MC (รัน 200 ครั้ง)</span>
+    <span class="opcode">RET</span>                  <span class="comment">; 2 MC (รัน 1 ครั้ง)</span></pre>
+                </div>
+
+                <p><strong>แสดงการคำนวณจำนวน Machine Cycle (MC) ทีละส่วน:</strong></p>
+                <ul>
+                  <li><strong>ลูปใน (LOOP2):</strong> แต่ละรอบใช้ $(1\text{ NOP} + 2\text{ DJNZ}) = 3\text{ MC}$
+                    <br>หมุน 250 รอบ $= 250 \times 3 = \mathbf{750\text{ MC}}$
+                  </li>
+                  <li><strong>ลูปนอก (LOOP1):</strong> แต่ละรอบใช้ $(1\text{ MOV R1} + 750\text{ ใน LOOP2} + 2\text{ DJNZ R2}) = 753\text{ MC}$
+                    <br>หมุน 200 รอบ $= 200 \times 753 = \mathbf{150,600\text{ MC}}$
+                  </li>
+                  <li><strong>ส่วนหัวและส่วนท้าย:</strong> $(1\text{ MOV R2} + 2\text{ RET} + 2\text{ LCALL}) = \mathbf{5\text{ MC}}$</li>
+                  <li><strong>จำนวน Machine Cycles รวม:</strong> $150,600 + 5 = \mathbf{150,605\text{ MC}}$</li>
+                  <li><strong>เวลาหน่วงรวม (Total Delay):</strong> $150,605 \times 1\ \mu\text{s} = \mathbf{150,605\ \mu\text{s}} \approx \mathbf{150.6\text{ ms}}$ (ประมาณ 0.15 วินาที)</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- ========================================== -->
+        <!-- THEME 6: ADVANCED, INTERRUPTS & HEX -->
+        <!-- ========================================== -->
+        <div class="category-divider" style="margin: 2rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--accent-cyan); color: var(--accent-cyan); font-weight: 700; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">
+          <i class="fas fa-terminal"></i> ธีมที่ 6: การเชื่อมต่อไปยังโลกข้อสอบปลายภาค (Interrupt & Cross-Assembler)
+        </div>
+
+        <!-- Question 15 -->
+        <article class="solution-card" id="q15-ret-vs-reti-deep" data-category="advanced instruction analytical">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge red">ข้อ 15</span>
+              <h3 class="card-title">เปรียบเทียบเชิงลึก RET vs RETI: ทำไมการใช้ RET ใน Interrupt Service Routine จึงทำให้ระบบไม่รับ Interrupt อีก?</h3>
+            </div>
+            <span class="ref-pill">Interrupt Priority Logic & Status Clear</span>
+          </div>
+          <div class="card-body">
+            
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-question-circle"></i> คำถามเก็งพลิกแพลงเชิงวิศวกรรม:</div>
+              <div class="section-recalled-text">
+                "ทั้งคำสั่ง <code>RET</code> และ <code>RETI</code> ทำการ POP ค่า PC 2 ไบต์กลับจาก Stack เหมือนกันทุกประการ เหตุใดใน Interrupt Service Routine (ISR) จึงห้ามใช้ <code>RET</code> แทน <code>RETI</code> โดยเด็ดขาด และจะเกิดผลกระทบต่อ Interrupt Controller อย่างไร?"
+              </div>
+            </div>
+
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> คำตอบและคำอธิบายฉบับสมบูรณ์ (Official Solution)</div>
+              </div>
+              <div class="content-block">
+                <ul>
+                  <li><strong>การทำงานของ <code>RET</code> (Ordinary Subroutine Return):</strong>
+                    ทำการ POP ค่า Return PC 2 ไบต์จาก Stack คืนให้แก่ Program Counter เท่านั้น โดยไม่มีการส่งสัญญาณใดๆ ให้แก่วงจรควบคุม Interrupt
+                  </li>
+                  <li><strong>การทำงานของ <code>RETI</code> (Interrupt Return):</strong>
+                    นอกจากจะ POP ค่า PC 2 ไบต์คืนแล้ว ยังส่งสัญญาณฮาร์ดแวร์ไปสั่งให้ <strong>Interrupt Logic Controller ทำการปลดล็อกสถานะ "Interrupt in Progress" (Clear Active Priority Level Flip-Flop)</strong>
+                  </li>
+                  <li><strong>ผลกระทบร้ายแรงหากใช้ <code>RET</code> ใน ISR:</strong>
+                    ตัวประมวลผลจะยังคงค้างสถานะว่ากำลังประมวลผล Interrupt ระดับความสำคัญเดิมอยู่ ส่งผลให้ <strong>Interrupt แหล่งเดิมหรือแหล่งอื่นที่มี Priority ต่ำกว่าหรือเท่ากันจะไม่สามารถแทรกเข้ามาทำงานได้อีกเลยตลอดไป (ระบบเกิด Interrupt Lockup / Unresponsive)</strong>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="diagram-card">
+                <img src="../../../assets/images/diagrams/ret-vs-reti.png" alt="RET vs RETI Hardware Behavior">
+                <div class="diagram-caption"><i class="fas fa-image"></i> เปรียบเทียบพฤติกรรมฮาร์ดแวร์ระหว่าง RET (Subroutine) กับ RETI (Interrupt Logic Cleared) (Learning from Zero)</div>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- Question 16 -->
+        <article class="solution-card" id="q16-intel-hex-structure" data-category="advanced architecture">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge red">ข้อ 16</span>
+              <h3 class="card-title">โครงสร้างเรคคอร์ด Intel HEX File และการคำนวณ Two's Complement Checksum บรรทัดต่อบรรทัด</h3>
+            </div>
+            <span class="ref-pill">Intel HEX Record Anatomy & Checksum Verification</span>
+          </div>
+          <div class="card-body">
+            
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-question-circle"></i> คำถามเก็งพลิกแพลงเชิงวิศวกรรม:</div>
+              <div class="section-recalled-text">
+                "จงอธิบายโครงสร้างของบรรทัด Intel HEX Record Format: <code>:LLAAAATTDD...CC</code> และแสดงวิธีคำนวณ Checksum ไบต์สุดท้ายของเรคคอร์ดข้อมูลต่อไปนี้: <code>:03000000020030??</code>"
+              </div>
+            </div>
+
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> คำตอบและคำอธิบายฉบับสมบูรณ์ (Official Solution)</div>
+              </div>
+              <div class="content-block">
+                <p>โครงสร้างของไฟล์ Intel HEX ประกอบด้วย 6 ฟิลด์หลัก:</p>
+                <div class="table-responsive">
+                  <table class="custom-table">
+                    <thead>
+                      <tr>
+                        <th style="width: 15%;">ฟิลด์</th>
+                        <th style="width: 25%;">ความหมาย</th>
+                        <th style="width: 60%;">ตัวอย่างในเรคคอร์ด :03000000020030??</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><code>:</code></td>
+                        <td>Record Mark</td>
+                        <td>จุดเริ่มต้นของเรคคอร์ด (โคลอน)</td>
+                      </tr>
+                      <tr>
+                        <td><code>LL</code></td>
+                        <td>Byte Count</td>
+                        <td><code>03</code> = มีข้อมูล Data 3 ไบต์</td>
+                      </tr>
+                      <tr>
+                        <td><code>AAAA</code></td>
+                        <td>Address Offset</td>
+                        <td><code>0000</code> = เริ่มเขียนที่แอดเดรส 0000H</td>
+                      </tr>
+                      <tr>
+                        <td><code>TT</code></td>
+                        <td>Record Type</td>
+                        <td><code>00</code> = Data Record (ถ้า <code>01</code> คือ End of File)</td>
+                      </tr>
+                      <tr>
+                        <td><code>DD...</code></td>
+                        <td>Data Payload</td>
+                        <td><code>02 00 30</code> (Machine code ของคำสั่ง <code>LJMP 0030H</code>)</td>
+                      </tr>
+                      <tr>
+                        <td><code>CC</code></td>
+                        <td>Checksum</td>
+                        <td>ผลรวม Two's Complement ของทุกไบต์ก่อนหน้า</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <p><strong>ขั้นตอนการคำนวณ Checksum (CC):</strong></p>
+                <ol>
+                  <li>นำทุกไบต์ในเรคคอร์ด (ไม่รวม <code>:</code>) มาบวกกัน:
+                    <br>$\text{Sum} = 03\text{H} + 00\text{H} + 00\text{H} + 00\text{H} + 02\text{H} + 00\text{H} + 30\text{H} = \mathbf{35\text{H}}$
+                  </li>
+                  <li>ตัดเอาเฉพาะ 8 บิตล่าง (LSB) $= 35\text{H}$</li>
+                  <li>คำนวณ Two's Complement ($100\text{H} - 35\text{H}$):
+                    <br>$\text{Checksum} = 100\text{H} - 35\text{H} = \mathbf{CB\text{H}}$
+                  </li>
+                  <li><strong>เรคคอร์ดที่สมบูรณ์:</strong> <code>:03000000020030CB</code></li>
+                </ol>
+              </div>
+
+              <div class="diagram-card">
+                <img src="../../../assets/images/lecture/lecture4-development-toolchain.png" alt="Development Toolchain and Intel HEX">
+                <div class="diagram-caption"><i class="fas fa-image"></i> กระบวนการแปลง Source Code (.ASM) ผ่าน Assembler/Linker สู่ไฟล์ .HEX และเบิร์นลง MCU (Lecture 4)</div>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Floating Mobile TOC Button -->
+  <button id="mobile-toc-toggle" class="floating-toc-btn" title="เปิดสารบัญข้อสอบ">
+    <i class="fas fa-list-ul"></i> สารบัญ (16 ข้อ)
+  </button>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div>
+        <p><strong>Embedded Systems Learning Platform</strong> &bull; สื่อการสอนและคลังข้อสอบวิชาสมองกลฝังตัว</p>
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">
+          สาขาวิชาวิศวกรรมไฟฟ้าและคอมพิวเตอร์ &bull; Open Source for Education
+        </p>
+      </div>
+      <div class="footer-links">
+        <a href="../../../index.html">หน้าแรก</a>
+        <a href="../../index.html">305341 Embedded 1</a>
+        <a href="../index.html">ข้อสอบ Midterm</a>
+        <a href="../recalled-questions/index.html">01. แนวข้อสอบ 26 ข้อ</a>
+        <a href="../real-exam-2561/index.html">02. ข้อสอบจริง 2561</a>
+        <a href="https://github.com/T3thr/embedded-system-learning" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../../../assets/js/main.js?v=2.3"></script>
+</body>
+</html>

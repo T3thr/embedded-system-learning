@@ -74,6 +74,8 @@ function initMobileToc() {
 
   if (!floatingBtn || !tocList) return;
 
+  const totalItems = tocList.querySelectorAll('.toc-item').length;
+
   // Create mobile modal element
   const modal = document.createElement('div');
   modal.className = 'mobile-toc-modal';
@@ -82,7 +84,7 @@ function initMobileToc() {
     <div class="mobile-toc-container">
       <div class="mobile-toc-header">
         <h4 style="display:flex; align-items:center; gap:0.4rem; font-size:1rem; color:var(--text-primary);">
-          <i class="fas fa-list-ul" style="color:var(--accent-blue);"></i> สารบัญข้อสอบ (26 ข้อ)
+          <i class="fas fa-list-ul" style="color:var(--accent-blue);"></i> สารบัญเนื้อหา (${totalItems} ข้อ)
         </h4>
         <button class="mobile-toc-close btn-icon" style="width:32px; height:32px;">&times;</button>
       </div>
@@ -113,7 +115,7 @@ function initMobileToc() {
 
 /* 4. Real-time Search & Filter Pills */
 function initSearchAndFilter() {
-  const searchInput = document.getElementById('search-input');
+  const searchInput = document.getElementById('search-input') || document.getElementById('question-search');
   const filterBtns = document.querySelectorAll('.filter-btn');
   const cards = document.querySelectorAll('.solution-card');
 
@@ -137,9 +139,9 @@ function initSearchAndFilter() {
       }
     });
 
-    const countDisplay = document.getElementById('match-count');
+    const countDisplay = document.getElementById('match-count') || document.getElementById('visible-count');
     if (countDisplay) {
-      countDisplay.textContent = `${matchCount} ข้อ`;
+      countDisplay.textContent = `${matchCount}`;
     }
   }
 
@@ -154,7 +156,7 @@ function initSearchAndFilter() {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      currentCategory = btn.getAttribute('data-filter') || 'all';
+      currentCategory = btn.getAttribute('data-category') || btn.getAttribute('data-filter') || 'all';
       filterCards();
     });
   });
