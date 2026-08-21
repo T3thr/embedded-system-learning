@@ -8,8 +8,8 @@
   
   <!-- Stylesheets -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="../../../assets/css/main.css?v=2.1">
-  <link rel="stylesheet" href="../../../assets/css/solution.css?v=2.1">
+  <link rel="stylesheet" href="../../../assets/css/main.css?v=2.2">
+  <link rel="stylesheet" href="../../../assets/css/solution.css?v=2.2">
 </head>
 <body>
 
@@ -19,17 +19,17 @@
       <a href="../../../index.html" class="brand">
         <div class="brand-icon"><i class="fas fa-microchip"></i></div>
         <div class="brand-title">
-          <span>MIDTERM SOLUTION</span>
-          <span>01. RECALLED QUESTIONS</span>
+          <span>EMBEDDED SYSTEMS</span>
+          <span>LEARNING PORTAL</span>
         </div>
       </a>
 
       <ul class="nav-menu">
         <li><a href="../../../index.html" class="nav-link">หน้าแรก</a></li>
-        <li><a href="../../index.html" class="nav-link">Embedded 1</a></li>
+        <li><a href="../../index.html" class="nav-link">Embedded 1 (8051)</a></li>
         <li><a href="../index.html" class="nav-link">ข้อสอบ Midterm</a></li>
-        <li><a href="index.html" class="nav-link active">เฉลยแนวข้อสอบ</a></li>
-        <li><a href="../real-exam-2561/index.html" class="nav-link">เฉลยข้อสอบจริง 2561</a></li>
+        <li><a href="index.html" class="nav-link active">01. แนวข้อสอบ 26 ข้อ</a></li>
+        <li><a href="../real-exam-2561/index.html" class="nav-link">02. ข้อสอบจริง 2561</a></li>
         <li><a href="https://github.com/T3thr/embedded-system-learning" target="_blank" class="nav-link"><i class="fab fa-github"></i> GitHub</a></li>
       </ul>
 
@@ -47,11 +47,11 @@
   <!-- Mobile Drawer Menu -->
   <div class="mobile-drawer" id="mobile-drawer" style="display: none;">
     <ul>
-      <li><a href="../../../index.html" class="nav-link">หน้าแรก (Home)</a></li>
-      <li><a href="../../index.html" class="nav-link">Embedded 1</a></li>
+      <li><a href="../../../index.html" class="nav-link">หน้าแรก</a></li>
+      <li><a href="../../index.html" class="nav-link">Embedded 1 (8051)</a></li>
       <li><a href="../index.html" class="nav-link">ข้อสอบ Midterm</a></li>
-      <li><a href="index.html" class="nav-link active">เฉลยแนวข้อสอบ</a></li>
-      <li><a href="../real-exam-2561/index.html" class="nav-link">เฉลยข้อสอบจริง 2561</a></li>
+      <li><a href="index.html" class="nav-link active">01. แนวข้อสอบ 26 ข้อ</a></li>
+      <li><a href="../real-exam-2561/index.html" class="nav-link">02. ข้อสอบจริง 2561</a></li>
       <li><a href="https://github.com/T3thr/embedded-system-learning" target="_blank" class="nav-link"><i class="fab fa-github"></i> GitHub</a></li>
     </ul>
   </div>
@@ -61,11 +61,11 @@
     <nav class="breadcrumbs">
       <a href="../../../index.html"><i class="fas fa-home"></i> หน้าแรก</a>
       <span class="separator"><i class="fas fa-chevron-right"></i></span>
-      <a href="../../index.html">Embedded 1</a>
+      <a href="../../index.html">Embedded 1 (8051)</a>
       <span class="separator"><i class="fas fa-chevron-right"></i></span>
       <a href="../index.html">ข้อสอบ Midterm</a>
       <span class="separator"><i class="fas fa-chevron-right"></i></span>
-      <span class="current">01. แนวข้อสอบความจำ 26 ข้อ</span>
+      <span class="current">01. แนวข้อสอบ 26 ข้อ</span>
     </nav>
 
     <!-- Header Summary -->
@@ -444,19 +444,19 @@
               <div class="content-block">
                 <p>
                   <strong>1. Internal Program ROM (หน่วยความจำโปรแกรมภายใน):</strong><br>
-                  มีขนาด <strong>4 Kbytes</strong> อยู่ที่ช่วงแอดเดรส <strong>`0000H` ถึง `0FFFH`</strong> (ควบคุมการเปิดใช้งานด้วยขา $\overline{\text{EA}}$: ถ้า $\overline{\text{EA}}=1$ อ่านจาก ROM ภายในก่อน, ถ้า $\overline{\text{EA}}=0$ อ่านจาก ROM ภายนอกทั้งหมด)
+                  มีขนาด <strong>4 Kbytes</strong> อยู่ที่ช่วงแอดเดรส <strong><code>0000H</code> ถึง <code>0FFFH</code></strong> (ควบคุมการเปิดใช้งานด้วยขา <span style="text-decoration: overline;">EA</span>: ถ้า <span style="text-decoration: overline;">EA</span> = 1 อ่านจาก ROM ภายในก่อน, ถ้า <span style="text-decoration: overline;">EA</span> = 0 อ่านจาก ROM ภายนอกทั้งหมด)
                 </p>
                 <p>
                   <strong>2. Internal Data RAM (หน่วยความจำข้อมูลภายใน):</strong><br>
-                  มีขนาด <strong>128 Bytes</strong> อยู่ที่ช่วงแอดเดรส <strong>`00H` ถึง `7FH`</strong> โดยแบ่งเป็น 3 โซนหลัก:
+                  มีขนาด <strong>128 Bytes</strong> อยู่ที่ช่วงแอดเดรส <strong><code>00H</code> ถึง <code>7FH</code></strong> โดยแบ่งเป็น 3 โซนหลัก:
                 </p>
                 <ul>
-                  <li><strong>`00H - 1FH` (32 Bytes):</strong> <strong>Register Banks 4 ชุด</strong> (Bank 0, 1, 2, 3) แต่ละ Bank มีรีจิสเตอร์ $R_0 - R_7$ รวม 8 ตัว</li>
-                  <li><strong>`20H - 2FH` (16 Bytes):</strong> <strong>Bit-Addressable RAM</strong> รองรับการเข้าถึงระดับบิตได้ 128 บิต (บิตแอดเดรส `00H - 7FH`)</li>
-                  <li><strong>`30H - 7FH` (80 Bytes):</strong> <strong>General-Purpose RAM (Scratchpad)</strong> สำหรับเก็บตัวแปรทั่วไปและใช้เป็นพื้นที่ของ Stack</li>
+                  <li><strong><code>00H - 1FH</code> (32 Bytes):</strong> <strong>Register Banks 4 ชุด</strong> (Bank 0, 1, 2, 3) แต่ละ Bank มีรีจิสเตอร์ <code>R0 - R7</code> รวม 8 ตัว</li>
+                  <li><strong><code>20H - 2FH</code> (16 Bytes):</strong> <strong>Bit-Addressable RAM</strong> รองรับการเข้าถึงระดับบิตได้ 128 บิต (บิตแอดเดรส <code>00H - 7FH</code>)</li>
+                  <li><strong><code>30H - 7FH</code> (80 Bytes):</strong> <strong>General-Purpose RAM (Scratchpad)</strong> สำหรับเก็บตัวแปรทั่วไปและใช้เป็นพื้นที่ของ Stack</li>
                 </ul>
                 <p style="font-size: 0.88rem; color: var(--text-muted);">
-                  <em>(หมายเหตุ: ถ้าเป็นชิป 8052 จะมี RAM ภายใน 256 Bytes โดยช่วง `80H - FFH` ด้านบนเข้าถึงผ่าน Indirect Addressing `@R0/@R1`)</em>
+                  <em>(หมายเหตุ: ถ้าเป็นชิป 8052 จะมี RAM ภายใน 256 Bytes โดยช่วง <code>80H - FFH</code> ด้านบนเข้าถึงผ่าน Indirect Addressing <code>@R0/@R1</code>)</em>
                 </p>
               </div>
 
@@ -504,15 +504,15 @@
                   ไมโครคอนโทรลเลอร์ 8051 มีพอร์ต I/O ทั้งหมด <strong>4 พอร์ต (Port 0 – Port 3) แต่ละพอร์ตมีขนาด 8 บิต รวมทั้งหมด 32 ขา I/O</strong> โดยมีคุณสมบัติเฉพาะดังนี้:
                 </p>
                 <ul>
-                  <li><strong>Port 0 (`P0.0 - P0.7`, SFR `80H`):</strong> เป็นพอร์ตแบบ <strong>Open-Drain</strong> (ไม่มี Pull-up ในตัว ต้องต่อตัวต้านทาน Pull-up ภายนอกเมื่อใช้เป็น I/O) และทำหน้าที่เป็น <strong>Multiplexed Address/Data Bus (`AD0 - AD7`)</strong> เมื่อต่อ External Memory</li>
-                  <li><strong>Port 1 (`P1.0 - P1.7`, SFR `90H`):</strong> เป็นพอร์ต Quasi-Bidirectional มี Internal Pull-up ในตัว ใช้เป็น General I/O ทั่วไป</li>
-                  <li><strong>Port 2 (`P2.0 - P2.7`, SFR `A0H`):</strong> เป็นพอร์ต Quasi-Bidirectional ทำหน้าที่ส่ง <strong>High-order Address Bus (`A8 - A15`)</strong> เมื่อต่อหน่วยความจำภายนอก</li>
-                  <li><strong>Port 3 (`P3.0 - P3.7`, SFR `B0H`):</strong> เป็นพอร์ต Quasi-Bidirectional ที่มี <strong>หน้าที่พิเศษรอง (Alternate Functions)</strong>:
+                  <li><strong>Port 0 (<code>P0.0 - P0.7</code>, SFR <code>80H</code>):</strong> เป็นพอร์ตแบบ <strong>Open-Drain</strong> (ไม่มี Pull-up ในตัว ต้องต่อตัวต้านทาน Pull-up ภายนอกเมื่อใช้เป็น I/O) และทำหน้าที่เป็น <strong>Multiplexed Address/Data Bus (<code>AD0 - AD7</code>)</strong> เมื่อต่อ External Memory</li>
+                  <li><strong>Port 1 (<code>P1.0 - P1.7</code>, SFR <code>90H</code>):</strong> เป็นพอร์ต Quasi-Bidirectional มี Internal Pull-up ในตัว ใช้เป็น General I/O ทั่วไป</li>
+                  <li><strong>Port 2 (<code>P2.0 - P2.7</code>, SFR <code>A0H</code>):</strong> เป็นพอร์ต Quasi-Bidirectional ทำหน้าที่ส่ง <strong>High-order Address Bus (<code>A8 - A15</code>)</strong> เมื่อต่อหน่วยความจำภายนอก</li>
+                  <li><strong>Port 3 (<code>P3.0 - P3.7</code>, SFR <code>B0H</code>):</strong> เป็นพอร์ต Quasi-Bidirectional ที่มี <strong>หน้าที่พิเศษรอง (Alternate Functions)</strong>:
                     <ul>
-                      <li>`P3.0 (RxD)` / `P3.1 (TxD)`: รับ-ส่งข้อมูลอนุกรม (Serial Port)</li>
-                      <li>`P3.2 (INT0)` / `P3.3 (INT1)`: สัญญาณขัดจังหวะภายนอก (External Interrupts)</li>
-                      <li>`P3.4 (T0)` / `P3.5 (T1)`: สัญญาณนับเวลาภายนอก (Timer/Counter Inputs)</li>
-                      <li>`P3.6 (WR)` / `P3.7 (RD)`: สัญญาณควบคุมอ่าน/เขียนหน่วยความจำข้อมูลภายนอก</li>
+                      <li><code>P3.0 (RxD)</code> / <code>P3.1 (TxD)</code>: รับ-ส่งข้อมูลอนุกรม (Serial Port)</li>
+                      <li><code>P3.2 (INT0)</code> / <code>P3.3 (INT1)</code>: สัญญาณขัดจังหวะภายนอก (External Interrupts)</li>
+                      <li><code>P3.4 (T0)</code> / <code>P3.5 (T1)</code>: สัญญาณนับเวลาภายนอก (Timer/Counter Inputs)</li>
+                      <li><code>P3.6 (WR)</code> / <code>P3.7 (RD)</code>: สัญญาณควบคุมอ่าน/เขียนหน่วยความจำข้อมูลภายนอก</li>
                     </ul>
                   </li>
                 </ul>
@@ -559,21 +559,21 @@
               </div>
               <div class="content-block">
                 <p>
-                  <strong>Register B</strong> เป็นรีจิสเตอร์ฟังก์ชันพิเศษ (<strong>SFR ขนาด 8 บิต</strong>) อยู่ที่แอดเดรส <strong>`F0H`</strong> (เข้าถึงระดับบิตได้ / Bit-addressable) ใช้งานหลักคู่กับ Accumulator (A) ในการคำนวณคณิตศาสตร์:
+                  <strong>Register B</strong> เป็นรีจิสเตอร์ฟังก์ชันพิเศษ (<strong>SFR ขนาด 8 บิต</strong>) อยู่ที่แอดเดรส <strong><code>F0H</code></strong> (เข้าถึงระดับบิตได้ / Bit-addressable) ใช้งานหลักคู่กับ Accumulator (A) ในการคำนวณคณิตศาสตร์:
                 </p>
                 <ul>
-                  <li><strong>คำสั่งคูณ `MUL AB`:</strong> นำค่า $A \times B$ ผลคูณขนาด 16 บิตจะถูกเก็บโดย:
+                  <li><strong>คำสั่งคูณ <code>MUL AB</code>:</strong> นำค่า <code>A × B</code> ผลคูณขนาด 16 บิตจะถูกเก็บโดย:
                     <ul>
-                      <li><strong>High Byte (ไบต์บน)</strong> $\rightarrow$ เก็บใน <strong>Register B</strong></li>
-                      <li><strong>Low Byte (ไบต์ล่าง)</strong> $\rightarrow$ เก็บใน <strong>Accumulator A</strong></li>
-                      <li>(ถ้าผลคูณ $> 255$ แฟลก $OV = 1$)</li>
+                      <li><strong>High Byte (ไบต์บน)</strong> → เก็บใน <strong>Register B</strong></li>
+                      <li><strong>Low Byte (ไบต์ล่าง)</strong> → เก็บใน <strong>Accumulator A</strong></li>
+                      <li>(ถ้าผลคูณ > 255 แฟลก <code>OV = 1</code>)</li>
                     </ul>
                   </li>
-                  <li><strong>คำสั่งหาร `DIV AB`:</strong> นำค่า $A \div B$:
+                  <li><strong>คำสั่งหาร <code>DIV AB</code>:</strong> นำค่า <code>A ÷ B</code>:
                     <ul>
-                      <li><strong>ผลหาร (Quotient)</strong> $\rightarrow$ เก็บใน <strong>Accumulator A</strong></li>
-                      <li><strong>เศษเหลือ (Remainder)</strong> $\rightarrow$ เก็บใน <strong>Register B</strong></li>
-                      <li>(ถ้า $B = 0$ แฟลก $OV = 1$ เตือนหารด้วยศูนย์)</li>
+                      <li><strong>ผลหาร (Quotient)</strong> → เก็บใน <strong>Accumulator A</strong></li>
+                      <li><strong>เศษเหลือ (Remainder)</strong> → เก็บใน <strong>Register B</strong></li>
+                      <li>(ถ้า <code>B = 0</code> แฟลก <code>OV = 1</code> เตือนหารด้วยศูนย์)</li>
                     </ul>
                   </li>
                   <li><strong>การใช้งานทั่วไป:</strong> เมื่อไม่ได้ใช้ในการคูณหาร สามารถใช้ Register B เป็นที่พักข้อมูลชั่วคราว (General Storage Register) ได้</li>
@@ -617,7 +617,7 @@
               <div class="content-block">
                 <p>
                   <strong>ชื่อเต็ม:</strong> <strong>Program Status Word (PSW)</strong><br>
-                  เป็นรีจิสเตอร์ SFR ขนาด 8 บิต อยู่ที่แอดเดรส <strong>`D0H`</strong> (Bit-addressable) ทำหน้าที่เก็บสถานะของ ALU หลังการประมวลผลคำสั่ง:
+                  เป็นรีจิสเตอร์ SFR ขนาด 8 บิต อยู่ที่แอดเดรส <strong><code>D0H</code></strong> (Bit-addressable) ทำหน้าที่เก็บสถานะของ ALU หลังการประมวลผลคำสั่ง:
                 </p>
                 <table class="custom-table">
                   <thead>
@@ -629,39 +629,39 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <td><strong>`CY` (PSW.7)</strong></td>
+                      <td><strong><code>CY</code> (PSW.7)</strong></td>
                       <td>Carry Flag</td>
-                      <td>เป็น `1` เมื่อเกิดตัวทด/ตัวยืมจากบิต 7 ในการบวกลบเลข หรือใช้เป็น Bit Accumulator</td>
+                      <td>เป็น <code>1</code> เมื่อเกิดตัวทด/ตัวยืมจากบิต 7 ในการบวกลบเลข หรือใช้เป็น Bit Accumulator</td>
                     </tr>
                     <tr>
-                      <td><strong>`AC` (PSW.6)</strong></td>
+                      <td><strong><code>AC</code> (PSW.6)</strong></td>
                       <td>Auxiliary Carry Flag</td>
-                      <td>เป็น `1` เมื่อเกิดตัวทดจากบิต 3 ไปบิต 4 (Half-carry) สำหรับคำสั่งปรับค่า BCD (`DA A`)</td>
+                      <td>เป็น <code>1</code> เมื่อเกิดตัวทดจากบิต 3 ไปบิต 4 (Half-carry) สำหรับคำสั่งปรับค่า BCD (<code>DA A</code>)</td>
                     </tr>
                     <tr>
-                      <td><strong>`F0` (PSW.5)</strong></td>
+                      <td><strong><code>F0</code> (PSW.5)</strong></td>
                       <td>Flag 0</td>
-                      <td>แฟลกสารพัดประโยชน์ที่ผู้ใช้กำหนดค่าเองได้ (`SETB F0` / `CLR F0`)</td>
+                      <td>แฟลกสารพัดประโยชน์ที่ผู้ใช้กำหนดค่าเองได้ (<code>SETB F0</code> / <code>CLR F0</code>)</td>
                     </tr>
                     <tr>
-                      <td><strong>`RS1, RS0` (PSW.4, 3)</strong></td>
+                      <td><strong><code>RS1, RS0</code> (PSW.4, 3)</strong></td>
                       <td>Register Bank Select</td>
-                      <td><strong>เลือก Bank 0-3:</strong> `00`=Bank 0 (`00-07H`), `01`=Bank 1 (`08-0FH`), `10`=Bank 2 (`10-17H`), `11`=Bank 3 (`18-1FH`)</td>
+                      <td><strong>เลือก Bank 0-3:</strong> <code>00</code>=Bank 0 (<code>00-07H</code>), <code>01</code>=Bank 1 (<code>08-0FH</code>), <code>10</code>=Bank 2 (<code>10-17H</code>), <code>11</code>=Bank 3 (<code>18-1FH</code>)</td>
                     </tr>
                     <tr>
-                      <td><strong>`OV` (PSW.2)</strong></td>
+                      <td><strong><code>OV</code> (PSW.2)</strong></td>
                       <td>Overflow Flag</td>
-                      <td>เป็น `1` เมื่อเกิดการล้นของเลขมีเครื่องหมาย (Signed Overflow เกินช่วง -128 ถึง +127)</td>
+                      <td>เป็น <code>1</code> เมื่อเกิดการล้นของเลขมีเครื่องหมาย (Signed Overflow เกินช่วง -128 ถึง +127)</td>
                     </tr>
                     <tr>
-                      <td><strong>`UD` (PSW.1)</strong></td>
+                      <td><strong><code>UD</code> (PSW.1)</strong></td>
                       <td>User-defined / Reserved</td>
                       <td>บิตสำรองสำหรับการใช้งานทั่วไป</td>
                     </tr>
                     <tr>
-                      <td><strong>`P` (PSW.0)</strong></td>
+                      <td><strong><code>P</code> (PSW.0)</strong></td>
                       <td>Parity Flag</td>
-                      <td>เป็น `1` ถ้าจำนวนบิต 1 ใน Accumulator เป็น <strong>เลขคี่ (Odd)</strong> และเป็น `0` ถ้าเป็น <strong>เลขคู่ (Even)</strong></td>
+                      <td>เป็น <code>1</code> ถ้าจำนวนบิต 1 ใน Accumulator เป็น <strong>เลขคี่ (Odd)</strong> และเป็น <code>0</code> ถ้าเป็น <strong>เลขคู่ (Even)</strong></td>
                     </tr>
                   </tbody>
                 </table>
@@ -708,13 +708,13 @@
               </div>
               <div class="content-block">
                 <p>
-                  <strong>Assembler (โปรแกรมแอสเซมเบลอร์):</strong> คือโปรแกรมแปลภาษาที่ทำหน้าที่แปลงซอร์สโค้ดภาษาแอสเซมบลี (`.asm` / `.src`) ซึ่งเขียนด้วยคำสั่งช่วยจำ (Mnemonics & Operands เช่น `MOV`, `ADD`) และ Assembler Directives (`ORG`, `EQU`, `END`) ให้กลายเป็น <strong>รหัสภาษาเครื่อง (Machine Code / Object File `.obj` หรือ Intel HEX `.hex`)</strong> ที่ชิป MCU สามารถโหลดลง ROM ไปประมวลผลได้
+                  <strong>Assembler (โปรแกรมแอสเซมเบลอร์):</strong> คือโปรแกรมแปลภาษาที่ทำหน้าที่แปลงซอร์สโค้ดภาษาแอสเซมบลี (<code>.asm</code> / <code>.src</code>) ซึ่งเขียนด้วยคำสั่งช่วยจำ (Mnemonics & Operands เช่น <code>MOV</code>, <code>ADD</code>) และ Assembler Directives (<code>ORG</code>, <code>EQU</code>, <code>END</code>) ให้กลายเป็น <strong>รหัสภาษาเครื่อง (Machine Code / Object File <code>.obj</code> หรือ Intel HEX <code>.hex</code>)</strong> ที่ชิป MCU สามารถโหลดลง ROM ไปประมวลผลได้
                 </p>
                 <p><strong>หน้าที่หลัก 3 ประการ:</strong></p>
                 <ol>
                   <li><strong>Translation:</strong> แปลง Mnemonics เป็น Binary Opcodes และแปลง Label เป็น Memory Address จริง</li>
                   <li><strong>Syntax Error Checking:</strong> ตรวจสอบความถูกต้องของไวยากรณ์คำสั่งและช่วงของค่าคงที่</li>
-                  <li><strong>Listing File Generation:</strong> สร้างไฟล์รายงาน `.lst` แสดงตารางจับคู่ระหว่างบรรทัดซอร์สโค้ด, รหัสภาษาเครื่อง, แอดเดรส และ Symbol Table สำหรับการดีบัก</li>
+                  <li><strong>Listing File Generation:</strong> สร้างไฟล์รายงาน <code>.lst</code> แสดงตารางจับคู่ระหว่างบรรทัดซอร์สโค้ด, รหัสภาษาเครื่อง, แอดเดรส และ Symbol Table สำหรับการดีบัก</li>
                 </ol>
               </div>
 
@@ -764,7 +764,7 @@
                 <ul>
                   <li><strong>ประเภท:</strong> <strong>Assembler Directive</strong> (คำสั่งสำหรับตัวแปลภาษา ไม่ใช่คำสั่งที่ CPU Execute)</li>
                   <li><strong>ขนาด / รอบเวลา:</strong> 0 Byte (ไม่สร้าง Opcode), 0 Machine Cycle</li>
-                  <li><strong>การทำงาน:</strong> กำหนดค่าตัวนับตำแหน่ง (Location Counter) ให้โปรแกรมในบรรทัดถัดไปถูกบันทึกลงใน Program ROM เริ่มต้นที่แอดเดรส <strong>`1000H`</strong></li>
+                  <li><strong>การทำงาน:</strong> กำหนดค่าตัวนับตำแหน่ง (Location Counter) ให้โปรแกรมในบรรทัดถัดไปถูกบันทึกลงใน Program ROM เริ่มต้นที่แอดเดรส <strong><code>1000H</code></strong></li>
                   <li><strong>ผลต่อแฟลก:</strong> ไม่มีผลต่อแฟลกใดๆ ทั้งสิ้น</li>
                 </ul>
               </div>
@@ -796,10 +796,10 @@
               </div>
               <div class="content-block">
                 <ul>
-                  <li><strong>Addressing Mode:</strong> <strong>Register Addressing</strong> (อ้างอิงผ่านรีจิสเตอร์ $R_2$ ของ Bank ปัจจุบัน)</li>
-                  <li><strong>ขนาด / รอบเวลา:</strong> <strong>1 Byte</strong> (Opcode: `EAH` สำหรับ Bank 0), <strong>1 Machine Cycle</strong></li>
-                  <li><strong>การทำงาน:</strong> คัดลอกข้อมูล 8 บิตจาก $R_2$ เข้าไปเก็บใน Accumulator ($A$) โดยค่าเดิมใน $R_2$ ยังคงอยู่ ($A \leftarrow R_2$)</li>
-                  <li><strong>ผลต่อแฟลก:</strong> ไม่กระทบ `CY`, `AC`, `OV` (ปรับเฉพาะ Parity Flag `P` ตามจำนวนเลข 1 ใน A)</li>
+                  <li><strong>Addressing Mode:</strong> <strong>Register Addressing</strong> (อ้างอิงผ่านรีจิสเตอร์ <code>R2</code> ของ Bank ปัจจุบัน)</li>
+                  <li><strong>ขนาด / รอบเวลา:</strong> <strong>1 Byte</strong> (Opcode: <code>EAH</code> สำหรับ Bank 0), <strong>1 Machine Cycle</strong></li>
+                  <li><strong>การทำงาน:</strong> คัดลอกข้อมูล 8 บิตจาก <code>R2</code> เข้าไปเก็บใน Accumulator (<code>A</code>) โดยค่าเดิมใน <code>R2</code> ยังคงอยู่ (<code>A ← R2</code>)</li>
+                  <li><strong>ผลต่อแฟลก:</strong> ไม่กระทบ <code>CY</code>, <code>AC</code>, <code>OV</code> (ปรับเฉพาะ Parity Flag <code>P</code> ตามจำนวนเลข 1 ใน A)</li>
                 </ul>
               </div>
             </div>
@@ -831,9 +831,9 @@
               <div class="content-block">
                 <ul>
                   <li><strong>Addressing Mode:</strong> <strong>Direct Addressing</strong> (อ้างอิงตำแหน่งแอดเดรสตรง)</li>
-                  <li><strong>ขนาด / รอบเวลา:</strong> <strong>2 Bytes</strong> (Opcode: `E5 35`), <strong>1 Machine Cycle</strong></li>
-                  <li><strong>การทำงาน:</strong> นำข้อมูลขนาด 8 บิตจาก Internal RAM ตำแหน่งแอดเดรส <strong>`35H`</strong> ไปเก็บใน Accumulator ($A$) ($A \leftarrow \text{RAM}[35\text{H}]$)</li>
-                  <li><strong>ข้อสังเกตสำคัญ:</strong> ไม่มีเครื่องหมาย `#` จึงเป็น **Address** ไม่ใช่ค่าคงที่ (ถ้า `MOV A, #35H` คือเอาเลข $35\text{H}$ ใส่ A)</li>
+                  <li><strong>ขนาด / รอบเวลา:</strong> <strong>2 Bytes</strong> (Opcode: <code>E5 35</code>), <strong>1 Machine Cycle</strong></li>
+                  <li><strong>การทำงาน:</strong> นำข้อมูลขนาด 8 บิตจาก Internal RAM ตำแหน่งแอดเดรส <strong><code>35H</code></strong> ไปเก็บใน Accumulator (<code>A</code>) (<code>A ← RAM[35H]</code>)</li>
+                  <li><strong>ข้อสังเกตสำคัญ:</strong> ไม่มีเครื่องหมาย <code>#</code> จึงเป็น <strong>Address</strong> ไม่ใช่ค่าคงที่ (ถ้า <code>MOV A, #35H</code> คือเอาเลข <code>35H</code> ใส่ A)</li>
                 </ul>
               </div>
             </div>
@@ -865,9 +865,9 @@
               <div class="content-block">
                 <ul>
                   <li><strong>Addressing Mode:</strong> <strong>Indirect Addressing</strong> (การอ้างแอดเดรสทางอ้อมผ่าน Pointer)</li>
-                  <li><strong>ขนาด / รอบเวลา:</strong> <strong>1 Byte</strong> (Opcode: `E7H`), <strong>1 Machine Cycle</strong></li>
-                  <li><strong>การทำงาน:</strong> ใช้ค่าในรีจิสเตอร์ $R_1$ เป็น Address Pointer ชี้ไปยังตำแหน่งใน Internal RAM แล้วนำข้อมูลที่ตำแหน่งนั้นมาใส่ใน Accumulator ($A$) ($A \leftarrow \text{RAM}[[R_1]]$)</li>
-                  <li><strong>กฎสำคัญ:</strong> รีจิสเตอร์ที่ทำหน้าที่เป็น Pointer ใน Internal RAM ได้มีเฉพาะ <strong>`R0` และ `R1`</strong> เท่านั้น</li>
+                  <li><strong>ขนาด / รอบเวลา:</strong> <strong>1 Byte</strong> (Opcode: <code>E7H</code>), <strong>1 Machine Cycle</strong></li>
+                  <li><strong>การทำงาน:</strong> ใช้ค่าในรีจิสเตอร์ <code>R1</code> เป็น Address Pointer ชี้ไปยังตำแหน่งใน Internal RAM แล้วนำข้อมูลที่ตำแหน่งนั้นมาใส่ใน Accumulator (<code>A</code>) (<code>A ← RAM[[R1]]</code>)</li>
+                  <li><strong>กฎสำคัญ:</strong> รีจิสเตอร์ที่ทำหน้าที่เป็น Pointer ใน Internal RAM ได้มีเฉพาะ <strong><code>R0</code> และ <code>R1</code></strong> เท่านั้น</li>
                 </ul>
               </div>
             </div>
@@ -898,10 +898,10 @@
               </div>
               <div class="content-block">
                 <ul>
-                  <li><strong>Addressing Mode:</strong> <strong>Immediate Addressing</strong> (มีเครื่องหมาย `#` แสดงค่าคงที่)</li>
-                  <li><strong>ขนาด / รอบเวลา:</strong> <strong>2 Bytes</strong> (Opcode: `04 50`), <strong>1 Machine Cycle</strong></li>
-                  <li><strong>การทำงาน:</strong> นำค่าคงที่ 8 บิต <strong>`50H`</strong> (เท่ากับ $80_{10}$) บวกเข้ากับค่าเดิมใน Accumulator ($A$) แล้วเก็บผลลัพธ์ลงใน $A$ ($A \leftarrow A + 50\text{H}$)</li>
-                  <li><strong>ผลต่อแฟลกใน PSW:</strong> มีผลกระทบต่อ `CY` (ตัวทดจากบิต 7), `AC` (ตัวทดจากบิต 3 ไป 4), `OV` (Signed Overflow), และ `P` (Parity)</li>
+                  <li><strong>Addressing Mode:</strong> <strong>Immediate Addressing</strong> (มีเครื่องหมาย <code>#</code> แสดงค่าคงที่)</li>
+                  <li><strong>ขนาด / รอบเวลา:</strong> <strong>2 Bytes</strong> (Opcode: <code>04 50</code>), <strong>1 Machine Cycle</strong></li>
+                  <li><strong>การทำงาน:</strong> นำค่าคงที่ 8 บิต <strong><code>50H</code></strong> (เท่ากับ 80 (ฐานสิบ)) บวกเข้ากับค่าเดิมใน Accumulator (<code>A</code>) แล้วเก็บผลลัพธ์ลงใน <code>A</code> (<code>A ← A + 50H</code>)</li>
+                  <li><strong>ผลต่อแฟลกใน PSW:</strong> มีผลกระทบต่อ <code>CY</code> (ตัวทดจากบิต 7), <code>AC</code> (ตัวทดจากบิต 3 ไป 4), <code>OV</code> (Signed Overflow), และ <code>P</code> (Parity)</li>
                 </ul>
               </div>
             </div>
@@ -933,9 +933,9 @@
               <div class="content-block">
                 <ul>
                   <li><strong>Addressing Mode:</strong> <strong>Register Addressing</strong></li>
-                  <li><strong>ขนาด / รอบเวลา:</strong> <strong>1 Byte</strong> (Opcode: `99H`), <strong>1 Machine Cycle</strong></li>
-                  <li><strong>การทำงาน:</strong> นำค่าใน Accumulator ($A$) ตั้ง แล้วลบด้วยค่าในรีจิสเตอร์ $R_1$ และลบด้วยค่าของ Carry Flag ($CY$) ผลลัพธ์เก็บใน $A$ ($A \leftarrow A - R_1 - CY$)</li>
-                  <li><strong>ข้อควรระวัง:</strong> ใน 8051 <strong>ไม่มีคำสั่ง `SUB` ธรรมดา</strong> มีเฉพาะ `SUBB` เท่านั้น ดังนั้นหากต้องการลบเลขโดยไม่นำตัวทดเดิมมาคิด ต้องสั่ง <strong>`CLR C`</strong> ก่อนเสมอ!</li>
+                  <li><strong>ขนาด / รอบเวลา:</strong> <strong>1 Byte</strong> (Opcode: <code>99H</code>), <strong>1 Machine Cycle</strong></li>
+                  <li><strong>การทำงาน:</strong> นำค่าใน Accumulator (<code>A</code>) ตั้ง แล้วลบด้วยค่าในรีจิสเตอร์ <code>R1</code> และลบด้วยค่าของ Carry Flag (<code>CY</code>) ผลลัพธ์เก็บใน <code>A</code> (<code>A ← A - R1 - CY</code>)</li>
+                  <li><strong>ข้อควรระวัง:</strong> ใน 8051 <strong>ไม่มีคำสั่ง <code>SUB</code> ธรรมดา</strong> มีเฉพาะ <code>SUBB</code> เท่านั้น ดังนั้นหากต้องการลบเลขโดยไม่นำตัวทดเดิมมาคิด ต้องสั่ง <strong><code>CLR C</code></strong> ก่อนเสมอ!</li>
                 </ul>
               </div>
             </div>
@@ -967,9 +967,9 @@
               <div class="content-block">
                 <ul>
                   <li><strong>Addressing Mode:</strong> <strong>Direct Addressing</strong></li>
-                  <li><strong>ขนาด / รอบเวลา:</strong> <strong>2 Bytes</strong> (Opcode: `05 25`), <strong>1 Machine Cycle</strong></li>
-                  <li><strong>การทำงาน:</strong> เพิ่มค่าข้อมูลใน Internal RAM แอดเดรส <strong>`25H`</strong> ขึ้นอีก 1 ($\text{RAM}[25\text{H}] \leftarrow \text{RAM}[25\text{H}] + 1$)</li>
-                  <li><strong>ข้อพึงระวังเรื่อง Flags:</strong> คำสั่ง `INC` <strong>ไม่มีผลกระทบต่อ Carry Flag (`CY`)</strong> แม้ค่าเดิมจะเป็น `FFH` แล้วบวก 1 วนเป็น `00H` ก็ตาม</li>
+                  <li><strong>ขนาด / รอบเวลา:</strong> <strong>2 Bytes</strong> (Opcode: <code>05 25</code>), <strong>1 Machine Cycle</strong></li>
+                  <li><strong>การทำงาน:</strong> เพิ่มค่าข้อมูลใน Internal RAM แอดเดรส <strong><code>25H</code></strong> ขึ้นอีก 1 (<code>RAM[25H] ← RAM[25H] + 1</code>)</li>
+                  <li><strong>ข้อพึงระวังเรื่อง Flags:</strong> คำสั่ง <code>INC</code> <strong>ไม่มีผลกระทบต่อ Carry Flag (<code>CY</code>)</strong> แม้ค่าเดิมจะเป็น <code>FFH</code> แล้วบวก 1 วนเป็น <code>00H</code> ก็ตาม</li>
                 </ul>
               </div>
             </div>
@@ -1001,8 +1001,8 @@
               <div class="content-block">
                 <ul>
                   <li><strong>Addressing Mode:</strong> <strong>Bit Addressing</strong> (การอ้างระดับบิตตรง)</li>
-                  <li><strong>ขนาด / รอบเวลา:</strong> <strong>2 Bytes</strong> (Opcode: `82 82`), <strong>2 Machine Cycles</strong></li>
-                  <li><strong>การทำงาน:</strong> อ่านค่าลอจิกจากขาพอร์ต 0 บิตที่ 2 (`P0.2` ซึ่งอยู่ที่ Bit Address `82H`) มาทำลอจิก <strong>AND</strong> กับค่าใน Carry Flag ($C$) แล้วเก็บผลลัพธ์ใน Carry Flag ($C \leftarrow C \land \text{P0.2}$)</li>
+                  <li><strong>ขนาด / รอบเวลา:</strong> <strong>2 Bytes</strong> (Opcode: <code>82 82</code>), <strong>2 Machine Cycles</strong></li>
+                  <li><strong>การทำงาน:</strong> อ่านค่าลอจิกจากขาพอร์ต 0 บิตที่ 2 (<code>P0.2</code> ซึ่งอยู่ที่ Bit Address <code>82H</code>) มาทำลอจิก <strong>AND</strong> กับค่าใน Carry Flag (<code>C</code>) แล้วเก็บผลลัพธ์ใน Carry Flag (<code>C ← C AND P0.2</code>)</li>
                 </ul>
               </div>
             </div>
@@ -1030,12 +1030,12 @@
               <div class="content-block">
                 <ul>
                   <li><strong>ประเภท:</strong> Program Branching / Loop Control</li>
-                  <li><strong>ขนาด / รอบเวลา:</strong> <strong>3 Bytes</strong> (Opcode: `D5 25 rel`), <strong>2 Machine Cycles</strong></li>
+                  <li><strong>ขนาด / รอบเวลา:</strong> <strong>3 Bytes</strong> (Opcode: <code>D5 25 rel</code>), <strong>2 Machine Cycles</strong></li>
                   <li><strong>การทำงาน:</strong>
                     <ol>
-                      <li>ลดค่าข้อมูลใน Internal RAM แอดเดรส `25H` ลง 1 ($\text{RAM}[25\text{H}] \leftarrow \text{RAM}[25\text{H}] - 1$)</li>
-                      <li>ถ้าค่าหลังลด <strong>ยังไม่เท่ากับศูนย์ ($\neq 0$)</strong> ให้กระโดดไปยังตำแหน่ง <strong>`Label`</strong></li>
-                      <li>ถ้าค่าหลังลด <strong>กลายเป็นศูนย์ ($= 0$)</strong> ให้ทำงานต่อที่คำสั่งบรรทัดถัดไปตามปกติ</li>
+                      <li>ลดค่าข้อมูลใน Internal RAM แอดเดรส <code>25H</code> ลง 1 (<code>RAM[25H] ← RAM[25H] - 1</code>)</li>
+                      <li>ถ้าค่าหลังลด <strong>ยังไม่เท่ากับศูนย์ (≠ 0)</strong> ให้กระโดดไปยังตำแหน่ง <strong><code>Label</code></strong></li>
+                      <li>ถ้าค่าหลังลด <strong>กลายเป็นศูนย์ (= 0)</strong> ให้ทำงานต่อที่คำสั่งบรรทัดถัดไปตามปกติ</li>
                     </ol>
                   </li>
                   <li><strong>การนำไปใช้:</strong> ใช้สร้าง Loop เคาน์เตอร์นับรอบและฟังก์ชันหน่วงเวลา (Delay Loop)</li>
@@ -1066,9 +1066,9 @@
               <div class="content-block">
                 <ul>
                   <li><strong>Addressing Mode:</strong> <strong>Relative Addressing</strong> (การกระโดดแบบสัมพัทธ์)</li>
-                  <li><strong>ขนาด / รอบเวลา:</strong> <strong>2 Bytes</strong> (Opcode: `80 rel`), <strong>2 Machine Cycles</strong></li>
-                  <li><strong>การทำงาน:</strong> สั่งให้ Program Counter (PC) กระโดดไปยัง `Label` โดยใช้ค่า Relative Offset 8 บิต (คิดแบบ Two's Complement ในช่วง <strong>$-128$ ถึง $+127$ ไบต์</strong> นับจากตำแหน่งของคำสั่งถัดไป)</li>
-                  <li><strong>สูตรคำนวณ:</strong> $\text{Target Address} = \text{PC of Next Instruction} + \text{Relative Offset}$</li>
+                  <li><strong>ขนาด / รอบเวลา:</strong> <strong>2 Bytes</strong> (Opcode: <code>80 rel</code>), <strong>2 Machine Cycles</strong></li>
+                  <li><strong>การทำงาน:</strong> สั่งให้ Program Counter (PC) กระโดดไปยัง <code>Label</code> โดยใช้ค่า Relative Offset 8 บิต (คิดแบบ Two's Complement ในช่วง <strong>-128 ถึง +127 ไบต์</strong> นับจากตำแหน่งของคำสั่งถัดไป)</li>
+                  <li><strong>สูตรคำนวณ:</strong> <code>Target Address = PC of Next Instruction + Relative Offset</code></li>
                 </ul>
               </div>
             </div>
@@ -1090,7 +1090,7 @@
           </div>
           <div class="card-body">
             <p style="color: var(--text-secondary); font-size: 0.95rem;">
-              ทดลองกรอกค่าความถี่ Crystal Oscillator ($f_{\text{osc}}$) เพื่อคำนวณหาความถี่รอบการทำงาน ($f_{\text{machine}}$) และคาบเวลา ($T_{\text{machine}}$) ตามสถาปัตยกรรม MCS-51:
+              ทดลองกรอกค่าความถี่ Crystal Oscillator (<code>f_osc</code>) เพื่อคำนวณหาความถี่รอบการทำงาน (<code>f_machine</code>) และคาบเวลา (<code>T_machine</code>) ตามสถาปัตยกรรม MCS-51:
             </p>
             
             <div style="display: flex; gap: 1rem; align-items: flex-end; flex-wrap: wrap; margin: 1rem 0;">
@@ -1147,6 +1147,6 @@
     </div>
   </footer>
 
-  <script src="../../../assets/js/main.js"></script>
+  <script src="../../../assets/js/main.js?v=2.2"></script>
 </body>
 </html>
