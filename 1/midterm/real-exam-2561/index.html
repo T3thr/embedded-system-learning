@@ -37,9 +37,24 @@
         <button id="theme-toggle" class="btn-icon" title="สลับโหมดมืด/สว่าง">
           <i class="fas fa-sun"></i>
         </button>
+        <button class="btn-icon mobile-nav-toggle" title="เมนูนำทาง">
+          <i class="fas fa-bars"></i>
+        </button>
       </div>
     </div>
   </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer">
+    <ul>
+      <li><a href="../../../index.html" class="nav-link">หน้าแรก (Home)</a></li>
+      <li><a href="../../index.html" class="nav-link">Embedded 1</a></li>
+      <li><a href="../index.html" class="nav-link">ข้อสอบ Midterm</a></li>
+      <li><a href="../recalled-questions/index.html" class="nav-link">เฉลยแนวข้อสอบ</a></li>
+      <li><a href="index.html" class="nav-link active">เฉลยข้อสอบจริง 2561</a></li>
+      <li><a href="https://github.com/T3thr/embedded-system-learning" target="_blank" class="nav-link"><i class="fab fa-github"></i> GitHub</a></li>
+    </ul>
+  </div>
 
   <main class="container" style="padding-bottom: 4rem;">
     <!-- Breadcrumbs -->
@@ -264,6 +279,11 @@
       </div>
     </div>
   </main>
+
+  <!-- Floating Mobile TOC Button -->
+  <button id="mobile-toc-toggle" class="floating-toc-btn" title="เปิดสารบัญข้อสอบ">
+    <i class="fas fa-list-ul"></i> สารบัญ (6 ข้อ)
+  </button>
 
   <!-- Footer -->
   <footer class="footer">

@@ -1,18 +1,21 @@
 /**
  * Embedded Systems Learning Platform - Main JS Engine
- * Handles theme toggling, search filtering, copy code, lightbox, and interactive calculators
+ * Enhanced for 100% Mobile Responsiveness, Mobile TOC Drawer, and Dynamic Table Wrappers
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
+  initMobileNav();
+  initMobileToc();
   initSearchAndFilter();
   initCopyButtons();
   initImageLightbox();
   initScrollSpy();
+  initResponsiveTables();
   initCalculators();
 });
 
-/* 1. Theme Management (Dark / Light) */
+/* 1. Theme Management (Eye-Comfort Dark / Light) */
 function initTheme() {
   const toggleBtn = document.getElementById('theme-toggle');
   const savedTheme = localStorage.getItem('theme') || 'dark';
@@ -37,7 +40,76 @@ function updateThemeIcon(theme) {
   }
 }
 
-/* 2. Real-time Search & Filter Pills */
+/* 2. Mobile Navigation Drawer */
+function initMobileNav() {
+  const toggleBtn = document.querySelector('.mobile-nav-toggle');
+  const drawer = document.querySelector('.mobile-drawer');
+
+  if (toggleBtn && drawer) {
+    toggleBtn.addEventListener('click', () => {
+      drawer.classList.toggle('active');
+      const icon = toggleBtn.querySelector('i');
+      if (icon) {
+        icon.className = drawer.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
+      }
+    });
+
+    // Close on navigation click
+    drawer.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        drawer.classList.remove('active');
+        const icon = toggleBtn.querySelector('i');
+        if (icon) icon.className = 'fas fa-bars';
+      });
+    });
+  }
+}
+
+/* 3. Mobile Floating Table of Contents Modal */
+function initMobileToc() {
+  const floatingBtn = document.getElementById('mobile-toc-toggle');
+  const tocList = document.querySelector('.sidebar-toc .toc-list');
+
+  if (!floatingBtn || !tocList) return;
+
+  // Create mobile modal element
+  const modal = document.createElement('div');
+  modal.className = 'mobile-toc-modal';
+  modal.innerHTML = `
+    <div class="mobile-toc-backdrop"></div>
+    <div class="mobile-toc-container">
+      <div class="mobile-toc-header">
+        <h4 style="display:flex; align-items:center; gap:0.4rem; font-size:1rem; color:var(--text-primary);">
+          <i class="fas fa-list-ul" style="color:var(--accent-blue);"></i> สารบัญข้อสอบ (26 ข้อ)
+        </h4>
+        <button class="mobile-toc-close btn-icon" style="width:32px; height:32px;">&times;</button>
+      </div>
+      <div class="mobile-toc-content">
+        <ul class="toc-list">${tocList.innerHTML}</ul>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+
+  const closeBtn = modal.querySelector('.mobile-toc-close');
+  const backdrop = modal.querySelector('.mobile-toc-backdrop');
+
+  function openModal() { modal.classList.add('active'); }
+  function closeModal() { modal.classList.remove('active'); }
+
+  floatingBtn.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  backdrop.addEventListener('click', closeModal);
+
+  // Close modal when link is clicked
+  modal.querySelectorAll('.toc-item a').forEach(link => {
+    link.addEventListener('click', () => {
+      closeModal();
+    });
+  });
+}
+
+/* 4. Real-time Search & Filter Pills */
 function initSearchAndFilter() {
   const searchInput = document.getElementById('search-input');
   const filterBtns = document.querySelectorAll('.filter-btn');
@@ -86,7 +158,7 @@ function initSearchAndFilter() {
   });
 }
 
-/* 3. Copy Code to Clipboard */
+/* 5. Copy Code to Clipboard */
 function initCopyButtons() {
   const copyBtns = document.querySelectorAll('.btn-copy');
   copyBtns.forEach(btn => {
@@ -108,12 +180,11 @@ function initCopyButtons() {
   });
 }
 
-/* 4. Image Lightbox Modal */
+/* 6. Image Lightbox Modal */
 function initImageLightbox() {
   const images = document.querySelectorAll('.diagram-card img, .exam-photo img');
   if (images.length === 0) return;
 
-  // Create modal element
   const modal = document.createElement('div');
   modal.className = 'lightbox-modal';
   modal.innerHTML = `
@@ -126,16 +197,16 @@ function initImageLightbox() {
   `;
   document.body.appendChild(modal);
 
-  // Add styles for lightbox
   const style = document.createElement('style');
   style.textContent = `
     .lightbox-modal {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      z-index: 1000;
+      z-index: 1100;
       display: none;
       align-items: center;
       justify-content: center;
+      padding: 1rem;
     }
     .lightbox-modal.active { display: flex; }
     .lightbox-backdrop {
@@ -146,8 +217,8 @@ function initImageLightbox() {
     }
     .lightbox-container {
       position: relative;
-      z-index: 1001;
-      max-width: 90vw;
+      z-index: 1101;
+      max-width: 95vw;
       max-height: 90vh;
       display: flex;
       flex-direction: column;
@@ -156,14 +227,15 @@ function initImageLightbox() {
     .lightbox-img {
       max-width: 100%;
       max-height: 80vh;
+      object-fit: contain;
       border-radius: 8px;
       box-shadow: 0 10px 40px rgba(0,0,0,0.8);
-      border: 1px solid rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
     }
     .lightbox-caption {
       color: #f8fafc;
-      margin-top: 1rem;
-      font-size: 0.95rem;
+      margin-top: 0.75rem;
+      font-size: 0.88rem;
       text-align: center;
     }
     .lightbox-close {
@@ -201,7 +273,20 @@ function initImageLightbox() {
   });
 }
 
-/* 5. ScrollSpy for Sidebar TOC */
+/* 7. Auto-wrap Tables in .table-responsive */
+function initResponsiveTables() {
+  const tables = document.querySelectorAll('table.custom-table');
+  tables.forEach(table => {
+    if (!table.parentElement.classList.contains('table-responsive')) {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'table-responsive';
+      table.parentNode.insertBefore(wrapper, table);
+      wrapper.appendChild(table);
+    }
+  });
+}
+
+/* 8. ScrollSpy for Sidebar TOC */
 function initScrollSpy() {
   const tocLinks = document.querySelectorAll('.toc-item a');
   const cards = document.querySelectorAll('.solution-card');
@@ -210,7 +295,7 @@ function initScrollSpy() {
 
   window.addEventListener('scroll', () => {
     let currentId = '';
-    const scrollPosition = window.scrollY + 120;
+    const scrollPosition = window.scrollY + 140;
 
     cards.forEach(card => {
       const top = card.offsetTop;
@@ -229,7 +314,7 @@ function initScrollSpy() {
   });
 }
 
-/* 6. Interactive 8051 Machine Cycle Calculator */
+/* 9. Interactive 8051 Machine Cycle Calculator */
 function initCalculators() {
   const calcBtn = document.getElementById('btn-calc-freq');
   if (!calcBtn) return;
@@ -239,9 +324,9 @@ function initCalculators() {
     const freqVal = parseFloat(freqInput.value);
     if (isNaN(freqVal) || freqVal <= 0) return;
 
-    const fMachine = freqVal / 12; // in MHz
-    const tMachine = 12 / freqVal; // in microseconds
-    const tMachineNs = tMachine * 1000; // in nanoseconds
+    const fMachine = freqVal / 12;
+    const tMachine = 12 / freqVal;
+    const tMachineNs = tMachine * 1000;
 
     const resF = document.getElementById('calc-res-f');
     const resT = document.getElementById('calc-res-t');

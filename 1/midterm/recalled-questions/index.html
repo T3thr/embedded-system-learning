@@ -37,9 +37,24 @@
         <button id="theme-toggle" class="btn-icon" title="สลับโหมดมืด/สว่าง">
           <i class="fas fa-sun"></i>
         </button>
+        <button class="btn-icon mobile-nav-toggle" title="เมนูนำทาง">
+          <i class="fas fa-bars"></i>
+        </button>
       </div>
     </div>
   </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer">
+    <ul>
+      <li><a href="../../../index.html" class="nav-link">หน้าแรก (Home)</a></li>
+      <li><a href="../../index.html" class="nav-link">Embedded 1</a></li>
+      <li><a href="../index.html" class="nav-link">ข้อสอบ Midterm</a></li>
+      <li><a href="index.html" class="nav-link active">เฉลยแนวข้อสอบ</a></li>
+      <li><a href="../real-exam-2561/index.html" class="nav-link">เฉลยข้อสอบจริง 2561</a></li>
+      <li><a href="https://github.com/T3thr/embedded-system-learning" target="_blank" class="nav-link"><i class="fab fa-github"></i> GitHub</a></li>
+    </ul>
+  </div>
 
   <main class="container" style="padding-bottom: 4rem;">
     <!-- Breadcrumbs -->
@@ -103,17 +118,19 @@
           <i class="fas fa-search search-icon"></i>
           <input type="text" id="search-input" class="search-input" placeholder="ค้นหาข้อสอบ, คำสั่ง (MOV, ADD, PSW), หรือหัวข้อทฤษฎี...">
         </div>
-        <div style="font-size: 0.9rem; color: var(--text-muted);">
+        <div style="font-size: 0.88rem; color: var(--text-muted); white-space: nowrap;">
           แสดงผล: <strong id="match-count" style="color: var(--accent-blue);">18 ข้อ</strong>
         </div>
       </div>
-      <div class="filter-pills">
-        <button class="filter-btn active" data-filter="all">ทั้งหมด (All)</button>
-        <button class="filter-btn" data-filter="theory">ภาคทฤษฎี (Theory)</button>
-        <button class="filter-btn" data-filter="instruction">วิเคราะห์คำสั่ง (Instructions)</button>
-        <button class="filter-btn" data-filter="architecture">สถาปัตยกรรม & บัส (Architecture)</button>
-        <button class="filter-btn" data-filter="memory">หน่วยความจำ (Memory)</button>
-        <button class="filter-btn" data-filter="flags">แฟลก & PSW (Flags)</button>
+      <div class="filter-pills-wrapper">
+        <div class="filter-pills">
+          <button class="filter-btn active" data-filter="all">ทั้งหมด (All)</button>
+          <button class="filter-btn" data-filter="theory">ภาคทฤษฎี (Theory)</button>
+          <button class="filter-btn" data-filter="instruction">วิเคราะห์คำสั่ง (Instructions)</button>
+          <button class="filter-btn" data-filter="architecture">สถาปัตยกรรม & บัส (Architecture)</button>
+          <button class="filter-btn" data-filter="memory">หน่วยความจำ (Memory)</button>
+          <button class="filter-btn" data-filter="flags">แฟลก & PSW (Flags)</button>
+        </div>
       </div>
     </section>
 
@@ -1109,6 +1126,11 @@
       </div>
     </div>
   </main>
+
+  <!-- Floating Mobile TOC Button -->
+  <button id="mobile-toc-toggle" class="floating-toc-btn" title="เปิดสารบัญข้อสอบ">
+    <i class="fas fa-list-ul"></i> สารบัญ (26 ข้อ)
+  </button>
 
   <!-- Footer -->
   <footer class="footer">
