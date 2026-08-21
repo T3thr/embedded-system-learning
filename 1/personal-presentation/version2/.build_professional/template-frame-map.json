@@ -1,0 +1,98 @@
+{
+  "outputSlides": [
+    {
+      "outputSlide": 1,
+      "sourceSlide": 1,
+      "narrativeRole": "academic title cover",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        {"sourceElementId": "sh/7qp4be9c", "action": "rewrite", "reason": "topic title"},
+        {"sourceElementId": "sh/ts7md4r2", "action": "rewrite", "reason": "student identity"},
+        {"sourceElementId": "sh/k3yl0zql", "action": "rewrite", "reason": "course label"}
+      ]
+    },
+    {
+      "outputSlide": 2,
+      "sourceSlide": 7,
+      "narrativeRole": "definition and academic properties",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        {"sourceElementId": "sh/cb2tkvap", "action": "delete", "reason": "empty footer placeholder"},
+        {"sourceElementId": "sh/sra9kfyx", "action": "rewrite", "reason": "page number"},
+        {"sourceElementId": "sh/tsjad0z2", "action": "rewrite", "reason": "slide title"},
+        {"sourceElementId": "sh/dcbud0ra", "action": "rewrite", "reason": "definition"},
+        {"sourceElementId": "sh/25ojml43", "action": "rewrite", "reason": "property heading"},
+        {"sourceElementId": "sh/xcz2l03q", "action": "rewrite", "reason": "property explanation"},
+        {"sourceElementId": "sh/o761ov2t", "action": "rewrite", "reason": "property heading"},
+        {"sourceElementId": "sh/p8fih03e", "action": "rewrite", "reason": "property explanation"},
+        {"sourceElementId": "sh/eh4jil4r", "action": "rewrite", "reason": "property heading"},
+        {"sourceElementId": "sh/f2d0b6lc", "action": "rewrite", "reason": "property explanation"},
+        {"sourceElementId": "sh/jedkn654", "action": "rewrite", "reason": "property heading"},
+        {"sourceElementId": "sh/id4ju1oz", "action": "rewrite", "reason": "property explanation"}
+      ]
+    },
+    {
+      "outputSlide": 3,
+      "sourceSlide": 8,
+      "narrativeRole": "three-phase interrupt mechanism",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        {"sourceElementId": "sh/m5gvmhwn", "action": "rewrite", "reason": "highlight final phase"},
+        {"sourceElementId": "sh/sjix0zy1", "action": "delete", "reason": "empty footer placeholder"},
+        {"sourceElementId": "sh/ri9g7uhw", "action": "rewrite", "reason": "page number"},
+        {"sourceElementId": "sh/98rehwve", "action": "rewrite", "reason": "slide title"},
+        {"sourceElementId": "sh/18byd4zy", "action": "rewrite", "reason": "timeline recolor"},
+        {"sourceElementId": "sh/g72x4zyd", "action": "rewrite", "reason": "phase marker recolor"},
+        {"sourceElementId": "sh/6h0fypgb", "action": "rewrite", "reason": "phase marker recolor"},
+        {"sourceElementId": "sh/tkby9kzm", "action": "rewrite", "reason": "phase marker recolor"},
+        {"sourceElementId": "sh/id0fu50z", "action": "rewrite", "reason": "phase label"},
+        {"sourceElementId": "sh/n6pwfmd8", "action": "rewrite", "reason": "phase label"},
+        {"sourceElementId": "sh/0jydkreh", "action": "rewrite", "reason": "phase label"},
+        {"sourceElementId": "sh/1k7edwv2", "action": "rewrite", "reason": "phase content"},
+        {"sourceElementId": "sh/je9g3ahk", "action": "rewrite", "reason": "phase content"},
+        {"sourceElementId": "sh/lgbepgvm", "action": "rewrite", "reason": "phase content"}
+      ]
+    },
+    {
+      "outputSlide": 4,
+      "sourceSlide": 4,
+      "narrativeRole": "correctness constraints",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        {"sourceElementId": "sh/rm1k7yt4", "action": "delete", "reason": "empty footer placeholder"},
+        {"sourceElementId": "sh/p0rel8vu", "action": "rewrite", "reason": "page number"},
+        {"sourceElementId": "sh/ozydc3u9", "action": "rewrite-and-reposition", "reason": "slide thesis; lock local frame to avoid imported placeholder offset"},
+        {"sourceElementId": "sh/sna103ap", "action": "rewrite", "reason": "constraint index"},
+        {"sourceElementId": "sh/fapwfyds", "action": "rewrite", "reason": "constraint content"},
+        {"sourceElementId": "sh/3ihk3et8", "action": "rewrite", "reason": "constraint index"},
+        {"sourceElementId": "sh/0ba143al", "action": "rewrite", "reason": "constraint content"},
+        {"sourceElementId": "sh/ih8ju9sn", "action": "rewrite", "reason": "constraint index"},
+        {"sourceElementId": "sh/1cj2d8b6", "action": "rewrite", "reason": "constraint content"}
+      ]
+    },
+    {
+      "outputSlide": 5,
+      "sourceSlide": 5,
+      "narrativeRole": "numbered academic references",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        {"sourceElementId": "sh/l4bupwny", "action": "delete", "reason": "empty footer placeholder"},
+        {"sourceElementId": "sh/dgbulwnm", "action": "rewrite", "reason": "page number"},
+        {"sourceElementId": "sh/cf2tcr61", "action": "rewrite", "reason": "slide title"},
+        {"sourceElementId": "sh/w32dkbuh", "action": "rewrite", "reason": "reference 1"},
+        {"sourceElementId": "sh/x4vedgvm", "action": "rewrite", "reason": "reference 2"},
+        {"sourceElementId": "sh/z2tcnm5s", "action": "rewrite", "reason": "reference 3"},
+        {"sourceElementId": "sh/yhkbe1o7", "action": "rewrite", "reason": "reference 4"}
+      ]
+    }
+  ],
+  "omittedSourceSlides": [
+    {"sourceSlide": 2, "reason": "agenda table not required for a two-minute academic narrative"},
+    {"sourceSlide": 3, "reason": "image placeholder is not required and would introduce a non-essential visual asset"},
+    {"sourceSlide": 6, "reason": "checklist card pattern is less suitable than the selected flat technical layouts"},
+    {"sourceSlide": 9, "reason": "stat cards imply quantitative data not present in the sources"},
+    {"sourceSlide": 10, "reason": "Gantt layout is unrelated to the mechanism"},
+    {"sourceSlide": 11, "reason": "calendar layout is unrelated to the mechanism"},
+    {"sourceSlide": 12, "reason": "closing slide omitted because coursework requires references as the final slide"}
+  ]
+}

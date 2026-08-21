@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>เฉลยและบทวิเคราะห์แนวข้อสอบกลางภาค (Recalled Midterm Solutions) | Embedded System 1</title>
+  <meta name="description" content="เฉลยและบทวิเคราะห์แนวข้อสอบกลางภาควิชา Embedded Systems 1 ถอดโจทย์ความจำ 26 ข้อ พร้อมเฉลยฉบับสมบูรณ์ ไดอะแกรมจาก Lecture และเทคนิคตอบข้อสอบ">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../../../assets/css/main.css">
+  <link rel="stylesheet" href="../../../assets/css/solution.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="../../../index.html" class="brand">
+        <div class="brand-icon"><i class="fas fa-microchip"></i></div>
+        <div class="brand-title">
+          <span>MIDTERM SOLUTION</span>
+          <span>01. RECALLED QUESTIONS</span>
+        </div>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="../../../index.html" class="nav-link">หน้าแรก</a></li>
+        <li><a href="../../index.html" class="nav-link">Embedded 1</a></li>
+        <li><a href="../index.html" class="nav-link">ข้อสอบ Midterm</a></li>
+        <li><a href="index.html" class="nav-link active">เฉลยแนวข้อสอบ</a></li>
+        <li><a href="../real-exam-2561/index.html" class="nav-link">เฉลยข้อสอบจริง 2561</a></li>
+        <li><a href="https://github.com/T3thr/embedded-system-learning" target="_blank" class="nav-link"><i class="fab fa-github"></i> GitHub</a></li>
+      </ul>
+
+      <div class="nav-controls">
+        <button id="theme-toggle" class="btn-icon" title="สลับโหมดมืด/สว่าง">
+          <i class="fas fa-sun"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding-bottom: 4rem;">
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs">
+      <a href="../../../index.html"><i class="fas fa-home"></i> หน้าแรก</a>
+      <span class="separator"><i class="fas fa-chevron-right"></i></span>
+      <a href="../../index.html">Embedded 1</a>
+      <span class="separator"><i class="fas fa-chevron-right"></i></span>
+      <a href="../index.html">ข้อสอบ Midterm</a>
+      <span class="separator"><i class="fas fa-chevron-right"></i></span>
+      <span class="current">01. แนวข้อสอบความจำ 26 ข้อ</span>
+    </nav>
+
+    <!-- Header Summary -->
+    <section class="hero" style="padding: 1rem 0 1.5rem; text-align: left;">
+      <div class="hero-badge">
+        <i class="fas fa-file-pdf"></i> ถอดรหัสจาก midterm.docx.pdf
+      </div>
+      <h1 class="hero-title" style="font-size: 2.25rem;">เฉลยและวิเคราะห์แนวข้อสอบกลางภาค 26 ข้อ</h1>
+      <p class="hero-subtitle" style="margin: 0 0 1.5rem; max-width: 900px;">
+        รวบรวมข้อสอบที่รุ่นพี่จำออกมาจากห้องสอบจริง โดยแยก <strong>โจทย์จำ (สีแดง)</strong>, <strong>บันทึกร่างของรุ่นพี่ (สีฟ้า)</strong>, และ <strong>เฉลยฉบับสมบูรณ์ตามเลกเชอร์ (สีเขียว)</strong> พร้อมสื่อไดอะแกรมจากบทเรียนเพื่อใช้อ่านเตรียมสอบจริง
+      </p>
+
+      <!-- Quick Statistics -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon blue"><i class="fas fa-layer-group"></i></div>
+          <div class="stat-info">
+            <h4>โครงสร้างข้อสอบ</h4>
+            <p>2 ส่วน (26 ข้อ)</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon green"><i class="fas fa-book"></i></div>
+          <div class="stat-info">
+            <h4>ส่วนที่ 1 (ทฤษฎี)</h4>
+            <p>8 ข้อหลัก (บท 1-4)</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon purple"><i class="fas fa-code"></i></div>
+          <div class="stat-info">
+            <h4>ส่วนที่ 2 (ชุดคำสั่ง)</h4>
+            <p>10 คำสั่ง Assembly</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon amber"><i class="fas fa-images"></i></div>
+          <div class="stat-info">
+            <h4>สื่อประกอบ</h4>
+            <p>10+ รูปไดอะแกรม</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Toolbar: Search and Filter Pills -->
+    <section class="toolbar">
+      <div class="toolbar-top">
+        <div class="search-box">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" id="search-input" class="search-input" placeholder="ค้นหาข้อสอบ, คำสั่ง (MOV, ADD, PSW), หรือหัวข้อทฤษฎี...">
+        </div>
+        <div style="font-size: 0.9rem; color: var(--text-muted);">
+          แสดงผล: <strong id="match-count" style="color: var(--accent-blue);">18 ข้อ</strong>
+        </div>
+      </div>
+      <div class="filter-pills">
+        <button class="filter-btn active" data-filter="all">ทั้งหมด (All)</button>
+        <button class="filter-btn" data-filter="theory">ภาคทฤษฎี (Theory)</button>
+        <button class="filter-btn" data-filter="instruction">วิเคราะห์คำสั่ง (Instructions)</button>
+        <button class="filter-btn" data-filter="architecture">สถาปัตยกรรม & บัส (Architecture)</button>
+        <button class="filter-btn" data-filter="memory">หน่วยความจำ (Memory)</button>
+        <button class="filter-btn" data-filter="flags">แฟลก & PSW (Flags)</button>
+      </div>
+    </section>
+
+    <!-- Content Layout with Sticky TOC -->
+    <div class="content-layout">
+      
+      <!-- Sidebar TOC -->
+      <aside class="sidebar-toc">
+        <div class="toc-title">
+          <i class="fas fa-list-ul"></i> สารบัญข้อสอบ
+        </div>
+        <ul class="toc-list">
+          <li style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 700; padding: 0.4rem 0 0.2rem; text-transform: uppercase;">
+            ส่วนที่ 1: ทฤษฎี (บทที่ 1-4)
+          </li>
+          <li class="toc-item"><a href="#q1-embedded-definition">ข้อ 1: นิยาม Embedded System</a></li>
+          <li class="toc-item"><a href="#q2-mpu-vs-mcu">ข้อ 2: MPU vs MCU</a></li>
+          <li class="toc-item"><a href="#q3-von-neumann-vs-harvard">ข้อ 3: Von Neumann vs Harvard</a></li>
+          <li class="toc-item"><a href="#q4-8051-memory-size">ข้อ 4: ขนาด ROM & RAM 8051</a></li>
+          <li class="toc-item"><a href="#q5-8051-ports">ข้อ 5: พอร์ต I/O ของ 8051</a></li>
+          <li class="toc-item"><a href="#q6-register-b">ข้อ 6: Register B</a></li>
+          <li class="toc-item"><a href="#q7-psw-flags">ข้อ 7: PSW (Program Status Word)</a></li>
+          <li class="toc-item"><a href="#q8-assembler">ข้อ 8: หน้าที่ของ Assembler</a></li>
+          
+          <li style="font-size: 0.75rem; color: var(--accent-indigo); font-weight: 700; padding: 0.8rem 0 0.2rem; text-transform: uppercase;">
+            ส่วนที่ 2: วิเคราะห์คำสั่ง
+          </li>
+          <li class="toc-item"><a href="#code-org-1000h">1. ORG 1000H</a></li>
+          <li class="toc-item"><a href="#code-mov-a-r2">2. MOV A, R2</a></li>
+          <li class="toc-item"><a href="#code-mov-a-35h">3. MOV A, 35H</a></li>
+          <li class="toc-item"><a href="#code-mov-a-indirect-r1">4. MOV A, @R1</a></li>
+          <li class="toc-item"><a href="#code-add-a-50h">5. ADD A, #50H</a></li>
+          <li class="toc-item"><a href="#code-subb-a-r1">6. SUBB A, R1</a></li>
+          <li class="toc-item"><a href="#code-inc-25h">7. INC 25H</a></li>
+          <li class="toc-item"><a href="#code-anl-c-p02">8. ANL C, P0.2</a></li>
+          <li class="toc-item"><a href="#code-djnz-25h">9. DJNZ 25H, Label</a></li>
+          <li class="toc-item"><a href="#code-sjmp">10. SJMP Label</a></li>
+
+          <li style="font-size: 0.75rem; color: var(--accent-green); font-weight: 700; padding: 0.8rem 0 0.2rem; text-transform: uppercase;">
+            เครื่องมือเสริม
+          </li>
+          <li class="toc-item"><a href="#tool-calculator">เครื่องคำนวณ Machine Cycle</a></li>
+        </ul>
+      </aside>
+
+      <!-- Main Solutions Container -->
+      <div class="solutions-container">
+
+        <!-- ================================================================= -->
+        <!-- PART 1: THEORY QUESTIONS (ข้อ 1 - 8)                             -->
+        <!-- ================================================================= -->
+
+        <div style="margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid rgba(56, 189, 248, 0.3);">
+          <h2 style="color: var(--accent-cyan); display: flex; align-items: center; gap: 0.5rem; font-size: 1.5rem;">
+            <i class="fas fa-book-reader"></i> ส่วนที่ 1: ข้อสอบทฤษฎีบทที่ 1 – 4 (Theory & Concepts)
+          </h2>
+        </div>
+
+        <!-- Question 1 -->
+        <article class="solution-card" id="q1-embedded-definition" data-category="theory architecture">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge red">ข้อ 1</span>
+              <h3 class="card-title">ความหมายและองค์ประกอบของ Embedded System</h3>
+            </div>
+            <span class="ref-pill"><i class="fas fa-bookmark"></i> Lecture 1 (สไลด์ 3-8)</span>
+          </div>
+          <div class="card-body">
+            
+            <!-- Red Recalled Question -->
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-question-circle"></i> โจทย์ที่รุ่นพี่จำออกมา (ข้อความสีแดง):</div>
+              <div class="section-recalled-text">1. Embedded System คืออะไร มีองค์ประกอบอะไรบ้าง</div>
+            </div>
+
+            <!-- Blue Senior's Draft Guideline -->
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-pencil-alt"></i> แนวทางคำตอบของรุ่นพี่ (ข้อความสีฟ้า - Draft):</div>
+              <div class="section-senior-content">
+                <ul>
+                  <li>Microcontroller หรือระบบที่ใช้ microprocessor ที่ออกแบบมาทำงานเฉพาะอย่าง</li>
+                  <li>มี 3 องค์ประกอบ คือ 1. Hardware 2. Application Software 3. Real Time Operating System (RTOS)</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Green Official Complete Answer -->
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> เฉลยฉบับสมบูรณ์สำหรับใช้ตอบข้อสอบจริง (Official Answer)</div>
+                <span class="ref-pill">คะแนนเต็ม 100%</span>
+              </div>
+              <div class="content-block">
+                <p>
+                  <strong>1. นิยามของ Embedded System (ระบบสมองกลฝังตัว):</strong><br>
+                  คือระบบคอมพิวเตอร์ (ที่ใช้ Microcontroller หรือ Microprocessor) ซึ่งถูกสร้างหรือ <strong>ฝังตัวอยู่ภายในผลิตภัณฑ์หรือระบบขนาดใหญ่</strong> เพื่อทำหน้าที่ควบคุม ประมวลผล หรือทำงาน <strong>เฉพาะทางอย่างใดอย่างหนึ่งโดยเฉพาะ (Dedicated / Single-purpose Function)</strong> มักทำงานแบบเวลาจริง (<strong>Real-Time System</strong>) ที่ผลลัพธ์ต้องถูกต้องและทันเวลา (Deadline) ภายใต้ข้อจำกัดด้านทรัพยากร (พลังงาน, ขนาด, หน่วยความจำ, และต้นทุน)
+                </p>
+                <p>
+                  <strong>2. องค์ประกอบหลัก 3 ส่วน (Building Blocks):</strong>
+                </p>
+                <ol>
+                  <li><strong>ฮาร์ดแวร์ (Hardware):</strong> ชิปประมวลผล (MCU เช่น 8051), หน่วยความจำ (ROM/Flash เก็บโปรแกรม, RAM เก็บข้อมูล), พอร์ต I/O, ตัวนับเวลา (Timers), วงจรขัดจังหวะ (Interrupts), เซนเซอร์ (Sensors) และตัวขับกำลัง (Actuators)</li>
+                  <li><strong>ซอฟต์แวร์ประยุกต์ (Application Software / Firmware):**</strong> ชุดคำสั่งโปรแกรมที่พัฒนาขึ้นมาเฉพาะทาง (เขียนด้วย Assembly หรือ C) เพื่อควบคุมลอจิกการทำงานของอุปกรณ์</li>
+                  <li><strong>ระบบปฏิบัติการเวลาจริง (RTOS) / System Control:**</strong> ซอฟต์แวร์ระบบที่ทำหน้าที่บริหารจัดการ Task Scheduling, Timing, และตอบสนองต่อ Event ได้อย่างแม่นยำ <em>(ในระบบขนาดเล็กอาจรันแบบ Bare-metal / Super-loop)</em></li>
+                </ol>
+              </div>
+
+              <!-- Embedded Lecture Diagram -->
+              <div class="diagram-card">
+                <img src="../../../assets/images/lecture/lecture1-building-blocks.png" alt="Building Blocks of Embedded System จาก Lecture 1">
+                <div class="diagram-caption"><i class="fas fa-image"></i> ไดอะแกรม Building Blocks of Embedded System (Lecture 1)</div>
+              </div>
+            </div>
+
+            <!-- Pitfall Warning -->
+            <div class="box-warning">
+              <div class="box-warning-header"><i class="fas fa-exclamation-triangle"></i> จุดที่มักโดนหักคะแนน / ข้อจำกัดของแนวคิดรุ่นพี่:</div>
+              <div class="box-warning-text">
+                การเขียนตอบเพียงชื่อองค์ประกอบ 1-2-3 โดยไม่อธิบายขยายความหน้าที่ของ Hardware, Software, และ RTOS จะทำให้เสียคะแนนอธิบาย ควรระบุหน้าที่สั้นๆ ของแต่ละองค์ประกอบเสมอ
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- Question 2 -->
+        <article class="solution-card" id="q2-mpu-vs-mcu" data-category="theory architecture">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge red">ข้อ 2</span>
+              <h3 class="card-title">เปรียบเทียบ Microprocessor กับ Microcontroller</h3>
+            </div>
+            <span class="ref-pill"><i class="fas fa-bookmark"></i> Lecture 1 (สไลด์ 9-14)</span>
+          </div>
+          <div class="card-body">
+            
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-question-circle"></i> โจทย์ที่รุ่นพี่จำออกมา (ข้อความสีแดง):</div>
+              <div class="section-recalled-text">2. Microprocessor และ Microcontroller แตกต่างกันอย่างไร</div>
+            </div>
+
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-pencil-alt"></i> แนวทางคำตอบของรุ่นพี่ (ข้อความสีฟ้า - Draft):</div>
+              <div class="section-senior-content">
+                <ul>
+                  <li>Microprocessor มีความยืดหยุ่นมากกว่า ใช้สำหรับวัตถุประสงค์ทั่วไป</li>
+                  <li>Microcontroller มีความยืดหยุ่นน้อยกว่า ออกแบบมาเพื่อทำงานเฉพาะอย่าง จำเป็นต้องมีการทำงานเฉพาะอย่าง</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> เฉลยฉบับสมบูรณ์สำหรับใช้ตอบข้อสอบจริง (Official Answer)</div>
+                <span class="ref-pill">ตารางเปรียบเทียบ 6 มิติ</span>
+              </div>
+              <div class="content-block">
+                <p>ควรตอบในรูปแบบตารางเปรียบเทียบโครงสร้างฮาร์ดแวร์และการนำไปใช้งานจริง:</p>
+                <table class="custom-table">
+                  <thead>
+                    <tr>
+                      <th style="width: 28%;">มิติการเปรียบเทียบ</th>
+                      <th style="width: 36%;">Microprocessor (MPU)</th>
+                      <th style="width: 36%;">Microcontroller (MCU)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>1. โครงสร้างชิป (Architecture)</strong></td>
+                      <td>มีเฉพาะ <strong>CPU Only</strong> (ALU, CU, Registers) ไม่มี RAM, ROM, I/O บนชิป</td>
+                      <td>เป็น <strong>Single-Chip Computer</strong> รวม CPU, RAM, ROM/Flash, I/O, Timers, Interrupts ไว้ในชิปเดียว</td>
+                    </tr>
+                    <tr>
+                      <td><strong>2. การต่อใช้งาน (System Connection)</strong></td>
+                      <td>ต้องต่อชิปภายนอกเพิ่ม (External RAM, ROM, I/O Controller) ผ่าน Bus</td>
+                      <td>มีอุปกรณ์ต่อพ่วงเบ็ดเสร็จในตัว ไม่จำเป็นต้องต่อชิปภายนอกเพิ่ม</td>
+                    </tr>
+                    <tr>
+                      <td><strong>3. วัตถุประสงค์ (Application)</strong></td>
+                      <td><strong>General-Purpose</strong> (คอมพิวเตอร์ PC, Laptop, Server รันโปรแกรมหลากหลาย)</td>
+                      <td><strong>Dedicated / Embedded Control</strong> (เครื่องซักผ้า, แอร์, รีโมท, ECU รถยนต์)</td>
+                    </tr>
+                    <tr>
+                      <td><strong>4. ความยืดหยุ่น (Flexibility)</strong></td>
+                      <td><strong>ยืดหยุ่นสูง</strong> สามารถเพิ่ม/เปลี่ยนขนาด RAM, SSD, การ์ดจอได้ตามต้องการ</td>
+                      <td><strong>สเปกคงที่</strong> ขนาด RAM, ROM, ขา I/O ถูกกำหนดตายตัวตามเบอร์ชิป</td>
+                    </tr>
+                    <tr>
+                      <td><strong>5. การใช้พลังงาน & ขนาด</strong></td>
+                      <td>ใช้ไฟสูง (หลายวัตต์ถึงร้อยวัตต์) เกิดความร้อนสูง บอร์ดขนาดใหญ่</td>
+                      <td>กินไฟต่ำมาก (หลักมิลลิวัตต์/ไมโครแอมป์) ทำงานด้วยแบตเตอรี่ได้ ขนาดเล็ก</td>
+                    </tr>
+                    <tr>
+                      <td><strong>6. ต้นทุนระบบรวม</strong></td>
+                      <td>ต้นทุนรวมสูงเนื่องจากต้องใช้อุปกรณ์เสริมภายนอกหลายชิ้น</td>
+                      <td>ต้นทุนต่อหน่วยต่ำมาก เหมาะกับการผลิตเชิงอุตสาหกรรมจำนวนมาก</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="diagram-card">
+                <img src="../../../assets/images/lecture/lecture1-8051-block.png" alt="8051 Microcontroller Block Diagram จาก Lecture 1">
+                <div class="diagram-caption"><i class="fas fa-image"></i> โครงสร้างภายใน Single-Chip Microcontroller 8051 (Lecture 1)</div>
+              </div>
+            </div>
+
+            <div class="box-warning">
+              <div class="box-warning-header"><i class="fas fa-exclamation-triangle"></i> จุดที่มักโดนหักคะแนน:</div>
+              <div class="box-warning-text">
+                หากตอบแค่ "MPU ยืดหยุ่นกว่า / MCU ทำเฉพาะทาง" จะได้คะแนนเพียง 2-3 ส่วนจาก 10 คะแนนเต็ม ต้องเน้นเรื่อง <strong>CPU Only vs Single-Chip Computer รวมหน่วยความจำและพอร์ต</strong> เสมอ!
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- Question 3 -->
+        <article class="solution-card" id="q3-von-neumann-vs-harvard" data-category="theory architecture memory">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge red">ข้อ 3</span>
+              <h3 class="card-title">เปรียบเทียบสถาปัตยกรรม Von Neumann กับ Harvard</h3>
+            </div>
+            <span class="ref-pill"><i class="fas fa-bookmark"></i> Lecture 1 (สไลด์ 15-20)</span>
+          </div>
+          <div class="card-body">
+            
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-question-circle"></i> โจทย์ที่รุ่นพี่จำออกมา (ข้อความสีแดง):</div>
+              <div class="section-recalled-text">3. Von Neumann และ Harvard แตกต่างกันอย่างไร</div>
+            </div>
+
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-pencil-alt"></i> แนวทางคำตอบของรุ่นพี่ (ข้อความสีฟ้า - Draft):</div>
+              <div class="section-senior-content">
+                <ul>
+                  <li>Von Neumann : data และ code อยู่ในหน่วยความจำเดียวกัน, มีการออกแบบเรียบง่าย, pipelining not possible, 2 set of clocks cycles ( 1 รอบ สำหรับ การดึงข้อมูล, 1 รอบ สำหรับ การดึงคำสั่ง)</li>
+                  <li>Harvard : data และ code อยู่ในหน่วยความจำที่แตกต่างกัน, มีความซับซ้อนในการออกแบบ, pipelining is possible, single clock cycle (สำหรับการดึงข้อมูล และการดึงคำสั่ง)</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> เฉลยฉบับสมบูรณ์สำหรับใช้ตอบข้อสอบจริง (Official Answer)</div>
+                <span class="ref-pill">สถาปัตยกรรมบัสและหน่วยความจำ</span>
+              </div>
+              <div class="content-block">
+                <p>
+                  <strong>1. Von Neumann Architecture (สถาปัตยกรรมวอนนอยมันน์):</strong>
+                </p>
+                <ul>
+                  <li><strong>โครงสร้างหน่วยความจำ:</strong> ใช้พื้นที่หน่วยความจำร่วมกัน (Unified Memory Space) เก็บทั้งโปรแกรมคำสั่ง (Code) และข้อมูล (Data)</li>
+                  <li><strong>ระบบบัส:</strong> ใช้ Address Bus และ Data Bus ร่วมกันเพียงชุดเดียว</li>
+                  <li><strong>ข้อจำกัด:</strong> เกิดภาวะคอขวด (<strong>Von Neumann Bottleneck</strong>) ไม่สามารถดึงคำสั่ง (Fetch) และอ่าน/เขียนข้อมูล (Data Access) พร้อมกันใน Clock เดียวกันได้ ต้องใช้สัญญาณนาฬิกาอย่างน้อย 2 รอบ</li>
+                  <li><strong>ข้อดี:</strong> วงจรออกแบบง่าย สายสัญญาณน้อย ต้นทุนต่ำ</li>
+                </ul>
+
+                <p>
+                  <strong>2. Harvard Architecture (สถาปัตยกรรมฮาร์วาร์ด):</strong>
+                </p>
+                <ul>
+                  <li><strong>โครงสร้างหน่วยความจำ:</strong> แยกหน่วยความจำสำหรับเก็บคำสั่ง (Program/Code ROM) ออกจากหน่วยความจำเก็บข้อมูล (Data RAM) อย่างเด็ดขาด</li>
+                  <li><strong>ระบบบัส:</strong> มี Address Bus และ Data Bus แยกกันคนละชุด (Code Bus และ Data Bus)</li>
+                  <li><strong>ข้อดี:</strong> CPU สามารถอ่าน/เขียนข้อมูลพร้อมกับดึงคำสั่งถัดไปได้พร้อมกันในรอบสัญญาณนาฬิกาเดียวกัน (<strong>Simultaneous Access / Single Clock Cycle</strong>) รองรับ <strong>Pipelining</strong> ได้อย่างสมบูรณ์</li>
+                  <li><strong>การนำไปใช้งาน:</strong> ไมโครคอนโทรลเลอร์ <strong>MCS-51 / 8051 ใช้โครงสร้าง Modified Harvard Architecture</strong></li>
+                </ul>
+              </div>
+
+              <div class="diagram-card">
+                <img src="../../../assets/images/lecture/lecture1-von-neumann-vs-harvard.png" alt="Von Neumann vs Harvard Architecture จาก Lecture 1">
+                <div class="diagram-caption"><i class="fas fa-image"></i> ไดอะแกรมเปรียบเทียบสถาปัตยกรรมบัส Von Neumann vs Harvard (Lecture 1)</div>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- Question 4 -->
+        <article class="solution-card" id="q4-8051-memory-size" data-category="theory memory">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge red">ข้อ 4</span>
+              <h3 class="card-title">ขนาดหน่วยความจำ Internal ROM และ Internal RAM ใน 8051</h3>
+            </div>
+            <span class="ref-pill"><i class="fas fa-bookmark"></i> Lecture 2 & 3</span>
+          </div>
+          <div class="card-body">
+            
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-question-circle"></i> โจทย์ที่รุ่นพี่จำออกมา (ข้อความสีแดง):</div>
+              <div class="section-recalled-text">4. Internal ROM และ Internal RAM มีขนาดเท่าไหร่</div>
+            </div>
+
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-pencil-alt"></i> แนวทางคำตอบของรุ่นพี่ (ข้อความสีฟ้า - Draft):</div>
+              <div class="section-senior-content">
+                <ul>
+                  <li>Internal ROM มีขนาด 4 Kbyte</li>
+                  <li>Internal RAM มีขนาด 128 byte</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> เฉลยฉบับสมบูรณ์สำหรับใช้ตอบข้อสอบจริง (Official Answer)</div>
+                <span class="ref-pill">Memory Organization & Address Map</span>
+              </div>
+              <div class="content-block">
+                <p>
+                  <strong>1. Internal Program ROM (หน่วยความจำโปรแกรมภายใน):</strong><br>
+                  มีขนาด <strong>4 Kbytes</strong> อยู่ที่ช่วงแอดเดรส <strong>`0000H` ถึง `0FFFH`</strong> (ควบคุมการเปิดใช้งานด้วยขา $\overline{\text{EA}}$: ถ้า $\overline{\text{EA}}=1$ อ่านจาก ROM ภายในก่อน, ถ้า $\overline{\text{EA}}=0$ อ่านจาก ROM ภายนอกทั้งหมด)
+                </p>
+                <p>
+                  <strong>2. Internal Data RAM (หน่วยความจำข้อมูลภายใน):</strong><br>
+                  มีขนาด <strong>128 Bytes</strong> อยู่ที่ช่วงแอดเดรส <strong>`00H` ถึง `7FH`</strong> โดยแบ่งเป็น 3 โซนหลัก:
+                </p>
+                <ul>
+                  <li><strong>`00H - 1FH` (32 Bytes):</strong> <strong>Register Banks 4 ชุด</strong> (Bank 0, 1, 2, 3) แต่ละ Bank มีรีจิสเตอร์ $R_0 - R_7$ รวม 8 ตัว</li>
+                  <li><strong>`20H - 2FH` (16 Bytes):</strong> <strong>Bit-Addressable RAM</strong> รองรับการเข้าถึงระดับบิตได้ 128 บิต (บิตแอดเดรส `00H - 7FH`)</li>
+                  <li><strong>`30H - 7FH` (80 Bytes):</strong> <strong>General-Purpose RAM (Scratchpad)</strong> สำหรับเก็บตัวแปรทั่วไปและใช้เป็นพื้นที่ของ Stack</li>
+                </ul>
+                <p style="font-size: 0.88rem; color: var(--text-muted);">
+                  <em>(หมายเหตุ: ถ้าเป็นชิป 8052 จะมี RAM ภายใน 256 Bytes โดยช่วง `80H - FFH` ด้านบนเข้าถึงผ่าน Indirect Addressing `@R0/@R1`)</em>
+                </p>
+              </div>
+
+              <div class="diagram-card">
+                <img src="../../../assets/images/lecture/lecture3-memory-organization.png" alt="Internal RAM Organization จาก Lecture 3">
+                <div class="diagram-caption"><i class="fas fa-image"></i> โครงสร้างการแบ่งพื้นที่ Internal Data RAM 128 Bytes (Lecture 3)</div>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- Question 5 -->
+        <article class="solution-card" id="q5-8051-ports" data-category="theory architecture">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge red">ข้อ 5</span>
+              <h3 class="card-title">จำนวนและลักษณะของพอร์ต I/O บน 8051</h3>
+            </div>
+            <span class="ref-pill"><i class="fas fa-bookmark"></i> Lecture 2 (สไลด์ 15-22)</span>
+          </div>
+          <div class="card-body">
+            
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-question-circle"></i> โจทย์ที่รุ่นพี่จำออกมา (ข้อความสีแดง):</div>
+              <div class="section-recalled-text">5. Microcontroller 8051 มีทั้งหมดกี่พอร์ต</div>
+            </div>
+
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-pencil-alt"></i> แนวทางคำตอบของรุ่นพี่ (ข้อความสีฟ้า - Draft):</div>
+              <div class="section-senior-content">
+                <ul>
+                  <li>4 port (P0 – P3)</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> เฉลยฉบับสมบูรณ์สำหรับใช้ตอบข้อสอบจริง (Official Answer)</div>
+                <span class="ref-pill">32 I/O Pins & Alternate Functions</span>
+              </div>
+              <div class="content-block">
+                <p>
+                  ไมโครคอนโทรลเลอร์ 8051 มีพอร์ต I/O ทั้งหมด <strong>4 พอร์ต (Port 0 – Port 3) แต่ละพอร์ตมีขนาด 8 บิต รวมทั้งหมด 32 ขา I/O</strong> โดยมีคุณสมบัติเฉพาะดังนี้:
+                </p>
+                <ul>
+                  <li><strong>Port 0 (`P0.0 - P0.7`, SFR `80H`):</strong> เป็นพอร์ตแบบ <strong>Open-Drain</strong> (ไม่มี Pull-up ในตัว ต้องต่อตัวต้านทาน Pull-up ภายนอกเมื่อใช้เป็น I/O) และทำหน้าที่เป็น <strong>Multiplexed Address/Data Bus (`AD0 - AD7`)</strong> เมื่อต่อ External Memory</li>
+                  <li><strong>Port 1 (`P1.0 - P1.7`, SFR `90H`):</strong> เป็นพอร์ต Quasi-Bidirectional มี Internal Pull-up ในตัว ใช้เป็น General I/O ทั่วไป</li>
+                  <li><strong>Port 2 (`P2.0 - P2.7`, SFR `A0H`):</strong> เป็นพอร์ต Quasi-Bidirectional ทำหน้าที่ส่ง <strong>High-order Address Bus (`A8 - A15`)</strong> เมื่อต่อหน่วยความจำภายนอก</li>
+                  <li><strong>Port 3 (`P3.0 - P3.7`, SFR `B0H`):</strong> เป็นพอร์ต Quasi-Bidirectional ที่มี <strong>หน้าที่พิเศษรอง (Alternate Functions)</strong>:
+                    <ul>
+                      <li>`P3.0 (RxD)` / `P3.1 (TxD)`: รับ-ส่งข้อมูลอนุกรม (Serial Port)</li>
+                      <li>`P3.2 (INT0)` / `P3.3 (INT1)`: สัญญาณขัดจังหวะภายนอก (External Interrupts)</li>
+                      <li>`P3.4 (T0)` / `P3.5 (T1)`: สัญญาณนับเวลาภายนอก (Timer/Counter Inputs)</li>
+                      <li>`P3.6 (WR)` / `P3.7 (RD)`: สัญญาณควบคุมอ่าน/เขียนหน่วยความจำข้อมูลภายนอก</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="diagram-card">
+                <img src="../../../assets/images/lecture/lecture2-8051-pinout.png" alt="8051 Pinout Diagram จาก Lecture 2">
+                <div class="diagram-caption"><i class="fas fa-image"></i> โครงสร้างขาและพอร์ต I/O ของ 8051 40-pin DIP (Lecture 2)</div>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- Question 6 -->
+        <article class="solution-card" id="q6-register-b" data-category="theory flags architecture">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge red">ข้อ 6</span>
+              <h3 class="card-title">หน้าที่และลักษณะของ Register B</h3>
+            </div>
+            <span class="ref-pill"><i class="fas fa-bookmark"></i> Lecture 2 & 4</span>
+          </div>
+          <div class="card-body">
+            
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-question-circle"></i> โจทย์ที่รุ่นพี่จำออกมา (ข้อความสีแดง):</div>
+              <div class="section-recalled-text">6. Register B คืออะไร</div>
+            </div>
+
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-pencil-alt"></i> แนวทางคำตอบของรุ่นพี่ (ข้อความสีฟ้า - Draft):</div>
+              <div class="section-senior-content">
+                <ul>
+                  <li>เป็น register 8 bit มีไว้สำหรับการคูณ และการหาร</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> เฉลยฉบับสมบูรณ์สำหรับใช้ตอบข้อสอบจริง (Official Answer)</div>
+                <span class="ref-pill">SFR Address F0H & Math Operations</span>
+              </div>
+              <div class="content-block">
+                <p>
+                  <strong>Register B</strong> เป็นรีจิสเตอร์ฟังก์ชันพิเศษ (<strong>SFR ขนาด 8 บิต</strong>) อยู่ที่แอดเดรส <strong>`F0H`</strong> (เข้าถึงระดับบิตได้ / Bit-addressable) ใช้งานหลักคู่กับ Accumulator (A) ในการคำนวณคณิตศาสตร์:
+                </p>
+                <ul>
+                  <li><strong>คำสั่งคูณ `MUL AB`:</strong> นำค่า $A \times B$ ผลคูณขนาด 16 บิตจะถูกเก็บโดย:
+                    <ul>
+                      <li><strong>High Byte (ไบต์บน)</strong> $\rightarrow$ เก็บใน <strong>Register B</strong></li>
+                      <li><strong>Low Byte (ไบต์ล่าง)</strong> $\rightarrow$ เก็บใน <strong>Accumulator A</strong></li>
+                      <li>(ถ้าผลคูณ $> 255$ แฟลก $OV = 1$)</li>
+                    </ul>
+                  </li>
+                  <li><strong>คำสั่งหาร `DIV AB`:</strong> นำค่า $A \div B$:
+                    <ul>
+                      <li><strong>ผลหาร (Quotient)</strong> $\rightarrow$ เก็บใน <strong>Accumulator A</strong></li>
+                      <li><strong>เศษเหลือ (Remainder)</strong> $\rightarrow$ เก็บใน <strong>Register B</strong></li>
+                      <li>(ถ้า $B = 0$ แฟลก $OV = 1$ เตือนหารด้วยศูนย์)</li>
+                    </ul>
+                  </li>
+                  <li><strong>การใช้งานทั่วไป:</strong> เมื่อไม่ได้ใช้ในการคูณหาร สามารถใช้ Register B เป็นที่พักข้อมูลชั่วคราว (General Storage Register) ได้</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- Question 7 -->
+        <article class="solution-card" id="q7-psw-flags" data-category="theory flags">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge red">ข้อ 7</span>
+              <h3 class="card-title">ชื่อเต็มและโครงสร้างบิตของ PSW (Program Status Word)</h3>
+            </div>
+            <span class="ref-pill"><i class="fas fa-bookmark"></i> Lecture 2 (สไลด์ 23-28)</span>
+          </div>
+          <div class="card-body">
+            
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-question-circle"></i> โจทย์ที่รุ่นพี่จำออกมา (ข้อความสีแดง):</div>
+              <div class="section-recalled-text">7. PSW มีชื่อเต็มว่าอะไร</div>
+            </div>
+
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-pencil-alt"></i> แนวทางคำตอบของรุ่นพี่ (ข้อความสีฟ้า - Draft):</div>
+              <div class="section-senior-content">
+                <ul>
+                  <li>Program Status Word (PSW)</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> เฉลยฉบับสมบูรณ์สำหรับใช้ตอบข้อสอบจริง (Official Answer)</div>
+                <span class="ref-pill">SFR D0H & 8 Status Bits</span>
+              </div>
+              <div class="content-block">
+                <p>
+                  <strong>ชื่อเต็ม:</strong> <strong>Program Status Word (PSW)</strong><br>
+                  เป็นรีจิสเตอร์ SFR ขนาด 8 บิต อยู่ที่แอดเดรส <strong>`D0H`</strong> (Bit-addressable) ทำหน้าที่เก็บสถานะของ ALU หลังการประมวลผลคำสั่ง:
+                </p>
+                <table class="custom-table">
+                  <thead>
+                    <tr>
+                      <th style="width: 15%;">ชื่อบิต</th>
+                      <th style="width: 30%;">ความหมายเต็ม</th>
+                      <th style="width: 55%;">หน้าที่และการทำงาน</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>`CY` (PSW.7)</strong></td>
+                      <td>Carry Flag</td>
+                      <td>เป็น `1` เมื่อเกิดตัวทด/ตัวยืมจากบิต 7 ในการบวกลบเลข หรือใช้เป็น Bit Accumulator</td>
+                    </tr>
+                    <tr>
+                      <td><strong>`AC` (PSW.6)</strong></td>
+                      <td>Auxiliary Carry Flag</td>
+                      <td>เป็น `1` เมื่อเกิดตัวทดจากบิต 3 ไปบิต 4 (Half-carry) สำหรับคำสั่งปรับค่า BCD (`DA A`)</td>
+                    </tr>
+                    <tr>
+                      <td><strong>`F0` (PSW.5)</strong></td>
+                      <td>Flag 0</td>
+                      <td>แฟลกสารพัดประโยชน์ที่ผู้ใช้กำหนดค่าเองได้ (`SETB F0` / `CLR F0`)</td>
+                    </tr>
+                    <tr>
+                      <td><strong>`RS1, RS0` (PSW.4, 3)</strong></td>
+                      <td>Register Bank Select</td>
+                      <td><strong>เลือก Bank 0-3:</strong> `00`=Bank 0 (`00-07H`), `01`=Bank 1 (`08-0FH`), `10`=Bank 2 (`10-17H`), `11`=Bank 3 (`18-1FH`)</td>
+                    </tr>
+                    <tr>
+                      <td><strong>`OV` (PSW.2)</strong></td>
+                      <td>Overflow Flag</td>
+                      <td>เป็น `1` เมื่อเกิดการล้นของเลขมีเครื่องหมาย (Signed Overflow เกินช่วง -128 ถึง +127)</td>
+                    </tr>
+                    <tr>
+                      <td><strong>`UD` (PSW.1)</strong></td>
+                      <td>User-defined / Reserved</td>
+                      <td>บิตสำรองสำหรับการใช้งานทั่วไป</td>
+                    </tr>
+                    <tr>
+                      <td><strong>`P` (PSW.0)</strong></td>
+                      <td>Parity Flag</td>
+                      <td>เป็น `1` ถ้าจำนวนบิต 1 ใน Accumulator เป็น <strong>เลขคี่ (Odd)</strong> และเป็น `0` ถ้าเป็น <strong>เลขคู่ (Even)</strong></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="diagram-card">
+                <img src="../../../assets/images/lecture/lecture2-psw.png" alt="PSW Register Bit Layout จาก Lecture 2">
+                <div class="diagram-caption"><i class="fas fa-image"></i> โครงสร้างบิตใน PSW Register (Lecture 2)</div>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- Question 8 -->
+        <article class="solution-card" id="q8-assembler" data-category="theory">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge red">ข้อ 8</span>
+              <h3 class="card-title">หน้าที่และกระบวนการทำงานของ Assembler</h3>
+            </div>
+            <span class="ref-pill"><i class="fas fa-bookmark"></i> Lecture 4 (สไลด์ 3-10)</span>
+          </div>
+          <div class="card-body">
+            
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-question-circle"></i> โจทย์ที่รุ่นพี่จำออกมา (ข้อความสีแดง):</div>
+              <div class="section-recalled-text">8. Assembler คืออะไร</div>
+            </div>
+
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-pencil-alt"></i> แนวทางคำตอบของรุ่นพี่ (ข้อความสีฟ้า - Draft):</div>
+              <div class="section-senior-content">
+                <ul>
+                  <li>ถูกใช้เพื่อแปลงภาษา Assembly เป็นรหัสเครื่อง หรือ object file นอกจากนี้ยังแสดงข้อผิดพลาด หากมี syntax error ในโปรแกรม</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> เฉลยฉบับสมบูรณ์สำหรับใช้ตอบข้อสอบจริง (Official Answer)</div>
+                <span class="ref-pill">Software Toolchain & Code Generation</span>
+              </div>
+              <div class="content-block">
+                <p>
+                  <strong>Assembler (โปรแกรมแอสเซมเบลอร์):</strong> คือโปรแกรมแปลภาษาที่ทำหน้าที่แปลงซอร์สโค้ดภาษาแอสเซมบลี (`.asm` / `.src`) ซึ่งเขียนด้วยคำสั่งช่วยจำ (Mnemonics & Operands เช่น `MOV`, `ADD`) และ Assembler Directives (`ORG`, `EQU`, `END`) ให้กลายเป็น <strong>รหัสภาษาเครื่อง (Machine Code / Object File `.obj` หรือ Intel HEX `.hex`)</strong> ที่ชิป MCU สามารถโหลดลง ROM ไปประมวลผลได้
+                </p>
+                <p><strong>หน้าที่หลัก 3 ประการ:</strong></p>
+                <ol>
+                  <li><strong>Translation:</strong> แปลง Mnemonics เป็น Binary Opcodes และแปลง Label เป็น Memory Address จริง</li>
+                  <li><strong>Syntax Error Checking:</strong> ตรวจสอบความถูกต้องของไวยากรณ์คำสั่งและช่วงของค่าคงที่</li>
+                  <li><strong>Listing File Generation:</strong> สร้างไฟล์รายงาน `.lst` แสดงตารางจับคู่ระหว่างบรรทัดซอร์สโค้ด, รหัสภาษาเครื่อง, แอดเดรส และ Symbol Table สำหรับการดีบัก</li>
+                </ol>
+              </div>
+
+              <div class="diagram-card">
+                <img src="../../../assets/images/lecture/lecture4-development-toolchain.png" alt="Development Toolchain จาก Lecture 4">
+                <div class="diagram-caption"><i class="fas fa-image"></i> แผนภาพกระบวนการ Software Toolchain (Lecture 4)</div>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+
+        <!-- ================================================================= -->
+        <!-- PART 2: ASSEMBLY INSTRUCTIONS ANALYSIS (10 คำสั่ง)                -->
+        <!-- ================================================================= -->
+
+        <div style="margin: 3rem 0 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid rgba(99, 102, 241, 0.4);">
+          <h2 style="color: var(--accent-indigo); display: flex; align-items: center; gap: 0.5rem; font-size: 1.5rem;">
+            <i class="fas fa-terminal"></i> ส่วนที่ 2: วิเคราะห์ชุดคำสั่ง Assembly 8051 (Code & Instructions)
+          </h2>
+        </div>
+
+        <!-- Instruction 1: ORG 1000H -->
+        <article class="solution-card" id="code-org-1000h" data-category="instruction memory">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge blue">คำสั่งที่ 1</span>
+              <h3 class="card-title">ORG 1000H</h3>
+            </div>
+            <span class="ref-pill">Assembler Directive</span>
+          </div>
+          <div class="card-body">
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-code"></i> คำสั่งที่จำออกมา:</div>
+              <div class="section-recalled-text"><code>ORG 1000H</code></div>
+            </div>
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-pencil-alt"></i> แนวทางของรุ่นพี่:</div>
+              <div class="section-senior-content">ข้อมูลจะถูกเก็บไว้ที่ตำแหน่งหน่วยความจำ 1000H</div>
+            </div>
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-microchip"></i> รายละเอียดการทำงานเชิงสถาปัตยกรรม</div>
+              </div>
+              <div class="content-block">
+                <ul>
+                  <li><strong>ประเภท:</strong> <strong>Assembler Directive</strong> (คำสั่งสำหรับตัวแปลภาษา ไม่ใช่คำสั่งที่ CPU Execute)</li>
+                  <li><strong>ขนาด / รอบเวลา:</strong> 0 Byte (ไม่สร้าง Opcode), 0 Machine Cycle</li>
+                  <li><strong>การทำงาน:</strong> กำหนดค่าตัวนับตำแหน่ง (Location Counter) ให้โปรแกรมในบรรทัดถัดไปถูกบันทึกลงใน Program ROM เริ่มต้นที่แอดเดรส <strong>`1000H`</strong></li>
+                  <li><strong>ผลต่อแฟลก:</strong> ไม่มีผลต่อแฟลกใดๆ ทั้งสิ้น</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Instruction 2: MOV A, R2 -->
+        <article class="solution-card" id="code-mov-a-r2" data-category="instruction architecture">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge blue">คำสั่งที่ 2</span>
+              <h3 class="card-title">MOV A, R2</h3>
+            </div>
+            <span class="ref-pill">Register Addressing</span>
+          </div>
+          <div class="card-body">
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-code"></i> คำสั่งที่จำออกมา:</div>
+              <div class="section-recalled-text"><code>MOV A, R2</code></div>
+            </div>
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-pencil-alt"></i> แนวทางของรุ่นพี่:</div>
+              <div class="section-senior-content">A &larr; R2</div>
+            </div>
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-microchip"></i> รายละเอียดการทำงานเชิงสถาปัตยกรรม</div>
+              </div>
+              <div class="content-block">
+                <ul>
+                  <li><strong>Addressing Mode:</strong> <strong>Register Addressing</strong> (อ้างอิงผ่านรีจิสเตอร์ $R_2$ ของ Bank ปัจจุบัน)</li>
+                  <li><strong>ขนาด / รอบเวลา:</strong> <strong>1 Byte</strong> (Opcode: `EAH` สำหรับ Bank 0), <strong>1 Machine Cycle</strong></li>
+                  <li><strong>การทำงาน:</strong> คัดลอกข้อมูล 8 บิตจาก $R_2$ เข้าไปเก็บใน Accumulator ($A$) โดยค่าเดิมใน $R_2$ ยังคงอยู่ ($A \leftarrow R_2$)</li>
+                  <li><strong>ผลต่อแฟลก:</strong> ไม่กระทบ `CY`, `AC`, `OV` (ปรับเฉพาะ Parity Flag `P` ตามจำนวนเลข 1 ใน A)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Instruction 3: MOV A, 35H -->
+        <article class="solution-card" id="code-mov-a-35h" data-category="instruction memory">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge blue">คำสั่งที่ 3</span>
+              <h3 class="card-title">MOV A, 35H</h3>
+            </div>
+            <span class="ref-pill">Direct Addressing</span>
+          </div>
+          <div class="card-body">
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-code"></i> คำสั่งที่จำออกมา:</div>
+              <div class="section-recalled-text"><code>MOV A, 35H</code></div>
+            </div>
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-pencil-alt"></i> แนวทางของรุ่นพี่:</div>
+              <div class="section-senior-content">A &larr; [35H]</div>
+            </div>
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-microchip"></i> รายละเอียดการทำงานเชิงสถาปัตยกรรม</div>
+              </div>
+              <div class="content-block">
+                <ul>
+                  <li><strong>Addressing Mode:</strong> <strong>Direct Addressing</strong> (อ้างอิงตำแหน่งแอดเดรสตรง)</li>
+                  <li><strong>ขนาด / รอบเวลา:</strong> <strong>2 Bytes</strong> (Opcode: `E5 35`), <strong>1 Machine Cycle</strong></li>
+                  <li><strong>การทำงาน:</strong> นำข้อมูลขนาด 8 บิตจาก Internal RAM ตำแหน่งแอดเดรส <strong>`35H`</strong> ไปเก็บใน Accumulator ($A$) ($A \leftarrow \text{RAM}[35\text{H}]$)</li>
+                  <li><strong>ข้อสังเกตสำคัญ:</strong> ไม่มีเครื่องหมาย `#` จึงเป็น **Address** ไม่ใช่ค่าคงที่ (ถ้า `MOV A, #35H` คือเอาเลข $35\text{H}$ ใส่ A)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Instruction 4: MOV A, @R1 -->
+        <article class="solution-card" id="code-mov-a-indirect-r1" data-category="instruction memory">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge blue">คำสั่งที่ 4</span>
+              <h3 class="card-title">MOV A, @R1</h3>
+            </div>
+            <span class="ref-pill">Indirect Addressing</span>
+          </div>
+          <div class="card-body">
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-code"></i> คำสั่งที่จำออกมา:</div>
+              <div class="section-recalled-text"><code>MOV A, @R1</code></div>
+            </div>
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-pencil-alt"></i> แนวทางของรุ่นพี่:</div>
+              <div class="section-senior-content">A &larr; [R1]</div>
+            </div>
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-microchip"></i> รายละเอียดการทำงานเชิงสถาปัตยกรรม</div>
+              </div>
+              <div class="content-block">
+                <ul>
+                  <li><strong>Addressing Mode:</strong> <strong>Indirect Addressing</strong> (การอ้างแอดเดรสทางอ้อมผ่าน Pointer)</li>
+                  <li><strong>ขนาด / รอบเวลา:</strong> <strong>1 Byte</strong> (Opcode: `E7H`), <strong>1 Machine Cycle</strong></li>
+                  <li><strong>การทำงาน:</strong> ใช้ค่าในรีจิสเตอร์ $R_1$ เป็น Address Pointer ชี้ไปยังตำแหน่งใน Internal RAM แล้วนำข้อมูลที่ตำแหน่งนั้นมาใส่ใน Accumulator ($A$) ($A \leftarrow \text{RAM}[[R_1]]$)</li>
+                  <li><strong>กฎสำคัญ:</strong> รีจิสเตอร์ที่ทำหน้าที่เป็น Pointer ใน Internal RAM ได้มีเฉพาะ <strong>`R0` และ `R1`</strong> เท่านั้น</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Instruction 5: ADD A, #50H -->
+        <article class="solution-card" id="code-add-a-50h" data-category="instruction flags">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge blue">คำสั่งที่ 5</span>
+              <h3 class="card-title">ADD A, #50H</h3>
+            </div>
+            <span class="ref-pill">Immediate Addressing</span>
+          </div>
+          <div class="card-body">
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-code"></i> คำสั่งที่จำออกมา:</div>
+              <div class="section-recalled-text"><code>ADD A, #50H</code></div>
+            </div>
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-pencil-alt"></i> แนวทางของรุ่นพี่:</div>
+              <div class="section-senior-content">A &larr; A + 50H</div>
+            </div>
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-microchip"></i> รายละเอียดการทำงานเชิงสถาปัตยกรรม</div>
+              </div>
+              <div class="content-block">
+                <ul>
+                  <li><strong>Addressing Mode:</strong> <strong>Immediate Addressing</strong> (มีเครื่องหมาย `#` แสดงค่าคงที่)</li>
+                  <li><strong>ขนาด / รอบเวลา:</strong> <strong>2 Bytes</strong> (Opcode: `04 50`), <strong>1 Machine Cycle</strong></li>
+                  <li><strong>การทำงาน:</strong> นำค่าคงที่ 8 บิต <strong>`50H`</strong> (เท่ากับ $80_{10}$) บวกเข้ากับค่าเดิมใน Accumulator ($A$) แล้วเก็บผลลัพธ์ลงใน $A$ ($A \leftarrow A + 50\text{H}$)</li>
+                  <li><strong>ผลต่อแฟลกใน PSW:</strong> มีผลกระทบต่อ `CY` (ตัวทดจากบิต 7), `AC` (ตัวทดจากบิต 3 ไป 4), `OV` (Signed Overflow), และ `P` (Parity)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Instruction 6: SUBB A, R1 -->
+        <article class="solution-card" id="code-subb-a-r1" data-category="instruction flags">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge blue">คำสั่งที่ 6</span>
+              <h3 class="card-title">SUBB A, R1</h3>
+            </div>
+            <span class="ref-pill">Register Addressing (Subtract with Borrow)</span>
+          </div>
+          <div class="card-body">
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-code"></i> คำสั่งที่จำออกมา:</div>
+              <div class="section-recalled-text"><code>SUBB A, R1</code></div>
+            </div>
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-pencil-alt"></i> แนวทางของรุ่นพี่:</div>
+              <div class="section-senior-content">A &larr; A - R1 - Carry</div>
+            </div>
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-microchip"></i> รายละเอียดการทำงานเชิงสถาปัตยกรรม</div>
+              </div>
+              <div class="content-block">
+                <ul>
+                  <li><strong>Addressing Mode:</strong> <strong>Register Addressing</strong></li>
+                  <li><strong>ขนาด / รอบเวลา:</strong> <strong>1 Byte</strong> (Opcode: `99H`), <strong>1 Machine Cycle</strong></li>
+                  <li><strong>การทำงาน:</strong> นำค่าใน Accumulator ($A$) ตั้ง แล้วลบด้วยค่าในรีจิสเตอร์ $R_1$ และลบด้วยค่าของ Carry Flag ($CY$) ผลลัพธ์เก็บใน $A$ ($A \leftarrow A - R_1 - CY$)</li>
+                  <li><strong>ข้อควรระวัง:</strong> ใน 8051 <strong>ไม่มีคำสั่ง `SUB` ธรรมดา</strong> มีเฉพาะ `SUBB` เท่านั้น ดังนั้นหากต้องการลบเลขโดยไม่นำตัวทดเดิมมาคิด ต้องสั่ง <strong>`CLR C`</strong> ก่อนเสมอ!</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Instruction 7: INC 25H -->
+        <article class="solution-card" id="code-inc-25h" data-category="instruction memory">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge blue">คำสั่งที่ 7</span>
+              <h3 class="card-title">INC 25H</h3>
+            </div>
+            <span class="ref-pill">Direct Addressing</span>
+          </div>
+          <div class="card-body">
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-code"></i> คำสั่งที่จำออกมา:</div>
+              <div class="section-recalled-text"><code>INC 25H</code></div>
+            </div>
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-pencil-alt"></i> แนวทางของรุ่นพี่:</div>
+              <div class="section-senior-content">[25H] &larr; [25H] + 1</div>
+            </div>
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-microchip"></i> รายละเอียดการทำงานเชิงสถาปัตยกรรม</div>
+              </div>
+              <div class="content-block">
+                <ul>
+                  <li><strong>Addressing Mode:</strong> <strong>Direct Addressing</strong></li>
+                  <li><strong>ขนาด / รอบเวลา:</strong> <strong>2 Bytes</strong> (Opcode: `05 25`), <strong>1 Machine Cycle</strong></li>
+                  <li><strong>การทำงาน:</strong> เพิ่มค่าข้อมูลใน Internal RAM แอดเดรส <strong>`25H`</strong> ขึ้นอีก 1 ($\text{RAM}[25\text{H}] \leftarrow \text{RAM}[25\text{H}] + 1$)</li>
+                  <li><strong>ข้อพึงระวังเรื่อง Flags:</strong> คำสั่ง `INC` <strong>ไม่มีผลกระทบต่อ Carry Flag (`CY`)</strong> แม้ค่าเดิมจะเป็น `FFH` แล้วบวก 1 วนเป็น `00H` ก็ตาม</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Instruction 8: ANL C, P0.2 -->
+        <article class="solution-card" id="code-anl-c-p02" data-category="instruction flags">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge blue">คำสั่งที่ 8</span>
+              <h3 class="card-title">ANL C, P0.2</h3>
+            </div>
+            <span class="ref-pill">Bit Addressing</span>
+          </div>
+          <div class="card-body">
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-code"></i> คำสั่งที่จำออกมา:</div>
+              <div class="section-recalled-text"><code>ANL C, P0.2</code></div>
+            </div>
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-pencil-alt"></i> แนวทางของรุ่นพี่:</div>
+              <div class="section-senior-content">C &larr; C AND P0.2</div>
+            </div>
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-microchip"></i> รายละเอียดการทำงานเชิงสถาปัตยกรรม</div>
+              </div>
+              <div class="content-block">
+                <ul>
+                  <li><strong>Addressing Mode:</strong> <strong>Bit Addressing</strong> (การอ้างระดับบิตตรง)</li>
+                  <li><strong>ขนาด / รอบเวลา:</strong> <strong>2 Bytes</strong> (Opcode: `82 82`), <strong>2 Machine Cycles</strong></li>
+                  <li><strong>การทำงาน:</strong> อ่านค่าลอจิกจากขาพอร์ต 0 บิตที่ 2 (`P0.2` ซึ่งอยู่ที่ Bit Address `82H`) มาทำลอจิก <strong>AND</strong> กับค่าใน Carry Flag ($C$) แล้วเก็บผลลัพธ์ใน Carry Flag ($C \leftarrow C \land \text{P0.2}$)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Instruction 9: DJNZ 25H, Label -->
+        <article class="solution-card" id="code-djnz-25h" data-category="instruction memory">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge blue">คำสั่งที่ 9</span>
+              <h3 class="card-title">DJNZ 25H, Label</h3>
+            </div>
+            <span class="ref-pill">Direct + Relative Addressing (Loop Control)</span>
+          </div>
+          <div class="card-body">
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-code"></i> คำสั่งที่จำออกมา:</div>
+              <div class="section-recalled-text"><code>DJNZ 25H, Label</code></div>
+            </div>
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-microchip"></i> รายละเอียดการทำงานเชิงสถาปัตยกรรม</div>
+              </div>
+              <div class="content-block">
+                <ul>
+                  <li><strong>ประเภท:</strong> Program Branching / Loop Control</li>
+                  <li><strong>ขนาด / รอบเวลา:</strong> <strong>3 Bytes</strong> (Opcode: `D5 25 rel`), <strong>2 Machine Cycles</strong></li>
+                  <li><strong>การทำงาน:</strong>
+                    <ol>
+                      <li>ลดค่าข้อมูลใน Internal RAM แอดเดรส `25H` ลง 1 ($\text{RAM}[25\text{H}] \leftarrow \text{RAM}[25\text{H}] - 1$)</li>
+                      <li>ถ้าค่าหลังลด <strong>ยังไม่เท่ากับศูนย์ ($\neq 0$)</strong> ให้กระโดดไปยังตำแหน่ง <strong>`Label`</strong></li>
+                      <li>ถ้าค่าหลังลด <strong>กลายเป็นศูนย์ ($= 0$)</strong> ให้ทำงานต่อที่คำสั่งบรรทัดถัดไปตามปกติ</li>
+                    </ol>
+                  </li>
+                  <li><strong>การนำไปใช้:</strong> ใช้สร้าง Loop เคาน์เตอร์นับรอบและฟังก์ชันหน่วงเวลา (Delay Loop)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Instruction 10: SJMP Label -->
+        <article class="solution-card" id="code-sjmp" data-category="instruction">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge blue">คำสั่งที่ 10</span>
+              <h3 class="card-title">SJMP Label</h3>
+            </div>
+            <span class="ref-pill">Relative Addressing (Short Jump)</span>
+          </div>
+          <div class="card-body">
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-code"></i> คำสั่งที่จำออกมา:</div>
+              <div class="section-recalled-text"><code>SJMP Label</code></div>
+            </div>
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-microchip"></i> รายละเอียดการทำงานเชิงสถาปัตยกรรม</div>
+              </div>
+              <div class="content-block">
+                <ul>
+                  <li><strong>Addressing Mode:</strong> <strong>Relative Addressing</strong> (การกระโดดแบบสัมพัทธ์)</li>
+                  <li><strong>ขนาด / รอบเวลา:</strong> <strong>2 Bytes</strong> (Opcode: `80 rel`), <strong>2 Machine Cycles</strong></li>
+                  <li><strong>การทำงาน:</strong> สั่งให้ Program Counter (PC) กระโดดไปยัง `Label` โดยใช้ค่า Relative Offset 8 บิต (คิดแบบ Two's Complement ในช่วง <strong>$-128$ ถึง $+127$ ไบต์</strong> นับจากตำแหน่งของคำสั่งถัดไป)</li>
+                  <li><strong>สูตรคำนวณ:</strong> $\text{Target Address} = \text{PC of Next Instruction} + \text{Relative Offset}$</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+
+
+        <!-- ================================================================= -->
+        <!-- INTERACTIVE CALCULATOR TOOL SECTION                              -->
+        <!-- ================================================================= -->
+
+        <article class="solution-card" id="tool-calculator" style="border-color: rgba(16, 185, 129, 0.4);">
+          <div class="card-header" style="background: rgba(16, 185, 129, 0.1);">
+            <div class="card-title-group">
+              <span class="q-badge" style="background: rgba(16, 185, 129, 0.2); color: #34d399;"><i class="fas fa-calculator"></i> เครื่องมือเสริม</span>
+              <h3 class="card-title">เครื่องคำนวณรอบการทำงานของ 8051 (Machine Cycle Calculator)</h3>
+            </div>
+            <span class="ref-pill"><i class="fas fa-clock"></i> 1 Cycle = 12 Oscillator Clocks</span>
+          </div>
+          <div class="card-body">
+            <p style="color: var(--text-secondary); font-size: 0.95rem;">
+              ทดลองกรอกค่าความถี่ Crystal Oscillator ($f_{\text{osc}}$) เพื่อคำนวณหาความถี่รอบการทำงาน ($f_{\text{machine}}$) และคาบเวลา ($T_{\text{machine}}$) ตามสถาปัตยกรรม MCS-51:
+            </p>
+            
+            <div style="display: flex; gap: 1rem; align-items: flex-end; flex-wrap: wrap; margin: 1rem 0;">
+              <div style="flex: 1; min-width: 220px;">
+                <label style="display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.35rem;">
+                  ความถี่ Crystal (MHz):
+                </label>
+                <input type="number" id="calc-crystal-freq" value="18.4321" step="0.0001" style="width: 100%; padding: 0.65rem 1rem; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); color: var(--text-primary); font-family: var(--font-mono); font-size: 1rem;">
+              </div>
+              <button id="btn-calc-freq" class="course-btn" style="width: auto; padding: 0.65rem 1.5rem; background: linear-gradient(135deg, #059669, #10b981);">
+                <i class="fas fa-play"></i> คำนวณผลลัพธ์
+              </button>
+            </div>
+
+            <!-- Calculation Results Box -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; background: var(--bg-secondary); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+              <div>
+                <span style="font-size: 0.8rem; color: var(--text-muted);">ความถี่ Machine Cycle (f / 12):</span>
+                <p id="calc-res-f" style="font-size: 1.2rem; font-weight: 700; color: var(--accent-cyan); font-family: var(--font-mono);">1.536008 MHz</p>
+              </div>
+              <div>
+                <span style="font-size: 0.8rem; color: var(--text-muted);">คาบเวลา 1 Machine Cycle (µs):</span>
+                <p id="calc-res-t" style="font-size: 1.2rem; font-weight: 700; color: var(--accent-green); font-family: var(--font-mono);">0.651038 µs</p>
+              </div>
+              <div>
+                <span style="font-size: 0.8rem; color: var(--text-muted);">คาบเวลาในหน่วยนาโนวินาที (ns):</span>
+                <p id="calc-res-tns" style="font-size: 1.2rem; font-weight: 700; color: var(--accent-amber); font-family: var(--font-mono);">651.04 ns</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div>
+        <p><strong>Embedded Systems Learning Platform</strong> &bull; สื่อการสอนและคลังข้อสอบวิชาสมองกลฝังตัว</p>
+      </div>
+      <div class="footer-links">
+        <a href="../../../index.html">หน้าแรก</a>
+        <a href="../../index.html">Embedded 1</a>
+        <a href="../index.html">ข้อสอบ Midterm</a>
+        <a href="../real-exam-2561/index.html">เฉลยข้อสอบจริง 2561</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../../assets/js/main.js"></script>
+</body>
+</html>

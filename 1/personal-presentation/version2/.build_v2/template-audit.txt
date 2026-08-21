@@ -1,0 +1,24 @@
+Communication job: By the end, Embedded System 1 classmates should explain why interrupts avoid repeated checking, trace the interrupt lifecycle, and state why context save/return differs by architecture.
+
+Source deck inventory
+- Slide 1: dark navy cover; latent editable IRQ/CPU/stack diagram is covered by a sourced Arduino photo.
+- Slide 2: meaning/background composition with four callouts and a central editable diagram; a sourced pinout overlay covers the native diagram.
+- Slide 3: fully editable six-step processing path.
+- Slide 4: editable 8-bit-vs-Cortex-M context comparison; a sourced ARM stack-frame overlay covers the native register blocks.
+- Slide 5: editable two-column numbered bibliography; a second reference design with book-cover images covers it.
+
+Reusable visual contract
+- Preserve 1280x720 canvas, navy/gold/blue palette, Tahoma typography, top gold rail, footer rule, and page numbering.
+- Preserve the one-to-one slide sequence and existing native diagram geometry.
+- Remove copied/external raster overlays and reveal the source deck's original editable PowerPoint drawings.
+- Rewrite inherited text in place; do not add parallel panels or a new template.
+- Keep the deck to five slides: cover, three content slides under only two assignment categories, and one reference slide.
+
+Rubric implications
+- Cover must show topic 41, name, student ID, group 1, and registration sequence 4.
+- Visible content headings use short phrases; full explanation goes in speaker notes.
+- Every content slide carries bracketed references and each selected category uses more than one source.
+- All visuals in the final deck are native editable shapes redrawn/adapted from cited claims, not copied figures.
+
+Inherited placeholders
+- Inspection found no structural title/body/date/footer placeholders; all content is slide-local editable shapes.

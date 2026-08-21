@@ -1,0 +1,15 @@
+%% Source basis: Intel MCS-51 User's Manual, interrupt handling and response timing [2]
+flowchart TB
+    S[Source flag becomes active] --> A[Flag sampled at S5P2]
+    A --> B[Next polling cycle]
+    B --> C{Can hardware-generated LCALL be accepted?}
+    C -->|No: equal or higher priority ISR active| W1[Defer; wait for eligible poll]
+    C -->|No: current instruction not at final cycle| W2[Finish current instruction]
+    C -->|No: current instruction is RETI or writes IE/IP| W3[Execute at least one more instruction]
+    C -->|Yes| D[Hardware-generated LCALL]
+    W1 --> B
+    W2 --> B
+    W3 --> B
+    D --> E[Push PC; load vector address]
+    E --> F[Execute vector and ISR]
+    F --> G[RETI and resume]

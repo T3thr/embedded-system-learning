@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Embedded System 1 (MCS-51 / 8051) | บทเรียน & คลังข้อสอบ</title>
+  <meta name="description" content="บทเรียนและคลังข้อสอบวิชา Embedded System 1 สถาปัตยกรรม MCS-51 / 8051 การจัดการหน่วยความจำ ภาษาแอสเซมบลี และเฉลยข้อสอบกลางภาค">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="../index.html" class="brand">
+        <div class="brand-icon"><i class="fas fa-microchip"></i></div>
+        <div class="brand-title">
+          <span>EMBEDDED 1</span>
+          <span>MCS-51 / 8051 ARCHITECTURE</span>
+        </div>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="../index.html" class="nav-link">หน้าแรก</a></li>
+        <li><a href="index.html" class="nav-link active">Embedded 1</a></li>
+        <li><a href="midterm/index.html" class="nav-link">ข้อสอบ Midterm</a></li>
+        <li><a href="midterm/recalled-questions/index.html" class="nav-link">เฉลยแนวข้อสอบ</a></li>
+        <li><a href="https://github.com/T3thr/embedded-system-learning" target="_blank" class="nav-link"><i class="fab fa-github"></i> GitHub</a></li>
+      </ul>
+
+      <div class="nav-controls">
+        <button id="theme-toggle" class="btn-icon" title="สลับโหมดมืด/สว่าง">
+          <i class="fas fa-sun"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs">
+      <a href="../index.html"><i class="fas fa-home"></i> หน้าแรก</a>
+      <span class="separator"><i class="fas fa-chevron-right"></i></span>
+      <span class="current">Embedded System 1</span>
+    </nav>
+
+    <!-- Hero Header -->
+    <section class="hero" style="padding-top: 1rem;">
+      <div class="hero-badge">
+        <i class="fas fa-microchip"></i> Course Dashboard
+      </div>
+      <h1 class="hero-title">Embedded System 1 (MCS-51 / 8051)</h1>
+      <p class="hero-subtitle">
+        ศูนย์รวมเอกสารการสอน สรุปเลกเชอร์ และคลังข้อสอบกลางภาค/ปลายภาคของรายวิชาระบบสมองกลฝังตัว 1 เน้นสถาปัตยกรรมฮาร์ดแวร์และการเขียนโปรแกรมควบคุมภาษาแอสเซมบลี
+      </p>
+    </section>
+
+    <!-- Content Sections Grid -->
+    <section class="portal-grid">
+      
+      <!-- Card 1: Midterm Exams (Focused Primary Section) -->
+      <article class="course-card" style="border-color: rgba(56, 189, 248, 0.4);">
+        <div class="course-badge badge-active"><i class="fas fa-star"></i> แนะนำสำหรับการเตรียมสอบ</div>
+        <div class="course-icon-wrapper" style="color: var(--accent-blue); background: rgba(56, 189, 248, 0.15);">
+          <i class="fas fa-file-signature"></i>
+        </div>
+        <h2 class="course-title">คลังข้อสอบกลางภาค (Midterm Hub)</h2>
+        <p class="course-desc">
+          รวบรวมแนวข้อสอบจริง 26 ข้อจากรุ่นพี่ และข้อสอบจริงปี 2561 พร้อมบทวิเคราะห์โจทย์ ภาพถ่ายกระดาษข้อสอบ และเฉลยวิธีทำฉบับสมบูรณ์สำหรับทำข้อสอบจริง
+        </p>
+        <div class="course-meta">
+          <span class="meta-item"><i class="fas fa-check"></i> แนวข้อสอบความจำ 26 ข้อ</span>
+          <span class="meta-item"><i class="fas fa-check"></i> ข้อสอบจริงปี 2561 (6 ข้อใหญ่)</span>
+        </div>
+        <a href="midterm/index.html" class="course-btn">
+          เข้าสู่คลังข้อสอบ Midterm <i class="fas fa-arrow-right"></i>
+        </a>
+      </article>
+
+      <!-- Card 2: Lectures & Foundation -->
+      <article class="course-card">
+        <div class="course-badge" style="background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3);"><i class="fas fa-book"></i> เอกสารการสอน</div>
+        <div class="course-icon-wrapper" style="color: var(--accent-purple); background: rgba(168, 85, 247, 0.15);">
+          <i class="fas fa-chalkboard-teacher"></i>
+        </div>
+        <h2 class="course-title">บทเรียน & สรุปเลกเชอร์ (Lectures)</h2>
+        <p class="course-desc">
+          เนื้อหาบทเรียนที่ 1 ถึง 4: พื้นฐาน Embedded System, สถาปัตยกรรมฮาร์ดแวร์ 8051, ผังหน่วยความจำ Internal/External RAM/ROM, และชุดคำสั่ง Assembly
+        </p>
+        <div class="course-meta">
+          <span class="meta-item"><i class="fas fa-layer-group"></i> Lecture 1-4</span>
+          <span class="meta-item"><i class="fas fa-images"></i> ไดอะแกรมประกอบ 20+ รูป</span>
+        </div>
+        <a href="midterm/recalled-questions/index.html" class="course-btn" style="background: linear-gradient(135deg, #7c3aed, #4f46e5);">
+          ดูสรุปเนื้อหาและทฤษฎี <i class="fas fa-arrow-right"></i>
+        </a>
+      </article>
+
+      <!-- Card 3: Final Exams (Upcoming) -->
+      <article class="course-card">
+        <div class="course-badge badge-upcoming"><i class="fas fa-clock"></i> กำลังเตรียมข้อมูล</div>
+        <div class="course-icon-wrapper" style="color: var(--accent-amber); background: rgba(245, 158, 11, 0.15);">
+          <i class="fas fa-award"></i>
+        </div>
+        <h2 class="course-title">คลังข้อสอบปลายภาค (Final Exam Hub)</h2>
+        <p class="course-desc">
+          เนื้อหาบทที่ 5 เป็นต้นไป: ระบบการขัดจังหวะ (Interrupts), ตัวนับเวลาและตั้งเวลา (Timers/Counters), การสื่อสารอนุกรม (Serial Interface) และข้อสอบปลายภาค
+        </p>
+        <div class="course-meta">
+          <span class="meta-item"><i class="fas fa-bell"></i> Timers & Interrupts</span>
+          <span class="meta-item"><i class="fas fa-exchange-alt"></i> Serial Port</span>
+        </div>
+        <button class="course-btn disabled" disabled>
+          เตรียมเปิดช่วงใกล้สอบ Final <i class="fas fa-lock"></i>
+        </button>
+      </article>
+
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div>
+        <p><strong>Embedded Systems Learning Platform</strong> &bull; สื่อการสอนและคลังข้อสอบวิชาสมองกลฝังตัว</p>
+      </div>
+      <div class="footer-links">
+        <a href="../index.html">หน้าแรก</a>
+        <a href="midterm/index.html">คลังข้อสอบ Midterm</a>
+        <a href="midterm/recalled-questions/index.html">เฉลยแนวข้อสอบ</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

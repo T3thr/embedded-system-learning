@@ -1,0 +1,12 @@
+Local sources used
+1. /Users/3rapat/student/internship/CODEFIN/project/vahalla-wealth/private-docs/other-project/uni-work/embedded-system/1/personal-presentation/assignment/Course Work.pdf (pp. 2-10: deck structure, content categories, citations, original-figure rule, rubric, timing)
+2. /Users/3rapat/student/internship/CODEFIN/project/vahalla-wealth/private-docs/other-project/uni-work/embedded-system/1/lecture/Lecture1.pdf (pp. 18, 25: interrupt-control block and interrupt count)
+3. /Users/3rapat/student/internship/CODEFIN/project/vahalla-wealth/private-docs/other-project/uni-work/embedded-system/1/lecture/Lecture 2.pdf (pp. 2-3: 8051 interrupt capability and INT0/INT1 pins)
+4. /Users/3rapat/student/internship/CODEFIN/project/vahalla-wealth/private-docs/other-project/uni-work/embedded-system/1/lecture/Lecture 3.pdf (pp. 9, 12: stack, IE, IP)
+5. /Users/3rapat/student/internship/CODEFIN/project/vahalla-wealth/private-docs/other-project/uni-work/embedded-system/1/lecture/Lecture 4.pdf (p. 28: RETI; final wording corrected to end-of-interrupt/return semantics)
+6. /Users/3rapat/student/internship/CODEFIN/project/vahalla-wealth/private-docs/other-project/uni-work/embedded-system/1/textbook/avr-microcontroller-and-embedded-systems-by-ali-mazidi.pdf (pp. 375-376: polling contrast, vector, ISR, return)
+7. /Users/3rapat/student/internship/CODEFIN/project/vahalla-wealth/private-docs/other-project/uni-work/embedded-system/1/textbook/Microchip-Technology(2018)_ATmega328P 8-bit_AVR_Microcontroller.pdf (pp. 26, 33-35, 89: PC stack, vector priority, I-bit/RETI, external interrupts)
+8. /Users/3rapat/student/internship/CODEFIN/project/vahalla-wealth/private-docs/other-project/uni-work/embedded-system/1/textbook/THE_DEFINITIVE_GUIDE_TO_THE_ARM_CORTEX-МЗ_Stellaris_MCU_9000Series_TEINSTRUMENTS_ARM_SECOND_EDITION.pdf (pp. 172-175: automatic stack frame, vector fetch, EXC_RETURN/unstack)
+9. /Users/3rapat/student/internship/CODEFIN/project/vahalla-wealth/private-docs/other-project/uni-work/embedded-system/1/textbook/Embedded-Systems_Real_Time_Operating_Systems_for_ARM_Cortex-M_Microcontrollers.pdf (p. 208: farmer/chicken interrupt analogy)
+
+No external raster assets are used in the final deck.

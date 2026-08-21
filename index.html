@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Embedded Systems Learning Portal | ศูนย์รวมการเรียนรู้และเฉลยข้อสอบ</title>
+  <meta name="description" content="ศูนย์รวมการเรียนรู้ระบบสมองกลฝังตัว (Embedded Systems) เลกเชอร์ สรุปเนื้อหา และคลังเฉลยข้อสอบกลางภาค/ปลายภาค พร้อมวิธีทำละเอียด">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand">
+        <div class="brand-icon"><i class="fas fa-microchip"></i></div>
+        <div class="brand-title">
+          <span>EMBEDDED SYSTEMS</span>
+          <span>LEARNING PORTAL</span>
+        </div>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link active">หน้าแรก (Home)</a></li>
+        <li><a href="1/index.html" class="nav-link">Embedded 1 (8051)</a></li>
+        <li><a href="1/midterm/index.html" class="nav-link">ข้อสอบ Midterm</a></li>
+        <li><a href="https://github.com/T3thr/embedded-system-learning" target="_blank" class="nav-link"><i class="fab fa-github"></i> GitHub Repo</a></li>
+      </ul>
+
+      <div class="nav-controls">
+        <button id="theme-toggle" class="btn-icon" title="สลับโหมดมืด/สว่าง">
+          <i class="fas fa-sun"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main class="container">
+    <section class="hero">
+      <div class="hero-badge">
+        <i class="fas fa-graduation-cap"></i> Academic Learning Platform
+      </div>
+      <h1 class="hero-title">ระบบสมองกลฝังตัว & คลังเฉลยข้อสอบ</h1>
+      <p class="hero-subtitle">
+        แพลตฟอร์มรวบรวมเนื้อหาการเรียนรู้ เลกเชอร์ภาคทฤษฎี สถาปัตยกรรมฮาร์ดแวร์ และเฉลยข้อสอบจริงพร้อมบทวิเคราะห์เชิงลึกสำหรับการเตรียมสอบวิชา Embedded Systems
+      </p>
+    </section>
+
+    <!-- Course Selection Cards (Embedded 1 vs Embedded 2) -->
+    <section class="portal-grid">
+      
+      <!-- Card 1: Embedded System 1 (Active) -->
+      <article class="course-card">
+        <div class="course-badge badge-active"><i class="fas fa-check-circle"></i> พร้อมใช้งาน (Active)</div>
+        <div class="course-icon-wrapper" style="color: var(--accent-cyan);">
+          <i class="fas fa-microchip"></i>
+        </div>
+        <h2 class="course-title">Embedded System 1</h2>
+        <p class="course-desc">
+          ศึกษาพื้นฐานสถาปัตยกรรม MCS-51 (8051 / 8052), โครงสร้างหน่วยความจำ (Harvard Architecture), รีจิสเตอร์ SFR, ระบบบัส, ชุดคำสั่งภาษาแอสเซมบลี และข้อสอบกลางภาค/ปลายภาคพร้อมเฉลยละเอียด
+        </p>
+        <div class="course-meta">
+          <span class="meta-item"><i class="fas fa-book-open"></i> 4 เลกเชอร์หลัก</span>
+          <span class="meta-item"><i class="fas fa-file-alt"></i> 2 ชุดข้อสอบ Midterm</span>
+          <span class="meta-item"><i class="fas fa-code"></i> 8051 Assembly</span>
+        </div>
+        <a href="1/index.html" class="course-btn">
+          เข้าสู่เนื้อหา Embedded 1 <i class="fas fa-arrow-right"></i>
+        </a>
+      </article>
+
+      <!-- Card 2: Embedded System 2 (Upcoming) -->
+      <article class="course-card">
+        <div class="course-badge badge-upcoming"><i class="fas fa-clock"></i> กำลังเตรียมเนื้อหา</div>
+        <div class="course-icon-wrapper" style="color: var(--accent-purple);">
+          <i class="fas fa-network-wired"></i>
+        </div>
+        <h2 class="course-title">Embedded System 2</h2>
+        <p class="course-desc">
+          สถาปัตยกรรมระดับสูง ARM Cortex-M (STM32), ระบบปฏิบัติการเวลาจริง (FreeRTOS), การสื่อสารโปรโตคอล I2C/SPI/CAN, การออกแบบ Driver ฮาร์ดแวร์ และระบบควบคุม IoT สมัยใหม่
+        </p>
+        <div class="course-meta">
+          <span class="meta-item"><i class="fas fa-layer-group"></i> ARM Architecture</span>
+          <span class="meta-item"><i class="fas fa-stopwatch"></i> RTOS & Real-Time</span>
+          <span class="meta-item"><i class="fas fa-code"></i> Embedded C/C++</span>
+        </div>
+        <button class="course-btn disabled" disabled>
+          เร็วๆ นี้ (Coming Soon) <i class="fas fa-lock"></i>
+        </button>
+      </article>
+
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div>
+        <p><strong>Embedded Systems Learning Platform</strong> &bull; สื่อการสอนและคลังข้อสอบวิชาสมองกลฝังตัว</p>
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">
+          ภาควิชาวิศวกรรมไฟฟ้าและคอมพิวเตอร์ &bull; Open Source for Education
+        </p>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/T3thr/embedded-system-learning" target="_blank"><i class="fab fa-github"></i> Repository</a>
+        <a href="1/index.html">Embedded 1</a>
+        <a href="1/midterm/recalled-questions/index.html">เฉลยข้อสอบ Midterm</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+Slide 1: Delete Arduino photo overlay and labels to reveal the inherited native IRQ/CPU/stack diagram. Rewrite identity and subtitle for exact cover compliance.
+Slide 2: Delete Arduino pinout overlay and reveal the inherited four-callout interrupt diagram. Rewrite it as an academically sourced farmer/chicken hook plus short meaning/background claims.
+Slide 3: Preserve the inherited six-step path; refine labels to EVENT -> GATE -> SAVE -> VECTOR -> ISR/ACK -> RETURN and add architecture-neutral wording.
+Slide 4: Delete copied ARM stack-frame overlay and reveal inherited native register blocks. Reframe as 8051/AVR versus Cortex-M context handling, correcting the false implication that all CPUs hardware-save full context.
+Slide 5: Delete duplicated cover-image bibliography overlay and reveal the inherited eight-item numbered bibliography layout. Rewrite all entries in the instructor's numbered book-reference form.

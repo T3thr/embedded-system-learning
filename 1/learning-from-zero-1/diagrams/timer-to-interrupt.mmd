@@ -1,0 +1,11 @@
+%% Source basis: Lecture 4 and NXP 8XC51/8XC52 datasheet [3]
+flowchart LR
+    CLK[Oscillator / machine-cycle clock] --> T[Timer/Counter register]
+    EXT[External transition at timer input] --> T
+    T -->|overflow or capture event| FLAG[Timer flag\nเช่น TF0/TF1/TF2/EXF2]
+    FLAG --> EN[Timer interrupt enable\nET0/ET1/ET2]
+    EN --> EA[Global enable EA]
+    EA --> CTRL[Interrupt control and priority]
+    CTRL --> VECTOR[Timer vector]
+    VECTOR --> ISR[ISR ตรวจว่า flag ใดเป็นสาเหตุ]
+    ISR --> CLEAR[clear/acknowledge flag\nตามกติกาของ derivative]

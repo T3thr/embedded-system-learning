@@ -1,0 +1,18 @@
+%% Source basis: Lecture 3/4 and Intel MCS-51 User's Manual [2]
+flowchart TB
+    A[Main program executes at PC = return address]
+    B[Eligible interrupt accepted at instruction boundary]
+    C[Hardware-generated LCALL]
+    D[Push interrupted PC high and low bytes onto internal-RAM stack]
+    E[Load PC with source vector address]
+    F[Vector transfers to ISR]
+    G[ISR pushes ACC, PSW, B and used registers as needed]
+    H[ISR identifies cause and services event]
+    I[ISR clears or acknowledges flag according to derivative rules]
+    J[ISR pops saved registers in reverse order]
+    K[RETI marks current interrupt complete]
+    L[RETI pops PC and decreases SP by two]
+    M[Main program resumes at saved return address]
+    N[Important: hardware LCALL does not automatically save PSW or all registers]
+    A --> B --> C --> D --> E --> F --> G --> H --> I --> J --> K --> L --> M
+    D -.-> N

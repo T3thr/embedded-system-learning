@@ -1,0 +1,22 @@
+%% Source basis: Intel MCS-51 User's Manual [2] and NXP 8XC51/8XC52 datasheet [3]
+flowchart LR
+    E[Event\nexternal pin / timer / serial]
+    F[Flag or request latch\nเช่น IE0 TF0 RI TI]
+    SE[Source enable\nเช่น EX0 ET0 ES]
+    EA[Global enable\nEA]
+    PR[Priority arbitration\nIP + current interrupt state]
+    POLL[Sampling / polling\nตรวจที่ machine-cycle boundary]
+    ACC[Interrupt acceptance\nhardware-generated LCALL]
+    VEC[Vector address\nfixed program-memory location]
+    ISR[ISR\nsave state → identify cause → service → clear/ack flag]
+    RETI[RETI\ncomplete current interrupt + pop PC]
+    MAIN[Resume interrupted program]
+    E --> F
+    F --> POLL
+    SE --> POLL
+    EA --> POLL
+    PR --> POLL
+    POLL -->|eligible and not blocked| ACC
+    POLL -->|not eligible| WAIT[รอ polling รอบถัดไป]
+    WAIT --> POLL
+    ACC --> VEC --> ISR --> RETI --> MAIN

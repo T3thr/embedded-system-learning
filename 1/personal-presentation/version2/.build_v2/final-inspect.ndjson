@@ -1,0 +1,192 @@
+{"kind":"layout","layoutId":"/ppt/slideMasters/slideMaster1.xml","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout1.xml","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/y90nupkv","slide":1,"title":"NARESUAN UNIVERSITY  •  COMPUTER ENGINEERING  •  305341","textShapes":15}
+{"kind":"shape","id":"sh/90ve1w7q","slide":1,"bbox":[0,0,1280,12]}
+{"kind":"shape","id":"sh/547294r6","slide":1,"bbox":[0,708,1280,12]}
+{"kind":"textbox","id":"sh/k3yl0zql","slide":1,"text":"NARESUAN UNIVERSITY  •  COMPUTER ENGINEERING  •  305341","textPreview":"NARESUAN UNIVERSITY  •  COMPUTER ENGINEERING  •  305341","textChars":55,"textLines":1,"bbox":[70,52,720,28]}
+{"kind":"textbox","id":"sh/7qp4be9c","slide":1,"text":"Interrupt\nMechanism","textPreview":"Interrupt | Mechanism","textChars":19,"textLines":2,"bbox":[70,152,650,160]}
+{"kind":"textbox","id":"sh/65g3298r","slide":1,"text":"CPU ตอบสนองต่อ Event แล้วกลับมาทำงานเดิมอย่างไร","textPreview":"CPU ตอบสนองต่อ Event แล้วกลับมาทำงานเดิมอย่างไร","textChars":47,"textLines":1,"bbox":[72,326,650,60]}
+{"kind":"shape","id":"sh/ts7md4r2","slide":1,"bbox":[72,392,538,0]}
+{"kind":"textbox","id":"sh/sryl4zqx","slide":1,"text":"ผู้นำเสนอ","textPreview":"ผู้นำเสนอ","textChars":9,"textLines":1,"bbox":[72,420,110,28]}
+{"kind":"textbox","id":"sh/fu94fe98","slide":1,"text":"ธีรภัทร ภู่ระย้า","textPreview":"ธีรภัทร ภู่ระย้า","textChars":16,"textLines":1,"bbox":[190,420,300,28]}
+{"kind":"textbox","id":"sh/utg3698n","slide":1,"text":"รหัส / ลำดับ","textPreview":"รหัส / ลำดับ","textChars":12,"textLines":1,"bbox":[72,458,110,28]}
+{"kind":"textbox","id":"sh/wn6dc7eh","slide":1,"text":"66362416  •  กลุ่ม 1  •  ลำดับที่ 4","textPreview":"66362416  •  กลุ่ม 1  •  ลำดับที่ 4","textChars":35,"textLines":1,"bbox":[190,458,450,28]}
+{"kind":"textbox","id":"sh/hofulsf2","slide":1,"text":"หัวข้อ","textPreview":"หัวข้อ","textChars":6,"textLines":1,"bbox":[72,496,110,28]}
+{"kind":"textbox","id":"sh/ul4vaxgb","slide":1,"text":"41  •  Interrupt Mechanism","textPreview":"41  •  Interrupt Mechanism","textChars":26,"textLines":1,"bbox":[190,496,430,28]}
+{"kind":"textbox","id":"sh/vmdcj2xw","slide":1,"text":"EVENT","textPreview":"EVENT","textChars":5,"textLines":1,"bbox":[845,122,100,28]}
+{"kind":"shape","id":"sh/4r6dg7et","slide":1,"bbox":[830,260,270,132]}
+{"kind":"textbox","id":"sh/5sfepcfe","slide":1,"text":"CPU","textPreview":"CPU","textChars":3,"textLines":1,"bbox":[830,272,270,42]}
+{"kind":"textbox","id":"sh/ipovexwn","slide":1,"text":"Main → ISR → Resume","textPreview":"Main → ISR → Resume","textChars":19,"textLines":1,"bbox":[830,328,270,28]}
+{"kind":"shape","id":"sh/3qxwn2x8","slide":1,"bbox":[920,160,90,54]}
+{"kind":"textbox","id":"sh/sfqdkrep","slide":1,"text":"IRQ","textPreview":"IRQ","textChars":3,"textLines":1,"bbox":[920,160,90,54]}
+{"kind":"shape","id":"sh/4red83u9","slide":1,"bbox":[965,214,0,46]}
+{"kind":"shape","id":"sh/1cvuxc7e","slide":1,"bbox":[895,470,140,70]}
+{"kind":"textbox","id":"sh/0bmd476t","slide":1,"text":"STACK","textPreview":"STACK","textChars":5,"textLines":1,"bbox":[895,470,140,70]}
+{"kind":"shape","id":"sh/atgz6h8r","slide":1,"bbox":[965,392,0,78]}
+{"kind":"textbox","id":"sh/e94v2hon","slide":1,"text":"Event  •  Gate  •  Context  •  Vector  •  Return","textPreview":"Event  •  Gate  •  Context  •  Vector  •  Return","textChars":48,"textLines":1,"bbox":[760,584,410,30]}
+{"kind":"notes","id":"nt/y90nupkv","slide":1,"text":"บทบรรยาย (ประมาณ 0:00-0:15)\nสวัสดีครับ ผมธีรภัทร ภู่ระย้า รหัส 66362416 หัวข้อที่ 41 Interrupt Mechanism วันนี้เราจะตอบคำถามว่า เมื่อเหตุการณ์เข้ามา CPU จะหยุดงานเดิม ไปจัดการ และกลับมาทำงานต่อได้อย่างไร โดยไม่ทำสถานะเดิมหาย\n\n[Sources]\n- /Users/3rapat/student/internship/CODEFIN/project/vahalla-wealth/private-docs/other-project/uni-work/embedded-system/1/info/student-course-enrollment.md\n- /Users/3rapat/student/internship/CODEFIN/project/vahalla-wealth/private-docs/other-project/uni-work/embedded-system/1/personal-presentation/assignment/Topic-lists.md\n- /Users/3rapat/student/internship/CODEFIN/project/vahalla-wealth/private-docs/other-project/uni-work/embedded-system/1/personal-presentation/assignment/Course Work.pdf, pp. 3, 5"}
+{"kind":"slide","id":"sl/hwbqtkby","slide":2,"title":"ความหมาย • ความเป็นมา","textShapes":16}
+{"kind":"shape","id":"sh/4zmxwzmp","slide":2,"bbox":[0,0,1280,8]}
+{"kind":"textbox","id":"sh/9072xkry","slide":2,"text":"ความหมาย • ความเป็นมา","textPreview":"ความหมาย • ความเป็นมา","textChars":21,"textLines":1,"bbox":[64,32,560,24]}
+{"kind":"textbox","id":"sh/ozy1ofad","slide":2,"text":"เหตุการณ์มาเมื่อไร CPU ค่อยตอบสนอง [5][8]","textPreview":"เหตุการณ์มาเมื่อไร CPU ค่อยตอบสนอง [5][8]","textChars":41,"textLines":1,"bbox":[64,60,1080,56]}
+{"kind":"textbox","id":"sh/b29kza94","slide":2,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[1175,42,44,34]}
+{"kind":"shape","id":"sh/a10jqpsj","slide":2,"bbox":[64,126,1152,0]}
+{"kind":"shape","id":"sh/x4r21kru","slide":2,"bbox":[516,230,250,250]}
+{"kind":"textbox","id":"sh/w3i1sfa9","slide":2,"text":"MAIN TASK","textPreview":"MAIN TASK","textChars":9,"textLines":1,"bbox":[516,294,250,44]}
+{"kind":"textbox","id":"sh/r65knqtk","slide":2,"text":"ไถนา • ทำงานหลัก","textPreview":"ไถนา • ทำงานหลัก","textChars":16,"textLines":1,"bbox":[516,346,250,30]}
+{"kind":"shape","id":"sh/q5wjelsz","slide":2,"bbox":[90,188,280,98]}
+{"kind":"textbox","id":"sh/ove9o7yd","slide":2,"text":"INTERRUPT [8]","textPreview":"INTERRUPT [8]","textChars":13,"textLines":1,"bbox":[106,200,248,25]}
+{"kind":"textbox","id":"sh/9wnqhczy","slide":2,"text":"เสียงไก่ดัง → หยุดไถ\nไปจัดการชั่วคราว","textPreview":"เสียงไก่ดัง → หยุดไถ | ไปจัดการชั่วคราว","textChars":37,"textLines":2,"bbox":[106,232,248,44]}
+{"kind":"shape","id":"sh/mtwrmxg7","slide":2,"bbox":[910,188,280,98]}
+{"kind":"textbox","id":"sh/nu58f2hs","slide":2,"text":"ตรวจซ้ำ (POLLING) [5]","textPreview":"ตรวจซ้ำ (POLLING) [5]","textChars":21,"textLines":1,"bbox":[926,200,248,25]}
+{"kind":"textbox","id":"sh/wjy9sry9","slide":2,"text":"หยุดไถไปตรวจเล้า\nทุกช่วงเวลา","textPreview":"หยุดไถไปตรวจเล้า | ทุกช่วงเวลา","textChars":28,"textLines":2,"bbox":[926,232,248,44]}
+{"kind":"shape","id":"sh/xk7qlczu","slide":2,"bbox":[90,455,280,98]}
+{"kind":"textbox","id":"sh/ahwrqhgj","slide":2,"text":"EVENT SOURCES [2][6]","textPreview":"EVENT SOURCES [2][6]","textChars":20,"textLines":1,"bbox":[106,467,248,25]}
+{"kind":"textbox","id":"sh/bip8jmho","slide":2,"text":"Timer • Peripheral\nINT0/INT1 • PCINT","textPreview":"Timer • Peripheral | INT0/INT1 • PCINT","textChars":36,"textLines":2,"bbox":[106,499,248,44]}
+{"kind":"shape","id":"sh/cnupgny5","slide":2,"bbox":[910,455,280,98]}
+{"kind":"textbox","id":"sh/do3q9szq","slide":2,"text":"RESUME [5][7]","textPreview":"RESUME [5][7]","textChars":13,"textLines":1,"bbox":[926,467,248,25]}
+{"kind":"textbox","id":"sh/t8byxkn2","slide":2,"text":"จัดการเหตุ → กลับมา\nทำงานหลักต่อ","textPreview":"จัดการเหตุ → กลับมา | ทำงานหลักต่อ","textChars":32,"textLines":2,"bbox":[926,499,248,44]}
+{"kind":"shape","id":"sh/dwfmpobm","slide":2,"bbox":[370,237,146,118]}
+{"kind":"shape","id":"sh/cv6lwjuh","slide":2,"bbox":[766,237,144,118]}
+{"kind":"shape","id":"sh/budknetw","slide":2,"bbox":[370,355,146,149]}
+{"kind":"shape","id":"sh/qt43u9cb","slide":2,"bbox":[766,355,144,149]}
+{"kind":"textbox","id":"sh/gbmxszmt","slide":2,"text":"ขัดจังหวะเมื่อจำเป็น - ไม่หยุดตรวจซ้ำ [5][8]","textPreview":"ขัดจังหวะเมื่อจำเป็น - ไม่หยุดตรวจซ้ำ [5][8]","textChars":44,"textLines":1,"bbox":[160,600,960,48]}
+{"kind":"shape","id":"sh/fadgzu58","slide":2,"bbox":[64,676,1152,0]}
+{"kind":"textbox","id":"sh/u94fqp4n","slide":2,"text":"อ้างอิงหัวข้อ: [2] Lecture 2 หน้า 2-3 • [5] Mazidi หน้า 375 • [8] Valvano หน้า 208","textPreview":"อ้างอิงหัวข้อ: [2] Lecture 2 หน้า 2-3 • [5] Mazidi หน้า 375 • [8] Valvano หน้า 208","textChars":82,"textLines":1,"bbox":[64,684,900,18]}
+{"kind":"textbox","id":"sh/p0vy54na","slide":2,"text":"305341 • ธีรภัทร 66362416 • 02","textPreview":"305341 • ธีรภัทร 66362416 • 02","textChars":30,"textLines":1,"bbox":[928,684,288,18]}
+{"kind":"notes","id":"nt/hwbqtkby","slide":2,"text":"บทบรรยาย (ประมาณ 0:15-0:45)\nลองนึกถึงชาวนากำลังไถนา ถ้าเขาต้องหยุดไปตรวจเล้าไก่ทุกครู่ นั่นคือการตรวจซ้ำหรือ polling และเสียเวลางานหลัก แต่ถ้าเขาไถต่อจนได้ยินเสียงไก่หนี แล้วค่อยไปจับกลับ นั่นคือ interrupt ในระบบจริง Event อาจมาจาก Timer, Peripheral, INT0/INT1 หรือ PCINT เป้าหมายคือให้ CPU ทำงานหลักต่อ จนมีเหตุจำเป็นต้องตอบสนอง\n\n[Sources]\n- [2] /Users/3rapat/student/internship/CODEFIN/project/vahalla-wealth/private-docs/other-project/uni-work/embedded-system/1/lecture/Lecture 2.pdf, pp. 2-3\n- [5] /Users/3rapat/student/internship/CODEFIN/project/vahalla-wealth/private-docs/other-project/uni-work/embedded-system/1/textbook/avr-microcontroller-and-embedded-systems-by-ali-mazidi.pdf, p. 375\n- [6] /Users/3rapat/student/internship/CODEFIN/project/vahalla-wealth/private-docs/other-project/uni-work/embedded-system/1/textbook/Microchip-Technology(2018)_ATmega328P 8-bit_AVR_Microcontroller.pdf, p. 89\n- [8] /Users/3rapat/student/internship/CODEFIN/project/vahalla-wealth/private-docs/other-project/uni-work/embedded-system/1/textbook/Embedded-Systems_Real_Time_Operating_Systems_for_ARM_Cortex-M_Microcontrollers.pdf, p. 208\nVisual: original PowerPoint shapes; analogy adapted from [8], no copied figure."}
+{"kind":"slide","id":"sl/ofy9wn61","slide":3,"title":"กลไก • การทำงาน","textShapes":24}
+{"kind":"shape","id":"sh/qpczuhc7","slide":3,"bbox":[0,0,1280,8]}
+{"kind":"textbox","id":"sh/cza94vmx","slide":3,"text":"กลไก • การทำงาน","textPreview":"กลไก • การทำงาน","textChars":15,"textLines":1,"bbox":[64,32,560,24]}
+{"kind":"textbox","id":"sh/d0jax03i","slide":3,"text":"เส้นทาง 6 ขั้น: Event ถึง Resume [5][6][7]","textPreview":"เส้นทาง 6 ขั้น: Event ถึง Resume [5][6][7]","textChars":42,"textLines":1,"bbox":[64,60,1080,56]}
+{"kind":"textbox","id":"sh/298ryl4v","slide":3,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[1175,42,44,34]}
+{"kind":"shape","id":"sh/3ah8rqlg","slide":3,"bbox":[64,126,1152,0]}
+{"kind":"shape","id":"sh/obq90bml","slide":3,"bbox":[92,190,310,136]}
+{"kind":"shape","id":"sh/pcjqtg36","slide":3,"bbox":[110,208,42,42]}
+{"kind":"textbox","id":"sh/m5cra54z","slide":3,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[110,208,42,42]}
+{"kind":"textbox","id":"sh/n6ls3alk","slide":3,"text":"EVENT","textPreview":"EVENT","textChars":5,"textLines":1,"bbox":[168,210,210,30]}
+{"kind":"textbox","id":"sh/n2l4fq98","slide":3,"text":"Request / Flag\nเข้าสถานะ Pending","textPreview":"Request / Flag | เข้าสถานะ Pending","textChars":32,"textLines":2,"bbox":[168,250,210,60]}
+{"kind":"shape","id":"sh/m1c3mlsn","slide":3,"bbox":[482,190,310,136]}
+{"kind":"shape","id":"sh/943mhgre","slide":3,"bbox":[500,208,42,42]}
+{"kind":"textbox","id":"sh/83ulovat","slide":3,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[500,208,42,42]}
+{"kind":"textbox","id":"sh/v6l4jq94","slide":3,"text":"GATE","textPreview":"GATE","textChars":4,"textLines":1,"bbox":[558,210,210,30]}
+{"kind":"textbox","id":"sh/a5c3ql8z","slide":3,"text":"Enable • Mask\nPriority ตัดสิน","textPreview":"Enable • Mask | Priority ตัดสิน","textChars":29,"textLines":2,"bbox":[558,250,210,60]}
+{"kind":"shape","id":"sh/x8nml0ra","slide":3,"bbox":[872,190,310,136]}
+{"kind":"shape","id":"sh/w7ulsvqp","slide":3,"bbox":[890,208,42,42]}
+{"kind":"textbox","id":"sh/ja54na9g","slide":3,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[890,208,42,42]}
+{"kind":"textbox","id":"sh/i9w3u58v","slide":3,"text":"SAVE","textPreview":"SAVE","textChars":4,"textLines":1,"bbox":[948,210,210,30]}
+{"kind":"textbox","id":"sh/e10f2twf","slide":3,"text":"จบคำสั่ง • เก็บ PC\nและ Context ที่จำเป็น","textPreview":"จบคำสั่ง • เก็บ PC | และ Context ที่จำเป็น","textChars":40,"textLines":2,"bbox":[948,250,210,60]}
+{"kind":"shape","id":"sh/f29gbyx0","slide":3,"bbox":[872,430,310,136]}
+{"kind":"shape","id":"sh/03ix43e5","slide":3,"bbox":[890,448,42,42]}
+{"kind":"textbox","id":"sh/14ryd8fq","slide":3,"text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[890,448,42,42]}
+{"kind":"textbox","id":"sh/6d0fytg3","slide":3,"text":"VECTOR","textPreview":"VECTOR","textChars":6,"textLines":1,"bbox":[948,450,210,30]}
+{"kind":"textbox","id":"sh/re9g7yxo","slide":3,"text":"โหลดตำแหน่ง ISR\nจาก Vector Table","textPreview":"โหลดตำแหน่ง ISR | จาก Vector Table","textChars":32,"textLines":2,"bbox":[948,490,210,60]}
+{"kind":"shape","id":"sh/sfix03y9","slide":3,"bbox":[482,430,310,136]}
+{"kind":"shape","id":"sh/tgry9ofu","slide":3,"bbox":[500,448,42,42]}
+{"kind":"textbox","id":"sh/a9kfadwn","slide":3,"text":"5","textPreview":"5","textChars":1,"textLines":1,"bbox":[500,448,42,42]}
+{"kind":"textbox","id":"sh/batgjixs","slide":3,"text":"ISR / ACK","textPreview":"ISR / ACK","textChars":9,"textLines":1,"bbox":[558,450,210,30]}
+{"kind":"textbox","id":"sh/l4fi9cza","slide":3,"text":"จัดการเหตุ • Clear\nหรือ Acknowledge แหล่งคำขอ","textPreview":"จัดการเหตุ • Clear | หรือ Acknowledge แหล่งคำขอ","textChars":45,"textLines":2,"bbox":[558,490,210,60]}
+{"kind":"shape","id":"sh/k3m1g7yp","slide":3,"bbox":[92,430,310,136]}
+{"kind":"shape","id":"sh/z2d07mh4","slide":3,"bbox":[110,448,42,42]}
+{"kind":"textbox","id":"sh/y14jehgj","slide":3,"text":"6","textPreview":"6","textChars":1,"textLines":1,"bbox":[110,448,42,42]}
+{"kind":"textbox","id":"sh/x0vi5czy","slide":3,"text":"RETURN","textPreview":"RETURN","textChars":6,"textLines":1,"bbox":[168,450,210,30]}
+{"kind":"textbox","id":"sh/czmhc7id","slide":3,"text":"Restore • RETI\nหรือ EXC_RETURN","textPreview":"Restore • RETI | หรือ EXC_RETURN","textChars":30,"textLines":2,"bbox":[168,490,210,60]}
+{"kind":"shape","id":"sh/9wru9c3i","slide":3,"bbox":[402,258,80,0]}
+{"kind":"shape","id":"sh/mt0byx47","slide":3,"bbox":[792,258,80,0]}
+{"kind":"shape","id":"sh/nu9c72ls","slide":3,"bbox":[1027,326,0,104]}
+{"kind":"shape","id":"sh/wz2t4r29","slide":3,"bbox":[792,498,80,0]}
+{"kind":"shape","id":"sh/x0budw3u","slide":3,"bbox":[402,498,80,0]}
+{"kind":"textbox","id":"sh/po3ilcvm","slide":3,"text":"ทำงานต่อจาก instruction ถัดไป","textPreview":"ทำงานต่อจาก instruction ถัดไป","textChars":29,"textLines":1,"bbox":[92,600,310,30]}
+{"kind":"shape","id":"sh/21szqxcb","slide":3,"bbox":[247,572,0,22]}
+{"kind":"shape","id":"sh/32l0j2dw","slide":3,"bbox":[64,676,1152,0]}
+{"kind":"textbox","id":"sh/cruhwrud","slide":3,"text":"อ้างอิงหัวข้อ: [5] Mazidi หน้า 376 • [6] ATmega328/P หน้า 33-35 • [7] Yiu หน้า 172-175","textPreview":"อ้างอิงหัวข้อ: [5] Mazidi หน้า 376 • [6] ATmega328/P หน้า 33-35 • [7] Yiu หน้า 172-175","textChars":86,"textLines":1,"bbox":[64,684,900,18]}
+{"kind":"textbox","id":"sh/ds3ipcvy","slide":3,"text":"305341 Embedded System 1 • ธีรภัทร 66362416 • 03","textPreview":"305341 Embedded System 1 • ธีรภัทร 66362416 • 03","textChars":48,"textLines":1,"bbox":[928,684,288,18]}
+{"kind":"notes","id":"nt/ofy9wn61","slide":3,"text":"บทบรรยาย (ประมาณ 0:45-1:28)\nกลไกสรุปได้หกขั้น หนึ่ง Event ทำให้ Request หรือ Flag เข้าสถานะ Pending สอง Gate ตรวจ Enable, Mask และ Priority ถ้ายังไม่ผ่าน คำขออาจรออยู่ สาม CPU จบคำสั่งปัจจุบันและเก็บ PC กับ Context ที่จำเป็น สี่ Vector ส่งไปยัง ISR ห้า ISR จัดการเหตุและ Clear หรือ Acknowledge แหล่งคำขอ หก RETI หรือ EXC_RETURN คืนบริบท แล้วทำงานต่อจาก instruction ถัดไป ลำดับนี้เป็นแบบจำลองร่วม รายละเอียดบางขั้นอาจทำพร้อมกันตามสถาปัตยกรรม\n\n[Sources]\n- [5] /Users/3rapat/student/internship/CODEFIN/project/vahalla-wealth/private-docs/other-project/uni-work/embedded-system/1/textbook/avr-microcontroller-and-embedded-systems-by-ali-mazidi.pdf, p. 376\n- [6] /Users/3rapat/student/internship/CODEFIN/project/vahalla-wealth/private-docs/other-project/uni-work/embedded-system/1/textbook/Microchip-Technology(2018)_ATmega328P 8-bit_AVR_Microcontroller.pdf, pp. 33-35\n- [7] /Users/3rapat/student/internship/CODEFIN/project/vahalla-wealth/private-docs/other-project/uni-work/embedded-system/1/textbook/THE_DEFINITIVE_GUIDE_TO_THE_ARM_CORTEX-МЗ_Stellaris_MCU_9000Series_TEINSTRUMENTS_ARM_SECOND_EDITION.pdf, pp. 172-175\nVisual: redrawn as editable PowerPoint shapes from the cited mechanism descriptions."}
+{"kind":"slide","id":"sl/jyx0ra1s","slide":4,"title":"กลไก • การทำงาน","textShapes":24}
+{"kind":"shape","id":"sh/0netcvm9","slide":4,"bbox":[0,0,1280,8]}
+{"kind":"textbox","id":"sh/1cj2d8b6","slide":4,"text":"กลไก • การทำงาน","textPreview":"กลไก • การทำงาน","textChars":15,"textLines":1,"bbox":[64,32,560,24]}
+{"kind":"textbox","id":"sh/0ba143al","slide":4,"text":"Context เดียวกัน - Hardware Save ต่างกัน [3][6][7]","textPreview":"Context เดียวกัน - Hardware Save ต่างกัน [3][6][7]","textChars":50,"textLines":1,"bbox":[64,60,1080,56]}
+{"kind":"textbox","id":"sh/rm1k7yt4","slide":4,"text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[1175,42,44,34]}
+{"kind":"shape","id":"sh/ql8jytsj","slide":4,"bbox":[64,126,1152,0]}
+{"kind":"textbox","id":"sh/doj29oba","slide":4,"text":"8051 / AVR: เก็บ PC เป็นหลัก","textPreview":"8051 / AVR: เก็บ PC เป็นหลัก","textChars":28,"textLines":1,"bbox":[92,164,430,34]}
+{"kind":"textbox","id":"sh/sna103ap","slide":4,"text":"Cortex-M: Hardware stack 8 รีจิสเตอร์","textPreview":"Cortex-M: Hardware stack 8 รีจิสเตอร์","textChars":37,"textLines":1,"bbox":[738,164,440,34]}
+{"kind":"shape","id":"sh/3ihk3et8","slide":4,"bbox":[120,224,360,54]}
+{"kind":"textbox","id":"sh/ih8ju9sn","slide":4,"text":"8051: IE / IP = Enable + Priority","textPreview":"8051: IE / IP = Enable + Priority","textChars":33,"textLines":1,"bbox":[136,224,328,54]}
+{"kind":"shape","id":"sh/kbm987y5","slide":4,"bbox":[120,298,360,54]}
+{"kind":"textbox","id":"sh/5cva1cfq","slide":4,"text":"AVR: SREG.I = Global Enable","textPreview":"AVR: SREG.I = Global Enable","textChars":27,"textLines":1,"bbox":[136,298,328,54]}
+{"kind":"shape","id":"sh/i94r6xgz","slide":4,"bbox":[120,372,360,54]}
+{"kind":"textbox","id":"sh/jadsz2xk","slide":4,"text":"Hardware: Push return PC","textPreview":"Hardware: Push return PC","textChars":24,"textLines":1,"bbox":[136,372,328,54]}
+{"kind":"shape","id":"sh/w72947yt","slide":4,"bbox":[120,446,360,54]}
+{"kind":"textbox","id":"sh/x8vaxsfe","slide":4,"text":"Software/compiler: Save status + regs","textPreview":"Software/compiler: Save status + regs","textChars":37,"textLines":1,"bbox":[136,446,328,54]}
+{"kind":"textbox","id":"sh/a5kr2xg3","slide":4,"text":"GATE","textPreview":"GATE","textChars":4,"textLines":1,"bbox":[500,298,115,25]}
+{"kind":"textbox","id":"sh/v6tsv2xo","slide":4,"text":"SAVE","textPreview":"SAVE","textChars":4,"textLines":1,"bbox":[500,372,135,48]}
+{"kind":"shape","id":"sh/g36tgryd","slide":4,"bbox":[480,316,10,0]}
+{"kind":"shape","id":"sh/h4fa9wfy","slide":4,"bbox":[480,390,10,0]}
+{"kind":"shape","id":"sh/p0batw72","slide":4,"bbox":[730,230,96,70]}
+{"kind":"textbox","id":"sh/oz29krqh","slide":4,"text":"xPSR","textPreview":"xPSR","textChars":4,"textLines":1,"bbox":[730,230,96,70]}
+{"kind":"shape","id":"sh/3ytsrmpw","slide":4,"bbox":[842,230,96,70]}
+{"kind":"textbox","id":"sh/2xkrih8b","slide":4,"text":"PC","textPreview":"PC","textChars":2,"textLines":1,"bbox":[842,230,96,70]}
+{"kind":"shape","id":"sh/1wbapc7q","slide":4,"bbox":[954,230,96,70]}
+{"kind":"textbox","id":"sh/gv29g7q5","slide":4,"text":"LR","textPreview":"LR","textChars":2,"textLines":1,"bbox":[954,230,96,70]}
+{"kind":"shape","id":"sh/fu9sn2p0","slide":4,"bbox":[1066,230,96,70]}
+{"kind":"textbox","id":"sh/et0reh8f","slide":4,"text":"R12","textPreview":"R12","textChars":3,"textLines":1,"bbox":[1066,230,96,70]}
+{"kind":"shape","id":"sh/tsrqlc7u","slide":4,"bbox":[730,324,96,70]}
+{"kind":"textbox","id":"sh/sri9s7q9","slide":4,"text":"R3","textPreview":"R3","textChars":2,"textLines":1,"bbox":[730,324,96,70]}
+{"kind":"shape","id":"sh/ilwf69kv","slide":4,"bbox":[842,324,96,70]}
+{"kind":"textbox","id":"sh/jm5gze1g","slide":4,"text":"R2","textPreview":"R2","textChars":2,"textLines":1,"bbox":[842,324,96,70]}
+{"kind":"shape","id":"sh/knex8j21","slide":4,"bbox":[954,324,96,70]}
+{"kind":"textbox","id":"sh/5ony1oj6","slide":4,"text":"R1","textPreview":"R1","textChars":2,"textLines":1,"bbox":[954,324,96,70]}
+{"kind":"shape","id":"sh/axcf29kj","slide":4,"bbox":[1066,324,96,70]}
+{"kind":"textbox","id":"sh/vy5gbe14","slide":4,"text":"R0","textPreview":"R0","textChars":2,"textLines":1,"bbox":[1066,324,96,70]}
+{"kind":"textbox","id":"sh/wzex4z2p","slide":4,"text":"R0-R3, R12, LR, PC, xPSR = 32 bytes","textPreview":"R0-R3, R12, LR, PC, xPSR = 32 bytes","textChars":35,"textLines":1,"bbox":[730,434,432,32]}
+{"kind":"textbox","id":"sh/xknyx4ja","slide":4,"text":"EXC_RETURN → Hardware unstack","textPreview":"EXC_RETURN → Hardware unstack","textChars":29,"textLines":1,"bbox":[730,476,432,30]}
+{"kind":"shape","id":"sh/mtcfypkn","slide":4,"bbox":[92,550,1080,74]}
+{"kind":"textbox","id":"sh/nulw7u18","slide":4,"text":"อย่าเหมารวม: Full-context stacking ไม่ได้เกิดด้วย Hardware ในทุกสถาปัตยกรรม","textPreview":"อย่าเหมารวม: Full-context stacking ไม่ได้เกิดด้วย Hardware ในทุกสถาปัตยกรรม","textChars":75,"textLines":1,"bbox":[122,550,1020,74]}
+{"kind":"shape","id":"sh/fm5c3q54","slide":4,"bbox":[64,676,1152,0]}
+{"kind":"textbox","id":"sh/elwba54j","slide":4,"text":"อ้างอิงหัวข้อ: [3] Lecture 3 หน้า 9,12 • [4] Lecture 4 หน้า 28 • [6] ATmega หน้า 26,33-35 • [7] Yiu หน้า 172-175","textPreview":"อ้างอิงหัวข้อ: [3] Lecture 3 หน้า 9,12 • [4] Lecture 4 หน้า 28 • [6] ATmega หน้า 26,33-35 • [7] Yiu หน้า 172-175","textChars":112,"textLines":1,"bbox":[64,684,900,18]}
+{"kind":"textbox","id":"sh/18nu50nu","slide":4,"text":"305341 Embedded System 1 • ธีรภัทร 66362416 • 04","textPreview":"305341 Embedded System 1 • ธีรภัทร 66362416 • 04","textChars":48,"textLines":1,"bbox":[928,684,288,18]}
+{"kind":"notes","id":"nt/jyx0ra1s","slide":4,"text":"บทบรรยาย (ประมาณ 1:28-2:08)\nจุดที่ต้องระวังคือ Context Saving ไม่เหมือนกันทุก CPU ใน 8051 รีจิสเตอร์ IE และ IP ใช้เปิดและจัดลำดับความสำคัญ ส่วน AVR ใช้ SREG.I เป็น Global Enable สำหรับ 8-bit MCU เหล่านี้ Hardware เก็บ Return PC เป็นหลัก ขณะที่ Status และรีจิสเตอร์ที่ ISR ใช้ต้องให้ Software หรือ Compiler ช่วยรักษา แต่ Cortex-M จะ Stack R0 ถึง R3, R12, LR, PC และ xPSR รวม 32 ไบต์ด้วย Hardware และใช้ EXC_RETURN เพื่อ Unstack ดังนั้น Flow เหมือนกัน แต่สิ่งที่ Hardware ช่วยต่างกัน\n\n[Sources]\n- [3] /Users/3rapat/student/internship/CODEFIN/project/vahalla-wealth/private-docs/other-project/uni-work/embedded-system/1/lecture/Lecture 3.pdf, pp. 9, 12\n- [4] /Users/3rapat/student/internship/CODEFIN/project/vahalla-wealth/private-docs/other-project/uni-work/embedded-system/1/lecture/Lecture 4.pdf, p. 28\n- [6] /Users/3rapat/student/internship/CODEFIN/project/vahalla-wealth/private-docs/other-project/uni-work/embedded-system/1/textbook/Microchip-Technology(2018)_ATmega328P 8-bit_AVR_Microcontroller.pdf, pp. 26, 33-35\n- [7] /Users/3rapat/student/internship/CODEFIN/project/vahalla-wealth/private-docs/other-project/uni-work/embedded-system/1/textbook/THE_DEFINITIVE_GUIDE_TO_THE_ARM_CORTEX-МЗ_Stellaris_MCU_9000Series_TEINSTRUMENTS_ARM_SECOND_EDITION.pdf, pp. 172-175\nVisual: native PowerPoint comparison redrawn from the cited register/stack descriptions."}
+{"kind":"slide","id":"sl/i107q5of","slide":5,"title":"REFERENCES • เอกสารอ้างอิง","textShapes":30}
+{"kind":"shape","id":"sh/gjmhgzqt","slide":5,"bbox":[0,0,1280,8]}
+{"kind":"textbox","id":"sh/dgbulwnm","slide":5,"text":"REFERENCES • เอกสารอ้างอิง","textPreview":"REFERENCES • เอกสารอ้างอิง","textChars":26,"textLines":1,"bbox":[64,32,560,24]}
+{"kind":"textbox","id":"sh/cf2tcr61","slide":5,"text":"เอกสารอ้างอิงตามรูปแบบรายวิชา","textPreview":"เอกสารอ้างอิงตามรูปแบบรายวิชา","textChars":29,"textLines":1,"bbox":[64,60,1080,56]}
+{"kind":"textbox","id":"sh/z2tcnm5s","slide":5,"text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[1175,42,44,34]}
+{"kind":"shape","id":"sh/yhkbe1o7","slide":5,"bbox":[64,126,1152,0]}
+{"kind":"textbox","id":"sh/l4bupwny","slide":5,"text":"[1]","textPreview":"[1]","textChars":3,"textLines":1,"bbox":[70,164,56,30]}
+{"kind":"textbox","id":"sh/032tgr6d","slide":5,"text":"เอกสารประกอบการสอน 305341. (ม.ป.ป.).","textPreview":"เอกสารประกอบการสอน 305341. (ม.ป.ป.).","textChars":36,"textLines":1,"bbox":[132,164,430,30]}
+{"kind":"textbox","id":"sh/n6dcr65o","slide":5,"text":"Lecture 1, หน้า 18, 25. มหาวิทยาลัยนเรศวร.","textPreview":"Lecture 1, หน้า 18, 25. มหาวิทยาลัยนเรศวร.","textChars":42,"textLines":1,"bbox":[132,204,470,56]}
+{"kind":"shape","id":"sh/m5kbi1oj","slide":5,"bbox":[132,264,450,0]}
+{"kind":"textbox","id":"sh/w32dkbuh","slide":5,"text":"[2]","textPreview":"[2]","textChars":3,"textLines":1,"bbox":[70,276,56,30]}
+{"kind":"textbox","id":"sh/x4vedgvm","slide":5,"text":"เอกสารประกอบการสอน 305341. (ม.ป.ป.).","textPreview":"เอกสารประกอบการสอน 305341. (ม.ป.ป.).","textChars":36,"textLines":1,"bbox":[132,276,430,30]}
+{"kind":"textbox","id":"sh/ahkvi1cb","slide":5,"text":"Lecture 2, หน้า 2-3. มหาวิทยาลัยนเรศวร.","textPreview":"Lecture 2, หน้า 2-3. มหาวิทยาลัยนเรศวร.","textChars":39,"textLines":1,"bbox":[132,316,470,56]}
+{"kind":"shape","id":"sh/v2twb6dw","slide":5,"bbox":[132,376,450,0]}
+{"kind":"textbox","id":"sh/k7mxovud","slide":5,"text":"[3]","textPreview":"[3]","textChars":3,"textLines":1,"bbox":[70,388,56,30]}
+{"kind":"textbox","id":"sh/58vehgvy","slide":5,"text":"เอกสารประกอบการสอน 305341. (ม.ป.ป.).","textPreview":"เอกสารประกอบการสอน 305341. (ม.ป.ป.).","textChars":36,"textLines":1,"bbox":[132,388,430,30]}
+{"kind":"textbox","id":"sh/i54fmlc7","slide":5,"text":"Lecture 3, หน้า 9, 12. มหาวิทยาลัยนเรศวร.","textPreview":"Lecture 3, หน้า 9, 12. มหาวิทยาลัยนเรศวร.","textChars":41,"textLines":1,"bbox":[132,428,470,56]}
+{"kind":"shape","id":"sh/j6dwfqds","slide":5,"bbox":[132,488,450,0]}
+{"kind":"textbox","id":"sh/sb6xsvu9","slide":5,"text":"[4]","textPreview":"[4]","textChars":3,"textLines":1,"bbox":[70,500,56,30]}
+{"kind":"textbox","id":"sh/tcfel0vu","slide":5,"text":"เอกสารประกอบการสอน 305341. (ม.ป.ป.).","textPreview":"เอกสารประกอบการสอน 305341. (ม.ป.ป.).","textChars":36,"textLines":1,"bbox":[132,500,430,30]}
+{"kind":"textbox","id":"sh/hgrmpwj2","slide":5,"text":"Lecture 4, หน้า 28. มหาวิทยาลัยนเรศวร.","textPreview":"Lecture 4, หน้า 28. มหาวิทยาลัยนเรศวร.","textChars":38,"textLines":1,"bbox":[132,540,470,56]}
+{"kind":"shape","id":"sh/gfi5grih","slide":5,"bbox":[132,600,450,0]}
+{"kind":"textbox","id":"sh/fe94nm1w","slide":5,"text":"[5]","textPreview":"[5]","textChars":3,"textLines":1,"bbox":[664,164,56,30]}
+{"kind":"textbox","id":"sh/ud0ne10b","slide":5,"text":"Mazidi, M. A., Naimi, S., & Naimi, S. (2011).","textPreview":"Mazidi, M. A., Naimi, S., & Naimi, S. (2011).","textChars":45,"textLines":1,"bbox":[726,164,430,30]}
+{"kind":"textbox","id":"sh/pkr6tgjy","slide":5,"text":"The AVR Microcontroller and Embedded Systems. pp. 375-376, Prentice Hall.","textPreview":"The AVR Microcontroller and Embedded Systems. pp. 375-376, Prentice Hall.","textChars":73,"textLines":1,"bbox":[726,204,470,56]}
+{"kind":"shape","id":"sh/4ji5kbid","slide":5,"bbox":[726,264,450,0]}
+{"kind":"textbox","id":"sh/3i94r61s","slide":5,"text":"[6]","textPreview":"[6]","textChars":3,"textLines":1,"bbox":[664,276,56,30]}
+{"kind":"textbox","id":"sh/2h0ni107","slide":5,"text":"Microchip Technology Inc. (2018).","textPreview":"Microchip Technology Inc. (2018).","textChars":33,"textLines":1,"bbox":[726,276,430,30]}
+{"kind":"textbox","id":"sh/5o7mhcju","slide":5,"text":"ATmega328/P Datasheet. pp. 26, 33-35, 89, Microchip Technology Inc.","textPreview":"ATmega328/P Datasheet. pp. 26, 33-35, 89, Microchip Technology Inc.","textChars":67,"textLines":1,"bbox":[726,316,470,56]}
+{"kind":"shape","id":"sh/kny587i9","slide":5,"bbox":[726,376,450,0]}
+{"kind":"textbox","id":"sh/atcjidg7","slide":5,"text":"[7]","textPreview":"[7]","textChars":3,"textLines":1,"bbox":[664,388,56,30]}
+{"kind":"textbox","id":"sh/vu5kbihc","slide":5,"text":"Yiu, J. (2010).","textPreview":"Yiu, J. (2010).","textChars":15,"textLines":1,"bbox":[726,388,430,30]}
+{"kind":"textbox","id":"sh/wve1knyx","slide":5,"text":"The Definitive Guide to the ARM Cortex-M3. 2nd ed., pp. 172-175, Newnes.","textPreview":"The Definitive Guide to the ARM Cortex-M3. 2nd ed., pp. 172-175, Newnes.","textChars":72,"textLines":1,"bbox":[726,428,470,56]}
+{"kind":"shape","id":"sh/xwn2dszi","slide":5,"bbox":[726,488,450,0]}
+{"kind":"textbox","id":"sh/ihw3mxg3","slide":5,"text":"[8]","textPreview":"[8]","textChars":3,"textLines":1,"bbox":[664,500,56,30]}
+{"kind":"textbox","id":"sh/ji5kf2ho","slide":5,"text":"Valvano, J. W. (2017).","textPreview":"Valvano, J. W. (2017).","textChars":22,"textLines":1,"bbox":[726,500,430,30]}
+{"kind":"textbox","id":"sh/kjelony9","slide":5,"text":"Embedded Systems: RTOS for ARM Cortex-M. 4th ed., p. 208, self-published.","textPreview":"Embedded Systems: RTOS for ARM Cortex-M. 4th ed., p. 208, self-published.","textChars":73,"textLines":1,"bbox":[726,540,470,56]}
+{"kind":"shape","id":"sh/5kn2hszu","slide":5,"bbox":[726,600,450,0]}
+{"kind":"shape","id":"sh/e1sjatgz","slide":5,"bbox":[150,626,980,40]}
+{"kind":"textbox","id":"sh/zmlk3yhk","slide":5,"text":"ภาพทุกภาพวาดใหม่ด้วยรูปทรง PowerPoint • อ้างอิงเนื้อหาด้วย [1]-[8]","textPreview":"ภาพทุกภาพวาดใหม่ด้วยรูปทรง PowerPoint • อ้างอิงเนื้อหาด้วย [1]-[8]","textChars":66,"textLines":1,"bbox":[170,626,940,40]}
+{"kind":"shape","id":"sh/fid07u98","slide":5,"bbox":[64,676,1152,0]}
+{"kind":"textbox","id":"sh/ehkzepsn","slide":5,"text":"แหล่งข้อมูลภายในระบบ • ตรวจทาน 9 ส.ค. 2569","textPreview":"แหล่งข้อมูลภายในระบบ • ตรวจทาน 9 ส.ค. 2569","textChars":42,"textLines":1,"bbox":[64,684,900,18]}
+{"kind":"textbox","id":"sh/1kvi94re","slide":5,"text":"305341 Embedded System 1 • ธีรภัทร 66362416 • 05","textPreview":"305341 Embedded System 1 • ธีรภัทร 66362416 • 05","textChars":48,"textLines":1,"bbox":[928,684,288,18]}
+{"kind":"notes","id":"nt/i107q5of","slide":5,"text":"บทบรรยาย (ประมาณ 2:08-2:23)\nสรุปคือ Interrupt มีแกนเดียวกัน: รับคำขอ ตรวจสิทธิ์ เก็บบริบท ไป ISR แล้วคืนบริบท โปรแกรมหลักจึงทำงานต่อได้อย่างถูกต้อง ภาพทั้งหมดวาดใหม่ด้วยรูปทรง PowerPoint และเนื้อหาอ้างอิงทั้ง Lecture, ตำรา และ Datasheet ตามรายการนี้ ขอบคุณครับ\n\n[Sources]\n- [1] Lecture1.pdf, pp. 18, 25\n- [2] Lecture 2.pdf, pp. 2-3\n- [3] Lecture 3.pdf, pp. 9, 12\n- [4] Lecture 4.pdf, p. 28\n- [5] Mazidi et al., The AVR Microcontroller and Embedded Systems, 2011, pp. 375-376\n- [6] Microchip Technology Inc., ATmega328/P Datasheet, 2018, pp. 26, 33-35, 89\n- [7] Yiu, The Definitive Guide to the ARM Cortex-M3, 2nd ed., 2010, pp. 172-175\n- [8] Valvano, Embedded Systems: RTOS for ARM Cortex-M, 4th ed., 2017, p. 208"}

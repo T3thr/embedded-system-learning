@@ -1,0 +1,99 @@
+{
+  "outputSlides": [
+    {
+      "outputSlide": 1,
+      "sourceSlide": 1,
+      "narrativeRole": "opening thesis and compliant cover",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        {
+          "action": "rewrite-and-reposition",
+          "sourceElementIds": [
+            "sh/k3yl0zql", "sh/7qp4be9c", "sh/65g3298r", "sh/sryl4zqx", "sh/fu94fe98", "sh/utg3698n", "sh/wn6dc7eh", "sh/hofulsf2", "sh/ul4vaxgb", "sh/vmdcj2xw", "sh/5sfepcfe", "sh/ipovexwn", "sh/sfqdkrep", "sh/0bmd476t", "sh/e94v2hon"
+          ]
+        },
+        {
+          "action": "delete",
+          "sourceElementIds": [
+            "sh/kbmh0v25", "sh/5cvy903q", "im/8rq98nyl", "sh/jadg7ql0", "sh/sf6h4v2h", "sh/tgfyd032"
+          ]
+        }
+      ]
+    },
+    {
+      "outputSlide": 2,
+      "sourceSlide": 2,
+      "narrativeRole": "meaning and background content",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        {
+          "action": "rewrite-and-reposition",
+          "sourceElementIds": [
+            "sh/9072xkry", "sh/ozy1ofad", "sh/b29kza94", "sh/w3i1sfa9", "sh/r65knqtk", "sh/ove9o7yd", "sh/9wnqhczy", "sh/nu58f2hs", "sh/wjy9sry9", "sh/ahwrqhgj", "sh/bip8jmho", "sh/do3q9szq", "sh/t8byxkn2", "sh/gbmxszmt", "sh/u94fqp4n", "sh/p0vy54na"
+          ]
+        },
+        {
+          "action": "delete",
+          "sourceElementIds": [
+            "sh/fi5gz2hk", "im/cfy1orq5", "sh/hk7y1czq", "sh/2lgfahgb"
+          ]
+        }
+      ]
+    },
+    {
+      "outputSlide": 3,
+      "sourceSlide": 3,
+      "narrativeRole": "six-step mechanism content",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        {
+          "action": "rewrite-and-reposition",
+          "sourceElementIds": [
+            "sh/cza94vmx", "sh/d0jax03i", "sh/298ryl4v", "sh/m5cra54z", "sh/n6ls3alk", "sh/n2l4fq98", "sh/83ulovat", "sh/v6l4jq94", "sh/a5c3ql8z", "sh/ja54na9g", "sh/i9w3u58v", "sh/e10f2twf", "sh/14ryd8fq", "sh/6d0fytg3", "sh/re9g7yxo", "sh/a9kfadwn", "sh/batgjixs", "sh/l4fi9cza", "sh/y14jehgj", "sh/x0vi5czy", "sh/czmhc7id", "sh/po3ilcvm", "sh/cruhwrud", "sh/ds3ipcvy"
+          ]
+        }
+      ]
+    },
+    {
+      "outputSlide": 4,
+      "sourceSlide": 4,
+      "narrativeRole": "architecture comparison content",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        {
+          "action": "rewrite-and-reposition",
+          "sourceElementIds": [
+            "sh/1cj2d8b6", "sh/0ba143al", "sh/rm1k7yt4", "sh/doj29oba", "sh/sna103ap", "sh/ih8ju9sn", "sh/5cva1cfq", "sh/jadsz2xk", "sh/x8vaxsfe", "sh/a5kr2xg3", "sh/v6tsv2xo", "sh/oz29krqh", "sh/2xkrih8b", "sh/gv29g7q5", "sh/et0reh8f", "sh/sri9s7q9", "sh/jm5gze1g", "sh/5ony1oj6", "sh/vy5gbe14", "sh/wzex4z2p", "sh/xknyx4ja", "sh/nulw7u18", "sh/elwba54j", "sh/18nu50nu"
+          ]
+        },
+        {
+          "action": "delete",
+          "sourceElementIds": [
+            "sh/rilczq5s", "sh/qhcb6l47", "im/pkredwn6", "sh/sjut8vmd", "sh/3elcv65w"
+          ]
+        }
+      ]
+    },
+    {
+      "outputSlide": 5,
+      "sourceSlide": 5,
+      "narrativeRole": "numbered reference content",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        {
+          "action": "rewrite-and-reposition",
+          "sourceElementIds": [
+            "sh/dgbulwnm", "sh/cf2tcr61", "sh/z2tcnm5s", "sh/l4bupwny", "sh/032tgr6d", "sh/n6dcr65o", "sh/w32dkbuh", "sh/x4vedgvm", "sh/ahkvi1cb", "sh/k7mxovud", "sh/58vehgvy", "sh/i54fmlc7", "sh/sb6xsvu9", "sh/tcfel0vu", "sh/hgrmpwj2", "sh/fe94nm1w", "sh/ud0ne10b", "sh/pkr6tgjy", "sh/3i94r61s", "sh/2h0ni107", "sh/5o7mhcju", "sh/atcjidg7", "sh/vu5kbihc", "sh/wve1knyx", "sh/ihw3mxg3", "sh/ji5kf2ho", "sh/kjelony9", "sh/e1sjatgz", "sh/zmlk3yhk", "sh/ehkzepsn", "sh/1kvi94re"
+          ]
+        },
+        {
+          "action": "delete",
+          "sourceElementIds": [
+            "sh/3md0bu94", "sh/2l4zip8j", "sh/povid4ra", "im/p4vi14jy", "sh/bqx0fe9g", "sh/qp4jm98v", "im/exkzmp0b", "sh/9gfy5o7e", "sh/mdoza9o3", "sh/nexg3epo", "sh/0r6h8z6x", "sh/lcfy147i", "sh/yp4z69or", "sh/zqxgzupc", "sh/cnmh4z61", "sh/dovyx476", "sh/t8n6lwvy", "sh/s7u5crud", "sh/r6lojmds", "sh/65cnahc7", "sh/5436hcv2", "sh/43u587uh", "sh/j2lofmdw"
+          ]
+        }
+      ]
+    }
+  ],
+  "omittedSourceSlides": []
+}

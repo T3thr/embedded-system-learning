@@ -1,0 +1,40 @@
+PROJECT KICKOFF TEMPLATE AUDIT
+
+Source: openai-templates Project Kickoff retained reference.pptx
+Canvas: 1280 x 720 (16:9)
+Slides inspected: 12/12, including individual full-size renders and layout JSON.
+
+Visual system
+- Dark, full-bleed background; large Inter typography; wide margins; flat compositions.
+- Accent color is used for hierarchy and process markers, not decoration.
+- Slide numbers sit at the lower-right; content begins at x=41.33 and ends at x=1238.67.
+- The source contains one raster placeholder image only on slide 3; it is not selected because this deck needs an original academic process graphic, not a decorative image.
+
+Selected source patterns
+- Source 1: centered title cover.
+- Source 7: definition plus four academic properties.
+- Source 8: three-phase process timeline.
+- Source 4: large thesis plus three technical constraints.
+- Source 5: four-entry reference grid.
+
+Intentional color deviation
+- User requested a cooler, calmer palette. Preserve geometry and typography while changing the green background/accent system to deep navy, ice blue, white, and muted slate.
+- Background: #071A2C. Primary text: #F4F8FC. Accent: #7DD3FC. Secondary accent: #60A5FA. Surface: #102A43.
+
+Insertion contract
+- Duplicate only selected source slides through template-starter.pptx.
+- Edit inherited text, table, line, marker, and card objects in place.
+- Do not add parallel overlays or new layout primitives.
+- Delete inherited empty footer placeholders and rewrite slide-number objects.
+- Preserve reference.pptx unchanged.
+
+Communication job
+By the end, undergraduate computer-engineering students should be able to describe interrupt entry, service, and return as a controlled architectural sequence, including the conditions that govern acceptance and the correctness constraints of an ISR.
+
+Coursework compliance
+- 5 slides: cover 1 + content 3 + references 1.
+- Exactly two content categories: ความหมายและความเป็นมา; กลไกและการทำงาน.
+- Every content slide has claim-linked citations and more than one source per category.
+- No Lecture files are cited or named.
+- No visible analogy, product example, architecture comparison, production claim, timing scaffold, or authoring note.
+

@@ -1,0 +1,11 @@
+%% Source basis: course Lecture 1 and Valvano & Yerraballi [1]
+flowchart LR
+    W[Physical world\nอุณหภูมิ แสง การกดปุ่ม การเคลื่อนที่] --> S[Sensor / input interface\nแปลงปรากฏการณ์เป็นสัญญาณ]
+    S --> C[Embedded controller\nCPU + memory + peripherals]
+    C --> D[Decision software\nอ่าน state ประมวลผล กำหนดผลลัพธ์]
+    D --> A[Actuator / output interface\nLED motor relay display]
+    A --> W
+    P[Power supply] --> C
+    CLK[Clock / oscillator] --> C
+    M[Program memory + data memory] <--> C
+    E[Event flags / interrupt controller] --> C

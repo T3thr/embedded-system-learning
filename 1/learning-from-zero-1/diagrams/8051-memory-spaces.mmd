@@ -1,0 +1,19 @@
+%% Source basis: course Lectures 1 and 3, Intel MCS-51 User's Manual [2]
+flowchart TB
+    CPU[8051 CPU\n8-bit datapath + PC + SP + DPTR]
+    PM[Program memory\nแยก address space\n0000H–FFFFH logical range]
+    DM[Data memory\nแยก address space\ninternal / external]
+    IR[Internal data RAM\n00H–7FH in classic 8051]
+    RB[Register banks\n00H–1FH\nR0–R7 x 4 banks]
+    BA[Bit-addressable RAM\n20H–2FH\n128 individual bits]
+    GP[General-purpose RAM\n30H–7FH]
+    SFR[SFR space\n80H–FFH\nports timers serial interrupt control]
+    XRAM[External data RAM\nup to 64K logical data address space]
+    CPU -->|instruction fetch via PC| PM
+    CPU -->|direct/indirect data access| DM
+    DM --> IR
+    IR --> RB
+    IR --> BA
+    IR --> GP
+    DM --> SFR
+    DM --> XRAM

@@ -1,0 +1,16 @@
+CONTENT SOURCES
+
+[1] M. A. Mazidi, S. Naimi, and S. Naimi. (2011). The AVR Microcontroller and Embedded Systems: Using Assembly and C. pp. 375-376, Prentice Hall.
+Local evidence: 1/textbook/avr-mazidi-markdown/ch10_avr_interrupt_programming_in_assembly_and_c.md
+
+[2] Microchip Technology Inc. (2018). ATmega328/P AVR Microcontroller with picoPower Technology - Datasheet Complete. pp. 33-34, Microchip Technology Inc.
+Local evidence: 1/textbook/atmega328p-datasheet-markdown/ch01_avr_cpu_core_and_memories.md
+
+[3] J. Yiu. (2010). The Definitive Guide to the ARM Cortex-M3. 2nd ed. pp. 172-175, Newnes.
+Local evidence: 1/textbook/arm-cortex-m3-definitive-guide-markdown/20_chapter_9_interrupt_behavior.md
+
+[4] Arm Limited. (2010). Cortex-M3 Devices Generic User Guide, ARM DUI 0552A. pp. 2-26 to 2-27, Arm Limited.
+Official source: https://documentation-service.arm.com/static/5ea823e69931941038df1af5
+
+No lecture source is used or cited in visible content, speaker notes, or references.
+

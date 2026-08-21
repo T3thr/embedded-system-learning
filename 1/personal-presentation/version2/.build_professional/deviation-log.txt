@@ -1,0 +1,22 @@
+INTENTIONAL DEVIATIONS FROM PROJECT KICKOFF
+
+All output slides
+- Recolor inherited green/lime system to a cool navy/ice-blue system at the user's request.
+- Replace all sample English copy with Thai academic content while preserving source geometry and typographic hierarchy.
+- Delete empty inherited footer placeholders; retain and renumber lower-right page markers.
+
+Slide 1 / source 1
+- Replace planning language with course topic and student identity.
+
+Slide 2 / source 7
+- Repurpose four-topic introduction as a definition-and-properties composition.
+
+Slide 3 / source 8
+- Repurpose milestone timeline as three phases of interrupt handling; preserve line, nodes, and highlighted final phase.
+
+Slide 4 / source 4
+- Repurpose three callouts as correctness constraints: qualification, state integrity, bounded service.
+- Lock the inherited title to the source title frame because the copied placeholder otherwise exports above the PowerPoint canvas.
+
+Slide 5 / source 5
+- Repurpose four-point grid as numbered academic references.

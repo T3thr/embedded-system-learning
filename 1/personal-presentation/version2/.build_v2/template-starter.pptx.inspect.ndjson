@@ -1,0 +1,231 @@
+{"kind":"deck","id":"pr/e42vj3","name":"Deck"}
+{"kind":"layout","layoutId":"/ppt/slideMasters/slideMaster1.xml","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout1.xml","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/nho80e","slide":1,"title":"NARESUAN UNIVERSITY  •  COMPUTER ENGINEERING  •  305341","textShapes":18}
+{"kind":"shape","id":"sh/7a98nipg","slide":1,"bbox":[0,0,1280,12]}
+{"kind":"shape","id":"sh/j29gb2xw","slide":1,"bbox":[0,708,1280,12]}
+{"kind":"textbox","id":"sh/i10fixwb","slide":1,"text":"NARESUAN UNIVERSITY  •  COMPUTER ENGINEERING  •  305341","textPreview":"NARESUAN UNIVERSITY  •  COMPUTER ENGINEERING  •  305341","textChars":55,"textLines":1,"bbox":[70,52,720,28]}
+{"kind":"textbox","id":"sh/x0ry9cf6","slide":1,"text":"Interrupt\nMechanism","textPreview":"Interrupt | Mechanism","textChars":19,"textLines":2,"bbox":[70,152,650,160]}
+{"kind":"textbox","id":"sh/wzixg7el","slide":1,"text":"กลไกการขัดจังหวะใน Embedded System","textPreview":"กลไกการขัดจังหวะใน Embedded System","textChars":34,"textLines":1,"bbox":[72,326,650,45]}
+{"kind":"shape","id":"sh/vy9g72x0","slide":1,"bbox":[72,392,538,0]}
+{"kind":"textbox","id":"sh/axgfexwf","slide":1,"text":"ผู้นำเสนอ","textPreview":"ผู้นำเสนอ","textChars":9,"textLines":1,"bbox":[72,420,110,28]}
+{"kind":"textbox","id":"sh/9w7y5sfu","slide":1,"text":"ธีรภัทร ภู่ระย้า","textPreview":"ธีรภัทร ภู่ระย้า","textChars":16,"textLines":1,"bbox":[190,420,300,28]}
+{"kind":"textbox","id":"sh/obyxcne9","slide":1,"text":"รหัสนิสิต","textPreview":"รหัสนิสิต","textChars":9,"textLines":1,"bbox":[72,458,110,28]}
+{"kind":"textbox","id":"sh/6t4bq18f","slide":1,"text":"66362416  •  Group 1  •  Sequence 4  •  Topic 41","textPreview":"66362416  •  Group 1  •  Sequence 4  •  Topic 41","textChars":48,"textLines":1,"bbox":[190,458,450,28]}
+{"kind":"textbox","id":"sh/rudsj69k","slide":1,"text":"รายวิชา","textPreview":"รายวิชา","textChars":7,"textLines":1,"bbox":[72,496,110,28]}
+{"kind":"textbox","id":"sh/svmtsbq5","slide":1,"text":"Embedded System 1","textPreview":"Embedded System 1","textChars":17,"textLines":1,"bbox":[190,496,300,28]}
+{"kind":"textbox","id":"sh/twvalwrq","slide":1,"text":"EVENT","textPreview":"EVENT","textChars":5,"textLines":1,"bbox":[845,122,100,28]}
+{"kind":"shape","id":"sh/i54bmhs3","slide":1,"bbox":[830,260,270,132]}
+{"kind":"textbox","id":"sh/jqdsfm9o","slide":1,"text":"CPU","textPreview":"CPU","textChars":3,"textLines":1,"bbox":[830,272,270,42]}
+{"kind":"textbox","id":"sh/4rmtora9","slide":1,"text":"Main → ISR → Resume","textPreview":"Main → ISR → Resume","textChars":19,"textLines":1,"bbox":[830,328,270,28]}
+{"kind":"shape","id":"sh/5svahwru","slide":1,"bbox":[920,160,90,54]}
+{"kind":"textbox","id":"sh/u1krihs7","slide":1,"text":"IRQ","textPreview":"IRQ","textChars":3,"textLines":1,"bbox":[920,160,90,54]}
+{"kind":"shape","id":"sh/radkfetw","slide":1,"bbox":[965,214,0,46]}
+{"kind":"shape","id":"sh/z698jipk","slide":1,"bbox":[895,470,140,70]}
+{"kind":"textbox","id":"sh/y5g7qd8z","slide":1,"text":"STACK","textPreview":"STACK","textChars":5,"textLines":1,"bbox":[895,470,140,70]}
+{"kind":"shape","id":"sh/sbm1ozah","slide":1,"bbox":[965,392,0,78]}
+{"kind":"textbox","id":"sh/k7ipsnqp","slide":1,"text":"Event  •  Context  •  Vector  •  Return","textPreview":"Event  •  Context  •  Vector  •  Return","textChars":39,"textLines":1,"bbox":[760,584,410,30]}
+{"kind":"shape","id":"sh/2hofix8n","slide":1,"name":"cover-photo-mask","bbox":[740,108,500,525]}
+{"kind":"shape","id":"sh/3ihgr2p8","slide":1,"name":"cover-photo-frame","bbox":[780,142,420,360]}
+{"kind":"textbox","id":"sh/p4zytc7e","slide":1,"text":"REAL HARDWARE","textPreview":"REAL HARDWARE","textChars":13,"textLines":1,"bbox":[800,522,380,26]}
+{"kind":"textbox","id":"sh/edofed8r","slide":1,"text":"Arduino Uno Rev3 • ATmega328P","textPreview":"Arduino Uno Rev3 • ATmega328P","textChars":29,"textLines":1,"bbox":[785,552,410,34]}
+{"kind":"textbox","id":"sh/fexgnipc","slide":1,"text":"Photo: Arduino Official Store","textPreview":"Photo: Arduino Official Store","textChars":29,"textLines":1,"bbox":[790,592,400,24]}
+{"kind":"image","id":"im/65w3adwr","slide":1,"name":"","geometry":"roundRect","bbox":[795,173.75,390,292.5]}
+{"kind":"notes","id":"nt/nho80e","slide":1,"text":"เวลาประมาณ 0:15 นาที\nหัวข้อ Interrupt Mechanism อธิบายเส้นทางตั้งแต่เหตุการณ์จากอุปกรณ์จริง เข้าสู่ CPU ผ่าน ISR การเก็บ Context และการกลับไปทำ Main Program ต่อ\nภาพเป็น Arduino Uno Rev3 อย่างเป็นทางการ ซึ่งใช้ ATmega328P เป็นตัวอย่างไมโครคอนโทรลเลอร์ของสไลด์ชุดนี้\n\n[Sources]\n- https://store.arduino.cc/products/arduino-uno-rev3\n- https://store.arduino.cc/cdn/shop/files/A000066_03.front_1000x750.jpg?v=1727098250\n- https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf\n[/Sources]"}
+{"kind":"slide","id":"sl/fdlr0p","slide":2,"title":"MEANING • BACKGROUND","textShapes":18}
+{"kind":"shape","id":"sh/ovy5kj6p","slide":2,"bbox":[0,0,1280,8]}
+{"kind":"textbox","id":"sh/p8fu58z6","slide":2,"text":"MEANING • BACKGROUND    ","textPreview":"MEANING • BACKGROUND","textChars":24,"textLines":1,"bbox":[64,32,560,24]}
+{"kind":"textbox","id":"sh/476tw3y1","slide":2,"text":"Interrupt คืออะไร   ","textPreview":"Interrupt คืออะไร","textChars":20,"textLines":1,"bbox":[64,60,1080,56]}
+{"kind":"textbox","id":"sh/ruxc7ihc","slide":2,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[1175,42,44,34]}
+{"kind":"shape","id":"sh/qtobydgr","slide":2,"bbox":[64,126,1152,0]}
+{"kind":"shape","id":"sh/dwfu9szi","slide":2,"bbox":[516,230,250,250]}
+{"kind":"textbox","id":"sh/cv6t0nyx","slide":2,"text":"INTERRUPT","textPreview":"INTERRUPT","textChars":9,"textLines":1,"bbox":[516,294,250,44]}
+{"kind":"textbox","id":"sh/7ytsveh8","slide":2,"text":"event → ISR → resume","textPreview":"event → ISR → resume","textChars":20,"textLines":1,"bbox":[516,346,250,30]}
+{"kind":"shape","id":"sh/6xkbm9gn","slide":2,"bbox":[90,188,280,98]}
+{"kind":"textbox","id":"sh/8z6pwnu1","slide":2,"text":"DEFINITION   ","textPreview":"DEFINITION","textChars":13,"textLines":1,"bbox":[106,200,248,25]}
+{"kind":"textbox","id":"sh/90fqpsvm","slide":2,"text":"CPU ไปทำ ISR เมื่อเกิด Event\nแล้วกลับจุดเดิม","textPreview":"CPU ไปทำ ISR เมื่อเกิด Event | แล้วกลับจุดเดิม","textChars":44,"textLines":2,"bbox":[106,232,248,44]}
+{"kind":"shape","id":"sh/mdo7udcv","slide":2,"bbox":[910,188,280,98]}
+{"kind":"textbox","id":"sh/7yx8nidg","slide":2,"text":"BACKGROUND   ","textPreview":"BACKGROUND","textChars":13,"textLines":1,"bbox":[926,200,248,25]}
+{"kind":"textbox","id":"sh/w3qp07ux","slide":2,"text":"ลด Polling: CPU ทำงานหลักต่อ\nจนเกิด Event","textPreview":"ลด Polling: CPU ทำงานหลักต่อ | จนเกิด Event","textChars":41,"textLines":2,"bbox":[926,232,248,44]}
+{"kind":"shape","id":"sh/h4zqtsvi","slide":2,"bbox":[90,455,280,98]}
+{"kind":"textbox","id":"sh/u1o7yxc7","slide":2,"text":"EVENT SOURCES   ","textPreview":"EVENT SOURCES","textChars":16,"textLines":1,"bbox":[106,467,248,25]}
+{"kind":"textbox","id":"sh/v2h8r2dc","slide":2,"text":"Peripheral • Timer • GPIO\nFault • Software","textPreview":"Peripheral • Timer • GPIO | Fault • Software","textChars":42,"textLines":2,"bbox":[106,499,248,44]}
+{"kind":"shape","id":"sh/c7mpo3et","slide":2,"bbox":[910,455,280,98]}
+{"kind":"textbox","id":"sh/x8vqh8ve","slide":2,"text":"CORE IDEA   ","textPreview":"CORE IDEA","textChars":12,"textLines":1,"bbox":[926,467,248,25]}
+{"kind":"textbox","id":"sh/d4n6l4n2","slide":2,"text":"Save state → Vector → ISR\nRestore → Resume","textPreview":"Save state → Vector → ISR | Restore → Resume","textChars":42,"textLines":2,"bbox":[926,499,248,44]}
+{"kind":"shape","id":"sh/h8bmds3e","slide":2,"bbox":[370,237,146,118]}
+{"kind":"shape","id":"sh/u5kn2x4n","slide":2,"bbox":[766,237,144,118]}
+{"kind":"shape","id":"sh/v6t4bil8","slide":2,"bbox":[370,355,146,149]}
+{"kind":"shape","id":"sh/cbyls3m9","slide":2,"bbox":[766,355,144,149]}
+{"kind":"textbox","id":"sh/0ry5gz6t","slide":2,"text":"แก่นสำคัญ: ตอบสนองต่อ Event โดยไม่สูญเสียความต่อเนื่องของ Main Program","textPreview":"แก่นสำคัญ: ตอบสนองต่อ Event โดยไม่สูญเสียความต่อเนื่องของ Main Program","textChars":70,"textLines":1,"bbox":[160,606,960,38]}
+{"kind":"shape","id":"sh/f6ponu58","slide":2,"bbox":[64,676,1152,0]}
+{"kind":"textbox","id":"sh/e5wne9on","slide":2,"text":"Sources: Mazidi et al. • Microchip ATmega328P • UT Austin","textPreview":"Sources: Mazidi et al. • Microchip ATmega328P • UT Austin","textChars":57,"textLines":1,"bbox":[64,684,900,18]}
+{"kind":"textbox","id":"sh/9w76tona","slide":2,"text":"305341 • ธีรภัทร 66362416 • 02","textPreview":"305341 • ธีรภัทร 66362416 • 02","textChars":30,"textLines":1,"bbox":[928,684,288,18]}
+{"kind":"shape","id":"sh/7at8bm9c","slide":2,"name":"pinout-visual-frame","bbox":[382,166,518,430]}
+{"kind":"textbox","id":"sh/9wbqdcr2","slide":2,"text":"Official Arduino Uno Rev3 pinout","textPreview":"Official Arduino Uno Rev3 pinout","textChars":32,"textLines":1,"bbox":[430,556,422,24]}
+{"kind":"textbox","id":"sh/ux4rmh8n","slide":2,"text":"content.arduino.cc/assets/A000066-pinout.png","textPreview":"content.arduino.cc/assets/A000066-pinout.png","textChars":44,"textLines":1,"bbox":[425,580,432,18]}
+{"kind":"image","id":"im/8vmloba1","slide":2,"name":"","geometry":"roundRect","bbox":[437.78,180,406.44,372]}
+{"kind":"notes","id":"nt/fdlr0p","slide":2,"text":"เวลาประมาณ 0:30 นาที\nInterrupt คือเหตุการณ์ที่ทำให้ CPU เปลี่ยนจาก Main Program ไปทำ Interrupt Service Routine หรือ ISR ชั่วคราว แล้วกลับมาทำงานต่อจากจุดเดิม\nภาพ Pinout เชื่อมแนวคิดกับฮาร์ดแวร์จริง: External Interrupt, Timer, Serial และ I/O เป็นแหล่ง Event ที่ตั้ง Request หรือ Flag ได้\nข้อดีสำคัญคือ CPU ไม่ต้อง Poll อุปกรณ์ตลอดเวลา แต่ยังตอบสนองเมื่อ Event เกิดขึ้น\n\n[Sources]\n- https://store.arduino.cc/products/arduino-uno-rev3\n- https://content.arduino.cc/assets/A000066-pinout.png\n- https://books.google.com/books/about/The_AVR_Microcontroller_and_Embedded_Sys.html?id=C70BQgAACAAJ\n- https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf\n- https://users.ece.utexas.edu/~valvano/EE445L/ebook/index.htm\n[/Sources]"}
+{"kind":"slide","id":"sl/r9inlp","slide":3,"title":"MECHANISM • OPERATION","textShapes":24}
+{"kind":"shape","id":"sh/rmp4b6l0","slide":3,"bbox":[0,0,1280,8]}
+{"kind":"textbox","id":"sh/nah8n6tg","slide":3,"text":"MECHANISM • OPERATION    ","textPreview":"MECHANISM • OPERATION","textChars":25,"textLines":1,"bbox":[64,32,560,24]}
+{"kind":"textbox","id":"sh/m98ru1sv","slide":3,"text":"Interrupt Processing Path    ","textPreview":"Interrupt Processing Path","textChars":29,"textLines":1,"bbox":[64,60,1080,56]}
+{"kind":"textbox","id":"sh/18zqlwba","slide":3,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[1175,42,44,34]}
+{"kind":"shape","id":"sh/0nq9srap","slide":3,"bbox":[64,126,1152,0]}
+{"kind":"shape","id":"sh/zmh8jmt4","slide":3,"bbox":[92,190,310,136]}
+{"kind":"shape","id":"sh/el87qhsz","slide":3,"bbox":[110,208,42,42]}
+{"kind":"textbox","id":"sh/l43qx0be","slide":3,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[110,208,42,42]}
+{"kind":"textbox","id":"sh/k3u94va9","slide":3,"text":"EVENT","textPreview":"EVENT","textChars":5,"textLines":1,"bbox":[168,210,210,30]}
+{"kind":"textbox","id":"sh/qd4bi98j","slide":3,"text":"Request หรือ Flag ถูกตั้ง","textPreview":"Request หรือ Flag ถูกตั้ง","textChars":25,"textLines":1,"bbox":[168,250,210,60]}
+{"kind":"shape","id":"sh/bedcbe94","slide":3,"bbox":[482,190,310,136]}
+{"kind":"shape","id":"sh/cfmtkjqp","slide":3,"bbox":[500,208,42,42]}
+{"kind":"textbox","id":"sh/dgvudora","slide":3,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[500,208,42,42]}
+{"kind":"textbox","id":"sh/29kbe98n","slide":3,"text":"ACCEPT","textPreview":"ACCEPT","textChars":6,"textLines":1,"bbox":[558,210,210,30]}
+{"kind":"textbox","id":"sh/3ats7u98","slide":3,"text":"จบ instruction ปัจจุบัน\nตรวจ Enable + Priority","textPreview":"จบ instruction ปัจจุบัน | ตรวจ Enable + Priority","textChars":46,"textLines":2,"bbox":[558,250,210,60]}
+{"kind":"shape","id":"sh/obmtgzqt","slide":3,"bbox":[872,190,310,136]}
+{"kind":"shape","id":"sh/pcva94re","slide":3,"bbox":[890,208,42,42]}
+{"kind":"textbox","id":"sh/m5obqt8r","slide":3,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[890,208,42,42]}
+{"kind":"textbox","id":"sh/76xcjy9c","slide":3,"text":"SAVE","textPreview":"SAVE","textChars":4,"textLines":1,"bbox":[948,210,210,30]}
+{"kind":"textbox","id":"sh/jqp8bqpo","slide":3,"text":"เก็บ PC และ Context\nลง Stack","textPreview":"เก็บ PC และ Context | ลง Stack","textChars":28,"textLines":2,"bbox":[948,250,210,60]}
+{"kind":"shape","id":"sh/ipg72l8j","slide":3,"bbox":[872,430,310,136]}
+{"kind":"shape","id":"sh/5crqd07u","slide":3,"bbox":[890,448,42,42]}
+{"kind":"textbox","id":"sh/4ry94v69","slide":3,"text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[890,448,42,42]}
+{"kind":"textbox","id":"sh/re98fap0","slide":3,"text":"VECTOR","textPreview":"VECTOR","textChars":6,"textLines":1,"bbox":[948,450,210,30]}
+{"kind":"textbox","id":"sh/6d0r65of","slide":3,"text":"อ่าน Vector\nโหลด ISR address","textPreview":"อ่าน Vector | โหลด ISR address","textChars":28,"textLines":2,"bbox":[948,490,210,60]}
+{"kind":"shape","id":"sh/tgrqh076","slide":3,"bbox":[482,430,310,136]}
+{"kind":"shape","id":"sh/sfi98v6l","slide":3,"bbox":[500,448,42,42]}
+{"kind":"textbox","id":"sh/fi98japw","slide":3,"text":"5","textPreview":"5","textChars":1,"textLines":1,"bbox":[500,448,42,42]}
+{"kind":"textbox","id":"sh/eh0ra5ob","slide":3,"text":"EXECUTE","textPreview":"EXECUTE","textChars":7,"textLines":1,"bbox":[558,450,210,30]}
+{"kind":"textbox","id":"sh/cn2p0fmp","slide":3,"text":"ทำ ISR\nจัดการต้นเหตุของ Event","textPreview":"ทำ ISR | จัดการต้นเหตุของ Event","textChars":29,"textLines":2,"bbox":[558,490,210,60]}
+{"kind":"shape","id":"sh/dobq9kna","slide":3,"bbox":[92,430,310,136]}
+{"kind":"shape","id":"sh/qlk7y54j","slide":3,"bbox":[110,448,42,42]}
+{"kind":"textbox","id":"sh/bmt87a54","slide":3,"text":"6","textPreview":"6","textChars":1,"textLines":1,"bbox":[110,448,42,42]}
+{"kind":"textbox","id":"sh/oj2pwfmt","slide":3,"text":"RETURN","textPreview":"RETURN","textChars":6,"textLines":1,"bbox":[168,450,210,30]}
+{"kind":"textbox","id":"sh/pkbq50ny","slide":3,"text":"Restore + RETI\nกลับ Main Program","textPreview":"Restore + RETI | กลับ Main Program","textChars":32,"textLines":2,"bbox":[168,490,210,60]}
+{"kind":"shape","id":"sh/65c3ixs7","slide":3,"bbox":[402,258,80,0]}
+{"kind":"shape","id":"sh/t8nmdcbi","slide":3,"bbox":[792,258,80,0]}
+{"kind":"shape","id":"sh/s7elk7ax","slide":3,"bbox":[1027,326,0,104]}
+{"kind":"shape","id":"sh/jilk7itg","slide":3,"bbox":[792,498,80,0]}
+{"kind":"shape","id":"sh/ihc3edsv","slide":3,"bbox":[402,498,80,0]}
+{"kind":"textbox","id":"sh/4ze50r29","slide":3,"text":"Resume main program","textPreview":"Resume main program","textChars":19,"textLines":1,"bbox":[92,600,310,30]}
+{"kind":"shape","id":"sh/jy547mlo","slide":3,"bbox":[247,572,0,22]}
+{"kind":"shape","id":"sh/ixwnyhk3","slide":3,"bbox":[64,676,1152,0]}
+{"kind":"textbox","id":"sh/to7mdg3q","slide":3,"text":"Sources: Yiu • Microchip ATmega328P • Arm Exception Model","textPreview":"Sources: Yiu • Microchip ATmega328P • Arm Exception Model","textChars":57,"textLines":1,"bbox":[64,684,900,18]}
+{"kind":"textbox","id":"sh/sny54b2l","slide":3,"text":"305341 Embedded System 1  •  ธีรภัทร ภู่ระย้า 66362416  •  03","textPreview":"305341 Embedded System 1  •  ธีรภัทร ภู่ระย้า 66362416  •  03","textChars":61,"textLines":1,"bbox":[928,684,288,18]}
+{"kind":"notes","id":"nt/r9inlp","slide":3,"text":"เวลาประมาณ 0:50 นาที\nลำดับเริ่มจาก Event ตั้ง Request หรือ Flag จากนั้น CPU จบ instruction ปัจจุบัน ตรวจ Enable และ Priority แล้วจึงยอมรับ Interrupt\nCPU เก็บ Program Counter และ Context ลง Stack อ่าน Interrupt Vector เพื่อหา ISR address แล้วทำ ISR\nก่อนออกจาก ISR ต้องจัดการต้นเหตุของ Event และ Return from Interrupt จะ Restore Context เพื่อกลับ Main Program\n\n[Sources]\n- https://books.google.com/books/about/The_Definitive_Guide_to_ARM_Cortex_M3_an.html?id=9YxqAAAAQBAJ\n- https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf\n- https://developer.arm.com/documentation/dui0552/a/the-cortex-m3-processor/exception-model/exception-entry-and-return\n- https://developer.arm.com/community/arm-community-blogs/b/architectures-and-processors-blog/posts/beginner-guide-on-interrupt-latency-and-interrupt-latency-of-the-arm-cortex-m-processors\n[/Sources]"}
+{"kind":"slide","id":"sl/iq3u9q","slide":4,"title":"CONTEXT • STACK","textShapes":27}
+{"kind":"shape","id":"sh/w7e9cri5","slide":4,"bbox":[0,0,1280,8]}
+{"kind":"textbox","id":"sh/1kjy98zi","slide":4,"text":"CONTEXT • STACK     ","textPreview":"CONTEXT • STACK","textChars":20,"textLines":1,"bbox":[64,32,560,24]}
+{"kind":"textbox","id":"sh/0jaxgnyx","slide":4,"text":"Context Saving     ","textPreview":"Context Saving","textChars":19,"textLines":1,"bbox":[64,60,1080,56]}
+{"kind":"textbox","id":"sh/rehw3yh0","slide":4,"text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[1175,42,44,34]}
+{"kind":"shape","id":"sh/qd8fatgv","slide":4,"bbox":[64,126,1152,0]}
+{"kind":"textbox","id":"sh/dgze58z6","slide":4,"text":"AVR ATmega328P  ","textPreview":"AVR ATmega328P","textChars":16,"textLines":1,"bbox":[92,164,430,34]}
+{"kind":"textbox","id":"sh/cfqxc3yl","slide":4,"text":"ARM Cortex‑M basic frame   ","textPreview":"ARM Cortex‑M basic frame","textChars":27,"textLines":1,"bbox":[738,164,440,34]}
+{"kind":"shape","id":"sh/3ahwzyh4","slide":4,"bbox":[120,224,360,54]}
+{"kind":"textbox","id":"sh/2pof6tgj","slide":4,"text":"Main stack / local data","textPreview":"Main stack / local data","textChars":23,"textLines":1,"bbox":[136,224,328,54]}
+{"kind":"shape","id":"sh/gz2xszqp","slide":4,"bbox":[120,298,360,54]}
+{"kind":"textbox","id":"sh/hkvyl47a","slide":4,"text":"PC return address","textPreview":"PC return address","textChars":17,"textLines":1,"bbox":[136,298,328,54]}
+{"kind":"shape","id":"sh/uxkfqp8j","slide":4,"bbox":[120,372,360,54]}
+{"kind":"textbox","id":"sh/vytgjup4","slide":4,"text":"SREG + used registers","textPreview":"SREG + used registers","textChars":21,"textLines":1,"bbox":[136,372,328,54]}
+{"kind":"shape","id":"sh/8v2xozqd","slide":4,"bbox":[120,446,360,54]}
+{"kind":"textbox","id":"sh/twbyh47y","slide":4,"text":"ISR local variables","textPreview":"ISR local variables","textChars":19,"textLines":1,"bbox":[136,446,328,54]}
+{"kind":"textbox","id":"sh/6tkfmp8n","slide":4,"text":"Hardware","textPreview":"Hardware","textChars":8,"textLines":1,"bbox":[500,298,115,25]}
+{"kind":"textbox","id":"sh/7utwfup8","slide":4,"text":"Compiler / Software","textPreview":"Compiler / Software","textChars":19,"textLines":1,"bbox":[500,372,135,48]}
+{"kind":"shape","id":"sh/srmx0jqx","slide":4,"bbox":[480,316,10,0]}
+{"kind":"shape","id":"sh/dsfyto7i","slide":4,"bbox":[480,390,10,0]}
+{"kind":"shape","id":"sh/18bydozm","slide":4,"bbox":[730,230,96,70]}
+{"kind":"textbox","id":"sh/072xkji1","slide":4,"text":"xPSR","textPreview":"xPSR","textChars":4,"textLines":1,"bbox":[730,230,96,70]}
+{"kind":"shape","id":"sh/z69gbehg","slide":4,"bbox":[842,230,96,70]}
+{"kind":"textbox","id":"sh/e50fi90v","slide":4,"text":"PC","textPreview":"PC","textChars":2,"textLines":1,"bbox":[842,230,96,70]}
+{"kind":"shape","id":"sh/dkre94za","slide":4,"bbox":[954,230,96,70]}
+{"kind":"textbox","id":"sh/cjixgzip","slide":4,"text":"LR","textPreview":"LR","textChars":2,"textLines":1,"bbox":[954,230,96,70]}
+{"kind":"shape","id":"sh/ri9w7ehk","slide":4,"bbox":[1066,230,96,70]}
+{"kind":"textbox","id":"sh/qh0fe90z","slide":4,"text":"R12","textPreview":"R12","textChars":3,"textLines":1,"bbox":[1066,230,96,70]}
+{"kind":"shape","id":"sh/pgre54ze","slide":4,"bbox":[730,324,96,70]}
+{"kind":"textbox","id":"sh/4fixczit","slide":4,"text":"R3","textPreview":"R3","textChars":2,"textLines":1,"bbox":[730,324,96,70]}
+{"kind":"shape","id":"sh/ulwvm5gr","slide":4,"bbox":[842,324,96,70]}
+{"kind":"textbox","id":"sh/fm5cfaxc","slide":4,"text":"R2","textPreview":"R2","textChars":2,"textLines":1,"bbox":[842,324,96,70]}
+{"kind":"shape","id":"sh/gnydofyh","slide":4,"bbox":[954,324,96,70]}
+{"kind":"textbox","id":"sh/ho7uh0f2","slide":4,"text":"R1","textPreview":"R1","textChars":2,"textLines":1,"bbox":[954,324,96,70]}
+{"kind":"shape","id":"sh/6hwbilgf","slide":4,"bbox":[1066,324,96,70]}
+{"kind":"textbox","id":"sh/7i5cbqx0","slide":4,"text":"R0","textPreview":"R0","textChars":2,"textLines":1,"bbox":[1066,324,96,70]}
+{"kind":"textbox","id":"sh/sjedkvyl","slide":4,"text":"8 registers × 32 bit = 32 bytes","textPreview":"8 registers × 32 bit = 32 bytes","textChars":31,"textLines":1,"bbox":[730,434,432,32]}
+{"kind":"textbox","id":"sh/tknud0f6","slide":4,"text":"Hardware stacking","textPreview":"Hardware stacking","textChars":17,"textLines":1,"bbox":[730,476,432,30]}
+{"kind":"shape","id":"sh/itcbelgj","slide":4,"bbox":[92,550,1080,74]}
+{"kind":"textbox","id":"sh/julc7qx4","slide":4,"text":"Context ที่ต้องรักษา = สถานะที่ทำให้ Main Program กลับมาทำงานต่อได้อย่างถูกต้อง","textPreview":"Context ที่ต้องรักษา = สถานะที่ทำให้ Main Program กลับมาทำงานต่อได้อย่างถูกต้อง","textChars":79,"textLines":1,"bbox":[122,550,1020,74]}
+{"kind":"shape","id":"sh/b658jm1k","slide":4,"bbox":[64,676,1152,0]}
+{"kind":"textbox","id":"sh/a5wrahkf","slide":4,"text":"Sources: Yiu • Microchip ATmega328P • Arm Stack Frames","textPreview":"Sources: Yiu • Microchip ATmega328P • Arm Stack Frames","textChars":54,"textLines":1,"bbox":[64,684,900,18]}
+{"kind":"textbox","id":"sh/x8nqlwjq","slide":4,"text":"305341 Embedded System 1  •  ธีรภัทร ภู่ระย้า 66362416  •  04","textPreview":"305341 Embedded System 1  •  ธีรภัทร ภู่ระย้า 66362416  •  04","textChars":61,"textLines":1,"bbox":[928,684,288,18]}
+{"kind":"shape","id":"sh/n258fm1o","slide":4,"name":"arm-stack-visual-mask","bbox":[690,145,500,405]}
+{"kind":"textbox","id":"sh/mhwr6hk3","slide":4,"text":"ARM Cortex-M Hardware Stack Frame","textPreview":"ARM Cortex-M Hardware Stack Frame","textChars":33,"textLines":1,"bbox":[720,160,440,30]}
+{"kind":"textbox","id":"sh/o3e98729","slide":4,"text":"Arm Basic Exception Stack Frame","textPreview":"Arm Basic Exception Stack Frame","textChars":31,"textLines":1,"bbox":[720,508,440,24]}
+{"kind":"textbox","id":"sh/zel8b21c","slide":4,"text":"developer.arm.com • Stack frames","textPreview":"developer.arm.com • Stack frames","textChars":32,"textLines":1,"bbox":[725,532,430,18]}
+{"kind":"image","id":"im/1sfilkvm","slide":4,"name":"","geometry":"roundRect","bbox":[818.64,194,242.73,310]}
+{"kind":"notes","id":"nt/iq3u9q","slide":4,"text":"เวลาประมาณ 0:35 นาที\nContext คือสถานะที่ต้องรักษาเพื่อให้ Main Program กลับมาทำงานต่อได้ถูกต้อง เช่น Program Counter และ Register ที่กำลังใช้งาน\nATmega328P ให้ Hardware เก็บ return address ส่วน SREG และ Register ที่ใช้มักจัดการโดย Compiler หรือ ISR prologue\nCortex-M สร้าง Basic Exception Stack Frame ด้วย Hardware โดยเก็บ R0-R3, R12, LR, Return Address และ RETPSR รวมอย่างน้อย 8 words\n\n[Sources]\n- https://developer.arm.com/documentation/107706/0100/Exceptions-and-interrupts-overview/Stack-frames\n- https://documentation-service.arm.com/static/64c7832738511951cb7a2452?token=\n- https://developer.arm.com/documentation/dui0552/a/the-cortex-m3-processor/exception-model/exception-entry-and-return\n- https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf\n- https://books.google.com/books/about/The_Definitive_Guide_to_ARM_Cortex_M3_an.html?id=9YxqAAAAQBAJ\n[/Sources]"}
+{"kind":"slide","id":"sl/7arthw","slide":5,"title":"REFERENCES • เอกสารอ้างอิง","textShapes":38}
+{"kind":"shape","id":"sh/3edcfal4","slide":5,"bbox":[0,0,1280,8]}
+{"kind":"textbox","id":"sh/kvapkve1","slide":5,"text":"REFERENCES • เอกสารอ้างอิง","textPreview":"REFERENCES • เอกสารอ้างอิง","textChars":26,"textLines":1,"bbox":[64,32,560,24]}
+{"kind":"textbox","id":"sh/lg3qt0v6","slide":5,"text":"Textbooks, datasheets, and primary documentation","textPreview":"Textbooks, datasheets, and primary documentation","textChars":48,"textLines":1,"bbox":[64,60,1080,56]}
+{"kind":"textbox","id":"sh/aps7elwj","slide":5,"text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[1175,42,44,34]}
+{"kind":"shape","id":"sh/bq18nqd4","slide":5,"bbox":[64,126,1152,0]}
+{"kind":"shape","id":"sh/crapgvep","slide":5,"bbox":[70,164,56,30]}
+{"kind":"textbox","id":"sh/xsjqp0va","slide":5,"text":"Mazidi, Naimi & Naimi (2011)","textPreview":"Mazidi, Naimi & Naimi (2011)","textChars":28,"textLines":1,"bbox":[132,164,430,30]}
+{"kind":"textbox","id":"sh/ulcrqpw3","slide":5,"text":"The AVR Microcontroller and Embedded Systems. Prentice Hall.","textPreview":"The AVR Microcontroller and Embedded Systems. Prentice Hall.","textChars":60,"textLines":1,"bbox":[132,204,470,56]}
+{"kind":"shape","id":"sh/vml8zudo","slide":5,"bbox":[132,264,450,0]}
+{"kind":"shape","id":"sh/7udgbehg","slide":5,"bbox":[70,276,56,30]}
+{"kind":"textbox","id":"sh/mt4f2tgv","slide":5,"text":"Yiu, J. (2013)","textPreview":"Yiu, J. (2013)","textChars":14,"textLines":1,"bbox":[132,276,430,30]}
+{"kind":"textbox","id":"sh/9gvydozm","slide":5,"text":"The Definitive Guide to ARM Cortex-M3/M4, 3rd ed. Newnes.","textPreview":"The Definitive Guide to ARM Cortex-M3/M4, 3rd ed. Newnes.","textChars":57,"textLines":1,"bbox":[132,316,470,56]}
+{"kind":"shape","id":"sh/8fmx4jy1","slide":5,"bbox":[132,376,450,0]}
+{"kind":"shape","id":"sh/vidgfyhs","slide":5,"bbox":[70,388,56,30]}
+{"kind":"textbox","id":"sh/uh4f6tg7","slide":5,"text":"Microchip Technology","textPreview":"Microchip Technology","textChars":20,"textLines":1,"bbox":[132,388,430,30]}
+{"kind":"textbox","id":"sh/hkfyh8zi","slide":5,"text":"ATmega328P Datasheet, Atmel-7810 — Interrupts & Vector Table.","textPreview":"ATmega328P Datasheet, Atmel-7810 — Interrupts & Vector Table.","textChars":61,"textLines":1,"bbox":[132,428,470,56]}
+{"kind":"shape","id":"sh/wjmh83yx","slide":5,"bbox":[132,488,450,0]}
+{"kind":"shape","id":"sh/jmxgjyho","slide":5,"bbox":[70,500,56,30]}
+{"kind":"textbox","id":"sh/ilozadg3","slide":5,"text":"Microchip Technology","textPreview":"Microchip Technology","textChars":20,"textLines":1,"bbox":[132,500,430,30]}
+{"kind":"textbox","id":"sh/eh8j2x0b","slide":5,"text":"ATmega48A/PA/.../328/P Datasheet.","textPreview":"ATmega48A/PA/.../328/P Datasheet.","textChars":33,"textLines":1,"bbox":[132,540,470,56]}
+{"kind":"shape","id":"sh/fih0b21w","slide":5,"bbox":[132,600,450,0]}
+{"kind":"shape","id":"sh/0ja147ih","slide":5,"bbox":[664,164,56,30]}
+{"kind":"textbox","id":"sh/14jidcj2","slide":5,"text":"Arm","textPreview":"Arm","textChars":3,"textLines":1,"bbox":[726,164,430,30]}
+{"kind":"textbox","id":"sh/6d8jyx0f","slide":5,"text":"Cortex-M3 Devices Generic User Guide — Exception Entry & Return.","textPreview":"Cortex-M3 Devices Generic User Guide — Exception Entry & Return.","textChars":64,"textLines":1,"bbox":[726,204,470,56]}
+{"kind":"shape","id":"sh/reh07210","slide":5,"bbox":[726,264,450,0]}
+{"kind":"shape","id":"sh/sfq107i5","slide":5,"bbox":[664,276,56,30]}
+{"kind":"textbox","id":"sh/dgzi9cjq","slide":5,"text":"Arm","textPreview":"Arm","textChars":3,"textLines":1,"bbox":[726,276,430,30]}
+{"kind":"textbox","id":"sh/a9sjah0j","slide":5,"text":"Exceptions and Interrupts Overview — Stack Frames.","textPreview":"Exceptions and Interrupts Overview — Stack Frames.","textChars":50,"textLines":1,"bbox":[726,316,470,56]}
+{"kind":"shape","id":"sh/balkjm14","slide":5,"bbox":[726,376,450,0]}
+{"kind":"shape","id":"sh/lg7upk7i","slide":5,"bbox":[664,388,56,30]}
+{"kind":"textbox","id":"sh/kfydwf6x","slide":5,"text":"Arm (2016)","textPreview":"Arm (2016)","textChars":10,"textLines":1,"bbox":[726,388,430,30]}
+{"kind":"textbox","id":"sh/je5cnapc","slide":5,"text":"Beginner Guide to Interrupt Latency on Cortex-M Processors.","textPreview":"Beginner Guide to Interrupt Latency on Cortex-M Processors.","textChars":59,"textLines":1,"bbox":[726,428,470,56]}
+{"kind":"shape","id":"sh/ydwvu5or","slide":5,"bbox":[726,488,450,0]}
+{"kind":"shape","id":"sh/xcnulk7m","slide":5,"bbox":[664,500,56,30]}
+{"kind":"textbox","id":"sh/wbedsf61","slide":5,"text":"Valvano, McDermott & Bard","textPreview":"Valvano, McDermott & Bard","textChars":25,"textLines":1,"bbox":[726,500,430,30]}
+{"kind":"textbox","id":"sh/ba5cjapg","slide":5,"text":"Real-Time Interfacing — UT Austin ebook.","textPreview":"Real-Time Interfacing — UT Austin ebook.","textChars":40,"textLines":1,"bbox":[726,540,470,56]}
+{"kind":"shape","id":"sh/a9wvq5ov","slide":5,"bbox":[726,600,450,0]}
+{"kind":"shape","id":"sh/h8rex47q","slide":5,"bbox":[150,626,980,40]}
+{"kind":"textbox","id":"sh/g7id4z65","slide":5,"text":"Click source titles to open official pages • Full URLs are in Speaker Notes","textPreview":"Click source titles to open official pages • Full URLs are in Speaker Notes","textChars":75,"textLines":1,"bbox":[170,626,940,40]}
+{"kind":"shape","id":"sh/ofmd8f2p","slide":5,"bbox":[64,676,1152,0]}
+{"kind":"textbox","id":"sh/pgvuhk3a","slide":5,"text":"Accessed 6 Aug 2026 • Official sources and textbook records","textPreview":"Accessed 6 Aug 2026 • Official sources and textbook records","textChars":59,"textLines":1,"bbox":[64,684,900,18]}
+{"kind":"textbox","id":"sh/2dkb65kj","slide":5,"text":"305341 Embedded System 1  •  ธีรภัทร ภู่ระย้า 66362416  •  05","textPreview":"305341 Embedded System 1  •  ธีรภัทร ภู่ระย้า 66362416  •  05","textChars":61,"textLines":1,"bbox":[928,684,288,18]}
+{"kind":"shape","id":"sh/c3mdcf2l","slide":5,"name":"reference-content-mask","bbox":[64,142,1152,528]}
+{"kind":"textbox","id":"sh/d4vulk36","slide":5,"text":"TEXTBOOKS","textPreview":"TEXTBOOKS","textChars":9,"textLines":1,"bbox":[88,158,480,28]}
+{"kind":"textbox","id":"sh/qh4va5kf","slide":5,"text":"PRIMARY DOCUMENTATION","textPreview":"PRIMARY DOCUMENTATION","textChars":21,"textLines":1,"bbox":[610,158,560,28]}
+{"kind":"textbox","id":"sh/076dgz2x","slide":5,"text":"The AVR Microcontroller and Embedded Systems","textPreview":"The AVR Microcontroller and Embedded Systems","textChars":44,"textLines":1,"bbox":[224,205,330,50]}
+{"kind":"textbox","id":"sh/l8fup43i","slide":5,"text":"Mazidi, Naimi & Naimi • Prentice Hall, 2011\nbooks.google.com • ISBN 9780138003319","textPreview":"Mazidi, Naimi & Naimi • Prentice Hall, 2011 | books.google.com • ISBN 9780138003319","textChars":81,"textLines":2,"bbox":[224,264,330,68]}
+{"kind":"textbox","id":"sh/a18f6t4z","slide":5,"text":"The Definitive Guide to ARM Cortex-M3 and Cortex-M4","textPreview":"The Definitive Guide to ARM Cortex-M3 and Cortex-M4","textChars":51,"textLines":1,"bbox":[224,390,330,54]}
+{"kind":"textbox","id":"sh/x4jyh8nq","slide":5,"text":"Joseph Yiu • Newnes, 3rd ed., 2013\nbooks.google.com • ISBN 9780124080829","textPreview":"Joseph Yiu • Newnes, 3rd ed., 2013 | books.google.com • ISBN 9780124080829","textChars":72,"textLines":2,"bbox":[224,452,330,68]}
+{"kind":"shape","id":"sh/w3qx83m5","slide":5,"bbox":[610,202,560,76]}
+{"kind":"textbox","id":"sh/nyhwbe58","slide":5,"text":"Microchip — ATmega328P Datasheet","textPreview":"Microchip — ATmega328P Datasheet","textChars":32,"textLines":1,"bbox":[628,213,524,28]}
+{"kind":"textbox","id":"sh/mx8f294n","slide":5,"text":"ww1.microchip.com • Interrupts & Vector Table","textPreview":"ww1.microchip.com • Interrupts & Vector Table","textChars":45,"textLines":1,"bbox":[628,244,524,28]}
+{"kind":"shape","id":"sh/90zedone","slide":5,"bbox":[610,292,560,76]}
+{"kind":"textbox","id":"sh/8zqx4jmt","slide":5,"text":"Arm — Exception Entry & Return","textPreview":"Arm — Exception Entry & Return","textChars":30,"textLines":1,"bbox":[628,303,524,28]}
+{"kind":"textbox","id":"sh/7u1gni5s","slide":5,"text":"developer.arm.com • Cortex-M3 Generic User Guide","textPreview":"developer.arm.com • Cortex-M3 Generic User Guide","textChars":48,"textLines":1,"bbox":[628,334,524,28]}
+{"kind":"shape","id":"sh/6tsfed47","slide":5,"bbox":[610,382,560,76]}
+{"kind":"textbox","id":"sh/21gr21sr","slide":5,"text":"Arm — Stack Frames","textPreview":"Arm — Stack Frames","textChars":18,"textLines":1,"bbox":[628,393,524,28]}
+{"kind":"textbox","id":"sh/n2psv6tw","slide":5,"text":"developer.arm.com • Armv8-M Exception Model","textPreview":"developer.arm.com • Armv8-M Exception Model","textChars":43,"textLines":1,"bbox":[628,424,524,28]}
+{"kind":"shape","id":"sh/o3y94bah","slide":5,"bbox":[610,472,560,76]}
+{"kind":"textbox","id":"sh/p47axgb2","slide":5,"text":"Arduino — Uno Rev3 Product & Pinout","textPreview":"Arduino — Uno Rev3 Product & Pinout","textChars":35,"textLines":1,"bbox":[628,483,524,28]}
+{"kind":"textbox","id":"sh/a5gr6lsn","slide":5,"text":"store.arduino.cc • content.arduino.cc","textPreview":"store.arduino.cc • content.arduino.cc","textChars":37,"textLines":1,"bbox":[628,514,524,28]}
+{"kind":"textbox","id":"sh/b6pszqt8","slide":5,"text":"Additional open textbook: UT Austin — Real-Time Interfacing","textPreview":"Additional open textbook: UT Austin — Real-Time Interfacing","textChars":59,"textLines":1,"bbox":[88,578,1082,24]}
+{"kind":"textbox","id":"sh/c7y98vat","slide":5,"text":"All source titles above are clickable • Full exact URLs and image sources are recorded in Speaker Notes","textPreview":"All source titles above are clickable • Full exact URLs and image sources are recorded in Speaker Notes","textChars":103,"textLines":1,"bbox":[88,610,1082,20]}
+{"kind":"image","id":"im/y1onu18r","slide":5,"name":"","geometry":"roundRect","bbox":[90,204.25,112,143.5]}
+{"kind":"image","id":"im/5kj6hkrm","slide":5,"name":"","geometry":"roundRect","bbox":[90,392.87,112,138.25]}
+{"kind":"notes","id":"nt/7arthw","slide":5,"text":"เวลาประมาณ 0:15 นาที\nแหล่งอ้างอิงหลักประกอบด้วย textbook สองเล่ม เอกสารผู้ผลิต Microchip เอกสารสถาปัตยกรรม Arm และเอกสารฮาร์ดแวร์ Arduino\nชื่อแหล่งบนสไลด์เป็น Hyperlink ที่เปิดหน้าเอกสารจริงได้ และ URL เต็มรวมถึงแหล่งภาพปกหนังสืออยู่ด้านล่าง\n\n[Sources]\n- https://books.google.com/books/about/The_AVR_Microcontroller_and_Embedded_Sys.html?id=C70BQgAACAAJ\n- https://books.google.co.th/books/content?id=C70BQgAACAAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE70R7SUFAEnpk0R80CELQIhvoCOL8vW1Zs0Hn54du5kpR7l1ARldUxmOj6fDSAKYS95G0nCFg8wegCZ9mGbnUx-s6kuxxnhEs6ebVFUTtQWq-tOAyxDYEuQWQa9J98c1MK3IFqq-\n- https://books.google.com/books/about/The_Definitive_Guide_to_ARM_Cortex_M3_an.html?id=9YxqAAAAQBAJ\n- https://books.google.co.th/books/publisher/content?id=9YxqAAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE72LsJYa239w8DNG38HpqNuXiCIkUTIbIVCR5A0sKive78_sbprf6bHj7HjIGn0q5TEN0rUQRyWeasQq3hxaKS87IGkt6M7gVHCKrJ0_y2JVr6jmBSZQ01UlqwvryVYcLtrW5PoP\n- https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf\n- https://ww1.microchip.com/downloads/en/DeviceDoc/ATmega48A-PA-88A-PA-168A-PA-328-P-DS-DS40002061A.pdf\n- https://developer.arm.com/documentation/dui0552/a/the-cortex-m3-processor/exception-model/exception-entry-and-return\n- https://developer.arm.com/documentation/107706/0100/Exceptions-and-interrupts-overview/Stack-frames\n- https://developer.arm.com/community/arm-community-blogs/b/architectures-and-processors-blog/posts/beginner-guide-on-interrupt-latency-and-interrupt-latency-of-the-arm-cortex-m-processors\n- https://users.ece.utexas.edu/~valvano/EE445L/ebook/index.htm\n- https://store.arduino.cc/products/arduino-uno-rev3\n- https://content.arduino.cc/assets/A000066-pinout.png\n[/Sources]"}

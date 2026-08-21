@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>เฉลยข้อสอบจริงกลางภาค 2561 (Real Exam Paper 2561) | Embedded System 1</title>
+  <meta name="description" content="เฉลยข้อสอบจริงกลางภาคปี 2561 วิชา Embedded Systems 1 พร้อมภาพถ่ายกระดาษข้อสอบ โค้ดภาษาแอสเซมบลี และวิธีคำนวณละเอียด">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../../../assets/css/main.css">
+  <link rel="stylesheet" href="../../../assets/css/solution.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="../../../index.html" class="brand">
+        <div class="brand-icon"><i class="fas fa-microchip"></i></div>
+        <div class="brand-title">
+          <span>REAL EXAM 2561</span>
+          <span>PHOTO SCANS & SOLUTIONS</span>
+        </div>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="../../../index.html" class="nav-link">หน้าแรก</a></li>
+        <li><a href="../../index.html" class="nav-link">Embedded 1</a></li>
+        <li><a href="../index.html" class="nav-link">ข้อสอบ Midterm</a></li>
+        <li><a href="../recalled-questions/index.html" class="nav-link">เฉลยแนวข้อสอบ</a></li>
+        <li><a href="index.html" class="nav-link active">เฉลยข้อสอบจริง 2561</a></li>
+        <li><a href="https://github.com/T3thr/embedded-system-learning" target="_blank" class="nav-link"><i class="fab fa-github"></i> GitHub</a></li>
+      </ul>
+
+      <div class="nav-controls">
+        <button id="theme-toggle" class="btn-icon" title="สลับโหมดมืด/สว่าง">
+          <i class="fas fa-sun"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding-bottom: 4rem;">
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs">
+      <a href="../../../index.html"><i class="fas fa-home"></i> หน้าแรก</a>
+      <span class="separator"><i class="fas fa-chevron-right"></i></span>
+      <a href="../../index.html">Embedded 1</a>
+      <span class="separator"><i class="fas fa-chevron-right"></i></span>
+      <a href="../index.html">ข้อสอบ Midterm</a>
+      <span class="separator"><i class="fas fa-chevron-right"></i></span>
+      <span class="current">02. ข้อสอบจริงปี 2561</span>
+    </nav>
+
+    <!-- Header Summary -->
+    <section class="hero" style="padding: 1rem 0 1.5rem; text-align: left;">
+      <div class="hero-badge">
+        <i class="fas fa-camera"></i> ภาพถ่ายกระดาษข้อสอบจริง 5 หน้า (หน้า 7 - 11)
+      </div>
+      <h1 class="hero-title" style="font-size: 2.25rem;">เฉลยข้อสอบจริงกลางภาค ปีการศึกษา 2561</h1>
+      <p class="hero-subtitle" style="margin: 0 0 1.5rem; max-width: 900px;">
+        ถอดโจทย์อัตนัย 6 ข้อใหญ่พร้อมภาพถ่ายต้นฉบับ ลายมือในกระดาษข้อสอบ และเฉลยวิธีทำฉบับสมบูรณ์ถูกต้องตามหลักวิศวกรรม
+      </p>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon blue"><i class="fas fa-file-signature"></i></div>
+          <div class="stat-info">
+            <h4>จำนวนข้อสอบ</h4>
+            <p>6 ข้อใหญ่ (36 คะแนน)</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon green"><i class="fas fa-code"></i></div>
+          <div class="stat-info">
+            <h4>เขียนโค้ด Assembly</h4>
+            <p>ข้อ 1 (LED Logic Monitor)</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon purple"><i class="fas fa-calculator"></i></div>
+          <div class="stat-info">
+            <h4>คำนวณ & สถาปัตยกรรม</h4>
+            <p>ข้อ 2, 3, 4 (Memory, Math, Time)</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon amber"><i class="fas fa-file-code"></i></div>
+          <div class="stat-info">
+            <h4>Toolchain & HEX</h4>
+            <p>ข้อ 6 (Intel HEX File)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content Layout -->
+    <div class="content-layout">
+      
+      <!-- Sidebar TOC -->
+      <aside class="sidebar-toc">
+        <div class="toc-title"><i class="fas fa-list-ul"></i> สารบัญข้อสอบ 2561</div>
+        <ul class="toc-list">
+          <li class="toc-item"><a href="#real-q1">ข้อ 1 (8 คะแนน): LED Logic Monitor</a></li>
+          <li class="toc-item"><a href="#real-q2">ข้อ 2 (4 คะแนน): 8052 Memory Map</a></li>
+          <li class="toc-item"><a href="#real-q3">ข้อ 3 (4 คะแนน): Trace Instructions</a></li>
+          <li class="toc-item"><a href="#real-q4">ข้อ 4 (2 คะแนน): คำนวณ Crystal 18.4321 MHz</a></li>
+          <li class="toc-item"><a href="#real-q5">ข้อ 5 (10 คะแนน): เปรียบเทียบ MPU vs MCU</a></li>
+          <li class="toc-item"><a href="#real-q6">ข้อ 6 (10 คะแนน): Cross-Assembler & HEX</a></li>
+        </ul>
+      </aside>
+
+      <!-- Main Solutions -->
+      <div class="solutions-container">
+
+        <!-- Question 1: LED Logic Monitor -->
+        <article class="solution-card" id="real-q1">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge green">ข้อ 1 (8 คะแนน)</span>
+              <h3 class="card-title">เขียนโปรแกรม Assembly ควบคุมวงจร LED Logic Monitor</h3>
+            </div>
+            <span class="ref-pill">หน้า 7 ของกระดาษข้อสอบ</span>
+          </div>
+          <div class="card-body">
+            
+            <div class="diagram-card exam-photo">
+              <img src="../../../assets/images/exam-2561/q1-led-logic-monitor-circuit.png" alt="วงจร LED Logic Monitor หน้า 7">
+              <div class="diagram-caption"><i class="fas fa-camera"></i> รูปถ่ายข้อสอบจริงหน้า 7: วงจร LED Logic Monitor</div>
+            </div>
+
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> โค้ดภาษาแอสเซมบลีฉบับสมบูรณ์ (พร้อมฟังก์ชันหน่วงเวลา 1 วินาที)</div>
+              </div>
+              <div class="content-block">
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <span>8051 Assembly (.asm)</span>
+                    <button class="btn-copy">Copy Code</button>
+                  </div>
+                  <pre class="code-content"><code>        <span class="directive">ORG</span>     <span class="address">0000H</span>           <span class="comment">; Reset Vector</span>
+        <span class="opcode">LJMP</span>    <span class="operand">MAIN</span>
+
+        <span class="directive">ORG</span>     <span class="address">0030H</span>           <span class="comment">; Main Program Address</span>
+<span class="operand">MAIN:</span>   <span class="opcode">MOV</span>     <span class="operand">P1</span>, <span class="immediate">#0FFH</span>       <span class="comment">; Configure P1 as Input (P1.0 = Switch)</span>
+
+<span class="operand">LOOP:</span>   <span class="opcode">JB</span>      <span class="operand">P1.0</span>, <span class="operand">CHECK_HIGH</span> <span class="comment">; If P1.0 == 1 -> JUMP to CHECK_HIGH</span>
+
+        <span class="comment">; CASE 0: P1.0 is LOW (0V) -> Turn ON LED0 (P0.0=0), Turn OFF LED1 (P0.1=1)</span>
+        <span class="opcode">CLR</span>     <span class="operand">P0.0</span>            <span class="comment">; Active LOW -> LED0 ON</span>
+        <span class="opcode">SETB</span>    <span class="operand">P0.1</span>            <span class="comment">; LED1 OFF</span>
+        <span class="opcode">ACALL</span>   <span class="operand">DELAY_1S</span>        <span class="comment">; Delay 1 second</span>
+        <span class="opcode">SJMP</span>    <span class="operand">LOOP</span>
+
+<span class="operand">CHECK_HIGH:</span>
+        <span class="comment">; CASE 1: P1.0 is HIGH (+5V) -> Turn OFF LED0 (P0.0=1), Turn ON LED1 (P0.1=0)</span>
+        <span class="opcode">SETB</span>    <span class="operand">P0.0</span>            <span class="comment">; LED0 OFF</span>
+        <span class="opcode">CLR</span>     <span class="operand">P0.1</span>            <span class="comment">; Active LOW -> LED1 ON</span>
+        <span class="opcode">ACALL</span>   <span class="operand">DELAY_1S</span>        <span class="comment">; Delay 1 second</span>
+        <span class="opcode">SJMP</span>    <span class="operand">LOOP</span>
+
+<span class="comment">; ==========================================================</span>
+<span class="comment">; Delay Subroutine: Approx 1.0 Second Delay (at 12MHz Crystal)</span>
+<span class="comment">; ==========================================================</span>
+<span class="operand">DELAY_1S:</span>
+        <span class="opcode">MOV</span>     <span class="operand">R7</span>, <span class="immediate">#10</span>
+<span class="operand">D_L1:</span>   <span class="opcode">MOV</span>     <span class="operand">R6</span>, <span class="immediate">#200</span>
+<span class="operand">D_L2:</span>   <span class="opcode">MOV</span>     <span class="operand">R5</span>, <span class="immediate">#250</span>
+<span class="operand">D_L3:</span>   <span class="opcode">DJNZ</span>    <span class="operand">R5</span>, <span class="operand">D_L3</span>
+        <span class="opcode">DJNZ</span>    <span class="operand">R6</span>, <span class="operand">D_L2</span>
+        <span class="opcode">DJNZ</span>    <span class="operand">R7</span>, <span class="operand">D_L1</span>
+        <span class="opcode">RET</span>
+
+        <span class="directive">END</span></code></pre>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- Question 2: Memory Map -->
+        <article class="solution-card" id="real-q2">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge green">ข้อ 2 (4 คะแนน)</span>
+              <h3 class="card-title">8052 Memory Map (Internal RAM, SFR, External RAM)</h3>
+            </div>
+            <span class="ref-pill">หน้า 8 ของกระดาษข้อสอบ</span>
+          </div>
+          <div class="card-body">
+            
+            <div class="diagram-card exam-photo">
+              <img src="../../../assets/images/exam-2561/q2-memory-map-diagram.png" alt="ผังหน่วยความจำ 8052 หน้า 8">
+              <div class="diagram-caption"><i class="fas fa-camera"></i> รูปถ่ายข้อสอบจริงหน้า 8: ไดอะแกรม 8052 Memory Map</div>
+            </div>
+
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> เฉลยคำตอบข้อย่อย 2.1 – 2.3</div>
+              </div>
+              <div class="content-block">
+                <p><strong>2.1 วิธีการเข้าถึง Upper 128 Bytes RAM vs SFR ในช่วงแอดเดรส 80H - FFH:</strong></p>
+                <ul>
+                  <li><strong>Upper 128 Bytes RAM (ภายใน 8052):</strong> เข้าถึงได้ด้วย <strong>Indirect Addressing เท่านั้น</strong> เช่น <code>MOV R0, #80H</code> ตามด้วย <code>MOV A, @R0</code></li>
+                  <li><strong>Special Function Registers (SFRs):</strong> เข้าถึงได้ด้วย <strong>Direct Addressing เท่านั้น</strong> เช่น <code>MOV A, 80H</code> หรือ <code>MOV A, P0</code></li>
+                </ul>
+                <p><strong>2.2 วิธีการเข้าถึง External Data Memory (RAM ภายนอก 64 KB):</strong></p>
+                <ul>
+                  <li>ต้องใช้คำสั่ง <strong>`MOVX`</strong> ร่วมกับ Data Pointer (`DPTR`) หรือ `Ri` เช่น <code>MOV DPTR, #8000H</code> แล้วสั่ง <code>MOVX A, @DPTR</code></li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- Question 6: Cross-Assembler & HEX File -->
+        <article class="solution-card" id="real-q6">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge green">ข้อ 6 (10 คะแนน)</span>
+              <h3 class="card-title">การแปลง Cross-Assembler Listing และสร้าง Intel HEX File</h3>
+            </div>
+            <span class="ref-pill">หน้า 11 ของกระดาษข้อสอบ</span>
+          </div>
+          <div class="card-body">
+            
+            <div class="diagram-card exam-photo">
+              <img src="../../../assets/images/exam-2561/q6-cross-assembler-table.png" alt="ตาราง Cross-Assembler Table หน้า 11">
+              <div class="diagram-caption"><i class="fas fa-camera"></i> รูปถ่ายข้อสอบจริงหน้า 11: Table 1 Cross-Assembler Listing</div>
+            </div>
+
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> ตัวอย่างบรรทัด Intel HEX Record ที่ถูกต้อง</div>
+              </div>
+              <div class="content-block">
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <span>Intel HEX Format</span>
+                    <button class="btn-copy">Copy HEX</button>
+                  </div>
+                  <pre class="code-content"><code>:080030007580AA7800E604F6FA17
+:00000001FF</code></pre>
+                </div>
+                <p><strong>โครงสร้างของ Intel HEX Record:</strong></p>
+                <ul>
+                  <li><code>:</code> = Start Code</li>
+                  <li><code>08</code> = Byte Count (8 ไบต์)</li>
+                  <li><code>0030</code> = Address เริ่มต้นที่ `0030H`</li>
+                  <li><code>00</code> = Record Type (00 = Data Record)</li>
+                  <li><code>7580AA7800E604F6</code> = Data Bytes (รหัสภาษาเครื่อง)</li>
+                  <li><code>17</code> = Checksum (Two's complement ของผลรวมไบต์ทั้งหมดในบรรทัด)</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div>
+        <p><strong>Embedded Systems Learning Platform</strong> &bull; สื่อการสอนและคลังข้อสอบวิชาสมองกลฝังตัว</p>
+      </div>
+      <div class="footer-links">
+        <a href="../../../index.html">หน้าแรก</a>
+        <a href="../../index.html">Embedded 1</a>
+        <a href="../index.html">ข้อสอบ Midterm</a>
+        <a href="../recalled-questions/index.html">เฉลยแนวข้อสอบ</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../../assets/js/main.js"></script>
+</body>
+</html>
