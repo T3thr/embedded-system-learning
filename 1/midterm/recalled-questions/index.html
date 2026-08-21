@@ -751,30 +751,65 @@
               <span class="q-badge blue">คำสั่งที่ 1</span>
               <h3 class="card-title">ORG 1000H</h3>
             </div>
-            <span class="ref-pill">Assembler Directive</span>
+            <span class="ref-pill">Assembler Directive / Location Counter</span>
           </div>
           <div class="card-body">
+            
             <div class="section-recalled">
-              <div class="section-recalled-header"><i class="fas fa-code"></i> คำสั่งที่จำออกมา:</div>
+              <div class="section-recalled-header"><i class="fas fa-code"></i> คำสั่งในข้อสอบ:</div>
               <div class="section-recalled-text"><code>ORG 1000H</code></div>
             </div>
+
             <div class="section-senior-draft">
-              <div class="section-senior-header"><i class="fas fa-pencil-alt"></i> แนวทางของรุ่นพี่:</div>
-              <div class="section-senior-content">ข้อมูลจะถูกเก็บไว้ที่ตำแหน่งหน่วยความจำ 1000H</div>
+              <div class="section-senior-header"><i class="fas fa-pencil-alt"></i> แนวทางของรุ่นพี่ (สั้นเกินไป):</div>
+              <div class="section-senior-content">"ข้อมูลจะถูกเก็บไว้ที่ตำแหน่งหน่วยความจำ 1000H" &mdash; <em>(ข้อวิเคราะห์: ไม่ถูกต้องสมบูรณ์ เพราะ ORG ไม่ใช่คำสั่งย้ายข้อมูล และทำงานกับ Program ROM ไม่ใช่ RAM)</em></div>
             </div>
+
             <div class="section-official">
               <div class="section-official-header">
-                <div class="official-badge-title"><i class="fas fa-microchip"></i> รายละเอียดการทำงานเชิงสถาปัตยกรรม</div>
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> คำตอบที่ควรเขียนในกระดาษคำตอบห้องสอบ (Exam Answer - ได้คะแนนเต็ม 100%)</div>
               </div>
               <div class="content-block">
-                <ul>
-                  <li><strong>ประเภท:</strong> <strong>Assembler Directive</strong> (คำสั่งสำหรับตัวแปลภาษา ไม่ใช่คำสั่งที่ CPU Execute)</li>
-                  <li><strong>ขนาด / รอบเวลา:</strong> 0 Byte (ไม่สร้าง Opcode), 0 Machine Cycle</li>
-                  <li><strong>การทำงาน:</strong> กำหนดค่าตัวนับตำแหน่ง (Location Counter) ให้โปรแกรมในบรรทัดถัดไปถูกบันทึกลงใน Program ROM เริ่มต้นที่แอดเดรส <strong><code>1000H</code></strong></li>
-                  <li><strong>ผลต่อแฟลก:</strong> ไม่มีผลต่อแฟลกใดๆ ทั้งสิ้น</li>
-                </ul>
+                <p style="font-size: 1.05rem; line-height: 1.6; color: var(--text-primary);">
+                  <strong>คำอธิบายการทำงาน:</strong> เป็นคำสั่งกำหนดทิศทางของตัวแปลภาษา (Assembler Directive / Pseudo-instruction) โดยสั่งให้ตัวนับตำแหน่ง (Location Counter / Program Counter) เริ่มต้นวางรหัสภาษาเครื่อง (Machine Code) ของคำสั่งในบรรทัดถัดไปลงในหน่วยความจำโปรแกรม (Program Memory / ROM) เริ่มต้นที่แอดเดรส <strong><code>1000H</code></strong> (สัญลักษณ์ RTL: <code>Location Counter ← 1000H</code>)
+                </p>
+
+                <div style="margin-top: 1rem; border-top: 1px dashed var(--border-color); padding-top: 0.75rem;">
+                  <strong style="color: var(--accent-cyan);"><i class="fas fa-microchip"></i> การวิเคราะห์ทางสถาปัตยกรรมและฮาร์ดแวร์เชิงลึก:</strong>
+                </div>
+
+                <div class="table-responsive" style="margin-top: 0.5rem;">
+                  <table class="custom-table">
+                    <tbody>
+                      <tr>
+                        <td style="width: 25%; font-weight: 600;">ประเภทคำสั่ง</td>
+                        <td><strong>Assembler Directive (คำสั่งควบคุมตัวแปลภาษา)</strong> ไม่ใช่คำสั่งที่ CPU Execute ในขณะทำงานจริง</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: 600;">ขนาด / รอบเวลา</td>
+                        <td><strong>0 Byte</strong> (ไม่สร้างรหัส Opcode ลง ROM), <strong>0 Machine Cycle</strong> (ไม่มีเวลาหน่วง)</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: 600;">ผลต่อธงใน PSW</td>
+                        <td><strong>ไม่มีผลต่อ Flag ใดๆ</strong> (CY, AC, OV, P คงเดิมทั้งหมด)</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: 600;">ผลเชิงสถาปัตยกรรม</td>
+                        <td>ตัว Assembler จะปรับค่า Offset Pointer ของไฟล์ Intel HEX ให้เรคคอร์ดถัดไปถูกเขียนที่ Address <code>1000H</code></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
+
+            <div class="box-warning">
+              <div class="box-warning-header"><i class="fas fa-exclamation-triangle"></i> ข้อควรระวังและจุดตัดคะแนนในห้องสอบ:</div>
+              <div class="box-warning-text">
+                ห้ามตอบว่า "ย้ายข้อมูลไปเก็บที่ 1000H" หรือ "เขียนลง RAM" โดยเด็ดขาด เพราะ ORG เป็นคำสั่งบอกตัว Assembler ให้เริ่มวางโค้ดลงใน <strong>Program ROM</strong> ณ ขั้นตอน Assemble เท่านั้น ไม่มีการทำงานใน CPU ขณะ Run-time
+              </div>
+            </div>
+
           </div>
         </article>
 
@@ -785,30 +820,69 @@
               <span class="q-badge blue">คำสั่งที่ 2</span>
               <h3 class="card-title">MOV A, R2</h3>
             </div>
-            <span class="ref-pill">Register Addressing</span>
+            <span class="ref-pill">Register Addressing Mode</span>
           </div>
           <div class="card-body">
+            
             <div class="section-recalled">
-              <div class="section-recalled-header"><i class="fas fa-code"></i> คำสั่งที่จำออกมา:</div>
+              <div class="section-recalled-header"><i class="fas fa-code"></i> คำสั่งในข้อสอบ:</div>
               <div class="section-recalled-text"><code>MOV A, R2</code></div>
             </div>
+
             <div class="section-senior-draft">
-              <div class="section-senior-header"><i class="fas fa-pencil-alt"></i> แนวทางของรุ่นพี่:</div>
-              <div class="section-senior-content">A &larr; R2</div>
+              <div class="section-senior-header"><i class="fas fa-pencil-alt"></i> แนวทางของรุ่นพี่ (สั้นเกินไป):</div>
+              <div class="section-senior-content">"A &larr; R2" &mdash; <em>(ข้อวิเคราะห์: ถูกต้องในเชิงสัญลักษณ์ แต่ขาดการอธิบายความหมายของ Register Bank และผลต่อค่าต้นทาง)</em></div>
             </div>
+
             <div class="section-official">
               <div class="section-official-header">
-                <div class="official-badge-title"><i class="fas fa-microchip"></i> รายละเอียดการทำงานเชิงสถาปัตยกรรม</div>
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> คำตอบที่ควรเขียนในกระดาษคำตอบห้องสอบ (Exam Answer - ได้คะแนนเต็ม 100%)</div>
               </div>
               <div class="content-block">
-                <ul>
-                  <li><strong>Addressing Mode:</strong> <strong>Register Addressing</strong> (อ้างอิงผ่านรีจิสเตอร์ <code>R2</code> ของ Bank ปัจจุบัน)</li>
-                  <li><strong>ขนาด / รอบเวลา:</strong> <strong>1 Byte</strong> (Opcode: <code>EAH</code> สำหรับ Bank 0), <strong>1 Machine Cycle</strong></li>
-                  <li><strong>การทำงาน:</strong> คัดลอกข้อมูล 8 บิตจาก <code>R2</code> เข้าไปเก็บใน Accumulator (<code>A</code>) โดยค่าเดิมใน <code>R2</code> ยังคงอยู่ (<code>A ← R2</code>)</li>
-                  <li><strong>ผลต่อแฟลก:</strong> ไม่กระทบ <code>CY</code>, <code>AC</code>, <code>OV</code> (ปรับเฉพาะ Parity Flag <code>P</code> ตามจำนวนเลข 1 ใน A)</li>
-                </ul>
+                <p style="font-size: 1.05rem; line-height: 1.6; color: var(--text-primary);">
+                  <strong>คำอธิบายการทำงาน:</strong> คัดลอกข้อมูลขนาด 8 บิตจากรีจิสเตอร์ใช้งานทั่วไป <code>R2</code> ของ Register Bank ปัจจุบัน (ที่ถูกเลือกโดยบิต RS1:RS0 ใน PSW) ไปเก็บไว้ใน Accumulator (รีจิสเตอร์ <code>A</code>) โดยที่ค่าข้อมูลเดิมในรีจิสเตอร์ <code>R2</code> ยังคงเหมือนเดิม ไม่สูญหาย (สัญลักษณ์ RTL: <code>A ← R2</code>)
+                </p>
+
+                <div style="margin-top: 1rem; border-top: 1px dashed var(--border-color); padding-top: 0.75rem;">
+                  <strong style="color: var(--accent-cyan);"><i class="fas fa-microchip"></i> การวิเคราะห์ทางสถาปัตยกรรมและฮาร์ดแวร์เชิงลึก:</strong>
+                </div>
+
+                <div class="table-responsive" style="margin-top: 0.5rem;">
+                  <table class="custom-table">
+                    <tbody>
+                      <tr>
+                        <td style="width: 25%; font-weight: 600;">โหมดการอ้างแอดเดรส</td>
+                        <td><strong>Register Addressing Mode</strong> (อ้างอิงผ่านรีจิสเตอร์ R0–R7 โดยตรง)</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: 600;">ขนาด & รหัสเครื่อง</td>
+                        <td><strong>1 Byte</strong> (Opcode: <code>EAH</code> สำหรับ Bank 0 ซึ่งแมปอยู่ที่แอดเดรส RAM <code>02H</code>)</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: 600;">รอบเวลาทำงาน (Cycles)</td>
+                        <td><strong>1 Machine Cycle</strong> (ใช้เวลา $1\ \mu\text{s}$ ที่ความถี่ Crystal $12\text{ MHz}$)</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: 600;">ผลต่อธงใน PSW</td>
+                        <td><strong>ไม่กระทบธง CY, AC, OV</strong> (ปรับเฉพาะ Parity Flag <code>P</code> ใน PSW ตามจำนวนเลข 1 ในรีจิสเตอร์ A)</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: 600;">กระบวนการ Datapath</td>
+                        <td>CPU ส่งข้อมูลจาก Register File ผ่าน Internal Data Bus ขนาด 8 บิต เข้าสู่ Accumulator Latch</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
+
+            <div class="box-warning">
+              <div class="box-warning-header"><i class="fas fa-exclamation-triangle"></i> ข้อควรระวังและจุดตัดคะแนนในห้องสอบ:</div>
+              <div class="box-warning-text">
+                คำสั่ง <code>MOV</code> เป็นการ <strong>"คัดลอก (Copy)"</strong> ไม่ใช่การ "ย้ายจนต้นทางหายไป" ข้อมูลใน <code>R2</code> จะยังคงอยู่เหมือนเดิม และตำแหน่งจริงของ <code>R2</code> ใน RAM ขึ้นอยู่กับว่ากำลังเลือกใช้งาน Bank ใด (Bank 0 = 02H, Bank 1 = 0AH, Bank 2 = 12H, Bank 3 = 1AH)
+              </div>
+            </div>
+
           </div>
         </article>
 
@@ -819,30 +893,69 @@
               <span class="q-badge blue">คำสั่งที่ 3</span>
               <h3 class="card-title">MOV A, 35H</h3>
             </div>
-            <span class="ref-pill">Direct Addressing</span>
+            <span class="ref-pill">Direct Addressing Mode</span>
           </div>
           <div class="card-body">
+            
             <div class="section-recalled">
-              <div class="section-recalled-header"><i class="fas fa-code"></i> คำสั่งที่จำออกมา:</div>
+              <div class="section-recalled-header"><i class="fas fa-code"></i> คำสั่งในข้อสอบ:</div>
               <div class="section-recalled-text"><code>MOV A, 35H</code></div>
             </div>
+
             <div class="section-senior-draft">
-              <div class="section-senior-header"><i class="fas fa-pencil-alt"></i> แนวทางของรุ่นพี่:</div>
-              <div class="section-senior-content">A &larr; [35H]</div>
+              <div class="section-senior-header"><i class="fas fa-pencil-alt"></i> แนวทางของรุ่นพี่ (สั้นเกินไป):</div>
+              <div class="section-senior-content">"A &larr; [35H]" &mdash; <em>(ข้อวิเคราะห์: สัญลักษณ์ถูกต้อง แต่อาจารย์ต้องการคำอธิบายภาษาไทยและชนิดของพื้นที่หน่วยความจำ)</em></div>
             </div>
+
             <div class="section-official">
               <div class="section-official-header">
-                <div class="official-badge-title"><i class="fas fa-microchip"></i> รายละเอียดการทำงานเชิงสถาปัตยกรรม</div>
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> คำตอบที่ควรเขียนในกระดาษคำตอบห้องสอบ (Exam Answer - ได้คะแนนเต็ม 100%)</div>
               </div>
               <div class="content-block">
-                <ul>
-                  <li><strong>Addressing Mode:</strong> <strong>Direct Addressing</strong> (อ้างอิงตำแหน่งแอดเดรสตรง)</li>
-                  <li><strong>ขนาด / รอบเวลา:</strong> <strong>2 Bytes</strong> (Opcode: <code>E5 35</code>), <strong>1 Machine Cycle</strong></li>
-                  <li><strong>การทำงาน:</strong> นำข้อมูลขนาด 8 บิตจาก Internal RAM ตำแหน่งแอดเดรส <strong><code>35H</code></strong> ไปเก็บใน Accumulator (<code>A</code>) (<code>A ← RAM[35H]</code>)</li>
-                  <li><strong>ข้อสังเกตสำคัญ:</strong> ไม่มีเครื่องหมาย <code>#</code> จึงเป็น <strong>Address</strong> ไม่ใช่ค่าคงที่ (ถ้า <code>MOV A, #35H</code> คือเอาเลข <code>35H</code> ใส่ A)</li>
-                </ul>
+                <p style="font-size: 1.05rem; line-height: 1.6; color: var(--text-primary);">
+                  <strong>คำอธิบายการทำงาน:</strong> อ่านข้อมูลขนาด 8 บิตจากหน่วยความจำข้อมูลภายใน (Internal Data RAM) ณ ตำแหน่งแอดเดรส <strong><code>35H</code></strong> (ซึ่งอยู่ในพื้นที่ General Purpose RAM / Scratchpad RAM) เข้ามาเก็บไว้ใน Accumulator (รีจิสเตอร์ <code>A</code>) (สัญลักษณ์ RTL: <code>A ← RAM[35H]</code>)
+                </p>
+
+                <div style="margin-top: 1rem; border-top: 1px dashed var(--border-color); padding-top: 0.75rem;">
+                  <strong style="color: var(--accent-cyan);"><i class="fas fa-microchip"></i> การวิเคราะห์ทางสถาปัตยกรรมและฮาร์ดแวร์เชิงลึก:</strong>
+                </div>
+
+                <div class="table-responsive" style="margin-top: 0.5rem;">
+                  <table class="custom-table">
+                    <tbody>
+                      <tr>
+                        <td style="width: 25%; font-weight: 600;">โหมดการอ้างแอดเดรส</td>
+                        <td><strong>Direct Addressing Mode</strong> (ระบุตำแหน่งแอดเดรส 8 บิตลงในคำสั่งโดยตรง)</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: 600;">ขนาด & รหัสเครื่อง</td>
+                        <td><strong>2 Bytes</strong> (ไบต์ที่ 1 Opcode: <code>E5H</code>, ไบต์ที่ 2 Direct Address: <code>35H</code>)</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: 600;">รอบเวลาทำงาน (Cycles)</td>
+                        <td><strong>1 Machine Cycle</strong> (ใช้เวลา $1\ \mu\text{s}$ ที่ความถี่ Crystal $12\text{ MHz}$)</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: 600;">ผลต่อธงใน PSW</td>
+                        <td><strong>ไม่กระทบธง CY, AC, OV</strong> (ปรับเฉพาะ Parity Flag <code>P</code> ตามค่าใหม่ใน A)</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: 600;">ตำแหน่งในแผนผัง RAM</td>
+                        <td>แอดเดรส <code>35H</code> อยู่ในพื้นที่ User RAM (30H–7FH) ปลอดภัยจากการถูก Stack และ Register Banks เขียนทับ</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
+
+            <div class="box-warning">
+              <div class="box-warning-header"><i class="fas fa-exclamation-triangle"></i> ข้อควรระวังและจุดตัดคะแนนในห้องสอบ:</div>
+              <div class="box-warning-text">
+                <strong>ระวังกับดักเรื่องเครื่องหมาย <code>#</code>:</strong> เนื่องจากคำสั่งนี้เขียนว่า <code>MOV A, 35H</code> (ไม่มีเครื่องหมาย <code>#</code>) จึงเป็นการอ่านค่าจาก <strong>RAM Address 35H</strong> ไม่ใช่การเอาเลข <code>35H</code> ไปใส่ A! (หากต้องการเอาตัวเลข 35H ใส่ A ต้องเขียนว่า <code>MOV A, #35H</code> ซึ่งเป็น Immediate Addressing)
+              </div>
+            </div>
+
           </div>
         </article>
 
@@ -853,30 +966,69 @@
               <span class="q-badge blue">คำสั่งที่ 4</span>
               <h3 class="card-title">MOV A, @R1</h3>
             </div>
-            <span class="ref-pill">Indirect Addressing</span>
+            <span class="ref-pill">Indirect Addressing Mode</span>
           </div>
           <div class="card-body">
+            
             <div class="section-recalled">
-              <div class="section-recalled-header"><i class="fas fa-code"></i> คำสั่งที่จำออกมา:</div>
+              <div class="section-recalled-header"><i class="fas fa-code"></i> คำสั่งในข้อสอบ:</div>
               <div class="section-recalled-text"><code>MOV A, @R1</code></div>
             </div>
+
             <div class="section-senior-draft">
-              <div class="section-senior-header"><i class="fas fa-pencil-alt"></i> แนวทางของรุ่นพี่:</div>
-              <div class="section-senior-content">A &larr; [R1]</div>
+              <div class="section-senior-header"><i class="fas fa-pencil-alt"></i> แนวทางของรุ่นพี่ (สั้นเกินไป):</div>
+              <div class="section-senior-content">"A &larr; [R1]" &mdash; <em>(ข้อวิเคราะห์: สั้นเกินไป ควรระบุว่า R1 ทำหน้าที่เป็น Pointer ชี้ตำแหน่ง RAM)</em></div>
             </div>
+
             <div class="section-official">
               <div class="section-official-header">
-                <div class="official-badge-title"><i class="fas fa-microchip"></i> รายละเอียดการทำงานเชิงสถาปัตยกรรม</div>
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> คำตอบที่ควรเขียนในกระดาษคำตอบห้องสอบ (Exam Answer - ได้คะแนนเต็ม 100%)</div>
               </div>
               <div class="content-block">
-                <ul>
-                  <li><strong>Addressing Mode:</strong> <strong>Indirect Addressing</strong> (การอ้างแอดเดรสทางอ้อมผ่าน Pointer)</li>
-                  <li><strong>ขนาด / รอบเวลา:</strong> <strong>1 Byte</strong> (Opcode: <code>E7H</code>), <strong>1 Machine Cycle</strong></li>
-                  <li><strong>การทำงาน:</strong> ใช้ค่าในรีจิสเตอร์ <code>R1</code> เป็น Address Pointer ชี้ไปยังตำแหน่งใน Internal RAM แล้วนำข้อมูลที่ตำแหน่งนั้นมาใส่ใน Accumulator (<code>A</code>) (<code>A ← RAM[[R1]]</code>)</li>
-                  <li><strong>กฎสำคัญ:</strong> รีจิสเตอร์ที่ทำหน้าที่เป็น Pointer ใน Internal RAM ได้มีเฉพาะ <strong><code>R0</code> และ <code>R1</code></strong> เท่านั้น</li>
-                </ul>
+                <p style="font-size: 1.05rem; line-height: 1.6; color: var(--text-primary);">
+                  <strong>คำอธิบายการทำงาน:</strong> อ่านข้อมูลขนาด 8 บิตจากหน่วยความจำข้อมูลภายใน (Internal Data RAM) โดยใช้ค่าข้อมูลที่เก็บอยู่ในรีจิสเตอร์ <code>R1</code> ทำหน้าที่เป็นตัวชี้แอดเดรส (Address Pointer) แล้วนำข้อมูลที่ตำแหน่งแอดเดรสนั้นมาเก็บไว้ใน Accumulator (รีจิสเตอร์ <code>A</code>) (สัญลักษณ์ RTL: <code>A ← RAM[[R1]]</code>)
+                </p>
+
+                <div style="margin-top: 1rem; border-top: 1px dashed var(--border-color); padding-top: 0.75rem;">
+                  <strong style="color: var(--accent-cyan);"><i class="fas fa-microchip"></i> การวิเคราะห์ทางสถาปัตยกรรมและฮาร์ดแวร์เชิงลึก:</strong>
+                </div>
+
+                <div class="table-responsive" style="margin-top: 0.5rem;">
+                  <table class="custom-table">
+                    <tbody>
+                      <tr>
+                        <td style="width: 25%; font-weight: 600;">โหมดการอ้างแอดเดรส</td>
+                        <td><strong>Indirect Addressing Mode</strong> (การอ้างตำแหน่งทางอ้อม สังเกตจากสัญลักษณ์ <code>@</code>)</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: 600;">ขนาด & รหัสเครื่อง</td>
+                        <td><strong>1 Byte</strong> (Opcode: <code>E7H</code> สั้นและประหยัดพื้นที่ ROM)</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: 600;">รอบเวลาทำงาน (Cycles)</td>
+                        <td><strong>1 Machine Cycle</strong> (ใช้เวลา $1\ \mu\text{s}$ ที่ความถี่ Crystal $12\text{ MHz}$)</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: 600;">ตัวอย่างการทำงาน</td>
+                        <td>สมมติค่าใน <code>R1 = 40H</code> และใน RAM แอดเดรส <code>40H</code> มีค่า <code>99H</code> บันทึกอยู่ หลังรันคำสั่งนี้ Accumulator จะมีค่าเป็น <code>99H</code></td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: 600;">ผลต่อธงใน PSW</td>
+                        <td><strong>ไม่กระทบธง CY, AC, OV</strong> (ปรับเฉพาะ Parity Flag <code>P</code> ตามค่าใน A)</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
+
+            <div class="box-warning">
+              <div class="box-warning-header"><i class="fas fa-exclamation-triangle"></i> ข้อควรระวังและจุดตัดคะแนนในห้องสอบ:</div>
+              <div class="box-warning-text">
+                ในสถาปัตยกรรม MCS-51 รีจิสเตอร์ที่สามารถทำหน้าที่เป็น Pointer สำหรับเข้าถึง Internal RAM ได้ <strong>มีเพียง <code>R0</code> และ <code>R1</code> เท่านั้น!</strong> หากเขียนว่า <code>MOV A, @R2</code> หรือ <code>@R3</code> จะเกิดข้อผิดพลาด Syntax Error ทันที
+              </div>
+            </div>
+
           </div>
         </article>
 
@@ -887,30 +1039,72 @@
               <span class="q-badge blue">คำสั่งที่ 5</span>
               <h3 class="card-title">ADD A, #50H</h3>
             </div>
-            <span class="ref-pill">Immediate Addressing</span>
+            <span class="ref-pill">Immediate Addressing Mode (Arithmetic Addition)</span>
           </div>
           <div class="card-body">
+            
             <div class="section-recalled">
-              <div class="section-recalled-header"><i class="fas fa-code"></i> คำสั่งที่จำออกมา:</div>
+              <div class="section-recalled-header"><i class="fas fa-code"></i> คำสั่งในข้อสอบ:</div>
               <div class="section-recalled-text"><code>ADD A, #50H</code></div>
             </div>
+
             <div class="section-senior-draft">
-              <div class="section-senior-header"><i class="fas fa-pencil-alt"></i> แนวทางของรุ่นพี่:</div>
-              <div class="section-senior-content">A &larr; A + 50H</div>
+              <div class="section-senior-header"><i class="fas fa-pencil-alt"></i> แนวทางของรุ่นพี่ (สั้นเกินไป):</div>
+              <div class="section-senior-content">"A &larr; A + 50H" &mdash; <em>(ข้อวิเคราะห์: ขาดการระบุโหมด Immediate และผลกระทบต่อ Status Flags ใน PSW)</em></div>
             </div>
+
             <div class="section-official">
               <div class="section-official-header">
-                <div class="official-badge-title"><i class="fas fa-microchip"></i> รายละเอียดการทำงานเชิงสถาปัตยกรรม</div>
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> คำตอบที่ควรเขียนในกระดาษคำตอบห้องสอบ (Exam Answer - ได้คะแนนเต็ม 100%)</div>
               </div>
               <div class="content-block">
-                <ul>
-                  <li><strong>Addressing Mode:</strong> <strong>Immediate Addressing</strong> (มีเครื่องหมาย <code>#</code> แสดงค่าคงที่)</li>
-                  <li><strong>ขนาด / รอบเวลา:</strong> <strong>2 Bytes</strong> (Opcode: <code>04 50</code>), <strong>1 Machine Cycle</strong></li>
-                  <li><strong>การทำงาน:</strong> นำค่าคงที่ 8 บิต <strong><code>50H</code></strong> (เท่ากับ 80 (ฐานสิบ)) บวกเข้ากับค่าเดิมใน Accumulator (<code>A</code>) แล้วเก็บผลลัพธ์ลงใน <code>A</code> (<code>A ← A + 50H</code>)</li>
-                  <li><strong>ผลต่อแฟลกใน PSW:</strong> มีผลกระทบต่อ <code>CY</code> (ตัวทดจากบิต 7), <code>AC</code> (ตัวทดจากบิต 3 ไป 4), <code>OV</code> (Signed Overflow), และ <code>P</code> (Parity)</li>
-                </ul>
+                <p style="font-size: 1.05rem; line-height: 1.6; color: var(--text-primary);">
+                  <strong>คำอธิบายการทำงาน:</strong> นำค่าคงที่ 8 บิต (Immediate Constant) คือ <strong><code>50H</code></strong> (หรือ 80 ในฐานสิบ) มาบวกเข้ากับค่าข้อมูลเดิมที่อยู่ใน Accumulator (รีจิสเตอร์ <code>A</code>) แล้วนำผลลัพธ์ที่ได้ไปบันทึกทับลงใน <code>A</code> พร้อมทั้งอัปเดตสถานะของธงต่างๆ ใน Program Status Word (PSW) (สัญลักษณ์ RTL: <code>A ← A + 50H</code>)
+                </p>
+
+                <div style="margin-top: 1rem; border-top: 1px dashed var(--border-color); padding-top: 0.75rem;">
+                  <strong style="color: var(--accent-cyan);"><i class="fas fa-microchip"></i> การวิเคราะห์ทางสถาปัตยกรรมและฮาร์ดแวร์เชิงลึก:</strong>
+                </div>
+
+                <div class="table-responsive" style="margin-top: 0.5rem;">
+                  <table class="custom-table">
+                    <tbody>
+                      <tr>
+                        <td style="width: 25%; font-weight: 600;">โหมดการอ้างแอดเดรส</td>
+                        <td><strong>Immediate Addressing Mode</strong> (ระบุค่าคงที่ต่อท้ายคำสั่ง สังเกตจากเครื่องหมาย <code>#</code>)</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: 600;">ขนาด & รหัสเครื่อง</td>
+                        <td><strong>2 Bytes</strong> (ไบต์ที่ 1 Opcode: <code>04H</code>, ไบต์ที่ 2 Immediate Data: <code>50H</code>)</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: 600;">รอบเวลาทำงาน (Cycles)</td>
+                        <td><strong>1 Machine Cycle</strong> (ใช้เวลา $1\ \mu\text{s}$ ที่ความถี่ Crystal $12\text{ MHz}$)</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: 600;">ผลกระทบต่อ PSW Flags</td>
+                        <td>
+                          <ul>
+                            <li><strong>CY (Carry):</strong> เซ็ตเป็น <code>1</code> หากเกิดตัวทดล้นออกจากบิต 7 (ผลบวกเกิน <code>FFH</code> หรือ 255)</li>
+                            <li><strong>AC (Auxiliary Carry):</strong> เซ็ตเป็น <code>1</code> หากเกิดตัวทดจากบิต 3 ไปบิต 4 (ใช้ในงาน BCD)</li>
+                            <li><strong>OV (Overflow):</strong> เซ็ตเป็น <code>1</code> หากเกิด Overflow ในระบบเลขมีเครื่องหมาย (2's Complement)</li>
+                            <li><strong>P (Parity):</strong> ปรับตามจำนวนเลข 1 ในรีจิสเตอร์ A (คู่ = 0, คี่ = 1)</li>
+                          </ul>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
+
+            <div class="box-warning">
+              <div class="box-warning-header"><i class="fas fa-exclamation-triangle"></i> ข้อควรระวังและจุดตัดคะแนนในห้องสอบ:</div>
+              <div class="box-warning-text">
+                อย่าลืมระบุว่า <strong>"ผลลัพธ์จะถูกนำไปเก็บไว้ใน Accumulator (A)"</strong> และคำสั่งทางคณิตศาสตร์ <code>ADD</code> จะ <strong>ส่งผลกระทบต่อธง CY, AC, OV, P ใน PSW เสมอ</strong>
+              </div>
+            </div>
+
           </div>
         </article>
 
@@ -921,30 +1115,71 @@
               <span class="q-badge blue">คำสั่งที่ 6</span>
               <h3 class="card-title">SUBB A, R1</h3>
             </div>
-            <span class="ref-pill">Register Addressing (Subtract with Borrow)</span>
+            <span class="ref-pill">Register Addressing Mode (Subtract with Borrow)</span>
           </div>
           <div class="card-body">
+            
             <div class="section-recalled">
-              <div class="section-recalled-header"><i class="fas fa-code"></i> คำสั่งที่จำออกมา:</div>
+              <div class="section-recalled-header"><i class="fas fa-code"></i> คำสั่งในข้อสอบ:</div>
               <div class="section-recalled-text"><code>SUBB A, R1</code></div>
             </div>
+
             <div class="section-senior-draft">
-              <div class="section-senior-header"><i class="fas fa-pencil-alt"></i> แนวทางของรุ่นพี่:</div>
-              <div class="section-senior-content">A &larr; A - R1 - Carry</div>
+              <div class="section-senior-header"><i class="fas fa-pencil-alt"></i> แนวทางของรุ่นพี่ (สั้นเกินไป):</div>
+              <div class="section-senior-content">"A &larr; A - R1 - Carry" &mdash; <em>(ข้อวิเคราะห์: สัญลักษณ์ถูกต้อง แต่ต้องอธิบายให้ชัดว่าทำไมต้องลบ Carry ด้วย)</em></div>
             </div>
+
             <div class="section-official">
               <div class="section-official-header">
-                <div class="official-badge-title"><i class="fas fa-microchip"></i> รายละเอียดการทำงานเชิงสถาปัตยกรรม</div>
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> คำตอบที่ควรเขียนในกระดาษคำตอบห้องสอบ (Exam Answer - ได้คะแนนเต็ม 100%)</div>
               </div>
               <div class="content-block">
-                <ul>
-                  <li><strong>Addressing Mode:</strong> <strong>Register Addressing</strong></li>
-                  <li><strong>ขนาด / รอบเวลา:</strong> <strong>1 Byte</strong> (Opcode: <code>99H</code>), <strong>1 Machine Cycle</strong></li>
-                  <li><strong>การทำงาน:</strong> นำค่าใน Accumulator (<code>A</code>) ตั้ง แล้วลบด้วยค่าในรีจิสเตอร์ <code>R1</code> และลบด้วยค่าของ Carry Flag (<code>CY</code>) ผลลัพธ์เก็บใน <code>A</code> (<code>A ← A - R1 - CY</code>)</li>
-                  <li><strong>ข้อควรระวัง:</strong> ใน 8051 <strong>ไม่มีคำสั่ง <code>SUB</code> ธรรมดา</strong> มีเฉพาะ <code>SUBB</code> เท่านั้น ดังนั้นหากต้องการลบเลขโดยไม่นำตัวทดเดิมมาคิด ต้องสั่ง <strong><code>CLR C</code></strong> ก่อนเสมอ!</li>
-                </ul>
+                <p style="font-size: 1.05rem; line-height: 1.6; color: var(--text-primary);">
+                  <strong>คำอธิบายการทำงาน:</strong> นำค่าข้อมูลใน Accumulator (<code>A</code>) เป็นตัวตั้ง แล้วลบด้วยค่าข้อมูลในรีจิสเตอร์ <code>R1</code> และลบด้วยค่าของตัวยืมเดิมที่ค้างอยู่ใน Carry Flag (<code>CY</code>) ผลลัพธ์ที่ได้นำไปเก็บไว้ใน <code>A</code> พร้อมทั้งอัปเดตสถานะของธงต่างๆ ใน PSW (สัญลักษณ์ RTL: <code>A ← A - R1 - CY</code>)
+                </p>
+
+                <div style="margin-top: 1rem; border-top: 1px dashed var(--border-color); padding-top: 0.75rem;">
+                  <strong style="color: var(--accent-cyan);"><i class="fas fa-microchip"></i> การวิเคราะห์ทางสถาปัตยกรรมและฮาร์ดแวร์เชิงลึก:</strong>
+                </div>
+
+                <div class="table-responsive" style="margin-top: 0.5rem;">
+                  <table class="custom-table">
+                    <tbody>
+                      <tr>
+                        <td style="width: 25%; font-weight: 600;">โหมดการอ้างแอดเดรส</td>
+                        <td><strong>Register Addressing Mode</strong> (Subtract with Borrow)</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: 600;">ขนาด & รหัสเครื่อง</td>
+                        <td><strong>1 Byte</strong> (Opcode: <code>99H</code> สำหรับ Register Bank 0)</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: 600;">รอบเวลาทำงาน (Cycles)</td>
+                        <td><strong>1 Machine Cycle</strong> (ใช้เวลา $1\ \mu\text{s}$ ที่ความถี่ Crystal $12\text{ MHz}$)</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: 600;">ผลกระทบต่อ PSW Flags</td>
+                        <td>
+                          <ul>
+                            <li><strong>CY (Borrow Flag):</strong> เซ็ตเป็น <code>1</code> หากเกิดการยืมจากบิต 7 (ค่าตัวตั้งน้อยกว่าตัวลบ / ผลลัพธ์ติดลบ)</li>
+                            <li><strong>AC (Auxiliary Borrow):</strong> เซ็ตเป็น <code>1</code> หากเกิดการยืมจากบิต 4</li>
+                            <li><strong>OV (Overflow):</strong> เซ็ตเป็น <code>1</code> หากเกิด Signed Underflow/Overflow ในระบบเลข 2's Complement</li>
+                          </ul>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
+
+            <div class="box-warning">
+              <div class="box-warning-header"><i class="fas fa-exclamation-triangle"></i> ข้อควรระวังและจุดตัดคะแนนในห้องสอบ:</div>
+              <div class="box-warning-text">
+                <strong>ในไมโครคอนโทรลเลอร์ 8051 ไม่มีคำสั่ง <code>SUB</code> แบบธรรมดา!</strong> มีเฉพาะคำสั่ง <code>SUBB</code> (Subtract with Borrow) เท่านั้น ดังนั้นหากต้องการลบเลขธรรมดา 2 ตัวโดยไม่นำตัวทดเดิมที่ค้างอยู่มาลบด้วย วิศวกรต้องสั่ง <strong><code>CLR C</code> (เคลียร์ Carry Flag ให้เป็น 0)</strong> ก่อนสั่ง <code>SUBB</code> เสมอ
+              </div>
+            </div>
+
           </div>
         </article>
 
@@ -955,30 +1190,69 @@
               <span class="q-badge blue">คำสั่งที่ 7</span>
               <h3 class="card-title">INC 25H</h3>
             </div>
-            <span class="ref-pill">Direct Addressing</span>
+            <span class="ref-pill">Direct Addressing Mode (Increment Memory)</span>
           </div>
           <div class="card-body">
+            
             <div class="section-recalled">
-              <div class="section-recalled-header"><i class="fas fa-code"></i> คำสั่งที่จำออกมา:</div>
+              <div class="section-recalled-header"><i class="fas fa-code"></i> คำสั่งในข้อสอบ:</div>
               <div class="section-recalled-text"><code>INC 25H</code></div>
             </div>
+
             <div class="section-senior-draft">
-              <div class="section-senior-header"><i class="fas fa-pencil-alt"></i> แนวทางของรุ่นพี่:</div>
-              <div class="section-senior-content">[25H] &larr; [25H] + 1</div>
+              <div class="section-senior-header"><i class="fas fa-pencil-alt"></i> แนวทางของรุ่นพี่ (สั้นเกินไป):</div>
+              <div class="section-senior-content">"[25H] &larr; [25H] + 1" &mdash; <em>(ข้อวิเคราะห์: ขาดการระบุพื้นที่ RAM และคุณสมบัติพิเศษเรื่อง Carry Flag)</em></div>
             </div>
+
             <div class="section-official">
               <div class="section-official-header">
-                <div class="official-badge-title"><i class="fas fa-microchip"></i> รายละเอียดการทำงานเชิงสถาปัตยกรรม</div>
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> คำตอบที่ควรเขียนในกระดาษคำตอบห้องสอบ (Exam Answer - ได้คะแนนเต็ม 100%)</div>
               </div>
               <div class="content-block">
-                <ul>
-                  <li><strong>Addressing Mode:</strong> <strong>Direct Addressing</strong></li>
-                  <li><strong>ขนาด / รอบเวลา:</strong> <strong>2 Bytes</strong> (Opcode: <code>05 25</code>), <strong>1 Machine Cycle</strong></li>
-                  <li><strong>การทำงาน:</strong> เพิ่มค่าข้อมูลใน Internal RAM แอดเดรส <strong><code>25H</code></strong> ขึ้นอีก 1 (<code>RAM[25H] ← RAM[25H] + 1</code>)</li>
-                  <li><strong>ข้อพึงระวังเรื่อง Flags:</strong> คำสั่ง <code>INC</code> <strong>ไม่มีผลกระทบต่อ Carry Flag (<code>CY</code>)</strong> แม้ค่าเดิมจะเป็น <code>FFH</code> แล้วบวก 1 วนเป็น <code>00H</code> ก็ตาม</li>
-                </ul>
+                <p style="font-size: 1.05rem; line-height: 1.6; color: var(--text-primary);">
+                  <strong>คำอธิบายการทำงาน:</strong> เพิ่มค่าข้อมูลขนาด 8 บิตที่เก็บอยู่ในหน่วยความจำข้อมูลภายใน (Internal Data RAM) ณ ตำแหน่งแอดเดรส <strong><code>25H</code></strong> ขึ้นอีก 1 ค่า (สัญลักษณ์ RTL: <code>RAM[25H] ← RAM[25H] + 1</code>)
+                </p>
+
+                <div style="margin-top: 1rem; border-top: 1px dashed var(--border-color); padding-top: 0.75rem;">
+                  <strong style="color: var(--accent-cyan);"><i class="fas fa-microchip"></i> การวิเคราะห์ทางสถาปัตยกรรมและฮาร์ดแวร์เชิงลึก:</strong>
+                </div>
+
+                <div class="table-responsive" style="margin-top: 0.5rem;">
+                  <table class="custom-table">
+                    <tbody>
+                      <tr>
+                        <td style="width: 25%; font-weight: 600;">โหมดการอ้างแอดเดรส</td>
+                        <td><strong>Direct Addressing Mode</strong> (ระบุแอดเดรส RAM 25H ตรงๆ)</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: 600;">ขนาด & รหัสเครื่อง</td>
+                        <td><strong>2 Bytes</strong> (ไบต์ที่ 1 Opcode: <code>05H</code>, ไบต์ที่ 2 Direct Address: <code>25H</code>)</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: 600;">รอบเวลาทำงาน (Cycles)</td>
+                        <td><strong>1 Machine Cycle</strong> (ใช้เวลา $1\ \mu\text{s}$ ที่ความถี่ Crystal $12\text{ MHz}$)</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: 600;">ตำแหน่งในแผนผัง RAM</td>
+                        <td>แอดเดรส <code>25H</code> อยู่ในพื้นที่ <strong>Bit-Addressable RAM (ช่วง 20H–2FH)</strong> ซึ่งมี Bit Address <code>28H–2FH</code> ฝังอยู่</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: 600;">ผลกระทบต่อ PSW Flags</td>
+                        <td><strong>ไม่มีผลกระทบต่อ Carry Flag (CY) โดยเด็ดขาด!</strong> (ไม่เปลี่ยนค่า CY แม้จะบวกจนล้น)</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
+
+            <div class="box-warning">
+              <div class="box-warning-header"><i class="fas fa-exclamation-triangle"></i> ข้อควรระวังและจุดตัดคะแนนในห้องสอบ:</div>
+              <div class="box-warning-text">
+                <strong>กับดักยอดฮิตของข้อสอบ:</strong> คำสั่ง <code>INC</code> และ <code>DEC</code> ใน 8051 <strong>จะไม่ส่งผลกระทบต่อ Carry Flag (CY = ไม่เปลี่ยน)</strong> แม้ว่าค่าเดิมใน RAM 25H จะเป็น <code>FFH</code> (255) แล้วบวก 1 วนกลับมาเป็น <code>00H</code> ก็ตาม ค่า <code>CY</code> จะยังคงเป็นค่าเดิม ไม่ถูกเซ็ตเป็น 1!
+              </div>
+            </div>
+
           </div>
         </article>
 
@@ -989,29 +1263,65 @@
               <span class="q-badge blue">คำสั่งที่ 8</span>
               <h3 class="card-title">ANL C, P0.2</h3>
             </div>
-            <span class="ref-pill">Bit Addressing</span>
+            <span class="ref-pill">Bit Addressing Mode (Boolean Logic AND)</span>
           </div>
           <div class="card-body">
+            
             <div class="section-recalled">
-              <div class="section-recalled-header"><i class="fas fa-code"></i> คำสั่งที่จำออกมา:</div>
+              <div class="section-recalled-header"><i class="fas fa-code"></i> คำสั่งในข้อสอบ:</div>
               <div class="section-recalled-text"><code>ANL C, P0.2</code></div>
             </div>
+
             <div class="section-senior-draft">
-              <div class="section-senior-header"><i class="fas fa-pencil-alt"></i> แนวทางของรุ่นพี่:</div>
-              <div class="section-senior-content">C &larr; C AND P0.2</div>
+              <div class="section-senior-header"><i class="fas fa-pencil-alt"></i> แนวทางของรุ่นพี่ (สั้นเกินไป):</div>
+              <div class="section-senior-content">"C &larr; C AND P0.2" &mdash; <em>(ข้อวิเคราะห์: สัญลักษณ์ถูกต้อง แต่ควรระบุ Bit Address และบทบาทของ Carry Flag ในฐานะ Boolean Accumulator)</em></div>
             </div>
+
             <div class="section-official">
               <div class="section-official-header">
-                <div class="official-badge-title"><i class="fas fa-microchip"></i> รายละเอียดการทำงานเชิงสถาปัตยกรรม</div>
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> คำตอบที่ควรเขียนในกระดาษคำตอบห้องสอบ (Exam Answer - ได้คะแนนเต็ม 100%)</div>
               </div>
               <div class="content-block">
-                <ul>
-                  <li><strong>Addressing Mode:</strong> <strong>Bit Addressing</strong> (การอ้างระดับบิตตรง)</li>
-                  <li><strong>ขนาด / รอบเวลา:</strong> <strong>2 Bytes</strong> (Opcode: <code>82 82</code>), <strong>2 Machine Cycles</strong></li>
-                  <li><strong>การทำงาน:</strong> อ่านค่าลอจิกจากขาพอร์ต 0 บิตที่ 2 (<code>P0.2</code> ซึ่งอยู่ที่ Bit Address <code>82H</code>) มาทำลอจิก <strong>AND</strong> กับค่าใน Carry Flag (<code>C</code>) แล้วเก็บผลลัพธ์ใน Carry Flag (<code>C ← C AND P0.2</code>)</li>
-                </ul>
+                <p style="font-size: 1.05rem; line-height: 1.6; color: var(--text-primary);">
+                  <strong>คำอธิบายการทำงาน:</strong> อ่านระดับลอจิกขนาด 1 บิตจากขาพอร์ต 0 บิตที่ 2 (<code>P0.2</code> ซึ่งอยู่ที่ Bit Address <strong><code>82H</code></strong> ใน SFR) นำมาดำเนินการทางตรรกะแบบ AND ร่วมกับค่าที่อยู่ใน Carry Flag (<code>C</code> หรือ <code>CY</code> ใน PSW) แล้วนำผลลัพธ์ที่ได้ไปบันทึกเก็บไว้ใน Carry Flag (<code>C</code>) (สัญลักษณ์ RTL: <code>CY ← CY AND P0.2</code>)
+                </p>
+
+                <div style="margin-top: 1rem; border-top: 1px dashed var(--border-color); padding-top: 0.75rem;">
+                  <strong style="color: var(--accent-cyan);"><i class="fas fa-microchip"></i> การวิเคราะห์ทางสถาปัตยกรรมและฮาร์ดแวร์เชิงลึก:</strong>
+                </div>
+
+                <div class="table-responsive" style="margin-top: 0.5rem;">
+                  <table class="custom-table">
+                    <tbody>
+                      <tr>
+                        <td style="width: 25%; font-weight: 600;">โหมดการอ้างแอดเดรส</td>
+                        <td><strong>Bit Addressing Mode</strong> (การควบคุมตัวแปรบูลีนระดับบิตเดี่ยว)</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: 600;">ขนาด & รหัสเครื่อง</td>
+                        <td><strong>2 Bytes</strong> (ไบต์ที่ 1 Opcode: <code>82H</code>, ไบต์ที่ 2 Bit Address: <code>82H</code>)</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: 600;">รอบเวลาทำงาน (Cycles)</td>
+                        <td><strong>2 Machine Cycles</strong> (ใช้เวลา $2\ \mu\text{s}$ ที่ความถี่ Crystal $12\text{ MHz}$)</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: 600;">สถาปัตยกรรม Boolean Processor</td>
+                        <td>8051 มีหน่วยประมวลผลบิตแยกต่างหาก โดยใช้ <strong>Carry Flag (C) ทำหน้าที่เป็น Accumulator 1 บิต</strong> สำหรับคำนวณลอจิก AND, OR, NOT ระดับบิต</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
+
+            <div class="box-warning">
+              <div class="box-warning-header"><i class="fas fa-exclamation-triangle"></i> ข้อควรระวังและจุดตัดคะแนนในห้องสอบ:</div>
+              <div class="box-warning-text">
+                ปลายทางที่เก็บผลลัพธ์คือ <strong>Carry Flag (C)</strong> เท่านั้น! ไม่มีการเปลี่ยนแปลงค่าระดับแรงดันที่ขาพอร์ต <code>P0.2</code> แต่อย่างใด (คำสั่งนี้เป็นการอ่านค่าพอร์ตเข้ามาคำนวณ ไม่ใช่การเขียนทับพอร์ต)
+              </div>
+            </div>
+
           </div>
         </article>
 
@@ -1025,29 +1335,65 @@
             <span class="ref-pill">Direct + Relative Addressing (Loop Control)</span>
           </div>
           <div class="card-body">
+            
             <div class="section-recalled">
-              <div class="section-recalled-header"><i class="fas fa-code"></i> คำสั่งที่จำออกมา:</div>
+              <div class="section-recalled-header"><i class="fas fa-code"></i> คำสั่งในข้อสอบ:</div>
               <div class="section-recalled-text"><code>DJNZ 25H, Label</code></div>
             </div>
+
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-pencil-alt"></i> แนวทางของรุ่นพี่:</div>
+              <div class="section-senior-content"><em>(ไม่มีคำอธิบายในชีทสรุปรุ่นพี่)</em></div>
+            </div>
+
             <div class="section-official">
               <div class="section-official-header">
-                <div class="official-badge-title"><i class="fas fa-microchip"></i> รายละเอียดการทำงานเชิงสถาปัตยกรรม</div>
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> คำตอบที่ควรเขียนในกระดาษคำตอบห้องสอบ (Exam Answer - ได้คะแนนเต็ม 100%)</div>
               </div>
               <div class="content-block">
-                <ul>
-                  <li><strong>ประเภท:</strong> Program Branching / Loop Control</li>
-                  <li><strong>ขนาด / รอบเวลา:</strong> <strong>3 Bytes</strong> (Opcode: <code>D5 25 rel</code>), <strong>2 Machine Cycles</strong></li>
-                  <li><strong>การทำงาน:</strong>
-                    <ol>
-                      <li>ลดค่าข้อมูลใน Internal RAM แอดเดรส <code>25H</code> ลง 1 (<code>RAM[25H] ← RAM[25H] - 1</code>)</li>
-                      <li>ถ้าค่าหลังลด <strong>ยังไม่เท่ากับศูนย์ (≠ 0)</strong> ให้กระโดดไปยังตำแหน่ง <strong><code>Label</code></strong></li>
-                      <li>ถ้าค่าหลังลด <strong>กลายเป็นศูนย์ (= 0)</strong> ให้ทำงานต่อที่คำสั่งบรรทัดถัดไปตามปกติ</li>
-                    </ol>
-                  </li>
-                  <li><strong>การนำไปใช้:</strong> ใช้สร้าง Loop เคาน์เตอร์นับรอบและฟังก์ชันหน่วงเวลา (Delay Loop)</li>
-                </ul>
+                <p style="font-size: 1.05rem; line-height: 1.6; color: var(--text-primary);">
+                  <strong>คำอธิบายการทำงาน:</strong> ลดค่าข้อมูลในหน่วยความจำข้อมูลภายใน (Internal Data RAM) แอดเดรส <strong><code>25H</code></strong> ลง 1 ค่า (<code>RAM[25H] ← RAM[25H] - 1</code>) จากนั้นตรวจสอบค่าที่ได้:
+                  <br>&bull; หากค่าหลังลด <strong>ยังไม่เท่ากับศูนย์ ($\neq 0$)</strong> ให้กระโดด (Jump) ไปทำงานที่ตำแหน่ง <strong><code>Label</code></strong>
+                  <br>&bull; หากค่าหลังลด <strong>กลายเป็นศูนย์ ($= 0$)</strong> ให้ทำงานต่อไปที่คำสั่งบรรทัดถัดไปตามลำดับปกติ (Fall-through)
+                  <br>(สัญลักษณ์ RTL: <code>RAM[25H] ← RAM[25H] - 1; IF RAM[25H] ≠ 0 THEN PC ← Target ELSE PC ← PC + 3</code>)
+                </p>
+
+                <div style="margin-top: 1rem; border-top: 1px dashed var(--border-color); padding-top: 0.75rem;">
+                  <strong style="color: var(--accent-cyan);"><i class="fas fa-microchip"></i> การวิเคราะห์ทางสถาปัตยกรรมและฮาร์ดแวร์เชิงลึก:</strong>
+                </div>
+
+                <div class="table-responsive" style="margin-top: 0.5rem;">
+                  <table class="custom-table">
+                    <tbody>
+                      <tr>
+                        <td style="width: 25%; font-weight: 600;">โหมดการอ้างแอดเดรส</td>
+                        <td><strong>Direct Addressing</strong> (สำหรับแอดเดรส 25H) ผสมกับ <strong>Relative Addressing</strong> (สำหรับ Label)</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: 600;">ขนาด & รหัสเครื่อง</td>
+                        <td><strong>3 Bytes</strong> (ไบต์ที่ 1 Opcode: <code>D5H</code>, ไบต์ที่ 2 Direct Addr: <code>25H</code>, ไบต์ที่ 3 Relative Offset: <code>rel</code>)</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: 600;">รอบเวลาทำงาน (Cycles)</td>
+                        <td><strong>2 Machine Cycles</strong> (ใช้เวลา $2\ \mu\text{s}$ ที่ความถี่ Crystal $12\text{ MHz}$)</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: 600;">การประยุกต์ใช้งาน</td>
+                        <td>เป็นคำสั่งหลักในการสร้าง <strong>ตัวนับรอบลูป (Loop Counter)</strong> และ <strong>ฟังก์ชันหน่วงเวลา (Delay Subroutines)</strong></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
+
+            <div class="box-warning">
+              <div class="box-warning-header"><i class="fas fa-exclamation-triangle"></i> ข้อควรระวังและจุดตัดคะแนนในห้องสอบ:</div>
+              <div class="box-warning-text">
+                อย่าตอบเพียงว่า "ลดค่าแล้วกระโดด" ต้องระบุ <strong>เงื่อนไขทั้ง 2 กรณีให้ครบถ้วน</strong>: (1) ถ้า $\neq 0$ กระโดดไป Label (2) ถ้า $= 0$ ไม่กระโดดและรันบรรทัดถัดไป และคำสั่งนี้ <strong>ไม่มีผลต่อ Carry Flag (CY)</strong> เช่นกัน
+              </div>
+            </div>
+
           </div>
         </article>
 
@@ -1058,26 +1404,75 @@
               <span class="q-badge blue">คำสั่งที่ 10</span>
               <h3 class="card-title">SJMP Label</h3>
             </div>
-            <span class="ref-pill">Relative Addressing (Short Jump)</span>
+            <span class="ref-pill">Relative Addressing Mode (Short Jump)</span>
           </div>
           <div class="card-body">
+            
             <div class="section-recalled">
-              <div class="section-recalled-header"><i class="fas fa-code"></i> คำสั่งที่จำออกมา:</div>
+              <div class="section-recalled-header"><i class="fas fa-code"></i> คำสั่งในข้อสอบ:</div>
               <div class="section-recalled-text"><code>SJMP Label</code></div>
             </div>
+
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-pencil-alt"></i> แนวทางของรุ่นพี่:</div>
+              <div class="section-senior-content"><em>(ไม่มีคำอธิบายในชีทสรุปรุ่นพี่)</em></div>
+            </div>
+
             <div class="section-official">
               <div class="section-official-header">
-                <div class="official-badge-title"><i class="fas fa-microchip"></i> รายละเอียดการทำงานเชิงสถาปัตยกรรม</div>
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> คำตอบที่ควรเขียนในกระดาษคำตอบห้องสอบ (Exam Answer - ได้คะแนนเต็ม 100%)</div>
               </div>
               <div class="content-block">
-                <ul>
-                  <li><strong>Addressing Mode:</strong> <strong>Relative Addressing</strong> (การกระโดดแบบสัมพัทธ์)</li>
-                  <li><strong>ขนาด / รอบเวลา:</strong> <strong>2 Bytes</strong> (Opcode: <code>80 rel</code>), <strong>2 Machine Cycles</strong></li>
-                  <li><strong>การทำงาน:</strong> สั่งให้ Program Counter (PC) กระโดดไปยัง <code>Label</code> โดยใช้ค่า Relative Offset 8 บิต (คิดแบบ Two's Complement ในช่วง <strong>-128 ถึง +127 ไบต์</strong> นับจากตำแหน่งของคำสั่งถัดไป)</li>
-                  <li><strong>สูตรคำนวณ:</strong> <code>Target Address = PC of Next Instruction + Relative Offset</code></li>
-                </ul>
+                <p style="font-size: 1.05rem; line-height: 1.6; color: var(--text-primary);">
+                  <strong>คำอธิบายการทำงาน:</strong> สั่งให้โปรแกรมกระโดดแบบไม่มีเงื่อนไข (Unconditional Short Jump) ไปทำงานยังตำแหน่ง <strong><code>Label</code></strong> โดยใช้วิธีคำนวณแอดเดรสปลายทางแบบสัมพัทธ์ (Relative Addressing) ด้วยค่า Relative Offset ขนาด 8 บิตแบบคิดเครื่องหมาย (Signed 2's Complement ในขอบเขต <strong>-128 ถึง +127 ไบต์</strong>) นับจากตำแหน่งของคำสั่งถัดไป (สัญลักษณ์ RTL: <code>PC ← PC + 2 + rel</code>)
+                </p>
+
+                <div style="margin-top: 1rem; border-top: 1px dashed var(--border-color); padding-top: 0.75rem;">
+                  <strong style="color: var(--accent-cyan);"><i class="fas fa-microchip"></i> การวิเคราะห์ทางสถาปัตยกรรมและฮาร์ดแวร์เชิงลึก:</strong>
+                </div>
+
+                <div class="table-responsive" style="margin-top: 0.5rem;">
+                  <table class="custom-table">
+                    <tbody>
+                      <tr>
+                        <td style="width: 25%; font-weight: 600;">โหมดการอ้างแอดเดรส</td>
+                        <td><strong>Relative Addressing Mode</strong> (คำนวณระยะทางกระโดดแบบสัมพัทธ์)</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: 600;">ขนาด & รหัสเครื่อง</td>
+                        <td><strong>2 Bytes</strong> (ไบต์ที่ 1 Opcode: <code>80H</code>, ไบต์ที่ 2 Relative Offset: <code>rel</code> 8 บิต)</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: 600;">รอบเวลาทำงาน (Cycles)</td>
+                        <td><strong>2 Machine Cycles</strong> (ใช้เวลา $2\ \mu\text{s}$ ที่ความถี่ Crystal $12\text{ MHz}$)</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: 600;">สูตรคำนวณ Offset</td>
+                        <td>$\text{Offset} = \text{Target Address} - \text{PC}_{\text{next}}$ โดย $\text{PC}_{\text{next}} = \text{Address ของ SJMP} + 2$</td>
+                      </tr>
+                      <tr>
+                        <td style="font-weight: 600;">เปรียบเทียบตระกูล Jump</td>
+                        <td>
+                          <ul>
+                            <li><strong>SJMP (Short Jump):</strong> 2 ไบต์, ขอบเขตแคบ <strong>-128 ถึง +127 ไบต์</strong> (Relatively)</li>
+                            <li><strong>AJMP (Absolute Jump):</strong> 2 ไบต์, กระโดดภายในบล็อก <strong>2 KB Page</strong></li>
+                            <li><strong>LJMP (Long Jump):</strong> 3 ไบต์, กระโดดได้ทั่วทั้ง <strong>64 KB (0000H–FFFFH)</strong></li>
+                          </ul>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
+
+            <div class="box-warning">
+              <div class="box-warning-header"><i class="fas fa-exclamation-triangle"></i> ข้อควรระวังและจุดตัดคะแนนในห้องสอบ:</div>
+              <div class="box-warning-text">
+                ต้องระบุคำว่า <strong>"ขอบเขตการกระโดด -128 ถึง +127 ไบต์ (แบบ Signed Two's Complement)"</strong> และระบุว่าเป็นการกระโดดนับจาก <strong>PC ของคำสั่งถัดไป</strong> (ไม่ใช่แอดเดรสของตัว SJMP เอง)
+              </div>
+            </div>
+
           </div>
         </article>
 
