@@ -6,13 +6,11 @@ on:
       - main
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -27,13 +25,29 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Prepare Web Distribution
+        run: |
+          mkdir -p dist
+          cp index.html dist/
+          cp .nojekyll dist/ 2>/dev/null || true
+          cp -r assets dist/
+          mkdir -p dist/1
+          cp 1/index.html dist/1/ 2>/dev/null || true
+          cp -r 1/midterm dist/1/
+          # Copy learning and lecture materials without heavy raw textbook binaries
+          mkdir -p dist/1/learning-from-zero-1
+          cp -r 1/learning-from-zero-1/* dist/1/learning-from-zero-1/ 2>/dev/null || true
+          mkdir -p dist/1/learning-from-zero
+          cp -r 1/learning-from-zero/* dist/1/learning-from-zero/ 2>/dev/null || true
+          echo "Web distribution prepared successfully."
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: 'dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
