@@ -253,7 +253,7 @@ def data_script():
     for key, s in SLIDES.items():
         slides[key] = dict(
             label=page_label(key), title=s["title"], where=section_label(key), shows=s["shows"], text=s["text"],
-            note=s["note"], qs=QUSE.get(key, []), href=source_href(key),
+            note=s["note"], qs=QUSE.get(key, []), href="" if SOURCES[s["src"]]["kind"] == "book" else source_href(key),
             book=SOURCES[s["src"]]["kind"] == "book", pdf=SOURCES[s["src"]]["file"].lower().endswith(".pdf"),
         )
     sets = {f"q{n}": [k for k, _ in items] for n, items in QEVID.items()}

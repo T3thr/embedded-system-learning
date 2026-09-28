@@ -39,6 +39,12 @@ jobs:
           cp -r 1/learning-from-zero-1/* dist/1/learning-from-zero-1/ 2>/dev/null || true
           mkdir -p dist/1/learning-from-zero
           cp -r 1/learning-from-zero/* dist/1/learning-from-zero/ 2>/dev/null || true
+          # Final exam portal, lecture material and the chapter notes the exam page links to (no textbook PDFs)
+          cp -r 1/final dist/1/
+          cp -r 1/lecture dist/1/
+          mkdir -p dist/1/textbook/avr-mazidi-markdown dist/1/textbook/ucb-cyber-physical-embedded-systems-markdown
+          cp 1/textbook/avr-mazidi-markdown/ch11_*.md 1/textbook/avr-mazidi-markdown/ch16_*.md dist/1/textbook/avr-mazidi-markdown/
+          cp 1/textbook/ucb-cyber-physical-embedded-systems-markdown/ch03_*.md dist/1/textbook/ucb-cyber-physical-embedded-systems-markdown/
           echo "Web distribution prepared successfully."
 
       - name: Setup Pages

@@ -677,7 +677,8 @@
       none.textContent = 'ไม่มีข้อที่อ้างถึงโดยตรง';
       el.qs.appendChild(none);
     }
-    el.open.href = s.href;
+    el.open.hidden = !s.href;
+    if (s.href) el.open.href = s.href;
     el.open.querySelector('span').textContent = s.pdf ? 'เปิดไฟล์ต้นฉบับ (PDF)' : 'ดาวน์โหลดไฟล์ต้นฉบับ';
     el.open.querySelector('i').className = s.pdf ? 'fas fa-file-pdf' : 'fas fa-file-powerpoint';
     setText(el.counter, (state.index + 1) + ' / ' + state.set.length + '  ·  ลูกศรซ้ายขวาเลื่อนภาพ, Esc ปิด');
