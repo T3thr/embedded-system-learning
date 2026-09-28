@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script id="theme-boot">
+    (function () {
+      var theme = 'dark';
+      try { theme = localStorage.getItem('theme') || 'dark'; } catch (e) {}
+      if (theme !== 'light' && theme !== 'dark') theme = 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+  <title>Final Exam Portal | 305341 Embedded Systems 1</title>
+  <meta name="description" content="พอร์ทัลติวสอบปลายภาค 305341 ระบบสมองกลฝังตัว 1 รวมข้อสอบจริง 2 ชุด (77 ข้อ): ชุดที่ 1 เฉลย 56 ข้อ (Recalled) และชุดที่ 2 ข้อสอบจริง Final 2025 (21 ข้อ) ครอบคลุม Timers, UART, Interrupts, Power Modes, Motors และ FSM พร้อมเครื่องมือคำนวณสด">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../../assets/css/main.css?v=3.1">
+  <link rel="stylesheet" href="../../assets/css/solution.css?v=3.1">
+  <style>
+    .mission-banner {
+      background: linear-gradient(135deg, rgba(239,68,68,0.15), rgba(245,158,11,0.12));
+      border: 1px solid rgba(239,68,68,0.35);
+      border-radius: var(--radius-lg);
+      padding: 1.15rem 1.35rem;
+      margin: 1.25rem 0 1.75rem;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .mission-banner .mission-icon {
+      width: 52px; height: 52px; min-width: 52px;
+      border-radius: var(--radius-md);
+      background: rgba(239,68,68,0.18);
+      color: var(--accent-rose);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+    }
+    .mission-banner h2 { font-size: 1.15rem; margin: 0 0 0.25rem; color: var(--text-primary); }
+    .mission-banner p { margin: 0; color: var(--text-secondary); font-size: 0.92rem; }
+    .countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin: 1.25rem 0 1.75rem;
+    }
+    .countdown-cell {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1rem 0.5rem;
+      text-align: center;
+    }
+    .countdown-cell .num {
+      font-family: var(--font-mono);
+      font-size: 1.85rem;
+      font-weight: 700;
+      color: var(--accent-blue);
+      line-height: 1.1;
+    }
+    .countdown-cell .lbl {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-top: 0.25rem;
+    }
+    .pillar-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      box-shadow: var(--shadow-sm);
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+    .pillar-card:hover { border-color: var(--border-glow); box-shadow: var(--shadow-md); }
+    .pillar-head {
+      display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;
+    }
+    .pillar-num {
+      width: 40px; height: 40px; border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 1rem;
+    }
+    .pillar-card h3 { font-size: 1.05rem; margin: 0; color: var(--text-primary); }
+    .pillar-card .range {
+      font-size: 0.78rem; color: var(--text-muted); font-weight: 600;
+    }
+    .pillar-card ul {
+      margin: 0.5rem 0 0.75rem 1.15rem;
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+    }
+    .pillar-card li { margin-bottom: 0.25rem; }
+    .pill-urgent {
+      display: inline-flex; align-items: center; gap: 0.3rem;
+      padding: 0.15rem 0.55rem; border-radius: var(--radius-full);
+      font-size: 0.72rem; font-weight: 700;
+    }
+    .high-yield-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    .high-yield-table th, .high-yield-table td {
+      padding: 0.55rem 0.75rem; border: 1px solid var(--border-color); text-align: left;
+    }
+    .high-yield-table th { background: var(--bg-tertiary); color: var(--text-primary); }
+    .plan-step {
+      display: flex; gap: 1rem; padding: 1rem 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .plan-step:last-child { border-bottom: 0; }
+    .plan-hour {
+      min-width: 72px; height: 36px;
+      background: rgba(56,189,248,0.12); color: var(--accent-blue);
+      border-radius: var(--radius-full);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700;
+    }
+    .plan-body h4 { margin: 0 0 0.25rem; font-size: 0.98rem; color: var(--text-primary); }
+    .plan-body p { margin: 0; font-size: 0.88rem; color: var(--text-secondary); }
+    .link-chip {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      padding: 0.35rem 0.75rem; margin: 0.2rem 0.25rem 0.2rem 0;
+      border-radius: var(--radius-full);
+      background: var(--bg-secondary); border: 1px solid var(--border-color);
+      color: var(--text-secondary); font-size: 0.82rem; font-weight: 500;
+      transition: all var(--transition-fast);
+    }
+    .link-chip:hover {
+      border-color: var(--accent-blue); color: var(--accent-blue);
+    }
+    @media (max-width: 768px) {
+      .countdown-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="../../index.html" class="brand" aria-label="Embedded Systems Learning Portal">
+        <div class="brand-icon" aria-hidden="true"><i class="fas fa-microchip"></i></div>
+        <div class="brand-title">
+          <span>EMBEDDED SYSTEMS</span>
+          <span>LEARNING PORTAL</span>
+        </div>
+      </a>
+      <ul class="nav-menu" aria-label="เมนูหลัก">
+        <li><a href="../../index.html" class="nav-link">หน้าแรก</a></li>
+        <li><a href="../index.html" class="nav-link">305341 Embedded 1</a></li>
+        <li class="nav-group" data-group="midterm">
+          <button type="button" class="nav-link nav-group-toggle" aria-expanded="false" aria-controls="mega-midterm">ข้อสอบ Midterm <i class="fas fa-chevron-down nav-caret" aria-hidden="true"></i></button>
+          <div class="mega-panel mega-cols-1" id="mega-midterm">
+            <div class="mega-col">
+              <p class="mega-heading">ข้อสอบกลางภาค</p>
+              <ul class="mega-list">
+                <li><a href="../midterm/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-layer-group"></i></span><span class="mega-text"><span class="mega-title">Midterm Hub</span><span class="mega-desc">ภาพรวมคลังข้อสอบกลางภาคทั้ง 3 ชุด</span></span></a></li>
+                <li><a href="../midterm/recalled-questions/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-brain"></i></span><span class="mega-text"><span class="mega-title">01. แนวข้อสอบความจำ 26 ข้อ</span><span class="mega-desc">ทฤษฎีสถาปัตยกรรม + ชุดคำสั่ง พร้อมเฉลย</span></span></a></li>
+                <li><a href="../midterm/real-exam-2561/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-file-signature"></i></span><span class="mega-text"><span class="mega-title">02. ข้อสอบจริงกลางภาค 2561</span><span class="mega-desc">6 ข้อใหญ่ พร้อมภาพกระดาษข้อสอบ</span></span></a></li>
+                <li><a href="../midterm/analytical-questions/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-chalkboard-teacher"></i></span><span class="mega-text"><span class="mega-title">03. บทเรียนแนวข้อสอบวิเคราะห์</span><span class="mega-desc">16 ข้อวิเคราะห์จาก Lecture 1–4</span></span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="nav-group" data-group="final">
+          <button type="button" class="nav-link nav-group-toggle active" aria-expanded="false" aria-controls="mega-final">ข้อสอบ Final <i class="fas fa-chevron-down nav-caret" aria-hidden="true"></i></button>
+          <div class="mega-panel mega-cols-2" id="mega-final">
+            <div class="mega-col">
+              <p class="mega-heading">คลังข้อสอบจริง</p>
+              <ul class="mega-list">
+                <li><a href="index.html" class="mega-link active" aria-current="page"><span class="mega-icon" aria-hidden="true"><i class="fas fa-th-large"></i></span><span class="mega-text"><span class="mega-title">Final Hub</span><span class="mega-desc">ภาพรวม แผนติว และตารางท่องด่วน</span></span></a></li>
+                <li><a href="real-exam-recalled/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-list-ol"></i></span><span class="mega-text"><span class="mega-title">ชุดที่ 1: เฉลย 56 ข้อ</span><span class="mega-desc">Recalled: Timers, UART, Power, FSM</span></span></a></li>
+                <li><a href="real-exam/2025/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-scroll"></i></span><span class="mega-text"><span class="mega-title">ชุดที่ 2: ข้อสอบจริง 2025</span><span class="mega-desc">21 ข้อ ถอดจากกระดาษข้อสอบจริง</span></span></a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <p class="mega-heading">ฝึกปฏิบัติ</p>
+              <ul class="mega-list">
+                <li><a href="interactive-tools/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-calculator"></i></span><span class="mega-text"><span class="mega-title">Interactive Lab</span><span class="mega-desc">เครื่องคำนวณ Timer, Baud, Bitfield</span></span></a></li>
+                <li><a href="fsm-sliding-door-project/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-door-open"></i></span><span class="mega-text"><span class="mega-title">FSM Sliding Door</span><span class="mega-desc">โปรเจกต์กลุ่ม เฟิร์มแวร์ Version 2</span></span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="nav-controls">
+        <button id="theme-toggle" class="btn-icon theme-toggle" type="button" aria-label="สลับโหมดมืด/สว่าง" title="สลับโหมดมืด/สว่าง">
+          <i class="fas fa-sun theme-icon-to-light" aria-hidden="true"></i>
+          <i class="fas fa-moon theme-icon-to-dark" aria-hidden="true"></i>
+        </button>
+        <button class="btn-icon mobile-nav-toggle" type="button" aria-label="เมนูนำทาง" title="เมนูนำทาง" aria-controls="mobile-drawer" aria-expanded="false">
+          <i class="fas fa-bars" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-drawer" id="mobile-drawer" style="display: none;">
+    <ul class="drawer-list" aria-label="เมนูนำทาง">
+      <li><a href="../../index.html" class="nav-link">หน้าแรก</a></li>
+      <li><a href="../index.html" class="nav-link">305341 Embedded 1</a></li>
+      <li>
+        <details class="drawer-group">
+          <summary class="nav-link">ข้อสอบกลางภาค (Midterm) <i class="fas fa-chevron-down nav-caret" aria-hidden="true"></i></summary>
+          <ul class="drawer-sublist">
+            <li><a href="../midterm/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-layer-group"></i></span><span class="mega-text"><span class="mega-title">Midterm Hub</span><span class="mega-desc">ภาพรวมคลังข้อสอบกลางภาคทั้ง 3 ชุด</span></span></a></li>
+            <li><a href="../midterm/recalled-questions/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-brain"></i></span><span class="mega-text"><span class="mega-title">01. แนวข้อสอบความจำ 26 ข้อ</span><span class="mega-desc">ทฤษฎีสถาปัตยกรรม + ชุดคำสั่ง พร้อมเฉลย</span></span></a></li>
+            <li><a href="../midterm/real-exam-2561/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-file-signature"></i></span><span class="mega-text"><span class="mega-title">02. ข้อสอบจริงกลางภาค 2561</span><span class="mega-desc">6 ข้อใหญ่ พร้อมภาพกระดาษข้อสอบ</span></span></a></li>
+            <li><a href="../midterm/analytical-questions/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-chalkboard-teacher"></i></span><span class="mega-text"><span class="mega-title">03. บทเรียนแนวข้อสอบวิเคราะห์</span><span class="mega-desc">16 ข้อวิเคราะห์จาก Lecture 1–4</span></span></a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details class="drawer-group" open>
+          <summary class="nav-link">ข้อสอบปลายภาค (Final) <i class="fas fa-chevron-down nav-caret" aria-hidden="true"></i></summary>
+          <ul class="drawer-sublist">
+            <li class="drawer-heading">คลังข้อสอบจริง</li>
+            <li><a href="index.html" class="mega-link active" aria-current="page"><span class="mega-icon" aria-hidden="true"><i class="fas fa-th-large"></i></span><span class="mega-text"><span class="mega-title">Final Hub</span><span class="mega-desc">ภาพรวม แผนติว และตารางท่องด่วน</span></span></a></li>
+            <li><a href="real-exam-recalled/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-list-ol"></i></span><span class="mega-text"><span class="mega-title">ชุดที่ 1: เฉลย 56 ข้อ</span><span class="mega-desc">Recalled: Timers, UART, Power, FSM</span></span></a></li>
+            <li><a href="real-exam/2025/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-scroll"></i></span><span class="mega-text"><span class="mega-title">ชุดที่ 2: ข้อสอบจริง 2025</span><span class="mega-desc">21 ข้อ ถอดจากกระดาษข้อสอบจริง</span></span></a></li>
+            <li class="drawer-heading">ฝึกปฏิบัติ</li>
+            <li><a href="interactive-tools/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-calculator"></i></span><span class="mega-text"><span class="mega-title">Interactive Lab</span><span class="mega-desc">เครื่องคำนวณ Timer, Baud, Bitfield</span></span></a></li>
+            <li><a href="fsm-sliding-door-project/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-door-open"></i></span><span class="mega-text"><span class="mega-title">FSM Sliding Door</span><span class="mega-desc">โปรเจกต์กลุ่ม เฟิร์มแวร์ Version 2</span></span></a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </div><!-- /mobile-drawer -->
+
+  <main id="page-top" class="container" style="padding-bottom: 4rem;">
+    <nav class="breadcrumbs">
+      <a href="../../index.html"><i class="fas fa-home"></i> หน้าแรก</a>
+      <span class="separator"><i class="fas fa-chevron-right"></i></span>
+      <a href="../index.html">305341 Embedded Systems 1</a>
+      <span class="separator"><i class="fas fa-chevron-right"></i></span>
+      <span class="current">Final Exam Portal</span>
+    </nav>
+
+    <section class="hero" style="padding: 1rem 0 0.5rem; text-align: left;">
+      <div class="hero-badge">
+        <i class="fas fa-bolt"></i> MISSION: 100% FULL SCORE — 48 HOURS TO FINAL
+      </div>
+      <h1 class="hero-title" style="font-size: 2.25rem;">พอร์ทัลติวสอบปลายภาค 305341 Embedded Systems 1</h1>
+      <p class="hero-subtitle" style="margin: 0 0 0.5rem; max-width: 920px;">
+        คลังข้อสอบจริง <strong>2 ชุด รวม 77 ข้อ</strong> — <a href="real-exam-recalled/index.html">ชุดที่ 1: เฉลย 56 ข้อ (Recalled)</a>
+        และ <a href="real-exam/2025/index.html">ชุดที่ 2: ข้อสอบจริง Final 2025 (21 ข้อ)</a> — ครอบคลุม 4 เสาหลัก:
+        <strong>Timers/Counters</strong>, <strong>Serial UART &amp; Interrupts</strong>, <strong>Power Modes &amp; PCON</strong>,
+        และ <strong>Finite State Machine + Sliding Door Project</strong> — พร้อมเครื่องคำนวณ Timer/Baud/Bitfield แบบสด
+        และเฟิร์มแวร์ Sliding Door ที่ผ่านการทดสอบจริง
+      </p>
+    </section>
+
+    <div class="mission-banner">
+      <div class="mission-icon"><i class="fas fa-hourglass-half"></i></div>
+      <div style="flex:1; min-width:220px;">
+        <h2>นับถอยหลังสู่สนามสอบ — วินัย 48 ชั่วโมง</h2>
+        <p>เป้าหมายคือ <strong>เต็ม 100%</strong> ใช้การ์ด 3 ชั้น (โจทย์แดง / โน้ตรุ่นพี่ฟ้า / เฉลยเขียว) เป็นสมอความจำ แล้วฝึกเครื่องมือคำนวณจนคล่องมือ</p>
+      </div>
+    </div>
+
+    <div class="countdown-grid" id="countdown-grid">
+      <div class="countdown-cell"><div class="num" id="cd-h">48</div><div class="lbl">ชั่วโมงรวม</div></div>
+      <div class="countdown-cell"><div class="num">2</div><div class="lbl">ชุดข้อสอบจริง</div></div>
+      <div class="countdown-cell"><div class="num">77</div><div class="lbl">ข้อรวม (56 + 21)</div></div>
+      <div class="countdown-cell"><div class="num">4</div><div class="lbl">เสาหลัก</div></div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon blue"><i class="fas fa-stopwatch"></i></div>
+        <div class="stat-info">
+          <h4>ข้อ 1–25</h4>
+          <p>Timers &amp; Counters</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon green"><i class="fas fa-network-wired"></i></div>
+        <div class="stat-info">
+          <h4>ข้อ 26–41</h4>
+          <p>UART &amp; Interrupts</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon purple"><i class="fas fa-battery-quarter"></i></div>
+        <div class="stat-info">
+          <h4>ข้อ 42–51</h4>
+          <p>Power &amp; PCON</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon amber"><i class="fas fa-project-diagram"></i></div>
+        <div class="stat-info">
+          <h4>ข้อ 52–56</h4>
+          <p>FSM &amp; Sliding Door</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 style="margin: 1.5rem 0 1rem; font-size: 1.35rem;"><i class="fas fa-th-large" style="color: var(--accent-blue);"></i> เสาหลักทั้ง 4 — อะไรออกสอบบ้าง</h2>
+    <div class="portal-grid portal-grid--dense">
+
+      <article class="pillar-card">
+        <div class="pillar-head">
+          <div class="pillar-num" style="background: rgba(56,189,248,0.15); color: var(--accent-blue);">P1</div>
+          <div>
+            <h3>Timers &amp; Counters</h3>
+            <div class="range">คำถามข้อ 1 – 25</div>
+          </div>
+        </div>
+        <ul>
+          <li>โครงสร้าง T0/T1: <code>TH0, TL0, TH1, TL1</code></li>
+          <li>สูตรโหลดค่า <code>Count = FFFFH − N + 1</code></li>
+          <li>Timer (C/T=0) จาก Fosc/12 vs Counter (C/T=1) จาก P3.4/P3.5</li>
+          <li>บิต <code>TMOD</code> (GATE, C/T, M1, M0) และ <code>TCON</code> (TF1, TR1, TF0, TR0, IE1, IT1, IE0, IT0)</li>
+          <li>Mode 0/1/2: 8,192 / 65,536 / 256 counts ที่ Fosc=12 MHz</li>
+          <li>โค้ดจริงข้อ 24 (delay 20 µs) และข้อ 25 (square wave 1 kHz บน TxD)</li>
+        </ul>
+        <a class="link-chip" href="real-exam-recalled/index.html#pillar-1"><i class="fas fa-arrow-right"></i> ไปที่เฉลยข้อ 1–25</a>
+        <a class="link-chip" href="interactive-tools/index.html#timer-calc"><i class="fas fa-calculator"></i> Timer Calculator</a>
+        <a class="link-chip" href="real-exam/2025/index.html#part-1"><i class="fas fa-file-signature"></i> ชุดที่ 2: ข้อ 1–9</a>
+      </article>
+
+      <article class="pillar-card">
+        <div class="pillar-head">
+          <div class="pillar-num" style="background: rgba(16,185,129,0.15); color: var(--accent-green);">P2</div>
+          <div>
+            <h3>Serial UART &amp; Interrupts</h3>
+            <div class="range">คำถามข้อ 26 – 41</div>
+          </div>
+        </div>
+        <ul>
+          <li><code>TxD (P3.1)</code>, <code>RxD (P3.0)</code>, บัฟเฟอร์คู่ <code>SBUF</code></li>
+          <li>แฟล็ก <code>TI</code> / <code>RI</code> และกติกาล้างด้วยซอฟต์แวร์</li>
+          <li>SCON 4 โหมด: Shift Register / 8-bit UART / 9-bit UART</li>
+          <li>บิต <code>SM0, SM1, SM2, REN, TB8, RB8, TI, RI</code></li>
+          <li>ตาราง Interrupt Vector: <code>0003H, 000BH, 0013H, 001BH, 0023H</code></li>
+          <li>รีจิสเตอร์ <code>IE</code>, <code>IP</code> และลำดับ Natural Priority</li>
+        </ul>
+        <a class="link-chip" href="real-exam-recalled/index.html#pillar-2"><i class="fas fa-arrow-right"></i> ไปที่เฉลยข้อ 26–41</a>
+        <a class="link-chip" href="interactive-tools/index.html#baud-calc"><i class="fas fa-calculator"></i> Baud Calculator</a>
+        <a class="link-chip" href="real-exam/2025/index.html#part-3"><i class="fas fa-file-signature"></i> ชุดที่ 2: ข้อ 10–18</a>
+      </article>
+
+      <article class="pillar-card">
+        <div class="pillar-head">
+          <div class="pillar-num" style="background: rgba(168,85,247,0.15); color: var(--accent-purple);">P3</div>
+          <div>
+            <h3>Power Saving &amp; PCON</h3>
+            <div class="range">คำถามข้อ 42 – 51</div>
+          </div>
+        </div>
+        <ul>
+          <li>โหมด <strong>Idle</strong> (IDL=1) vs <strong>Power Down</strong> (PD=1)</li>
+          <li>PCON ที่อยู่ <code>87H</code>: SMOD, GF1, GF0, PD, IDL</li>
+          <li>Idle: วงจร oscillator ยังเดิน, CPU หยุด — ปลุกด้วย interrupt/reset ใดก็ได้</li>
+          <li>Power Down: oscillator หยุดสนิท — ปลุกด้วย hardware reset หรือ INT แบบ level-triggered</li>
+          <li>แผนผัง Clock Gating ไปยัง CPU เทียบกับ Peripheral Bus</li>
+        </ul>
+        <a class="link-chip" href="real-exam-recalled/index.html#pillar-3"><i class="fas fa-arrow-right"></i> ไปที่เฉลยข้อ 42–51</a>
+      </article>
+
+      <article class="pillar-card">
+        <div class="pillar-head">
+          <div class="pillar-num" style="background: rgba(245,158,11,0.15); color: var(--accent-amber);">P4</div>
+          <div>
+            <h3>FSM &amp; Sliding Door</h3>
+            <div class="range">คำถามข้อ 52 – 56</div>
+          </div>
+        </div>
+        <ul>
+          <li>State ID ใน <code>R0</code> + สาขา <code>JB / JNB</code> + <code>delay</code></li>
+          <li>Q52: 2-state (Ready / Go)</li>
+          <li>Q53: 3-state สัญญาณไฟจราจร 5 LED</li>
+          <li>Q54: 4-state รับสัญญาณ ESP32 ที่ P2.1</li>
+          <li>Q55–56: ไดอะแกรมสถานะประตูเลื่อน 7 สถานะ + โค้ดกลุ่มจริง Version 2 <code>SLIDING_DOOR_V2.asm</code></li>
+        </ul>
+        <a class="link-chip" href="real-exam-recalled/index.html#pillar-4"><i class="fas fa-arrow-right"></i> ไปที่เฉลยข้อ 52–56</a>
+        <a class="link-chip" href="fsm-sliding-door-project/index.html"><i class="fas fa-door-open"></i> Q56 Project Lab (V2)</a>
+        <a class="link-chip" href="real-exam/2025/index.html#part-4"><i class="fas fa-file-signature"></i> ชุดที่ 2: Motor + Ready/Go (ข้อ 19–21)</a>
+      </article>
+    </div>
+
+    <h2 id="archives" style="margin: 2rem 0 1rem; font-size: 1.35rem;"><i class="fas fa-archive" style="color: var(--accent-rose);"></i> คลังข้อสอบจริง 2 ชุด (รวม 77 ข้อ)</h2>
+    <div class="portal-grid">
+
+      <article class="course-card" style="border-color: rgba(239,68,68,0.4);">
+        <div class="course-badge badge-active"><i class="fas fa-fire"></i> หัวใจของการสอบ</div>
+        <div class="course-icon-wrapper" style="color: var(--accent-rose); background: rgba(239,68,68,0.15);">
+          <i class="fas fa-file-signature"></i>
+        </div>
+        <h2 class="course-title">ชุดที่ 1: เฉลย 56 ข้อ (Recalled)</h2>
+        <p class="course-desc">
+          ถอดโจทย์จากกระดาษข้อสอบ Final ครบทั้ง 56 ข้อ จัดเรียงตาม 4 เสาหลัก
+          ใช้การ์ด 3 ชั้น: โจทย์ต้นฉบับ (แดง) → โน้ต/กับดัก (ฟ้า) → เฉลยวิศวกรรมสมบูรณ์ (เขียว)
+          พร้อมค้นหาและกรองตามหมวด
+        </p>
+        <div class="course-meta">
+          <span class="meta-item"><i class="fas fa-list-ol"></i> 56 ข้อ</span>
+          <span class="meta-item"><i class="fas fa-code"></i> Assembly ครบ ORG/RET</span>
+          <span class="meta-item"><i class="fas fa-search"></i> Search + Filter</span>
+        </div>
+        <a href="real-exam-recalled/index.html" class="course-btn" style="background: linear-gradient(135deg, #dc2626, #ea580c);">
+          เปิดเฉลย 56 ข้อ <i class="fas fa-arrow-right"></i>
+        </a>
+      </article>
+
+      <article class="course-card" style="border-color: rgba(168,85,247,0.45);">
+        <div class="course-badge" style="background: rgba(168,85,247,0.15); color: var(--accent-purple); border: 1px solid rgba(168,85,247,0.3);"><i class="fas fa-file-signature"></i> ข้อสอบจริง Final 1/2568</div>
+        <div class="course-icon-wrapper" style="color: var(--accent-purple); background: rgba(168,85,247,0.15);">
+          <i class="fas fa-scroll"></i>
+        </div>
+        <h2 class="course-title">ชุดที่ 2: ข้อสอบจริง 2025 (21 ข้อ)</h2>
+        <p class="course-desc">
+          ถอดจากกระดาษข้อสอบพิมพ์และสมุด "Embedded Final 1/68" ครบ 21 ข้อ ตรวจไขว้ทุกข้อกับ Lecture 5, Lecture 6,
+          Lab 5 และ Mazidi บทที่ 16 พร้อมกล่อง "กับดัก" จากกระดาษที่ตรวจแล้ว, Flowchart Delay 10 µs
+          และ State chart + โค้ด Ready / Go (ข้อ 21, 5 คะแนน)
+        </p>
+        <div class="course-meta">
+          <span class="meta-item"><i class="fas fa-list-ol"></i> 21 ข้อ / 4 ตอน</span>
+          <span class="meta-item"><i class="fas fa-project-diagram"></i> Flowchart + State chart</span>
+          <span class="meta-item"><i class="fas fa-book-open"></i> อ้างอิงบทเรียนทุกข้อ</span>
+        </div>
+        <a href="real-exam/2025/index.html" class="course-btn" style="background: linear-gradient(135deg, #7c3aed, #db2777);">
+          เปิดข้อสอบจริง 2025 <i class="fas fa-arrow-right"></i>
+        </a>
+      </article>
+    </div>
+
+    <h2 style="margin: 2rem 0 1rem; font-size: 1.35rem;"><i class="fas fa-toolbox" style="color: var(--accent-green);"></i> เครื่องมือฝึกและโปรเจกต์</h2>
+    <div class="portal-grid">
+
+      <article class="course-card" style="border-color: rgba(56,189,248,0.4);">
+        <div class="course-badge" style="background: rgba(56,189,248,0.15); color: var(--accent-blue); border: 1px solid rgba(56,189,248,0.3);"><i class="fas fa-flask"></i> ฝึกมือก่อนสอบ</div>
+        <div class="course-icon-wrapper" style="color: var(--accent-blue); background: rgba(56,189,248,0.15);">
+          <i class="fas fa-calculator"></i>
+        </div>
+        <h2 class="course-title">Interactive Lab</h2>
+        <p class="course-desc">
+          เครื่องมือคำนวณฝั่งไคลเอนต์: Timer Initial Count, Baud Rate จาก Timer 1,
+          และ Register Bitfield Builder สำหรับ TMOD / TCON / SCON / IE / IP / PCON
+          พร้อมตัวอย่างค่าจากข้อ 24–25
+        </p>
+        <div class="course-meta">
+          <span class="meta-item"><i class="fas fa-stopwatch"></i> Timer Count</span>
+          <span class="meta-item"><i class="fas fa-wave-square"></i> Baud Rate</span>
+          <span class="meta-item"><i class="fas fa-sliders-h"></i> Bitfield Visualizer</span>
+        </div>
+        <a href="interactive-tools/index.html" class="course-btn">
+          เปิด Interactive Lab <i class="fas fa-arrow-right"></i>
+        </a>
+      </article>
+
+      <article class="course-card" style="border-color: rgba(245,158,11,0.4);">
+        <div class="course-badge" style="background: rgba(245,158,11,0.15); color: var(--accent-amber); border: 1px solid rgba(245,158,11,0.3);"><i class="fas fa-star"></i> ข้อ 56 คะแนนเต็ม</div>
+        <div class="course-icon-wrapper" style="color: var(--accent-amber); background: rgba(245,158,11,0.15);">
+          <i class="fas fa-project-diagram"></i>
+        </div>
+        <h2 class="course-title">FSM Sliding Door Project (V2)</h2>
+        <p class="course-desc">
+          โฟกัสข้อ 56: pinout ฮาร์ดแวร์จริง, ไดอะแกรม 7 สถานะ + FAULT,
+          ตาราง P1 byte per state (EC, D9, DC, EA, FC, D9, BC), และเฟิร์มแวร์ <code>SLIDING_DOOR_V2.asm</code>
+          ที่ทดสอบบน EdSim51 แล้ว (Through-beam P2.2, Coast 200 ms, SAFETY_HOLD)
+        </p>
+        <div class="course-meta">
+          <span class="meta-item"><i class="fas fa-draw-polygon"></i> FSM 7 States</span>
+          <span class="meta-item"><i class="fas fa-microchip"></i> SLIDING_DOOR_V2.asm</span>
+          <span class="meta-item"><i class="fas fa-shield-alt"></i> Safety Cut-off</span>
+        </div>
+        <a href="fsm-sliding-door-project/index.html" class="course-btn" style="background: linear-gradient(135deg, #d97706, #ca8a04);">
+          เปิด Q56 Project Lab (V2) <i class="fas fa-arrow-right"></i>
+        </a>
+      </article>
+    </div>
+
+    <h2 style="margin: 2.25rem 0 1rem; font-size: 1.35rem;"><i class="fas fa-brain" style="color: var(--accent-amber);"></i> ตารางท่องด่วน — ออกสอบชัวร์</h2>
+
+    <div class="content-layout" style="grid-template-columns: 1fr;">
+      <div class="solutions-container">
+
+        <article class="solution-card" id="hy-vectors">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge red">ท่องให้ขึ้นใจ</span>
+              <h3 class="card-title">Interrupt Vector Table &amp; Natural Priority</h3>
+            </div>
+            <span class="ref-pill">ข้อ 38, 41</span>
+          </div>
+          <div class="card-body">
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-quote-left"></i> สิ่งที่ต้องเขียนได้ใน 10 วินาที</div>
+              <div class="content-block">
+                <p>ตาราง Vector Address ของ 8051 และลำดับความสำคัญเมื่อเกิด interrupt พร้อมกัน</p>
+              </div>
+            </div>
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-microchip"></i> โน้ตช่วยจำ</div>
+              <div class="section-senior-content">
+                <ul>
+                  <li>ท่องเป็นจังหวะ: <strong>Reset 0000 → INT0 0003 → TF0 000B → INT1 0013 → TF1 001B → Serial 0023</strong></li>
+                  <li>ช่องไฟ = 8 ไบต์ เว้นแต่ Reset ที่ 0000H</li>
+                  <li>ลำดับ Natural: <strong>INT0 &gt; TF0 &gt; INT1 &gt; TF1 &gt; Serial</strong> (Priority สูง → ต่ำ)</li>
+                  <li>กับดักข้อสอบ: อย่าสลับ TF0 กับ INT1 — TF0 มาก่อนเสมอ</li>
+                </ul>
+              </div>
+            </div>
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> เฉลยฉบับวิศวกรรม</div>
+              </div>
+              <div class="content-block">
+                <div class="table-responsive">
+                  <table class="high-yield-table">
+                    <thead>
+                      <tr><th>Source</th><th>Vector</th><th>เงื่อนไข</th><th>Natural Priority</th></tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>Reset</td><td><code>0000H</code></td><td>Power-on / RST pin</td><td>—</td></tr>
+                      <tr><td>External Interrupt 0 (INT0)</td><td><code>0003H</code></td><td>IE0 / IT0</td><td>1 (สูงสุด)</td></tr>
+                      <tr><td>Timer 0 Overflow (TF0)</td><td><code>000BH</code></td><td>TF0</td><td>2</td></tr>
+                      <tr><td>External Interrupt 1 (INT1)</td><td><code>0013H</code></td><td>IE1 / IT1</td><td>3</td></tr>
+                      <tr><td>Timer 1 Overflow (TF1)</td><td><code>001BH</code></td><td>TF1</td><td>4</td></tr>
+                      <tr><td>Serial (RI or TI)</td><td><code>0023H</code></td><td>RI หรือ TI</td><td>5 (ต่ำสุด)</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="solution-card" id="hy-modes">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge blue">สูตรลัด</span>
+              <h3 class="card-title">Timer Modes @ Fosc = 12 MHz</h3>
+            </div>
+            <span class="ref-pill">ข้อ 21–23</span>
+          </div>
+          <div class="card-body">
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> ตารางมหัศจรรย์ที่ต้องจำ</div>
+              </div>
+              <div class="content-block">
+                <p>1 Machine Cycle = <code>12 / Fosc</code> = <code>1 µs</code> ที่ Fosc = 12 MHz</p>
+                <div class="table-responsive">
+                  <table class="high-yield-table">
+                    <thead>
+                      <tr><th>Mode</th><th>ความกว้าง</th><th>Max Count</th><th>Max Delay @ 12 MHz</th><th>TMOD (T0)</th></tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>Mode 0</td><td>13-bit</td><td>8,192</td><td>8.192 ms</td><td><code>0000 0000B</code></td></tr>
+                      <tr><td>Mode 1</td><td>16-bit</td><td>65,536</td><td>65.536 ms</td><td><code>0000 0001B</code></td></tr>
+                      <tr><td>Mode 2</td><td>8-bit auto-reload</td><td>256</td><td>256 µs</td><td><code>0000 0010B</code></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p><strong>สูตรโหลดค่า:</strong> <code>Initial Count = FFFFH − N + 1</code> เมื่อ N = จำนวน count ที่ต้องการ (Mode 1)</p>
+                <p><strong>ตัวอย่างข้อ 24:</strong> N = 20 → <code>FFFFH − 14H + 1 = FFECH</code> → <code>TH0=FFH, TL0=ECH</code></p>
+                <p><strong>ตัวอย่างข้อ 25:</strong> N = 500 = 1F4H → <code>FFFFH − 1F4H + 1 = FE0CH</code> → <code>TH0=FEH, TL0=0CH</code></p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="solution-card" id="hy-scon">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge green">บิตบิตเดียว</span>
+              <h3 class="card-title">SCON / IE / IP / PCON Bit Map</h3>
+            </div>
+            <span class="ref-pill">ข้อ 29–50</span>
+          </div>
+          <div class="card-body">
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> ผังบิตที่ต้องเขียนจากความจำ</div>
+              </div>
+              <div class="content-block">
+                <div class="table-responsive">
+                  <table class="high-yield-table">
+                    <thead>
+                      <tr><th>Register</th><th>Bit 7 → Bit 0</th></tr>
+                    </thead>
+                    <tbody>
+                      <tr><td><code>SCON</code> (98H)</td><td><code>SM0 | SM1 | SM2 | REN | TB8 | RB8 | TI | RI</code></td></tr>
+                      <tr><td><code>IE</code> (A8H)</td><td><code>EA | — | — | ES | ET1 | EX1 | ET0 | EX0</code></td></tr>
+                      <tr><td><code>IP</code> (B8H)</td><td><code>— | — | — | PS | PT1 | PX1 | PT0 | PX0</code></td></tr>
+                      <tr><td><code>PCON</code> (87H)</td><td><code>SMOD | — | — | GF1 | GF0 | PD | IDL</code></td></tr>
+                      <tr><td><code>TMOD</code> (89H)</td><td><code>GATE | C/T̅ | M1 | M0</code> ×2 (T1 | T0)</td></tr>
+                      <tr><td><code>TCON</code> (88H)</td><td><code>TF1 | TR1 | TF0 | TR0 | IE1 | IT1 | IE0 | IT0</code></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <h2 style="margin: 2.25rem 0 1rem; font-size: 1.35rem;"><i class="fas fa-clock" style="color: var(--accent-rose);"></i> แผนติว 48 ชั่วโมง — ทำตามนี้แล้วเข้าสนามได้เต็ม</h2>
+    <div class="solution-card">
+      <div class="card-body">
+        <div class="plan-step">
+          <div class="plan-hour">H0–H4</div>
+          <div class="plan-body">
+            <h4>ปูพื้น Timers ให้แน่น (ข้อ 1–25)</h4>
+            <p>อ่านการ์ดข้อ 1–23 ให้จบในรอบเดียว ฝึกเขียนสูตร <code>FFFFH − N + 1</code> ด้วยมือ 5 ตัวอย่าง แล้วเปิด Timer Calculator ตรวจคำตอบ จากนั้นพิมพ์โค้ดข้อ 24–25 ตามต้นฉบับจนจำ TMOD/TCON ได้</p>
+          </div>
+        </div>
+        <div class="plan-step">
+          <div class="plan-hour">H4–H10</div>
+          <div class="plan-body">
+            <h4>UART + Interrupt Vector (ข้อ 26–41)</h4>
+            <p>ท่อง Vector Table 10 รอบเขียนลงกระดาษ เปรียบเทียบ SCON Mode 0–3 ในตาราง แล้วใช้ Baud Calculator ลองค่า 9600 / 19200 จาก Timer 1 Mode 2</p>
+          </div>
+        </div>
+        <div class="plan-step">
+          <div class="plan-hour">H10–H16</div>
+          <div class="plan-body">
+            <h4>Power Modes &amp; PCON (ข้อ 42–51)</h4>
+            <p>วาด Clock Gating ด้วยมือ: Idle ตัดเฉพาะ CPU, Power Down ตัด oscillator ทั้งหมด เขียนตารางปลุก (wake) สองโหมด แล้วท่องบิต PCON = SMOD/GF1/GF0/PD/IDL</p>
+          </div>
+        </div>
+        <div class="plan-step">
+          <div class="plan-hour">H16–H28</div>
+          <div class="plan-body">
+            <h4>FSM Coding (ข้อ 52–55) + โปรเจกต์กลุ่ม (ข้อ 56)</h4>
+            <p>เขียน state register + JB/JNB จากโจทย์รูปภาพ 3 ชุด แล้วเปิดหน้า Sliding Door Project คัดลอกโครง FSM ของกลุ่มตัวเอง — จำ 8 สถานะและ P1 byte ให้ได้</p>
+          </div>
+        </div>
+        <div class="plan-step">
+          <div class="plan-hour">H28–H40</div>
+          <div class="plan-body">
+            <h4>ทวนวงจรปิด — ปิดการ์ดแล้วตอบ</h4>
+            <p>ปิดเฉลย ตอบทุกข้อด้วยเสียงหรือลายมือ เน้นข้อคำนวณ (21–25, 41) และข้อเขียนโค้ด (24, 25, 52–56) จุดไหนยังตะกุก ให้เปิดเฉพาะโน้ตสีฟ้า</p>
+          </div>
+        </div>
+        <div class="plan-step">
+          <div class="plan-hour">H40–H48</div>
+          <div class="plan-body">
+            <h4>Mock Exam + พักผ่อน</h4>
+            <p>จับเวลาทำชุด 56 ข้อ 2 ชั่วโมง แล้วทำข้อสอบจริง 2025 (21 ข้อ) อีก 1 ชั่วโมง ตรวจจากเฉลยเขียว แล้วพักจริงจัง 8 ชั่วโมงก่อนสอบ — สมองที่พักคืออาวุธของคะแนนเต็ม</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 style="margin: 2.25rem 0 1rem; font-size: 1.35rem;"><i class="fas fa-link" style="color: var(--accent-indigo);"></i> แหล่งอ้างอิงในเครื่อง</h2>
+    <div>
+      <a class="link-chip" href="../lecture/lecture5-markdown/lecture_5_complete.md"><i class="fas fa-file-alt"></i> Lecture 5 — Timers &amp; Counters</a>
+      <a class="link-chip" href="../lecture/lecture6-pptx-markdown/lecture_6_complete.md"><i class="fas fa-file-alt"></i> Lecture 6 — Serial, Interrupts, Power</a>
+      <a class="link-chip" href="../mini-project/submission/firmware/SLIDING_DOOR_V2.asm"><i class="fas fa-code"></i> SLIDING_DOOR_V2.asm</a>
+      <a class="link-chip" href="../mini-project/submission/Sliding_Door_Safety_Control_Infrared_FSM.pdf"><i class="fas fa-file-pdf"></i> สไลด์นำเสนอ Version 2 (PDF)</a>
+      <a class="link-chip" href="real-exam/extracted-images/ocr_page_2.txt"><i class="fas fa-image"></i> OCR กระดาษข้อสอบ</a>
+      <a class="link-chip" href="../lecture/lecture-programming-for-a-state-machine-markdown/lecture_progroming_for_a_state_machine_complete.md"><i class="fas fa-file-alt"></i> Lab 5 — Programming a State Machine</a>
+      <a class="link-chip" href="real-exam/2025/RAW_QUESTIONS_2025.md"><i class="fas fa-file-alt"></i> ถอดโจทย์ข้อสอบจริง 2025</a>
+      <a class="link-chip" href="real-exam/2025/Final-Embedded%20.pdf"><i class="fas fa-file-pdf"></i> กระดาษข้อสอบจริง 2025 (PDF)</a>
+      <a class="link-chip" href="../midterm/index.html"><i class="fas fa-archive"></i> Midterm Portal</a>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <div>
+        <p><strong>Embedded Systems Learning Platform</strong> &bull; Final Exam Portal — 305341 Embedded Systems 1</p>
+      </div>
+      <div class="footer-links">
+        <a href="../../index.html">หน้าแรก</a>
+        <a href="../index.html">305341 Embedded 1</a>
+        <a href="real-exam-recalled/index.html">ชุดที่ 1: 56 ข้อ</a>
+        <a href="real-exam/2025/index.html">ชุดที่ 2: ข้อสอบจริง 2025</a>
+        <a href="interactive-tools/index.html">Interactive Lab</a>
+        <a href="fsm-sliding-door-project/index.html">FSM Project</a>
+        <a href="https://github.com/T3thr/embedded-system-learning" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/main.js?v=3.1"></script>
+  <script>
+    (function () {
+      // Soft 48h study clock — anchors the mission window in the UI
+      var hours = 48;
+      var hEl = document.getElementById('cd-h');
+      if (hEl) {
+        hEl.textContent = String(hours);
+      }
+    })();
+  </script>
+</body>
+</html>

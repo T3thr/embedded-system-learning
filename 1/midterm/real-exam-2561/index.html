@@ -3,62 +3,116 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script id="theme-boot">
+    (function () {
+      var theme = 'dark';
+      try { theme = localStorage.getItem('theme') || 'dark'; } catch (e) {}
+      if (theme !== 'light' && theme !== 'dark') theme = 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
   <title>เฉลยข้อสอบจริงกลางภาค 2561 (Real Exam Paper 2561) | 305341 Embedded Systems 1</title>
   <meta name="description" content="เฉลยข้อสอบจริงกลางภาคปี 2561 วิชา 305341 ระบบสมองกลฝังตัว 1 ครบทั้ง 6 ข้อใหญ่ พร้อมภาพถ่ายกระดาษข้อสอบต้นฉบับ วิเคราะห์วงจร โค้ดแอสเซมบลี และวิธีคำนวณละเอียด">
   
   <!-- Stylesheets -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="../../../assets/css/main.css?v=2.3">
-  <link rel="stylesheet" href="../../../assets/css/solution.css?v=2.3">
+  <link rel="stylesheet" href="../../../assets/css/main.css?v=3.1">
+  <link rel="stylesheet" href="../../../assets/css/solution.css?v=3.1">
 </head>
 <body>
 
-  <!-- Navigation Bar -->
   <header class="navbar">
     <div class="container nav-container">
-      <a href="../../../index.html" class="brand">
-        <div class="brand-icon"><i class="fas fa-microchip"></i></div>
+      <a href="../../../index.html" class="brand" aria-label="Embedded Systems Learning Portal">
+        <div class="brand-icon" aria-hidden="true"><i class="fas fa-microchip"></i></div>
         <div class="brand-title">
           <span>EMBEDDED SYSTEMS</span>
           <span>LEARNING PORTAL</span>
         </div>
       </a>
-
-      <ul class="nav-menu">
+      <ul class="nav-menu" aria-label="เมนูหลัก">
         <li><a href="../../../index.html" class="nav-link">หน้าแรก</a></li>
         <li><a href="../../index.html" class="nav-link">305341 Embedded 1</a></li>
-        <li><a href="../index.html" class="nav-link">ข้อสอบ Midterm</a></li>
-        <li><a href="../recalled-questions/index.html" class="nav-link">01. แนวข้อสอบ 26 ข้อ</a></li>
-        <li><a href="index.html" class="nav-link active">02. ข้อสอบจริง 2561</a></li>
-        <li><a href="../analytical-questions/index.html" class="nav-link">03. บทเรียนแนวข้อสอบวิเคราะห์</a></li>
-        <li><a href="https://github.com/T3thr/embedded-system-learning" target="_blank" class="nav-link"><i class="fab fa-github"></i> GitHub</a></li>
+        <li class="nav-group" data-group="midterm">
+          <button type="button" class="nav-link nav-group-toggle active" aria-expanded="false" aria-controls="mega-midterm">ข้อสอบ Midterm <i class="fas fa-chevron-down nav-caret" aria-hidden="true"></i></button>
+          <div class="mega-panel mega-cols-1" id="mega-midterm">
+            <div class="mega-col">
+              <p class="mega-heading">ข้อสอบกลางภาค</p>
+              <ul class="mega-list">
+                <li><a href="../index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-layer-group"></i></span><span class="mega-text"><span class="mega-title">Midterm Hub</span><span class="mega-desc">ภาพรวมคลังข้อสอบกลางภาคทั้ง 3 ชุด</span></span></a></li>
+                <li><a href="../recalled-questions/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-brain"></i></span><span class="mega-text"><span class="mega-title">01. แนวข้อสอบความจำ 26 ข้อ</span><span class="mega-desc">ทฤษฎีสถาปัตยกรรม + ชุดคำสั่ง พร้อมเฉลย</span></span></a></li>
+                <li><a href="index.html" class="mega-link active" aria-current="page"><span class="mega-icon" aria-hidden="true"><i class="fas fa-file-signature"></i></span><span class="mega-text"><span class="mega-title">02. ข้อสอบจริงกลางภาค 2561</span><span class="mega-desc">6 ข้อใหญ่ พร้อมภาพกระดาษข้อสอบ</span></span></a></li>
+                <li><a href="../analytical-questions/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-chalkboard-teacher"></i></span><span class="mega-text"><span class="mega-title">03. บทเรียนแนวข้อสอบวิเคราะห์</span><span class="mega-desc">16 ข้อวิเคราะห์จาก Lecture 1–4</span></span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="nav-group" data-group="final">
+          <button type="button" class="nav-link nav-group-toggle" aria-expanded="false" aria-controls="mega-final">ข้อสอบ Final <i class="fas fa-chevron-down nav-caret" aria-hidden="true"></i></button>
+          <div class="mega-panel mega-cols-2" id="mega-final">
+            <div class="mega-col">
+              <p class="mega-heading">คลังข้อสอบจริง</p>
+              <ul class="mega-list">
+                <li><a href="../../final/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-th-large"></i></span><span class="mega-text"><span class="mega-title">Final Hub</span><span class="mega-desc">ภาพรวม แผนติว และตารางท่องด่วน</span></span></a></li>
+                <li><a href="../../final/real-exam-recalled/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-list-ol"></i></span><span class="mega-text"><span class="mega-title">ชุดที่ 1: เฉลย 56 ข้อ</span><span class="mega-desc">Recalled: Timers, UART, Power, FSM</span></span></a></li>
+                <li><a href="../../final/real-exam/2025/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-scroll"></i></span><span class="mega-text"><span class="mega-title">ชุดที่ 2: ข้อสอบจริง 2025</span><span class="mega-desc">21 ข้อ ถอดจากกระดาษข้อสอบจริง</span></span></a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <p class="mega-heading">ฝึกปฏิบัติ</p>
+              <ul class="mega-list">
+                <li><a href="../../final/interactive-tools/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-calculator"></i></span><span class="mega-text"><span class="mega-title">Interactive Lab</span><span class="mega-desc">เครื่องคำนวณ Timer, Baud, Bitfield</span></span></a></li>
+                <li><a href="../../final/fsm-sliding-door-project/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-door-open"></i></span><span class="mega-text"><span class="mega-title">FSM Sliding Door</span><span class="mega-desc">โปรเจกต์กลุ่ม เฟิร์มแวร์ Version 2</span></span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
       </ul>
-
       <div class="nav-controls">
-        <button id="theme-toggle" class="btn-icon" title="สลับโหมดมืด/สว่าง">
-          <i class="fas fa-sun"></i>
+        <button id="theme-toggle" class="btn-icon theme-toggle" type="button" aria-label="สลับโหมดมืด/สว่าง" title="สลับโหมดมืด/สว่าง">
+          <i class="fas fa-sun theme-icon-to-light" aria-hidden="true"></i>
+          <i class="fas fa-moon theme-icon-to-dark" aria-hidden="true"></i>
         </button>
-        <button class="btn-icon mobile-nav-toggle" title="เมนูนำทาง">
-          <i class="fas fa-bars"></i>
+        <button class="btn-icon mobile-nav-toggle" type="button" aria-label="เมนูนำทาง" title="เมนูนำทาง" aria-controls="mobile-drawer" aria-expanded="false">
+          <i class="fas fa-bars" aria-hidden="true"></i>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- Mobile Drawer Menu -->
   <div class="mobile-drawer" id="mobile-drawer" style="display: none;">
-    <ul>
+    <ul class="drawer-list" aria-label="เมนูนำทาง">
       <li><a href="../../../index.html" class="nav-link">หน้าแรก</a></li>
       <li><a href="../../index.html" class="nav-link">305341 Embedded 1</a></li>
-      <li><a href="../index.html" class="nav-link">ข้อสอบ Midterm</a></li>
-      <li><a href="../recalled-questions/index.html" class="nav-link">01. แนวข้อสอบ 26 ข้อ</a></li>
-      <li><a href="index.html" class="nav-link active">02. ข้อสอบจริง 2561</a></li>
-      <li><a href="../analytical-questions/index.html" class="nav-link">03. บทเรียนแนวข้อสอบวิเคราะห์</a></li>
-      <li><a href="https://github.com/T3thr/embedded-system-learning" target="_blank" class="nav-link"><i class="fab fa-github"></i> GitHub</a></li>
+      <li>
+        <details class="drawer-group" open>
+          <summary class="nav-link">ข้อสอบกลางภาค (Midterm) <i class="fas fa-chevron-down nav-caret" aria-hidden="true"></i></summary>
+          <ul class="drawer-sublist">
+            <li><a href="../index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-layer-group"></i></span><span class="mega-text"><span class="mega-title">Midterm Hub</span><span class="mega-desc">ภาพรวมคลังข้อสอบกลางภาคทั้ง 3 ชุด</span></span></a></li>
+            <li><a href="../recalled-questions/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-brain"></i></span><span class="mega-text"><span class="mega-title">01. แนวข้อสอบความจำ 26 ข้อ</span><span class="mega-desc">ทฤษฎีสถาปัตยกรรม + ชุดคำสั่ง พร้อมเฉลย</span></span></a></li>
+            <li><a href="index.html" class="mega-link active" aria-current="page"><span class="mega-icon" aria-hidden="true"><i class="fas fa-file-signature"></i></span><span class="mega-text"><span class="mega-title">02. ข้อสอบจริงกลางภาค 2561</span><span class="mega-desc">6 ข้อใหญ่ พร้อมภาพกระดาษข้อสอบ</span></span></a></li>
+            <li><a href="../analytical-questions/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-chalkboard-teacher"></i></span><span class="mega-text"><span class="mega-title">03. บทเรียนแนวข้อสอบวิเคราะห์</span><span class="mega-desc">16 ข้อวิเคราะห์จาก Lecture 1–4</span></span></a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details class="drawer-group">
+          <summary class="nav-link">ข้อสอบปลายภาค (Final) <i class="fas fa-chevron-down nav-caret" aria-hidden="true"></i></summary>
+          <ul class="drawer-sublist">
+            <li class="drawer-heading">คลังข้อสอบจริง</li>
+            <li><a href="../../final/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-th-large"></i></span><span class="mega-text"><span class="mega-title">Final Hub</span><span class="mega-desc">ภาพรวม แผนติว และตารางท่องด่วน</span></span></a></li>
+            <li><a href="../../final/real-exam-recalled/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-list-ol"></i></span><span class="mega-text"><span class="mega-title">ชุดที่ 1: เฉลย 56 ข้อ</span><span class="mega-desc">Recalled: Timers, UART, Power, FSM</span></span></a></li>
+            <li><a href="../../final/real-exam/2025/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-scroll"></i></span><span class="mega-text"><span class="mega-title">ชุดที่ 2: ข้อสอบจริง 2025</span><span class="mega-desc">21 ข้อ ถอดจากกระดาษข้อสอบจริง</span></span></a></li>
+            <li class="drawer-heading">ฝึกปฏิบัติ</li>
+            <li><a href="../../final/interactive-tools/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-calculator"></i></span><span class="mega-text"><span class="mega-title">Interactive Lab</span><span class="mega-desc">เครื่องคำนวณ Timer, Baud, Bitfield</span></span></a></li>
+            <li><a href="../../final/fsm-sliding-door-project/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-door-open"></i></span><span class="mega-text"><span class="mega-title">FSM Sliding Door</span><span class="mega-desc">โปรเจกต์กลุ่ม เฟิร์มแวร์ Version 2</span></span></a></li>
+          </ul>
+        </details>
+      </li>
     </ul>
-  </div>
+  </div><!-- /mobile-drawer -->
 
-  <main class="container" style="padding-bottom: 4rem;">
+  <main id="page-top" class="container" style="padding-bottom: 4rem;">
     <!-- Breadcrumbs -->
     <nav class="breadcrumbs">
       <a href="../../../index.html"><i class="fas fa-home"></i> หน้าแรก</a>
@@ -161,7 +215,7 @@
               </div>
             </div>
 
-            <div class="section-senior">
+            <div class="section-senior-draft">
               <div class="section-senior-header">
                 <div class="senior-badge-title"><i class="fas fa-microchip"></i> การวิเคราะห์วงจรฮาร์ดแวร์และพฤติกรรมการทำงาน (Hardware Analysis)</div>
               </div>
@@ -193,7 +247,7 @@
                 <div class="code-wrapper">
                   <div class="code-header">
                     <span>8051 Assembly (.asm)</span>
-                    <button class="btn-copy">Copy Code</button>
+                    <button class="btn-copy" type="button">Copy Code</button>
                   </div>
                   <pre class="code-content"><code><span class="comment">; ===================================================================</span>
 <span class="comment">; โปรแกรม: ควบคุม LED0 และ LED1 กระพริบสลับกันตัวละ 5 ครั้ง วนลูปไม่รู้จบ</span>
@@ -250,6 +304,10 @@
             </div>
 
           </div>
+          <footer class="card-footer">
+            <div class="card-footer-meta"><a class="card-footer-id" href="#real-q1">#real-q1</a><span class="card-footer-tag">หน้า 7 ของกระดาษข้อสอบ</span></div>
+            <nav class="card-footer-nav" aria-label="นำทางระหว่างข้อ"><a href="#page-top"><i class="fas fa-arrow-up" aria-hidden="true"></i> บนสุด</a><a href="#real-q2">ถัดไป <i class="fas fa-chevron-right" aria-hidden="true"></i></a></nav>
+          </footer>
         </article>
 
         <!-- Question 2: Memory Map -->
@@ -287,7 +345,7 @@
               </div>
             </div>
 
-            <div class="section-senior">
+            <div class="section-senior-draft">
               <div class="section-senior-header">
                 <div class="senior-badge-title"><i class="fas fa-layer-group"></i> การวิเคราะห์สถาปัตยกรรมหน่วยความจำ 8052 (Architectural Analysis)</div>
               </div>
@@ -308,17 +366,29 @@
               <div class="content-block">
                 <p><strong>ข้อย่อย 2.1: ย้ายข้อมูลจาก Internal RAM หมายเลข (1) ตำแหน่ง 80H มาไว้ที่ A</strong></p>
                 <div class="code-wrapper">
+                  <div class="code-header">
+                    <span>8051 Assembly (.asm)</span>
+                    <button class="btn-copy" type="button">Copy Code</button>
+                  </div>
                   <pre class="code-content"><code>        <span class="opcode">MOV</span>     <span class="operand">R0</span>, <span class="immediate">#80H</span>        <span class="comment">; โหลดแอดเดรส 80H ใส่ Pointer R0</span>
         <span class="opcode">MOV</span>     <span class="operand">A</span>, <span class="operand">@R0</span>          <span class="comment">; ย้ายข้อมูลจากตำแหน่งที่ R0 ชี้มาไว้ใน A (Indirect Addressing)</span></code></pre>
                 </div>
 
                 <p style="margin-top: 1rem;"><strong>ข้อย่อย 2.2: ย้ายข้อมูลจาก SFR หมายเลข (2) ตำแหน่ง 80H มาไว้ที่ A</strong></p>
                 <div class="code-wrapper">
+                  <div class="code-header">
+                    <span>8051 Assembly (.asm)</span>
+                    <button class="btn-copy" type="button">Copy Code</button>
+                  </div>
                   <pre class="code-content"><code>        <span class="opcode">MOV</span>     <span class="operand">A</span>, <span class="address">80H</span>          <span class="comment">; ย้ายข้อมูลจาก SFR แอดเดรส 80H (Port 0) มาไว้ใน A โดยตรง (Direct Addressing)</span></code></pre>
                 </div>
 
                 <p style="margin-top: 1rem;"><strong>ข้อย่อย 2.3: ย้ายข้อมูลจาก External Data RAM หมายเลข (3) ตำแหน่ง 0080H มาไว้ที่ A</strong></p>
                 <div class="code-wrapper">
+                  <div class="code-header">
+                    <span>8051 Assembly (.asm)</span>
+                    <button class="btn-copy" type="button">Copy Code</button>
+                  </div>
                   <pre class="code-content"><code>        <span class="opcode">MOV</span>     <span class="operand">DPTR</span>, <span class="immediate">#0080H</span>    <span class="comment">; กำหนดแอดเดรส 16 บิต 0080H ให้ Data Pointer</span>
         <span class="opcode">MOVX</span>    <span class="operand">A</span>, <span class="operand">@DPTR</span>        <span class="comment">; อ่านข้อมูลจาก External Data Memory มาไว้ใน A</span></code></pre>
                 </div>
@@ -335,6 +405,10 @@
             </div>
 
           </div>
+          <footer class="card-footer">
+            <div class="card-footer-meta"><a class="card-footer-id" href="#real-q2">#real-q2</a><span class="card-footer-tag">หน้า 8 ของกระดาษข้อสอบ</span></div>
+            <nav class="card-footer-nav" aria-label="นำทางระหว่างข้อ"><a href="#real-q1"><i class="fas fa-chevron-left" aria-hidden="true"></i> ก่อนหน้า</a><a href="#page-top"><i class="fas fa-arrow-up" aria-hidden="true"></i> บนสุด</a><a href="#real-q3">ถัดไป <i class="fas fa-chevron-right" aria-hidden="true"></i></a></nav>
+          </footer>
         </article>
 
         <!-- Question 3: Trace Math & Logic Instructions -->
@@ -382,27 +456,31 @@
                 <ul>
                   <li><strong>หลักการ:</strong> หมุนบิตใน A ไปทางซ้าย 1 ตำแหน่ง บิต 7 ไปเก็บที่ <code>CY</code> บิตเดิมของ <code>CY</code> เข้ามาที่บิต 0 ของ A</li>
                   <li><strong>การคำนวณ:</strong> บิต 7 ของ A คือ <code>1</code> → <code>CY_ใหม่ = 1</code>, บิต 0 รับ <code>CY_เดิม = 0</code>, บิตที่เหลือ <code>111 0101</code> เลื่อนซ้ายเป็น <code>1110 1010₂ = EAH</code></li>
-                  <li><strong>ผลลัพธ์:</strong> <code>A = EAH</code> (และ <code>CY = 1</code>)</li>
+                  <li><strong>ผลลัพธ์:</strong> <code>A = EAH (1110 1010B)</code> (และ <code>CY = 1</code>)</li>
                 </ul>
 
                 <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 1rem 0;">
 
                 <p><strong>3.2 ข้อย่อย <code>ANL A, #33H</code> (Bitwise AND):</strong></p>
                 <div class="code-wrapper">
+                  <div class="code-header">
+                    <span>Worked Calculation</span>
+                    <button class="btn-copy" type="button">Copy Code</button>
+                  </div>
                   <pre class="code-content"><code>    A   =  F5H  =  1 1 1 1   0 1 0 1
    #33H =  33H  =  0 0 1 1   0 0 1 1
    --------------------------------- (AND)
   ผลลัพธ์       =  0 0 1 1   0 0 0 1  =  31H</code></pre>
                 </div>
-                <p><strong>ผลลัพธ์:</strong> <code>A = 31H</code></p>
+                <p><strong>ผลลัพธ์:</strong> <code>A = 31H (0011 0001B)</code></p>
 
                 <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 1rem 0;">
 
                 <p><strong>3.3 ข้อย่อย <code>SWAP A</code> (สลับ High/Low Nibbles):</strong></p>
                 <ul>
                   <li><strong>หลักการ:</strong> สลับ 4 บิตบน (High Nibble) กับ 4 บิตล่าง (Low Nibble) ภายใน A</li>
-                  <li><strong>การคำนวณ:</strong> เดิม <code>A = F5H</code> (High = F, Low = 5) → หลังสลับ High กลายเป็น 5, Low กลายเป็น F</li>
-                  <li><strong>ผลลัพธ์:</strong> <code>A = 5FH</code></li>
+                  <li><strong>การคำนวณ:</strong> เดิม <code>A = F5H (1111 0101B)</code> (High = F, Low = 5) → หลังสลับ High กลายเป็น 5, Low กลายเป็น F</li>
+                  <li><strong>ผลลัพธ์:</strong> <code>A = 5FH (0101 1111B)</code></li>
                 </ul>
 
                 <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 1rem 0;">
@@ -412,12 +490,16 @@
                   <li><strong>หลักการ:</strong> นำ <code>A × B</code> ผลคูณขนาด 16 บิตจะเก็บ <strong>Low Byte ใน A</strong> และ <strong>High Byte ใน B</strong> (ถ้าผลคูณ > 255 แฟลก <code>OV = 1</code>)</li>
                   <li><strong>การคำนวณ:</strong> <code>245 × 32 = 7840₁₀ = 1EA0H</code></li>
                   <li><strong>แยกไบต์:</strong> High Byte = <code>1EH</code> (เก็บใน B), Low Byte = <code>A0H</code> (เก็บใน A)</li>
-                  <li><strong>ผลลัพธ์ใน A:</strong> <code>A = A0H</code> (โดยใน <code>B = 1EH</code>, <code>OV = 1</code>, <code>CY = 0</code>)</li>
+                  <li><strong>ผลลัพธ์ใน A:</strong> <code>A = A0H (1010 0000B)</code> (โดยใน <code>B = 1EH (0001 1110B)</code>, <code>OV = 1</code>, <code>CY = 0</code>)</li>
                 </ul>
               </div>
             </div>
 
           </div>
+          <footer class="card-footer">
+            <div class="card-footer-meta"><a class="card-footer-id" href="#real-q3">#real-q3</a><span class="card-footer-tag">หน้า 9 ของกระดาษข้อสอบ</span></div>
+            <nav class="card-footer-nav" aria-label="นำทางระหว่างข้อ"><a href="#real-q2"><i class="fas fa-chevron-left" aria-hidden="true"></i> ก่อนหน้า</a><a href="#page-top"><i class="fas fa-arrow-up" aria-hidden="true"></i> บนสุด</a><a href="#real-q4">ถัดไป <i class="fas fa-chevron-right" aria-hidden="true"></i></a></nav>
+          </footer>
         </article>
 
         <!-- Question 4: Machine Cycle Timing -->
@@ -440,7 +522,7 @@
               </div>
             </div>
 
-            <div class="section-senior">
+            <div class="section-senior-draft">
               <div class="section-senior-header">
                 <div class="senior-badge-title"><i class="fas fa-clock"></i> ทฤษฎีระบบสัญญาณนาฬิกา 8051 (Timing Analysis)</div>
               </div>
@@ -468,11 +550,19 @@
                 <ol>
                   <li><strong>คำนวณความถี่รอบการทำงานของเครื่อง (f_machine):</strong>
                     <div class="code-wrapper">
+                      <div class="code-header">
+                        <span>Worked Calculation</span>
+                        <button class="btn-copy" type="button">Copy Code</button>
+                      </div>
                       <pre class="code-content"><code>f_machine = 18.4321 × 10⁶ Hz / 12 ≈ 1.53600833 × 10⁶ Hz ≈ 1.536 MHz</code></pre>
                     </div>
                   </li>
                   <li><strong>คำนวณเวลาที่ใช้ในหนึ่งรอบการทำงาน (T_machine):</strong>
                     <div class="code-wrapper">
+                      <div class="code-header">
+                        <span>Worked Calculation</span>
+                        <button class="btn-copy" type="button">Copy Code</button>
+                      </div>
                       <pre class="code-content"><code>T_machine = 12 / (18.4321 × 10⁶ Hz)
           ≈ 0.65103813 × 10⁻⁶ วินาที
           ≈ 0.651038 µs (หรือประมาณ 651.04 ns)</code></pre>
@@ -484,6 +574,10 @@
             </div>
 
           </div>
+          <footer class="card-footer">
+            <div class="card-footer-meta"><a class="card-footer-id" href="#real-q4">#real-q4</a><span class="card-footer-tag">หน้า 9 ของกระดาษข้อสอบ</span></div>
+            <nav class="card-footer-nav" aria-label="นำทางระหว่างข้อ"><a href="#real-q3"><i class="fas fa-chevron-left" aria-hidden="true"></i> ก่อนหน้า</a><a href="#page-top"><i class="fas fa-arrow-up" aria-hidden="true"></i> บนสุด</a><a href="#real-q5">ถัดไป <i class="fas fa-chevron-right" aria-hidden="true"></i></a></nav>
+          </footer>
         </article>
 
         <!-- Question 5: Microprocessor vs Microcontroller -->
@@ -570,6 +664,10 @@
             </div>
 
           </div>
+          <footer class="card-footer">
+            <div class="card-footer-meta"><a class="card-footer-id" href="#real-q5">#real-q5</a><span class="card-footer-tag">หน้า 10 ของกระดาษข้อสอบ</span></div>
+            <nav class="card-footer-nav" aria-label="นำทางระหว่างข้อ"><a href="#real-q4"><i class="fas fa-chevron-left" aria-hidden="true"></i> ก่อนหน้า</a><a href="#page-top"><i class="fas fa-arrow-up" aria-hidden="true"></i> บนสุด</a><a href="#real-q6">ถัดไป <i class="fas fa-chevron-right" aria-hidden="true"></i></a></nav>
+          </footer>
         </article>
 
         <!-- Question 6: Cross-Assembler & HEX File -->
@@ -595,6 +693,10 @@
               <div class="content-block">
                 <p><strong>6. จากข้อมูลในตารางที่ 1 จงตอบคำถามต่อไปนี้ (10 คะแนน)</strong></p>
                 <div class="code-wrapper">
+                  <div class="code-header">
+                    <span>Worked Calculation</span>
+                    <button class="btn-copy" type="button">Copy Code</button>
+                  </div>
                   <pre class="code-content"><code>8051 Cross-Assembler (1.3) (C) 1987, 1989 Binary Technology
 Page 1 test.asm
 
@@ -694,7 +796,7 @@ Page 1 test.asm
                 <div class="code-wrapper">
                   <div class="code-header">
                     <span>Intel HEX (TEST.HEX)</span>
-                    <button class="btn-copy">Copy Code</button>
+                    <button class="btn-copy" type="button">Copy Code</button>
                   </div>
                   <pre class="code-content"><code>:080030007400E590F58080FAF0
 :00000001FF</code></pre>
@@ -704,6 +806,10 @@ Page 1 test.asm
             </div>
 
           </div>
+          <footer class="card-footer">
+            <div class="card-footer-meta"><a class="card-footer-id" href="#real-q6">#real-q6</a><span class="card-footer-tag">หน้า 11 ของกระดาษข้อสอบ</span></div>
+            <nav class="card-footer-nav" aria-label="นำทางระหว่างข้อ"><a href="#real-q5"><i class="fas fa-chevron-left" aria-hidden="true"></i> ก่อนหน้า</a><a href="#page-top"><i class="fas fa-arrow-up" aria-hidden="true"></i> บนสุด</a></nav>
+          </footer>
         </article>
 
       </div>
@@ -722,12 +828,12 @@ Page 1 test.asm
         <a href="../index.html">ข้อสอบ Midterm</a>
         <a href="../recalled-questions/index.html">01. แนวข้อสอบ 26 ข้อ</a>
         <a href="../analytical-questions/index.html">03. บทเรียนแนวข้อสอบวิเคราะห์</a>
-        <a href="https://github.com/T3thr/embedded-system-learning" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://github.com/T3thr/embedded-system-learning" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
       </div>
     </div>
   </footer>
 
   <!-- Scripts -->
-  <script src="../../../assets/js/main.js?v=2.3"></script>
+  <script src="../../../assets/js/main.js?v=3.1"></script>
 </body>
 </html>

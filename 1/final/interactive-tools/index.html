@@ -1,0 +1,1781 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script id="theme-boot">
+    (function () {
+      var theme = 'dark';
+      try { theme = localStorage.getItem('theme') || 'dark'; } catch (e) {}
+      if (theme !== 'light' && theme !== 'dark') theme = 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+  <title>Interactive Lab — Timer, Baud, Bitfield Calculators | 305341 Embedded Systems 1</title>
+  <meta name="description" content="ห้องปฏิบัติการออนไลน์ 305341 Final: เครื่องคำนวณ Timer Initial Count, Baud Rate UART และ Register Bitfield Builder สำหรับ 8051 — ทำงานออฟไลน์ 100% พร้อมตัวอย่างข้อ 24–25">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../../../assets/css/main.css?v=3.1">
+  <link rel="stylesheet" href="../../../assets/css/solution.css?v=3.1">
+  <style>
+    /* ===== Interactive Lab calculator UI (dark-first, CSS variables) ===== */
+    .lab-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+    .calc-panel {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.15rem;
+    }
+    .calc-panel h4 {
+      margin: 0 0 0.85rem;
+      font-size: 0.95rem;
+      color: var(--accent-blue);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .field {
+      margin-bottom: 0.85rem;
+    }
+    .field:last-child { margin-bottom: 0; }
+    .field label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 0.35rem;
+    }
+    .field label .unit {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .field input[type="number"],
+    .field select,
+    .field input[type="text"] {
+      width: 100%;
+      padding: 0.55rem 0.75rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      background: var(--bg-card);
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      box-sizing: border-box;
+    }
+    .field input:focus,
+    .field select:focus {
+      outline: none;
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.18);
+    }
+    .radio-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+    .radio-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.7rem;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-color);
+      background: var(--bg-card);
+      color: var(--text-secondary);
+      font-size: 0.82rem;
+      cursor: pointer;
+      user-select: none;
+    }
+    .radio-chip input { accent-color: var(--accent-blue); margin: 0; }
+    .radio-chip:has(input:checked) {
+      border-color: var(--accent-blue);
+      color: var(--accent-blue);
+      background: var(--tag-blue-bg);
+    }
+    .result-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glow);
+      border-radius: var(--radius-md);
+      padding: 1.15rem;
+    }
+    .result-box h4 {
+      margin: 0 0 0.85rem;
+      color: var(--accent-emerald);
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.75rem;
+      padding: 0.45rem 0;
+      border-bottom: 1px dashed var(--border-color);
+      flex-wrap: wrap;
+    }
+    .result-row:last-child { border-bottom: 0; }
+    .result-row .lbl {
+      color: var(--text-secondary);
+      font-size: 0.86rem;
+    }
+    .result-row .val {
+      font-family: var(--font-mono);
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      text-align: right;
+    }
+    .result-row .val.mono-lg {
+      font-size: 1.25rem;
+      color: var(--accent-emerald);
+    }
+    .result-row .val.warn { color: var(--accent-amber); }
+    .result-row .val.err { color: var(--accent-rose); }
+    .result-row .val.ok { color: var(--accent-green); }
+    .math-steps {
+      margin-top: 0.85rem;
+      padding: 0.85rem 1rem;
+      background: var(--bg-code);
+      border: 1px solid var(--border-code);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 0.84rem;
+      line-height: 1.75;
+      color: var(--tag-green);
+      white-space: pre-wrap;
+      overflow-x: auto;
+    }
+    .warn-banner {
+      display: none;
+      margin-top: 0.75rem;
+      padding: 0.75rem 0.95rem;
+      border-radius: var(--radius-sm);
+      background: var(--tag-amber-bg);
+      border-left: 4px solid var(--accent-amber);
+      color: var(--accent-amber);
+      font-size: 0.88rem;
+      font-weight: 600;
+      line-height: 1.55;
+    }
+    .warn-banner.show { display: block; }
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.75rem;
+    }
+    .example-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.32rem 0.75rem;
+      border-radius: var(--radius-full);
+      background: var(--tag-blue-bg);
+      border: 1px solid var(--tag-blue-border);
+      color: var(--tag-blue);
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-fast, 0.15s ease);
+    }
+    .example-chip:hover {
+      background: var(--tag-green-bg);
+      border-color: var(--tag-green-border);
+      color: var(--tag-green);
+    }
+    .link-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.75rem;
+      margin: 0.2rem 0.25rem 0.2rem 0;
+      border-radius: var(--radius-full);
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      font-size: 0.82rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.15s ease;
+    }
+    .link-chip:hover {
+      border-color: var(--accent-blue);
+      color: var(--accent-blue);
+    }
+    /* Bitfield builder */
+    .reg-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 1rem;
+    }
+    .reg-tab {
+      padding: 0.45rem 0.95rem;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-color);
+      background: var(--bg-card);
+      color: var(--text-secondary);
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .reg-tab.active {
+      background: var(--accent-blue);
+      border-color: var(--accent-blue);
+      color: var(--bg-primary);
+    }
+    .bit-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+    .bit-cell {
+      flex: 1 1 120px;
+      min-width: 110px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 0.65rem 0.55rem;
+      text-align: center;
+    }
+    .bit-cell.checked {
+      border-color: var(--accent-blue);
+      background: var(--tag-blue-bg);
+    }
+    .bit-cell.disabled-bit {
+      opacity: 0.55;
+    }
+    .bit-cell .bit-pos {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+    .bit-cell .bit-name {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0.2rem 0 0.35rem;
+    }
+    .bit-cell input[type="checkbox"] {
+      width: 1.15rem;
+      height: 1.15rem;
+      accent-color: var(--accent-blue);
+      cursor: pointer;
+    }
+    .bit-meaning {
+      margin-top: 0.85rem;
+      padding: 0.75rem 0.95rem;
+      border-radius: var(--radius-sm);
+      background: var(--tag-blue-bg);
+      border-left: 3px solid var(--accent-blue);
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      line-height: 1.6;
+      min-height: 2.6rem;
+    }
+    .hex-display {
+      font-family: var(--font-mono);
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: var(--accent-emerald);
+      letter-spacing: 0.04em;
+    }
+    .bin-display {
+      font-family: var(--font-mono);
+      font-size: 1.05rem;
+      color: var(--accent-blue);
+      letter-spacing: 0.06em;
+    }
+    .bin-bit-labels {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+    }
+    .preset-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.85rem;
+    }
+    .preset-btn {
+      padding: 0.4rem 0.85rem;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--tag-green-border);
+      background: var(--tag-green-bg);
+      color: var(--tag-green);
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .preset-btn:hover {
+      background: var(--tag-green);
+      color: var(--bg-primary);
+    }
+    .btn-calc {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.65rem 1.25rem;
+      border-radius: var(--radius-sm);
+      border: none;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-indigo));
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.92rem;
+      cursor: pointer;
+      transition: opacity 0.15s ease, transform 0.1s ease;
+    }
+    .btn-calc:hover { opacity: 0.92; transform: translateY(-1px); }
+    .btn-calc:active { transform: translateY(0); }
+    .note-line {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin: 0.5rem 0 0;
+    }
+    .badge-mini {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.12rem 0.5rem;
+      border-radius: var(--radius-full);
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+    .badge-mini.blue { background: var(--tag-blue-bg); color: var(--tag-blue); }
+    .badge-mini.green { background: var(--tag-green-bg); color: var(--tag-green); }
+    .badge-mini.amber { background: var(--tag-amber-bg); color: var(--tag-amber); }
+    .badge-mini.red { background: var(--tag-red-bg); color: var(--tag-red); }
+    .stack { display: flex; flex-direction: column; gap: 1rem; }
+    .split-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+    @media (max-width: 640px) {
+      .result-row .val { font-size: 0.95rem; }
+      .hex-display { font-size: 1.25rem; }
+      .bin-display { font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="../../../index.html" class="brand" aria-label="Embedded Systems Learning Portal">
+        <div class="brand-icon" aria-hidden="true"><i class="fas fa-microchip"></i></div>
+        <div class="brand-title">
+          <span>EMBEDDED SYSTEMS</span>
+          <span>LEARNING PORTAL</span>
+        </div>
+      </a>
+      <ul class="nav-menu" aria-label="เมนูหลัก">
+        <li><a href="../../../index.html" class="nav-link">หน้าแรก</a></li>
+        <li><a href="../../index.html" class="nav-link">305341 Embedded 1</a></li>
+        <li class="nav-group" data-group="midterm">
+          <button type="button" class="nav-link nav-group-toggle" aria-expanded="false" aria-controls="mega-midterm">ข้อสอบ Midterm <i class="fas fa-chevron-down nav-caret" aria-hidden="true"></i></button>
+          <div class="mega-panel mega-cols-1" id="mega-midterm">
+            <div class="mega-col">
+              <p class="mega-heading">ข้อสอบกลางภาค</p>
+              <ul class="mega-list">
+                <li><a href="../../midterm/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-layer-group"></i></span><span class="mega-text"><span class="mega-title">Midterm Hub</span><span class="mega-desc">ภาพรวมคลังข้อสอบกลางภาคทั้ง 3 ชุด</span></span></a></li>
+                <li><a href="../../midterm/recalled-questions/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-brain"></i></span><span class="mega-text"><span class="mega-title">01. แนวข้อสอบความจำ 26 ข้อ</span><span class="mega-desc">ทฤษฎีสถาปัตยกรรม + ชุดคำสั่ง พร้อมเฉลย</span></span></a></li>
+                <li><a href="../../midterm/real-exam-2561/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-file-signature"></i></span><span class="mega-text"><span class="mega-title">02. ข้อสอบจริงกลางภาค 2561</span><span class="mega-desc">6 ข้อใหญ่ พร้อมภาพกระดาษข้อสอบ</span></span></a></li>
+                <li><a href="../../midterm/analytical-questions/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-chalkboard-teacher"></i></span><span class="mega-text"><span class="mega-title">03. บทเรียนแนวข้อสอบวิเคราะห์</span><span class="mega-desc">16 ข้อวิเคราะห์จาก Lecture 1–4</span></span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="nav-group" data-group="final">
+          <button type="button" class="nav-link nav-group-toggle active" aria-expanded="false" aria-controls="mega-final">ข้อสอบ Final <i class="fas fa-chevron-down nav-caret" aria-hidden="true"></i></button>
+          <div class="mega-panel mega-cols-2" id="mega-final">
+            <div class="mega-col">
+              <p class="mega-heading">คลังข้อสอบจริง</p>
+              <ul class="mega-list">
+                <li><a href="../index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-th-large"></i></span><span class="mega-text"><span class="mega-title">Final Hub</span><span class="mega-desc">ภาพรวม แผนติว และตารางท่องด่วน</span></span></a></li>
+                <li><a href="../real-exam-recalled/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-list-ol"></i></span><span class="mega-text"><span class="mega-title">ชุดที่ 1: เฉลย 56 ข้อ</span><span class="mega-desc">Recalled: Timers, UART, Power, FSM</span></span></a></li>
+                <li><a href="../real-exam/2025/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-scroll"></i></span><span class="mega-text"><span class="mega-title">ชุดที่ 2: ข้อสอบจริง 2025</span><span class="mega-desc">21 ข้อ ถอดจากกระดาษข้อสอบจริง</span></span></a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <p class="mega-heading">ฝึกปฏิบัติ</p>
+              <ul class="mega-list">
+                <li><a href="index.html" class="mega-link active" aria-current="page"><span class="mega-icon" aria-hidden="true"><i class="fas fa-calculator"></i></span><span class="mega-text"><span class="mega-title">Interactive Lab</span><span class="mega-desc">เครื่องคำนวณ Timer, Baud, Bitfield</span></span></a></li>
+                <li><a href="../fsm-sliding-door-project/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-door-open"></i></span><span class="mega-text"><span class="mega-title">FSM Sliding Door</span><span class="mega-desc">โปรเจกต์กลุ่ม เฟิร์มแวร์ Version 2</span></span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="nav-controls">
+        <button id="theme-toggle" class="btn-icon theme-toggle" type="button" aria-label="สลับโหมดมืด/สว่าง" title="สลับโหมดมืด/สว่าง">
+          <i class="fas fa-sun theme-icon-to-light" aria-hidden="true"></i>
+          <i class="fas fa-moon theme-icon-to-dark" aria-hidden="true"></i>
+        </button>
+        <button class="btn-icon mobile-nav-toggle" type="button" aria-label="เมนูนำทาง" title="เมนูนำทาง" aria-controls="mobile-drawer" aria-expanded="false">
+          <i class="fas fa-bars" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-drawer" id="mobile-drawer" style="display: none;">
+    <ul class="drawer-list" aria-label="เมนูนำทาง">
+      <li><a href="../../../index.html" class="nav-link">หน้าแรก</a></li>
+      <li><a href="../../index.html" class="nav-link">305341 Embedded 1</a></li>
+      <li>
+        <details class="drawer-group">
+          <summary class="nav-link">ข้อสอบกลางภาค (Midterm) <i class="fas fa-chevron-down nav-caret" aria-hidden="true"></i></summary>
+          <ul class="drawer-sublist">
+            <li><a href="../../midterm/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-layer-group"></i></span><span class="mega-text"><span class="mega-title">Midterm Hub</span><span class="mega-desc">ภาพรวมคลังข้อสอบกลางภาคทั้ง 3 ชุด</span></span></a></li>
+            <li><a href="../../midterm/recalled-questions/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-brain"></i></span><span class="mega-text"><span class="mega-title">01. แนวข้อสอบความจำ 26 ข้อ</span><span class="mega-desc">ทฤษฎีสถาปัตยกรรม + ชุดคำสั่ง พร้อมเฉลย</span></span></a></li>
+            <li><a href="../../midterm/real-exam-2561/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-file-signature"></i></span><span class="mega-text"><span class="mega-title">02. ข้อสอบจริงกลางภาค 2561</span><span class="mega-desc">6 ข้อใหญ่ พร้อมภาพกระดาษข้อสอบ</span></span></a></li>
+            <li><a href="../../midterm/analytical-questions/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-chalkboard-teacher"></i></span><span class="mega-text"><span class="mega-title">03. บทเรียนแนวข้อสอบวิเคราะห์</span><span class="mega-desc">16 ข้อวิเคราะห์จาก Lecture 1–4</span></span></a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details class="drawer-group" open>
+          <summary class="nav-link">ข้อสอบปลายภาค (Final) <i class="fas fa-chevron-down nav-caret" aria-hidden="true"></i></summary>
+          <ul class="drawer-sublist">
+            <li class="drawer-heading">คลังข้อสอบจริง</li>
+            <li><a href="../index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-th-large"></i></span><span class="mega-text"><span class="mega-title">Final Hub</span><span class="mega-desc">ภาพรวม แผนติว และตารางท่องด่วน</span></span></a></li>
+            <li><a href="../real-exam-recalled/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-list-ol"></i></span><span class="mega-text"><span class="mega-title">ชุดที่ 1: เฉลย 56 ข้อ</span><span class="mega-desc">Recalled: Timers, UART, Power, FSM</span></span></a></li>
+            <li><a href="../real-exam/2025/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-scroll"></i></span><span class="mega-text"><span class="mega-title">ชุดที่ 2: ข้อสอบจริง 2025</span><span class="mega-desc">21 ข้อ ถอดจากกระดาษข้อสอบจริง</span></span></a></li>
+            <li class="drawer-heading">ฝึกปฏิบัติ</li>
+            <li><a href="index.html" class="mega-link active" aria-current="page"><span class="mega-icon" aria-hidden="true"><i class="fas fa-calculator"></i></span><span class="mega-text"><span class="mega-title">Interactive Lab</span><span class="mega-desc">เครื่องคำนวณ Timer, Baud, Bitfield</span></span></a></li>
+            <li><a href="../fsm-sliding-door-project/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-door-open"></i></span><span class="mega-text"><span class="mega-title">FSM Sliding Door</span><span class="mega-desc">โปรเจกต์กลุ่ม เฟิร์มแวร์ Version 2</span></span></a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </div><!-- /mobile-drawer -->
+
+  <main id="page-top" class="container" style="padding-bottom: 4rem;">
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs">
+      <a href="../../../index.html"><i class="fas fa-home"></i> หน้าแรก</a>
+      <span class="separator"><i class="fas fa-chevron-right"></i></span>
+      <a href="../../index.html">305341 Embedded Systems 1</a>
+      <span class="separator"><i class="fas fa-chevron-right"></i></span>
+      <a href="../index.html">ข้อสอบ Final</a>
+      <span class="separator"><i class="fas fa-chevron-right"></i></span>
+      <span class="current">02. Interactive Lab</span>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" style="padding: 1rem 0 1.5rem; text-align: left;">
+      <div class="hero-badge">
+        <i class="fas fa-flask"></i> ห้องปฏิบัติการจำลอง — ทำงานออฟไลน์ 100% ไม่ต้องใช้ Server
+      </div>
+      <h1 class="hero-title" style="font-size: 2.25rem;">Interactive Lab — เครื่องมือคำนวณ 8051 แบบสด</h1>
+      <p class="hero-subtitle" style="margin: 0 0 1.5rem; max-width: 920px;">
+        เครื่องคำนวณ 3 ตัวสำหรับสอบปลายภาค <strong>305341 Embedded Systems 1</strong>:
+        <strong>Timer Initial Count</strong>, <strong>Baud Rate Generator</strong> และ
+        <strong>Register Bitfield Builder</strong> — ป้อนค่าแล้วเห็นผลทันที พร้อมขั้นตอนคณิตศาสตร์
+        และตัวอย่างจริงจากข้อ 24–25
+      </p>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon blue"><i class="fas fa-stopwatch"></i></div>
+          <div class="stat-info">
+            <h4>Timer Calculator</h4>
+            <p>TH/TL Load + Machine Cycle</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon green"><i class="fas fa-network-wired"></i></div>
+          <div class="stat-info">
+            <h4>Baud Calculator</h4>
+            <p>TH1 Reload + % Error</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon purple"><i class="fas fa-table-cells"></i></div>
+          <div class="stat-info">
+            <h4>Bitfield Builder</h4>
+            <p>TMOD / TCON / SCON / IE / IP / PCON</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon amber"><i class="fas fa-book-open"></i></div>
+          <div class="stat-info">
+            <h4>Quick Reference</h4>
+            <p>ตารางบิต + สูตร + ตัวอย่างข้อ 24–25</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content Layout -->
+    <div class="content-layout">
+
+      <!-- Sidebar TOC -->
+      <aside class="sidebar-toc">
+        <div class="toc-title"><i class="fas fa-list-ul"></i> สารบัญ Interactive Lab</div>
+        <ul class="toc-list">
+          <li class="toc-item"><a href="#timer-calc">1. Timer Initial Count Calculator</a></li>
+          <li class="toc-item"><a href="#baud-calc">2. Baud Rate Calculator</a></li>
+          <li class="toc-item"><a href="#bitfield-calc">3. Register Bitfield Builder</a></li>
+          <li class="toc-item"><a href="#quick-ref">4. Quick Reference Tables</a></li>
+          <li class="toc-item"><a href="#worked-examples">5. Worked Examples ข้อ 24–25</a></li>
+        </ul>
+      </aside>
+
+      <!-- Main Content -->
+      <div class="solutions-container">
+
+        <!-- ===================== 1. TIMER CALCULATOR ===================== -->
+        <article class="solution-card" id="timer-calc">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge blue">เครื่องมือ 1</span>
+              <h3 class="card-title">Timer Initial Count Calculator — คำนวณค่าโหลด TH/TL</h3>
+            </div>
+            <span class="ref-pill">8051 Timer Mode 0 / 1 / 2</span>
+          </div>
+          <div class="card-body">
+            <p class="note-line" style="margin:0; color: var(--text-secondary);">
+              หลักการ: ทุก <strong>1 machine cycle</strong> = <code>12 / Fosc</code> µs
+              (8051 ใช้ 12 clock ต่อ 1 machine cycle) — Timer นับ 1 ครั้งต่อ 1 machine cycle เมื่อ <code>C/T = 0</code> (Timer mode)
+            </p>
+
+            <div class="split-2">
+              <!-- Inputs -->
+              <div class="calc-panel">
+                <h4><i class="fas fa-sliders"></i> ค่าอินพุต (Inputs)</h4>
+
+                <div class="field">
+                  <label for="tc-fosc">ความถี่คริสตัล Fosc <span class="unit">(MHz)</span></label>
+                  <input type="number" id="tc-fosc" value="12" min="0.001" step="0.001" inputmode="decimal">
+                </div>
+
+                <div class="field">
+                  <label>Timer Mode</label>
+                  <div class="radio-row" role="radiogroup" aria-label="Timer Mode">
+                    <label class="radio-chip"><input type="radio" name="tc-mode" value="0"> Mode 0 (13-bit)</label>
+                    <label class="radio-chip"><input type="radio" name="tc-mode" value="1" checked> Mode 1 (16-bit)</label>
+                    <label class="radio-chip"><input type="radio" name="tc-mode" value="2"> Mode 2 (8-bit auto-reload)</label>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label>แหล่งค่าตั้งต้น (เลือกอย่างใดอย่างหนึ่ง)</label>
+                  <div class="radio-row" role="radiogroup" aria-label="Input source">
+                    <label class="radio-chip"><input type="radio" name="tc-src" value="delay" checked> ดีเลย์ (µs)</label>
+                    <label class="radio-chip"><input type="radio" name="tc-src" value="counts"> จำนวน Counts (N)</label>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label for="tc-delay">ดีเลย์ที่ต้องการ <span class="unit">(µs)</span></label>
+                  <input type="number" id="tc-delay" value="20" min="0" step="any" inputmode="decimal">
+                </div>
+
+                <div class="field">
+                  <label for="tc-counts">จำนวน Counts N <span class="unit">(นับ)</span></label>
+                  <input type="number" id="tc-counts" value="20" min="1" step="1" inputmode="numeric">
+                </div>
+
+                <div class="field">
+                  <label for="tc-timer">Timer ที่ใช้ <span class="unit">(แสดงค่าอย่างเดียว)</span></label>
+                  <select id="tc-timer">
+                    <option value="T0" selected>Timer 0 (TH0 / TL0)</option>
+                    <option value="T1">Timer 1 (TH1 / TL1)</option>
+                  </select>
+                </div>
+
+                <button type="button" class="btn-calc" id="tc-calc-btn">
+                  <i class="fas fa-calculator"></i> คำนวณค่าโหลด
+                </button>
+
+                <div class="chip-row" aria-label="ตัวอย่างจากข้อสอบ">
+                  <button type="button" class="example-chip" data-tc-fosc="12" data-tc-delay="20" data-tc-mode="1">
+                    <i class="fas fa-bolt"></i> ข้อ 24: 20 µs @ 12 MHz → FFECH
+                  </button>
+                  <button type="button" class="example-chip" data-tc-fosc="12" data-tc-delay="500" data-tc-mode="1">
+                    <i class="fas fa-bolt"></i> ข้อ 25: 500 µs → FE0CH
+                  </button>
+                  <button type="button" class="example-chip" data-tc-fosc="12" data-tc-delay="1" data-tc-mode="2">
+                    <i class="fas fa-bolt"></i> Mode 2: 1 µs → FFH
+                  </button>
+                </div>
+              </div>
+
+              <!-- Results -->
+              <div class="result-box" id="tc-results">
+                <h4><i class="fas fa-output"></i> ผลลัพธ์ (Results)</h4>
+
+                <div class="result-row">
+                  <span class="lbl">Machine Cycle Time (T = 12 / Fosc)</span>
+                  <span class="val" id="tc-out-t">1.000000 µs</span>
+                </div>
+                <div class="result-row">
+                  <span class="lbl">Counts (N)</span>
+                  <span class="val" id="tc-out-n">20 (14H)</span>
+                </div>
+                <div class="result-row">
+                  <span class="lbl">Max Counts ของ Mode นี้</span>
+                  <span class="val" id="tc-out-max">65,536</span>
+                </div>
+                <div class="result-row">
+                  <span class="lbl">ดีเลย์สูงสุดที่ทำได้</span>
+                  <span class="val" id="tc-out-max-delay">65,536 µs</span>
+                </div>
+                <div class="result-row">
+                  <span class="lbl">ค่า Load (Initial Count)</span>
+                  <span class="val mono-lg" id="tc-out-load">FFEC H</span>
+                </div>
+                <div class="result-row">
+                  <span class="lbl" id="tc-out-th-lbl">TH (ไบต์สูง)</span>
+                  <span class="val" id="tc-out-th">FFH</span>
+                </div>
+                <div class="result-row">
+                  <span class="lbl" id="tc-out-tl-lbl">TL (ไบต์ต่ำ)</span>
+                  <span class="val" id="tc-out-tl">ECH</span>
+                </div>
+                <div class="result-row">
+                  <span class="lbl">Timer ที่เลือก</span>
+                  <span class="val" id="tc-out-timer">Timer 0 — TH0 = FFH, TL0 = ECH</span>
+                </div>
+
+                <div class="warn-banner" id="tc-warn"></div>
+
+                <div class="math-steps" id="tc-steps"></div>
+              </div>
+            </div>
+
+            <div class="section-senior-draft">
+              <div class="section-senior-header">
+                <div class="senior-badge-title"><i class="fas fa-info-circle"></i> สรุปสูตร Timer Load (Course Formula)</div>
+              </div>
+              <div class="content-block">
+                <ul>
+                  <li><strong>Machine cycle:</strong> <code>T = 12 / Fosc</code> µs (Fosc หน่วย MHz) — ที่ 12 MHz ได้ T = 1 µs</li>
+                  <li><strong>Mode 1 (16-bit):</strong> <code>Load = FFFFH − N + 1</code> แล้วแยกเป็น TH (ไบต์สูง) / TL (ไบต์ต่ำ)</li>
+                  <li><strong>Mode 0 (13-bit):</strong> <code>Load = 1FFFH − N + 1</code> โดย TH ใช้ 8 บิต และ TL ใช้เฉพาะบิต 4–0 (simplified 8051 convention: <code>TH = Load[12:5]</code>, <code>TL = Load[4:0]</code>)</li>
+                  <li><strong>Mode 2 (8-bit auto-reload):</strong> <code>TH = TL = (256 − N) mod 256</code> — เหมาะกับ baud generator เพราะ reload อัตโนมัติ</li>
+                  <li><strong>ข้อควรระวัง:</strong> ถ้า N &gt; max counts ของ mode จะวนกลับ (overflow) ต้องเลือก mode ใหญ่ขึ้นหรือแบ่ง delay เป็นหลายรอบ</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ===================== 2. BAUD CALCULATOR ===================== -->
+        <article class="solution-card" id="baud-calc">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge green">เครื่องมือ 2</span>
+              <h3 class="card-title">Baud Rate Calculator — Timer 1 สร้าง Baud ให้ UART Mode 1/3</h3>
+            </div>
+            <span class="ref-pill">8051 Serial UART</span>
+          </div>
+          <div class="card-body">
+            <p class="note-line" style="margin:0; color: var(--text-secondary);">
+              สูตรมาตรฐาน: <code>Baud = (2^SMOD / 32) × (Fosc / 12) / (256 − TH1)</code>
+              และค่าโหลดย้อนกลับ <code>TH1 = 256 − (2^SMOD × Fosc) / (384 × Baud)</code>
+              โดย Fosc ต้องเป็นหน่วย <strong>Hz</strong> ในสูตร TH1
+            </p>
+
+            <div class="split-2">
+              <!-- Inputs -->
+              <div class="calc-panel">
+                <h4><i class="fas fa-sliders"></i> ค่าอินพุต (Inputs)</h4>
+
+                <div class="field">
+                  <label for="bc-fosc">ความถี่คริสตัล Fosc <span class="unit">(MHz)</span></label>
+                  <input type="number" id="bc-fosc" value="11.0592" min="0.001" step="0.001" inputmode="decimal">
+                </div>
+
+                <div class="field">
+                  <label for="bc-baud">Baud ที่ต้องการ <span class="unit">(bps)</span></label>
+                  <input type="number" id="bc-baud" value="9600" min="1" step="1" inputmode="numeric">
+                </div>
+
+                <div class="field">
+                  <label>SMOD (Baud Double Bit ใน PCON.7)</label>
+                  <div class="radio-row" role="radiogroup" aria-label="SMOD">
+                    <label class="radio-chip"><input type="radio" name="bc-smod" value="0" checked> SMOD = 0 (ปกติ)</label>
+                    <label class="radio-chip"><input type="radio" name="bc-smod" value="1"> SMOD = 1 (Double baud)</label>
+                  </div>
+                </div>
+
+                <button type="button" class="btn-calc" id="bc-calc-btn">
+                  <i class="fas fa-calculator"></i> คำนวณ TH1
+                </button>
+
+                <div class="chip-row">
+                  <button type="button" class="example-chip" data-bc-fosc="11.0592" data-bc-baud="9600" data-bc-smod="0">
+                    <i class="fas fa-bolt"></i> 11.0592 MHz → 9600 (FDH)
+                  </button>
+                  <button type="button" class="example-chip" data-bc-fosc="12" data-bc-baud="9600" data-bc-smod="0">
+                    <i class="fas fa-bolt"></i> 12 MHz → 9600 (error สูง)
+                  </button>
+                  <button type="button" class="example-chip" data-bc-fosc="11.0592" data-bc-baud="19200" data-bc-smod="1">
+                    <i class="fas fa-bolt"></i> 19200 @ SMOD=1 (FDH)
+                  </button>
+                </div>
+              </div>
+
+              <!-- Results -->
+              <div class="result-box" id="bc-results">
+                <h4><i class="fas fa-output"></i> ผลลัพธ์ (Results)</h4>
+
+                <div class="result-row">
+                  <span class="lbl">TH1 Reload (rounded)</span>
+                  <span class="val mono-lg" id="bc-out-th1">FDH</span>
+                </div>
+                <div class="result-row">
+                  <span class="lbl">TH1 ทศนิยม (ก่อนปัด)</span>
+                  <span class="val" id="bc-out-th1-exact">253.000</span>
+                </div>
+                <div class="result-row">
+                  <span class="lbl">Baud ที่ทำได้จริง</span>
+                  <span class="val" id="bc-out-actual">9600.00 bps</span>
+                </div>
+                <div class="result-row">
+                  <span class="lbl">% Error เทียบค่าที่ต้องการ</span>
+                  <span class="val ok" id="bc-out-err">0.00%</span>
+                </div>
+                <div class="result-row">
+                  <span class="lbl">ค่า 256 − TH1 (divisor)</span>
+                  <span class="val" id="bc-out-div">3</span>
+                </div>
+                <div class="result-row">
+                  <span class="lbl">Timer 1 Mode ที่แนะนำ</span>
+                  <span class="val" id="bc-out-tmode">Mode 2 (8-bit auto-reload)</span>
+                </div>
+
+                <div class="warn-banner" id="bc-warn"></div>
+
+                <div class="math-steps" id="bc-steps"></div>
+              </div>
+            </div>
+
+            <!-- Common baud table -->
+            <h4 style="margin: 0.5rem 0 0.75rem; font-size: 1.05rem;">
+              <i class="fas fa-table" style="color: var(--accent-blue);"></i> ตาราง Baud ยอดนิยม (Timer 1 Mode 2)
+            </h4>
+            <div class="table-responsive">
+              <table class="custom-table">
+                <thead>
+                  <tr>
+                    <th>Fosc</th>
+                    <th>SMOD</th>
+                    <th>Baud เป้าหมาย</th>
+                    <th>TH1</th>
+                    <th>Baud จริง</th>
+                    <th>% Error</th>
+                    <th>หมายเหตุ</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>11.0592 MHz</td>
+                    <td>0</td>
+                    <td>9600</td>
+                    <td><code>FDH</code></td>
+                    <td>9600</td>
+                    <td><span class="badge-mini green">0.00%</span></td>
+                    <td>ค่ามาตรฐาน — ตรงเป๊ะ</td>
+                  </tr>
+                  <tr>
+                    <td>11.0592 MHz</td>
+                    <td>0</td>
+                    <td>19200</td>
+                    <td><code>FFH</code> (≈254.5)</td>
+                    <td>28800</td>
+                    <td><span class="badge-mini red">+50.00%</span></td>
+                    <td>ต้องใช้ SMOD=1 (ได้ FDH → 19200 ตรง)</td>
+                  </tr>
+                  <tr>
+                    <td>11.0592 MHz</td>
+                    <td>1</td>
+                    <td>19200</td>
+                    <td><code>FDH</code></td>
+                    <td>19200</td>
+                    <td><span class="badge-mini green">0.00%</span></td>
+                    <td>Double baud — ตรงเป๊ะ</td>
+                  </tr>
+                  <tr>
+                    <td>11.0592 MHz</td>
+                    <td>0</td>
+                    <td>2400</td>
+                    <td><code>F4H</code></td>
+                    <td>2400</td>
+                    <td><span class="badge-mini green">0.00%</span></td>
+                    <td>ตรงเป๊ะ</td>
+                  </tr>
+                  <tr>
+                    <td>12 MHz</td>
+                    <td>0</td>
+                    <td>9600</td>
+                    <td><code>FDH</code></td>
+                    <td>10416.67</td>
+                    <td><span class="badge-mini red">+8.51%</span></td>
+                    <td>ผิดเกิน 3% — UART ใช้งานจริงไม่ได้</td>
+                  </tr>
+                  <tr>
+                    <td>12 MHz</td>
+                    <td>0</td>
+                    <td>19200</td>
+                    <td><code>FEH</code></td>
+                    <td>15625</td>
+                    <td><span class="badge-mini red">−18.62%</span></td>
+                    <td>ผิดมาก — ห้ามใช้ 12 MHz กับ 19200</td>
+                  </tr>
+                  <tr>
+                    <td>12 MHz</td>
+                    <td>0</td>
+                    <td>2400</td>
+                    <td><code>F3H</code></td>
+                    <td>2403.85</td>
+                    <td><span class="badge-mini amber">+0.16%</span></td>
+                    <td>พอใช้ได้ (error ต่ำมาก)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="section-senior-draft">
+              <div class="section-senior-header">
+                <div class="senior-badge-title"><i class="fas fa-lightbulb"></i> ทำไมต้อง 11.0592 MHz?</div>
+              </div>
+              <div class="content-block">
+                <ul>
+                  <li><code>11.0592 MHz ÷ 12 = 921,600 Hz</code> ลงตัวกับตัวหารมาตรฐานของ UART (9600, 4800, 2400, 19200 เมื่อ SMOD=1) ทำให้ % Error = 0</li>
+                  <li><code>12 MHz ÷ 12 = 1,000,000 Hz</code> ไม่ลงตัวกับ 384 × 9600 ทำให้ TH1 ไม่เป็นจำนวนเต็ม — baud เพี้ยน ~8.5%</li>
+                  <li>งาน Timer ทั่วไปชอบ 12 MHz (T = 1 µs คิดง่าย) แต่งาน <strong>Serial UART</strong> ควรเลือก 11.0592 MHz</li>
+                  <li>เมื่อใช้ Timer 1 สร้าง baud ต้องตั้ง <strong>Timer 1 Mode 2</strong> (8-bit auto-reload) เพื่อให้ reload TH1 อัตโนมัติทุก overflow</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ===================== 3. BITFIELD BUILDER ===================== -->
+        <article class="solution-card" id="bitfield-calc">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge red">เครื่องมือ 3</span>
+              <h3 class="card-title">Register Bitfield Builder — สร้างค่า Hex จากบิตรีจิสเตอร์</h3>
+            </div>
+            <span class="ref-pill">TMOD · TCON · SCON · IE · IP · PCON</span>
+          </div>
+          <div class="card-body">
+            <p class="note-line" style="margin:0; color: var(--text-secondary);">
+              เลือกรีจิสเตอร์ → ติ๊กบิตที่ต้องการ → ได้ค่า <strong>Hex</strong> / <strong>Binary</strong> พร้อมคำอธิบายสั้น
+              ใช้ฝึกเขียน <code>MOV TMOD, #..</code> หรือ <code>SETB TR0</code> ได้ทันที
+            </p>
+
+            <div class="reg-tabs" id="bf-tabs" role="tablist" aria-label="Select register">
+              <button type="button" class="reg-tab active" data-reg="TMOD" role="tab" aria-selected="true">TMOD</button>
+              <button type="button" class="reg-tab" data-reg="TCON" role="tab" aria-selected="false">TCON</button>
+              <button type="button" class="reg-tab" data-reg="SCON" role="tab" aria-selected="false">SCON</button>
+              <button type="button" class="reg-tab" data-reg="IE" role="tab" aria-selected="false">IE</button>
+              <button type="button" class="reg-tab" data-reg="IP" role="tab" aria-selected="false">IP</button>
+              <button type="button" class="reg-tab" data-reg="PCON" role="tab" aria-selected="false">PCON</button>
+            </div>
+
+            <div class="split-2">
+              <div>
+                <div class="bit-row" id="bf-bits">
+                  <!-- populated by JS -->
+                </div>
+                <div class="bit-meaning" id="bf-meaning">
+                  เลือก/ยกเลิกบิตเพื่อดูคำอธิบาย — ค่าจะอัปเดตทันที
+                </div>
+                <div class="preset-row" id="bf-presets">
+                  <button type="button" class="preset-btn" data-preset="t0-mode1">T0 Mode 1</button>
+                  <button type="button" class="preset-btn" data-preset="t0-mode2">T0 Mode 2</button>
+                  <button type="button" class="preset-btn" data-preset="start-tr0">Start TR0</button>
+                  <button type="button" class="preset-btn" data-preset="ie-t0">IE Timer0 only (82H)</button>
+                  <button type="button" class="preset-btn" data-preset="pcon-idle">PCON Idle</button>
+                  <button type="button" class="preset-btn" data-preset="pcon-pd">PCON Power Down</button>
+                </div>
+              </div>
+
+              <div class="result-box">
+                <h4><i class="fas fa-output"></i> ค่าที่ได้ (Live Output)</h4>
+
+                <div class="result-row">
+                  <span class="lbl">รีจิสเตอร์</span>
+                  <span class="val" id="bf-out-reg">TMOD</span>
+                </div>
+                <div class="result-row">
+                  <span class="lbl">Address</span>
+                  <span class="val" id="bf-out-addr">89H</span>
+                </div>
+                <div class="result-row">
+                  <span class="lbl">Hex Value</span>
+                  <span class="val hex-display" id="bf-out-hex">00H</span>
+                </div>
+                <div class="result-row">
+                  <span class="lbl">Binary</span>
+                  <span class="val bin-display" id="bf-out-bin">0000 0000</span>
+                </div>
+                <div class="result-row">
+                  <span class="lbl">ชื่อบิต (bit7 → bit0)</span>
+                  <span class="val bin-bit-labels" id="bf-out-names">GATE C/T M1 M0 GATE C/T M1 M0</span>
+                </div>
+                <div class="result-row">
+                  <span class="lbl">คำสั่ง Assembly ตัวอย่าง</span>
+                  <span class="val" id="bf-out-asm">MOV TMOD, #00H</span>
+                </div>
+
+                <div class="math-steps" id="bf-steps"></div>
+              </div>
+            </div>
+
+            <div class="section-senior-draft">
+              <div class="section-senior-header">
+                <div class="senior-badge-title"><i class="fas fa-info-circle"></i> สรุปหน้าที่รีจิสเตอร์ควบคุม</div>
+              </div>
+              <div class="content-block">
+                <ul>
+                  <li><strong>TMOD (89H):</strong> เลือก mode ของ Timer 1 (นิเบิลสูง) และ Timer 0 (นิเบิลต่ำ) — แต่ละนิเบิลคือ <code>GATE | C/T | M1 | M0</code></li>
+                  <li><strong>TCON (88H):</strong> ธง overflow (TF1/TF0), บิตสตาร์ท (TR1/TR0), และ external interrupt (IE1/IT1/IE0/IT0)</li>
+                  <li><strong>SCON (98H):</strong> Serial mode (SM0/SM1), multi-processor (SM2), receive enable (REN), และธง TI/RI</li>
+                  <li><strong>IE (A8H):</strong> เปิด/ปิด interrupt รายตัว + <code>EA</code> (global enable)</li>
+                  <li><strong>IP (B8H):</strong> ลำดับความสำคัญ (priority) ของแต่ละ interrupt</li>
+                  <li><strong>PCON (87H):</strong> <code>SMOD</code> (double baud), <code>GF1/GF0</code>, <code>PD</code> (Power Down), <code>IDL</code> (Idle)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ===================== 4. QUICK REFERENCE ===================== -->
+        <article class="solution-card" id="quick-ref">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge blue">อ้างอิง</span>
+              <h3 class="card-title">Quick Reference Tables — ตารางบิตและสูตรสำคัญ</h3>
+            </div>
+            <span class="ref-pill">Cheat Sheet</span>
+          </div>
+          <div class="card-body">
+
+            <h4 style="margin: 0 0 0.65rem; font-size: 1.02rem;"><i class="fas fa-table" style="color: var(--accent-blue);"></i> TCON — Timer Control (88H)</h4>
+            <div class="table-responsive">
+              <table class="custom-table">
+                <thead>
+                  <tr><th>Bit</th><th>ชื่อ</th><th>ฟังก์ชัน</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>7</td><td><code>TF1</code></td><td>Timer 1 overflow flag — ฮาร์ดแวร์ตั้งให้เมื่อ overflow, ล้างด้วยซอฟต์แวร์</td></tr>
+                  <tr><td>6</td><td><code>TR1</code></td><td>Timer 1 run control — 1 = เริ่มนับ, 0 = หยุด</td></tr>
+                  <tr><td>5</td><td><code>TF0</code></td><td>Timer 0 overflow flag</td></tr>
+                  <tr><td>4</td><td><code>TR0</code></td><td>Timer 0 run control — 1 = เริ่มนับ, 0 = หยุด</td></tr>
+                  <tr><td>3</td><td><code>IE1</code></td><td>External Interrupt 1 edge flag</td></tr>
+                  <tr><td>2</td><td><code>IT1</code></td><td>External Interrupt 1 type — 1 = edge, 0 = level</td></tr>
+                  <tr><td>1</td><td><code>IE0</code></td><td>External Interrupt 0 edge flag</td></tr>
+                  <tr><td>0</td><td><code>IT0</code></td><td>External Interrupt 0 type — 1 = edge, 0 = level</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4 style="margin: 1.25rem 0 0.65rem; font-size: 1.02rem;"><i class="fas fa-table" style="color: var(--accent-purple);"></i> TMOD — Timer Mode (89H)</h4>
+            <div class="table-responsive">
+              <table class="custom-table">
+                <thead>
+                  <tr><th>Bit</th><th>ชื่อ</th><th>ฟังก์ชัน</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>7</td><td><code>GATE1</code></td><td>1 = Timer 1 ทำงานเมื่อ TR1=1 และ INT1=1 (ใช้กับ Gated timer)</td></tr>
+                  <tr><td>6</td><td><code>C/T1</code></td><td>0 = Timer (นับ Fosc/12), 1 = Counter (นับขอบสัญญาณภายนอก P3.5)</td></tr>
+                  <tr><td>5–4</td><td><code>M1 M0</code></td><td>00 = Mode 0 (13-bit), 01 = Mode 1 (16-bit), 10 = Mode 2 (8-bit auto-reload), 11 = Mode 3 (split)</td></tr>
+                  <tr><td>3</td><td><code>GATE0</code></td><td>1 = Timer 0 ทำงานเมื่อ TR0=1 และ INT0=1</td></tr>
+                  <tr><td>2</td><td><code>C/T0</code></td><td>0 = Timer (Fosc/12), 1 = Counter (P3.4)</td></tr>
+                  <tr><td>1–0</td><td><code>M1 M0</code></td><td>โหมดของ Timer 0 เหมือนกับ Timer 1</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4 style="margin: 1.25rem 0 0.65rem; font-size: 1.02rem;"><i class="fas fa-square-root-variable" style="color: var(--accent-green);"></i> สูตรลัดที่ต้องจำ</h4>
+            <div class="table-responsive">
+              <table class="custom-table">
+                <thead>
+                  <tr><th>หัวข้อ</th><th>สูตร</th><th>ตัวอย่าง (12 MHz)</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Machine cycle time</td>
+                    <td><code>T = 12 / Fosc</code> µs</td>
+                    <td><code>T = 1 µs</code></td>
+                  </tr>
+                  <tr>
+                    <td>Counts จากดีเลย์</td>
+                    <td><code>N = delay / T</code></td>
+                    <td>20 µs → <code>N = 20</code></td>
+                  </tr>
+                  <tr>
+                    <td>Mode 1 load</td>
+                    <td><code>Load = FFFFH − N + 1</code></td>
+                    <td>N=20 → <code>FFECH</code></td>
+                  </tr>
+                  <tr>
+                    <td>Mode 2 reload</td>
+                    <td><code>TH = (256 − N) mod 256</code></td>
+                    <td>N=20 → <code>ECH</code></td>
+                  </tr>
+                  <tr>
+                    <td>Mode 0 load (13-bit)</td>
+                    <td><code>Load = 1FFFH − N + 1</code></td>
+                    <td>N=20 → <code>1FECH</code></td>
+                  </tr>
+                  <tr>
+                    <td>Max delay</td>
+                    <td><code>maxN × T</code></td>
+                    <td>Mode 1: 65536 µs</td>
+                  </tr>
+                  <tr>
+                    <td>Baud (Timer 1)</td>
+                    <td><code>(2^SMOD/32)×(Fosc/12)/(256−TH1)</code></td>
+                    <td>11.0592, 9600 → <code>TH1=FDH</code></td>
+                  </tr>
+                  <tr>
+                    <td>TH1 reload</td>
+                    <td><code>256 − (2^SMOD×Fosc)/(384×Baud)</code></td>
+                    <td>Fosc หน่วย Hz</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </article>
+
+        <!-- ===================== 5. WORKED EXAMPLES ===================== -->
+        <article class="solution-card" id="worked-examples">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge green">ตัวอย่างจริง</span>
+              <h3 class="card-title">Worked Examples — ข้อ 24 และ ข้อ 25 จากชุดข้อสอบ Final</h3>
+            </div>
+            <span class="ref-pill">Timers &amp; Counters</span>
+          </div>
+          <div class="card-body">
+
+            <div class="chip-row" style="margin: 0 0 1rem;">
+              <a class="link-chip" href="../real-exam-recalled/index.html#q24"><i class="fas fa-arrow-up-right-from-square"></i> เปิดข้อ 24 เต็ม ๆ</a>
+              <a class="link-chip" href="../real-exam-recalled/index.html#q25"><i class="fas fa-arrow-up-right-from-square"></i> เปิดข้อ 25 เต็ม ๆ</a>
+              <a class="link-chip" href="../real-exam-recalled/index.html"><i class="fas fa-book"></i> เฉลยครบทั้ง 56 ข้อ</a>
+            </div>
+
+            <!-- Q24 -->
+            <div class="section-recalled">
+              <div class="section-recalled-header">
+                <div class="recalled-badge-title"><i class="fas fa-quote-left"></i> ข้อ 24: Delay 20 µs ด้วย Timer (โจทย์ย่อ)</div>
+              </div>
+              <div class="content-block">
+                <p><strong>จงเขียนโปรแกรมหน่วงเวลา 20 µs โดยใช้ Timer 0 Mode 1 ที่ Fosc = 12 MHz พร้อมคำนวณค่าที่โหลดเข้า TH0/TL0</strong></p>
+              </div>
+            </div>
+
+            <div class="section-senior-draft">
+              <div class="section-senior-header">
+                <div class="senior-badge-title"><i class="fas fa-microchip"></i> แนวคิดจากโน้ตรุ่นพี่</div>
+              </div>
+              <div class="content-block">
+                <ul>
+                  <li>ที่ 12 MHz → 1 machine cycle = <code>1 µs</code> ดังนั้น 20 µs ต้องการ <strong>20 counts</strong> (<code>14H</code>)</li>
+                  <li>ใช้ <strong>Timer 0 Mode 1</strong> (16-bit): โหลดค่าตั้งต้น = <code>FFFFH − N + 1</code></li>
+                  <li>ต้อง <code>CLR TF0</code> ก่อนเริ่ม และ <code>SETB TR0</code> เพื่อสตาร์ท แล้วรอจน <code>TF0 = 1</code></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> เฉลยสมบูรณ์ — คำนวณทีละขั้น</div>
+              </div>
+              <div class="content-block">
+                <ol style="line-height: 1.85;">
+                  <li><strong>Machine cycle:</strong> <code>T = 12 / 12 MHz = 1 µs</code></li>
+                  <li><strong>Counts:</strong> <code>N = 20 µs / 1 µs = 20 = 14H</code></li>
+                  <li><strong>Max check:</strong> Mode 1 ได้ 65,536 counts — 20 อยู่ในช่วง <i class="fas fa-check" aria-hidden="true"></i></li>
+                  <li><strong>ค่าโหลด:</strong> <code>FFFFH − 14H + 1 = FFECH</code></li>
+                  <li><strong>แยกไบต์:</strong> <code>TH0 = FFH</code>, <code>TL0 = ECH</code></li>
+                </ol>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <span>8051 Assembly — Delay 20 µs (Timer 0 Mode 1)</span>
+                    <button class="btn-copy" type="button">Copy Code</button>
+                  </div>
+                  <pre class="code-content"><code>        <span class="directive">ORG</span>     <span class="address">0000H</span>
+        <span class="opcode">LJMP</span>    <span class="operand">MAIN</span>
+
+        <span class="directive">ORG</span>     <span class="address">0030H</span>
+<span class="operand">MAIN:</span>
+        <span class="opcode">MOV</span>     <span class="operand">TMOD</span>, <span class="immediate">#01H</span>    <span class="comment">; Timer 0 Mode 1 (16-bit)</span>
+        <span class="opcode">MOV</span>     <span class="operand">TH0</span>, <span class="immediate">#0FFH</span>   <span class="comment">; Load = FFECH</span>
+        <span class="opcode">MOV</span>     <span class="operand">TL0</span>, <span class="immediate">#0ECH</span>   <span class="comment">; TH0:TL0 = FFEC H</span>
+        <span class="opcode">CLR</span>     <span class="operand">TF0</span>            <span class="comment">; เคลียร์ overflow flag</span>
+        <span class="opcode">SETB</span>    <span class="operand">TR0</span>            <span class="comment">; เริ่ม Timer 0</span>
+<span class="operand">WAIT:</span>
+        <span class="opcode">JNB</span>     <span class="operand">TF0</span>, <span class="operand">WAIT</span>    <span class="comment">; รอจนครบ 20 counts</span>
+        <span class="opcode">CLR</span>     <span class="operand">TR0</span>            <span class="comment">; หยุด Timer</span>
+        <span class="opcode">CLR</span>     <span class="operand">TF0</span>
+<span class="operand">HERE:</span>
+        <span class="opcode">SJMP</span>    <span class="operand">HERE</span>           <span class="comment">; จบโปรแกรม (วนอยู่กับที่)</span>
+        <span class="directive">END</span></code></pre>
+                </div>
+                <p style="margin-top: 0.65rem;">
+                  <strong>คำตอบ:</strong> <code>TH0 = FFH</code>, <code>TL0 = ECH</code>
+                  (ค่ารวม <code>FFECH</code>) — ลองกดชิป “ข้อ 24” ในเครื่อง Timer Calculator ด้านบนเพื่อดูซ้ำแบบสด
+                </p>
+              </div>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 1.5rem 0;">
+
+            <!-- Q25 -->
+            <div class="section-recalled">
+              <div class="section-recalled-header">
+                <div class="recalled-badge-title"><i class="fas fa-quote-left"></i> ข้อ 25: Square Wave 1 kHz บน TxD (โจทย์ย่อ)</div>
+              </div>
+              <div class="content-block">
+                <p><strong>จงสร้าง square wave ความถี่ 1 kHz ที่ขารับส่งข้อมูล TxD โดยใช้ Timer 1 ที่ Fosc = 12 MHz จงหาค่าโหลดและเขียนโปรแกรม</strong></p>
+                <p style="margin:0.35rem 0 0; color: var(--text-secondary); font-size: 0.92rem;">
+                  (โจทย์เต็ม: คาบเวลาของสัญญาณ 1 kHz = 1000 µs → ครึ่งคาบ High/Low = 500 µs ต่อ half-period)
+                </p>
+              </div>
+            </div>
+
+            <div class="section-senior-draft">
+              <div class="section-senior-header">
+                <div class="senior-badge-title"><i class="fas fa-microchip"></i> แนวคิดจากโน้ตรุ่นพี่</div>
+              </div>
+              <div class="content-block">
+                <ul>
+                  <li>Square wave 1 kHz → คาบ = <code>1 ms = 1000 µs</code> → สลับ TxD ทุก <code>500 µs</code></li>
+                  <li>ที่ 12 MHz, T = 1 µs → ต้องการ <strong>500 counts</strong> (<code>1F4H</code>) ต่อ half-period</li>
+                  <li>ใช้ <strong>Timer 1 Mode 1</strong>: <code>Load = FFFFH − 1F4H + 1 = FE0CH</code></li>
+                  <li>ใน ISR / ลูป: โหลดซ้ำ TH1:TL1 = FE0CH แล้ว <code>CPL P3.1</code> (TxD) ทุกครั้งที่ overflow</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> เฉลยสมบูรณ์ — คำนวณทีละขั้น</div>
+              </div>
+              <div class="content-block">
+                <ol style="line-height: 1.85;">
+                  <li><strong>คาบเวลา:</strong> <code>f = 1 kHz → T_wave = 1 / 1000 = 1 ms = 1000 µs</code></li>
+                  <li><strong>Half-period:</strong> <code>1000 µs / 2 = 500 µs</code> (High 500 µs + Low 500 µs)</li>
+                  <li><strong>Machine cycle:</strong> <code>T = 12 / 12 MHz = 1 µs</code></li>
+                  <li><strong>Counts:</strong> <code>N = 500 µs / 1 µs = 500 = 1F4H</code></li>
+                  <li><strong>ค่าโหลด Mode 1:</strong> <code>FFFFH − 1F4H + 1 = FE0CH</code></li>
+                  <li><strong>แยกไบต์:</strong> <code>TH1 = FEH</code>, <code>TL1 = 0CH</code></li>
+                </ol>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <span>8051 Assembly — 1 kHz Square Wave on TxD (Timer 1 Mode 1)</span>
+                    <button class="btn-copy" type="button">Copy Code</button>
+                  </div>
+                  <pre class="code-content"><code>        <span class="directive">ORG</span>     <span class="address">0000H</span>
+        <span class="opcode">LJMP</span>    <span class="operand">MAIN</span>
+
+        <span class="directive">ORG</span>     <span class="address">0030H</span>
+<span class="operand">MAIN:</span>
+        <span class="opcode">MOV</span>     <span class="operand">TMOD</span>, <span class="immediate">#10H</span>    <span class="comment">; Timer 1 Mode 1 (16-bit)</span>
+        <span class="opcode">MOV</span>     <span class="operand">TH1</span>, <span class="immediate">#0FEH</span>   <span class="comment">; Load = FE0CH → half-period 500 µs</span>
+        <span class="opcode">MOV</span>     <span class="operand">TL1</span>, <span class="immediate">#0CH</span>
+        <span class="opcode">SETB</span>    <span class="operand">TR1</span>            <span class="comment">; เริ่ม Timer 1</span>
+<span class="operand">LOOP:</span>
+        <span class="opcode">JNB</span>     <span class="operand">TF1</span>, <span class="operand">LOOP</span>    <span class="comment">; รอครบ 500 µs</span>
+        <span class="opcode">CLR</span>     <span class="operand">TF1</span>            <span class="comment">; เคลียร์ overflow flag</span>
+        <span class="opcode">MOV</span>     <span class="operand">TH1</span>, <span class="immediate">#0FEH</span>   <span class="comment">; โหลดค่าตั้งต้นใหม่ (Mode 1 ไม่ auto-reload)</span>
+        <span class="opcode">MOV</span>     <span class="operand">TL1</span>, <span class="immediate">#0CH</span>
+        <span class="opcode">CPL</span>     <span class="operand">P3.1</span>           <span class="comment">; สลับสถานะ TxD → 1 kHz square wave</span>
+        <span class="opcode">SJMP</span>    <span class="operand">LOOP</span>
+        <span class="directive">END</span></code></pre>
+                </div>
+                <p style="margin-top: 0.65rem;">
+                  <strong>คำตอบ:</strong> <code>TH1 = FEH</code>, <code>TL1 = 0CH</code>
+                  (ค่ารวม <code>FE0CH</code>) ได้ square wave 1 kHz ที่ TxD (P3.1)
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div>
+        <p><strong>Embedded Systems Learning Platform</strong> &bull; Interactive Lab — Timer, Baud, Bitfield Calculators</p>
+      </div>
+      <div class="footer-links">
+        <a href="../../../index.html">หน้าแรก</a>
+        <a href="../../index.html">305341 Embedded 1</a>
+        <a href="../index.html">ข้อสอบ Final</a>
+        <a href="../real-exam-recalled/index.html">01. เฉลย 56 ข้อ</a>
+        <a href="../fsm-sliding-door-project/index.html">03. FSM Project</a>
+        <a href="https://github.com/T3thr/embedded-system-learning" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Shared scripts (theme, mobile nav, TOC) -->
+  <script src="../../../assets/js/main.js?v=3.1"></script>
+
+  <!-- Interactive Lab calculators (vanilla JS, offline) -->
+  <script>
+  (function () {
+    'use strict';
+
+    /* ---------- helpers ---------- */
+    function byId(id) { return document.getElementById(id); }
+    function fmtHex(n, width) {
+      if (n === null || n === undefined || isNaN(n)) return '—';
+      var w = width || 2;
+      var s = (n >>> 0).toString(16).toUpperCase();
+      while (s.length < w) s = '0' + s;
+      return s;
+    }
+    function hexH(n, width) { return fmtHex(n, width) + 'H'; }
+    function fmtDec(n, digits) {
+      if (n === null || n === undefined || isNaN(n)) return '—';
+      var d = (digits === undefined) ? 0 : digits;
+      return Number(n).toLocaleString('en-US', {
+        minimumFractionDigits: d,
+        maximumFractionDigits: d
+      });
+    }
+    function round(n) { return Math.round(n); }
+
+    /* =========================================================
+       1) TIMER INITIAL COUNT CALCULATOR
+       ========================================================= */
+    var TC = {
+      fosc: byId('tc-fosc'),
+      delay: byId('tc-delay'),
+      counts: byId('tc-counts'),
+      timer: byId('tc-timer'),
+      btn: byId('tc-calc-btn'),
+      outT: byId('tc-out-t'),
+      outN: byId('tc-out-n'),
+      outMax: byId('tc-out-max'),
+      outMaxDelay: byId('tc-out-max-delay'),
+      outLoad: byId('tc-out-load'),
+      outTh: byId('tc-out-th'),
+      outTl: byId('tc-out-tl'),
+      outThLbl: byId('tc-out-th-lbl'),
+      outTlLbl: byId('tc-out-tl-lbl'),
+      outTimer: byId('tc-out-timer'),
+      warn: byId('tc-warn'),
+      steps: byId('tc-steps')
+    };
+
+    function tcGetMode() {
+      var el = document.querySelector('input[name="tc-mode"]:checked');
+      return el ? parseInt(el.value, 10) : 1;
+    }
+    function tcGetSrc() {
+      var el = document.querySelector('input[name="tc-src"]:checked');
+      return el ? el.value : 'delay';
+    }
+
+    function tcCompute() {
+      var fosc = parseFloat(TC.fosc.value);
+      if (isNaN(fosc) || fosc <= 0) {
+        TC.steps.textContent = 'กรุณาป้อน Fosc เป็นตัวเลขมากกว่า 0';
+        return;
+      }
+
+      var mode = tcGetMode();
+      var src = tcGetSrc();
+      var T = 12 / fosc; // µs per machine cycle
+
+      var maxN, maxLabel;
+      if (mode === 0) { maxN = 8192; maxLabel = '8,192 (Mode 0 · 13-bit)'; }
+      else if (mode === 1) { maxN = 65536; maxLabel = '65,536 (Mode 1 · 16-bit)'; }
+      else { maxN = 256; maxLabel = '256 (Mode 2 · 8-bit auto-reload)'; }
+
+      var N, delay, nExact;
+      if (src === 'delay') {
+        delay = parseFloat(TC.delay.value);
+        if (isNaN(delay) || delay < 0) delay = 0;
+        nExact = delay / T;
+        N = round(nExact);
+        if (N < 1 && delay > 0) N = 1;
+        TC.counts.value = String(N);
+      } else {
+        N = parseFloat(TC.counts.value);
+        if (isNaN(N) || N < 1) N = 1;
+        N = round(N);
+        nExact = N;
+        delay = N * T;
+        TC.delay.value = (Math.round(delay * 1e6) / 1e6).toString();
+      }
+
+      // Display basics
+      TC.outT.textContent = T.toFixed(6) + ' µs';
+      TC.outN.textContent = fmtDec(N, 0) + ' (' + fmtHex(N, mode === 0 ? 3 : (mode === 2 ? 2 : 4)) + ')';
+      TC.outMax.textContent = fmtDec(maxN, 0);
+      TC.outMaxDelay.textContent = fmtDec(maxN * T, 3) + ' µs';
+
+      // Overflow warning
+      var over = (N > maxN);
+      if (over) {
+        TC.warn.className = 'warn-banner show';
+        TC.warn.innerHTML = '<i class="fas fa-triangle-exclamation"></i> ' +
+          'ดีเลย์/counts ที่ระบุ (' + fmtDec(N, 0) + ') <strong>เกิน max ของ Mode ' + mode + '</strong> (' +
+          fmtDec(maxN, 0) + ') — Timer จะ overflow ไม่ครบตามต้องการ ให้เลือก Mode 1 (16-bit) หรือแบ่งหน่วงหลายรอบ';
+      } else {
+        TC.warn.className = 'warn-banner';
+        TC.warn.textContent = '';
+      }
+
+      // Compute load
+      var load16, th, tl, steps = [];
+      steps.push('T = 12 / Fosc = 12 / ' + fosc + ' MHz = ' + T.toFixed(6) + ' µs');
+      if (src === 'delay') {
+        steps.push('N = delay / T = ' + TC.delay.value + ' / ' + T.toFixed(6) +
+          ' = ' + nExact.toFixed(6) + ' → ปัดเป็น ' + N + ' counts (' + fmtHex(N, mode === 0 ? 3 : 4) + ')');
+      } else {
+        steps.push('N = ' + N + ' counts (' + fmtHex(N, mode === 0 ? 3 : 4) + ') → delay = N × T = ' +
+          N + ' × ' + T.toFixed(6) + ' = ' + delay.toFixed(6) + ' µs');
+      }
+      steps.push('Max counts (Mode ' + mode + ') = ' + fmtDec(maxN, 0) + ' → ดีเลย์สูงสุด ' + (maxN * T).toFixed(3) + ' µs');
+
+      if (mode === 1) {
+        load16 = (0xFFFF - N + 1) & 0xFFFF;
+        th = (load16 >> 8) & 0xFF;
+        tl = load16 & 0xFF;
+        steps.push('Mode 1: Load = FFFFH − N + 1');
+        steps.push('        = FFFFH − ' + fmtHex(N, 4) + ' + 1 = ' + fmtHex(load16, 4) + 'H');
+        steps.push('TH = ' + hexH(th) + '   TL = ' + hexH(tl));
+        TC.outLoad.textContent = fmtHex(load16, 4) + ' H';
+        TC.outThLbl.textContent = 'TH (ไบต์สูง)';
+        TC.outTlLbl.textContent = 'TL (ไบต์ต่ำ)';
+        TC.outTh.textContent = hexH(th);
+        TC.outTl.textContent = hexH(tl);
+      } else if (mode === 0) {
+        // 13-bit: Load = 1FFFH - N + 1; TH = load[12:5], TL = load[4:0]
+        var load13 = (0x1FFF - N + 1) & 0x1FFF;
+        th = (load13 >> 5) & 0xFF;
+        tl = load13 & 0x1F;
+        steps.push('Mode 0 (13-bit): Load = 1FFFH − N + 1');
+        steps.push('        = 1FFFH − ' + fmtHex(N, 3) + ' + 1 = ' + fmtHex(load13, 3) + 'H');
+        steps.push('Convention: TH0 ใช้ 8 บิตถัดมา, TL0 ใช้เฉพาะบิต 4–0');
+        steps.push('TH = Load[12:5] = ' + hexH(th) + '   TL = Load[4:0] = ' + hexH(tl, 2));
+        TC.outLoad.textContent = fmtHex(load13, 3) + ' H';
+        TC.outThLbl.textContent = 'TH0 (8 บิต: Load[12:5])';
+        TC.outTlLbl.textContent = 'TL0 (5 บิต: Load[4:0])';
+        TC.outTh.textContent = hexH(th);
+        TC.outTl.textContent = hexH(tl, 2);
+      } else {
+        // Mode 2: 8-bit auto-reload
+        var reload = (256 - N) % 256;
+        if (reload < 0) reload += 256;
+        th = reload;
+        tl = reload;
+        steps.push('Mode 2 (8-bit auto-reload): TH = TL = (256 − N) mod 256');
+        steps.push('        = (256 − ' + N + ') mod 256 = ' + reload + ' = ' + hexH(reload));
+        steps.push('ค่า reload นี้จะถูกโหลดกลับอัตโนมัติทุกครั้งที่ Timer overflow');
+        TC.outLoad.textContent = hexH(reload) + ' (reload)';
+        TC.outThLbl.textContent = 'TH (reload value)';
+        TC.outTlLbl.textContent = 'TL (same as TH)';
+        TC.outTh.textContent = hexH(th);
+        TC.outTl.textContent = hexH(tl);
+      }
+
+      var tSel = TC.timer.value;
+      var thName = (tSel === 'T0') ? 'TH0' : 'TH1';
+      var tlName = (tSel === 'T0') ? 'TL0' : 'TL1';
+      TC.outTimer.textContent = tSel === 'T0'
+        ? 'Timer 0 — TH0 = ' + hexH(th) + ', TL0 = ' + hexH(mode === 0 ? tl : (tl & 0xFF), mode === 0 ? 2 : 2)
+        : 'Timer 1 — TH1 = ' + hexH(th) + ', TL1 = ' + hexH(mode === 0 ? tl : (tl & 0xFF), 2);
+
+      steps.push('ตั้งค่า: MOV ' + thName + ', #' + hexH(th) + '  /  MOV ' + tlName + ', #' + hexH(mode === 0 ? tl : (tl & 0xFF), 2));
+      TC.steps.textContent = steps.join('\n');
+    }
+
+    if (TC.btn) {
+      TC.btn.addEventListener('click', tcCompute);
+    }
+    ['tc-fosc', 'tc-delay', 'tc-counts', 'tc-timer'].forEach(function (id) {
+      var el = byId(id);
+      if (el) el.addEventListener('input', tcCompute);
+    });
+    document.querySelectorAll('input[name="tc-mode"], input[name="tc-src"]').forEach(function (el) {
+      el.addEventListener('change', tcCompute);
+    });
+
+    // Example chips for timer
+    document.querySelectorAll('.example-chip[data-tc-delay]').forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        var f = chip.getAttribute('data-tc-fosc');
+        var d = chip.getAttribute('data-tc-delay');
+        var m = chip.getAttribute('data-tc-mode');
+        if (f) TC.fosc.value = f;
+        if (d) TC.delay.value = d;
+        if (m) {
+          var radio = document.querySelector('input[name="tc-mode"][value="' + m + '"]');
+          if (radio) radio.checked = true;
+        }
+        var srcDelay = document.querySelector('input[name="tc-src"][value="delay"]');
+        if (srcDelay) srcDelay.checked = true;
+        tcCompute();
+      });
+    });
+
+    /* =========================================================
+       2) BAUD RATE CALCULATOR
+       ========================================================= */
+    var BC = {
+      fosc: byId('bc-fosc'),
+      baud: byId('bc-baud'),
+      btn: byId('bc-calc-btn'),
+      outTh1: byId('bc-out-th1'),
+      outTh1Exact: byId('bc-out-th1-exact'),
+      outActual: byId('bc-out-actual'),
+      outErr: byId('bc-out-err'),
+      outDiv: byId('bc-out-div'),
+      outTMode: byId('bc-out-tmode'),
+      warn: byId('bc-warn'),
+      steps: byId('bc-steps')
+    };
+
+    function bcGetSmod() {
+      var el = document.querySelector('input[name="bc-smod"]:checked');
+      return el ? parseInt(el.value, 10) : 0;
+    }
+
+    function bcCompute() {
+      var foscMhz = parseFloat(BC.fosc.value);
+      var baud = parseFloat(BC.baud.value);
+      if (isNaN(foscMhz) || foscMhz <= 0 || isNaN(baud) || baud <= 0) {
+        BC.steps.textContent = 'กรุณาป้อน Fosc และ Baud เป็นตัวเลขมากกว่า 0';
+        return;
+      }
+      var smod = bcGetSmod();
+      var foscHz = foscMhz * 1e6;
+      var pow = (smod === 1) ? 2 : 1;
+
+      // TH1 = 256 - (2^SMOD * Fosc) / (384 * Baud)
+      var th1Exact = 256 - (pow * foscHz) / (384 * baud);
+      var th1 = round(th1Exact);
+      if (th1 < 0) th1 = 0;
+      if (th1 > 255) th1 = 255;
+
+      var div = 256 - th1;
+      if (div === 0) div = 256; // wrap
+      // Actual baud = (2^SMOD / 32) * (Fosc / 12) / (256 - TH1)
+      var actual = (pow / 32) * (foscHz / 12) / (256 - th1);
+      if (!isFinite(actual) || actual <= 0) actual = NaN;
+
+      var errPct = ((actual - baud) / baud) * 100;
+
+      BC.outTh1.textContent = hexH(th1) + ' (' + th1 + ')';
+      BC.outTh1Exact.textContent = th1Exact.toFixed(3);
+      BC.outActual.textContent = (isNaN(actual) ? '—' : actual.toFixed(2) + ' bps');
+      BC.outDiv.textContent = String(256 - th1);
+      BC.outTMode.textContent = 'Mode 2 (8-bit auto-reload)';
+
+      var errEl = BC.outErr;
+      if (isNaN(errPct)) {
+        errEl.textContent = '—';
+        errEl.className = 'val err';
+      } else {
+        errEl.textContent = (errPct >= 0 ? '+' : '') + errPct.toFixed(2) + '%';
+        var abs = Math.abs(errPct);
+        if (abs < 1.5) errEl.className = 'val ok';
+        else if (abs < 3) errEl.className = 'val warn';
+        else errEl.className = 'val err';
+      }
+
+      // Warnings
+      if (!isNaN(errPct) && Math.abs(errPct) >= 3) {
+        BC.warn.className = 'warn-banner show';
+        BC.warn.innerHTML = '<i class="fas fa-triangle-exclamation"></i> ' +
+          'Baud error <strong>' + errPct.toFixed(2) + '%</strong> เกิน 3% — การสื่อสาร UART อาจผิดพลาด ' +
+          'แนะนำใช้ <strong>11.0592 MHz</strong> หรือปรับ SMOD';
+      } else if (!isNaN(errPct) && Math.abs(errPct) >= 1.5) {
+        BC.warn.className = 'warn-banner show';
+        BC.warn.innerHTML = '<i class="fas fa-circle-info"></i> ' +
+          'Baud error ' + errPct.toFixed(2) + '% — พอใช้ได้ในบางงาน แต่ควรพิจารณา 11.0592 MHz เพื่อความแม่นยำ';
+      } else {
+        BC.warn.className = 'warn-banner';
+        BC.warn.textContent = '';
+      }
+
+      // Steps
+      var steps = [];
+      steps.push('Fosc = ' + foscMhz + ' MHz = ' + foscHz.toLocaleString('en-US') + ' Hz');
+      steps.push('SMOD = ' + smod + '  →  2^SMOD = ' + pow);
+      steps.push('TH1 = 256 − (2^SMOD × Fosc) / (384 × Baud)');
+      steps.push('    = 256 − (' + pow + ' × ' + foscHz.toLocaleString('en-US') + ') / (384 × ' + baud + ')');
+      steps.push('    = 256 − ' + ((pow * foscHz) / (384 * baud)).toFixed(6) + ' = ' + th1Exact.toFixed(6) + ' → ปัดเป็น ' + th1 + ' = ' + hexH(th1));
+      steps.push('Divisor (256 − TH1) = ' + (256 - th1));
+      steps.push('Baud จริง = (2^SMOD / 32) × (Fosc / 12) / (256 − TH1)');
+      steps.push('         = (' + pow + '/32) × (' + foscHz.toLocaleString('en-US') + '/12) / ' + (256 - th1) + ' = ' + (isNaN(actual) ? '—' : actual.toFixed(4)) + ' bps');
+      steps.push('% Error = (จริง − เป้า) / เป้า × 100 = ' + (isNaN(errPct) ? '—' : errPct.toFixed(4)) + '%');
+      BC.steps.textContent = steps.join('\n');
+    }
+
+    if (BC.btn) BC.btn.addEventListener('click', bcCompute);
+    ['bc-fosc', 'bc-baud'].forEach(function (id) {
+      var el = byId(id);
+      if (el) el.addEventListener('input', bcCompute);
+    });
+    document.querySelectorAll('input[name="bc-smod"]').forEach(function (el) {
+      el.addEventListener('change', bcCompute);
+    });
+
+    document.querySelectorAll('.example-chip[data-bc-baud]').forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        var f = chip.getAttribute('data-bc-fosc');
+        var b = chip.getAttribute('data-bc-baud');
+        var s = chip.getAttribute('data-bc-smod');
+        if (f) BC.fosc.value = f;
+        if (b) BC.baud.value = b;
+        if (s) {
+          var radio = document.querySelector('input[name="bc-smod"][value="' + s + '"]');
+          if (radio) radio.checked = true;
+        }
+        bcCompute();
+      });
+    });
+
+    /* =========================================================
+       3) REGISTER BITFIELD BUILDER
+       ========================================================= */
+    // bit: { pos, name, desc, readOnly? }
+    var REGS = {
+      TMOD: {
+        addr: '89H',
+        asm: 'MOV TMOD, #%h',
+        bits: [
+          { pos: 7, name: 'GATE1', desc: 'GATE ของ Timer 1: 1 = ต้องมี TR1=1 และ INT1=1 จึงนับ (gated timing)' },
+          { pos: 6, name: 'C/T1', desc: 'C/T ของ Timer 1: 0 = Timer (นับ Fosc/12), 1 = Counter (นับขอบ P3.5)' },
+          { pos: 5, name: 'M1_1', desc: 'M1 ของ Timer 1 — ประกอบกับ M0 เป็นโหมด (00=Mode0, 01=Mode1, 10=Mode2, 11=Mode3)' },
+          { pos: 4, name: 'M0_1', desc: 'M0 ของ Timer 1 — โหมด: Mode 0 (13-bit), Mode 1 (16-bit), Mode 2 (8-bit auto-reload), Mode 3 (split)' },
+          { pos: 3, name: 'GATE0', desc: 'GATE ของ Timer 0: 1 = ต้องมี TR0=1 และ INT0=1 จึงนับ' },
+          { pos: 2, name: 'C/T0', desc: 'C/T ของ Timer 0: 0 = Timer (Fosc/12), 1 = Counter (ขอบ P3.4)' },
+          { pos: 1, name: 'M1_0', desc: 'M1 ของ Timer 0 — เลือกโหมดร่วมกับ M0' },
+          { pos: 0, name: 'M0_0', desc: 'M0 ของ Timer 0 — 01=Mode1 (16-bit), 10=Mode2 (8-bit auto-reload) เป็นต้น' }
+        ]
+      },
+      TCON: {
+        addr: '88H',
+        asm: 'MOV TCON, #%h',
+        bits: [
+          { pos: 7, name: 'TF1', desc: 'Timer 1 overflow flag — ฮาร์ดแวร์ตั้งเมื่อ overflow; ล้างด้วย CLR TF1' },
+          { pos: 6, name: 'TR1', desc: 'Timer 1 run control — SETB TR1 เพื่อเริ่ม Timer 1' },
+          { pos: 5, name: 'TF0', desc: 'Timer 0 overflow flag — ใช้รอ delay ด้วย WAIT: JNB TF0, WAIT' },
+          { pos: 4, name: 'TR0', desc: 'Timer 0 run control — SETB TR0 เพื่อเริ่ม Timer 0' },
+          { pos: 3, name: 'IE1', desc: 'External Interrupt 1 edge flag — ตั้งเมื่อเกิดขอบ/ระดับที่ INT1' },
+          { pos: 2, name: 'IT1', desc: 'INT1 type: 1 = edge-triggered, 0 = level-triggered' },
+          { pos: 1, name: 'IE0', desc: 'External Interrupt 0 edge flag' },
+          { pos: 0, name: 'IT0', desc: 'INT0 type: 1 = edge-triggered, 0 = level-triggered' }
+        ]
+      },
+      SCON: {
+        addr: '98H',
+        asm: 'MOV SCON, #%h',
+        bits: [
+          { pos: 7, name: 'SM0', desc: 'Serial mode bit 0 — ร่วมกับ SM1: 00=Mode0 (shift), 01=Mode1 (8-bit UART), 10=Mode2, 11=Mode3' },
+          { pos: 6, name: 'SM1', desc: 'Serial mode bit 1 — Mode 1/3 ใช้ baud จาก Timer 1' },
+          { pos: 5, name: 'SM2', desc: 'Multi-processor: เปิด multiprocessor communication ใน Mode 2/3' },
+          { pos: 4, name: 'REN', desc: 'Receive enable — 1 = อนุญาตรับข้อมูล (SETB REN)' },
+          { pos: 3, name: 'TB8', desc: 'Transmit bit 8 — บิตข้อมูลที่ 9 สำหรับส่งใน Mode 2/3' },
+          { pos: 2, name: 'RB8', desc: 'Receive bit 8 — บิตข้อมูลที่ 9 ที่รับมาใน Mode 2/3' },
+          { pos: 1, name: 'TI', desc: 'Transmit interrupt flag — ตั้งเมื่อส่งเสร็จ 1 ไบต์ (ต้องล้างเอง)' },
+          { pos: 0, name: 'RI', desc: 'Receive interrupt flag — ตั้งเมื่อรับครบ 1 ไบต์ (ต้องล้างเอง)' }
+        ]
+      },
+      IE: {
+        addr: 'A8H',
+        asm: 'MOV IE, #%h',
+        bits: [
+          { pos: 7, name: 'EA', desc: 'Enable All — 1 = เปิดระบบ interrupt ทั้งหมด (global enable)' },
+          { pos: 6, name: '—', desc: 'Reserved — ไม่ใช้งาน', readOnly: true },
+          { pos: 5, name: '—', desc: 'Reserved — ไม่ใช้งาน', readOnly: true },
+          { pos: 4, name: 'ES', desc: 'Enable Serial — เปิด interrupt จาก UART (TI/RI)' },
+          { pos: 3, name: 'ET1', desc: 'Enable Timer 1 — เปิด interrupt เมื่อ TF1=1' },
+          { pos: 2, name: 'EX1', desc: 'Enable External 1 — เปิด interrupt จาก INT1' },
+          { pos: 1, name: 'ET0', desc: 'Enable Timer 0 — เปิด interrupt เมื่อ TF0=1' },
+          { pos: 0, name: 'EX0', desc: 'Enable External 0 — เปิด interrupt จาก INT0' }
+        ]
+      },
+      IP: {
+        addr: 'B8H',
+        asm: 'MOV IP, #%h',
+        bits: [
+          { pos: 7, name: '—', desc: 'Reserved — ไม่ใช้งาน', readOnly: true },
+          { pos: 6, name: '—', desc: 'Reserved — ไม่ใช้งาน', readOnly: true },
+          { pos: 5, name: '—', desc: 'Reserved — ไม่ใช้งาน', readOnly: true },
+          { pos: 4, name: 'PS', desc: 'Priority Serial — 1 = ลำดับสูง (high priority) สำหรับ UART' },
+          { pos: 3, name: 'PT1', desc: 'Priority Timer 1 — 1 = high priority' },
+          { pos: 2, name: 'PX1', desc: 'Priority External 1 — 1 = high priority' },
+          { pos: 1, name: 'PT0', desc: 'Priority Timer 0 — 1 = high priority' },
+          { pos: 0, name: 'PX0', desc: 'Priority External 0 — 1 = high priority' }
+        ]
+      },
+      PCON: {
+        addr: '87H',
+        asm: 'MOV PCON, #%h',
+        bits: [
+          { pos: 7, name: 'SMOD', desc: 'Double baud rate — 1 = เพิ่ม baud ของ UART สองเท่า (ใช้กับ Timer 1 baud)' },
+          { pos: 6, name: '—', desc: 'Reserved — ไม่ใช้งาน', readOnly: true },
+          { pos: 5, name: '—', desc: 'Reserved — ไม่ใช้งาน', readOnly: true },
+          { pos: 4, name: '—', desc: 'Reserved — ไม่ใช้งาน (บาง variant ใช้เป็น flag)', readOnly: true },
+          { pos: 3, name: 'GF1', desc: 'General Flag 1 — บิตอเนกประสงค์สำหรับผู้ใช้' },
+          { pos: 2, name: 'GF0', desc: 'General Flag 0 — บิตอเนกประสงค์สำหรับผู้ใช้' },
+          { pos: 1, name: 'PD', desc: 'Power Down — เขียน 1 เพื่อเข้าสู่ Power Down (ตัด oscillator, ต้อง reset จึงตื่น)' },
+          { pos: 0, name: 'IDL', desc: 'Idle — เขียน 1 เพื่อเข้าสู่ Idle (CPU หยุด, oscillator ยังวิ่ง, ปลุกด้วย interrupt หรือ reset)' }
+        ]
+      }
+    };
+
+    var BF = {
+      current: 'TMOD',
+      values: {} // reg -> 8-bit number
+    };
+
+    // init values
+    Object.keys(REGS).forEach(function (k) { BF.values[k] = 0; });
+
+    function bfRenderBits() {
+      var reg = REGS[BF.current];
+      var wrap = byId('bf-bits');
+      if (!wrap || !reg) return;
+      wrap.innerHTML = '';
+      reg.bits.forEach(function (b) {
+        var cell = document.createElement('div');
+        cell.className = 'bit-cell' + ((BF.values[BF.current] >> b.pos) & 1 ? ' checked' : '') + (b.readOnly ? ' disabled-bit' : '');
+        cell.innerHTML =
+          '<div class="bit-pos">bit ' + b.pos + '</div>' +
+          '<div class="bit-name">' + b.name + '</div>' +
+          '<input type="checkbox" data-pos="' + b.pos + '"' +
+          (((BF.values[BF.current] >> b.pos) & 1) ? ' checked' : '') +
+          (b.readOnly ? ' disabled' : '') +
+          ' aria-label="bit ' + b.pos + ' ' + b.name + '">';
+        wrap.appendChild(cell);
+      });
+
+      wrap.querySelectorAll('input[type="checkbox"]').forEach(function (cb) {
+        cb.addEventListener('change', function () {
+          var pos = parseInt(cb.getAttribute('data-pos'), 10);
+          if (cb.checked) BF.values[BF.current] |= (1 << pos);
+          else BF.values[BF.current] &= ~(1 << pos);
+          bfUpdate(false);
+          // meaning
+          var bit = REGS[BF.current].bits.filter(function (x) { return x.pos === pos; })[0];
+          if (bit) {
+            byId('bf-meaning').innerHTML = '<strong>' + bit.name + ' (bit ' + pos + ') = ' + (cb.checked ? '1' : '0') + '</strong><br>' + bit.desc;
+          }
+        });
+      });
+    }
+
+    function bfUpdate(rebuildBits) {
+      var reg = REGS[BF.current];
+      if (!reg) return;
+      if (rebuildBits) bfRenderBits();
+
+      var val = BF.values[BF.current] & 0xFF;
+
+      // reflect checkbox states
+      byId('bf-bits').querySelectorAll('input[type="checkbox"]').forEach(function (cb) {
+        var pos = parseInt(cb.getAttribute('data-pos'), 10);
+        cb.checked = !!((val >> pos) & 1);
+        var cell = cb.closest('.bit-cell');
+        if (cell) cell.classList.toggle('checked', cb.checked);
+      });
+
+      var bin = val.toString(2).padStart(8, '0');
+      var binSpaced = bin.slice(0, 4) + ' ' + bin.slice(4);
+      var names = reg.bits.map(function (b) {
+        return ((val >> b.pos) & 1 ? b.name : b.name.toLowerCase());
+      }).join(' ');
+
+      byId('bf-out-reg').textContent = BF.current;
+      byId('bf-out-addr').textContent = reg.addr;
+      byId('bf-out-hex').textContent = fmtHex(val, 2) + 'H';
+      byId('bf-out-bin').textContent = binSpaced;
+      byId('bf-out-names').textContent = names;
+      byId('bf-out-asm').textContent = reg.asm.replace('%h', fmtHex(val, 2) + 'H');
+
+      var steps = [];
+      steps.push(BF.current + ' (' + reg.addr + ') = ' + fmtHex(val, 2) + 'H = ' + bin + 'B');
+      steps.push('bit7 → bit0: ' + reg.bits.map(function (b) {
+        return b.name + '=' + ((val >> b.pos) & 1);
+      }).join(', '));
+      steps.push(reg.asm.replace('%h', fmtHex(val, 2) + 'H'));
+      byId('bf-steps').textContent = steps.join('\n');
+    }
+
+    // Tabs
+    document.querySelectorAll('.reg-tab').forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        document.querySelectorAll('.reg-tab').forEach(function (t) {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        BF.current = tab.getAttribute('data-reg');
+        byId('bf-meaning').innerHTML = 'รีจิสเตอร์ <strong>' + BF.current + '</strong> — เลือก/ยกเลิกบิตเพื่อดูคำอธิบาย';
+        bfUpdate(true);
+      });
+    });
+
+    // Presets
+    var PRESETS = {
+      't0-mode1': { reg: 'TMOD', val: 0x01, note: 'T0 Mode 1: GATE=0, C/T=0, M1=0, M0=1 → TMOD = 01H' },
+      't0-mode2': { reg: 'TMOD', val: 0x02, note: 'T0 Mode 2: GATE=0, C/T=0, M1=1, M0=0 → TMOD = 02H (8-bit auto-reload)' },
+      'start-tr0': { reg: 'TCON', val: 0x10, note: 'Start TR0: TCON bit4 = TR0 = 1 → TCON = 10H (เทียบเท่า SETB TR0)' },
+      'ie-t0': { reg: 'IE', val: 0x82, note: 'IE Timer0 only: EA=1, ET0=1 → IE = 82H' },
+      'pcon-idle': { reg: 'PCON', val: 0x01, note: 'PCON Idle: IDL=1 → PCON = 01H (CPU หยุด, oscillator ยังวิ่ง)' },
+      'pcon-pd': { reg: 'PCON', val: 0x02, note: 'PCON Power Down: PD=1 → PCON = 02H (ตัด oscillator, ต้อง reset)' }
+    };
+
+    document.querySelectorAll('.preset-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var key = btn.getAttribute('data-preset');
+        var p = PRESETS[key];
+        if (!p) return;
+        BF.current = p.reg;
+        BF.values[p.reg] = p.val;
+
+        // switch tab UI
+        document.querySelectorAll('.reg-tab').forEach(function (t) {
+          var on = (t.getAttribute('data-reg') === p.reg);
+          t.classList.toggle('active', on);
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+
+        bfUpdate(true);
+        byId('bf-meaning').innerHTML = '<strong>Preset ถูกโหลด:</strong> ' + p.note;
+      });
+    });
+
+    /* ---------- initial compute (defaults shown on load) ---------- */
+    tcCompute();
+    bcCompute();
+    bfUpdate(true);
+  })();
+  </script>
+</body>
+</html>

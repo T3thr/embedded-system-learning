@@ -1,0 +1,78 @@
+13. TEeianannal Timer Overflow Flag
+14. TR diananadela Timer Run Control Bit
+15.1EO, 1 sianananal External Interrupt bit
+16.IT raananananelo External Interrupt Type Bit
+17. C/T anandeza Counter / Timer
+18. GATE dianA GATE Enable Control Bit
+19 MO diananadela Mode Control Bits
+2098 Work with Time / ner
+TcH -s, counter count
+Stages
+ounte
+TRO or TR1 -
+INTX
+GATE V
+21 Timer de
+, 2" (12 /Fosc)
+Timer de
+21, 2" (12/Fosc)
+23 Timer de
+28
+, 28 (12/ Fosc)
+• For Timer 0 with Mode 1 as 16 bits timer, IMOD = 0000 0001B
+• To start Timer 0 with mode 1, TCON = 0001 0000B
+• To stop time 0 with mode 1, TCON = 0000 0000B
+• To calculate Count, one count time = 12/Fosc = 1uSec.
+• So value of Count = 20 = 14H
+57410→16
+• As timer is up counter actual value should be loaded will be
+Count = FFFFH - 14H + 1 = FFECH
+• TLO = ECH and THO = FFH, to be loaded for delay of 20uSec.
+Wait:
+Here:
+MOV TMOD, #00000001B
+MOV TLO, #ECH
+MOV THO, #FFH
+MOV TCON, #00010000B
+JNB TCON.5, Wait
+SETB P2.0
+MOV TCON, #00000000B
+SJMP Here
+25!9Š square wave 10v 1KHz 1 TxD pin lй Fosc=12MHz
+& Tostimermer Modmode 1, its -000T = 000 00018
+To start Timer 0 with mode 1, TCON = 0001 0000B
+• To stop time 0 with mode 1, TCON = 0000/0000B
+- Square wave of 1KHz has time = 1msec.
+I So for 0.5msec, It should be high and for 0.5msec, it should be
+low.
+• To calculate Count, one count time = 12/Fosc = 1uSec.
+• So value of Count = 0.5msec/1uSec = 500 = 1F4H
+• As timer is up counter actual value should be loaded will be
+Count = FFFFH - 1F4H + 1 = FEOCH
+• TLO = OCH and THO = FEH
+1 msce
+;Timer 0 Mode 1
+;Count 20 = 14H
+;Start Timer
+;wait for 20uSec
+¡logic 'I' on P2.0
+;Stop Timer
+;End of Program
+CLR P3.1
+Repeat: MOV TMOD, #00000001B
+MOV TLO, #OCH
+MOV THO, #FEH
+MOV TCON, #00010000B
+Wait:
+JNB TCON.5, Wait
+CPL P3.1
+MOV TCON, #00000000B
+SJMP Repeat
+;Clear TxD line
+¡Timer O Mode 1
+;Count 500 = 1F4H
+;Start Timer
+;wait for 0.5mSec
+;Square wave
+;Stop Timer
+;Repeat of Program

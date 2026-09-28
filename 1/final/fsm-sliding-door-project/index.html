@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script id="theme-boot">
+    (function () {
+      var theme = 'dark';
+      try { theme = localStorage.getItem('theme') || 'dark'; } catch (e) {}
+      if (theme !== 'light' && theme !== 'dark') theme = 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+  <title>FSM &amp; Sliding Door Project (Version 2 Final) — เฉลยข้อ 56 | 305341 Embedded Systems 1</title>
+  <meta name="description" content="เฉลยข้อ 56 ปลายภาค 305341: วาด state diagram และเขียนโค้ดวงจรประตูเลื่อนกลุ่มตัวเอง (Version 2 Final Submission) — Through-Beam Sensor, 7 สถานะ FSM, Direction Interlock, เฟิร์มแวร์ SLIDING_DOOR_V2.asm และโครงข้อสอบ">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../../../assets/css/main.css?v=3.1">
+  <link rel="stylesheet" href="../../../assets/css/solution.css?v=3.1">
+  <style>
+    .fsm-diagram {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      margin: 1rem 0;
+      overflow-x: auto;
+    }
+    .fsm-diagram svg {
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+      height: auto;
+    }
+    .fsm-diagram .diagram-caption {
+      margin-top: 0.65rem;
+    }
+    .legend-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.25rem;
+      margin: 0.75rem 0 0;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .legend-row span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .legend-swatch {
+      width: 14px; height: 14px;
+      border-radius: 4px;
+      border: 1px solid rgba(255,255,255,0.2);
+      display: inline-block;
+    }
+    .pin-hex {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--accent-amber);
+      white-space: nowrap;
+    }
+    .stat-inline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0.75rem 0 1.25rem;
+    }
+    .stat-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.28);
+      color: var(--accent-blue);
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+    .checklist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 0.85rem;
+      margin-top: 0.75rem;
+    }
+    .check-item {
+      display: flex;
+      gap: 0.65rem;
+      align-items: flex-start;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1rem;
+    }
+    .check-item i {
+      color: var(--tag-green);
+      margin-top: 0.2rem;
+    }
+    .check-item h4 {
+      margin: 0 0 0.25rem;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+    }
+    .check-item p {
+      margin: 0;
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .code-content .label {
+      color: #f472b6;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="../../../index.html" class="brand" aria-label="Embedded Systems Learning Portal">
+        <div class="brand-icon" aria-hidden="true"><i class="fas fa-microchip"></i></div>
+        <div class="brand-title">
+          <span>EMBEDDED SYSTEMS</span>
+          <span>LEARNING PORTAL</span>
+        </div>
+      </a>
+      <ul class="nav-menu" aria-label="เมนูหลัก">
+        <li><a href="../../../index.html" class="nav-link">หน้าแรก</a></li>
+        <li><a href="../../index.html" class="nav-link">305341 Embedded 1</a></li>
+        <li class="nav-group" data-group="midterm">
+          <button type="button" class="nav-link nav-group-toggle" aria-expanded="false" aria-controls="mega-midterm">ข้อสอบ Midterm <i class="fas fa-chevron-down nav-caret" aria-hidden="true"></i></button>
+          <div class="mega-panel mega-cols-1" id="mega-midterm">
+            <div class="mega-col">
+              <p class="mega-heading">ข้อสอบกลางภาค</p>
+              <ul class="mega-list">
+                <li><a href="../../midterm/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-layer-group"></i></span><span class="mega-text"><span class="mega-title">Midterm Hub</span><span class="mega-desc">ภาพรวมคลังข้อสอบกลางภาคทั้ง 3 ชุด</span></span></a></li>
+                <li><a href="../../midterm/recalled-questions/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-brain"></i></span><span class="mega-text"><span class="mega-title">01. แนวข้อสอบความจำ 26 ข้อ</span><span class="mega-desc">ทฤษฎีสถาปัตยกรรม + ชุดคำสั่ง พร้อมเฉลย</span></span></a></li>
+                <li><a href="../../midterm/real-exam-2561/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-file-signature"></i></span><span class="mega-text"><span class="mega-title">02. ข้อสอบจริงกลางภาค 2561</span><span class="mega-desc">6 ข้อใหญ่ พร้อมภาพกระดาษข้อสอบ</span></span></a></li>
+                <li><a href="../../midterm/analytical-questions/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-chalkboard-teacher"></i></span><span class="mega-text"><span class="mega-title">03. บทเรียนแนวข้อสอบวิเคราะห์</span><span class="mega-desc">16 ข้อวิเคราะห์จาก Lecture 1–4</span></span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="nav-group" data-group="final">
+          <button type="button" class="nav-link nav-group-toggle active" aria-expanded="false" aria-controls="mega-final">ข้อสอบ Final <i class="fas fa-chevron-down nav-caret" aria-hidden="true"></i></button>
+          <div class="mega-panel mega-cols-2" id="mega-final">
+            <div class="mega-col">
+              <p class="mega-heading">คลังข้อสอบจริง</p>
+              <ul class="mega-list">
+                <li><a href="../index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-th-large"></i></span><span class="mega-text"><span class="mega-title">Final Hub</span><span class="mega-desc">ภาพรวม แผนติว และตารางท่องด่วน</span></span></a></li>
+                <li><a href="../real-exam-recalled/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-list-ol"></i></span><span class="mega-text"><span class="mega-title">ชุดที่ 1: เฉลย 56 ข้อ</span><span class="mega-desc">Recalled: Timers, UART, Power, FSM</span></span></a></li>
+                <li><a href="../real-exam/2025/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-scroll"></i></span><span class="mega-text"><span class="mega-title">ชุดที่ 2: ข้อสอบจริง 2025</span><span class="mega-desc">21 ข้อ ถอดจากกระดาษข้อสอบจริง</span></span></a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <p class="mega-heading">ฝึกปฏิบัติ</p>
+              <ul class="mega-list">
+                <li><a href="../interactive-tools/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-calculator"></i></span><span class="mega-text"><span class="mega-title">Interactive Lab</span><span class="mega-desc">เครื่องคำนวณ Timer, Baud, Bitfield</span></span></a></li>
+                <li><a href="index.html" class="mega-link active" aria-current="page"><span class="mega-icon" aria-hidden="true"><i class="fas fa-door-open"></i></span><span class="mega-text"><span class="mega-title">FSM Sliding Door</span><span class="mega-desc">โปรเจกต์กลุ่ม เฟิร์มแวร์ Version 2</span></span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="nav-controls">
+        <button id="theme-toggle" class="btn-icon theme-toggle" type="button" aria-label="สลับโหมดมืด/สว่าง" title="สลับโหมดมืด/สว่าง">
+          <i class="fas fa-sun theme-icon-to-light" aria-hidden="true"></i>
+          <i class="fas fa-moon theme-icon-to-dark" aria-hidden="true"></i>
+        </button>
+        <button class="btn-icon mobile-nav-toggle" type="button" aria-label="เมนูนำทาง" title="เมนูนำทาง" aria-controls="mobile-drawer" aria-expanded="false">
+          <i class="fas fa-bars" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-drawer" id="mobile-drawer" style="display: none;">
+    <ul class="drawer-list" aria-label="เมนูนำทาง">
+      <li><a href="../../../index.html" class="nav-link">หน้าแรก</a></li>
+      <li><a href="../../index.html" class="nav-link">305341 Embedded 1</a></li>
+      <li>
+        <details class="drawer-group">
+          <summary class="nav-link">ข้อสอบกลางภาค (Midterm) <i class="fas fa-chevron-down nav-caret" aria-hidden="true"></i></summary>
+          <ul class="drawer-sublist">
+            <li><a href="../../midterm/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-layer-group"></i></span><span class="mega-text"><span class="mega-title">Midterm Hub</span><span class="mega-desc">ภาพรวมคลังข้อสอบกลางภาคทั้ง 3 ชุด</span></span></a></li>
+            <li><a href="../../midterm/recalled-questions/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-brain"></i></span><span class="mega-text"><span class="mega-title">01. แนวข้อสอบความจำ 26 ข้อ</span><span class="mega-desc">ทฤษฎีสถาปัตยกรรม + ชุดคำสั่ง พร้อมเฉลย</span></span></a></li>
+            <li><a href="../../midterm/real-exam-2561/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-file-signature"></i></span><span class="mega-text"><span class="mega-title">02. ข้อสอบจริงกลางภาค 2561</span><span class="mega-desc">6 ข้อใหญ่ พร้อมภาพกระดาษข้อสอบ</span></span></a></li>
+            <li><a href="../../midterm/analytical-questions/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-chalkboard-teacher"></i></span><span class="mega-text"><span class="mega-title">03. บทเรียนแนวข้อสอบวิเคราะห์</span><span class="mega-desc">16 ข้อวิเคราะห์จาก Lecture 1–4</span></span></a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details class="drawer-group" open>
+          <summary class="nav-link">ข้อสอบปลายภาค (Final) <i class="fas fa-chevron-down nav-caret" aria-hidden="true"></i></summary>
+          <ul class="drawer-sublist">
+            <li class="drawer-heading">คลังข้อสอบจริง</li>
+            <li><a href="../index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-th-large"></i></span><span class="mega-text"><span class="mega-title">Final Hub</span><span class="mega-desc">ภาพรวม แผนติว และตารางท่องด่วน</span></span></a></li>
+            <li><a href="../real-exam-recalled/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-list-ol"></i></span><span class="mega-text"><span class="mega-title">ชุดที่ 1: เฉลย 56 ข้อ</span><span class="mega-desc">Recalled: Timers, UART, Power, FSM</span></span></a></li>
+            <li><a href="../real-exam/2025/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-scroll"></i></span><span class="mega-text"><span class="mega-title">ชุดที่ 2: ข้อสอบจริง 2025</span><span class="mega-desc">21 ข้อ ถอดจากกระดาษข้อสอบจริง</span></span></a></li>
+            <li class="drawer-heading">ฝึกปฏิบัติ</li>
+            <li><a href="../interactive-tools/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-calculator"></i></span><span class="mega-text"><span class="mega-title">Interactive Lab</span><span class="mega-desc">เครื่องคำนวณ Timer, Baud, Bitfield</span></span></a></li>
+            <li><a href="index.html" class="mega-link active" aria-current="page"><span class="mega-icon" aria-hidden="true"><i class="fas fa-door-open"></i></span><span class="mega-text"><span class="mega-title">FSM Sliding Door</span><span class="mega-desc">โปรเจกต์กลุ่ม เฟิร์มแวร์ Version 2</span></span></a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </div><!-- /mobile-drawer -->
+
+  <main id="page-top" class="container" style="padding-bottom: 4rem;">
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs">
+      <a href="../../../index.html"><i class="fas fa-home"></i> หน้าแรก</a>
+      <span class="separator"><i class="fas fa-chevron-right"></i></span>
+      <a href="../../index.html">305341 Embedded Systems 1</a>
+      <span class="separator"><i class="fas fa-chevron-right"></i></span>
+      <a href="../index.html">Final Exam Portal</a>
+      <span class="separator"><i class="fas fa-chevron-right"></i></span>
+      <span class="current">03. FSM Sliding Door Project</span>
+    </nav>
+
+    <!-- ============ A. Hero + Exam Framing ============ -->
+    <section class="hero" style="padding: 1rem 0 1.25rem; text-align: left;">
+      <div class="hero-badge">
+        <i class="fas fa-door-open"></i> ข้อ 56 — โครงงานกลุ่ม 1: วาด State Diagram + เขียนโค้ดประตูเลื่อน (Version 2)
+      </div>
+      <h1 class="hero-title" style="font-size: 2.25rem;">FSM &amp; Sliding Door Project (Version 2 Final) — เฉลยข้อ 56</h1>
+      <p class="hero-subtitle" style="margin: 0 0 1rem; max-width: 920px;">
+        เฉลยข้อสอบปลายภาค <strong>305341 ระบบสมองกลฝังตัว 1</strong> ข้อ 56:
+        <em>“จงวาด state diagram และเขียนโค้ดของวงจรประตูเลื่อนกลุ่มตัวเอง”</em>
+        — คำตอบอ้างอิงจากโครงงานจริงของกลุ่ม 1 (ฉบับส่งอาจารย์ Version 2: 
+        <strong>Single-Panel Residential Sliding Door with Photoelectric Obstacle Detection and Automatic Reopening</strong> 
+        เสนอโดย นายธีรภัทร ภู่ระย้า และนางสาวปราณปรียา ศรียอง ต่อ ดร.แสงชัย มังกรทอง)
+        ครบทั้ง pinout ฮาร์ดแวร์จริง, FSM 7 สถานะ + FAULT, ตารางค่าพอร์ต P1 (EC, D9, DC, EA, FC, D9, BC),
+        สถาปัตยกรรมเวลา Timer 0 หน่วง 20 ms, เฟิร์มแวร์ <code>SLIDING_DOOR_V2.asm</code> ที่ผ่านการทดสอบบน EdSim51,
+        และโครงกระดาษคำตอบ (exam skeleton) สำหรับเขียนสอบ
+      </p>
+
+      <div class="stat-inline">
+        <span class="stat-chip"><i class="fas fa-project-diagram"></i> 7 สถานะ Moore + FAULT</span>
+        <span class="stat-chip"><i class="fas fa-wave-square"></i> Through-Beam Omron E3Z-T61 (P2.2)</span>
+        <span class="stat-chip"><i class="fas fa-hand-paper"></i> ปิดด้วยมือ PB_CLOSE (P2.5)</span>
+        <span class="stat-chip"><i class="fas fa-shield-alt"></i> SAFETY_HOLD (ไฟส้ม BCH)</span>
+        <span class="stat-chip"><i class="fas fa-history"></i> Coast ≥ 200 ms (REV_WAIT)</span>
+        <span class="stat-chip"><i class="fas fa-check-double"></i> EdSim51 Verified</span>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon blue"><i class="fas fa-draw-polygon"></i></div>
+          <div class="stat-info">
+            <h4>โจทย์ข้อ 56</h4>
+            <p>State diagram + โค้ดกลุ่มตัวเอง</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon green"><i class="fas fa-code"></i></div>
+          <div class="stat-info">
+            <h4>เฟิร์มแวร์ Version 2</h4>
+            <p>SLIDING_DOOR_V2.asm (สมบูรณ์)</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon purple"><i class="fas fa-file-pdf"></i></div>
+          <div class="stat-info">
+            <h4>เอกสารส่งอาจารย์</h4>
+            <p>Sliding_Door_Safety_Control_Infrared_FSM.pdf</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon amber"><i class="fas fa-shield-alt"></i></div>
+          <div class="stat-info">
+            <h4>Safety Invariants</h4>
+            <p>RUN_N Interlock + E-stop Hardware Cut</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Content Layout ============ -->
+    <div class="content-layout">
+
+      <!-- Sidebar TOC -->
+      <aside class="sidebar-toc">
+        <div class="toc-title"><i class="fas fa-list-ul"></i> สารบัญหน้าโปรเจกต์</div>
+        <ul class="toc-list">
+          <li class="toc-item"><a href="#sec-hardware">B. Hardware Pinout &amp; Port Contract</a></li>
+          <li class="toc-item"><a href="#sec-fsm">C. FSM State Diagram (7 สถานะ)</a></li>
+          <li class="toc-item"><a href="#sec-timing">D. Timing Architecture</a></li>
+          <li class="toc-item"><a href="#sec-firmware">E. Full Verified Firmware (V2)</a></li>
+          <li class="toc-item"><a href="#sec-skeleton">E2. Exam Skeleton (~85 บรรทัด)</a></li>
+          <li class="toc-item"><a href="#sec-template">F. Exam Answer Template</a></li>
+          <li class="toc-item"><a href="#sec-checklist">G. Checklist คะแนนเต็ม</a></li>
+        </ul>
+        <div class="toc-title" style="margin-top: 1.25rem;"><i class="fas fa-link"></i> ลิงก์ที่เกี่ยวข้อง</div>
+        <ul class="toc-list">
+          <li class="toc-item"><a href="../real-exam-recalled/index.html#q56">ข้อ 56 ในชุดเฉลย 56 ข้อ</a></li>
+          <li class="toc-item"><a href="../index.html">Final Exam Portal</a></li>
+          <li class="toc-item"><a href="../../mini-project/submission/Sliding_Door_Safety_Control_Infrared_FSM.pdf">สไลด์นำเสนอส่งอาจารย์ (PDF)</a></li>
+        </ul>
+      </aside>
+
+      <!-- Main Solutions -->
+      <div class="solutions-container">
+
+        <!-- ============ B. Hardware pinout ============ -->
+        <article class="solution-card" id="sec-hardware">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge blue">Section B</span>
+              <h3 class="card-title">Hardware Pinout — PORT CONTRACT ของ Version 2</h3>
+            </div>
+            <span class="ref-pill">สัญญาฮาร์ดแวร์ของระบบจริง</span>
+          </div>
+          <div class="card-body">
+            <div class="content-block">
+              <p>
+                การต่อวงจรทั้งหมดยึด <strong>PORT CONTRACT</strong> ของสไลด์ส่งอาจารย์ Version 2
+                (<code>Sliding_Door_Safety_Control_Infrared_FSM.pdf</code>) — มีการแยกภาคกำลังและลอจิกชัดเจน:
+              </p>
+              <div class="box-warning">
+                <div class="box-warning-header"><i class="fas fa-shield-alt"></i> การแยกภาคจ่ายไฟและการป้องกันความปลอดภัย</div>
+                <div class="box-warning-text">
+                  1. <strong>ภาคจ่ายไฟลอจิก 5 V:</strong> เลี้ยง MCU AT89S52, VCC1 ของ L293D, ฝั่งเอาต์พุตออปโตคัปเปลอร์ VO617A, และ LED แสดงสถานะ<br>
+                  2. <strong>ภาคจ่ายไฟมอเตอร์และเซนเซอร์ 12 V:</strong> เลี้ยง VCC2 ของ L293D, มอเตอร์เกียร์ Pololu #3041, และโฟโต้เซนเซอร์ Omron E3Z-T61 (12 V_S)<br>
+                  3. <strong>การแยกทางไฟฟ้า (Galvanic Isolation):</strong> ใช้ Vishay VO617A กั้นระหว่าง 12 V_S กับ 5 V ลอจิก โดยกราวด์ 0 V_S ไม่ต่อร่วมกับ 0 V_L<br>
+                  4. <strong>จำกัดกระแสขัดข้อง:</strong> ต่อตัวต้านทาน 27 Ω, 10 W อนุกรมกับมอเตอร์ เพื่อจำกัดกระแส DC สูงสุดไว้ที่ประมาณ 0.44 A ป้องกัน L293D พังเมื่อเกิดการติดขัด<br>
+                  5. <strong>Interlock ก่อนกลับทิศ:</strong> ขา <code>P1.2</code> (RUN_N) จะถูก SETB เป็น 1 เสมอก่อนเปลี่ยนบิตทิศทาง เพื่อสั่ง EN = 0 มอเตอร์ปล่อยไหล (Coast)
+                </div>
+              </div>
+
+              <h4 style="margin: 1.25rem 0 0.5rem; color: var(--text-primary);">P0 — State Code Monitor (Open-Drain + ตัวต้านทาน Pull-up 10 kΩ)</h4>
+              <div class="table-responsive">
+                <table class="custom-table">
+                  <thead>
+                    <tr><th>พอร์ต</th><th>ขาไอซี</th><th>รูปแบบค่า</th><th>คำอธิบาย</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>P0.2 .. P0.0</code></td>
+                      <td>ขา 37, 38, 39</td>
+                      <td><span class="pin-hex">P0 = F8H (1111 1000B) OR State</span></td>
+                      <td>แสดงรหัสสถานะฐานสอง 3 บิต (0 ถึง 6 สำหรับการทำงานปกติ, 7 สำหรับ FAULT) ต้องมีตัวต้านทาน pull-up 10 kΩ ทุกบิต</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h4 style="margin: 1.25rem 0 0.5rem; color: var(--text-primary);">P1 — ขาขับมอเตอร์ L293D และไฟแสดงสถานะ 3 สี</h4>
+              <div class="table-responsive">
+                <table class="custom-table">
+                  <thead>
+                    <tr><th>บิต</th><th>ขาไอซี</th><th>สัญญาณ</th><th>ระดับลอจิก</th><th>หน้าที่ทางวิศวกรรม</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><code>P1.0</code></td><td>ขา 1</td><td>IN1</td><td>0 หรือ 1</td><td>เข้าขา 2 ของ L293D (10 = CW เปิดประตู, 01 = CCW ปิดประตู)</td></tr>
+                    <tr><td><code>P1.1</code></td><td>ขา 2</td><td>IN2</td><td>0 หรือ 1</td><td>เข้าขา 7 ของ L293D</td></tr>
+                    <tr><td><code>P1.2</code></td><td>ขา 3</td><td>RUN_N</td><td>Active-Low (0 = ขับ)</td><td>ผ่านอินเวอร์เตอร์ SN74HCT14 และหน้าสัมผัส NC1 ของ E-stop เข้า EN1 (ขา 1 ของ L293D) เมื่อ reset หรือเป็น 1 จะตัดแรงขับทันที</td></tr>
+                    <tr><td><code>P1.3</code></td><td>ขา 4</td><td>Reserved</td><td>คงไว้ที่ 1</td><td>ไม่ได้ใช้งาน กำหนดบิตเป็น 1 เสมอ</td></tr>
+                    <tr><td><code>P1.4</code></td><td>ขา 5</td><td>RED_N</td><td>Active-Low (0 = ติด)</td><td>ไฟ LED สีแดง (ติดเมื่อ CLOSED หรือ CLOSING)</td></tr>
+                    <tr><td><code>P1.5</code></td><td>ขา 6</td><td>GREEN_N</td><td>Active-Low (0 = ติด)</td><td>ไฟ LED สีเขียว (ติดเมื่อ OPENING, OPEN_HOLD, หรือ REOPENING)</td></tr>
+                    <tr><td><code>P1.6</code></td><td>ขา 7</td><td>ORANGE_N</td><td>Active-Low (0 = ติด)</td><td>ไฟ LED สีส้ม (ติดเฉพาะ SAFETY_HOLD เตือนว่าเคยมีสิ่งกีดขวาง)</td></tr>
+                    <tr><td><code>P1.7</code></td><td>ขา 8</td><td>Reserved</td><td>คงไว้ที่ 1</td><td>ไม่ได้ใช้งาน กำหนดบิตเป็น 1 เสมอ</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h4 style="margin: 1.25rem 0 0.5rem; color: var(--text-primary);">P2 — อินพุตเซนเซอร์ สวิตช์ลิมิต และปุ่มกด (Latch = FFH)</h4>
+              <div class="table-responsive">
+                <table class="custom-table">
+                  <thead>
+                    <tr><th>บิต</th><th>ขาไอซี</th><th>สัญญาณ</th><th>ระดับ 0</th><th>ระดับ 1</th><th>คำอธิบาย</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><code>P2.0</code></td><td>ขา 21</td><td>PB_IN</td><td>กดปุ่ม</td><td>ปล่อย</td><td>ปุ่มสั่งเปิดจากภายในบ้าน (Push button NO)</td></tr>
+                    <tr><td><code>P2.1</code></td><td>ขา 22</td><td>PB_OUT</td><td>กดปุ่ม</td><td>ปล่อย</td><td>ปุ่มสั่งเปิดจากภายนอกบ้าน (Push button NO)</td></tr>
+                    <tr><td><code>P2.2</code></td><td>ขา 23</td><td>BEAM_DET</td><td>แสงขาด / มีวัตถุ</td><td>แสงผ่าน / ทางว่าง</td><td>โฟโต้เซนเซอร์ Through-Beam Omron E3Z-T61 + VO617A + 74HCT14</td></tr>
+                    <tr><td><code>P2.3</code></td><td>ขา 24</td><td>LO</td><td>ถึงตำแหน่งเปิดสุด</td><td>ยังไม่เปิดสุด</td><td>ลิมิตสวิตช์ปลายเปิด (Limit Open)</td></tr>
+                    <tr><td><code>P2.4</code></td><td>ขา 25</td><td>LC</td><td>ถึงตำแหน่งปิดสุด</td><td>ยังไม่ปิดสุด</td><td>ลิมิตสวิตช์ปลายปิด (Limit Closed)</td></tr>
+                    <tr><td><code>P2.5</code></td><td>ขา 26</td><td>PB_CLOSE</td><td>กดปุ่ม</td><td>ปล่อย</td><td>ปุ่มสั่งปิดด้วยมือ (ไม่ใช้ตัวนับเวลาปิดอัตโนมัติ)</td></tr>
+                    <tr><td><code>P2.6</code></td><td>ขา 27</td><td>Unused</td><td>—</td><td>1 (pull-up)</td><td>ไม่ได้ใช้งาน ต่อ pull-up ไว้</td></tr>
+                    <tr><td><code>P2.7</code></td><td>ขา 28</td><td>ESTOP</td><td>ปกติ / ปลอดภัย</td><td>หยุดฉุกเฉิน / สายขาด</td><td>หน้าสัมผัส NC2 ของปุ่ม E-stop (สายขาด = ปลอดภัย)</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h4 style="margin: 1.25rem 0 0.5rem; color: var(--text-primary);">ตารางค่าพอร์ต P1 ประจำแต่ละสถานะ (คำนวณจากตำแหน่งบิตจริง)</h4>
+              <div class="table-responsive">
+                <table class="custom-table">
+                  <thead>
+                    <tr>
+                      <th>สถานะ</th><th>#</th><th>เพลา</th><th>P0</th><th>IN1</th><th>IN2</th><th>RUN_N</th><th>RED</th><th>GREEN</th><th>ORANGE</th><th>P1 ไบต์</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><strong>CLOSED</strong></td><td>0</td><td>STOP</td><td><span class="pin-hex">F8H</span></td><td>0</td><td>0</td><td>1</td><td>0 (ติด)</td><td>1</td><td>1</td><td><span class="pin-hex">ECH</span></td></tr>
+                    <tr><td><strong>OPENING</strong></td><td>1</td><td>CW</td><td><span class="pin-hex">F9H</span></td><td>1</td><td>0</td><td>0</td><td>1</td><td>0 (ติด)</td><td>1</td><td><span class="pin-hex">D9H</span></td></tr>
+                    <tr><td><strong>OPEN_HOLD</strong></td><td>2</td><td>STOP</td><td><span class="pin-hex">FAH</span></td><td>0</td><td>0</td><td>1</td><td>1</td><td>0 (ติด)</td><td>1</td><td><span class="pin-hex">DCH</span></td></tr>
+                    <tr><td><strong>CLOSING</strong></td><td>3</td><td>CCW</td><td><span class="pin-hex">FBH</span></td><td>0</td><td>1</td><td>0</td><td>0 (ติด)</td><td>1</td><td>1</td><td><span class="pin-hex">EAH</span></td></tr>
+                    <tr><td><strong>REV_WAIT</strong></td><td>4</td><td>Coast</td><td><span class="pin-hex">FCH</span></td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td><span class="pin-hex">FCH</span></td></tr>
+                    <tr><td><strong>REOPENING</strong></td><td>5</td><td>CW</td><td><span class="pin-hex">FDH</span></td><td>1</td><td>0</td><td>0</td><td>1</td><td>0 (ติด)</td><td>1</td><td><span class="pin-hex">D9H</span></td></tr>
+                    <tr><td><strong>SAFETY_HOLD</strong></td><td>6</td><td>STOP</td><td><span class="pin-hex">FEH</span></td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0 (ติด)</td><td><span class="pin-hex">BCH</span></td></tr>
+                    <tr><td><strong>FAULT</strong></td><td>7</td><td>Coast</td><td><span class="pin-hex">FFH</span></td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td><span class="pin-hex">FCH</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p style="font-size: 0.88rem; color: var(--text-secondary);">
+                บิต P1.3 และ P1.7 เป็น 1 เสมอ (ค่าฐานสอง 1000 1000B = 88H เป็นมาสก์หลัก) เมื่อรวมกับบิตควบคุมและไฟสถานะจะได้ค่า Hex ตามตารางนี้เป๊ะ
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- ============ C. FSM State Diagram ============ -->
+        <article class="solution-card" id="sec-fsm">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge green">Section C</span>
+              <h3 class="card-title">FSM State Diagram — 7 สถานะการทำงาน + การจัดการความปลอดภัย</h3>
+            </div>
+            <span class="ref-pill">ข้อ 56: แผนภาพสถานะฉบับสมบูรณ์</span>
+          </div>
+          <div class="card-body">
+            <div class="content-block">
+              <p>
+                ระบบประตูเลื่อนของกลุ่มเราเป็น <strong>Moore Finite State Machine (7 สถานะปกติ + FAULT)</strong>
+                ไม่มีตัวนับเวลาสั่งปิดอัตโนมัติ เพื่อความปลอดภัยของผู้อยู่อาศัยและสัตว์เลี้ยงในบ้าน
+                การเปลี่ยนสถานะทุกจุดมี <strong>Guard Condition</strong> ที่ชัดเจน:
+              </p>
+
+              <!-- ===== 7-state diagram SVG ===== -->
+              <h4 style="margin: 1.25rem 0 0.5rem; color: var(--text-primary);">
+                <i class="fas fa-project-diagram" style="color: var(--accent-blue);"></i>
+                แผนภาพสถานะ Version 2 ฉบับสมบูรณ์ (Single-Panel Sliding Door with Through-Beam Sensor)
+              </h4>
+              <div class="fsm-diagram">
+                <svg viewBox="0 0 1020 620" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Version 2 Sliding Door FSM State Diagram">
+                  <defs>
+                    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                      <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/>
+                    </marker>
+                    <marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                      <path d="M 0 0 L 10 5 L 0 10 z" fill="#f87171"/>
+                    </marker>
+                    <marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                      <path d="M 0 0 L 10 5 L 0 10 z" fill="#34d399"/>
+                    </marker>
+                    <marker id="arrow-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                      <path d="M 0 0 L 10 5 L 0 10 z" fill="#fbbf24"/>
+                    </marker>
+                    <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                      <path d="M 0 0 L 10 5 L 0 10 z" fill="#38bdf8"/>
+                    </marker>
+                  </defs>
+
+                  <!-- Transitions -->
+                  <!-- 0. CLOSED -> 1. OPENING -->
+                  <line x1="210" y1="120" x2="350" y2="120" stroke="#38bdf8" stroke-width="2.2" marker-end="url(#arrow-blue)"/>
+                  <text x="220" y="105" fill="#38bdf8" font-size="11" font-family="ui-monospace,monospace">PB_IN ∨ PB_OUT (≥20ms)</text>
+
+                  <!-- 1. OPENING -> 2. OPEN_HOLD -->
+                  <line x1="510" y1="120" x2="650" y2="120" stroke="#34d399" stroke-width="2.2" marker-end="url(#arrow-green)"/>
+                  <text x="540" y="105" fill="#34d399" font-size="11" font-family="ui-monospace,monospace">LO = 0 (เปิดสุด)</text>
+
+                  <!-- 2. OPEN_HOLD -> 3. CLOSING -->
+                  <line x1="740" y1="150" x2="740" y2="270" stroke="#38bdf8" stroke-width="2.2" marker-end="url(#arrow-blue)"/>
+                  <text x="750" y="200" fill="#38bdf8" font-size="11" font-family="ui-monospace,monospace">PB_CLOSE กดใหม่ (≥20ms)</text>
+                  <text x="750" y="215" fill="#38bdf8" font-size="11" font-family="ui-monospace,monospace">∧ BEAM=1 ∧ ปลุ่มเปิดปล่อย</text>
+
+                  <!-- 3. CLOSING -> 0. CLOSED -->
+                  <path d="M 660,290 C 470,220 320,180 215,145" fill="none" stroke="#34d399" stroke-width="2.2" marker-end="url(#arrow-green)"/>
+                  <text x="350" y="200" fill="#34d399" font-size="11" font-family="ui-monospace,monospace">LC = 0 (ปิดสุดและไม่มีสิ่งกีดขวาง)</text>
+
+                  <!-- 3. CLOSING -> 4. REV_WAIT -->
+                  <line x1="660" y1="310" x2="520" y2="310" stroke="#f87171" stroke-width="2.4" marker-end="url(#arrow-red)"/>
+                  <text x="535" y="295" fill="#f87171" font-size="11" font-family="ui-monospace,monospace">BEAM_DET = 0 (ลำแสงขาด!)</text>
+                  <text x="535" y="335" fill="#94a3b8" font-size="10" font-family="ui-monospace,monospace">หรือคนกดเปิดซ้ำ -&gt; ตัด EN ทันที</text>
+
+                  <!-- 4. REV_WAIT -> 5. REOPENING -->
+                  <line x1="360" y1="310" x2="220" y2="310" stroke="#fbbf24" stroke-width="2.2" marker-end="url(#arrow-amber)"/>
+                  <text x="240" y="295" fill="#fbbf24" font-size="11" font-family="ui-monospace,monospace">พักเพลา Coast ≥ 200 ms</text>
+
+                  <!-- 5. REOPENING -> 6. SAFETY_HOLD -->
+                  <line x1="135" y1="340" x2="135" y2="450" stroke="#fbbf24" stroke-width="2.2" marker-end="url(#arrow-amber)"/>
+                  <text x="145" y="395" fill="#fbbf24" font-size="11" font-family="ui-monospace,monospace">LO = 0 ∧ SAFETY_SEEN=1</text>
+                  <text x="145" y="410" fill="#fbbf24" font-size="11" font-family="ui-monospace,monospace">(เปิดกลับจากสิ่งกีดขวาง)</text>
+
+                  <!-- 5. REOPENING -> 2. OPEN_HOLD -->
+                  <path d="M 160,280 C 230,220 480,180 660,140" fill="none" stroke="#34d399" stroke-width="2" marker-end="url(#arrow-green)"/>
+                  <text x="320" y="235" fill="#34d399" font-size="11" font-family="ui-monospace,monospace">LO = 0 ∧ SAFETY_SEEN=0 (เปิดกลับเพราะคนกดปุ่ม)</text>
+
+                  <!-- 6. SAFETY_HOLD -> 3. CLOSING -->
+                  <path d="M 230,490 C 450,540 680,480 730,340" fill="none" stroke="#38bdf8" stroke-width="2.2" marker-end="url(#arrow-blue)"/>
+                  <text x="360" y="525" fill="#38bdf8" font-size="11" font-family="ui-monospace,monospace">คนตรวจทางผ่าน + ปล่อยปุ่ม ≥20ms + กด PB_CLOSE ใหม่ [BEAM=1]</text>
+
+                  <!-- Fault lines -->
+                  <line x1="820" y1="120" x2="880" y2="450" stroke="#f87171" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#arrow-red)" opacity="0.6"/>
+                  <line x1="820" y1="310" x2="880" y2="460" stroke="#f87171" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#arrow-red)" opacity="0.6"/>
+                  <text x="830" y="390" fill="#f87171" font-size="10" font-family="ui-monospace,monospace">ESTOP ∨ LO=LC=0 ∨ Timeout 5s</text>
+
+                  <!-- State Rectangles -->
+                  <!-- 0. CLOSED -->
+                  <rect x="60" y="90" width="150" height="60" rx="10" fill="rgba(248,113,113,0.15)" stroke="#f87171" stroke-width="2"/>
+                  <text x="135" y="115" text-anchor="middle" fill="#e2e8f0" font-size="14" font-weight="700">0. CLOSED</text>
+                  <text x="135" y="133" text-anchor="middle" fill="#f87171" font-size="11">STOP · RED ON · P1=ECH</text>
+
+                  <!-- 1. OPENING -->
+                  <rect x="360" y="90" width="150" height="60" rx="10" fill="rgba(56,189,248,0.15)" stroke="#38bdf8" stroke-width="2"/>
+                  <text x="435" y="115" text-anchor="middle" fill="#e2e8f0" font-size="14" font-weight="700">1. OPENING</text>
+                  <text x="435" y="133" text-anchor="middle" fill="#38bdf8" font-size="11">CW · GREEN ON · P1=D9H</text>
+
+                  <!-- 2. OPEN_HOLD -->
+                  <rect x="660" y="90" width="160" height="60" rx="10" fill="rgba(52,211,153,0.15)" stroke="#34d399" stroke-width="2"/>
+                  <text x="740" y="115" text-anchor="middle" fill="#e2e8f0" font-size="14" font-weight="700">2. OPEN_HOLD</text>
+                  <text x="740" y="133" text-anchor="middle" fill="#34d399" font-size="11">STOP · GREEN ON · P1=DCH</text>
+
+                  <!-- 3. CLOSING -->
+                  <rect x="660" y="280" width="160" height="60" rx="10" fill="rgba(248,113,113,0.15)" stroke="#f87171" stroke-width="2"/>
+                  <text x="740" y="305" text-anchor="middle" fill="#e2e8f0" font-size="14" font-weight="700">3. CLOSING</text>
+                  <text x="740" y="323" text-anchor="middle" fill="#f87171" font-size="11">CCW · RED ON · P1=EAH</text>
+
+                  <!-- 4. REV_WAIT -->
+                  <rect x="360" y="280" width="150" height="60" rx="10" fill="rgba(148,163,184,0.15)" stroke="#94a3b8" stroke-width="2"/>
+                  <text x="435" y="305" text-anchor="middle" fill="#e2e8f0" font-size="14" font-weight="700">4. REV_WAIT</text>
+                  <text x="435" y="323" text-anchor="middle" fill="#94a3b8" font-size="11">Coast (≥200ms) · P1=FCH</text>
+
+                  <!-- 5. REOPENING -->
+                  <rect x="60" y="280" width="150" height="60" rx="10" fill="rgba(56,189,248,0.15)" stroke="#38bdf8" stroke-width="2"/>
+                  <text x="135" y="305" text-anchor="middle" fill="#e2e8f0" font-size="14" font-weight="700">5. REOPENING</text>
+                  <text x="135" y="323" text-anchor="middle" fill="#38bdf8" font-size="11">CW · GREEN ON · P1=D9H</text>
+
+                  <!-- 6. SAFETY_HOLD -->
+                  <rect x="50" y="460" width="170" height="60" rx="10" fill="rgba(251,146,60,0.2)" stroke="#fb923c" stroke-width="2.2"/>
+                  <text x="135" y="485" text-anchor="middle" fill="#e2e8f0" font-size="14" font-weight="700">6. SAFETY_HOLD</text>
+                  <text x="135" y="503" text-anchor="middle" fill="#fb923c" font-size="11">STOP · ORANGE ON · P1=BCH</text>
+
+                  <!-- 7. FAULT -->
+                  <rect x="850" y="460" width="140" height="60" rx="10" fill="rgba(239,68,68,0.2)" stroke="#ef4444" stroke-width="2"/>
+                  <text x="920" y="485" text-anchor="middle" fill="#e2e8f0" font-size="14" font-weight="700">7. FAULT</text>
+                  <text x="920" y="503" text-anchor="middle" fill="#ef4444" font-size="11">Coast/Lock · P1=FCH</text>
+                </svg>
+                <div class="diagram-caption">
+                  <i class="fas fa-info-circle"></i>
+                  แผนภาพสถานะ FSM 7 สถานะของ Version 2 — เมื่อเจอลำแสงขาดจะตัดขับทันที เข้า REV_WAIT พักเพลา ≥ 200 ms แล้วเปิดกลับสู่ SAFETY_HOLD ค้างรอคนกด PB_CLOSE ใหม่
+                </div>
+              </div>
+
+              <!-- Transition Table -->
+              <h4 style="margin: 1.25rem 0 0.5rem; color: var(--text-primary);">ตารางเงื่อนไขการเปลี่ยนสถานะ (Guard Conditions &amp; Action Table)</h4>
+              <div class="table-responsive">
+                <table class="custom-table">
+                  <thead>
+                    <tr><th>สถานะต้นทาง</th><th>สถานะปลายทาง</th><th>เงื่อนไขทรานซิชัน (Guard Condition)</th><th>การจัดการความปลอดภัยและเวลา</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><strong>CLOSED</strong></td><td>OPENING</td><td>PB_IN = 0 หรือ PB_OUT = 0 คงที่ต่อเนื่อง</td><td>กรองสัญญาณกระเพื่อม 20 ms + ตัด Enable ก่อนตั้งทิศทาง CW</td></tr>
+                    <tr><td><strong>OPENING</strong></td><td>OPEN_HOLD</td><td>LO = 0 (ถึงลิมิตสวิตช์เปิดสุด)</td><td>ตัด Enable มอเตอร์หยุดสนิท, ไฟเขียวติดค้าง</td></tr>
+                    <tr><td><strong>OPEN_HOLD</strong></td><td>CLOSING</td><td>PB_CLOSE ถูกปล่อย ≥ 20 ms แล้วถูกกดใหม่ ∧ BEAM_DET = 1 ∧ ปุ่มเปิดถูกปล่อย</td><td>ไม่มีการปิดอัตโนมัติ ต้องสั่งด้วยมือเท่านั้น และลำแสงต้องไม่ขาด</td></tr>
+                    <tr><td><strong>CLOSING</strong></td><td>CLOSED</td><td>LC = 0 (ถึงลิมิตสวิตช์ปิดสุด) และไม่มีเหตุให้เปิดกลับ</td><td>มอเตอร์หยุดสนิท, สลับเป็นไฟแดงติด (P1 = ECH (1110 1100B))</td></tr>
+                    <tr><td><strong>CLOSING</strong></td><td>REV_WAIT</td><td><strong>BEAM_DET = 0 (ลำแสงขาด)</strong> หรือมีคำสั่งเปิดซ้ำ</td><td><strong>ตัด RUN_N ทันที (SETB P1.2)</strong>, ตั้งแฟล็ก SAFETY_SEEN = 1 (ถ้าเกิดจากเซนเซอร์)</td></tr>
+                    <tr><td><strong>REV_WAIT</strong></td><td>REOPENING</td><td>เวลาปล่อยไหลครบ ≥ 200 ms</td><td>เตรียมทิศ CW (P1 = DDH (1101 1101B)) ขณะยังตัด Enable แล้วจึงเปิดแรงขับ (P1 = D9H (1101 1001B))</td></tr>
+                    <tr><td><strong>REOPENING</strong></td><td>SAFETY_HOLD</td><td>LO = 0 และแฟล็ก <strong>SAFETY_SEEN = 1</strong></td><td>เข้าสู่ SAFETY_HOLD ติดไฟส้ม (P1 = BCH (1011 1100B)) ล้างสิทธิ์คำสั่งปิดเดิม</td></tr>
+                    <tr><td><strong>REOPENING</strong></td><td>OPEN_HOLD</td><td>LO = 0 และแฟล็ก <strong>SAFETY_SEEN = 0</strong> (เกิดจากคนกดเปิด)</td><td>กลับสู่สถานะเปิดปกติ ติดไฟเขียว (P1 = DCH (1101 1100B))</td></tr>
+                    <tr><td><strong>SAFETY_HOLD</strong></td><td>CLOSING</td><td>ตรวจพบการปล่อย PB_CLOSE ≥ 20 ms หลังเข้าสถานะ + กดใหม่ ∧ BEAM_DET = 1</td><td>คนต้องตรวจความเรียบร้อยของช่องประตูก่อนกดปิดใหม่เสมอ</td></tr>
+                    <tr><td><strong>สถานะใดๆ</strong></td><td>FAULT</td><td>ESTOP = 1 (ปุ่มหยุดฉุกเฉิน/สายขาด) ∨ LO=LC=0 ∨ เคลื่อนที่เกิน 5.0 s</td><td>ตัดแรงขับทันที, แสดง P0 = FFH (1111 1111B), ค้างจนกว่าจะกดรีเซ็ตที่ปลายทาง</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ============ D. Timing Architecture ============ -->
+        <article class="solution-card" id="sec-timing">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge blue">Section D</span>
+              <h3 class="card-title">Timing Architecture — คาบเวลาและไทม์เมอร์ 8051</h3>
+            </div>
+            <span class="ref-pill">Fosc = 12.000 MHz · 12T Core</span>
+          </div>
+          <div class="card-body">
+            <div class="content-block">
+              <p>
+                ในระบบควบคุม AT89S52 คริสตัล <code>12.000 MHz</code> มีสถาปัตยกรรมแบบ 12T:
+                <br>
+                <code>1 machine cycle = 12 / 12,000,000 = 1.0 µs</code>
+              </p>
+
+              <h4 style="margin: 1rem 0 0.5rem; color: var(--text-primary);">การคำนวณค่าพรีโหลด Timer 0 Mode 1 (16-bit) สำหรับหน่วง 20 ms</h4>
+              <div class="content-block">
+                <ul>
+                  <li>ต้องการเวลาหน่วง <code>20,000 µs = 20,000 machine cycles</code></li>
+                  <li>ตัวนับ 16 บิตล้นที่ค่า 65,536:
+                    <br>
+                    <code>ค่าพรีโหลด = 65,536 - 20,000 = 45,536 = B1E0H</code>
+                  </li>
+                  <li>แยกโหลดลงรีจิสเตอร์: <code>TH0 = 0B1H</code>, <code>TL0 = 0E0H</code></li>
+                  <li>ซับรูทีน <code>DELAY_20MS</code> ทำการล้าง TF0, สั่ง SETB TR0, วนลูปตรวจสอบ JNB TF0, แล้วเคลียร์ TR0 และ TF0 ก่อน RET</li>
+                </ul>
+              </div>
+
+              <h4 style="margin: 1.25rem 0 0.5rem; color: var(--text-primary);">ตารางรอบเวลาและหน้าที่ของแต่ละหน้าต่างเวลา</h4>
+              <div class="table-responsive">
+                <table class="custom-table">
+                  <thead>
+                    <tr><th>หน้าต่างเวลา</th><th>ค่าออกแบบ</th><th>จำนวนรอบ DELAY_20MS</th><th>วัตถุประสงค์ทางวิศวกรรม</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Debounce Filter</td><td><strong>20 ms</strong></td><td>1 รอบ (R1 = 1)</td><td>กรองสัญญาณกระเพื่อมของหน้าสัมผัสปุ่มกด PB_IN, PB_OUT, PB_CLOSE</td></tr>
+                    <tr><td>Coast Window (REV_WAIT)</td><td><strong>200 ms</strong></td><td>10 รอบ (R6 = 10)</td><td>ปล่อยเพลามอเตอร์ไหลอิสระ ลดพลังงานจลน์และป้องกัน back-EMF กระชากก่อนกลับทิศ</td></tr>
+                    <tr><td>Release Guard</td><td><strong>20 ms</strong></td><td>1 รอบ (ตรวจระดับ 1)</td><td>ป้องกันการกดปุ่มปิดค้างมาจากสถานะก่อนหน้า ต้องปล่อยปุ่มก่อนรับคำสั่งใหม่</td></tr>
+                    <tr><td>Travel Timeout</td><td><strong>5.00 s</strong></td><td>250 รอบ (R7 = 250)</td><td>เวลาสูงสุดในการเลื่อนหนึ่งเที่ยว หากเกิน 5 วินาทีแล้วไม่ถึงลิมิต ให้ตัดเข้า FAULT ทันที</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="box-warning" style="margin-top: 1rem;">
+                <div class="box-warning-header"><i class="fas fa-exclamation-triangle"></i> กฎเหล็กของเวลาในระบบตรวจจับสิ่งกีดขวาง</div>
+                <div class="box-warning-text">
+                  สัญญาณโฟโต้เซนเซอร์ (<code>P2.2</code>) <strong>ไม่ใช้ debounce 20 ms</strong> เหมือนปุ่มกด!
+                  ทันทีที่ลูปควบคุมตรวจพบ <code>BEAM_DET = 0</code> จะต้องตัด <code>SETB P1.2</code> ทันทีในคำสั่งถัดไป
+                  เพื่อตอบสนองต่อสิ่งกีดขวางได้เร็วที่สุด และเริ่มนับเวลา Coast 200 ms เพื่อความปลอดภัย
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ============ E. Full Verified Firmware ============ -->
+        <article class="solution-card" id="sec-firmware">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge green">Section E</span>
+              <h3 class="card-title">Full Verified Firmware — SLIDING_DOOR_V2.asm ฉบับสมบูรณ์</h3>
+            </div>
+            <span class="ref-pill">Official Production Firmware · EdSim51 Verified</span>
+          </div>
+          <div class="card-body">
+            <div class="content-block">
+              <p>
+                เฟิร์มแวร์ด้านล่างคือฉบับจริงของ Version 2 บันทึกอยู่ที่
+                <code>mini-project/submission/firmware/SLIDING_DOOR_V2.asm</code>
+                ผ่านการจำลองบน EdSim51DI พร้อมรองรับทุกลอจิกความปลอดภัยตามสไลด์นำเสนอ:
+              </p>
+
+              <div class="code-wrapper">
+                <div class="code-header">
+                  <span>SLIDING_DOOR_V2.asm — complete verified firmware (8051 / EdSim51)</span>
+                  <button class="btn-copy" type="button">Copy Code</button>
+                </div>
+                <pre class="code-content"><code id="full-firmware-code"><span class="comment">; ==============================================================================</span>
+<span class="comment">; SLIDING_DOOR_V2.asm</span>
+<span class="comment">; Official Firmware: Single-Panel Residential Sliding Door with Photoelectric</span>
+<span class="comment">; Obstacle Detection and Automatic Reopening (Version 2 Final Submission)</span>
+<span class="comment">;</span>
+<span class="comment">; Course: 305341 Embedded Systems 1</span>
+<span class="comment">; Authors: Theeraphat Phuraya, Pranpriya Sriyong</span>
+<span class="comment">; Instructor: Dr. Saengchai Mangkornthong</span>
+<span class="comment">; Target: Classic 8051 / AT89S52 @ 12.000 MHz (12T, 1 machine cycle = 1 us)</span>
+<span class="comment">; Assembler / Simulator: EdSim51 2.1.39 / A51</span>
+<span class="comment">; ==============================================================================</span>
+<span class="comment">;</span>
+<span class="comment">; PORT CONTRACT:</span>
+<span class="comment">; P0: State Code Display (P0.2..P0.0 = State 0..7). Open-drain, requires 10k pull-ups.</span>
+<span class="comment">;     P0 = F8H OR state index.</span>
+<span class="comment">;</span>
+<span class="comment">; P1: Actuator and Indicator Port (Active-low indicators and enable)</span>
+<span class="comment">;     P1.0 = IN1      (L293D pin 2)</span>
+<span class="comment">;     P1.1 = IN2      (L293D pin 7)</span>
+<span class="comment">;     P1.2 = RUN_N    (Active-low run signal; inverted by SN74HCT14 -&gt; L293D EN1)</span>
+<span class="comment">;                     RUN_N = 1 -&gt; EN = 0 (Motor Coast / Disconnected)</span>
+<span class="comment">;                     RUN_N = 0 -&gt; EN = 1 (Motor Driven)</span>
+<span class="comment">;     P1.3 = Reserved (Always 1)</span>
+<span class="comment">;     P1.4 = RED_N    (Red LED: 0 = ON, 1 = OFF)</span>
+<span class="comment">;     P1.5 = GREEN_N  (Green LED: 0 = ON, 1 = OFF)</span>
+<span class="comment">;     P1.6 = ORANGE_N (Orange LED: 0 = ON, 1 = OFF)</span>
+<span class="comment">;     P1.7 = Reserved (Always 1)</span>
+<span class="comment">;</span>
+<span class="comment">; P1 EXACT VALUES PER STATE:</span>
+<span class="comment">;     CLOSED      : 1110 1100B = ECH (STOP, RED ON)</span>
+<span class="comment">;     OPENING     : 1101 1001B = D9H (CW, GREEN ON)</span>
+<span class="comment">;     OPEN_HOLD   : 1101 1100B = DCH (STOP, GREEN ON)</span>
+<span class="comment">;     CLOSING     : 1110 1010B = EAH (CCW, RED ON)</span>
+<span class="comment">;     REV_WAIT    : 1111 1100B = FCH (Coast, All LEDs OFF)</span>
+<span class="comment">;     REOPENING   : 1101 1001B = D9H (CW, GREEN ON)</span>
+<span class="comment">;     SAFETY_HOLD : 1011 1100B = BCH (STOP, ORANGE ON)</span>
+<span class="comment">;     FAULT       : 1111 1100B = FCH (Coast, All LEDs OFF)</span>
+<span class="comment">;</span>
+<span class="comment">; P2: Input Sensor and Button Port (Latch initialized to FFH once at startup)</span>
+<span class="comment">;     P2.0 = PB_IN    (Push button inside, NO: 0 = pressed)</span>
+<span class="comment">;     P2.1 = PB_OUT   (Push button outside, NO: 0 = pressed)</span>
+<span class="comment">;     P2.2 = BEAM_DET (Through-Beam Omron E3Z-T61 + Optocoupler + 74HCT14:</span>
+<span class="comment">;                      1 = Beam Clear, 0 = Obstacle / Beam Interrupted)</span>
+<span class="comment">;     P2.3 = LO       (Limit Open switch, NO: 0 = fully open)</span>
+<span class="comment">;     P2.4 = LC       (Limit Closed switch, NO: 0 = fully closed)</span>
+<span class="comment">;     P2.5 = PB_CLOSE (Push button close, NO: 0 = pressed, pin 26)</span>
+<span class="comment">;     P2.6 = Unused   (External pull-up)</span>
+<span class="comment">;     P2.7 = ESTOP    (Emergency stop, NC contact: 0 = healthy, 1 = tripped/open)</span>
+<span class="comment">;</span>
+<span class="comment">; BIT ALLOCATIONS:</span>
+<span class="comment">;     20H.0 = SAFETY_SEEN (1 if reversal was triggered by photoelectric beam)</span>
+<span class="comment">;     20H.1 = CLOSE_ARMED (1 if PB_CLOSE was observed released for &gt;= 20 ms)</span>
+<span class="comment">;</span>
+<span class="comment">; TIMING SPECIFICATION:</span>
+<span class="comment">;     Delay subroutine = 20 ms using Timer 0 Mode 1 (16-bit)</span>
+<span class="comment">;     Preload = B1E0H (65536 - 20000 = 45536 = B1E0H @ 12 MHz)</span>
+<span class="comment">;     Button Debounce = 1 x 20 ms = 20 ms</span>
+<span class="comment">;     Coast Interval  = 10 x 20 ms = 200 ms minimum before reversal</span>
+<span class="comment">;     Travel Timeout  = 250 x 20 ms = 5.00 s maximum per travel stroke</span>
+<span class="comment">; ==============================================================================</span>
+
+                <span class="directive">ORG</span>     <span class="address">0000H</span>
+                <span class="opcode">LJMP</span>    MAIN
+
+                <span class="directive">ORG</span>     <span class="address">0030H</span>
+<span class="label">MAIN:</span>
+<span class="comment">                ; Step 1: Initialize hardware ports and latches</span>
+                <span class="opcode">MOV</span>     <span class="operand">P2</span>, <span class="immediate">#0FFH</span>               <span class="comment">; Configure P2 as input port</span>
+                <span class="opcode">SETB</span>    P1.2                   <span class="comment">; Immediately disable motor driver</span>
+                <span class="opcode">MOV</span>     <span class="operand">P1</span>, <span class="immediate">#0ECH</span>               <span class="comment">; Default to safe STOP, RED indicator</span>
+                <span class="opcode">MOV</span>     <span class="operand">P0</span>, <span class="immediate">#0F8H</span>               <span class="comment">; State 0 monitor</span>
+                <span class="opcode">CLR</span>     20H.0                   <span class="comment">; Clear SAFETY_SEEN flag</span>
+                <span class="opcode">CLR</span>     20H.1                   <span class="comment">; Clear CLOSE_ARMED flag</span>
+
+<span class="comment">                ; Step 2: Configure Timer 0 Mode 1 (16-bit software polled timer)</span>
+                <span class="opcode">MOV</span>     <span class="operand">TMOD</span>, <span class="immediate">#01H</span>
+
+<span class="comment">                ; Step 3: Initial 20 ms settle time and endpoint verification</span>
+                <span class="opcode">LCALL</span>   DELAY_20MS
+                <span class="opcode">JB</span>      P2.7, JUMP_FAULT        <span class="comment">; E-stop active -&gt; Fault</span>
+                <span class="opcode">JNB</span>     P2.3, CHECK_LO_LC       <span class="comment">; LO active? Check for conflict</span>
+                <span class="opcode">JNB</span>     P2.4, ENTER_CLOSED      <span class="comment">; LC active -&gt; Start in CLOSED state</span>
+
+<span class="label">JUMP_FAULT:</span>
+                <span class="opcode">LJMP</span>    STATE_FAULT             <span class="comment">; Neither limit hit -&gt; Unknown position, go FAULT</span>
+
+<span class="label">CHECK_LO_LC:</span>
+                <span class="opcode">JNB</span>     P2.4, JUMP_FAULT        <span class="comment">; Both LO and LC hit simultaneously -&gt; Fault!</span>
+                <span class="opcode">LJMP</span>    STATE_OPEN_HOLD         <span class="comment">; At open limit -&gt; Start in OPEN_HOLD state</span>
+
+<span class="label">ENTER_CLOSED:</span>
+                <span class="opcode">LJMP</span>    STATE_CLOSED
+
+<span class="comment">; ==============================================================================</span>
+<span class="comment">; STATE 0: CLOSED (Door fully closed, awaiting opening request)</span>
+<span class="comment">; P0 = F8H, P1 = ECH (STOP, RED ON)</span>
+<span class="comment">; ==============================================================================</span>
+<span class="label">STATE_CLOSED:</span>
+                <span class="opcode">SETB</span>    P1.2                    <span class="comment">; Ensure drive is disabled</span>
+                <span class="opcode">MOV</span>     <span class="operand">P0</span>, <span class="immediate">#0F8H</span>               <span class="comment">; State 0</span>
+                <span class="opcode">MOV</span>     <span class="operand">P1</span>, <span class="immediate">#0ECH</span>               <span class="comment">; ECH: STOP, RED ON</span>
+                <span class="opcode">CLR</span>     20H.0                   <span class="comment">; Reset safety seen flag</span>
+
+<span class="label">CLOSED_LOOP:</span>
+                <span class="opcode">JB</span>      P2.7, CLOSED_TO_FAULT   <span class="comment">; E-stop tripped</span>
+                <span class="opcode">JB</span>      P2.4, CLOSED_TO_FAULT   <span class="comment">; LC lost unexpectedly while stationary</span>
+                <span class="opcode">JNB</span>     P2.0, CLOSED_DEBOUNCE   <span class="comment">; PB_IN pressed</span>
+                <span class="opcode">JNB</span>     P2.1, CLOSED_DEBOUNCE   <span class="comment">; PB_OUT pressed</span>
+                <span class="opcode">SJMP</span>    CLOSED_LOOP
+
+<span class="label">CLOSED_DEBOUNCE:</span>
+                <span class="opcode">LCALL</span>   DELAY_20MS              <span class="comment">; 20 ms debounce window</span>
+                <span class="opcode">JB</span>      P2.7, CLOSED_TO_FAULT
+                <span class="opcode">JNB</span>     P2.0, CLOSED_GO_OPEN
+                <span class="opcode">JNB</span>     P2.1, CLOSED_GO_OPEN
+                <span class="opcode">SJMP</span>    CLOSED_LOOP             <span class="comment">; Glitch rejected</span>
+
+<span class="label">CLOSED_GO_OPEN:</span>
+                <span class="opcode">LJMP</span>    STATE_OPENING
+
+<span class="label">CLOSED_TO_FAULT:</span>
+                <span class="opcode">LJMP</span>    STATE_FAULT
+
+<span class="comment">; ==============================================================================</span>
+<span class="comment">; STATE 1: OPENING (Motor rotating CW, moving toward open limit LO)</span>
+<span class="comment">; P0 = F9H, P1 = D9H (Motor CW, GREEN ON)</span>
+<span class="comment">; ==============================================================================</span>
+<span class="label">STATE_OPENING:</span>
+                <span class="opcode">SETB</span>    P1.2                    <span class="comment">; Interlock: disable drive before setting direction</span>
+                <span class="opcode">MOV</span>     <span class="operand">P0</span>, <span class="immediate">#0F9H</span>               <span class="comment">; State 1</span>
+                <span class="opcode">MOV</span>     <span class="operand">P1</span>, <span class="immediate">#0DDH</span>               <span class="comment">; Pre-load CW (IN1=1, IN2=0) with RUN_N=1</span>
+                <span class="opcode">CLR</span>     P1.2                    <span class="comment">; Enable CW drive (P1 = D9H)</span>
+                <span class="opcode">MOV</span>     <span class="operand">R7</span>, <span class="immediate">#250</span>                <span class="comment">; Travel timeout countdown: 250 x 20 ms = 5.0 s</span>
+
+<span class="label">OPENING_LOOP:</span>
+                <span class="opcode">JB</span>      P2.7, OPENING_TO_FAULT  <span class="comment">; E-stop tripped -&gt; FAULT</span>
+                <span class="opcode">JNB</span>     P2.3, OPENING_REACHED_LO <span class="comment">; Reached LO limit -&gt; OPEN_HOLD</span>
+                <span class="opcode">LCALL</span>   DELAY_20MS
+                <span class="opcode">DJNZ</span>    <span class="operand">R7</span>, OPENING_LOOP
+
+<span class="comment">                ; Timeout elapsed (&gt; 5.0 s) without reaching LO</span>
+<span class="label">OPENING_TO_FAULT:</span>
+                <span class="opcode">LJMP</span>    STATE_FAULT
+
+<span class="label">OPENING_REACHED_LO:</span>
+                <span class="opcode">LJMP</span>    STATE_OPEN_HOLD
+
+<span class="comment">; ==============================================================================</span>
+<span class="comment">; STATE 2: OPEN_HOLD (Door stationary at open position, manual close required)</span>
+<span class="comment">; P0 = FAH, P1 = DCH (STOP, GREEN ON)</span>
+<span class="comment">; NOTE: No automatic-close timer exists. Requires manual press of PB_CLOSE.</span>
+<span class="comment">; ==============================================================================</span>
+<span class="label">STATE_OPEN_HOLD:</span>
+                <span class="opcode">SETB</span>    P1.2                    <span class="comment">; Cut motor drive</span>
+                <span class="opcode">MOV</span>     <span class="operand">P0</span>, <span class="immediate">#0FAH</span>               <span class="comment">; State 2</span>
+                <span class="opcode">MOV</span>     <span class="operand">P1</span>, <span class="immediate">#0DCH</span>               <span class="comment">; DCH: STOP, GREEN ON</span>
+                <span class="opcode">CLR</span>     20H.1                   <span class="comment">; CLOSE_ARMED = 0 (must observe release first)</span>
+
+<span class="label">OPEN_HOLD_LOOP:</span>
+                <span class="opcode">JB</span>      P2.7, HOLD_TO_FAULT     <span class="comment">; E-stop tripped -&gt; FAULT</span>
+                <span class="opcode">JB</span>      P2.3, HOLD_TO_FAULT     <span class="comment">; Door drifted away from LO -&gt; FAULT</span>
+
+<span class="comment">                ; Check PB_CLOSE release qualification (&gt;= 20 ms)</span>
+                <span class="opcode">JB</span>      P2.5, HOLD_ARM_CLOSE    <span class="comment">; PB_CLOSE is high (released)</span>
+                <span class="opcode">CLR</span>     20H.1                   <span class="comment">; Still held low -&gt; not armed</span>
+                <span class="opcode">SJMP</span>    HOLD_CHECK_PRESS
+
+<span class="label">HOLD_ARM_CLOSE:</span>
+                <span class="opcode">SETB</span>    20H.1                   <span class="comment">; PB_CLOSE observed released</span>
+
+<span class="label">HOLD_CHECK_PRESS:</span>
+<span class="comment">                ; If armed, check for a fresh valid press of PB_CLOSE</span>
+                <span class="opcode">JNB</span>     20H.1, OPEN_HOLD_LOOP   <span class="comment">; Not armed yet, ignore</span>
+                <span class="opcode">JNB</span>     P2.5, HOLD_DEBOUNCE_CLOSE
+                <span class="opcode">SJMP</span>    OPEN_HOLD_LOOP
+
+<span class="label">HOLD_DEBOUNCE_CLOSE:</span>
+                <span class="opcode">LCALL</span>   DELAY_20MS              <span class="comment">; Filter debounce 20 ms</span>
+                <span class="opcode">JB</span>      P2.7, HOLD_TO_FAULT
+                <span class="opcode">JB</span>      P2.5, OPEN_HOLD_LOOP    <span class="comment">; Glitch / released early</span>
+
+<span class="comment">                ; Qualify safety preconditions:</span>
+<span class="comment">                ; 1. BEAM_DET must be 1 (Beam clear)</span>
+<span class="comment">                ; 2. PB_IN and PB_OUT must be released (high)</span>
+                <span class="opcode">JNB</span>     P2.2, OPEN_HOLD_LOOP    <span class="comment">; Beam interrupted -&gt; discard command</span>
+                <span class="opcode">JNB</span>     P2.0, OPEN_HOLD_LOOP    <span class="comment">; PB_IN still held -&gt; discard</span>
+                <span class="opcode">JNB</span>     P2.1, OPEN_HOLD_LOOP    <span class="comment">; PB_OUT still held -&gt; discard</span>
+
+<span class="comment">                ; Preconditions met -&gt; Transition to CLOSING</span>
+                <span class="opcode">CLR</span>     20H.0                   <span class="comment">; SAFETY_SEEN = 0</span>
+                <span class="opcode">LJMP</span>    STATE_CLOSING
+
+<span class="label">HOLD_TO_FAULT:</span>
+                <span class="opcode">LJMP</span>    STATE_FAULT
+
+<span class="comment">; ==============================================================================</span>
+<span class="comment">; STATE 3: CLOSING (Motor rotating CCW, moving toward closed limit LC)</span>
+<span class="comment">; P0 = FBH, P1 = EAH (Motor CCW, RED ON)</span>
+<span class="comment">; PRIORITY: BEAM_DET &gt; Open Buttons &gt; LC Limit &gt; Travel Timeout</span>
+<span class="comment">; ==============================================================================</span>
+<span class="label">STATE_CLOSING:</span>
+                <span class="opcode">SETB</span>    P1.2                    <span class="comment">; Interlock: disable drive before setting direction</span>
+                <span class="opcode">MOV</span>     <span class="operand">P0</span>, <span class="immediate">#0FBH</span>               <span class="comment">; State 3</span>
+                <span class="opcode">MOV</span>     <span class="operand">P1</span>, <span class="immediate">#0EEH</span>               <span class="comment">; Pre-load CCW (IN1=0, IN2=1) with RUN_N=1</span>
+                <span class="opcode">CLR</span>     P1.2                    <span class="comment">; Enable CCW drive (P1 = EAH)</span>
+                <span class="opcode">MOV</span>     <span class="operand">R7</span>, <span class="immediate">#250</span>                <span class="comment">; Travel timeout countdown: 250 x 20 ms = 5.0 s</span>
+
+<span class="label">CLOSING_LOOP:</span>
+<span class="comment">                ; Priority 0: Emergency stop</span>
+                <span class="opcode">JB</span>      P2.7, CLOSING_TO_FAULT
+
+<span class="comment">                ; Priority 1: Photoelectric Obstacle Detection (BEAM_DET = 0)</span>
+                <span class="opcode">JNB</span>     P2.2, CLOSING_OBSTACLE
+
+<span class="comment">                ; Priority 2: Manual reopen buttons pressed</span>
+                <span class="opcode">JNB</span>     P2.0, CLOSING_MANUAL_REOPEN
+                <span class="opcode">JNB</span>     P2.1, CLOSING_MANUAL_REOPEN
+
+<span class="comment">                ; Priority 3: Reached closed limit (LC = 0)</span>
+                <span class="opcode">JNB</span>     P2.4, CLOSING_REACHED_LC
+
+                <span class="opcode">LCALL</span>   DELAY_20MS
+                <span class="opcode">DJNZ</span>    <span class="operand">R7</span>, CLOSING_LOOP
+
+<span class="comment">                ; Timeout elapsed (&gt; 5.0 s) without reaching LC</span>
+<span class="label">CLOSING_TO_FAULT:</span>
+                <span class="opcode">LJMP</span>    STATE_FAULT
+
+<span class="label">CLOSING_OBSTACLE:</span>
+<span class="comment">                ; Safe Cut-off sequence:</span>
+                <span class="opcode">SETB</span>    P1.2                    <span class="comment">; 1. Immediately cut motor enable</span>
+                <span class="opcode">MOV</span>     <span class="operand">P1</span>, <span class="immediate">#0FCH</span>               <span class="comment">; 2. All indicators off, high-Z coast</span>
+                <span class="opcode">SETB</span>    20H.0                   <span class="comment">; 3. Latch SAFETY_SEEN = 1</span>
+                <span class="opcode">LJMP</span>    STATE_REV_WAIT          <span class="comment">; 4. Enter coast interval</span>
+
+<span class="label">CLOSING_MANUAL_REOPEN:</span>
+<span class="comment">                ; Manual Reopen sequence:</span>
+                <span class="opcode">SETB</span>    P1.2                    <span class="comment">; 1. Cut motor enable</span>
+                <span class="opcode">MOV</span>     <span class="operand">P1</span>, <span class="immediate">#0FCH</span>               <span class="comment">; 2. Coast</span>
+                <span class="opcode">CLR</span>     20H.0                   <span class="comment">; 3. Latch SAFETY_SEEN = 0 (manual request)</span>
+                <span class="opcode">LJMP</span>    STATE_REV_WAIT
+
+<span class="label">CLOSING_REACHED_LC:</span>
+                <span class="opcode">LJMP</span>    STATE_CLOSED
+
+<span class="comment">; ==============================================================================</span>
+<span class="comment">; STATE 4: REV_WAIT (Motor coasting for &gt;= 200 ms to damp kinetic energy)</span>
+<span class="comment">; P0 = FCH, P1 = FCH (Motor Coast, All LEDs OFF)</span>
+<span class="comment">; ==============================================================================</span>
+<span class="label">STATE_REV_WAIT:</span>
+                <span class="opcode">SETB</span>    P1.2                    <span class="comment">; Redundant motor drive cut</span>
+                <span class="opcode">MOV</span>     <span class="operand">P0</span>, <span class="immediate">#0FCH</span>               <span class="comment">; State 4</span>
+                <span class="opcode">MOV</span>     <span class="operand">P1</span>, <span class="immediate">#0FCH</span>               <span class="comment">; FCH: Coast, LEDs OFF</span>
+                <span class="opcode">MOV</span>     <span class="operand">R6</span>, <span class="immediate">#10</span>                 <span class="comment">; 10 x 20 ms = 200 ms coast delay</span>
+
+<span class="label">REV_WAIT_LOOP:</span>
+                <span class="opcode">JB</span>      P2.7, REV_TO_FAULT      <span class="comment">; E-stop must be monitored during coast</span>
+                <span class="opcode">LCALL</span>   DELAY_20MS
+                <span class="opcode">DJNZ</span>    <span class="operand">R6</span>, REV_WAIT_LOOP
+
+<span class="comment">                ; Coast complete -&gt; proceed to REOPENING</span>
+                <span class="opcode">LJMP</span>    STATE_REOPENING
+
+<span class="label">REV_TO_FAULT:</span>
+                <span class="opcode">LJMP</span>    STATE_FAULT
+
+<span class="comment">; ==============================================================================</span>
+<span class="comment">; STATE 5: REOPENING (Motor rotating CW, moving back to LO limit)</span>
+<span class="comment">; P0 = FDH, P1 = D9H (Motor CW, GREEN ON)</span>
+<span class="comment">; ==============================================================================</span>
+<span class="label">STATE_REOPENING:</span>
+                <span class="opcode">SETB</span>    P1.2                    <span class="comment">; Interlock: cut drive before changing direction</span>
+                <span class="opcode">MOV</span>     <span class="operand">P0</span>, <span class="immediate">#0FDH</span>               <span class="comment">; State 5</span>
+                <span class="opcode">MOV</span>     <span class="operand">P1</span>, <span class="immediate">#0DDH</span>               <span class="comment">; Pre-load CW direction while RUN_N=1</span>
+                <span class="opcode">CLR</span>     P1.2                    <span class="comment">; Enable CW drive (P1 = D9H)</span>
+                <span class="opcode">MOV</span>     <span class="operand">R7</span>, <span class="immediate">#250</span>                <span class="comment">; Travel timeout countdown: 250 x 20 ms = 5.0 s</span>
+
+<span class="label">REOPENING_LOOP:</span>
+                <span class="opcode">JB</span>      P2.7, REOPEN_TO_FAULT   <span class="comment">; E-stop tripped</span>
+                <span class="opcode">JNB</span>     P2.3, REOPEN_REACHED_LO <span class="comment">; Reached LO limit switch</span>
+                <span class="opcode">LCALL</span>   DELAY_20MS
+                <span class="opcode">DJNZ</span>    <span class="operand">R7</span>, REOPENING_LOOP
+
+<span class="comment">                ; Timeout elapsed (&gt; 5.0 s)</span>
+<span class="label">REOPEN_TO_FAULT:</span>
+                <span class="opcode">LJMP</span>    STATE_FAULT
+
+<span class="label">REOPEN_REACHED_LO:</span>
+<span class="comment">                ; Destination selection based on SAFETY_SEEN:</span>
+                <span class="opcode">JB</span>      20H.0, GOTO_SAFETY_HOLD <span class="comment">; Obstacle occurred -&gt; SAFETY_HOLD</span>
+                <span class="opcode">LJMP</span>    STATE_OPEN_HOLD         <span class="comment">; Manual reopen -&gt; OPEN_HOLD</span>
+
+<span class="label">GOTO_SAFETY_HOLD:</span>
+                <span class="opcode">LJMP</span>    STATE_SAFETY_HOLD
+
+<span class="comment">; ==============================================================================</span>
+<span class="comment">; STATE 6: SAFETY_HOLD (Door stationary at LO after obstacle; ORANGE LED ON)</span>
+<span class="comment">; P0 = FEH, P1 = BCH (STOP, ORANGE ON)</span>
+<span class="comment">; NOTE: Requires human verification. User must release PB_CLOSE for &gt;= 20 ms,</span>
+<span class="comment">;       ensure threshold is clear (BEAM_DET=1), and press PB_CLOSE anew.</span>
+<span class="comment">; ==============================================================================</span>
+<span class="label">STATE_SAFETY_HOLD:</span>
+                <span class="opcode">SETB</span>    P1.2                    <span class="comment">; Cut motor drive</span>
+                <span class="opcode">MOV</span>     <span class="operand">P0</span>, <span class="immediate">#0FEH</span>               <span class="comment">; State 6</span>
+                <span class="opcode">MOV</span>     <span class="operand">P1</span>, <span class="immediate">#0BCH</span>               <span class="comment">; BCH: STOP, ORANGE ON</span>
+                <span class="opcode">CLR</span>     20H.1                   <span class="comment">; Clear CLOSE_ARMED (must observe release)</span>
+
+<span class="label">SAFETY_HOLD_LOOP:</span>
+                <span class="opcode">JB</span>      P2.7, SAFETY_TO_FAULT   <span class="comment">; E-stop tripped -&gt; FAULT</span>
+                <span class="opcode">JB</span>      P2.3, SAFETY_TO_FAULT   <span class="comment">; Door drifted away from LO -&gt; FAULT</span>
+
+<span class="comment">                ; Check PB_CLOSE release qualification (&gt;= 20 ms after entry)</span>
+                <span class="opcode">JB</span>      P2.5, SAFETY_ARM_CLOSE  <span class="comment">; PB_CLOSE is high (released)</span>
+                <span class="opcode">CLR</span>     20H.1                   <span class="comment">; Still held low</span>
+                <span class="opcode">SJMP</span>    SAFETY_CHECK_PRESS
+
+<span class="label">SAFETY_ARM_CLOSE:</span>
+                <span class="opcode">SETB</span>    20H.1                   <span class="comment">; Observed released for &gt;= 20 ms</span>
+
+<span class="label">SAFETY_CHECK_PRESS:</span>
+                <span class="opcode">JNB</span>     20H.1, SAFETY_HOLD_LOOP <span class="comment">; Not armed yet, ignore</span>
+                <span class="opcode">JNB</span>     P2.5, SAFETY_DEBOUNCE_CLOSE
+                <span class="opcode">SJMP</span>    SAFETY_HOLD_LOOP
+
+<span class="label">SAFETY_DEBOUNCE_CLOSE:</span>
+                <span class="opcode">LCALL</span>   DELAY_20MS              <span class="comment">; Filter debounce 20 ms</span>
+                <span class="opcode">JB</span>      P2.7, SAFETY_TO_FAULT
+                <span class="opcode">JB</span>      P2.5, SAFETY_HOLD_LOOP  <span class="comment">; Glitch / released early</span>
+
+<span class="comment">                ; Preconditions for re-closing:</span>
+<span class="comment">                ; 1. BEAM_DET must be 1 (Beam clear)</span>
+<span class="comment">                ; 2. PB_IN and PB_OUT must be released</span>
+                <span class="opcode">JNB</span>     P2.2, SAFETY_HOLD_LOOP  <span class="comment">; Beam interrupted -&gt; reject close command</span>
+                <span class="opcode">JNB</span>     P2.0, SAFETY_HOLD_LOOP  <span class="comment">; PB_IN held -&gt; reject</span>
+                <span class="opcode">JNB</span>     P2.1, SAFETY_HOLD_LOOP  <span class="comment">; PB_OUT held -&gt; reject</span>
+
+<span class="comment">                ; All clear -&gt; Start closing and clear safety flag</span>
+                <span class="opcode">CLR</span>     20H.0                   <span class="comment">; SAFETY_SEEN = 0</span>
+                <span class="opcode">LJMP</span>    STATE_CLOSING
+
+<span class="label">SAFETY_TO_FAULT:</span>
+                <span class="opcode">LJMP</span>    STATE_FAULT
+
+<span class="comment">; ==============================================================================</span>
+<span class="comment">; STATE 7: FAULT (Hardware trip, timeout, or sensor conflict; SYSTEM HALTED)</span>
+<span class="comment">; P0 = FFH, P1 = FCH (Motor Coast, All LEDs OFF / Safe condition)</span>
+<span class="comment">; ==============================================================================</span>
+<span class="label">STATE_FAULT:</span>
+                <span class="opcode">SETB</span>    P1.2                    <span class="comment">; Disconnect motor drive immediately</span>
+                <span class="opcode">MOV</span>     <span class="operand">P0</span>, <span class="immediate">#0FFH</span>               <span class="comment">; State 7</span>
+                <span class="opcode">MOV</span>     <span class="operand">P1</span>, <span class="immediate">#0FCH</span>               <span class="comment">; FCH: All outputs safe</span>
+
+<span class="label">FAULT_LOOP:</span>
+<span class="comment">                ; Wait until E-stop is healthy and PB_CLOSE is pressed to reset</span>
+                <span class="opcode">JB</span>      P2.7, FAULT_LOOP        <span class="comment">; Still in E-stop condition</span>
+                <span class="opcode">JNB</span>     P2.5, FAULT_RESET_CHECK <span class="comment">; User pressed PB_CLOSE to attempt reset</span>
+                <span class="opcode">SJMP</span>    FAULT_LOOP
+
+<span class="label">FAULT_RESET_CHECK:</span>
+                <span class="opcode">LCALL</span>   DELAY_20MS
+                <span class="opcode">JB</span>      P2.5, FAULT_LOOP        <span class="comment">; Glitch</span>
+<span class="comment">                ; Return to MAIN to verify endpoints and re-initialize</span>
+                <span class="opcode">LJMP</span>    MAIN
+
+<span class="comment">; ==============================================================================</span>
+<span class="comment">; SUBROUTINE: DELAY_20MS</span>
+<span class="comment">; Generates an accurate 20,000 us (20 ms) time delay using Timer 0 in Mode 1.</span>
+<span class="comment">; Clock: 12.000 MHz -&gt; 1 machine cycle = 1 us.</span>
+<span class="comment">; 65,536 - 20,000 = 45,536 = B1E0H.</span>
+<span class="comment">; ==============================================================================</span>
+<span class="label">DELAY_20MS:</span>
+                <span class="opcode">CLR</span>     <span class="operand">TR0</span>                     <span class="comment">; Stop Timer 0</span>
+                <span class="opcode">MOV</span>     <span class="operand">TH0</span>, <span class="immediate">#0B1H</span>              <span class="comment">; Load high byte (B1H)</span>
+                <span class="opcode">MOV</span>     <span class="operand">TL0</span>, <span class="immediate">#0E0H</span>              <span class="comment">; Load low byte (E0H)</span>
+                <span class="opcode">CLR</span>     <span class="operand">TF0</span>                     <span class="comment">; Clear overflow flag</span>
+                <span class="opcode">SETB</span>    <span class="operand">TR0</span>                     <span class="comment">; Start Timer 0</span>
+
+<span class="label">DELAY_WAIT:</span>
+                <span class="opcode">JNB</span>     <span class="operand">TF0</span>, DELAY_WAIT         <span class="comment">; Poll until timer overflows (20 ms)</span>
+                <span class="opcode">CLR</span>     <span class="operand">TR0</span>                     <span class="comment">; Stop Timer 0</span>
+                <span class="opcode">CLR</span>     <span class="operand">TF0</span>                     <span class="comment">; Clear overflow flag</span>
+                <span class="opcode">RET</span>
+
+                <span class="directive">END</span></code></pre>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ============ E2. Exam Skeleton ============ -->
+        <article class="solution-card" id="sec-skeleton">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge amber">Section E2</span>
+              <h3 class="card-title">Exam Skeleton — โครงข้อสอบขนาดเขียนลงกระดาษได้ (~85 บรรทัด)</h3>
+            </div>
+            <span class="ref-pill">สำหรับข้อ 56 ในห้องสอบ (เขียนได้ใน 10–15 นาที)</span>
+          </div>
+          <div class="card-body">
+            <div class="content-block">
+              <p>
+                สำหรับเขียนในกระดาษคำตอบข้อสอบปลายภาคที่มีเวลาจำกัด โครงสร้างนี้คัดเฉพาะส่วนสำคัญ:
+                การตั้งค่าพอร์ต, การวนลูปตรวจจับแต่ละสถานะ, การตัดแรงขับทันทีเมื่อเสนเซอร์ตรวจพบสิ่งกีดขวาง,
+                การหน่วงเวลา Coast 200 ms, และการแยกปลายทางไปยัง SAFETY_HOLD
+                (ไฟล์ต้นฉบับอยู่ที่ <code>mini-project/submission/firmware/SLIDING_DOOR_EXAM_SKELETON.asm</code>):
+              </p>
+
+              <div class="code-wrapper">
+                <div class="code-header">
+                  <span>SLIDING_DOOR_EXAM_SKELETON.asm — Exam-Length Version (~85 lines)</span>
+                  <button class="btn-copy" type="button">Copy Code</button>
+                </div>
+                <pre class="code-content"><code><span class="comment">; ==============================================================================</span>
+<span class="comment">; SLIDING_DOOR_EXAM_SKELETON.asm</span>
+<span class="comment">; Compact, High-Scoring 8051 Assembly Skeleton for Exam Paper (305341 Final Q56)</span>
+<span class="comment">; Architecture: 7-State Moore FSM with Obstacle Reversal &amp; Safe Coast Window</span>
+<span class="comment">; Length: ~85 lines (Optimized for hand-writing under 15 minutes)</span>
+<span class="comment">; ==============================================================================</span>
+<span class="comment">; Port Mapping:</span>
+<span class="comment">;   P2.0: PB_IN (0=press), P2.1: PB_OUT (0=press), P2.2: BEAM_DET (0=obstacle)</span>
+<span class="comment">;   P2.3: LO (0=open limit), P2.4: LC (0=close limit), P2.5: PB_CLOSE (0=press)</span>
+<span class="comment">;   P1.0: IN1, P1.1: IN2, P1.2: RUN_N (0=drive, 1=coast via SN74HCT14 inverter)</span>
+<span class="comment">;   P1.4: RED_N, P1.5: GREEN_N, P1.6: ORANGE_N (0=ON)</span>
+<span class="comment">; State Outputs:</span>
+<span class="comment">;   CLOSED=ECH, OPENING=D9H, OPEN_HOLD=DCH, CLOSING=EAH, REV_WAIT=FCH,</span>
+<span class="comment">;   REOPENING=D9H, SAFETY_HOLD=BCH</span>
+<span class="comment">; ==============================================================================</span>
+
+            <span class="directive">ORG</span>     <span class="address">0000H</span>
+            <span class="opcode">LJMP</span>    MAIN
+
+            <span class="directive">ORG</span>     <span class="address">0030H</span>
+<span class="label">MAIN:</span>
+            <span class="opcode">MOV</span>     <span class="operand">P2</span>, <span class="immediate">#0FFH</span>           <span class="comment">; Configure P2 as input</span>
+            <span class="opcode">SETB</span>    P1.2                <span class="comment">; Disable motor drive</span>
+            <span class="opcode">MOV</span>     <span class="operand">P1</span>, <span class="immediate">#0ECH</span>           <span class="comment">; Start in CLOSED (P1=ECH: Red ON)</span>
+            <span class="opcode">CLR</span>     20H.0               <span class="comment">; 20H.0 = SAFETY_SEEN flag</span>
+
+<span class="comment">; ---------- STATE 0: CLOSED ----------</span>
+<span class="label">S_CLOSED:</span>
+            <span class="opcode">MOV</span>     <span class="operand">P1</span>, <span class="immediate">#0ECH</span>           <span class="comment">; Red LED ON, Motor STOP</span>
+<span class="label">WAIT_OPEN:</span>
+            <span class="opcode">JNB</span>     P2.0, DO_OPEN       <span class="comment">; Inside button pressed</span>
+            <span class="opcode">JNB</span>     P2.1, DO_OPEN       <span class="comment">; Outside button pressed</span>
+            <span class="opcode">SJMP</span>    WAIT_OPEN
+<span class="label">DO_OPEN:</span>
+            <span class="opcode">LCALL</span>   DELAY_20MS          <span class="comment">; Debounce</span>
+            <span class="opcode">JNB</span>     P2.0, S_OPENING
+            <span class="opcode">JNB</span>     P2.1, S_OPENING
+            <span class="opcode">SJMP</span>    WAIT_OPEN
+
+<span class="comment">; ---------- STATE 1: OPENING ----------</span>
+<span class="label">S_OPENING:</span>
+            <span class="opcode">SETB</span>    P1.2                <span class="comment">; Interlock: cut drive before CW</span>
+            <span class="opcode">MOV</span>     <span class="operand">P1</span>, <span class="immediate">#0D9H</span>           <span class="comment">; CW rotation, Green LED ON</span>
+<span class="label">WAIT_LO:</span>
+            <span class="opcode">JNB</span>     P2.3, S_OPEN_HOLD   <span class="comment">; Reached Limit Open (LO)</span>
+            <span class="opcode">SJMP</span>    WAIT_LO
+
+<span class="comment">; ---------- STATE 2: OPEN_HOLD ----------</span>
+<span class="label">S_OPEN_HOLD:</span>
+            <span class="opcode">SETB</span>    P1.2
+            <span class="opcode">MOV</span>     <span class="operand">P1</span>, <span class="immediate">#0DCH</span>           <span class="comment">; Motor STOP, Green LED ON</span>
+<span class="label">WAIT_CLOSE:</span>
+            <span class="opcode">JNB</span>     P2.5, CHECK_CLOSE   <span class="comment">; PB_CLOSE pressed</span>
+            <span class="opcode">SJMP</span>    WAIT_CLOSE
+<span class="label">CHECK_CLOSE:</span>
+            <span class="opcode">LCALL</span>   DELAY_20MS          <span class="comment">; Debounce</span>
+            <span class="opcode">JB</span>      P2.5, WAIT_CLOSE    <span class="comment">; Noise rejection</span>
+            <span class="opcode">JNB</span>     P2.2, WAIT_CLOSE    <span class="comment">; Beam interrupted -&gt; reject close command</span>
+            <span class="opcode">SJMP</span>    S_CLOSING
+
+<span class="comment">; ---------- STATE 3: CLOSING ----------</span>
+<span class="label">S_CLOSING:</span>
+            <span class="opcode">SETB</span>    P1.2                <span class="comment">; Interlock: cut drive before CCW</span>
+            <span class="opcode">MOV</span>     <span class="operand">P1</span>, <span class="immediate">#0EAH</span>           <span class="comment">; CCW rotation, Red LED ON</span>
+<span class="label">CLOSE_LOOP:</span>
+<span class="comment">            ; Check safety beam first (Obstacle detection)</span>
+            <span class="opcode">JNB</span>     P2.2, OBSTACLE_HIT  <span class="comment">; Beam broken (0) -&gt; Reversal!</span>
+<span class="comment">            ; Check manual reopen request</span>
+            <span class="opcode">JNB</span>     P2.0, MANUAL_REOPEN
+            <span class="opcode">JNB</span>     P2.1, MANUAL_REOPEN
+<span class="comment">            ; Check closed limit</span>
+            <span class="opcode">JNB</span>     P2.4, S_CLOSED      <span class="comment">; Fully closed</span>
+            <span class="opcode">SJMP</span>    CLOSE_LOOP
+
+<span class="label">OBSTACLE_HIT:</span>
+            <span class="opcode">SETB</span>    20H.0               <span class="comment">; Latch SAFETY_SEEN = 1</span>
+            <span class="opcode">SJMP</span>    DO_REV_WAIT
+<span class="label">MANUAL_REOPEN:</span>
+            <span class="opcode">CLR</span>     20H.0               <span class="comment">; SAFETY_SEEN = 0</span>
+<span class="label">DO_REV_WAIT:</span>
+            <span class="opcode">SETB</span>    P1.2                <span class="comment">; Cut drive immediately!</span>
+            <span class="opcode">MOV</span>     <span class="operand">P1</span>, <span class="immediate">#0FCH</span>           <span class="comment">; LEDs off, High-Z Coast</span>
+            <span class="opcode">SJMP</span>    S_REV_WAIT
+
+<span class="comment">; ---------- STATE 4: REV_WAIT (Coast &gt;= 200 ms) ----------</span>
+<span class="label">S_REV_WAIT:</span>
+            <span class="opcode">MOV</span>     <span class="operand">R6</span>, <span class="immediate">#10</span>             <span class="comment">; 10 x 20 ms = 200 ms</span>
+<span class="label">COAST_LOOP:</span>
+            <span class="opcode">LCALL</span>   DELAY_20MS
+            <span class="opcode">DJNZ</span>    <span class="operand">R6</span>, COAST_LOOP
+            <span class="opcode">SJMP</span>    S_REOPENING
+
+<span class="comment">; ---------- STATE 5: REOPENING ----------</span>
+<span class="label">S_REOPENING:</span>
+            <span class="opcode">SETB</span>    P1.2                <span class="comment">; Interlock before CW</span>
+            <span class="opcode">MOV</span>     <span class="operand">P1</span>, <span class="immediate">#0D9H</span>           <span class="comment">; CW rotation, Green LED ON</span>
+<span class="label">WAIT_REOPEN_LO:</span>
+            <span class="opcode">JNB</span>     P2.3, REOPEN_DONE   <span class="comment">; Reached LO</span>
+            <span class="opcode">SJMP</span>    WAIT_REOPEN_LO
+<span class="label">REOPEN_DONE:</span>
+            <span class="opcode">JB</span>      20H.0, S_SAFETY_HOLD <span class="comment">; If obstacle triggered -&gt; SAFETY_HOLD</span>
+            <span class="opcode">SJMP</span>    S_OPEN_HOLD         <span class="comment">; If manual button triggered -&gt; OPEN_HOLD</span>
+
+<span class="comment">; ---------- STATE 6: SAFETY_HOLD ----------</span>
+<span class="label">S_SAFETY_HOLD:</span>
+            <span class="opcode">SETB</span>    P1.2
+            <span class="opcode">MOV</span>     <span class="operand">P1</span>, <span class="immediate">#0BCH</span>           <span class="comment">; Motor STOP, Orange LED ON</span>
+<span class="label">WAIT_SAFE_REL:</span>
+            <span class="opcode">JB</span>      P2.5, WAIT_SAFE_PRESS <span class="comment">; Must observe PB_CLOSE released</span>
+            <span class="opcode">SJMP</span>    WAIT_SAFE_REL
+<span class="label">WAIT_SAFE_PRESS:</span>
+            <span class="opcode">JNB</span>     P2.5, DO_SAFE_CLOSE <span class="comment">; Fresh press</span>
+            <span class="opcode">SJMP</span>    WAIT_SAFE_PRESS
+<span class="label">DO_SAFE_CLOSE:</span>
+            <span class="opcode">LCALL</span>   DELAY_20MS
+            <span class="opcode">JB</span>      P2.5, WAIT_SAFE_PRESS
+            <span class="opcode">JNB</span>     P2.2, WAIT_SAFE_PRESS <span class="comment">; Beam must be clear</span>
+            <span class="opcode">CLR</span>     20H.0               <span class="comment">; Clear safety flag</span>
+            <span class="opcode">SJMP</span>    S_CLOSING
+
+<span class="comment">; ---------- TIMER 0 DELAY (20 ms @ 12 MHz) ----------</span>
+<span class="label">DELAY_20MS:</span>
+            <span class="opcode">MOV</span>     <span class="operand">TMOD</span>, <span class="immediate">#01H</span>          <span class="comment">; Timer 0 Mode 1 (16-bit)</span>
+            <span class="opcode">CLR</span>     <span class="operand">TR0</span>
+            <span class="opcode">MOV</span>     <span class="operand">TH0</span>, <span class="immediate">#0B1H</span>          <span class="comment">; B1E0H = 65536 - 20000</span>
+            <span class="opcode">MOV</span>     <span class="operand">TL0</span>, <span class="immediate">#0E0H</span>
+            <span class="opcode">CLR</span>     <span class="operand">TF0</span>
+            <span class="opcode">SETB</span>    <span class="operand">TR0</span>
+<span class="label">WAIT_TF:</span>    <span class="opcode">JNB</span>     <span class="operand">TF0</span>, WAIT_TF
+            <span class="opcode">CLR</span>     <span class="operand">TR0</span>
+            <span class="opcode">CLR</span>     <span class="operand">TF0</span>
+            <span class="opcode">RET</span>
+
+            <span class="directive">END</span></code></pre>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ============ F. Exam Answer Template ============ -->
+        <article class="solution-card" id="sec-template">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge red">Section F</span>
+              <h3 class="card-title">Exam Answer Template — ลำดับการเขียนกระดาษคำตอบข้อ 56</h3>
+            </div>
+            <span class="ref-pill">แนวทางคว้าคะแนนเต็ม</span>
+          </div>
+          <div class="card-body">
+            <div class="content-block">
+              <p>เมื่อเจอโจทย์ข้อ 56 ในห้องสอบ ให้เขียนคำตอบเป็น 4 ขั้นตอนตามลำดับนี้:</p>
+              <ol>
+                <li>
+                  <strong>เขียนตาราง Pinout ฮาร์ดแวร์สั้นๆ:</strong>
+                  <br>
+                  • อินพุต P2: P2.0 (PB_IN), P2.1 (PB_OUT), P2.2 (BEAM_DET), P2.3 (LO), P2.4 (LC), P2.5 (PB_CLOSE), P2.7 (ESTOP)
+                  <br>
+                  • เอาต์พุต P1: P1.0 (IN1), P1.1 (IN2), P1.2 (RUN_N), P1.4 (RED_N), P1.5 (GREEN_N), P1.6 (ORANGE_N)
+                </li>
+                <li>
+                  <strong>วาดแผนภาพ FSM 7 สถานะ (Section C):</strong>
+                  <br>
+                  วาดกล่องสถานะ CLOSED, OPENING, OPEN_HOLD, CLOSING, REV_WAIT, REOPENING, SAFETY_HOLD
+                  พร้อมเขียน Guard Condition กำกับทุกลูกศร โดยเน้นจุด <code>BEAM_DET = 0</code> ตัดเข้าสู่ <code>REV_WAIT</code>
+                </li>
+                <li>
+                  <strong>เขียนตาราง P1 Output Byte per State:</strong>
+                  <br>
+                  ระบุค่าฐานสิบหกของแต่ละสถานะ: CLOSED (ECH), OPENING (D9H), OPEN_HOLD (DCH), CLOSING (EAH), REV_WAIT (FCH), REOPENING (D9H), SAFETY_HOLD (BCH)
+                </li>
+                <li>
+                  <strong>เขียนโค้ดภาษาแอสเซมบลีฉบับข้อสอบ (Section E2):</strong>
+                  <br>
+                  เขียนโค้ดโครงสร้าง E2 (~85 บรรทัด) พร้อมซับรูทีน <code>DELAY_20MS</code> ด้วย Timer 0
+                </li>
+              </ol>
+            </div>
+          </div>
+        </article>
+
+        <!-- ============ G. Checklist ============ -->
+        <article class="solution-card" id="sec-checklist">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge green">Section G</span>
+              <h3 class="card-title">Checklist คะแนนเต็มสำหรับข้อ 56</h3>
+            </div>
+            <span class="ref-pill">ตรวจทานก่อนส่งกระดาษคำตอบ</span>
+          </div>
+          <div class="card-body">
+            <div class="content-block">
+              <div class="checklist-grid">
+                <div class="check-item">
+                  <i class="fas fa-check-circle"></i>
+                  <div>
+                    <h4>State Diagram ครบ 7 สถานะ</h4>
+                    <p>มีสถานะ CLOSED, OPENING, OPEN_HOLD, CLOSING, REV_WAIT, REOPENING, SAFETY_HOLD พร้อมทรานซิชันครบถ้วน</p>
+                  </div>
+                </div>
+                <div class="check-item">
+                  <i class="fas fa-check-circle"></i>
+                  <div>
+                    <h4>ตารางค่าพอร์ต P1 ถูกต้องทุกบิต</h4>
+                    <p>คำนวณจาก IN1/IN2/RUN_N/RED/GREEN/ORANGE ครบทุกสถานะ (EC, D9, DC, EA, FC, D9, BC)</p>
+                  </div>
+                </div>
+                <div class="check-item">
+                  <i class="fas fa-check-circle"></i>
+                  <div>
+                    <h4>Direction Interlock ก่อนเคลื่อนที่</h4>
+                    <p>ทุกจุดที่มีการเปลี่ยนทิศทางเพลามอเตอร์ ต้องสั่ง <code>SETB P1.2</code> ตัด Enable ก่อนเสมอ</p>
+                  </div>
+                </div>
+                <div class="check-item">
+                  <i class="fas fa-check-circle"></i>
+                  <div>
+                    <h4>Coast Window ≥ 200 ms</h4>
+                    <p>มีสถานะ REV_WAIT เพื่อปล่อยเพลาหมุนอิสระอย่างน้อย 200 ms ป้องกันแรงกระชากของ H-bridge</p>
+                  </div>
+                </div>
+                <div class="check-item">
+                  <i class="fas fa-check-circle"></i>
+                  <div>
+                    <h4>ระบบความปลอดภัย SAFETY_HOLD</h4>
+                    <p>เมื่อเปิดกลับเพราะสิ่งกีดขวาง ต้องเข้าสู่ SAFETY_HOLD (ไฟส้มติด) และไม่ปิดเองจนกว่าคนจะตรวจและกดปุ่มใหม่</p>
+                  </div>
+                </div>
+                <div class="check-item">
+                  <i class="fas fa-check-circle"></i>
+                  <div>
+                    <h4>ซับรูทีน DELAY_20MS ถูกต้อง</h4>
+                    <p>ใช้ Timer 0 โหมด 1 โหลดค่า B1E0H สำหรับคริสตัล 12 MHz และจบด้วยคำสั่ง RET</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div>
+        <p><strong>Embedded Systems Learning Platform</strong> &bull; สื่อการสอนและคลังข้อสอบวิชาสมองกลฝังตัว 305341</p>
+      </div>
+      <div class="footer-links">
+        <a href="../../../index.html">หน้าแรก</a>
+        <a href="../../index.html">305341 Embedded 1</a>
+        <a href="../index.html">Final Portal</a>
+        <a href="../real-exam-recalled/index.html#q56">ข้อ 56</a>
+        <a href="../interactive-tools/index.html">02. Lab</a>
+        <a href="https://github.com/T3thr/embedded-system-learning" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../../../assets/js/main.js?v=3.1"></script>
+</body>
+</html>

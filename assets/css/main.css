@@ -1,11 +1,15 @@
 /* ===================================================================
    EMBEDDED SYSTEMS LEARNING PLATFORM - CORE DESIGN SYSTEM
-   Eye-Comfort Dark & Light Modes | 100% Mobile Responsive
+   Dark (Slate/Navy) & Light (Paper) themes | 8 px spacing grid
+   Specification: DESIGN_SYSTEM.md (repository root)
+   Breakpoints: 480 (small phone) / 640 / 840 (hamburger drawer) / 960 (sidebar TOC, icon-only brand)
    =================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Prompt:wght@300;400;500;600;700&display=swap');
 
 :root {
+  color-scheme: dark;
+
   /* Dark Theme Palette (Eye-friendly Slate/Navy) */
   --bg-primary: #0b1120;
   --bg-secondary: #111a2e;
@@ -46,12 +50,16 @@
   --tag-amber-bg: rgba(245, 158, 11, 0.1);
   --tag-amber-border: rgba(245, 158, 11, 0.3);
 
-  /* Code Blocks */
+  --tag-purple: #c084fc;
+  --tag-purple-bg: rgba(168, 85, 247, 0.12);
+  --tag-purple-border: rgba(168, 85, 247, 0.3);
+
+  /* Code Blocks (always dark, in both themes) */
   --bg-code: #0a0f1d;
   --bg-code-header: #111a2e;
   --border-code: rgba(148, 163, 184, 0.15);
 
-  /* Borders & Shadows */
+  /* Borders & Shadows (Elevation) */
   --border-color: rgba(148, 163, 184, 0.12);
   --border-glow: rgba(56, 189, 248, 0.35);
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
@@ -64,6 +72,20 @@
   --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'Fira Code', 'JetBrains Mono', monospace;
 
+  /* Spacing (8 px grid, half-step 4 px) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-8: 48px;
+
+  /* Layout */
+  --container-max: 1240px;
+  --container-gutter: 1.25rem;
+  --nav-height: 63px; /* 12 px padding x 2 + 38 px control + 1 px border */
+
   /* Transitions & Radii */
   --transition-fast: 0.15s ease;
   --transition-normal: 0.25s ease;
@@ -73,23 +95,25 @@
   --radius-full: 9999px;
 }
 
-/* Light Theme Variables (Clean, Soothing, High Readability) */
+/* Light Theme Variables (Paper: warm, low-glare, AA contrast on every surface) */
 [data-theme="light"] {
-  --bg-primary: #f8fafc;
-  --bg-secondary: #f1f5f9;
-  --bg-tertiary: #e2e8f0;
-  --bg-card: #ffffff;
-  --bg-card-hover: #fcfdfe;
-  --bg-card-header: #f8fafc;
-  --bg-glass: rgba(248, 250, 252, 0.9);
+  color-scheme: light;
+
+  --bg-primary: #fbf8f1;
+  --bg-secondary: #f4efe4;
+  --bg-tertiary: #eae3d3;
+  --bg-card: #fffefa;
+  --bg-card-hover: #fffdf6;
+  --bg-card-header: #f8f4ea;
+  --bg-glass: rgba(251, 248, 241, 0.9);
 
   --text-primary: #0f172a;
   --text-secondary: #334155;
-  --text-muted: #64748b;
+  --text-muted: #5b6474;
 
-  --accent-blue: #0284c7;
-  --accent-blue-hover: #0369a1;
-  --accent-cyan: #0891b2;
+  --accent-blue: #0369a1;
+  --accent-blue-hover: #075985;
+  --accent-cyan: #0e7490;
   --accent-indigo: #4f46e5;
   --accent-green: #059669;
   --accent-emerald: #047857;
@@ -114,17 +138,21 @@
   --tag-amber-bg: #fffbeb;
   --tag-amber-border: #fde68a;
 
+  --tag-purple: #6d28d9;
+  --tag-purple-bg: #f5f3ff;
+  --tag-purple-border: #ddd6fe;
+
   /* Code Block in Light Mode */
   --bg-code: #0f172a;
   --bg-code-header: #1e293b;
   --border-code: #334155;
 
-  --border-color: #e2e8f0;
-  --border-glow: rgba(2, 132, 199, 0.3);
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
-  --glow-blue: 0 0 15px rgba(2, 132, 199, 0.12);
+  --border-color: #e6dfcf;
+  --border-glow: rgba(3, 105, 161, 0.3);
+  --shadow-sm: 0 1px 3px rgba(60, 45, 20, 0.06);
+  --shadow-md: 0 4px 15px rgba(60, 45, 20, 0.08);
+  --shadow-lg: 0 10px 25px -5px rgba(60, 45, 20, 0.1);
+  --glow-blue: 0 0 15px rgba(3, 105, 161, 0.12);
 }
 
 /* Base Reset */
@@ -139,6 +167,7 @@ html {
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
   overflow-x: hidden;
+  overflow-x: clip; /* clip, unlike hidden, keeps position: sticky working (sidebar TOC) */
   max-width: 100vw;
   width: 100%;
 }
@@ -151,11 +180,12 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-image: 
+  background-image:
     radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.06) 0px, transparent 50%),
     radial-gradient(at 100% 100%, rgba(99, 102, 241, 0.06) 0px, transparent 50%);
   background-attachment: fixed;
   overflow-x: hidden;
+  overflow-x: clip; /* clip, unlike hidden, keeps position: sticky working (sidebar TOC) */
   max-width: 100vw;
   width: 100%;
   position: relative;
@@ -178,15 +208,24 @@ a:hover {
   color: var(--accent-blue-hover);
 }
 
+:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
 /* Container */
 .container {
   width: 100%;
-  max-width: 1240px;
+  max-width: var(--container-max);
   margin: 0 auto;
-  padding: 0 1.25rem;
+  padding: 0 var(--container-gutter);
 }
 
-/* Navigation Bar */
+/* ===================================================================
+   HEADER: [Brand] -> [Nav: 2 links + 2 mega-menu groups] -> [Theme Toggle + Hamburger]
+   Context row (breadcrumbs) sits directly under the header in <main>.
+   =================================================================== */
 .navbar {
   position: sticky;
   top: 0;
@@ -195,25 +234,27 @@ a:hover {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-color);
-  padding: 0.75rem 0;
+  padding: var(--space-3) 0;
   transition: background var(--transition-normal);
 }
 
 .navbar .nav-container {
+  position: relative; /* anchor for the mega panels */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: var(--space-4);
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: var(--space-3);
   font-weight: 700;
   font-size: 1.15rem;
   color: var(--text-primary);
   text-decoration: none;
+  flex-shrink: 0;
   min-width: 0;
 }
 
@@ -257,15 +298,18 @@ a:hover {
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--space-1);
   list-style: none;
+  flex-shrink: 1;
+  min-width: 0;
 }
 
 .nav-link {
+  display: block;
   color: var(--text-secondary);
-  font-size: 0.9rem;
+  font-size: 0.84rem;
   font-weight: 500;
-  padding: 0.4rem 0.75rem;
+  padding: 0.35rem 0.6rem;
   border-radius: var(--radius-sm);
   transition: all var(--transition-fast);
   white-space: nowrap;
@@ -276,10 +320,135 @@ a:hover {
   background: rgba(148, 163, 184, 0.1);
 }
 
+/* ===================================================================
+   MEGA MENU (desktop): one site-wide menu, grouped by exam section
+   <li class="nav-group"> > button.nav-group-toggle + .mega-panel
+   =================================================================== */
+.nav-group-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.nav-caret {
+  font-size: 0.62rem;
+  transition: transform var(--transition-fast);
+}
+
+.nav-group.open > .nav-group-toggle,
+.nav-group-toggle[aria-expanded="true"] {
+  color: var(--text-primary);
+  background: rgba(148, 163, 184, 0.14);
+}
+
+.nav-group-toggle[aria-expanded="true"] .nav-caret,
+.drawer-group[open] > summary .nav-caret {
+  transform: rotate(180deg);
+}
+
+.mega-panel {
+  display: none;
+  position: absolute;
+  top: calc(100% + var(--space-3));
+  right: var(--container-gutter);
+  width: min(400px, calc(100% - 2 * var(--container-gutter)));
+  padding: var(--space-4);
+  gap: var(--space-4);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  z-index: 110;
+}
+
+.mega-panel.mega-cols-2 {
+  width: min(620px, calc(100% - 2 * var(--container-gutter)));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.nav-group.open > .mega-panel {
+  display: grid;
+}
+
+.mega-heading {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 0 var(--space-3) var(--space-2);
+}
+
+.mega-list,
+.drawer-sublist {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mega-link {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.mega-link:hover {
+  background: rgba(148, 163, 184, 0.1);
+  color: var(--text-primary);
+}
+
+.mega-link.active {
+  background: var(--tag-blue-bg);
+  box-shadow: inset 3px 0 0 var(--accent-blue);
+}
+
+.mega-icon {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--tag-blue-bg);
+  border: 1px solid var(--tag-blue-border);
+  color: var(--accent-blue);
+  font-size: 0.85rem;
+}
+
+.mega-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.35;
+}
+
+.mega-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.mega-desc {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
 .nav-controls {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--space-2);
+  flex-shrink: 0;
 }
 
 .btn-icon {
@@ -302,6 +471,11 @@ a:hover {
   box-shadow: var(--shadow-sm);
 }
 
+/* Theme toggle: icon chosen by CSS from data-theme, so it is correct on first paint */
+.theme-toggle .theme-icon-to-dark { display: none; }
+[data-theme="light"] .theme-toggle .theme-icon-to-light { display: none; }
+[data-theme="light"] .theme-toggle .theme-icon-to-dark { display: inline-block; }
+
 .mobile-nav-toggle {
   display: none !important;
 }
@@ -310,12 +484,14 @@ a:hover {
 .mobile-drawer {
   display: none;
   position: fixed;
-  top: 58px;
+  top: var(--nav-height);
   left: 0;
   right: 0;
+  max-height: calc(100vh - var(--nav-height));
+  overflow-y: auto;
   background: var(--bg-card);
   border-bottom: 1px solid var(--border-color);
-  padding: 1rem 1.25rem;
+  padding: var(--space-4) var(--container-gutter);
   box-shadow: var(--shadow-lg);
   z-index: 99;
 }
@@ -328,23 +504,52 @@ a:hover {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--space-2);
 }
 
 .mobile-drawer .nav-link {
   display: block;
-  padding: 0.65rem 0.85rem;
+  padding: var(--space-3) var(--space-3);
   font-size: 1rem;
+  white-space: normal;
 }
 
-/* Breadcrumbs */
+/* Mobile drawer groups: native <details>, the current section opens by default */
+.mobile-drawer .drawer-group > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  list-style: none;
+}
+
+.drawer-group > summary::-webkit-details-marker { display: none; }
+
+.drawer-group[open] > summary {
+  color: var(--text-primary);
+}
+
+.drawer-sublist {
+  padding: var(--space-1) 0 var(--space-2) var(--space-2);
+}
+
+.drawer-heading {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: var(--space-2) var(--space-3) var(--space-1);
+}
+
+/* Breadcrumbs (context row under the header) */
 .breadcrumbs {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: var(--space-2);
   font-size: 0.85rem;
   color: var(--text-muted);
-  margin: 1.25rem 0 0.75rem;
+  margin: var(--space-5) 0 var(--space-3);
   flex-wrap: wrap;
 }
 
@@ -368,29 +573,29 @@ a:hover {
 
 /* Hero Section */
 .hero {
-  padding: 2rem 0 1.5rem;
+  padding: var(--space-6) 0 var(--space-5);
   position: relative;
 }
 
 .hero-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.3rem 0.85rem;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
   background: rgba(56, 189, 248, 0.1);
   border: 1px solid rgba(56, 189, 248, 0.25);
   border-radius: var(--radius-full);
   color: var(--accent-blue);
   font-size: 0.82rem;
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-4);
 }
 
 .hero-title {
   font-size: 2.25rem;
   font-weight: 800;
   letter-spacing: -0.02em;
-  margin-bottom: 0.75rem;
+  margin-bottom: var(--space-3);
   line-height: 1.25;
   color: var(--text-primary);
 }
@@ -399,22 +604,26 @@ a:hover {
   font-size: 1.05rem;
   color: var(--text-secondary);
   line-height: 1.6;
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-5);
 }
 
-/* Portal & Hub Grid */
+/* Portal & Hub Grid: min() keeps a single column from overflowing narrow phones */
 .portal-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin: 2rem 0 3.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  gap: var(--space-5);
+  margin: var(--space-6) 0 var(--space-8);
+}
+
+.portal-grid--dense {
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
 }
 
 .course-card {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
-  padding: 1.75rem;
+  padding: var(--space-5);
   position: relative;
   overflow: hidden;
   transition: all var(--transition-normal);
@@ -439,14 +648,14 @@ a:hover {
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: var(--space-5);
 }
 
 .course-badge {
   position: absolute;
-  top: 1.25rem;
-  right: 1.25rem;
-  padding: 0.25rem 0.65rem;
+  top: var(--space-5);
+  right: var(--space-5);
+  padding: var(--space-1) var(--space-3);
   border-radius: var(--radius-full);
   font-size: 0.75rem;
   font-weight: 600;
@@ -467,29 +676,29 @@ a:hover {
 .course-title {
   font-size: 1.35rem;
   font-weight: 700;
-  margin-bottom: 0.65rem;
+  margin-bottom: var(--space-3);
   color: var(--text-primary);
 }
 
 .course-desc {
   color: var(--text-secondary);
   font-size: 0.92rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: var(--space-5);
   flex-grow: 1;
   line-height: 1.6;
 }
 
 .course-meta {
   display: flex;
-  gap: 0.85rem;
-  margin-bottom: 1.5rem;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
   flex-wrap: wrap;
 }
 
 .meta-item {
   display: flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: var(--space-1);
   font-size: 0.82rem;
   color: var(--text-muted);
 }
@@ -498,9 +707,9 @@ a:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: var(--space-2);
   width: 100%;
-  padding: 0.75rem 1.25rem;
+  padding: var(--space-3) var(--space-5);
   background: linear-gradient(135deg, #0284c7, #2563eb);
   color: #ffffff;
   font-weight: 600;
@@ -530,7 +739,7 @@ a:hover {
   margin-top: auto;
   border-top: 1px solid var(--border-color);
   background: var(--bg-secondary);
-  padding: 2rem 0 1.5rem;
+  padding: var(--space-6) 0 var(--space-5);
   color: var(--text-secondary);
   font-size: 0.88rem;
 }
@@ -540,12 +749,12 @@ a:hover {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: var(--space-4);
 }
 
 .footer-links {
   display: flex;
-  gap: 1.25rem;
+  gap: var(--space-2) var(--space-5);
   flex-wrap: wrap;
 }
 
@@ -565,6 +774,11 @@ a:hover {
   }
 }
 
+/* Narrow desktop: icon-only brand keeps the four top-level items + controls on one line */
+@media (min-width: 841px) and (max-width: 960px) {
+  .brand-title { display: none; }
+}
+
 @media (max-width: 840px) {
   .hero-title {
     font-size: 1.85rem;
@@ -575,17 +789,14 @@ a:hover {
   .mobile-nav-toggle {
     display: flex !important;
   }
-  .portal-grid {
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 480px) {
   html {
     font-size: 15px;
   }
-  .container {
-    padding: 0 0.85rem;
+  :root {
+    --container-gutter: var(--space-3);
   }
   .hero-title {
     font-size: 1.6rem;
@@ -594,7 +805,11 @@ a:hover {
     font-size: 0.95rem;
   }
   .course-card {
-    padding: 1.25rem;
+    padding: var(--space-4);
+  }
+  .course-badge {
+    top: var(--space-4);
+    right: var(--space-4);
   }
   .footer-content {
     flex-direction: column;
@@ -602,3 +817,11 @@ a:hover {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+  .course-card:hover { transform: none; }
+}

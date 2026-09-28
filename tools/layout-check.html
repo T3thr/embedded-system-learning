@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Layout &amp; Theme Check</title>
+  <style>
+    body { font: 13px/1.5 ui-monospace, Menlo, monospace; margin: 16px; background: #fff; color: #111; }
+    iframe { position: absolute; left: -99999px; top: 0; height: 720px; border: 0; }
+    .fail { color: #b91c1c; }
+  </style>
+</head>
+<body>
+  <h1>Layout &amp; Theme Check</h1>
+  <p>Run through <code>node tools/check-layout.mjs</code> (headless Chrome) or open this page from the local server.</p>
+  <pre id="report">running...</pre>
+  <script>
+    (function () {
+      'use strict';
+      var PAGES = [
+        'index.html',
+        '1/index.html',
+        '1/midterm/index.html',
+        '1/midterm/recalled-questions/index.html',
+        '1/midterm/real-exam-2561/index.html',
+        '1/midterm/analytical-questions/index.html',
+        '1/final/index.html',
+        '1/final/real-exam-recalled/index.html',
+        '1/final/real-exam/2025/index.html',
+        '1/final/interactive-tools/index.html',
+        '1/final/fsm-sliding-door-project/index.html'
+      ];
+      var REPORT_WIDTHS = [845, 900, 1000, 1280, 1440];
+      var MOBILE_WIDTHS = [360, 390, 768];
+      var SWEEP = [];
+      for (var w = 841; w <= 1440; w += 7) SWEEP.push(w);
+      var ROOT = new URL('../', location.href).href;
+      var lines = [];
+      var failures = 0;
+      var checks = 0;
+
+      function out(text) { lines.push(text); document.getElementById('report').textContent = lines.join('\n'); }
+      function pad(text, n) { text = String(text); while (text.length < n) text += ' '; return text; }
+      function frame() { return new Promise(function (r) { requestAnimationFrame(function () { requestAnimationFrame(r); }); }); }
+      function sleep(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+
+      function loadFrame(src, width, srcdoc) {
+        return new Promise(function (resolve) {
+          var f = document.createElement('iframe');
+          f.style.width = width + 'px';
+          f.onload = function () { resolve(f); };
+          if (srcdoc !== undefined) { f.srcdoc = srcdoc; } else { f.src = src; }
+          document.body.appendChild(f);
+        });
+      }
+
+      // Geometry contract for the header at one viewport width
+      function measure(f) {
+        var d = f.contentDocument;
+        var win = f.contentWindow;
+        var vw = win.innerWidth;
+        var r = function (el) { return el.getBoundingClientRect(); };
+        var brand = r(d.querySelector('.brand'));
+        var menuEl = d.querySelector('.nav-menu');
+        var controls = r(d.querySelector('.nav-controls'));
+        var res = { vw: vw, errors: [], scrollW: d.documentElement.scrollWidth };
+        if (res.scrollW > vw) res.errors.push('page scrollWidth ' + res.scrollW + ' > ' + vw);
+        if (controls.right > vw + 0.5) res.errors.push('controls.right ' + Math.round(controls.right) + ' > ' + vw);
+        if (win.getComputedStyle(menuEl).display === 'none') { res.mode = 'mobile'; return res; }
+        res.mode = 'desktop';
+        var menu = r(menuEl);
+        var links = Array.prototype.map.call(menuEl.querySelectorAll('.nav-link'), r);
+        var linkLeft = Math.min.apply(null, links.map(function (b) { return b.left; }));
+        var linkRight = Math.max.apply(null, links.map(function (b) { return b.right; }));
+        var tops = links.map(function (b) { return Math.round(b.top); });
+        if (brand.right > menu.left + 0.5) res.errors.push('brand.right ' + Math.round(brand.right) + ' > menu.left ' + Math.round(menu.left));
+        if (menu.right > controls.left + 0.5) res.errors.push('menu.right ' + Math.round(menu.right) + ' > controls.left ' + Math.round(controls.left));
+        if (linkLeft < brand.right - 0.5 || linkRight > controls.left + 0.5) res.errors.push('links span ' + Math.round(linkLeft) + '..' + Math.round(linkRight) + ' outside ' + Math.round(brand.right) + '..' + Math.round(controls.left));
+        if (menuEl.scrollWidth > menuEl.clientWidth + 1) res.errors.push('menu content clipped (' + menuEl.scrollWidth + ' > ' + menuEl.clientWidth + ')');
+        if (Math.max.apply(null, tops) - Math.min.apply(null, tops) > 2) res.errors.push('links wrap to a second line');
+        // Every mega panel, when opened, must stay inside the viewport and below the header
+        Array.prototype.forEach.call(menuEl.querySelectorAll('.nav-group'), function (g) {
+          g.classList.add('open');
+          var p = r(g.querySelector('.mega-panel'));
+          if (p.width === 0) res.errors.push('mega panel ' + g.dataset.group + ' did not open');
+          if (p.left < -0.5 || p.right > vw + 0.5) res.errors.push('mega panel ' + g.dataset.group + ' spans ' + Math.round(p.left) + '..' + Math.round(p.right) + ' outside 0..' + vw);
+          g.classList.remove('open');
+        });
+        res.slack = Math.round(controls.left - linkRight);
+        res.brandTitle = win.getComputedStyle(d.querySelector('.brand-title')).display !== 'none';
+        return res;
+      }
+
+      // Load the web fonts explicitly: document.fonts.ready can resolve before lazily requested faces arrive
+      async function settleWebFonts(d) {
+        try {
+          await Promise.all([
+            d.fonts.load('500 14px Prompt', 'กข'), d.fonts.load('700 16px Prompt', 'กข'),
+            d.fonts.load('500 14px Inter', 'Ab'), d.fonts.load('600 14px "Fira Code"', 'Ab')
+          ]);
+          await d.fonts.ready;
+        } catch (e) { /* offline: fallback pass below still covers the worst case */ }
+      }
+
+      // Worst case for first paint: web fonts not yet swapped in (display=swap) or blocked
+      var FALLBACK_CSS = '.navbar, .navbar * { font-family: -apple-system, "Segoe UI", Roboto, "Noto Sans Thai", Thonburi, sans-serif !important; }';
+
+      async function sweep(f, widths, onRow) {
+        var fails = [];
+        for (var i = 0; i < widths.length; i++) {
+          f.style.width = widths[i] + 'px';
+          await frame();
+          var m = measure(f);
+          checks++;
+          if (m.errors.length) { failures++; fails.push(widths[i] + 'px: ' + m.errors.join('; ')); }
+          if (onRow) onRow(widths[i], m);
+        }
+        return fails;
+      }
+
+      async function checkGeometry(page) {
+        var f = await loadFrame(ROOT + page, 1440);
+        await settleWebFonts(f.contentDocument);
+        await sleep(100);
+        var rows = [];
+        await sweep(f, REPORT_WIDTHS.concat(MOBILE_WIDTHS), function (w, m) {
+          rows.push('  ' + pad(w + 'px', 7) + pad(m.mode, 8) +
+            (m.mode === 'desktop' ? pad('slack ' + m.slack + 'px', 12) + pad(m.brandTitle ? 'brand+title' : 'brand-icon', 12) : pad('', 24)) +
+            pad('scrollW ' + m.scrollW, 14) + (m.errors.length ? 'FAIL ' + m.errors.join('; ') : 'PASS'));
+        });
+        var webFail = await sweep(f, SWEEP);
+        rows.push('  sweep 841..1440 step 7, web fonts (' + SWEEP.length + ' widths): ' + (webFail.length ? 'FAIL ' + webFail.join(' | ') : 'PASS'));
+        var st = f.contentDocument.createElement('style');
+        st.textContent = FALLBACK_CSS;
+        f.contentDocument.head.appendChild(st);
+        var minSlack = Infinity;
+        var fbFail = await sweep(f, SWEEP, function (w, m) { if (m.mode === 'desktop') minSlack = Math.min(minSlack, m.slack); });
+        rows.push('  sweep 841..1440 step 7, fallback fonts (' + SWEEP.length + ' widths, min slack ' + minSlack + 'px): ' + (fbFail.length ? 'FAIL ' + fbFail.join(' | ') : 'PASS'));
+        f.remove();
+        return rows;
+      }
+
+      // Theme contract: data-theme equals the stored theme before the first stylesheet is parsed
+      async function checkTheme(page) {
+        var src = await (await fetch(ROOT + page, { cache: 'no-store' })).text();
+        var probe = '<script>parent.__probe = document.documentElement.getAttribute("data-theme");<\/script>';
+        var firstCss = src.search(/<link[^>]+rel="stylesheet"/);
+        var boot = src.indexOf('id="theme-boot"');
+        var results = [];
+        checks++;
+        var orderOk = boot !== -1 && firstCss !== -1 && boot < firstCss;
+        if (!orderOk) failures++;
+        results.push('  boot script precedes first stylesheet: ' + (orderOk ? 'PASS' : 'FAIL'));
+        var html = src.slice(0, firstCss) + probe + src.slice(firstCss);
+        html = html.replace('<head>', '<head><base href="' + ROOT + page + '">');
+        var stored = ['light', 'dark'];
+        for (var i = 0; i < stored.length; i++) {
+          localStorage.setItem('theme', stored[i]);
+          window.__probe = null;
+          var f = await loadFrame(null, 1280, html);
+          await sleep(50);
+          var d = f.contentDocument;
+          var sun = d.querySelector('.theme-icon-to-light');
+          var moon = d.querySelector('.theme-icon-to-dark');
+          var sunShown = sun && f.contentWindow.getComputedStyle(sun).display !== 'none';
+          var moonShown = moon && f.contentWindow.getComputedStyle(moon).display !== 'none';
+          var iconOk = stored[i] === 'dark' ? (sunShown && !moonShown) : (moonShown && !sunShown);
+          var finalTheme = d.documentElement.getAttribute('data-theme');
+          var ok = window.__probe === stored[i] && finalTheme === stored[i] && iconOk;
+          checks++;
+          if (!ok) failures++;
+          results.push('  stored=' + pad(stored[i], 6) + 'at-first-css=' + pad(window.__probe, 6) + 'after-load=' + pad(finalTheme, 6) +
+            'icon=' + pad(iconOk ? 'correct' : 'WRONG', 8) + (ok ? 'PASS' : 'FAIL'));
+          f.remove();
+        }
+        localStorage.removeItem('theme');
+        return results;
+      }
+
+      async function run() {
+        var started = Date.now();
+        out('Embedded Systems Learning Portal: header geometry + theme boot');
+        out('assertions: brand.right <= menu.left, menu.right <= controls.left, links within brand..controls,');
+        out('            no clipped/wrapped links, mega panels inside viewport, controls.right <= innerWidth, scrollWidth <= innerWidth');
+        for (var i = 0; i < PAGES.length; i++) {
+          out('');
+          out(PAGES[i]);
+          (await checkGeometry(PAGES[i])).forEach(out);
+          (await checkTheme(PAGES[i])).forEach(out);
+        }
+        out('');
+        out('RESULT: ' + (failures ? 'FAIL' : 'PASS') + ' (' + checks + ' checks, ' + failures + ' failures, ' + ((Date.now() - started) / 1000).toFixed(1) + ' s)');
+        document.body.setAttribute('data-done', failures ? 'fail' : 'pass');
+      }
+
+      run().catch(function (err) {
+        out('ERROR ' + (err && err.stack ? err.stack : err));
+        document.body.setAttribute('data-done', 'error');
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,1756 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script id="theme-boot">
+    (function () {
+      var theme = 'dark';
+      try { theme = localStorage.getItem('theme') || 'dark'; } catch (e) {}
+      if (theme !== 'light' && theme !== 'dark') theme = 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+  <title>ข้อสอบจริง Final 2025 (21 ข้อ) | 305341 Embedded Systems 1</title>
+  <meta name="description" content="ข้อสอบปลายภาคจริง 305341 Embedded Systems 1 ภาคเรียนที่ 1/2568 (2025) ครบ 21 ข้อ ถอดจากกระดาษข้อสอบและตรวจทานกับ Lecture 5, Lecture 6 และ Lab 5 พร้อมเฉลย Flowchart, State chart และโค้ด 8051 Assembly">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../../../../assets/css/main.css?v=3.1">
+  <link rel="stylesheet" href="../../../../assets/css/solution.css?v=3.1">
+  <style>
+    .source-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 0.75rem;
+      margin: 0.85rem 0 0.25rem;
+    }
+    .exam-photo {
+      margin: 0;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 0.5rem;
+      text-align: center;
+    }
+    .exam-photo img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      object-position: top;
+      border-radius: var(--radius-sm);
+      cursor: zoom-in;
+    }
+    .exam-photo figcaption { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.35rem; }
+    .provenance {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.15rem 1.25rem;
+      margin: 0 0 1.5rem;
+    }
+    .provenance h2 { font-size: 1.1rem; margin: 0 0 0.5rem; display: flex; gap: 0.5rem; align-items: center; }
+    .provenance p, .provenance li { color: var(--text-secondary); font-size: 0.9rem; }
+    .provenance ul { margin: 0.35rem 0 0 1.15rem; }
+    .part-head {
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--accent-blue);
+      scroll-margin-top: 5rem;
+    }
+    .part-head h2 { display: flex; align-items: center; gap: 0.5rem; font-size: 1.4rem; margin: 0; }
+    .part-head p { color: var(--text-muted); font-size: 0.9rem; margin: 0.35rem 0 0; }
+    .solution-card { scroll-margin-top: 5rem; }
+    .toc-group {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.5rem 0 0.2rem;
+      text-transform: uppercase;
+      list-style: none;
+    }
+    .media-attr { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.4rem; }
+    .media-attr a { color: var(--accent-blue); }
+    .notebook-line {
+      font-size: 0.88rem;
+      background: var(--bg-secondary);
+      border: 1px dashed var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 0.5rem 0.7rem;
+      margin-bottom: 0.65rem;
+    }
+    .notebook-line i { color: var(--accent-purple); }
+    .ref-row { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0 0 0.6rem; }
+    .ref-chip {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      padding: 0.2rem 0.65rem;
+      border-radius: var(--radius-full);
+      background: var(--tag-blue-bg);
+      border: 1px solid var(--tag-blue-border);
+      color: var(--tag-blue);
+      font-size: 0.78rem; font-weight: 600;
+    }
+    .ref-chip:hover { border-color: var(--accent-blue); }
+    .box-info {
+      background: var(--tag-blue-bg);
+      border: 1px solid var(--tag-blue-border);
+      border-left: 4px solid var(--tag-blue);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 0.85rem 1.15rem;
+      margin: 1rem 0;
+    }
+    .box-info-header { font-weight: 700; color: var(--tag-blue); margin-bottom: 0.4rem; display: flex; gap: 0.45rem; align-items: center; }
+    .box-info p { margin: 0.25rem 0; }
+    .fig-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0.75rem; }
+    .fig-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 0.85rem;
+      margin: 0.75rem 0;
+      text-align: center;
+    }
+    .fig-card figcaption { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem; }
+    .fx-svg { width: 100%; max-width: 460px; height: auto; }
+    .fx-text { fill: var(--text-primary); font-family: var(--font-thai); font-size: 13px; }
+    .fx-sub { fill: var(--text-secondary); font-family: var(--font-thai); font-size: 11px; }
+    .fx-mono { font-family: var(--font-mono); }
+    .fx-line { stroke: var(--text-secondary); stroke-width: 1.5; fill: none; }
+    .fx-head { fill: var(--text-secondary); }
+    .fx-box { fill: var(--bg-card); stroke: var(--accent-blue); stroke-width: 1.5; }
+    .fx-term { fill: var(--tag-green-bg); stroke: var(--accent-green); stroke-width: 1.5; }
+    .fx-dec { fill: var(--tag-amber-bg); stroke: var(--accent-amber); stroke-width: 1.5; }
+    .fx-init { fill: var(--text-primary); }
+    .fx-state-red { fill: var(--tag-red-bg); stroke: var(--accent-rose); stroke-width: 1.8; }
+    .fx-state-green { fill: var(--tag-green-bg); stroke: var(--accent-green); stroke-width: 1.8; }
+    .fx-btn { fill: var(--bg-tertiary); stroke: var(--text-secondary); stroke-width: 1.2; }
+    .fx-btn-cap { fill: var(--text-muted); }
+    .fx-motor { fill: var(--bg-card); stroke: var(--accent-purple); stroke-width: 2; }
+    .fx-wave { fill: none; stroke: var(--accent-blue); stroke-width: 2; }
+    .frame-row { display: flex; flex-wrap: wrap; gap: 3px; margin: 0.35rem 0 0.85rem; }
+    .frame-row .bit {
+      font-family: var(--font-mono); font-size: 0.78rem; font-weight: 600;
+      padding: 0.3rem 0.5rem; border-radius: 5px; border: 1px solid var(--border-color);
+      background: var(--bg-secondary); color: var(--text-primary); min-width: 2.1rem; text-align: center;
+    }
+    .frame-row .bit.s { background: var(--tag-red-bg); border-color: var(--tag-red-border); color: var(--tag-red); }
+    .frame-row .bit.p { background: var(--tag-green-bg); border-color: var(--tag-green-border); color: var(--tag-green); }
+    .frame-row .bit.x { background: var(--tag-amber-bg); border-color: var(--tag-amber-border); color: var(--tag-amber); }
+    .archive-switch {
+      display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 1.25rem;
+    }
+    .archive-switch a {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.45rem 0.9rem; border-radius: var(--radius-full);
+      border: 1px solid var(--border-color); background: var(--bg-card);
+      color: var(--text-secondary); font-size: 0.85rem; font-weight: 600;
+    }
+    .archive-switch a.current { border-color: var(--accent-rose); color: var(--accent-rose); background: var(--tag-red-bg); }
+    .archive-switch a:hover { border-color: var(--accent-blue); color: var(--accent-blue); }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="../../../../index.html" class="brand" aria-label="Embedded Systems Learning Portal">
+        <div class="brand-icon" aria-hidden="true"><i class="fas fa-microchip"></i></div>
+        <div class="brand-title">
+          <span>EMBEDDED SYSTEMS</span>
+          <span>LEARNING PORTAL</span>
+        </div>
+      </a>
+      <ul class="nav-menu" aria-label="เมนูหลัก">
+        <li><a href="../../../../index.html" class="nav-link">หน้าแรก</a></li>
+        <li><a href="../../../index.html" class="nav-link">305341 Embedded 1</a></li>
+        <li class="nav-group" data-group="midterm">
+          <button type="button" class="nav-link nav-group-toggle" aria-expanded="false" aria-controls="mega-midterm">ข้อสอบ Midterm <i class="fas fa-chevron-down nav-caret" aria-hidden="true"></i></button>
+          <div class="mega-panel mega-cols-1" id="mega-midterm">
+            <div class="mega-col">
+              <p class="mega-heading">ข้อสอบกลางภาค</p>
+              <ul class="mega-list">
+                <li><a href="../../../midterm/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-layer-group"></i></span><span class="mega-text"><span class="mega-title">Midterm Hub</span><span class="mega-desc">ภาพรวมคลังข้อสอบกลางภาคทั้ง 3 ชุด</span></span></a></li>
+                <li><a href="../../../midterm/recalled-questions/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-brain"></i></span><span class="mega-text"><span class="mega-title">01. แนวข้อสอบความจำ 26 ข้อ</span><span class="mega-desc">ทฤษฎีสถาปัตยกรรม + ชุดคำสั่ง พร้อมเฉลย</span></span></a></li>
+                <li><a href="../../../midterm/real-exam-2561/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-file-signature"></i></span><span class="mega-text"><span class="mega-title">02. ข้อสอบจริงกลางภาค 2561</span><span class="mega-desc">6 ข้อใหญ่ พร้อมภาพกระดาษข้อสอบ</span></span></a></li>
+                <li><a href="../../../midterm/analytical-questions/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-chalkboard-teacher"></i></span><span class="mega-text"><span class="mega-title">03. บทเรียนแนวข้อสอบวิเคราะห์</span><span class="mega-desc">16 ข้อวิเคราะห์จาก Lecture 1–4</span></span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li class="nav-group" data-group="final">
+          <button type="button" class="nav-link nav-group-toggle active" aria-expanded="false" aria-controls="mega-final">ข้อสอบ Final <i class="fas fa-chevron-down nav-caret" aria-hidden="true"></i></button>
+          <div class="mega-panel mega-cols-2" id="mega-final">
+            <div class="mega-col">
+              <p class="mega-heading">คลังข้อสอบจริง</p>
+              <ul class="mega-list">
+                <li><a href="../../index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-th-large"></i></span><span class="mega-text"><span class="mega-title">Final Hub</span><span class="mega-desc">ภาพรวม แผนติว และตารางท่องด่วน</span></span></a></li>
+                <li><a href="../../real-exam-recalled/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-list-ol"></i></span><span class="mega-text"><span class="mega-title">ชุดที่ 1: เฉลย 56 ข้อ</span><span class="mega-desc">Recalled: Timers, UART, Power, FSM</span></span></a></li>
+                <li><a href="index.html" class="mega-link active" aria-current="page"><span class="mega-icon" aria-hidden="true"><i class="fas fa-scroll"></i></span><span class="mega-text"><span class="mega-title">ชุดที่ 2: ข้อสอบจริง 2025</span><span class="mega-desc">21 ข้อ ถอดจากกระดาษข้อสอบจริง</span></span></a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <p class="mega-heading">ฝึกปฏิบัติ</p>
+              <ul class="mega-list">
+                <li><a href="../../interactive-tools/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-calculator"></i></span><span class="mega-text"><span class="mega-title">Interactive Lab</span><span class="mega-desc">เครื่องคำนวณ Timer, Baud, Bitfield</span></span></a></li>
+                <li><a href="../../fsm-sliding-door-project/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-door-open"></i></span><span class="mega-text"><span class="mega-title">FSM Sliding Door</span><span class="mega-desc">โปรเจกต์กลุ่ม เฟิร์มแวร์ Version 2</span></span></a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="nav-controls">
+        <button id="theme-toggle" class="btn-icon theme-toggle" type="button" aria-label="สลับโหมดมืด/สว่าง" title="สลับโหมดมืด/สว่าง">
+          <i class="fas fa-sun theme-icon-to-light" aria-hidden="true"></i>
+          <i class="fas fa-moon theme-icon-to-dark" aria-hidden="true"></i>
+        </button>
+        <button class="btn-icon mobile-nav-toggle" type="button" aria-label="เมนูนำทาง" title="เมนูนำทาง" aria-controls="mobile-drawer" aria-expanded="false">
+          <i class="fas fa-bars" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-drawer" id="mobile-drawer" style="display: none;">
+    <ul class="drawer-list" aria-label="เมนูนำทาง">
+      <li><a href="../../../../index.html" class="nav-link">หน้าแรก</a></li>
+      <li><a href="../../../index.html" class="nav-link">305341 Embedded 1</a></li>
+      <li>
+        <details class="drawer-group">
+          <summary class="nav-link">ข้อสอบกลางภาค (Midterm) <i class="fas fa-chevron-down nav-caret" aria-hidden="true"></i></summary>
+          <ul class="drawer-sublist">
+            <li><a href="../../../midterm/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-layer-group"></i></span><span class="mega-text"><span class="mega-title">Midterm Hub</span><span class="mega-desc">ภาพรวมคลังข้อสอบกลางภาคทั้ง 3 ชุด</span></span></a></li>
+            <li><a href="../../../midterm/recalled-questions/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-brain"></i></span><span class="mega-text"><span class="mega-title">01. แนวข้อสอบความจำ 26 ข้อ</span><span class="mega-desc">ทฤษฎีสถาปัตยกรรม + ชุดคำสั่ง พร้อมเฉลย</span></span></a></li>
+            <li><a href="../../../midterm/real-exam-2561/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-file-signature"></i></span><span class="mega-text"><span class="mega-title">02. ข้อสอบจริงกลางภาค 2561</span><span class="mega-desc">6 ข้อใหญ่ พร้อมภาพกระดาษข้อสอบ</span></span></a></li>
+            <li><a href="../../../midterm/analytical-questions/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-chalkboard-teacher"></i></span><span class="mega-text"><span class="mega-title">03. บทเรียนแนวข้อสอบวิเคราะห์</span><span class="mega-desc">16 ข้อวิเคราะห์จาก Lecture 1–4</span></span></a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details class="drawer-group" open>
+          <summary class="nav-link">ข้อสอบปลายภาค (Final) <i class="fas fa-chevron-down nav-caret" aria-hidden="true"></i></summary>
+          <ul class="drawer-sublist">
+            <li class="drawer-heading">คลังข้อสอบจริง</li>
+            <li><a href="../../index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-th-large"></i></span><span class="mega-text"><span class="mega-title">Final Hub</span><span class="mega-desc">ภาพรวม แผนติว และตารางท่องด่วน</span></span></a></li>
+            <li><a href="../../real-exam-recalled/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-list-ol"></i></span><span class="mega-text"><span class="mega-title">ชุดที่ 1: เฉลย 56 ข้อ</span><span class="mega-desc">Recalled: Timers, UART, Power, FSM</span></span></a></li>
+            <li><a href="index.html" class="mega-link active" aria-current="page"><span class="mega-icon" aria-hidden="true"><i class="fas fa-scroll"></i></span><span class="mega-text"><span class="mega-title">ชุดที่ 2: ข้อสอบจริง 2025</span><span class="mega-desc">21 ข้อ ถอดจากกระดาษข้อสอบจริง</span></span></a></li>
+            <li class="drawer-heading">ฝึกปฏิบัติ</li>
+            <li><a href="../../interactive-tools/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-calculator"></i></span><span class="mega-text"><span class="mega-title">Interactive Lab</span><span class="mega-desc">เครื่องคำนวณ Timer, Baud, Bitfield</span></span></a></li>
+            <li><a href="../../fsm-sliding-door-project/index.html" class="mega-link"><span class="mega-icon" aria-hidden="true"><i class="fas fa-door-open"></i></span><span class="mega-text"><span class="mega-title">FSM Sliding Door</span><span class="mega-desc">โปรเจกต์กลุ่ม เฟิร์มแวร์ Version 2</span></span></a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </div><!-- /mobile-drawer -->
+
+  <main id="page-top" class="container" style="padding-bottom: 4rem;">
+    <nav class="breadcrumbs">
+      <a href="../../../../index.html"><i class="fas fa-home"></i> หน้าแรก</a>
+      <span class="separator"><i class="fas fa-chevron-right"></i></span>
+      <a href="../../../index.html">305341 Embedded Systems 1</a>
+      <span class="separator"><i class="fas fa-chevron-right"></i></span>
+      <a href="../../index.html">Final Hub</a>
+      <span class="separator"><i class="fas fa-chevron-right"></i></span>
+      <span class="current">ชุดที่ 2: ข้อสอบจริง 2025</span>
+    </nav>
+
+    <section class="hero" style="padding: 1rem 0 1.25rem; text-align: left;">
+      <div class="hero-badge">
+        <i class="fas fa-file-signature"></i> REAL FINAL EXAM 1/2568 (2025) — 21 ข้อ
+      </div>
+      <h1 class="hero-title" style="font-size: 2.25rem;">ข้อสอบปลายภาคจริง 2025 — เฉลยครบ 21 ข้อ</h1>
+      <p class="hero-subtitle" style="margin: 0 0 1.25rem; max-width: 920px;">
+        วิชา <strong>305341 ระบบสมองกลฝังตัว 1</strong> ถอดโจทย์จากกระดาษข้อสอบพิมพ์และสมุดบันทึก "Embedded Final 1/68"
+        ทุกคำตอบอ้างอิงกลับไปยัง <strong>Lecture 5</strong> (Timer/Counter), <strong>Lecture 6</strong> (Serial/Interrupt),
+        <strong>Lab 5 State Machine</strong> และ <strong>Mazidi บทที่ 16</strong> (DC Motor/PWM)
+        ใช้คริสตอล 12 MHz: <code>1 Machine Cycle = 12 / 12 MHz = 1 µs = 1 count</code>
+      </p>
+      <div class="archive-switch">
+        <a href="../../real-exam-recalled/index.html"><i class="fas fa-layer-group"></i> ชุดที่ 1: เฉลย 56 ข้อ (Recalled)</a>
+        <a href="index.html" class="current"><i class="fas fa-file-signature"></i> ชุดที่ 2: ข้อสอบจริง 2025 (21 ข้อ)</a>
+        <a href="../../index.html"><i class="fas fa-th-large"></i> กลับ Final Hub</a>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon blue"><i class="fas fa-stopwatch"></i></div>
+          <div class="stat-info"><h4>ตอนที่ 1 — Timers</h4><p>ข้อ 1–4 (4 ข้อ)</p></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon purple"><i class="fas fa-sliders-h"></i></div>
+          <div class="stat-info"><h4>ตอนที่ 2 — Control &amp; Modes</h4><p>ข้อ 5–9 (5 ข้อ)</p></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon green"><i class="fas fa-network-wired"></i></div>
+          <div class="stat-info"><h4>ตอนที่ 3 — Serial &amp; IRQ</h4><p>ข้อ 10–16 (7 ข้อ)</p></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon amber"><i class="fas fa-project-diagram"></i></div>
+          <div class="stat-info"><h4>ตอนที่ 4 — Motors &amp; FSM</h4><p>ข้อ 17–21 (5 ข้อ)</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="provenance" id="sources">
+      <h2><i class="fas fa-fingerprint" style="color: var(--accent-purple);"></i> ที่มาของข้อสอบและการตรวจสอบไขว้</h2>
+      <ul>
+        <li><strong>กระดาษข้อสอบพิมพ์</strong> (<a href="Final-Embedded%20.pdf">Final-Embedded .pdf</a>, 3 หน้า): หน้า 1 และ 3 เห็นโจทย์พิมพ์ครบ 21 ข้อ ข้อ 21 มีคะแนน [5] พร้อมรูป State chart, สัญญาณคนข้าม Ready/Go และ Hardware Diagram (P1.1, P1.0, P2.0) หัวกระดาษพิมพ์ระบุ 305385 Embedded System วันที่ 1 ต.ค. 2567</li>
+        <li><strong>สมุดบันทึกหลังสอบ "Embedded Final 1/68"</strong> 4 หน้า: ลำดับและถ้อยคำโจทย์ตรงกับกระดาษพิมพ์ทุกข้อ ใช้เป็นแหล่ง "คำตอบที่จดไว้" ในการ์ดแต่ละข้อ</li>
+        <li>กระดาษคำตอบที่ตรวจแล้วใน PDF บอกได้ว่าคำตอบแบบใด<strong>ถูกหักคะแนน</strong> จึงสรุปเป็นกล่อง "กับดัก" ในข้อ 2, 3, 5, 10, 14, 15, 18 (ไม่คัดลอกชื่อหรือรหัสนักศึกษา)</li>
+        <li>ถอดความฉบับตัวอักษร: <a href="RAW_QUESTIONS_2025.md">RAW_QUESTIONS_2025.md</a></li>
+      </ul>
+      <div class="source-grid">
+        <figure class="exam-photo"><img src="S__324124684_0.jpg" alt="สมุดบันทึกหน้า 1: ข้อ 1 ถึง 4" loading="lazy"><figcaption>สมุดหน้า 1 · ข้อ 1–4</figcaption></figure>
+        <figure class="exam-photo"><img src="S__324124685_0.jpg" alt="สมุดบันทึกหน้า 2: ข้อ 5 ถึง 9" loading="lazy"><figcaption>สมุดหน้า 2 · ข้อ 5–9</figcaption></figure>
+        <figure class="exam-photo"><img src="S__324124686_0.jpg" alt="สมุดบันทึกหน้า 3: ข้อ 10 ถึง 16" loading="lazy"><figcaption>สมุดหน้า 3 · ข้อ 10–16</figcaption></figure>
+        <figure class="exam-photo"><img src="S__324124687_0.jpg" alt="สมุดบันทึกหน้า 4: ข้อ 17 ถึง 21" loading="lazy"><figcaption>สมุดหน้า 4 · ข้อ 17–21</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="toolbar">
+      <div class="toolbar-top">
+        <div class="search-box">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" id="search-input" class="search-input" placeholder="ค้นหาข้อสอบ, รีจิสเตอร์ (TMOD, TCON, SCON, IE) หรือหัวข้อ...">
+        </div>
+        <div style="font-size: 0.88rem; color: var(--text-muted); white-space: nowrap;">
+          แสดงผล: <strong id="match-count" style="color: var(--accent-blue);">21</strong> ข้อ
+        </div>
+      </div>
+      <div class="filter-pills-wrapper">
+        <div class="filter-pills">
+          <button class="filter-btn active" data-category="all">ทั้งหมด (21)</button>
+          <button class="filter-btn" data-category="timer">Timers &amp; Counters (4)</button>
+          <button class="filter-btn" data-category="control">Control &amp; Modes (5)</button>
+          <button class="filter-btn" data-category="serial">Serial &amp; Interrupts (7)</button>
+          <button class="filter-btn" data-category="fsm">Priority, Motors &amp; FSM (5)</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="content-layout">
+      <aside class="sidebar-toc">
+        <div class="toc-title"><i class="fas fa-list-ul"></i> สารบัญ 21 ข้อ</div>
+        <ul class="toc-list">
+          <li class="toc-group"><a href="#part-1" style="color: var(--accent-cyan);">ตอนที่ 1: Timers &amp; Counters</a></li>
+          <li class="toc-item"><a href="#q1">ข้อ 1: Timer vs Counter</a></li>
+          <li class="toc-item"><a href="#q2">ข้อ 2: 16 บิต TH/TL</a></li>
+          <li class="toc-item"><a href="#q3">ข้อ 3: Overflow FFFFH → 0000H</a></li>
+          <li class="toc-item"><a href="#q4">ข้อ 4: คำนวณ 100 µs (FF9CH)</a></li>
+          <li class="toc-group"><a href="#part-2" style="color: var(--accent-blue);">ตอนที่ 2: Control &amp; Modes</a></li>
+          <li class="toc-item"><a href="#q5">ข้อ 5: TR = Timer Run</a></li>
+          <li class="toc-item"><a href="#q6">ข้อ 6: Negative Edge</a></li>
+          <li class="toc-item"><a href="#q7">ข้อ 7: M1 M0 เลือกโหมด</a></li>
+          <li class="toc-item"><a href="#q8">ข้อ 8: Counter ที่ขา T0</a></li>
+          <li class="toc-item"><a href="#q9">ข้อ 9: Flowchart 10 µs</a></li>
+          <li class="toc-group"><a href="#part-3" style="color: var(--accent-green);">ตอนที่ 3: Serial &amp; Interrupts</a></li>
+          <li class="toc-item"><a href="#q10">ข้อ 10: SCON + SBUF</a></li>
+          <li class="toc-item"><a href="#q11">ข้อ 11: Shift Reg vs 8-bit UART</a></li>
+          <li class="toc-item"><a href="#q12">ข้อ 12: 9-bit vs 8-bit UART</a></li>
+          <li class="toc-item"><a href="#q13">ข้อ 13: 5 Interrupts</a></li>
+          <li class="toc-item"><a href="#q14">ข้อ 14: 3 ประเภท</a></li>
+          <li class="toc-item"><a href="#q15">ข้อ 15: Program Counter</a></li>
+          <li class="toc-item"><a href="#q16">ข้อ 16: Vector Address</a></li>
+          <li class="toc-group"><a href="#part-4" style="color: var(--accent-amber);">ตอนที่ 4: Priority, Motors &amp; FSM</a></li>
+          <li class="toc-item"><a href="#q17">ข้อ 17: IE Register</a></li>
+          <li class="toc-item"><a href="#q18">ข้อ 18: Priority ลำดับ 2 = TF0</a></li>
+          <li class="toc-item"><a href="#q19">ข้อ 19: PWM ความเร็ว</a></li>
+          <li class="toc-item"><a href="#q20">ข้อ 20: H-Bridge ทิศทาง</a></li>
+          <li class="toc-item"><a href="#q21">ข้อ 21: Ready / Go FSM [5]</a></li>
+        </ul>
+      </aside>
+
+      <div class="solutions-container">
+
+        <div id="part-1" class="part-head" style="border-bottom-color: var(--accent-cyan);">
+          <h2 style="color: var(--accent-cyan);"><i class="fas fa-stopwatch"></i> ตอนที่ 1: Timers &amp; Counters (ข้อ 1–4)</h2>
+          <p>Timer vs Counter, ขนาดรีจิสเตอร์ TH/TL, การล้น และการคำนวณค่าโหลด 100 µs (+ Square Wave 1 kHz)</p>
+        </div>
+
+        <article class="solution-card" id="q1" data-category="timer">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge red">ข้อ 1</span>
+              <h3 class="card-title">Timer กับ Counter แตกต่างกันอย่างไร</h3>
+            </div>
+            <span class="ref-pill">ตอนที่ 1</span>
+          </div>
+          <div class="card-body">
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-quote-left"></i> โจทย์จากกระดาษข้อสอบจริง</div>
+              <div class="content-block">
+                <p><strong>1. Timer กับ Counter แตกต่างกันอย่างไร</strong></p>
+                <p class="media-attr"><i class="fas fa-camera"></i> ถ้อยคำตามกระดาษพิมพ์ใน <a href="Final-Embedded%20.pdf">Final-Embedded .pdf</a> · คำตอบที่จดไว้: <a href="S__324124684_0.jpg">สมุดหน้า 1</a></p>
+              </div>
+            </div>
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-microscope"></i> วิเคราะห์ทฤษฎี &amp; อ้างอิงบทเรียน</div>
+              <div class="section-senior-content">
+                <p class="notebook-line"><i class="fas fa-pen-nib"></i> <strong>สมุดบันทึกตอบ:</strong> Timer ใช้นับสัญญาณใน Internal clock ส่วน Counter ใช้นับสัญญาณใน External clock on T0 และ T1 — ถูกต้อง ควรเติมชื่อบิต C/T และขาจริง</p>
+                <div class="ref-row"><a class="ref-chip" href="../../../lecture/lecture5-markdown/lecture_5_complete.md"><i class="fas fa-book-open"></i> Lecture 5 · หน้า 5, 11, 14</a></div><ul>
+<li>ฮาร์ดแวร์ตัวเดียวกัน (T0/T1 เป็นตัวนับขึ้น 16 บิต) ต่างกันแค่ <strong>แหล่งสัญญาณนาฬิกา</strong> ที่ป้อนเข้าตัวนับ</li>
+<li>Lecture 5 หน้า 5: ถ้านับ clock ภายในเป็น Timer ถ้านับ clock ภายนอกที่ขา T0/T1 เป็น Counter และบิต C/T ใน TMOD เป็นตัวเลือก</li>
+<li>Lecture 5 หน้า 11: <code>C/T = 0</code> → Timer (Internal Frequency Fosc/12), <code>C/T = 1</code> → Counter (External Frequency on T1 &amp; T0)</li>
+</ul>
+              </div>
+            </div>
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> เฉลยฉบับวิศวกรรม</div>
+              </div>
+              <div class="content-block">
+<div class="table-responsive">
+  <table class="custom-table">
+    <thead><tr><th>หัวข้อ</th><th>Timer</th><th>Counter</th></tr></thead>
+    <tbody>
+<tr><td>แหล่ง clock</td><td>ภายในชิป <code>Fosc / 12</code></td><td>ภายนอก ผ่านขา <code>T0 = P3.4</code>, <code>T1 = P3.5</code></td></tr>
+<tr><td>บิตเลือกใน TMOD</td><td><code>C/T = 0</code></td><td><code>C/T = 1</code></td></tr>
+<tr><td>ค่าที่นับได้หมายถึง</td><td>เวลา: 1 count = 1 µs ที่ 12 MHz</td><td>จำนวนพัลส์/เหตุการณ์ภายนอก</td></tr>
+<tr><td>ตัวอย่างใช้งาน</td><td>Delay, สร้าง Square Wave</td><td>นับชิ้นงาน, นับรอบมอเตอร์</td></tr>
+    </tbody>
+  </table>
+</div><p><strong>คำตอบ:</strong> Timer นับสัญญาณนาฬิกาภายใน (Fosc/12) จึงใช้วัดเวลา ส่วน Counter นับพัลส์จากภายนอกที่ขา T0 (P3.4) หรือ T1 (P3.5) เลือกโหมดด้วยบิต <code>C/T</code> ใน TMOD</p>
+              </div>
+            </div>
+          </div>
+          <footer class="card-footer">
+            <div class="card-footer-meta"><a class="card-footer-id" href="#q1">#q1</a><span class="card-footer-tag">Timers &amp; Counters</span></div>
+            <nav class="card-footer-nav" aria-label="นำทางระหว่างข้อ"><a href="#page-top"><i class="fas fa-arrow-up" aria-hidden="true"></i> บนสุด</a><a href="#q2">ถัดไป <i class="fas fa-chevron-right" aria-hidden="true"></i></a></nav>
+          </footer>
+        </article>
+
+        <article class="solution-card" id="q2" data-category="timer">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge red">ข้อ 2</span>
+              <h3 class="card-title">Timer ใน 8051 มีกี่บิต ใช้รีจิสเตอร์อะไรนับ</h3>
+            </div>
+            <span class="ref-pill">ตอนที่ 1</span>
+          </div>
+          <div class="card-body">
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-quote-left"></i> โจทย์จากกระดาษข้อสอบจริง</div>
+              <div class="content-block">
+                <p><strong>2. Timer ใน 8051 มีกี่บิตและใช้รีจิสเตอร์ในการนับ</strong></p>
+                <p class="media-attr"><i class="fas fa-camera"></i> ถ้อยคำตามกระดาษพิมพ์ใน <a href="Final-Embedded%20.pdf">Final-Embedded .pdf</a> · คำตอบที่จดไว้: <a href="S__324124684_0.jpg">สมุดหน้า 1</a></p>
+              </div>
+            </div>
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-microscope"></i> วิเคราะห์ทฤษฎี &amp; อ้างอิงบทเรียน</div>
+              <div class="section-senior-content">
+                <p class="notebook-line"><i class="fas fa-pen-nib"></i> <strong>สมุดบันทึกตอบ:</strong> Timer ใน 8051 มี 16 bit คือ T0 และ T1 ... แบ่งออกเป็น register 8 bit คือ TH0, TL0 และ TH1, TL1 — ถูกต้อง</p>
+                <div class="ref-row"><a class="ref-chip" href="../../../lecture/lecture5-markdown/lecture_5_complete.md"><i class="fas fa-book-open"></i> Lecture 5 · หน้า 3</a><a class="ref-chip" href="../../../lecture/lecture3-markdown/lecture_3_complete.md"><i class="fas fa-book-open"></i> Lecture 3 · หน้า 12</a></div><ul>
+<li>Lecture 5 หน้า 3: "8051 has Two 16 bits Timers T0 &amp; T1, working as up counters"</li>
+<li>CPU 8 บิตเข้าถึงทีละไบต์ จึงแยกตัวนับ 16 บิตเป็น 2 SFR: ไบต์สูง TH และไบต์ต่ำ TL</li>
+<li>แอดเดรส SFR จาก Lecture 3 หน้า 12: <code>TL0 = 8AH</code>, <code>TL1 = 8BH</code>, <code>TH0 = 8CH</code>, <code>TH1 = 8DH</code></li>
+</ul><div class="box-warning" style="margin-top: 0.85rem;">
+  <div class="box-warning-header"><i class="fas fa-exclamation-triangle"></i> กับดักจากกระดาษที่ตรวจแล้ว</div>
+  <div class="box-warning-text">คำตอบที่เขียนว่า "แบ่งเป็น 2 Register คือ T0, T1" ได้คะแนนไม่เต็ม เพราะ T0/T1 คือชื่อ Timer ไม่ใช่รีจิสเตอร์นับ ต้องตอบ TH0/TL0 และ TH1/TL1</div>
+</div>
+              </div>
+            </div>
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> เฉลยฉบับวิศวกรรม</div>
+              </div>
+              <div class="content-block">
+<div class="table-responsive">
+  <table class="custom-table">
+    <thead><tr><th>Timer</th><th>ขนาด</th><th>ไบต์สูง</th><th>ไบต์ต่ำ</th><th>ช่วงนับ (Mode 1)</th></tr></thead>
+    <tbody>
+<tr><td>Timer 0</td><td>16 บิต</td><td><code>TH0</code> (8CH)</td><td><code>TL0</code> (8AH)</td><td><code>0000H → FFFFH</code></td></tr>
+<tr><td>Timer 1</td><td>16 บิต</td><td><code>TH1</code> (8DH)</td><td><code>TL1</code> (8BH)</td><td><code>0000H → FFFFH</code></td></tr>
+    </tbody>
+  </table>
+</div><p><strong>คำตอบ:</strong> 8051 มี Timer 2 ตัว (T0, T1) ขนาดตัวละ <strong>16 บิต</strong> นับขึ้น ใช้รีจิสเตอร์ 8 บิตคู่กัน: <code>TH0/TL0</code> สำหรับ T0 และ <code>TH1/TL1</code> สำหรับ T1 ควบคุมด้วย <code>TMOD</code> และ <code>TCON</code></p>
+              </div>
+            </div>
+          </div>
+          <footer class="card-footer">
+            <div class="card-footer-meta"><a class="card-footer-id" href="#q2">#q2</a><span class="card-footer-tag">Timers &amp; Counters</span></div>
+            <nav class="card-footer-nav" aria-label="นำทางระหว่างข้อ"><a href="#q1"><i class="fas fa-chevron-left" aria-hidden="true"></i> ก่อนหน้า</a><a href="#page-top"><i class="fas fa-arrow-up" aria-hidden="true"></i> บนสุด</a><a href="#q3">ถัดไป <i class="fas fa-chevron-right" aria-hidden="true"></i></a></nav>
+          </footer>
+        </article>
+
+        <article class="solution-card" id="q3" data-category="timer">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge red">ข้อ 3</span>
+              <h3 class="card-title">Timer Overflow Interrupt ทำงานเมื่อไร</h3>
+            </div>
+            <span class="ref-pill">ตอนที่ 1</span>
+          </div>
+          <div class="card-body">
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-quote-left"></i> โจทย์จากกระดาษข้อสอบจริง</div>
+              <div class="content-block">
+                <p><strong>3. Time Overflow Interrupt จะทำงานเมื่อไร</strong></p>
+                <p class="media-attr"><i class="fas fa-camera"></i> ถ้อยคำตามกระดาษพิมพ์ใน <a href="Final-Embedded%20.pdf">Final-Embedded .pdf</a> · คำตอบที่จดไว้: <a href="S__324124684_0.jpg">สมุดหน้า 1</a></p>
+              </div>
+            </div>
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-microscope"></i> วิเคราะห์ทฤษฎี &amp; อ้างอิงบทเรียน</div>
+              <div class="section-senior-content">
+                <p class="notebook-line"><i class="fas fa-pen-nib"></i> <strong>สมุดบันทึกตอบ:</strong> จะทำงานเมื่อถึงค่า FFFFH และ rolls back กลับไปเป็นค่า 0000H — ถูกต้อง</p>
+                <div class="ref-row"><a class="ref-chip" href="../../../lecture/lecture5-markdown/lecture_5_complete.md"><i class="fas fa-book-open"></i> Lecture 5 · หน้า 4, 6, 9</a></div><ul>
+<li>Lecture 5 หน้า 4: "When it reaches to FFFFH, it will rolls back to 0000H and during that it will generates Timer Overflow interrupt"</li>
+<li>Lecture 5 หน้า 6: เมื่อ count roll จาก FFFFH เป็น 0000H จะทำให้บิต TF0 หรือ TF1 เป็น 1 ("It is interrupt to 8051") แล้ว CPU กระโดดไป ISR และจบด้วย RETI</li>
+<li>Lecture 5 หน้า 9: TF ถูกล้างเป็น 0 เมื่อ CPU เข้า ISR (ISR ของ Timer 0 ที่ 000BH, Timer 1 ที่ 001BH)</li>
+</ul><div class="box-warning" style="margin-top: 0.85rem;">
+  <div class="box-warning-header"><i class="fas fa-exclamation-triangle"></i> กับดักจากกระดาษที่ตรวจแล้ว</div>
+  <div class="box-warning-text">คำตอบ "เมื่อเป็น FFFFH" ถูกกากบาท จุดที่ต้องเขียนคือ <strong>การล้น (roll over) จาก FFFFH ไป 0000H</strong> ไม่ใช่แค่ตอนค่าเท่ากับ FFFFH</div>
+</div>
+              </div>
+            </div>
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> เฉลยฉบับวิศวกรรม</div>
+              </div>
+              <div class="content-block">
+<ol>
+<li>Timer นับขึ้นทีละ 1 ทุก machine cycle (1 µs ที่ 12 MHz)</li>
+<li>เมื่อค่านับเป็น <code>FFFFH</code> แล้วนับต่ออีก 1 จะ <strong>roll over เป็น 0000H</strong></li>
+<li>ฮาร์ดแวร์เซต <code>TF0 = 1</code> (TCON.5) หรือ <code>TF1 = 1</code> (TCON.7)</li>
+<li>ถ้าเปิด <code>EA = 1</code> และ <code>ET0/ET1 = 1</code> ใน IE CPU จะกระโดดไป Vector <code>000BH</code> หรือ <code>001BH</code> ถ้าไม่เปิด โปรแกรมต้องวน polling TF เอง (แบบ <code>JNB TCON.5, Wait</code>)</li>
+</ol>
+<p><strong>คำตอบ:</strong> Timer Overflow Interrupt เกิดขึ้นเมื่อตัวนับ 16 บิตนับเกิน FFFFH แล้ววนกลับเป็น 0000H ทำให้แฟล็ก TF0/TF1 เป็น 1</p>
+              </div>
+            </div>
+          </div>
+          <footer class="card-footer">
+            <div class="card-footer-meta"><a class="card-footer-id" href="#q3">#q3</a><span class="card-footer-tag">Timers &amp; Counters</span></div>
+            <nav class="card-footer-nav" aria-label="นำทางระหว่างข้อ"><a href="#q2"><i class="fas fa-chevron-left" aria-hidden="true"></i> ก่อนหน้า</a><a href="#page-top"><i class="fas fa-arrow-up" aria-hidden="true"></i> บนสุด</a><a href="#q4">ถัดไป <i class="fas fa-chevron-right" aria-hidden="true"></i></a></nav>
+          </footer>
+        </article>
+
+        <article class="solution-card" id="q4" data-category="timer">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge red">ข้อ 4</span>
+              <h3 class="card-title">คำนวณตั้ง Timer นับ 100 µsec ที่ 12 MHz (+ Square Wave 1 kHz)</h3>
+            </div>
+            <span class="ref-pill">ตอนที่ 1</span>
+          </div>
+          <div class="card-body">
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-quote-left"></i> โจทย์จากกระดาษข้อสอบจริง</div>
+              <div class="content-block">
+                <p><strong>4. จงเขียนวิธีคำนวณในการตั้ง Timer นับ 100 µsec กรณี 8051 ใช้ความถี่ 12 MHz</strong></p>
+                <p class="media-attr"><i class="fas fa-camera"></i> ถ้อยคำตามกระดาษพิมพ์ใน <a href="Final-Embedded%20.pdf">Final-Embedded .pdf</a> · คำตอบที่จดไว้: <a href="S__324124684_0.jpg">สมุดหน้า 1</a></p>
+              </div>
+            </div>
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-microscope"></i> วิเคราะห์ทฤษฎี &amp; อ้างอิงบทเรียน</div>
+              <div class="section-senior-content">
+                <p class="notebook-line"><i class="fas fa-pen-nib"></i> <strong>สมุดบันทึกตอบ:</strong> ใช้สูตร Count = FFFFH − Value + 1 ได้ FF9CH, TL0 = 9CH, TH0 = FFH — ถูกต้อง และผู้จดเพิ่มตัวอย่าง (Ex) Square Wave 1 kHz ได้ FE0CH</p>
+                <div class="ref-row"><a class="ref-chip" href="../../../lecture/lecture5-markdown/lecture_5_complete.md"><i class="fas fa-book-open"></i> Lecture 5 · หน้า 4, 20, 21</a></div><ul>
+<li>สูตรของรายวิชา (Lecture 5 หน้า 4): <code>Count = FFFFH − Value + 1</code> ตัวอย่างในสไลด์: นับ 9 → <code>FFF7H</code></li>
+<li>Timer เป็น up counter จึงต้องโหลดค่าเริ่มต้นให้ "ห่างจากจุดล้น" เท่ากับจำนวน count ที่ต้องการ</li>
+<li>สูตรนี้เท่ากับ <code>65536 − N</code> ในเลขฐานสิบ ใช้ตรวจคำตอบได้</li>
+<li>ตัวอย่างเสริม Square Wave 1 kHz ตรงกับโปรแกรมใน Lecture 5 หน้า 21 ทุกค่า</li>
+</ul>
+              </div>
+            </div>
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> เฉลยฉบับวิศวกรรม</div>
+              </div>
+              <div class="content-block">
+<p><strong>ขั้นที่ 1: หาเวลา 1 count</strong></p>
+<p><code>Machine Cycle = 12 / Fosc = 12 / 12 MHz = 1 µs</code> → 1 count = 1 µs</p>
+<p><strong>ขั้นที่ 2: หาจำนวน count</strong></p>
+<p><code>N = 100 µs ÷ 1 µs = 100 = 64H</code></p>
+<p><strong>ขั้นที่ 3: หาค่าโหลด (Mode 1, 16 บิต)</strong></p>
+<p><code>Count = FFFFH − 64H + 1 = FF9BH + 1 = FF9CH</code></p>
+<p>ตรวจด้วยฐานสิบ: <code>65536 − 100 = 65436 = FF9CH</code></p>
+<p><strong>ขั้นที่ 4: แยกโหลดเข้า SFR</strong> → <code>TH0 = FFH</code>, <code>TL0 = 9CH</code>, <code>TMOD = 01H (0000 0001B)</code></p>
+<div class="code-wrapper">
+  <div class="code-header">
+    <span>8051 Assembly (.asm)</span>
+    <button class="btn-copy" type="button">Copy Code</button>
+  </div>
+  <pre class="code-content"><code><span class="comment">; DELAY_100US : Timer 0 Mode 1, Fosc = 12 MHz (รูปแบบเดียวกับ Lecture 5 หน้า 20)</span>
+<span class="operand">DELAY_100US:</span>
+        <span class="opcode">MOV</span>   <span class="operand">TMOD</span>, <span class="immediate">#01H</span>      <span class="comment">; Timer 0, Mode 1 (16 บิต), C/T = 0</span>
+        <span class="opcode">MOV</span>   <span class="operand">TH0</span>, <span class="immediate">#0FFH</span>      <span class="comment">; ไบต์สูงของ FF9CH</span>
+        <span class="opcode">MOV</span>   <span class="operand">TL0</span>, <span class="immediate">#9CH</span>       <span class="comment">; ไบต์ต่ำของ FF9CH</span>
+        <span class="opcode">MOV</span>   <span class="operand">TCON</span>, <span class="immediate">#10H</span>      <span class="comment">; TR0 = 1 เริ่มนับ</span>
+<span class="operand">WAIT100:</span>
+        <span class="opcode">JNB</span>   <span class="operand">TCON.5</span>, <span class="operand">WAIT100</span> <span class="comment">; รอ TF0 = 1 (ครบ 100 count)</span>
+        <span class="opcode">MOV</span>   <span class="operand">TCON</span>, <span class="immediate">#00H</span>      <span class="comment">; TR0 = 0 หยุด และ TF0 = 0</span>
+        <span class="opcode">RET</span></code></pre>
+</div>
+<div class="box-info">
+  <div class="box-info-header"><i class="fas fa-wave-square"></i> ตัวอย่างเสริม (Ex ในสมุด): Square Wave 1 kHz, High = Low = 0.5 ms</div>
+  <p><code>T = 1 / 1 kHz = 1 ms</code> → ครึ่งคาบ <code>0.5 ms = 500 µs</code> → <code>N = 500 = 1F4H</code></p>
+  <p><code>Count = FFFFH − 1F4H + 1 = FE0CH</code> (ตรวจ: <code>65536 − 500 = 65036 = FE0CH</code>) → <code>TH0 = FEH</code>, <code>TL0 = 0CH</code></p>
+  <p>ทุกครั้งที่ TF0 = 1 ให้กลับสถานะขา (<code>CPL</code>) ครบ 2 ครั้ง = 1 คาบ</p>
+</div>
+<div class="code-wrapper">
+  <div class="code-header">
+    <span>8051 Assembly — Square Wave 1 kHz</span>
+    <button class="btn-copy" type="button">Copy Code</button>
+  </div>
+  <pre class="code-content"><code><span class="comment">; Square wave 1 kHz บนขา TxD (P3.1) — ตาม Lecture 5 หน้า 21</span>
+        <span class="opcode">CLR</span>   <span class="operand">P3.1</span>            <span class="comment">; เริ่มจาก TxD = 0</span>
+<span class="operand">REPEAT:</span>
+        <span class="opcode">MOV</span>   <span class="operand">TMOD</span>, <span class="immediate">#01H</span>      <span class="comment">; Timer 0 Mode 1</span>
+        <span class="opcode">MOV</span>   <span class="operand">TL0</span>, <span class="immediate">#0CH</span>       <span class="comment">; count 500 = 1F4H -&gt; FE0CH</span>
+        <span class="opcode">MOV</span>   <span class="operand">TH0</span>, <span class="immediate">#0FEH</span>
+        <span class="opcode">MOV</span>   <span class="operand">TCON</span>, <span class="immediate">#10H</span>      <span class="comment">; เริ่ม Timer</span>
+<span class="operand">WAIT_H:</span>
+        <span class="opcode">JNB</span>   <span class="operand">TCON.5</span>, <span class="operand">WAIT_H</span>  <span class="comment">; รอ 0.5 ms</span>
+        <span class="opcode">CPL</span>   <span class="operand">P3.1</span>            <span class="comment">; สลับขา = square wave</span>
+        <span class="opcode">MOV</span>   <span class="operand">TCON</span>, <span class="immediate">#00H</span>      <span class="comment">; หยุด Timer</span>
+        <span class="opcode">SJMP</span>  <span class="operand">REPEAT</span></code></pre>
+</div><p style="margin-top:0.75rem; color: var(--text-muted); font-size: 0.88rem;">หมายเหตุเชิงวิศวกรรม: คำสั่งโหลดและวนลูปใช้ machine cycle เพิ่มอีกเล็กน้อย ครึ่งคาบจริงจึงยาวกว่า 500 µs ไม่กี่ µs ข้อสอบระดับนี้ไม่นำ overhead มาคิด</p>
+              </div>
+            </div>
+          </div>
+          <footer class="card-footer">
+            <div class="card-footer-meta"><a class="card-footer-id" href="#q4">#q4</a><span class="card-footer-tag">Timers &amp; Counters</span></div>
+            <nav class="card-footer-nav" aria-label="นำทางระหว่างข้อ"><a href="#q3"><i class="fas fa-chevron-left" aria-hidden="true"></i> ก่อนหน้า</a><a href="#page-top"><i class="fas fa-arrow-up" aria-hidden="true"></i> บนสุด</a><a href="#q5">ถัดไป <i class="fas fa-chevron-right" aria-hidden="true"></i></a></nav>
+          </footer>
+        </article>
+
+        <div id="part-2" class="part-head" style="border-bottom-color: var(--accent-blue);">
+          <h2 style="color: var(--accent-blue);"><i class="fas fa-sliders-h"></i> ตอนที่ 2: Control &amp; Modes (ข้อ 5–9)</h2>
+          <p>บิต TR/TF, Negative edge trigger, M1 M0, C/T สำหรับ Counter และ Flowchart Delay 10 µs</p>
+        </div>
+
+        <article class="solution-card" id="q5" data-category="control">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge red">ข้อ 5</span>
+              <h3 class="card-title">TR ย่อมาจากอะไร</h3>
+            </div>
+            <span class="ref-pill">ตอนที่ 2</span>
+          </div>
+          <div class="card-body">
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-quote-left"></i> โจทย์จากกระดาษข้อสอบจริง</div>
+              <div class="content-block">
+                <p><strong>5. TR ย่อมาจาก</strong></p>
+                <p class="media-attr"><i class="fas fa-camera"></i> ถ้อยคำตามกระดาษพิมพ์ใน <a href="Final-Embedded%20.pdf">Final-Embedded .pdf</a> · คำตอบที่จดไว้: <a href="S__324124685_0.jpg">สมุดหน้า 2</a></p>
+              </div>
+            </div>
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-microscope"></i> วิเคราะห์ทฤษฎี &amp; อ้างอิงบทเรียน</div>
+              <div class="section-senior-content">
+                <p class="notebook-line"><i class="fas fa-pen-nib"></i> <strong>สมุดบันทึกตอบ:</strong> TR ย่อมาจาก Timer Run Control (TF = Timer Overflow Flag) — ถูกต้อง</p>
+                <div class="ref-row"><a class="ref-chip" href="../../../lecture/lecture5-markdown/lecture_5_complete.md"><i class="fas fa-book-open"></i> Lecture 5 · หน้า 9</a></div><ul>
+<li>Lecture 5 หน้า 9: "TR1 and TR0 - Timer Run Control Bit — SET 1 = Start Counting Timer, Clear 0 = Halts Timer"</li>
+<li>TR เป็นบิตที่ <strong>ซอฟต์แวร์</strong> เขียน ส่วน TF เป็นบิตที่ <strong>ฮาร์ดแวร์</strong> เซตเมื่อล้น</li>
+<li>ในโค้ดรายวิชาใช้ <code>MOV TCON, #00010000B</code> เพื่อเซต TR0 (บิต 4) และ <code>JNB TCON.5</code> เพื่อรอ TF0 (บิต 5)</li>
+</ul><div class="box-warning" style="margin-top: 0.85rem;">
+  <div class="box-warning-header"><i class="fas fa-exclamation-triangle"></i> กับดักจากกระดาษที่ตรวจแล้ว</div>
+  <div class="box-warning-text">คำตอบ "Time Reference" ถูกกากบาท TR ต้องเป็น <strong>Timer Run control bit</strong></div>
+</div>
+              </div>
+            </div>
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> เฉลยฉบับวิศวกรรม</div>
+              </div>
+              <div class="content-block">
+<div class="table-responsive">
+  <table class="custom-table">
+    <thead><tr><th>บิต TCON</th><th>7</th><th>6</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead>
+    <tbody>
+<tr><td>ชื่อ</td><td>TF1</td><td><strong>TR1</strong></td><td>TF0</td><td><strong>TR0</strong></td><td>IE1</td><td>IT1</td><td>IE0</td><td>IT0</td></tr>
+    </tbody>
+  </table>
+</div><p><strong>คำตอบ:</strong> TR ย่อมาจาก <strong>Timer Run Control Bit</strong> (TR0 = TCON.4, TR1 = TCON.6) เซตเป็น 1 เพื่อเริ่มให้ Timer นับ และเคลียร์เป็น 0 เพื่อหยุด</p>
+<p>คู่ที่ควรจำไปพร้อมกัน: <strong>TF = Timer Overflow Flag</strong> (TF0 = TCON.5, TF1 = TCON.7)</p>
+              </div>
+            </div>
+          </div>
+          <footer class="card-footer">
+            <div class="card-footer-meta"><a class="card-footer-id" href="#q5">#q5</a><span class="card-footer-tag">Control &amp; Modes</span></div>
+            <nav class="card-footer-nav" aria-label="นำทางระหว่างข้อ"><a href="#q4"><i class="fas fa-chevron-left" aria-hidden="true"></i> ก่อนหน้า</a><a href="#page-top"><i class="fas fa-arrow-up" aria-hidden="true"></i> บนสุด</a><a href="#q6">ถัดไป <i class="fas fa-chevron-right" aria-hidden="true"></i></a></nav>
+          </footer>
+        </article>
+
+        <article class="solution-card" id="q6" data-category="control">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge red">ข้อ 6</span>
+              <h3 class="card-title">Negative Edge Trigger เป็นอย่างไร</h3>
+            </div>
+            <span class="ref-pill">ตอนที่ 2</span>
+          </div>
+          <div class="card-body">
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-quote-left"></i> โจทย์จากกระดาษข้อสอบจริง</div>
+              <div class="content-block">
+                <p><strong>6. Negative Edge trigger เป็นอย่างไร</strong></p>
+                <p class="media-attr"><i class="fas fa-camera"></i> ถ้อยคำตามกระดาษพิมพ์ใน <a href="Final-Embedded%20.pdf">Final-Embedded .pdf</a> · คำตอบที่จดไว้: <a href="S__324124685_0.jpg">สมุดหน้า 2</a></p>
+              </div>
+            </div>
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-microscope"></i> วิเคราะห์ทฤษฎี &amp; อ้างอิงบทเรียน</div>
+              <div class="section-senior-content">
+                <p class="notebook-line"><i class="fas fa-pen-nib"></i> <strong>สมุดบันทึกตอบ:</strong> เป็นการกระตุ้น trigger เมื่อสัญญาณเปลี่ยนสถานะจากระดับสูงไปสู่ระดับต่ำ — ถูกต้อง ควรเติมบิต IT0/IT1</p>
+                <div class="ref-row"><a class="ref-chip" href="../../../lecture/lecture5-markdown/lecture_5_complete.md"><i class="fas fa-book-open"></i> Lecture 5 · หน้า 9, 10</a></div><ul>
+<li>Lecture 5 หน้า 10: "IT1 and IT0 - External Interrupt Type bit — SET 1 = INT1 and INT0 must be −ve edge trigger, Clear 0 = low level trigger"</li>
+<li>Lecture 5 หน้า 9: IE0/IE1 เป็น 1 เมื่อ 8051 รับ interrupt ที่ INT0/INT1 และเคลียร์เมื่อ ISR ทำงาน</li>
+<li>ข้อดีของ edge trigger: กดค้างนานแค่ไหนก็นับเป็น 1 เหตุการณ์ เพราะดูเฉพาะ "จังหวะที่ตกลง"</li>
+</ul>
+              </div>
+            </div>
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> เฉลยฉบับวิศวกรรม</div>
+              </div>
+              <div class="content-block">
+<p><strong>คำตอบ:</strong> Negative Edge Trigger คือการกระตุ้น interrupt ณ <strong>ขอบขาลง</strong> เมื่อสัญญาณที่ขา INT0 (P3.2) หรือ INT1 (P3.3) เปลี่ยนจากลอจิก 1 เป็นลอจิก 0 เลือกได้โดยเซต <code>IT0 = 1</code> หรือ <code>IT1 = 1</code> ใน TCON</p>
+<div class="table-responsive">
+  <table class="custom-table">
+    <thead><tr><th>IT0 / IT1</th><th>ชนิดการกระตุ้น</th><th>เกิด interrupt เมื่อ</th></tr></thead>
+    <tbody>
+<tr><td><code>1</code></td><td>Negative edge trigger</td><td>สัญญาณเปลี่ยน 1 → 0 (ครั้งเดียวต่อขอบ)</td></tr>
+<tr><td><code>0</code></td><td>Low level trigger</td><td>สัญญาณอยู่ที่ระดับ 0</td></tr>
+    </tbody>
+  </table>
+</div><div class="code-wrapper">
+  <div class="code-header">
+    <span>ตัวอย่างการตั้งค่า</span>
+    <button class="btn-copy" type="button">Copy Code</button>
+  </div>
+  <pre class="code-content"><code><span class="comment">; ตั้ง INT0 เป็น negative edge (ตาม Lecture 6 หน้า 1)</span>
+        <span class="opcode">SETB</span>  <span class="operand">TCON.0</span>          <span class="comment">; IT0 = 1 -&gt; edge trigger</span></code></pre>
+</div>
+              </div>
+            </div>
+          </div>
+          <footer class="card-footer">
+            <div class="card-footer-meta"><a class="card-footer-id" href="#q6">#q6</a><span class="card-footer-tag">Control &amp; Modes</span></div>
+            <nav class="card-footer-nav" aria-label="นำทางระหว่างข้อ"><a href="#q5"><i class="fas fa-chevron-left" aria-hidden="true"></i> ก่อนหน้า</a><a href="#page-top"><i class="fas fa-arrow-up" aria-hidden="true"></i> บนสุด</a><a href="#q7">ถัดไป <i class="fas fa-chevron-right" aria-hidden="true"></i></a></nav>
+          </footer>
+        </article>
+
+        <article class="solution-card" id="q7" data-category="control">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge red">ข้อ 7</span>
+              <h3 class="card-title">M1 และ M0 ใช้ทำอะไร</h3>
+            </div>
+            <span class="ref-pill">ตอนที่ 2</span>
+          </div>
+          <div class="card-body">
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-quote-left"></i> โจทย์จากกระดาษข้อสอบจริง</div>
+              <div class="content-block">
+                <p><strong>7. M1 and M0 ใช้ทำอะไร</strong></p>
+                <p class="media-attr"><i class="fas fa-camera"></i> ถ้อยคำตามกระดาษพิมพ์ใน <a href="Final-Embedded%20.pdf">Final-Embedded .pdf</a> · คำตอบที่จดไว้: <a href="S__324124685_0.jpg">สมุดหน้า 2</a></p>
+              </div>
+            </div>
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-microscope"></i> วิเคราะห์ทฤษฎี &amp; อ้างอิงบทเรียน</div>
+              <div class="section-senior-content">
+                <p class="notebook-line"><i class="fas fa-pen-nib"></i> <strong>สมุดบันทึกตอบ:</strong> ใช้ในการเลือกโหมดการทำงานของ Timer — ถูกต้อง แต่ควรตอบเป็นตาราง 4 โหมดเพื่อคะแนนเต็ม</p>
+                <div class="ref-row"><a class="ref-chip" href="../../../lecture/lecture5-markdown/lecture_5_complete.md"><i class="fas fa-book-open"></i> Lecture 5 · หน้า 11, 15–19</a></div><ul>
+<li>Lecture 5 หน้า 11: "M1 &amp; M0 - Mode Control bits" อยู่ใน TMOD ของแต่ละ Timer (TMOD แบ่งครึ่ง: บิต 7–4 = Timer 1, บิต 3–0 = Timer 0)</li>
+<li>TMOD แต่ละครึ่งเรียงเป็น <code>GATE | C/T | M1 | M0</code></li>
+<li>รายละเอียดแต่ละโหมดมาจากสไลด์ Modes of Timer and Counter หน้า 15–19</li>
+</ul>
+              </div>
+            </div>
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> เฉลยฉบับวิศวกรรม</div>
+              </div>
+              <div class="content-block">
+<div class="table-responsive">
+  <table class="custom-table">
+    <thead><tr><th>M1 M0</th><th>โหมด</th><th>โครงสร้างตัวนับ</th><th>นับได้สูงสุด</th><th>Delay สูงสุด @ 12 MHz</th></tr></thead>
+    <tbody>
+<tr><td><code>0 0</code></td><td>Mode 0</td><td>13 บิต: TLX 5 บิต + THX 8 บิต</td><td>2¹³ = 8,192</td><td>8,192 µs</td></tr>
+<tr><td><code>0 1</code></td><td>Mode 1</td><td>16 บิต: TLX 8 บิต + THX 8 บิต</td><td>2¹⁶ = 65,536</td><td>65,536 µs</td></tr>
+<tr><td><code>1 0</code></td><td>Mode 2</td><td>8 บิต auto-reload: TLX นับ, THX โหลดคืนให้ TLX เมื่อล้น</td><td>2⁸ = 256</td><td>256 µs</td></tr>
+<tr><td><code>1 1</code></td><td>Mode 3</td><td>แยก Timer 0 เป็น 8 บิต 2 ตัว: TL0 → TF0, TH0 → TF1</td><td>256 ต่อตัว</td><td>256 µs</td></tr>
+    </tbody>
+  </table>
+</div><p><strong>คำตอบ:</strong> M1 และ M0 เป็น <strong>บิตเลือกโหมด (Mode Control bits)</strong> ใน TMOD กำหนดว่า Timer จะทำงานแบบ 13 บิต, 16 บิต, 8 บิต auto-reload หรือแยก 8 บิต 2 ตัว</p>
+<p>ตัวอย่าง: <code>MOV TMOD, #01H</code> → Timer 0 ใช้ M1 M0 = 01 (Mode 1, 16 บิต) ซึ่งเป็นค่าที่ใช้ในทุกโปรแกรม Delay ของรายวิชา</p>
+              </div>
+            </div>
+          </div>
+          <footer class="card-footer">
+            <div class="card-footer-meta"><a class="card-footer-id" href="#q7">#q7</a><span class="card-footer-tag">Control &amp; Modes</span></div>
+            <nav class="card-footer-nav" aria-label="นำทางระหว่างข้อ"><a href="#q6"><i class="fas fa-chevron-left" aria-hidden="true"></i> ก่อนหน้า</a><a href="#page-top"><i class="fas fa-arrow-up" aria-hidden="true"></i> บนสุด</a><a href="#q8">ถัดไป <i class="fas fa-chevron-right" aria-hidden="true"></i></a></nav>
+          </footer>
+        </article>
+
+        <article class="solution-card" id="q8" data-category="control">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge red">ข้อ 8</span>
+              <h3 class="card-title">ตั้งค่าให้ 8051 เป็น Counter ที่ขา T0</h3>
+            </div>
+            <span class="ref-pill">ตอนที่ 2</span>
+          </div>
+          <div class="card-body">
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-quote-left"></i> โจทย์จากกระดาษข้อสอบจริง</div>
+              <div class="content-block">
+                <p><strong>8. ทำอย่างไรตั้งค่าให้ 8051 เป็น Counter สัญญาณที่ขา T0</strong></p>
+                <p class="media-attr"><i class="fas fa-camera"></i> ถ้อยคำตามกระดาษพิมพ์ใน <a href="Final-Embedded%20.pdf">Final-Embedded .pdf</a> · คำตอบที่จดไว้: <a href="S__324124685_0.jpg">สมุดหน้า 2</a></p>
+              </div>
+            </div>
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-microscope"></i> วิเคราะห์ทฤษฎี &amp; อ้างอิงบทเรียน</div>
+              <div class="section-senior-content">
+                <p class="notebook-line"><i class="fas fa-pen-nib"></i> <strong>สมุดบันทึกตอบ:</strong> ตั้งค่าบิต C/T ใน TMOD Register SET ให้เป็น 1 — ถูกต้อง</p>
+                <div class="ref-row"><a class="ref-chip" href="../../../lecture/lecture5-markdown/lecture_5_complete.md"><i class="fas fa-book-open"></i> Lecture 5 · หน้า 5, 11, 14</a></div><ul>
+<li>Lecture 5 หน้า 11: "C/T - Counter / Timer Type bit — SET 1 = Acts as Counter (External Frequency on T1 &amp; T0)"</li>
+<li>ขา T0 คือ P3.4 (ขา 14 ของชิป 40 ขา ตาม pinout Lecture 5 หน้า 14)</li>
+<li>C/T ของ Timer 0 อยู่ที่ TMOD บิต 2 เพราะครึ่งล่างของ TMOD คือ <code>GATE | C/T | M1 | M0</code> (บิต 3–0)</li>
+</ul>
+              </div>
+            </div>
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> เฉลยฉบับวิศวกรรม</div>
+              </div>
+              <div class="content-block">
+<div class="table-responsive">
+  <table class="custom-table">
+    <thead><tr><th>TMOD บิต</th><th>7</th><th>6</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead>
+    <tbody>
+<tr><td>ชื่อ</td><td>GATE</td><td>C/T</td><td>M1</td><td>M0</td><td>GATE</td><td><strong>C/T</strong></td><td>M1</td><td>M0</td></tr>
+<tr><td>เป็นของ</td><td>Timer 1</td><td>Timer 1</td><td>Timer 1</td><td>Timer 1</td><td>Timer 0</td><td><strong>Timer 0</strong></td><td>Timer 0</td><td>Timer 0</td></tr>
+<tr><td>ค่า (05H)</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td><strong>1</strong></td><td>0</td><td>1</td></tr>
+    </tbody>
+  </table>
+</div><ol>
+<li>เซต <code>C/T = 1</code> ของ Timer 0 (TMOD.2) → นับพัลส์จากขา T0 (P3.4) แทน clock ภายใน</li>
+<li>เลือกโหมด เช่น Mode 1 (M1 M0 = 01) และ <code>GATE = 0</code> → <code>TMOD = 00000101B = 05H</code></li>
+<li>ล้างค่าเริ่ม <code>TH0 = TL0 = 00H</code> แล้ว <code>SETB TR0</code> ให้เริ่มนับ ค่าที่นับได้อ่านจาก TH0:TL0</li>
+</ol>
+<div class="code-wrapper">
+  <div class="code-header">
+    <span>8051 Assembly (.asm)</span>
+    <button class="btn-copy" type="button">Copy Code</button>
+  </div>
+  <pre class="code-content"><code><span class="comment">; Timer 0 เป็น Counter นับพัลส์ภายนอกที่ขา T0 (P3.4)</span>
+        <span class="opcode">MOV</span>   <span class="operand">TMOD</span>, <span class="immediate">#05H</span>      <span class="comment">; T0: GATE=0, C/T=1 (Counter), M1 M0 = 01</span>
+        <span class="opcode">MOV</span>   <span class="operand">TH0</span>, <span class="immediate">#00H</span>       <span class="comment">; เริ่มนับจาก 0</span>
+        <span class="opcode">MOV</span>   <span class="operand">TL0</span>, <span class="immediate">#00H</span>
+        <span class="opcode">SETB</span>  <span class="operand">TR0</span>             <span class="comment">; เริ่มนับพัลส์</span>
+        <span class="opcode">MOV</span>   <span class="operand">A</span>, <span class="operand">TL0</span>          <span class="comment">; อ่านจำนวนพัลส์ (ไบต์ต่ำ)</span></code></pre>
+</div>
+              </div>
+            </div>
+          </div>
+          <footer class="card-footer">
+            <div class="card-footer-meta"><a class="card-footer-id" href="#q8">#q8</a><span class="card-footer-tag">Control &amp; Modes</span></div>
+            <nav class="card-footer-nav" aria-label="นำทางระหว่างข้อ"><a href="#q7"><i class="fas fa-chevron-left" aria-hidden="true"></i> ก่อนหน้า</a><a href="#page-top"><i class="fas fa-arrow-up" aria-hidden="true"></i> บนสุด</a><a href="#q9">ถัดไป <i class="fas fa-chevron-right" aria-hidden="true"></i></a></nav>
+          </footer>
+        </article>
+
+        <article class="solution-card" id="q9" data-category="control">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge red">ข้อ 9</span>
+              <h3 class="card-title">Flowchart หน่วงเวลา (Delay) 10 µsec</h3>
+            </div>
+            <span class="ref-pill">ตอนที่ 2</span>
+          </div>
+          <div class="card-body">
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-quote-left"></i> โจทย์จากกระดาษข้อสอบจริง</div>
+              <div class="content-block">
+                <p><strong>9. จงเขียน Flowchart ของโปรแกรมสำหรับการตั้งหน่วงเวลา (Delay) 10 µsec</strong></p>
+                <p class="media-attr"><i class="fas fa-camera"></i> ถ้อยคำตามกระดาษพิมพ์ใน <a href="Final-Embedded%20.pdf">Final-Embedded .pdf</a> · คำตอบที่จดไว้: <a href="S__324124685_0.jpg">สมุดหน้า 2</a></p>
+              </div>
+            </div>
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-microscope"></i> วิเคราะห์ทฤษฎี &amp; อ้างอิงบทเรียน</div>
+              <div class="section-senior-content">
+                <p class="notebook-line"><i class="fas fa-pen-nib"></i> <strong>สมุดบันทึกตอบ:</strong> Flowchart แบบ Timer: Load TH0, TL0 → Set TR0 = 1 → Wait until TF0 = 1 → Clear TF0 → Stop Timer (TR0 = 0) → End ส่วน flowchart แบบ counter++ ถูกขีดฆ่าทิ้ง — แนวทางถูก ควรเพิ่มกล่อง TMOD และค่าตัวเลข FFF6H</p>
+                <div class="ref-row"><a class="ref-chip" href="../../../lecture/lecture-programming-for-a-state-machine-markdown/lecture_progroming_for_a_state_machine_complete.md"><i class="fas fa-book-open"></i> Lab 5 State Machine · หน้า 5</a><a class="ref-chip" href="../../../lecture/lecture5-markdown/lecture_5_complete.md"><i class="fas fa-book-open"></i> Lecture 5 · หน้า 4, 20</a></div><ul>
+<li>โจทย์จริงคือ <strong>10 µsec</strong> (ไม่ใช่ 100 µsec) ตรงกับซับรูทีน <code>delay</code> ใน Lab 5 หน้า 5 ที่เขียนคอมเมนต์ว่า "F6H delay 10usec"</li>
+<li>คำนวณ: <code>N = 10 = 0AH</code> → <code>FFFFH − 0AH + 1 = FFF6H</code> → <code>TH0 = FFH</code>, <code>TL0 = F6H</code> (ตรวจ: <code>65536 − 10 = 65526 = FFF6H</code>)</li>
+<li>Flowchart ที่ได้คะแนนต้องเป็นแบบใช้ Timer และต้องมี decision วนรอ TF0 แบบ software counter (counter++) ไม่ได้ใช้ฮาร์ดแวร์ Timer ตามที่บทเรียนสอน</li>
+</ul>
+              </div>
+            </div>
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> เฉลยฉบับวิศวกรรม</div>
+              </div>
+              <div class="content-block">
+<figure class="fig-card">
+<svg class="fx-svg" viewBox="0 0 440 610" role="img" aria-label="Flowchart หน่วงเวลา 10 ไมโครวินาทีด้วย Timer 0 Mode 1">
+  <defs><marker id="ar9" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fx-head"/></marker></defs>
+  <rect x="150" y="12" width="140" height="38" rx="19" class="fx-term"/>
+  <text x="220" y="36" class="fx-text" text-anchor="middle">Start (DELAY_10US)</text>
+  <line x1="220" y1="50" x2="220" y2="76" class="fx-line" marker-end="url(#ar9)"/>
+  <rect x="90" y="78" width="260" height="44" rx="6" class="fx-box"/>
+  <text x="220" y="98" class="fx-text fx-mono" text-anchor="middle">TMOD ← 01H</text>
+  <text x="220" y="114" class="fx-sub" text-anchor="middle">Timer 0, Mode 1 (16 บิต), C/T = 0</text>
+  <line x1="220" y1="122" x2="220" y2="146" class="fx-line" marker-end="url(#ar9)"/>
+  <rect x="90" y="148" width="260" height="44" rx="6" class="fx-box"/>
+  <text x="220" y="168" class="fx-text fx-mono" text-anchor="middle">TH0 ← FFH , TL0 ← F6H</text>
+  <text x="220" y="184" class="fx-sub" text-anchor="middle">FFFFH − 0AH + 1 = FFF6H (10 counts)</text>
+  <line x1="220" y1="192" x2="220" y2="216" class="fx-line" marker-end="url(#ar9)"/>
+  <rect x="90" y="218" width="260" height="44" rx="6" class="fx-box"/>
+  <text x="220" y="238" class="fx-text fx-mono" text-anchor="middle">TR0 ← 1</text>
+  <text x="220" y="254" class="fx-sub" text-anchor="middle">เริ่มนับ (MOV TCON, #10H)</text>
+  <line x1="220" y1="262" x2="220" y2="290" class="fx-line" marker-end="url(#ar9)"/>
+  <polygon points="220,292 320,330 220,368 120,330" class="fx-dec"/>
+  <text x="220" y="335" class="fx-text fx-mono" text-anchor="middle">TF0 = 1 ?</text>
+  <path d="M320,330 H392 V278 H224" class="fx-line" marker-end="url(#ar9)"/>
+  <text x="340" y="322" class="fx-sub">No</text>
+  <line x1="220" y1="368" x2="220" y2="398" class="fx-line" marker-end="url(#ar9)"/>
+  <text x="228" y="388" class="fx-sub">Yes (ครบ 10 µs)</text>
+  <rect x="90" y="400" width="260" height="44" rx="6" class="fx-box"/>
+  <text x="220" y="420" class="fx-text fx-mono" text-anchor="middle">TF0 ← 0</text>
+  <text x="220" y="436" class="fx-sub" text-anchor="middle">ล้างแฟล็กเพื่อใช้รอบถัดไป</text>
+  <line x1="220" y1="444" x2="220" y2="468" class="fx-line" marker-end="url(#ar9)"/>
+  <rect x="90" y="470" width="260" height="44" rx="6" class="fx-box"/>
+  <text x="220" y="490" class="fx-text fx-mono" text-anchor="middle">TR0 ← 0</text>
+  <text x="220" y="506" class="fx-sub" text-anchor="middle">หยุด Timer (MOV TCON, #00H)</text>
+  <line x1="220" y1="514" x2="220" y2="540" class="fx-line" marker-end="url(#ar9)"/>
+  <rect x="150" y="542" width="140" height="38" rx="19" class="fx-term"/>
+  <text x="220" y="566" class="fx-text" text-anchor="middle">End (RET)</text>
+</svg>
+<figcaption>Flowchart ข้อ 9 — ทุกกล่องสอดคล้องกับคำสั่งในซับรูทีน <code>Delay</code> ของ Lab 5 บรรทัดต่อบรรทัด</figcaption>
+</figure><div class="code-wrapper">
+  <div class="code-header">
+    <span>8051 Assembly (.asm)</span>
+    <button class="btn-copy" type="button">Copy Code</button>
+  </div>
+  <pre class="code-content"><code><span class="comment">; DELAY_10US : Lab 5 delay subroutine (Fosc = 12 MHz)</span>
+<span class="operand">DELAY_10US:</span>
+        <span class="opcode">MOV</span>   <span class="operand">TMOD</span>, <span class="immediate">#01H</span>      <span class="comment">; Timer 0 Mode 1</span>
+        <span class="opcode">MOV</span>   <span class="operand">TH0</span>, <span class="immediate">#0FFH</span>      <span class="comment">; 11111111B</span>
+        <span class="opcode">MOV</span>   <span class="operand">TL0</span>, <span class="immediate">#0F6H</span>      <span class="comment">; 11110110B -&gt; FFF6H = 10 counts</span>
+        <span class="opcode">MOV</span>   <span class="operand">TCON</span>, <span class="immediate">#10H</span>      <span class="comment">; TR0 = 1 เริ่มนับ</span>
+<span class="operand">WAIT10:</span>
+        <span class="opcode">JNB</span>   <span class="operand">TCON.5</span>, <span class="operand">WAIT10</span>  <span class="comment">; รอ TF0 = 1</span>
+        <span class="opcode">MOV</span>   <span class="operand">TCON</span>, <span class="immediate">#00H</span>      <span class="comment">; TR0 = 0, TF0 = 0</span>
+        <span class="opcode">RET</span></code></pre>
+</div><p style="margin-top:0.75rem; color: var(--text-muted); font-size: 0.88rem;">หมายเหตุ: ที่ 10 µs คำสั่งโหลดค่า เริ่ม และหยุด Timer เองก็ใช้เวลาหลาย µs ดังนั้น delay รวมจริงยาวกว่า 10 µs แต่คำตอบที่ข้อสอบต้องการคือค่า <code>TH0 = FFH</code>, <code>TL0 = F6H</code> และลำดับขั้นใน Flowchart</p>
+              </div>
+            </div>
+          </div>
+          <footer class="card-footer">
+            <div class="card-footer-meta"><a class="card-footer-id" href="#q9">#q9</a><span class="card-footer-tag">Control &amp; Modes</span></div>
+            <nav class="card-footer-nav" aria-label="นำทางระหว่างข้อ"><a href="#q8"><i class="fas fa-chevron-left" aria-hidden="true"></i> ก่อนหน้า</a><a href="#page-top"><i class="fas fa-arrow-up" aria-hidden="true"></i> บนสุด</a><a href="#q10">ถัดไป <i class="fas fa-chevron-right" aria-hidden="true"></i></a></nav>
+          </footer>
+        </article>
+
+        <div id="part-3" class="part-head" style="border-bottom-color: var(--accent-green);">
+          <h2 style="color: var(--accent-green);"><i class="fas fa-network-wired"></i> ตอนที่ 3: Serial &amp; Interrupts (ข้อ 10–16)</h2>
+          <p>SCON/SBUF, Mode 0 / 1 / 2-3, 5 interrupts, 3 ประเภท, Program Counter และ Vector Address</p>
+        </div>
+
+        <article class="solution-card" id="q10" data-category="serial">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge red">ข้อ 10</span>
+              <h3 class="card-title">รีจิสเตอร์สำหรับรับส่งข้อมูลผ่าน TxD / RxD</h3>
+            </div>
+            <span class="ref-pill">ตอนที่ 3</span>
+          </div>
+          <div class="card-body">
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-quote-left"></i> โจทย์จากกระดาษข้อสอบจริง</div>
+              <div class="content-block">
+                <p><strong>10. รีจิสเตอร์ที่ใช้ในการรับส่งข้อมูลสำหรับการสื่อสารผ่าน TxD และ RxD</strong></p>
+                <p class="media-attr"><i class="fas fa-camera"></i> ถ้อยคำตามกระดาษพิมพ์ใน <a href="Final-Embedded%20.pdf">Final-Embedded .pdf</a> · คำตอบที่จดไว้: <a href="S__324124686_0.jpg">สมุดหน้า 3</a></p>
+              </div>
+            </div>
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-microscope"></i> วิเคราะห์ทฤษฎี &amp; อ้างอิงบทเรียน</div>
+              <div class="section-senior-content">
+                <p class="notebook-line"><i class="fas fa-pen-nib"></i> <strong>สมุดบันทึกตอบ:</strong> SCON ใช้ควบคุมการรับส่งข้อมูล และ SBUF ใช้ในการเก็บข้อมูลที่จะส่งหรือรับเข้ามา — ถูกต้อง</p>
+                <div class="ref-row"><a class="ref-chip" href="../../../lecture/lecture6-pptx-markdown/lecture_6_complete.md"><i class="fas fa-book-open"></i> Lecture 6 · หน้า 2–6</a><a class="ref-chip" href="../../../lecture/lecture3-markdown/lecture_3_complete.md"><i class="fas fa-book-open"></i> Lecture 3 · หน้า 12</a></div><ul>
+<li>Lecture 6 หน้า 2: TxD (P3.1) สำหรับส่ง, RxD (P3.0) สำหรับรับ, SBUF (8 บิต) ส่งและรับข้อมูลแบบอนุกรม ส่ง LSB ก่อน MSB สุดท้าย</li>
+<li>Lecture 6 หน้า 2: "To configure serial communication, we need to configure SCON register"</li>
+<li>Lecture 3 หน้า 12: SCON = Serial Port Control (98H, bit addressable 9FH–98H), SBUF = Serial Port Data Buffer (99H)</li>
+</ul><div class="box-warning" style="margin-top: 0.85rem;">
+  <div class="box-warning-header"><i class="fas fa-exclamation-triangle"></i> กับดักจากกระดาษที่ตรวจแล้ว</div>
+  <div class="box-warning-text">คำตอบที่ตอบเพียง "SBUF" ถูกกากบาท ต้องตอบ<strong>ครบทั้งคู่</strong>: SCON (ควบคุม) และ SBUF (ข้อมูล)</div>
+</div>
+              </div>
+            </div>
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> เฉลยฉบับวิศวกรรม</div>
+              </div>
+              <div class="content-block">
+<div class="table-responsive">
+  <table class="custom-table">
+    <thead><tr><th>รีจิสเตอร์</th><th>แอดเดรส</th><th>หน้าที่</th></tr></thead>
+    <tbody>
+<tr><td><code>SBUF</code></td><td>99H</td><td>บัฟเฟอร์ข้อมูล 8 บิต: <code>MOV SBUF, A</code> = ส่งออก TxD, <code>MOV A, SBUF</code> = อ่านข้อมูลที่รับจาก RxD</td></tr>
+<tr><td><code>SCON</code></td><td>98H</td><td>เลือกโหมด (SM0, SM1), เปิดรับ (REN), บิตที่ 9 (TB8, RB8) และแฟล็ก TI/RI</td></tr>
+    </tbody>
+  </table>
+</div><div class="table-responsive">
+  <table class="custom-table">
+    <thead><tr><th>SCON บิต</th><th>7</th><th>6</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead>
+    <tbody>
+<tr><td>ชื่อ</td><td>SM0</td><td>SM1</td><td>SM2</td><td>REN</td><td>TB8</td><td>RB8</td><td>TI</td><td>RI</td></tr>
+    </tbody>
+  </table>
+</div><p><strong>คำตอบ:</strong> ใช้ <strong>SCON</strong> (Serial Control Register) กำหนดโหมดและควบคุมการรับส่ง และ <strong>SBUF</strong> (Serial Buffer) เก็บข้อมูล 8 บิตที่จะส่งออกทาง TxD หรือที่รับเข้ามาทาง RxD เมื่อส่งครบ 1 ไบต์ TI = 1 เมื่อรับครบ RI = 1</p>
+              </div>
+            </div>
+          </div>
+          <footer class="card-footer">
+            <div class="card-footer-meta"><a class="card-footer-id" href="#q10">#q10</a><span class="card-footer-tag">Serial &amp; Interrupts</span></div>
+            <nav class="card-footer-nav" aria-label="นำทางระหว่างข้อ"><a href="#q9"><i class="fas fa-chevron-left" aria-hidden="true"></i> ก่อนหน้า</a><a href="#page-top"><i class="fas fa-arrow-up" aria-hidden="true"></i> บนสุด</a><a href="#q11">ถัดไป <i class="fas fa-chevron-right" aria-hidden="true"></i></a></nav>
+          </footer>
+        </article>
+
+        <article class="solution-card" id="q11" data-category="serial">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge red">ข้อ 11</span>
+              <h3 class="card-title">Shift Register (Mode 0) ต่างจาก 8-bit UART (Mode 1)</h3>
+            </div>
+            <span class="ref-pill">ตอนที่ 3</span>
+          </div>
+          <div class="card-body">
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-quote-left"></i> โจทย์จากกระดาษข้อสอบจริง</div>
+              <div class="content-block">
+                <p><strong>11. การส่งข้อมูลแบบ Shift Register แตกต่างจาก 8 bit UART อย่างไร</strong></p>
+                <p class="media-attr"><i class="fas fa-camera"></i> ถ้อยคำตามกระดาษพิมพ์ใน <a href="Final-Embedded%20.pdf">Final-Embedded .pdf</a> · คำตอบที่จดไว้: <a href="S__324124686_0.jpg">สมุดหน้า 3</a></p>
+              </div>
+            </div>
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-microscope"></i> วิเคราะห์ทฤษฎี &amp; อ้างอิงบทเรียน</div>
+              <div class="section-senior-content">
+                <p class="notebook-line"><i class="fas fa-pen-nib"></i> <strong>สมุดบันทึกตอบ:</strong> Shift Register (Mode 0) เป็นแบบ Synchronous ใช้ส่งแค่ data เท่านั้น ส่วน 8 bit UART (Mode 1) เป็นแบบ Asynchronous มี Start bit 0 และ Stop bit 1 เป็นตัวกำหนดขอบข้อมูล — ถูกต้อง</p>
+                <div class="ref-row"><a class="ref-chip" href="../../../lecture/lecture6-pptx-markdown/lecture_6_complete.md"><i class="fas fa-book-open"></i> Lecture 6 · หน้า 4–5</a></div><ul>
+<li>Lecture 6 หน้า 4: ตาราง SM0 SM1 → Mode 0 Shift Register (Fosc/12), Mode 1 8-bit UART (Variable), Mode 2 9-bit UART (Fosc/32 หรือ Fosc/64), Mode 3 9-bit UART (Variable)</li>
+<li>Lecture 6 หน้า 5: "Mode 0 {Shift Register sends only data}", "Mode 1 {8 Bit UART, 1st Start bit 0, then 8 bits data and at last stop bit 1}"</li>
+<li>เพราะ Mode 1 มี start/stop bit ผู้รับจึงหาจุดเริ่มต้นของข้อมูลได้เองโดยไม่ต้องใช้ clock ร่วม (asynchronous)</li>
+</ul>
+              </div>
+            </div>
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> เฉลยฉบับวิศวกรรม</div>
+              </div>
+              <div class="content-block">
+<p><strong>รูปแบบเฟรม (ส่ง LSB ก่อน):</strong></p><p>Mode 0 — Shift Register</p><div class="frame-row"><span class="bit d">D0</span><span class="bit d">D1</span><span class="bit d">D2</span><span class="bit d">D3</span><span class="bit d">D4</span><span class="bit d">D5</span><span class="bit d">D6</span><span class="bit d">D7</span></div><p>Mode 1 — 8-bit UART (10 บิตต่อเฟรม)</p><div class="frame-row"><span class="bit s">0</span><span class="bit d">D0</span><span class="bit d">D1</span><span class="bit d">D2</span><span class="bit d">D3</span><span class="bit d">D4</span><span class="bit d">D5</span><span class="bit d">D6</span><span class="bit d">D7</span><span class="bit p">1</span></div><div class="table-responsive">
+  <table class="custom-table">
+    <thead><tr><th>หัวข้อ</th><th>Shift Register (Mode 0)</th><th>8-bit UART (Mode 1)</th></tr></thead>
+    <tbody>
+<tr><td>SM0 SM1</td><td><code>0 0</code></td><td><code>0 1</code></td></tr>
+<tr><td>ข้อมูลในเฟรม</td><td>เฉพาะ 8 data bits</td><td>Start 0 + 8 data bits + Stop 1</td></tr>
+<tr><td>Baud rate</td><td>คงที่ <code>Fosc/12</code> (1 MHz ที่ 12 MHz)</td><td>ปรับได้ (Variable) ตั้งจาก Timer 1</td></tr>
+<tr><td>ลักษณะ</td><td>Synchronous</td><td>Asynchronous</td></tr>
+    </tbody>
+  </table>
+</div><p><strong>คำตอบ:</strong> Shift Register (Mode 0) ส่งเฉพาะข้อมูล 8 บิต ไม่มี start/stop bit และ baud rate คงที่ที่ Fosc/12 ส่วน 8-bit UART (Mode 1) ห่อข้อมูลด้วย start bit 0 และ stop bit 1 เป็นเฟรม 10 บิต ใช้สื่อสารแบบ asynchronous และกำหนด baud rate ได้</p>
+              </div>
+            </div>
+          </div>
+          <footer class="card-footer">
+            <div class="card-footer-meta"><a class="card-footer-id" href="#q11">#q11</a><span class="card-footer-tag">Serial &amp; Interrupts</span></div>
+            <nav class="card-footer-nav" aria-label="นำทางระหว่างข้อ"><a href="#q10"><i class="fas fa-chevron-left" aria-hidden="true"></i> ก่อนหน้า</a><a href="#page-top"><i class="fas fa-arrow-up" aria-hidden="true"></i> บนสุด</a><a href="#q12">ถัดไป <i class="fas fa-chevron-right" aria-hidden="true"></i></a></nav>
+          </footer>
+        </article>
+
+        <article class="solution-card" id="q12" data-category="serial">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge red">ข้อ 12</span>
+              <h3 class="card-title">9-bit UART ต่างจาก 8-bit UART อย่างไร</h3>
+            </div>
+            <span class="ref-pill">ตอนที่ 3</span>
+          </div>
+          <div class="card-body">
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-quote-left"></i> โจทย์จากกระดาษข้อสอบจริง</div>
+              <div class="content-block">
+                <p><strong>12. การส่งข้อมูลแบบ 9 bit UART แตกต่างจาก 8 bit UART อย่างไร</strong></p>
+                <p class="media-attr"><i class="fas fa-camera"></i> ถ้อยคำตามกระดาษพิมพ์ใน <a href="Final-Embedded%20.pdf">Final-Embedded .pdf</a> · คำตอบที่จดไว้: <a href="S__324124686_0.jpg">สมุดหน้า 3</a></p>
+              </div>
+            </div>
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-microscope"></i> วิเคราะห์ทฤษฎี &amp; อ้างอิงบทเรียน</div>
+              <div class="section-senior-content">
+                <p class="notebook-line"><i class="fas fa-pen-nib"></i> <strong>สมุดบันทึกตอบ:</strong> 9 bit UART จะเพิ่ม 1 bit parity เข้ามา — ถูกต้อง ควรระบุว่าบิตนี้มาจาก TB8 และรับเข้าที่ RB8</p>
+                <div class="ref-row"><a class="ref-chip" href="../../../lecture/lecture6-pptx-markdown/lecture_6_complete.md"><i class="fas fa-book-open"></i> Lecture 6 · หน้า 4–6</a></div><ul>
+<li>Lecture 6 หน้า 5: "Mode 2 &amp; 3 {9 Bit UART, 1st Start bit 0, then 8 bits data, 1 bit parity and at last stop bit 1}"</li>
+<li>Lecture 6 หน้า 6: TB8 = programmable 9th bit ในโหมด 2 และ 3 ("Parity bit, programmed by programmer") และ RB8 = บิตที่ 9 ที่รับเข้ามา</li>
+<li>SM2 ใช้เปิดระบบ Multiprocessor ได้เฉพาะ Mode 2 และ 3 เพราะอาศัยบิตที่ 9 นี้</li>
+</ul>
+              </div>
+            </div>
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> เฉลยฉบับวิศวกรรม</div>
+              </div>
+              <div class="content-block">
+<p>Mode 1 — 8-bit UART (10 บิต)</p><div class="frame-row"><span class="bit s">0</span><span class="bit d">D0</span><span class="bit d">D1</span><span class="bit d">D2</span><span class="bit d">D3</span><span class="bit d">D4</span><span class="bit d">D5</span><span class="bit d">D6</span><span class="bit d">D7</span><span class="bit p">1</span></div><p>Mode 2 / 3 — 9-bit UART (11 บิต)</p><div class="frame-row"><span class="bit s">0</span><span class="bit d">D0</span><span class="bit d">D1</span><span class="bit d">D2</span><span class="bit d">D3</span><span class="bit d">D4</span><span class="bit d">D5</span><span class="bit d">D6</span><span class="bit d">D7</span><span class="bit x">P / TB8</span><span class="bit p">1</span></div><div class="table-responsive">
+  <table class="custom-table">
+    <thead><tr><th>หัวข้อ</th><th>8-bit UART (Mode 1)</th><th>9-bit UART (Mode 2 / 3)</th></tr></thead>
+    <tbody>
+<tr><td>บิตต่อเฟรม</td><td>10 (Start + 8 + Stop)</td><td>11 (Start + 8 + บิตที่ 9 + Stop)</td></tr>
+<tr><td>บิตที่ 9</td><td>ไม่มี (RB8 เก็บ stop bit)</td><td>ส่งจาก <code>TB8</code>, รับเข้า <code>RB8</code></td></tr>
+<tr><td>Baud rate</td><td>Variable</td><td>Mode 2: Fosc/32 หรือ Fosc/64 · Mode 3: Variable</td></tr>
+<tr><td>Multiprocessor (SM2)</td><td>ไม่ใช้</td><td>ใช้ได้</td></tr>
+    </tbody>
+  </table>
+</div><p><strong>คำตอบ:</strong> 9-bit UART เพิ่ม<strong>บิตข้อมูลที่ 9</strong> (มักใช้เป็น parity bit) ต่อจาก 8 data bits ก่อน stop bit ทำให้เฟรมยาว 11 บิต ผู้เขียนโปรแกรมกำหนดค่าบิตนี้ผ่าน TB8 ตอนส่ง และอ่านจาก RB8 ตอนรับ ขณะที่ 8-bit UART มีเฟรม 10 บิตไม่มีบิตที่ 9</p>
+              </div>
+            </div>
+          </div>
+          <footer class="card-footer">
+            <div class="card-footer-meta"><a class="card-footer-id" href="#q12">#q12</a><span class="card-footer-tag">Serial &amp; Interrupts</span></div>
+            <nav class="card-footer-nav" aria-label="นำทางระหว่างข้อ"><a href="#q11"><i class="fas fa-chevron-left" aria-hidden="true"></i> ก่อนหน้า</a><a href="#page-top"><i class="fas fa-arrow-up" aria-hidden="true"></i> บนสุด</a><a href="#q13">ถัดไป <i class="fas fa-chevron-right" aria-hidden="true"></i></a></nav>
+          </footer>
+        </article>
+
+        <article class="solution-card" id="q13" data-category="serial">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge red">ข้อ 13</span>
+              <h3 class="card-title">8051 มี 5 Interrupt ได้แก่อะไรบ้าง</h3>
+            </div>
+            <span class="ref-pill">ตอนที่ 3</span>
+          </div>
+          <div class="card-body">
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-quote-left"></i> โจทย์จากกระดาษข้อสอบจริง</div>
+              <div class="content-block">
+                <p><strong>13. 8051 มี 5 Interrupt ได้แก่</strong></p>
+                <p class="media-attr"><i class="fas fa-camera"></i> ถ้อยคำตามกระดาษพิมพ์ใน <a href="Final-Embedded%20.pdf">Final-Embedded .pdf</a> · คำตอบที่จดไว้: <a href="S__324124686_0.jpg">สมุดหน้า 3</a></p>
+              </div>
+            </div>
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-microscope"></i> วิเคราะห์ทฤษฎี &amp; อ้างอิงบทเรียน</div>
+              <div class="section-senior-content">
+                <p class="notebook-line"><i class="fas fa-pen-nib"></i> <strong>สมุดบันทึกตอบ:</strong> INT0, INT1, TF0, TF1, RI/TI และหมายเหตุว่า interrupt เริ่มทำงานที่ 0003H — ถูกต้อง</p>
+                <div class="ref-row"><a class="ref-chip" href="../../../lecture/lecture6-pptx-markdown/lecture_6_complete.md"><i class="fas fa-book-open"></i> Lecture 6 · หน้า 8, 9</a></div><ul>
+<li>Lecture 6 หน้า 8: "8051 has five interrupts and all are vectored interrupt" — 2 hardware (INT0, INT1), 2 timer overflow (TF0, TF1), 1 serial (common for RI and TI)</li>
+<li>Reset (0000H) ไม่นับเป็นหนึ่งใน 5 interrupt</li>
+<li>Serial มีแฟล็ก 2 ตัวแต่ใช้ Vector เดียว ISR ต้องตรวจเองว่าเกิดจาก RI หรือ TI</li>
+</ul>
+              </div>
+            </div>
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> เฉลยฉบับวิศวกรรม</div>
+              </div>
+              <div class="content-block">
+<div class="table-responsive">
+  <table class="custom-table">
+    <thead><tr><th>#</th><th>Interrupt</th><th>แหล่งกำเนิด</th><th>แฟล็ก</th><th>Vector</th></tr></thead>
+    <tbody>
+<tr><td>1</td><td>External 0 (<code>INT0</code>)</td><td>ขา P3.2</td><td>IE0 (TCON.1)</td><td><code>0003H</code></td></tr>
+<tr><td>2</td><td>Timer 0 Overflow (<code>TF0</code>)</td><td>Timer 0 ล้น</td><td>TF0 (TCON.5)</td><td><code>000BH</code></td></tr>
+<tr><td>3</td><td>External 1 (<code>INT1</code>)</td><td>ขา P3.3</td><td>IE1 (TCON.3)</td><td><code>0013H</code></td></tr>
+<tr><td>4</td><td>Timer 1 Overflow (<code>TF1</code>)</td><td>Timer 1 ล้น</td><td>TF1 (TCON.7)</td><td><code>001BH</code></td></tr>
+<tr><td>5</td><td>Serial (<code>RI</code> หรือ <code>TI</code>)</td><td>รับ/ส่งครบ 1 ไบต์</td><td>RI (SCON.0), TI (SCON.1)</td><td><code>0023H</code></td></tr>
+    </tbody>
+  </table>
+</div><p><strong>คำตอบ:</strong> INT0, TF0 (Timer 0 Overflow), INT1, TF1 (Timer 1 Overflow) และ Serial Port Interrupt (RI หรือ TI)</p>
+              </div>
+            </div>
+          </div>
+          <footer class="card-footer">
+            <div class="card-footer-meta"><a class="card-footer-id" href="#q13">#q13</a><span class="card-footer-tag">Serial &amp; Interrupts</span></div>
+            <nav class="card-footer-nav" aria-label="นำทางระหว่างข้อ"><a href="#q12"><i class="fas fa-chevron-left" aria-hidden="true"></i> ก่อนหน้า</a><a href="#page-top"><i class="fas fa-arrow-up" aria-hidden="true"></i> บนสุด</a><a href="#q14">ถัดไป <i class="fas fa-chevron-right" aria-hidden="true"></i></a></nav>
+          </footer>
+        </article>
+
+        <article class="solution-card" id="q14" data-category="serial">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge red">ข้อ 14</span>
+              <h3 class="card-title">8051 มี Interrupt กี่ประเภท</h3>
+            </div>
+            <span class="ref-pill">ตอนที่ 3</span>
+          </div>
+          <div class="card-body">
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-quote-left"></i> โจทย์จากกระดาษข้อสอบจริง</div>
+              <div class="content-block">
+                <p><strong>14. 8051 มี Interrupt กี่ประเภท</strong></p>
+                <p class="media-attr"><i class="fas fa-camera"></i> ถ้อยคำตามกระดาษพิมพ์ใน <a href="Final-Embedded%20.pdf">Final-Embedded .pdf</a> · คำตอบที่จดไว้: <a href="S__324124686_0.jpg">สมุดหน้า 3</a></p>
+              </div>
+            </div>
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-microscope"></i> วิเคราะห์ทฤษฎี &amp; อ้างอิงบทเรียน</div>
+              <div class="section-senior-content">
+                <p class="notebook-line"><i class="fas fa-pen-nib"></i> <strong>สมุดบันทึกตอบ:</strong> มี 3 ประเภท คือ External Interrupt, Timer Overflow Internal Interrupt และ Serial Communication Internal Interrupt (ISR = Interrupt Service Routine) — ถูกต้อง</p>
+                <div class="ref-row"><a class="ref-chip" href="../../../lecture/lecture6-pptx-markdown/lecture_6_complete.md"><i class="fas fa-book-open"></i> Lecture 6 · หน้า 8</a></div><ul>
+<li>ข้อ 13 ถามว่า "มีอะไรบ้าง" (5 ตัว) ส่วนข้อ 14 ถาม "กี่ประเภท" ให้จัดกลุ่มตามแหล่งกำเนิดที่ Lecture 6 หน้า 8 แบ่งไว้</li>
+<li>คำว่า Edge / Level trigger เป็น "วิธีกระตุ้น" ของ INT0/INT1 (ข้อ 6) ไม่ใช่ประเภทของ interrupt</li>
+</ul><div class="box-warning" style="margin-top: 0.85rem;">
+  <div class="box-warning-header"><i class="fas fa-exclamation-triangle"></i> กับดักจากกระดาษที่ตรวจแล้ว</div>
+  <div class="box-warning-text">คำตอบ "Edge trigger interrupt และ Level trigger interrupt" ถูกกากบาท เพราะเป็นชนิดการกระตุ้น ไม่ใช่ประเภทแหล่งกำเนิด คำตอบที่ได้คะแนนคือ "มี 3 ประเภท"</div>
+</div>
+              </div>
+            </div>
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> เฉลยฉบับวิศวกรรม</div>
+              </div>
+              <div class="content-block">
+<div class="table-responsive">
+  <table class="custom-table">
+    <thead><tr><th>ประเภท</th><th>สมาชิก</th><th>จำนวน</th></tr></thead>
+    <tbody>
+<tr><td>1. External hardware interrupt</td><td>INT0, INT1</td><td>2</td></tr>
+<tr><td>2. Timer overflow internal interrupt</td><td>TF0, TF1</td><td>2</td></tr>
+<tr><td>3. Serial communication internal interrupt</td><td>RI / TI (ใช้ร่วมกัน)</td><td>1</td></tr>
+    </tbody>
+  </table>
+</div><p><strong>คำตอบ:</strong> <strong>3 ประเภท</strong> ได้แก่ External Interrupt (INT0, INT1), Timer Overflow Interrupt (TF0, TF1) และ Serial Communication Interrupt (RI/TI) รวมเป็น 5 interrupt</p>
+              </div>
+            </div>
+          </div>
+          <footer class="card-footer">
+            <div class="card-footer-meta"><a class="card-footer-id" href="#q14">#q14</a><span class="card-footer-tag">Serial &amp; Interrupts</span></div>
+            <nav class="card-footer-nav" aria-label="นำทางระหว่างข้อ"><a href="#q13"><i class="fas fa-chevron-left" aria-hidden="true"></i> ก่อนหน้า</a><a href="#page-top"><i class="fas fa-arrow-up" aria-hidden="true"></i> บนสุด</a><a href="#q15">ถัดไป <i class="fas fa-chevron-right" aria-hidden="true"></i></a></nav>
+          </footer>
+        </article>
+
+        <article class="solution-card" id="q15" data-category="serial">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge red">ข้อ 15</span>
+              <h3 class="card-title">Register ที่เก็บสถานะของโปรแกรม (PC)</h3>
+            </div>
+            <span class="ref-pill">ตอนที่ 3</span>
+          </div>
+          <div class="card-body">
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-quote-left"></i> โจทย์จากกระดาษข้อสอบจริง</div>
+              <div class="content-block">
+                <p><strong>15. 8051 ใช้ Register อะไรในการเก็บสถานะของโปรแกรม (PC)</strong></p>
+                <p class="media-attr"><i class="fas fa-camera"></i> ถ้อยคำตามกระดาษพิมพ์ใน <a href="Final-Embedded%20.pdf">Final-Embedded .pdf</a> · คำตอบที่จดไว้: <a href="S__324124686_0.jpg">สมุดหน้า 3</a></p>
+              </div>
+            </div>
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-microscope"></i> วิเคราะห์ทฤษฎี &amp; อ้างอิงบทเรียน</div>
+              <div class="section-senior-content">
+                <p class="notebook-line"><i class="fas fa-pen-nib"></i> <strong>สมุดบันทึกตอบ:</strong> Program Counter (PC) — ถูกต้อง</p>
+                <div class="ref-row"><a class="ref-chip" href="../../../lecture/lecture1-markdown/lecture1_complete.md"><i class="fas fa-book-open"></i> Lecture 1 · Architecture</a><a class="ref-chip" href="../../../lecture/lecture6-pptx-markdown/lecture_6_complete.md"><i class="fas fa-book-open"></i> Lecture 6 · หน้า 9</a></div><ul>
+<li>Lecture 1: 8051 มี "16 bit program counter register (PC)" จึงอ้างถึงหน่วยความจำโปรแกรมได้ 64 KB</li>
+<li>Lecture 6 หน้า 9 (ภาพลำดับการเกิด interrupt): เมื่อ interrupt เกิด → <strong>PUSH PC</strong> ลง Stack → กระโดดไป Vector → ทำ ISR → <strong>RETI</strong> → <strong>POP PC</strong> กลับมาทำงานต่อที่เดิม</li>
+<li>โจทย์ใส่ "(PC)" ไว้ในวงเล็บแล้ว สิ่งที่ต้องเขียนคือชื่อเต็มและหน้าที่</li>
+</ul><div class="box-warning" style="margin-top: 0.85rem;">
+  <div class="box-warning-header"><i class="fas fa-exclamation-triangle"></i> กับดักจากกระดาษที่ตรวจแล้ว</div>
+  <div class="box-warning-text">คำตอบ "SCON" ถูกกากบาท SCON เป็นรีจิสเตอร์ของพอร์ตอนุกรม ไม่เกี่ยวกับตำแหน่งการทำงานของโปรแกรม</div>
+</div>
+              </div>
+            </div>
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> เฉลยฉบับวิศวกรรม</div>
+              </div>
+              <div class="content-block">
+<p><strong>คำตอบ:</strong> <strong>Program Counter (PC)</strong> ขนาด 16 บิต เก็บแอดเดรสของคำสั่งถัดไปที่ CPU จะดึงมาทำงาน</p>
+<ol>
+<li>ทำงานปกติ: PC เพิ่มค่าตามความยาวคำสั่งทุกครั้งที่ fetch</li>
+<li>เกิด interrupt: ฮาร์ดแวร์ PUSH PC ลง Stack (ผ่าน SP) แล้วโหลด PC ด้วย Vector Address</li>
+<li>จบ ISR ด้วย <code>RETI</code>: POP ค่า PC เดิมกลับ โปรแกรมหลักทำงานต่อจากจุดที่ถูกขัดจังหวะ</li>
+</ol>
+              </div>
+            </div>
+          </div>
+          <footer class="card-footer">
+            <div class="card-footer-meta"><a class="card-footer-id" href="#q15">#q15</a><span class="card-footer-tag">Serial &amp; Interrupts</span></div>
+            <nav class="card-footer-nav" aria-label="นำทางระหว่างข้อ"><a href="#q14"><i class="fas fa-chevron-left" aria-hidden="true"></i> ก่อนหน้า</a><a href="#page-top"><i class="fas fa-arrow-up" aria-hidden="true"></i> บนสุด</a><a href="#q16">ถัดไป <i class="fas fa-chevron-right" aria-hidden="true"></i></a></nav>
+          </footer>
+        </article>
+
+        <article class="solution-card" id="q16" data-category="serial">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge red">ข้อ 16</span>
+              <h3 class="card-title">Vector Address คืออะไร</h3>
+            </div>
+            <span class="ref-pill">ตอนที่ 3</span>
+          </div>
+          <div class="card-body">
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-quote-left"></i> โจทย์จากกระดาษข้อสอบจริง</div>
+              <div class="content-block">
+                <p><strong>16. Vector Address คืออะไร</strong></p>
+                <p class="media-attr"><i class="fas fa-camera"></i> ถ้อยคำตามกระดาษพิมพ์ใน <a href="Final-Embedded%20.pdf">Final-Embedded .pdf</a> · คำตอบที่จดไว้: <a href="S__324124686_0.jpg">สมุดหน้า 3</a></p>
+              </div>
+            </div>
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-microscope"></i> วิเคราะห์ทฤษฎี &amp; อ้างอิงบทเรียน</div>
+              <div class="section-senior-content">
+                <p class="notebook-line"><i class="fas fa-pen-nib"></i> <strong>สมุดบันทึกตอบ:</strong> ที่อยู่เริ่มต้นของคำสั่งสำหรับ ISR ของแต่ละ interrupt — ถูกต้อง</p>
+                <div class="ref-row"><a class="ref-chip" href="../../../lecture/lecture6-pptx-markdown/lecture_6_complete.md"><i class="fas fa-book-open"></i> Lecture 6 · หน้า 1, 9, 13</a></div><ul>
+<li>Lecture 6 หน้า 8: interrupt ทั้ง 5 เป็น "vectored interrupt" คือแต่ละตัวมีแอดเดรสปลายทางตายตัว</li>
+<li>Lecture 6 หน้า 13: ตาราง Vector: Reset 0000, INT0 0003, Timer0 000B, INT1 0013, Timer1 001B, Serial 0023</li>
+<li>Vector ห่างกันเพียง 8 ไบต์ จึงนิยมวาง <code>AJMP</code>/<code>LJMP</code> ไปยัง ISR ตัวจริง ตามตัวอย่าง Lecture 6 หน้า 1</li>
+</ul>
+              </div>
+            </div>
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> เฉลยฉบับวิศวกรรม</div>
+              </div>
+              <div class="content-block">
+<p><strong>คำตอบ:</strong> Vector Address คือ<strong>แอดเดรสคงที่ในหน่วยความจำโปรแกรม</strong>ที่ CPU จะกระโดดไปเมื่อเกิด interrupt แต่ละชนิด เป็นจุดเริ่มต้นของ ISR (Interrupt Service Routine) ของ interrupt นั้น</p>
+<div class="table-responsive">
+  <table class="custom-table">
+    <thead><tr><th>Source</th><th>Vector Address</th><th>ลำดับ Priority</th></tr></thead>
+    <tbody>
+<tr><td>Reset</td><td><code>0000H</code></td><td>—</td></tr>
+<tr><td>INT0</td><td><code>0003H</code></td><td>1</td></tr>
+<tr><td>TF0</td><td><code>000BH</code></td><td>2</td></tr>
+<tr><td>INT1</td><td><code>0013H</code></td><td>3</td></tr>
+<tr><td>TF1</td><td><code>001BH</code></td><td>4</td></tr>
+<tr><td>Serial (RI/TI)</td><td><code>0023H</code></td><td>5</td></tr>
+    </tbody>
+  </table>
+</div><div class="code-wrapper">
+  <div class="code-header">
+    <span>8051 Assembly — Vector + ISR</span>
+    <button class="btn-copy" type="button">Copy Code</button>
+  </div>
+  <pre class="code-content"><code><span class="comment">; โครง Vector Table จาก Lecture 6 หน้า 1 (เพิ่ม EA ให้เปิดได้จริง)</span>
+        <span class="directive">ORG</span>   <span class="address">0000H</span>
+        <span class="opcode">AJMP</span>  <span class="operand">START</span>           <span class="comment">; Reset vector</span>
+        <span class="directive">ORG</span>   <span class="address">0003H</span>
+        <span class="opcode">AJMP</span>  <span class="operand">COUNT</span>           <span class="comment">; INT0 vector -&gt; ISR ตัวจริง</span>
+        <span class="directive">ORG</span>   <span class="address">0030H</span>
+<span class="operand">START:</span>
+        <span class="opcode">MOV</span>   <span class="operand">IE</span>, <span class="immediate">#10000001B</span>  <span class="comment">; EA = 1, EX0 = 1</span>
+        <span class="opcode">SETB</span>  <span class="operand">TCON.0</span>          <span class="comment">; IT0 = 1 (edge trigger)</span>
+        <span class="opcode">MOV</span>   <span class="address">40H</span>, <span class="immediate">#00H</span>
+<span class="operand">HERE:</span>
+        <span class="opcode">SJMP</span>  <span class="operand">HERE</span>            <span class="comment">; รอ interrupt</span>
+<span class="operand">COUNT:</span>
+        <span class="opcode">MOV</span>   <span class="operand">A</span>, <span class="address">40H</span>          <span class="comment">; ISR: นับจำนวนครั้งที่กด</span>
+        <span class="opcode">INC</span>   <span class="operand">A</span>
+        <span class="opcode">MOV</span>   <span class="address">40H</span>, <span class="operand">A</span>
+        <span class="opcode">RETI</span></code></pre>
+</div>
+              </div>
+            </div>
+          </div>
+          <footer class="card-footer">
+            <div class="card-footer-meta"><a class="card-footer-id" href="#q16">#q16</a><span class="card-footer-tag">Serial &amp; Interrupts</span></div>
+            <nav class="card-footer-nav" aria-label="นำทางระหว่างข้อ"><a href="#q15"><i class="fas fa-chevron-left" aria-hidden="true"></i> ก่อนหน้า</a><a href="#page-top"><i class="fas fa-arrow-up" aria-hidden="true"></i> บนสุด</a><a href="#q17">ถัดไป <i class="fas fa-chevron-right" aria-hidden="true"></i></a></nav>
+          </footer>
+        </article>
+
+        <div id="part-4" class="part-head" style="border-bottom-color: var(--accent-amber);">
+          <h2 style="color: var(--accent-amber);"><i class="fas fa-project-diagram"></i> ตอนที่ 4: Priority, Motors &amp; FSM (ข้อ 17–21)</h2>
+          <p>IE/IP, ลำดับ Priority, PWM, H-Bridge และโปรแกรม Ready / Go State Machine</p>
+        </div>
+
+        <article class="solution-card" id="q17" data-category="fsm">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge red">ข้อ 17</span>
+              <h3 class="card-title">IE Register ย่อมาจากอะไร</h3>
+            </div>
+            <span class="ref-pill">ตอนที่ 4</span>
+          </div>
+          <div class="card-body">
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-quote-left"></i> โจทย์จากกระดาษข้อสอบจริง</div>
+              <div class="content-block">
+                <p><strong>17. IE Register ย่อมาจาก</strong></p>
+                <p class="media-attr"><i class="fas fa-camera"></i> ถ้อยคำตามกระดาษพิมพ์ใน <a href="Final-Embedded%20.pdf">Final-Embedded .pdf</a> · คำตอบที่จดไว้: <a href="S__324124687_0.jpg">สมุดหน้า 4</a></p>
+              </div>
+            </div>
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-microscope"></i> วิเคราะห์ทฤษฎี &amp; อ้างอิงบทเรียน</div>
+              <div class="section-senior-content">
+                <p class="notebook-line"><i class="fas fa-pen-nib"></i> <strong>สมุดบันทึกตอบ:</strong> Interrupt Enable Register (และหมายเหตุ IP = Interrupt Priority Register) — ถูกต้อง</p>
+                <div class="ref-row"><a class="ref-chip" href="../../../lecture/lecture6-pptx-markdown/lecture_6_complete.md"><i class="fas fa-book-open"></i> Lecture 6 · หน้า 10, 11</a><a class="ref-chip" href="../../../lecture/lecture3-markdown/lecture_3_complete.md"><i class="fas fa-book-open"></i> Lecture 3 · หน้า 12</a></div><ul>
+<li>Lecture 6 หน้า 10: "IE - Interrupt Enable Register {Bit Addressable IE.7 to IE.0}" เขียน 1 = เปิด, 0 = ปิด</li>
+<li>Lecture 6 หน้า 11: IP - Interrupt Priority Register เขียน 1 = high priority, 0 = low priority</li>
+<li>Lecture 3 หน้า 12: IE อยู่ที่ A8H, IP อยู่ที่ B8H</li>
+<li>จุดที่พลาดบ่อย: ต้องเปิด <strong>EA</strong> (Enable All) ด้วยเสมอ ไม่เช่นนั้นบิตย่อยทุกบิตไม่มีผล ตัวอย่างใน Lecture 6 หน้า 1 เขียน <code>00000001B</code> (EX0 อย่างเดียว) ถ้าใช้งานจริงต้องเป็น <code>10000001B</code></li>
+</ul>
+              </div>
+            </div>
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> เฉลยฉบับวิศวกรรม</div>
+              </div>
+              <div class="content-block">
+<div class="table-responsive">
+  <table class="custom-table">
+    <thead><tr><th>IE บิต</th><th>7</th><th>6</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead>
+    <tbody>
+<tr><td>ชื่อ</td><td>EA</td><td>—</td><td>ET2</td><td>ES</td><td>ET1</td><td>EX1</td><td>ET0</td><td>EX0</td></tr>
+<tr><td>ความหมาย</td><td>Enable All</td><td>—</td><td>Reserved</td><td>Serial</td><td>Timer 1</td><td>INT1</td><td>Timer 0</td><td>INT0</td></tr>
+    </tbody>
+  </table>
+</div><div class="table-responsive">
+  <table class="custom-table">
+    <thead><tr><th>IP บิต</th><th>7</th><th>6</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr></thead>
+    <tbody>
+<tr><td>ชื่อ</td><td>—</td><td>—</td><td>PT2</td><td>PS</td><td>PT1</td><td>PX1</td><td>PT0</td><td>PX0</td></tr>
+    </tbody>
+  </table>
+</div><p><strong>คำตอบ:</strong> IE ย่อมาจาก <strong>Interrupt Enable Register</strong> (SFR A8H) ใช้เปิด/ปิด interrupt รวม (EA) และรายตัว (ES, ET1, EX1, ET0, EX0) เช่น เปิด Timer 0 interrupt: <code>MOV IE, #82H</code> (EA = 1, ET0 = 1)</p>
+              </div>
+            </div>
+          </div>
+          <footer class="card-footer">
+            <div class="card-footer-meta"><a class="card-footer-id" href="#q17">#q17</a><span class="card-footer-tag">Priority, Motors &amp; FSM</span></div>
+            <nav class="card-footer-nav" aria-label="นำทางระหว่างข้อ"><a href="#q16"><i class="fas fa-chevron-left" aria-hidden="true"></i> ก่อนหน้า</a><a href="#page-top"><i class="fas fa-arrow-up" aria-hidden="true"></i> บนสุด</a><a href="#q18">ถัดไป <i class="fas fa-chevron-right" aria-hidden="true"></i></a></nav>
+          </footer>
+        </article>
+
+        <article class="solution-card" id="q18" data-category="fsm">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge red">ข้อ 18</span>
+              <h3 class="card-title">Interrupt ที่มีความสำคัญสูงเป็นลำดับ 2</h3>
+            </div>
+            <span class="ref-pill">ตอนที่ 4</span>
+          </div>
+          <div class="card-body">
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-quote-left"></i> โจทย์จากกระดาษข้อสอบจริง</div>
+              <div class="content-block">
+                <p><strong>18. Interrupt ที่มีความสำคัญสูงลำดับ 2</strong></p>
+                <p class="media-attr"><i class="fas fa-camera"></i> ถ้อยคำตามกระดาษพิมพ์ใน <a href="Final-Embedded%20.pdf">Final-Embedded .pdf</a> · คำตอบที่จดไว้: <a href="S__324124687_0.jpg">สมุดหน้า 4</a></p>
+              </div>
+            </div>
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-microscope"></i> วิเคราะห์ทฤษฎี &amp; อ้างอิงบทเรียน</div>
+              <div class="section-senior-content">
+                <p class="notebook-line"><i class="fas fa-pen-nib"></i> <strong>สมุดบันทึกตอบ:</strong> TF0 (Timer 0 Overflow) พร้อมเขียนลำดับ INT0 = 1, TF0 = 2, INT1 = 3, TF1 = 4, RI/TI = 5 — ถูกต้อง</p>
+                <div class="ref-row"><a class="ref-chip" href="../../../lecture/lecture6-pptx-markdown/lecture_6_complete.md"><i class="fas fa-book-open"></i> Lecture 6 · หน้า 9, 11</a></div><ul>
+<li>Lecture 6 หน้า 9: ตาราง Priority and Vector Address — INT0 (1), TF0 (2), INT1 (3), TF1 (4), Serial (5)</li>
+<li>ลำดับนี้คือ natural priority เมื่อ IP = 00H (0000 0000B) (ทุกตัวอยู่ระดับ low เท่ากัน) ถ้าตั้งบิตใน IP (Lecture 6 หน้า 11) ตัวที่ตั้งเป็น high จะมาก่อน</li>
+<li>สังเกต: ลำดับ priority เรียงตามแอดเดรส Vector จากน้อยไปมาก</li>
+</ul><div class="box-warning" style="margin-top: 0.85rem;">
+  <div class="box-warning-header"><i class="fas fa-exclamation-triangle"></i> กับดักจากกระดาษที่ตรวจแล้ว</div>
+  <div class="box-warning-text">คำตอบ "Timer Interrupt" ถูกกากบาท เพราะมี Timer 2 ตัว ต้องระบุให้ชัดว่าเป็น <strong>Timer 0 Overflow (TF0)</strong></div>
+</div>
+              </div>
+            </div>
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> เฉลยฉบับวิศวกรรม</div>
+              </div>
+              <div class="content-block">
+<div class="table-responsive">
+  <table class="custom-table">
+    <thead><tr><th>ลำดับ</th><th>Interrupt</th><th>Vector</th></tr></thead>
+    <tbody>
+<tr><td>1 (สูงสุด)</td><td>INT0</td><td>0003H</td></tr>
+<tr><td><strong>2</strong></td><td><strong>TF0 — Timer 0 Overflow</strong></td><td><strong>000BH</strong></td></tr>
+<tr><td>3</td><td>INT1</td><td>0013H</td></tr>
+<tr><td>4</td><td>TF1 — Timer 1 Overflow</td><td>001BH</td></tr>
+<tr><td>5 (ต่ำสุด)</td><td>Serial (RI / TI)</td><td>0023H</td></tr>
+    </tbody>
+  </table>
+</div><p><strong>คำตอบ:</strong> <strong>TF0 (Timer 0 Overflow Interrupt)</strong> Vector 000BH เป็นลำดับที่ 2 รองจาก INT0 ตามลำดับเริ่มต้นของ 8051</p>
+              </div>
+            </div>
+          </div>
+          <footer class="card-footer">
+            <div class="card-footer-meta"><a class="card-footer-id" href="#q18">#q18</a><span class="card-footer-tag">Priority, Motors &amp; FSM</span></div>
+            <nav class="card-footer-nav" aria-label="นำทางระหว่างข้อ"><a href="#q17"><i class="fas fa-chevron-left" aria-hidden="true"></i> ก่อนหน้า</a><a href="#page-top"><i class="fas fa-arrow-up" aria-hidden="true"></i> บนสุด</a><a href="#q19">ถัดไป <i class="fas fa-chevron-right" aria-hidden="true"></i></a></nav>
+          </footer>
+        </article>
+
+        <article class="solution-card" id="q19" data-category="fsm">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge red">ข้อ 19</span>
+              <h3 class="card-title">เพิ่ม/ลดความเร็วมอเตอร์ DC ด้วย 8051</h3>
+            </div>
+            <span class="ref-pill">ตอนที่ 4</span>
+          </div>
+          <div class="card-body">
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-quote-left"></i> โจทย์จากกระดาษข้อสอบจริง</div>
+              <div class="content-block">
+                <p><strong>19. การเพิ่มลดความเร็วมอเตอร์กระแสตรงด้วย 8051 ทำได้โดยใช้วิธีการอะไร</strong></p>
+                <p class="media-attr"><i class="fas fa-camera"></i> ถ้อยคำตามกระดาษพิมพ์ใน <a href="Final-Embedded%20.pdf">Final-Embedded .pdf</a> · คำตอบที่จดไว้: <a href="S__324124687_0.jpg">สมุดหน้า 4</a></p>
+              </div>
+            </div>
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-microscope"></i> วิเคราะห์ทฤษฎี &amp; อ้างอิงบทเรียน</div>
+              <div class="section-senior-content">
+                <p class="notebook-line"><i class="fas fa-pen-nib"></i> <strong>สมุดบันทึกตอบ:</strong> เปลี่ยนปริมาณพลังงานที่ใช้โดยใช้เทคนิค PWM (Pulse Width Modulation) — ถูกต้อง</p>
+                <div class="ref-row"><a class="ref-chip" href="../../../textbook/avr-mazidi-markdown/ch16_pwm_programming_and_dc_motor_control.md"><i class="fas fa-book-open"></i> Mazidi บทที่ 16 · Section 16.1</a></div><ul>
+<li>Mazidi 16.1: "By changing (modulating) the width of the pulse applied to the DC motor we can increase or decrease the amount of power provided to the motor"</li>
+<li>แรงดันมีแอมพลิจูดคงที่ แต่ duty cycle เปลี่ยนได้ — พัลส์กว้างขึ้น ความเร็วสูงขึ้น</li>
+<li>8051 รุ่นมาตรฐานไม่มีวงจร PWM ในตัว จึงสร้างด้วยซอฟต์แวร์ + Timer: ตั้งเวลา ON และ OFF สลับกันบนขาพอร์ต</li>
+<li>ขาพอร์ตจ่ายกระแสมอเตอร์ตรงไม่ได้ ต้องผ่านวงจรขับ เช่น H-Bridge หรือชิป L298 (Mazidi Figure 16-6)</li>
+</ul>
+              </div>
+            </div>
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> เฉลยฉบับวิศวกรรม</div>
+              </div>
+              <div class="content-block">
+<figure class="fig-card">
+<svg class="fx-svg" viewBox="0 0 460 190" role="img" aria-label="PWM duty cycle 25 เปอร์เซ็นต์ และ 75 เปอร์เซ็นต์">
+  <text x="10" y="26" class="fx-sub">Duty 25% → ช้า</text>
+  <polyline points="10,70 10,40 60,40 60,70 210,70 210,40 260,40 260,70 410,70 410,40 450,40" class="fx-wave"/>
+  <text x="10" y="116" class="fx-sub">Duty 75% → เร็ว</text>
+  <polyline points="10,160 10,130 160,130 160,160 210,160 210,130 360,130 360,160 410,160 410,130 450,130" class="fx-wave"/>
+  <line x1="10" y1="178" x2="210" y2="178" class="fx-line"/>
+  <text x="110" y="174" class="fx-sub" text-anchor="middle">คาบ T คงที่</text>
+</svg>
+<figcaption>แอมพลิจูดคงที่ คาบคงที่ เปลี่ยนเฉพาะความกว้างพัลส์ (Mazidi 16.1: wider pulse → higher speed)</figcaption>
+</figure><p><code>Duty Cycle = Ton ÷ (Ton + Toff) × 100%</code></p>
+<p><strong>ตัวอย่างออกแบบ</strong> (คาบ 1 ms, duty 75%): <code>Ton = 750 µs</code> → <code>65536 − 750 = 64786 = FD12H</code> และ <code>Toff = 250 µs</code> → <code>65536 − 250 = 65286 = FF06H</code> สลับโหลดสองค่านี้เข้า TH0/TL0 ทุกครั้งที่ Timer ล้น แล้ว <code>CPL</code> ขาที่ต่อวงจรขับมอเตอร์</p>
+<p><strong>คำตอบ:</strong> ใช้ <strong>PWM (Pulse Width Modulation)</strong> ส่งพัลส์ที่มีคาบคงที่ไปยังวงจรขับมอเตอร์ แล้วปรับความกว้างพัลส์ (duty cycle) ด้วย Timer ของ 8051 duty มาก = กำลังเฉลี่ยมาก = หมุนเร็ว duty น้อย = หมุนช้า</p>
+              </div>
+            </div>
+          </div>
+          <footer class="card-footer">
+            <div class="card-footer-meta"><a class="card-footer-id" href="#q19">#q19</a><span class="card-footer-tag">Priority, Motors &amp; FSM</span></div>
+            <nav class="card-footer-nav" aria-label="นำทางระหว่างข้อ"><a href="#q18"><i class="fas fa-chevron-left" aria-hidden="true"></i> ก่อนหน้า</a><a href="#page-top"><i class="fas fa-arrow-up" aria-hidden="true"></i> บนสุด</a><a href="#q20">ถัดไป <i class="fas fa-chevron-right" aria-hidden="true"></i></a></nav>
+          </footer>
+        </article>
+
+        <article class="solution-card" id="q20" data-category="fsm">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge red">ข้อ 20</span>
+              <h3 class="card-title">เปลี่ยนทิศทางการหมุนมอเตอร์ DC ด้วย 8051</h3>
+            </div>
+            <span class="ref-pill">ตอนที่ 4</span>
+          </div>
+          <div class="card-body">
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-quote-left"></i> โจทย์จากกระดาษข้อสอบจริง</div>
+              <div class="content-block">
+                <p><strong>20. การเปลี่ยนทิศทางการหมุนของมอเตอร์กระแสตรงด้วย 8051 ทำได้โดยใช้วิธีการอะไร</strong></p>
+                <p class="media-attr"><i class="fas fa-camera"></i> ถ้อยคำตามกระดาษพิมพ์ใน <a href="Final-Embedded%20.pdf">Final-Embedded .pdf</a> · คำตอบที่จดไว้: <a href="S__324124687_0.jpg">สมุดหน้า 4</a></p>
+              </div>
+            </div>
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-microscope"></i> วิเคราะห์ทฤษฎี &amp; อ้างอิงบทเรียน</div>
+              <div class="section-senior-content">
+                <p class="notebook-line"><i class="fas fa-pen-nib"></i> <strong>สมุดบันทึกตอบ:</strong> สลับขั้วมอเตอร์ (ควบคุม H-Bridge) — ถูกต้อง</p>
+                <div class="ref-row"><a class="ref-chip" href="../../../textbook/avr-mazidi-markdown/ch16_pwm_programming_and_dc_motor_control.md"><i class="fas fa-book-open"></i> Mazidi บทที่ 16 · Section 16.1, Fig. 16-2 ถึง 16-5, Table 16-2</a></div><ul>
+<li>Mazidi 16.1: "Connecting them to a DC voltage source moves the motor in one direction. By reversing the polarity, the DC motor will move in the opposite direction."</li>
+<li>H-Bridge ใช้สวิตช์ 4 ตัวรอบมอเตอร์: ปิด SW1 และ SW4 → หมุนทางหนึ่ง, ปิด SW2 และ SW3 → กระแสไหลย้อน หมุนอีกทาง</li>
+<li>Figure 16-5 / Table 16-2: การปิดสวิตช์ผิดคู่ (แถว Invalid) ทำให้ลัดวงจรจาก +V ลงกราวด์ วงจรจริงต้องป้องกันไม่ให้เกิด</li>
+</ul>
+              </div>
+            </div>
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> เฉลยฉบับวิศวกรรม</div>
+              </div>
+              <div class="content-block">
+<figure class="fig-card">
+<svg class="fx-svg" viewBox="0 0 420 250" role="img" aria-label="วงจร H-Bridge สี่สวิตช์">
+  <line x1="60" y1="24" x2="360" y2="24" class="fx-line"/>
+  <text x="210" y="18" class="fx-sub" text-anchor="middle">+V</text>
+  <line x1="60" y1="226" x2="360" y2="226" class="fx-line"/>
+  <text x="210" y="244" class="fx-sub" text-anchor="middle">GND</text>
+  <line x1="100" y1="24" x2="100" y2="60" class="fx-line"/><rect x="80" y="60" width="40" height="36" rx="5" class="fx-box"/><text x="100" y="83" class="fx-text" text-anchor="middle">SW1</text>
+  <line x1="100" y1="96" x2="100" y2="154" class="fx-line"/>
+  <rect x="80" y="154" width="40" height="36" rx="5" class="fx-box"/><text x="100" y="177" class="fx-text" text-anchor="middle">SW3</text><line x1="100" y1="190" x2="100" y2="226" class="fx-line"/>
+  <line x1="320" y1="24" x2="320" y2="60" class="fx-line"/><rect x="300" y="60" width="40" height="36" rx="5" class="fx-box"/><text x="320" y="83" class="fx-text" text-anchor="middle">SW2</text>
+  <line x1="320" y1="96" x2="320" y2="154" class="fx-line"/>
+  <rect x="300" y="154" width="40" height="36" rx="5" class="fx-box"/><text x="320" y="177" class="fx-text" text-anchor="middle">SW4</text><line x1="320" y1="190" x2="320" y2="226" class="fx-line"/>
+  <line x1="100" y1="125" x2="185" y2="125" class="fx-line"/><line x1="235" y1="125" x2="320" y2="125" class="fx-line"/>
+  <circle cx="210" cy="125" r="25" class="fx-motor"/><text x="210" y="131" class="fx-text" text-anchor="middle" font-weight="700">M</text>
+</svg>
+<figcaption>ตำแหน่งสวิตช์ตาม Mazidi Figure 16-2: ปิด SW1+SW4 กระแสไหลผ่านมอเตอร์ทางหนึ่ง ปิด SW2+SW3 กระแสไหลทางตรงข้าม</figcaption>
+</figure><div class="table-responsive">
+  <table class="custom-table">
+    <thead><tr><th>การทำงาน (Table 16-2)</th><th>SW1</th><th>SW2</th><th>SW3</th><th>SW4</th></tr></thead>
+    <tbody>
+<tr><td>หยุด (Off)</td><td>Open</td><td>Open</td><td>Open</td><td>Open</td></tr>
+<tr><td>หมุนตามเข็ม (Clockwise)</td><td><strong>Closed</strong></td><td>Open</td><td>Open</td><td><strong>Closed</strong></td></tr>
+<tr><td>หมุนทวนเข็ม (Counterclockwise)</td><td>Open</td><td><strong>Closed</strong></td><td><strong>Closed</strong></td><td>Open</td></tr>
+<tr><td>ห้ามใช้ (Invalid — ลัดวงจร)</td><td>Closed</td><td>Closed</td><td>Closed</td><td>Closed</td></tr>
+    </tbody>
+  </table>
+</div><p><strong>คำตอบ:</strong> เปลี่ยนทิศทางโดย<strong>กลับขั้วแรงดัน</strong>ที่จ่ายให้มอเตอร์ผ่านวงจร <strong>H-Bridge</strong> 8051 ใช้ขาพอร์ต 2 ขาสั่งคู่สวิตช์ (SW1+SW4 หรือ SW2+SW3) เพื่อเลือกทิศการไหลของกระแสผ่านมอเตอร์</p>
+              </div>
+            </div>
+          </div>
+          <footer class="card-footer">
+            <div class="card-footer-meta"><a class="card-footer-id" href="#q20">#q20</a><span class="card-footer-tag">Priority, Motors &amp; FSM</span></div>
+            <nav class="card-footer-nav" aria-label="นำทางระหว่างข้อ"><a href="#q19"><i class="fas fa-chevron-left" aria-hidden="true"></i> ก่อนหน้า</a><a href="#page-top"><i class="fas fa-arrow-up" aria-hidden="true"></i> บนสุด</a><a href="#q21">ถัดไป <i class="fas fa-chevron-right" aria-hidden="true"></i></a></nav>
+          </footer>
+        </article>
+
+        <article class="solution-card" id="q21" data-category="fsm">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="q-badge red">ข้อ 21</span>
+              <h3 class="card-title">โปรแกรม Ready State จาก State chart และ Hardware Diagram [5 คะแนน]</h3>
+            </div>
+            <span class="ref-pill">ตอนที่ 4</span>
+          </div>
+          <div class="card-body">
+            <div class="section-recalled">
+              <div class="section-recalled-header"><i class="fas fa-quote-left"></i> โจทย์จากกระดาษข้อสอบจริง</div>
+              <div class="content-block">
+                <p><strong>21. จงเขียนโปรแกรมสำหรับ Ready State โดยกำหนดให้ State chart และ Hardware Diagram [5]</strong></p>
+                <p class="media-attr"><i class="fas fa-camera"></i> ถ้อยคำตามกระดาษพิมพ์ใน <a href="Final-Embedded%20.pdf">Final-Embedded .pdf</a> · คำตอบที่จดไว้: <a href="S__324124687_0.jpg">สมุดหน้า 4</a></p>
+              </div>
+            </div>
+            <div class="section-senior-draft">
+              <div class="section-senior-header"><i class="fas fa-microscope"></i> วิเคราะห์ทฤษฎี &amp; อ้างอิงบทเรียน</div>
+              <div class="section-senior-content">
+                <p class="notebook-line"><i class="fas fa-pen-nib"></i> <strong>สมุดบันทึกตอบ:</strong> วาด State chart (Ready --push--> Go, Go --timer--> Ready, Go --push--> Go), กำหนด P1.1 = คนสีแดง, P1.0 = คนสีเขียว, P2.0 = ปุ่มกด และเขียนโค้ด ReadyState / GoState / delay ครบ 3 ส่วน — ตรงกับ Lab 5</p>
+                <div class="ref-row"><a class="ref-chip" href="../../../lecture/lecture-programming-for-a-state-machine-markdown/lecture_progroming_for_a_state_machine_complete.md"><i class="fas fa-book-open"></i> Lab 5 State Machine · หน้า 2–5</a></div><ul>
+<li>โจทย์นี้คือ <strong>Lab 5 "Traffic 1"</strong> จากเอกสาร Programming for a State Machine ทั้งรูป State chart และขา P1.1 / P1.0 / P2.0</li>
+<li>Ready State = สัญญาณคนสีแดง (หยุด), Go State = สัญญาณคนสีเขียว (เดินได้) ตามรูปบนกระดาษข้อสอบ</li>
+<li>Lab 5 ใช้ <code>R0</code> เก็บหมายเลขสถานะ (01H = Ready, 02H = Go) และ <code>R1</code> เป็นตัวนับรอบ delay</li>
+<li>สไลด์ใช้ <code>JB P2.0, GoState</code> แปลว่าบอร์ดแล็บต่อปุ่มให้ <strong>กด = 1</strong> ถ้าต่อปุ่มแบบ active-low (pull-up, กด = 0) ให้เปลี่ยนเป็น <code>JNB</code></li>
+<li>ใน Go State ถ้ากดปุ่มอีกครั้งหลังครบเวลา โปรแกรมกลับไปเริ่ม Go ใหม่ (เส้น push วนกลับตัวเองใน State chart)</li>
+</ul>
+              </div>
+            </div>
+            <div class="section-official">
+              <div class="section-official-header">
+                <div class="official-badge-title"><i class="fas fa-check-circle"></i> เฉลยฉบับวิศวกรรม</div>
+              </div>
+              <div class="content-block">
+<div class="fig-grid"><figure class="fig-card">
+<svg class="fx-svg" viewBox="0 0 460 320" role="img" aria-label="State chart Ready State และ Go State">
+  <defs><marker id="ar21" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="fx-head"/></marker></defs>
+  <circle cx="190" cy="22" r="9" class="fx-init"/>
+  <line x1="190" y1="31" x2="190" y2="62" class="fx-line" marker-end="url(#ar21)"/>
+  <rect x="100" y="64" width="180" height="56" rx="12" class="fx-state-red"/>
+  <text x="190" y="88" class="fx-text" text-anchor="middle" font-weight="700">Ready State</text>
+  <text x="190" y="106" class="fx-sub fx-mono" text-anchor="middle">R0=01H · P1.1=1 · P1.0=0</text>
+  <line x1="190" y1="120" x2="190" y2="190" class="fx-line" marker-end="url(#ar21)"/>
+  <text x="198" y="152" class="fx-sub">push</text>
+  <text x="198" y="167" class="fx-sub fx-mono">JB P2.0, GoState</text>
+  <rect x="100" y="192" width="180" height="56" rx="12" class="fx-state-green"/>
+  <text x="190" y="216" class="fx-text" text-anchor="middle" font-weight="700">Go State</text>
+  <text x="190" y="234" class="fx-sub fx-mono" text-anchor="middle">R0=02H · P1.1=0 · P1.0=1</text>
+  <path d="M280,220 H372 V92 H284" class="fx-line" marker-end="url(#ar21)"/>
+  <text x="380" y="150" class="fx-sub">timer</text>
+  <text x="380" y="165" class="fx-sub fx-mono">R1 × 10 µs</text>
+  <path d="M140,248 V290 H62 V220 H96" class="fx-line" marker-end="url(#ar21)"/>
+  <text x="18" y="306" class="fx-sub">push (กดซ้ำ → นับ Go ใหม่)</text>
+</svg>
+<figcaption>State chart ตามรูปบนกระดาษข้อสอบ (ตรงกับ Lab 5 "Traffic 1") — มี 3 เส้นเปลี่ยนสถานะ: push, timer และ push วนกลับ Go</figcaption>
+</figure><figure class="fig-card">
+<svg class="fx-svg" viewBox="0 0 460 250" role="img" aria-label="Hardware diagram 8051 ต่อ P1.1 P1.0 และ P2.0">
+  <rect x="24" y="24" width="150" height="200" rx="8" class="fx-box"/>
+  <text x="99" y="50" class="fx-text" text-anchor="middle" font-weight="700">8051</text>
+  <text x="99" y="68" class="fx-sub" text-anchor="middle">12 MHz</text>
+  <text x="164" y="100" class="fx-text fx-mono" text-anchor="end">P1.1</text>
+  <text x="164" y="150" class="fx-text fx-mono" text-anchor="end">P1.0</text>
+  <text x="164" y="200" class="fx-text fx-mono" text-anchor="end">P2.0</text>
+  <line x1="174" y1="96" x2="300" y2="96" class="fx-line"/>
+  <line x1="174" y1="146" x2="300" y2="146" class="fx-line"/>
+  <line x1="174" y1="196" x2="300" y2="196" class="fx-line"/>
+  <circle cx="316" cy="96" r="15" fill="#ef4444" stroke="#991b1b" stroke-width="1.5"/>
+  <circle cx="316" cy="146" r="15" fill="#22c55e" stroke="#166534" stroke-width="1.5"/>
+  <rect x="301" y="182" width="30" height="28" rx="5" class="fx-btn"/>
+  <circle cx="316" cy="196" r="7" class="fx-btn-cap"/>
+  <text x="342" y="92" class="fx-text">คนสีแดง</text>
+  <text x="342" y="108" class="fx-sub">Ready (หยุด)</text>
+  <text x="342" y="142" class="fx-text">คนสีเขียว</text>
+  <text x="342" y="158" class="fx-sub">Go (เดินได้)</text>
+  <text x="342" y="192" class="fx-text">ปุ่มกด</text>
+  <text x="342" y="208" class="fx-sub">กด → P2.0 = 1</text>
+</svg>
+<figcaption>Hardware Diagram ตามกระดาษข้อสอบ: เอาต์พุต 2 บิต (P1.1, P1.0) และอินพุต 1 บิต (P2.0)</figcaption>
+</figure></div><div class="table-responsive">
+  <table class="custom-table">
+    <thead><tr><th>State</th><th>R0</th><th>P1.1 (คนสีแดง)</th><th>P1.0 (คนสีเขียว)</th><th>เงื่อนไขออก</th></tr></thead>
+    <tbody>
+<tr><td>Ready</td><td>01H</td><td>1 (ON)</td><td>0 (OFF)</td><td>P2.0 = 1 (push) → Go</td></tr>
+<tr><td>Go</td><td>02H</td><td>0 (OFF)</td><td>1 (ON)</td><td>ครบ R1 × 10 µs → ตรวจ P2.0: กดอยู่ → Go ใหม่, ไม่กด → Ready</td></tr>
+    </tbody>
+  </table>
+</div><div class="code-wrapper">
+  <div class="code-header">
+    <span>8051 Assembly — Ready / Go FSM</span>
+    <button class="btn-copy" type="button">Copy Code</button>
+  </div>
+  <pre class="code-content"><code><span class="comment">; ===============================================================</span>
+<span class="comment">; Ready / Go pedestrian FSM  (Lab 5 "Traffic 1", Fosc = 12 MHz)</span>
+<span class="comment">; Output : P1.1 = คนสีแดง (Ready), P1.0 = คนสีเขียว (Go)</span>
+<span class="comment">; Input  : P2.0 = ปุ่มกด (บอร์ดแล็บ: กด = 1)</span>
+<span class="comment">; State  : R0 = 01H Ready, R0 = 02H Go</span>
+<span class="comment">; ===============================================================</span>
+        <span class="directive">ORG</span>   <span class="address">0000H</span>
+<span class="operand">ReadyState:</span>
+        <span class="opcode">MOV</span>   <span class="operand">R0</span>, <span class="immediate">#01H</span>        <span class="comment">; state 1 = Ready</span>
+        <span class="opcode">SETB</span>  <span class="operand">P1.1</span>            <span class="comment">; คนสีแดง ON</span>
+        <span class="opcode">CLR</span>   <span class="operand">P1.0</span>            <span class="comment">; คนสีเขียว OFF</span>
+        <span class="opcode">JB</span>    <span class="operand">P2.0</span>, <span class="operand">GoState</span>   <span class="comment">; push -&gt; Go State</span>
+        <span class="opcode">SJMP</span>  <span class="operand">ReadyState</span>      <span class="comment">; ไม่กด -&gt; อยู่ Ready</span>
+
+<span class="operand">GoState:</span>
+        <span class="opcode">MOV</span>   <span class="operand">R0</span>, <span class="immediate">#02H</span>        <span class="comment">; state 2 = Go</span>
+        <span class="opcode">CLR</span>   <span class="operand">P1.1</span>            <span class="comment">; คนสีแดง OFF</span>
+        <span class="opcode">SETB</span>  <span class="operand">P1.0</span>            <span class="comment">; คนสีเขียว ON</span>
+        <span class="opcode">MOV</span>   <span class="operand">R1</span>, <span class="immediate">#10</span>         <span class="comment">; 10 รอบ x 10 us = 100 us</span>
+<span class="operand">Timer:</span>
+        <span class="opcode">ACALL</span> <span class="operand">Delay</span>           <span class="comment">; สไลด์เขียน call delay</span>
+        <span class="opcode">DJNZ</span>  <span class="operand">R1</span>, <span class="operand">Timer</span>
+        <span class="opcode">JB</span>    <span class="operand">P2.0</span>, <span class="operand">GoState</span>   <span class="comment">; ยังกดอยู่ -&gt; เริ่ม Go ใหม่</span>
+        <span class="opcode">SJMP</span>  <span class="operand">ReadyState</span>      <span class="comment">; timer หมด -&gt; Ready</span>
+
+<span class="comment">; ---- Delay 10 us : Timer 0 Mode 1, FFF6H ----</span>
+<span class="operand">Delay:</span>
+        <span class="opcode">MOV</span>   <span class="operand">TMOD</span>, <span class="immediate">#01H</span>      <span class="comment">; Timer 0 Mode 1</span>
+        <span class="opcode">MOV</span>   <span class="operand">TH0</span>, <span class="immediate">#0FFH</span>      <span class="comment">; 11111111B</span>
+        <span class="opcode">MOV</span>   <span class="operand">TL0</span>, <span class="immediate">#0F6H</span>      <span class="comment">; 11110110B -&gt; 10 counts</span>
+        <span class="opcode">MOV</span>   <span class="operand">TCON</span>, <span class="immediate">#10H</span>      <span class="comment">; TR0 = 1 เริ่มนับ</span>
+<span class="operand">Wait:</span>
+        <span class="opcode">JNB</span>   <span class="operand">TCON.5</span>, <span class="operand">Wait</span>    <span class="comment">; รอ TF0</span>
+        <span class="opcode">MOV</span>   <span class="operand">TCON</span>, <span class="immediate">#00H</span>      <span class="comment">; หยุด Timer, ล้าง TF0</span>
+        <span class="opcode">RET</span>
+        <span class="directive">END</span></code></pre>
+</div>
+<div class="box-info">
+  <div class="box-info-header"><i class="fas fa-ruler-combined"></i> ขยายผล: ถ้าอยากให้ไฟเขียวติดนานพอให้คนเดินข้ามจริง</div>
+  <p>100 µs สั้นเกินกว่าตาจะเห็น ถ้าต้องการ 1 วินาที ให้เปลี่ยน Delay เป็น 50 ms: <code>N = 50000 = C350H</code> → <code>65536 − 50000 = 15536 = 3CB0H</code> (<code>TH0 = 3CH</code>, <code>TL0 = B0H</code>) แล้วตั้ง <code>R1 = 20</code> → <code>20 × 50 ms = 1 s</code> โครงสร้าง FSM เดิมไม่ต้องเปลี่ยน</p>
+</div>
+<p><strong>เกณฑ์ 5 คะแนนที่ควรมีครบ:</strong> (1) State chart พร้อมเงื่อนไข push / timer (2) Hardware Diagram ขา P1.1, P1.0, P2.0 (3) โค้ด Ready State (4) โค้ด Go State + การวนนับเวลา (5) ซับรูทีน Delay ด้วย Timer 0</p>
+              </div>
+            </div>
+          </div>
+          <footer class="card-footer">
+            <div class="card-footer-meta"><a class="card-footer-id" href="#q21">#q21</a><span class="card-footer-tag">Priority, Motors &amp; FSM</span></div>
+            <nav class="card-footer-nav" aria-label="นำทางระหว่างข้อ"><a href="#q20"><i class="fas fa-chevron-left" aria-hidden="true"></i> ก่อนหน้า</a><a href="#page-top"><i class="fas fa-arrow-up" aria-hidden="true"></i> บนสุด</a></nav>
+          </footer>
+        </article>
+
+        <div class="box-info" style="margin-top: 0.5rem;">
+          <div class="box-info-header"><i class="fas fa-route"></i> ฝึกต่อจากชุดที่ 1 (56 ข้อ)</div>
+          <p>หัวข้อเดียวกันที่มีเฉลยเชิงลึกเพิ่มเติม: <a href="../../real-exam-recalled/index.html#q24">Delay 20 µs (ข้อ 24)</a> · <a href="../../real-exam-recalled/index.html#q25">Square Wave 1 kHz (ข้อ 25)</a> · <a href="../../real-exam-recalled/index.html#q38">Vector Interrupt (ข้อ 38)</a> · <a href="../../real-exam-recalled/index.html#q41">เรียง Priority (ข้อ 41)</a> · <a href="../../real-exam-recalled/index.html#q52">FSM Ready/Go (ข้อ 52)</a> · <a href="../../interactive-tools/index.html#timer-calc">Timer Calculator</a></p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <button id="mobile-toc-toggle" class="floating-toc-btn" title="เปิดสารบัญข้อสอบ">
+    <i class="fas fa-list-ul"></i> สารบัญ (21 ข้อ)
+  </button>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <div>
+        <p><strong>Embedded Systems Learning Platform</strong> &bull; Real Final Exam 2025 (21 ข้อ) — 305341 Embedded Systems 1</p>
+      </div>
+      <div class="footer-links">
+        <a href="../../../../index.html">หน้าแรก</a>
+        <a href="../../../index.html">305341 Embedded 1</a>
+        <a href="../../index.html">Final Hub</a>
+        <a href="../../real-exam-recalled/index.html">ชุดที่ 1: 56 ข้อ</a>
+        <a href="../../interactive-tools/index.html">Interactive Lab</a>
+        <a href="https://github.com/T3thr/embedded-system-learning" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../../../assets/js/main.js?v=3.1"></script>
+</body>
+</html>
