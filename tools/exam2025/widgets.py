@@ -42,7 +42,14 @@ def jump(target, label, preset=""):
 
 TIMER_WORKBENCH = '<section class="widget" id="w-timer" aria-labelledby="w-timer-h">' + head(
     "w-timer", "fa-stopwatch", "Timer / Counter Workbench",
-    "ตั้งเวลา แล้วดูค่าที่ต้องโหลดเข้า TH0/TL0 ทุกขั้น พร้อมเวลาจริงและความคลาดเคลื่อน") + '''
+    "เครื่องจำลองโจทย์ Timer/Counter: แก้ตัวเลขได้อิสระ สุ่มโจทย์ตามระดับความยาก ฝึกตอบแล้วตรวจ และดูเฉลยเต็มทุกขั้น") + '''
+  <div class="tabs" role="tablist" aria-label="โหมดของเครื่องจำลอง">
+    <button type="button" role="tab" class="tab" data-wt-tab="calc" aria-selected="true">คำนวณอิสระ (ข้อ 4, 9)</button>
+    <button type="button" role="tab" class="tab" data-wt-tab="solve" aria-selected="false">ตัวแก้โจทย์ทุกแบบ</button>
+    <button type="button" role="tab" class="tab" data-wt-tab="practice" aria-selected="false">ฝึกสอบ สุ่มโจทย์</button>
+    <button type="button" role="tab" class="tab" data-wt-tab="map" aria-selected="false">ตัวเลขที่เปลี่ยนได้</button>
+  </div>
+  <div data-wt-panel="calc">
   <div class="widget-grid">
     <div class="widget-controls">
       <label class="field">ความถี่คริสตอล
@@ -77,6 +84,51 @@ TIMER_WORKBENCH = '<section class="widget" id="w-timer" aria-labelledby="w-timer
       <div class="reg-chips" id="wt-regs"></div>
       <svg id="wt-wave" class="widget-svg" viewBox="0 0 460 120" role="img" aria-label="รูปคลื่นที่ได้"></svg>
     </div>
+  </div>
+  </div>
+  <div data-wt-panel="solve" hidden>
+    <div class="sim-intro" id="ts-idea"></div>
+    <div class="widget-grid">
+      <div class="widget-controls">
+        <label class="field">ชนิดโจทย์<select id="ts-fam"></select></label>
+        <div id="ts-form" class="widget-controls"></div>
+        <label class="field">ระดับความยากที่จะสุ่ม<select id="ts-level"><option value="1">ระดับ 1: ตรงตามสไลด์</option><option value="2">ระดับ 2: ดัดแปลงจากข้อสอบเก่า</option><option value="3">ระดับ 3: พลิกแพลงหนัก</option></select></label>
+        <div class="preset-row">
+          <button type="button" class="chip-btn primary" id="ts-random"><i class="fas fa-dice" aria-hidden="true"></i> สุ่มตัวเลขในโจทย์ชนิดนี้</button>
+          <button type="button" class="chip-btn" id="ts-reset">คืนค่าตั้งต้น</button>
+        </div>
+      </div>
+      <div class="widget-out"><div id="ts-out" aria-live="polite"></div></div>
+    </div>
+    <details class="sim-vary" id="ts-vary"></details>
+  </div>
+  <div data-wt-panel="practice" hidden>
+    <div class="widget-grid">
+      <div class="widget-controls">
+        <fieldset class="field"><legend>ชนิดโจทย์ที่จะสุ่ม</legend><div id="tp-fams" class="tp-fams"></div></fieldset>
+        <label class="field">ระดับความยาก<select id="tp-level"><option value="1">ระดับ 1: ตรงตามสไลด์</option><option value="2" selected>ระดับ 2: ดัดแปลงจากข้อสอบเก่า</option><option value="3">ระดับ 3: พลิกแพลงหนัก</option></select></label>
+        <label class="field">รหัสโจทย์ (พิมพ์ซ้ำเพื่อได้โจทย์เดิม)<input id="tp-seed" type="number" min="1" step="1"></label>
+        <div class="preset-row">
+          <button type="button" class="chip-btn" id="tp-seed-go">โหลดรหัสนี้</button>
+          <button type="button" class="chip-btn primary" id="tp-new"><i class="fas fa-dice" aria-hidden="true"></i> โจทย์ใหม่</button>
+        </div>
+        <p class="widget-sub" id="tp-score">ยังไม่ได้ทำ</p>
+      </div>
+      <div class="widget-out">
+        <div id="tp-question" class="sim-q"></div>
+        <div id="tp-inputs" class="tp-inputs"></div>
+        <div class="preset-row">
+          <button type="button" class="chip-btn primary" id="tp-check">ตรวจคำตอบ</button>
+          <button type="button" class="chip-btn" id="tp-reveal">ดูเฉลยเต็ม</button>
+        </div>
+        <p id="tp-feedback" class="tp-feedback" aria-live="polite"></p>
+        <div id="tp-solution" hidden></div>
+      </div>
+    </div>
+  </div>
+  <div data-wt-panel="map" hidden>
+    <p class="widget-sub">ทุกแถวคือ "ตัวเลขที่อาจารย์เปลี่ยนได้" ของโจทย์แต่ละชนิด เทียบกับค่าที่เคยออก คำตอบแบบสำเร็จของทุกชนิดอยู่ในแท็บ "ตัวแก้โจทย์ทุกแบบ"</p>
+    <div id="tm-map"></div>
   </div>
 </section>'''
 

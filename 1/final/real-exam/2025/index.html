@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="../../../../assets/css/main.css?v=3.2">
   <link rel="stylesheet" href="../../../../assets/css/solution.css?v=3.2">
-  <link rel="stylesheet" href="exam2025.css?v=1.1">
+  <link rel="stylesheet" href="exam2025.css?v=1.2">
 </head>
 <body>
 
@@ -525,7 +525,14 @@
               </div>
             </div>
             <div class="evidence" id="q4-evidence"><div class="evidence-head"><i class="fas fa-images" aria-hidden="true"></i> <strong>ภาพจริงจากสไลด์และตำราที่ข้อ 4 อ้างถึง</strong><span class="evidence-count">6 ภาพ · คลิกภาพเพื่อเปิดหน้าต่างขยาย (ลูกศรซ้ายขวาเลื่อนดูภาพถัดไป)</span></div><div class="course-pos"><div class="cp-track" role="list" aria-label="ลำดับวิชา Embedded Systems 1"><a class="cp-pill support" href="#course-map" title="ระบบฝังตัวและสถาปัตยกรรม 8051"><span>1</span> Lecture 1</a><a class="cp-pill" href="#course-map" title="ขาของ 8051 และ PSW"><span>2</span> Lecture 2</a><a class="cp-pill" href="#course-map" title="หน่วยความจำ, Stack และ SFR"><span>3</span> Lecture 3</a><a class="cp-pill support" href="#course-map" title="Assembler และชุดคำสั่ง"><span>4</span> Lecture 4</a><a class="cp-pill main" href="#course-map" title="Timer และ Counter"><span>5</span> Lecture 5</a><a class="cp-pill" href="#course-map" title="Serial, Interrupt และ Power saving"><span>6</span> Lecture 6</a><a class="cp-pill" href="#course-map" title="ฮาร์ดแวร์ DC motor และไฟจราจร"><span>7</span> Lab 3</a><a class="cp-pill" href="#course-map" title="State machine"><span>8</span> Lab 5</a></div><div class="cp-detail"><p><i class="fas fa-map-pin" aria-hidden="true"></i> <strong>ข้อนี้อยู่ตรงไหนของวิชา:</strong> Lecture 5 (ลำดับที่ 5 จาก 8) · หัวข้อที่ 2 จาก 6 "การโหลดค่านับและการทำงาน"</p><div class="cp-cols"><div><strong class="cp-h">ต้องรู้ก่อนถึงจะทำข้อนี้ได้</strong><ul><li><strong>Lecture 1:</strong> คริสตัล 12 MHz → 1 machine cycle = 1 µs</li><li><strong>Lecture 4:</strong> คำสั่ง MOV ที่ใช้โหลด TH0, TL0</li><li><strong>Lecture 5:</strong> ข้อ 2 และ 3: ตัวนับขึ้นและจุดล้น</li></ul></div><div><strong class="cp-h">ข้อนี้ไปต่อยอดที่</strong><p>ข้อ 9 (delay 10 µs), Lab 5 ซับรูทีน delay และข้อ 21</p></div></div></div></div><div class="evidence-grid"><button type="button" class="ev-card" data-key="L5-04" data-set="q4" aria-haspopup="dialog"><span class="ev-thumb"><img src="slides/L5-04-t.webp" alt="Lecture 5 · หน้า 4: How to Load Count?" loading="lazy" decoding="async"></span><span class="ev-badge">Lecture 5 · หน้า 4</span><span class="ev-title">How to Load Count?</span><span class="ev-use">สูตรที่ต้องใช้: Count = FFFFH - Value + 1 พร้อมตัวอย่างนับ 9 ได้ FFF7H วิธีเดียวกับ 100 µs</span><span class="ev-open"><i class="fas fa-expand" aria-hidden="true"></i> ดูภาพเต็มและข้อความ</span></button><button type="button" class="ev-card" data-key="L5-16" data-set="q4" aria-haspopup="dialog"><span class="ev-thumb"><img src="slides/L5-16-t.webp" alt="Lecture 5 · หน้า 16: Timer Mode 1 (16 bits)" loading="lazy" decoding="async"></span><span class="ev-badge">Lecture 5 · หน้า 16</span><span class="ev-title">Timer Mode 1 (16 bits)</span><span class="ev-use">โหมด 1 นับได้สูงสุด 65,536 counts ใช้ตรวจว่า 100 อยู่ในช่วงที่ทำได้</span><span class="ev-open"><i class="fas fa-expand" aria-hidden="true"></i> ดูภาพเต็มและข้อความ</span></button><button type="button" class="ev-card" data-key="L5-20" data-set="q4" aria-haspopup="dialog"><span class="ev-thumb"><img src="slides/L5-20-t.webp" alt="Lecture 5 · หน้า 20: Time Programming in 8051 (delay 20 us)" loading="lazy" decoding="async"></span><span class="ev-badge">Lecture 5 · หน้า 20</span><span class="ev-title">Time Programming in 8051 (delay 20 us)</span><span class="ev-use">ตัวอย่างของอาจารย์ 20 µs → FFECH ทำตามขั้นตอนเดียวกันทุกบรรทัด</span><span class="ev-open"><i class="fas fa-expand" aria-hidden="true"></i> ดูภาพเต็มและข้อความ</span></button><button type="button" class="ev-card" data-key="L5-21" data-set="q4" aria-haspopup="dialog"><span class="ev-thumb"><img src="slides/L5-21-t.webp" alt="Lecture 5 · หน้า 21: Time Programming 2 (square wave 1 kHz)" loading="lazy" decoding="async"></span><span class="ev-badge">Lecture 5 · หน้า 21</span><span class="ev-title">Time Programming 2 (square wave 1 kHz)</span><span class="ev-use">ตัวอย่างเสริมท้ายข้อ 4 ในสมุด: 0.5 ms = 500 = 1F4H → FE0CH (TH0 = FEH, TL0 = 0CH)</span><span class="ev-open"><i class="fas fa-expand" aria-hidden="true"></i> ดูภาพเต็มและข้อความ</span></button><button type="button" class="ev-card" data-key="L1-19" data-set="q4" aria-haspopup="dialog"><span class="ev-thumb"><img src="slides/L1-19-t.webp" alt="Lecture 1 · หน้า 19: Feature of 8051 (clock)" loading="lazy" decoding="async"></span><span class="ev-badge">Lecture 1 · หน้า 19</span><span class="ev-title">Feature of 8051 (clock)</span><span class="ev-use">คริสตัล 12 MHz ที่ทำให้ 1 count = 12 / 12 MHz = 1 µs</span><span class="ev-open"><i class="fas fa-expand" aria-hidden="true"></i> ดูภาพเต็มและข้อความ</span></button><button type="button" class="ev-card" data-key="L4-23" data-set="q4" aria-haspopup="dialog"><span class="ev-thumb"><img src="slides/L4-23-t.webp" alt="Lecture 4 · หน้า 23: Data Transfers: MOV" loading="lazy" decoding="async"></span><span class="ev-badge">Lecture 4 · หน้า 23</span><span class="ev-title">Data Transfers: MOV</span><span class="ev-use">รูปแบบคำสั่ง MOV แบบ immediate ที่ใช้โหลด TH0 และ TL0</span><span class="ev-open"><i class="fas fa-expand" aria-hidden="true"></i> ดูภาพเต็มและข้อความ</span></button></div></div>
-            <section class="widget" id="w-timer" aria-labelledby="w-timer-h"><header class="widget-head"><div><h4 id="w-timer-h"><i class="fas fa-stopwatch" aria-hidden="true"></i> Timer / Counter Workbench</h4><p class="widget-sub">ตั้งเวลา แล้วดูค่าที่ต้องโหลดเข้า TH0/TL0 ทุกขั้น พร้อมเวลาจริงและความคลาดเคลื่อน</p></div><span class="widget-tag"><i class="fas fa-hand-pointer" aria-hidden="true"></i> Interactive</span></header>
+            <section class="widget" id="w-timer" aria-labelledby="w-timer-h"><header class="widget-head"><div><h4 id="w-timer-h"><i class="fas fa-stopwatch" aria-hidden="true"></i> Timer / Counter Workbench</h4><p class="widget-sub">เครื่องจำลองโจทย์ Timer/Counter: แก้ตัวเลขได้อิสระ สุ่มโจทย์ตามระดับความยาก ฝึกตอบแล้วตรวจ และดูเฉลยเต็มทุกขั้น</p></div><span class="widget-tag"><i class="fas fa-hand-pointer" aria-hidden="true"></i> Interactive</span></header>
+  <div class="tabs" role="tablist" aria-label="โหมดของเครื่องจำลอง">
+    <button type="button" role="tab" class="tab" data-wt-tab="calc" aria-selected="true">คำนวณอิสระ (ข้อ 4, 9)</button>
+    <button type="button" role="tab" class="tab" data-wt-tab="solve" aria-selected="false">ตัวแก้โจทย์ทุกแบบ</button>
+    <button type="button" role="tab" class="tab" data-wt-tab="practice" aria-selected="false">ฝึกสอบ สุ่มโจทย์</button>
+    <button type="button" role="tab" class="tab" data-wt-tab="map" aria-selected="false">ตัวเลขที่เปลี่ยนได้</button>
+  </div>
+  <div data-wt-panel="calc">
   <div class="widget-grid">
     <div class="widget-controls">
       <label class="field">ความถี่คริสตอล
@@ -560,6 +567,51 @@
       <div class="reg-chips" id="wt-regs"></div>
       <svg id="wt-wave" class="widget-svg" viewBox="0 0 460 120" role="img" aria-label="รูปคลื่นที่ได้"></svg>
     </div>
+  </div>
+  </div>
+  <div data-wt-panel="solve" hidden>
+    <div class="sim-intro" id="ts-idea"></div>
+    <div class="widget-grid">
+      <div class="widget-controls">
+        <label class="field">ชนิดโจทย์<select id="ts-fam"></select></label>
+        <div id="ts-form" class="widget-controls"></div>
+        <label class="field">ระดับความยากที่จะสุ่ม<select id="ts-level"><option value="1">ระดับ 1: ตรงตามสไลด์</option><option value="2">ระดับ 2: ดัดแปลงจากข้อสอบเก่า</option><option value="3">ระดับ 3: พลิกแพลงหนัก</option></select></label>
+        <div class="preset-row">
+          <button type="button" class="chip-btn primary" id="ts-random"><i class="fas fa-dice" aria-hidden="true"></i> สุ่มตัวเลขในโจทย์ชนิดนี้</button>
+          <button type="button" class="chip-btn" id="ts-reset">คืนค่าตั้งต้น</button>
+        </div>
+      </div>
+      <div class="widget-out"><div id="ts-out" aria-live="polite"></div></div>
+    </div>
+    <details class="sim-vary" id="ts-vary"></details>
+  </div>
+  <div data-wt-panel="practice" hidden>
+    <div class="widget-grid">
+      <div class="widget-controls">
+        <fieldset class="field"><legend>ชนิดโจทย์ที่จะสุ่ม</legend><div id="tp-fams" class="tp-fams"></div></fieldset>
+        <label class="field">ระดับความยาก<select id="tp-level"><option value="1">ระดับ 1: ตรงตามสไลด์</option><option value="2" selected>ระดับ 2: ดัดแปลงจากข้อสอบเก่า</option><option value="3">ระดับ 3: พลิกแพลงหนัก</option></select></label>
+        <label class="field">รหัสโจทย์ (พิมพ์ซ้ำเพื่อได้โจทย์เดิม)<input id="tp-seed" type="number" min="1" step="1"></label>
+        <div class="preset-row">
+          <button type="button" class="chip-btn" id="tp-seed-go">โหลดรหัสนี้</button>
+          <button type="button" class="chip-btn primary" id="tp-new"><i class="fas fa-dice" aria-hidden="true"></i> โจทย์ใหม่</button>
+        </div>
+        <p class="widget-sub" id="tp-score">ยังไม่ได้ทำ</p>
+      </div>
+      <div class="widget-out">
+        <div id="tp-question" class="sim-q"></div>
+        <div id="tp-inputs" class="tp-inputs"></div>
+        <div class="preset-row">
+          <button type="button" class="chip-btn primary" id="tp-check">ตรวจคำตอบ</button>
+          <button type="button" class="chip-btn" id="tp-reveal">ดูเฉลยเต็ม</button>
+        </div>
+        <p id="tp-feedback" class="tp-feedback" aria-live="polite"></p>
+        <div id="tp-solution" hidden></div>
+      </div>
+    </div>
+  </div>
+  <div data-wt-panel="map" hidden>
+    <p class="widget-sub">ทุกแถวคือ "ตัวเลขที่อาจารย์เปลี่ยนได้" ของโจทย์แต่ละชนิด เทียบกับค่าที่เคยออก คำตอบแบบสำเร็จของทุกชนิดอยู่ในแท็บ "ตัวแก้โจทย์ทุกแบบ"</p>
+    <div id="tm-map"></div>
   </div>
 </section>
             <details class="deep-lesson" id="q4-deep"><summary><span class="deep-summary-title"><i class="fas fa-graduation-cap" aria-hidden="true"></i> บทเรียนเชิงลึกจากศูนย์ ข้อ 4</span><span class="deep-summary-meta">10 หัวข้อ · ราว 12 นาที</span></summary><div class="deep-body"><section class="deep-sec"><h4><span class="deep-num">1</span><i class="fas fa-language" aria-hidden="true"></i> ศัพท์และที่มา <small>Terminology &amp; Etymology</small></h4><div class="table-responsive">
@@ -2215,6 +2267,7 @@
 
   <script src="../../../../assets/js/main.js?v=3.2"></script>
   <script src="sim8051.js?v=1.0"></script>
-  <script src="exam2025.js?v=1.4"></script>
+  <script src="exam2025.js?v=1.5"></script>
+  <script src="timersim.js?v=1.0"></script>
 </body>
 </html>
