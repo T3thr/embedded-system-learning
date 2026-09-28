@@ -18,3 +18,7 @@ node_modules
 
 # Graded answer sheet showing another student's name and ID: keep local only
 1/final/real-exam/2025/Final-Embedded .pdf
+
+# Python bytecode from the tools/ scripts
+__pycache__/
+*.pyc
