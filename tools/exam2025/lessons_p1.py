@@ -162,7 +162,7 @@ L[6] = dict(
     drill_q="ต้องให้ INT1 เป็น edge trigger และเปิด interrupt นี้ เขียนโค้ดที่สั้นที่สุด พร้อมระบุ vector",
     drill_a="<p><code>SETB IT1</code> (TCON.2), <code>SETB EX1</code> (IE.2), <code>SETB EA</code> (IE.7) vector ของ INT1 คือ <code>0013H</code></p>",
     blueprint=["Negative edge = ขอบ<strong>ขาลง</strong> 1 → 0", "ใช้กับ INT0/INT1 เมื่อ <code>IT0/IT1 = 1</code>", "<code>IT = 0</code> = low level trigger"],
-    sources=[("L5", "หน้า 9, 10", "IT1 and IT0 - External Interrupt Type bit"), ("L6", "หน้า 1", "setb TCON.0 ; set int type")],
+    sources=[("L5", "หน้า 9, 10", "IT1 and IT0 - External Interrupt Type bit"), ("L6", "หน้า 12", "setb TCON.0 ; set int type")],
     figure=NEG_EDGE + '<figure class="fig-card">' + TCON_EDGE + '<figcaption>IT0 (TCON.0) และ IT1 (TCON.2) เลือกชนิดการกระตุ้น</figcaption></figure>',
     jump=jump("w-sfr", "ลอง IT0 ใน Bit-Flipper", "TCON:01"),
 )

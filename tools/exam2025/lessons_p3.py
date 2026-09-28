@@ -59,7 +59,7 @@ L[16] = dict(
     drill_q="ISR ของ Timer 1 ยาว 20 ไบต์ ต้องวางโค้ดอย่างไรที่ vector ของมัน",
     drill_a="<p><code>ORG 001BH</code> แล้ว <code>LJMP T1_ISR</code> (หรือ AJMP ถ้าอยู่บล็อก 2 KB เดียวกัน) แล้ววาง ISR ตัวจริงที่แอดเดรสอื่น จบด้วย RETI</p>",
     blueprint=["Vector Address = แอดเดรส<strong>คงที่</strong>ในหน่วยความจำโปรแกรมที่ CPU กระโดดไปเริ่ม ISR", "ตาราง: 0000H Reset, 0003H INT0, 000BH TF0, 0013H INT1, 001BH TF1, 0023H Serial"],
-    sources=[("L6", "หน้า 1, 9, 13", "โค้ดตัวอย่าง ORG 0003H และตาราง vector")],
+    sources=[("L6", "หน้า 9, 12, 13", "โค้ดตัวอย่าง ORG 0003H และตาราง vector")],
     figure=VECTOR_MAP,
     jump="",
 )

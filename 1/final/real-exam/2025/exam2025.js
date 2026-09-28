@@ -581,3 +581,208 @@
     });
   });
 })();
+
+/*
+ * Slide modal: opens real lecture / lab / textbook page images from the evidence blocks and the gallery.
+ * Data comes from the JSON script tag #slide-data (built by tools/exam2025/evidence.py).
+ * Same style rules as above: no template literals and no regex end anchors.
+ */
+(function () {
+  'use strict';
+  var dataEl = document.getElementById('slide-data');
+  var overlay = document.getElementById('slide-modal');
+  if (!dataEl || !overlay) return;
+
+  var data = JSON.parse(dataEl.textContent);
+  var dialog = overlay.querySelector('.sm-dialog');
+  var el = {
+    crumb: document.getElementById('sm-crumb'), title: document.getElementById('sm-title'),
+    img: document.getElementById('sm-img'), wrap: document.getElementById('sm-img-wrap'),
+    prev: document.getElementById('sm-prev'), next: document.getElementById('sm-next'),
+    counter: document.getElementById('sm-counter'), strip: document.getElementById('sm-strip'),
+    where: document.getElementById('sm-where'), shows: document.getElementById('sm-shows'),
+    useSec: document.getElementById('sm-use-sec'), useH: document.getElementById('sm-use-h'), use: document.getElementById('sm-use'),
+    text: document.getElementById('sm-text'), note: document.getElementById('sm-note'), qs: document.getElementById('sm-qs'),
+    open: document.getElementById('sm-open'), zoom: document.getElementById('sm-zoom'),
+    close: document.getElementById('sm-close'), copy: document.getElementById('sm-copy')
+  };
+  var state = { set: [], setId: '', index: 0, opener: null, zoomed: false };
+
+  function setText(node, s) { node.textContent = s; }
+
+  function setZoom(on) {
+    state.zoomed = on;
+    overlay.classList.toggle('zoomed', on);
+    el.zoom.setAttribute('aria-pressed', on ? 'true' : 'false');
+    setText(el.zoom.querySelector('span'), on ? 'พอดีหน้าต่าง' : 'ขยาย 100%');
+    el.zoom.querySelector('i').className = on ? 'fas fa-search-minus' : 'fas fa-search-plus';
+    if (on) { el.wrap.scrollTop = 0; el.wrap.scrollLeft = 0; }
+  }
+
+  function buildStrip() {
+    el.strip.textContent = '';
+    state.set.forEach(function (key, i) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'sm-thumb';
+      b.setAttribute('role', 'tab');
+      b.setAttribute('aria-label', data.slides[key].label + ': ' + data.slides[key].title);
+      var im = document.createElement('img');
+      im.src = 'slides/' + key + '-t.webp';
+      im.alt = '';
+      im.loading = 'lazy';
+      b.appendChild(im);
+      b.addEventListener('click', function () { go(i); });
+      el.strip.appendChild(b);
+    });
+  }
+
+  function qLabel() {
+    if (state.setId.charAt(0) === 'q') return 'ข้อ ' + state.setId.slice(1);
+    return 'คลังสไลด์';
+  }
+
+  function render() {
+    var key = state.set[state.index];
+    var s = data.slides[key];
+    setText(el.crumb, s.label + '  ·  ' + qLabel());
+    setText(el.title, s.title);
+    el.img.src = 'slides/' + key + '.webp';
+    el.img.alt = s.label + ': ' + s.title;
+    setText(el.where, s.where);
+    setText(el.shows, s.shows);
+    var useKey = state.setId + '|' + key;
+    var use = data.uses[useKey];
+    if (use) {
+      el.useSec.hidden = false;
+      setText(el.useH, 'ใช้ตอบข้อ ' + state.setId.slice(1) + ' อย่างไร');
+      setText(el.use, use);
+    } else {
+      el.useSec.hidden = true;
+    }
+    setText(el.text, s.text);
+    setText(el.note, s.note ? 'หมายเหตุเลขหน้า: ' + s.note : (s.book ? 'ข้อความจากตำราเป็นข้อความย่อ ดูรูปเต็มสำหรับเนื้อหาครบถ้วน' : ''));
+    el.qs.textContent = '';
+    if (s.qs.length) {
+      s.qs.forEach(function (q) {
+        var a = document.createElement('a');
+        a.href = '#q' + q;
+        a.textContent = 'ข้อ ' + q;
+        a.addEventListener('click', function () { close(false); });
+        el.qs.appendChild(a);
+      });
+    } else {
+      var none = document.createElement('span');
+      none.className = 'none';
+      none.textContent = 'ไม่มีข้อที่อ้างถึงโดยตรง';
+      el.qs.appendChild(none);
+    }
+    el.open.href = s.href;
+    el.open.querySelector('span').textContent = s.pdf ? 'เปิดไฟล์ต้นฉบับ (PDF)' : 'ดาวน์โหลดไฟล์ต้นฉบับ';
+    el.open.querySelector('i').className = s.pdf ? 'fas fa-file-pdf' : 'fas fa-file-powerpoint';
+    setText(el.counter, (state.index + 1) + ' / ' + state.set.length + '  ·  ลูกศรซ้ายขวาเลื่อนภาพ, Esc ปิด');
+    el.prev.disabled = state.index === 0;
+    el.next.disabled = state.index === state.set.length - 1;
+    var thumbs = el.strip.children;
+    for (var i = 0; i < thumbs.length; i++) {
+      thumbs[i].setAttribute('aria-selected', i === state.index ? 'true' : 'false');
+    }
+    if (thumbs[state.index]) thumbs[state.index].scrollIntoView({ block: 'nearest', inline: 'center' });
+    setZoom(false);
+    el.copy.textContent = 'คัดลอก';
+    var side = overlay.querySelector('.sm-side');
+    if (side) side.scrollTop = 0;
+  }
+
+  function go(i) {
+    if (i < 0 || i >= state.set.length) return;
+    state.index = i;
+    render();
+  }
+
+  function openModal(key, setId, opener) {
+    var set = data.sets[setId];
+    if (!set || set.indexOf(key) < 0) return;
+    state.set = set;
+    state.setId = setId;
+    state.index = set.indexOf(key);
+    state.opener = opener;
+    buildStrip();
+    overlay.hidden = false;
+    document.body.classList.add('sm-lock');
+    render();
+    dialog.focus();
+  }
+
+  function close(restoreFocus) {
+    overlay.hidden = true;
+    document.body.classList.remove('sm-lock');
+    setZoom(false);
+    if (restoreFocus !== false && state.opener && state.opener.focus) state.opener.focus({ preventScroll: true });
+  }
+
+  function focusables() {
+    return Array.prototype.slice.call(dialog.querySelectorAll('a[href], button:not([disabled]), [tabindex="0"]'))
+      .filter(function (n) { return n.offsetParent !== null; });
+  }
+
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest ? e.target.closest('.ev-card, .gal-open') : null;
+    if (!btn) return;
+    e.preventDefault();
+    openModal(btn.getAttribute('data-key'), btn.getAttribute('data-set'), btn);
+  });
+
+  overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
+  el.close.addEventListener('click', function () { close(); });
+  el.prev.addEventListener('click', function () { go(state.index - 1); });
+  el.next.addEventListener('click', function () { go(state.index + 1); });
+  el.zoom.addEventListener('click', function () { setZoom(!state.zoomed); });
+  el.img.addEventListener('click', function () { setZoom(!state.zoomed); });
+
+  el.copy.addEventListener('click', function () {
+    var txt = el.text.textContent;
+    function done() { el.copy.textContent = 'คัดลอกแล้ว'; }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(txt).then(done, function () { el.copy.textContent = 'คัดลอกไม่ได้'; });
+    } else {
+      var range = document.createRange();
+      range.selectNodeContents(el.text);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      el.copy.textContent = 'เลือกข้อความแล้ว (กด Ctrl+C)';
+    }
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (overlay.hidden) return;
+    if (e.key === 'Escape') { e.preventDefault(); close(); return; }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); go(state.index - 1); return; }
+    if (e.key === 'ArrowRight') { e.preventDefault(); go(state.index + 1); return; }
+    if (e.key === 'Tab') {
+      var f = focusables();
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && (document.activeElement === first || document.activeElement === dialog)) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+
+  /* deep links: #gal-L5 opens the gallery stage, #q4-evidence scrolls to the block */
+  function openGalleryFromHash() {
+    var id = window.location.hash.slice(1);
+    var d = id ? document.getElementById(id) : null;
+    if (d && d.tagName === 'DETAILS') d.open = true;
+  }
+  window.addEventListener('hashchange', openGalleryFromHash);
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest ? e.target.closest('a[href^="#gal-"]') : null;
+    if (!a) return;
+    var d = document.getElementById(a.getAttribute('href').slice(1));
+    if (d && d.tagName === 'DETAILS') d.open = true;
+  });
+  openGalleryFromHash();
+
+  window.Exam2025Slides = { open: openModal, close: close };
+})();

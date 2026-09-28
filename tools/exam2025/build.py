@@ -9,6 +9,7 @@ sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(HERE.parent))
 import sync_chrome  # noqa: E402
 import widgets  # noqa: E402
+import evidence  # noqa: E402
 from lessons_p1 import L as L1  # noqa: E402
 from lessons_p2 import L as L2  # noqa: E402
 from lessons_p3 import L as L3  # noqa: E402
@@ -359,7 +360,7 @@ q(6, "control", 2, "Negative Edge Trigger เป็นอย่างไร",
 ''' + table(["IT0 / IT1", "ชนิดการกระตุ้น", "เกิด interrupt เมื่อ"], [
       ["<code>1</code>", "Negative edge trigger", "สัญญาณเปลี่ยน 1 → 0 (ครั้งเดียวต่อขอบ)"],
       ["<code>0</code>", "Low level trigger", "สัญญาณอยู่ที่ระดับ 0"],
-  ]) + asm('''; ตั้ง INT0 เป็น negative edge (ตาม Lecture 6 หน้า 1)
+  ]) + asm('''; ตั้ง INT0 เป็น negative edge (ตาม Lecture 6 หน้า 12)
         SETB  TCON.0          ; IT0 = 1 -> edge trigger''', "ตัวอย่างการตั้งค่า"))
 
 q(7, "control", 2, "M1 และ M0 ใช้ทำอะไร",
@@ -517,7 +518,7 @@ q(15, "serial", 3, "Register ที่เก็บสถานะของโป
 q(16, "serial", 3, "Vector Address คืออะไร",
   "Vector Address คืออะไร",
   "ที่อยู่เริ่มต้นของคำสั่งสำหรับ ISR ของแต่ละ interrupt — ถูกต้อง",
-  refs(("L6", "หน้า 1, 9, 13")) + '''<ul>
+  refs(("L6", "หน้า 9, 12, 13")) + '''<ul>
 <li>Lecture 6 หน้า 8: interrupt ทั้ง 5 เป็น "vectored interrupt" คือแต่ละตัวมีแอดเดรสปลายทางตายตัว</li>
 <li>Lecture 6 หน้า 13: ตาราง Vector: Reset 0000, INT0 0003, Timer0 000B, INT1 0013, Timer1 001B, Serial 0023</li>
 <li>Vector ห่างกันเพียง 8 ไบต์ จึงนิยมวาง <code>AJMP</code>/<code>LJMP</code> ไปยัง ISR ตัวจริง ตามตัวอย่าง Lecture 6 หน้า 1</li>
@@ -530,7 +531,7 @@ q(16, "serial", 3, "Vector Address คืออะไร",
       ["INT1", "<code>0013H</code>", "3"],
       ["TF1", "<code>001BH</code>", "4"],
       ["Serial (RI/TI)", "<code>0023H</code>", "5"],
-  ]) + asm('''; โครง Vector Table จาก Lecture 6 หน้า 1 (เพิ่ม EA ให้เปิดได้จริง)
+  ]) + asm('''; โครง Vector Table จาก Lecture 6 หน้า 12 (เพิ่ม EA ให้เปิดได้จริง)
         ORG   0000H
         AJMP  START           ; Reset vector
         ORG   0003H
@@ -750,7 +751,8 @@ def deep_lesson(n, les):
             chips = "".join(f'<a class="ref-chip" href="{REFS[k][0]}"><i class="fas fa-book-open" aria-hidden="true"></i> '
                             f'{REFS[k][1]} · {pg}</a>' for k, pg, _ in les["sources"])
             notes = "".join(f"<li><strong>{REFS[k][1]} {pg}:</strong> {note}</li>" for k, pg, note in les["sources"])
-            body = f'<div class="ref-row">{chips}</div><ul class="src-notes">{notes}</ul>{les.get("figure", "")}'
+            body = (f'<div class="ref-row">{chips}<a class="ref-chip" href="#q{n}-evidence"><i class="fas fa-images" aria-hidden="true"></i> '
+                    f'ดูภาพสไลด์จริงของข้อ {n}</a></div><ul class="src-notes">{notes}</ul>{les.get("figure", "")}')
         else:
             body = les[key]
         parts.append(sec(num, title, sub, icon, body))
@@ -798,6 +800,7 @@ def card(d):
 {d["solution"]}
               </div>
             </div>
+            {evidence.evidence_block(d["num"])}
             {extras}
             {deep_lesson(d["num"], les)}
           </div>
@@ -806,6 +809,7 @@ def card(d):
 
 def build():
     toc, body = [], []
+    toc.append('          <li class="toc-group"><a href="#course-map" style="color: var(--accent-cyan);">แผนที่วิชา</a></li>')
     for part in (1, 2, 3, 4):
         cat, icon, color, head, desc = PARTS[part]
         qs = [d for d in Q if d["part"] == part]
@@ -819,6 +823,7 @@ def build():
           <p>{desc}</p>
         </div>""")
         body.extend(card(d) for d in qs)
+    toc.append('          <li class="toc-group"><a href="#slide-gallery" style="color: var(--accent-purple);">คลังสไลด์</a></li>')
 
     counts = {c: sum(1 for d in Q if PARTS[d["part"]][0] == c) for c in ("timer", "control", "serial", "fsm")}
     assert len(Q) == 21 and [d["num"] for d in Q] == list(range(1, 22))
@@ -827,6 +832,8 @@ def build():
     html_out = TEMPLATE.replace("{{NAV}}", "").replace("{{DRAWER}}", "") \
         .replace("{{TOC}}", "\n".join(toc)) \
         .replace("{{CARDS}}", "\n".join(body)) \
+        .replace("{{COURSE_MAP}}", evidence.course_map()).replace("{{GALLERY}}", evidence.gallery()) \
+        .replace("{{MODAL}}", evidence.modal_shell()).replace("{{SLIDE_DATA}}", evidence.data_script()) \
         .replace("{{C_TIMER}}", str(counts["timer"])).replace("{{C_CONTROL}}", str(counts["control"])) \
         .replace("{{C_SERIAL}}", str(counts["serial"])).replace("{{C_FSM}}", str(counts["fsm"]))
     return sync_chrome.sync(PAGE, html_out)  # shared header, drawer, footer link, card footers
