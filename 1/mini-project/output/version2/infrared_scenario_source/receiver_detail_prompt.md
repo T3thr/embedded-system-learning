@@ -1,0 +1,8 @@
+
+
+## Prompt รายละเอียดหัวรับ
+
+ผลลัพธ์: ../infrared_final_assets/solution_receiver_detail.png
+
+Edit/reference: create a sharply resolved MACRO DETAIL photograph-style render of ONLY the RIGHT FIXED JAMB photoelectric receiver and its mounting hardware in the supplied residential installation view. Preserve the same warm oak jamb, same black rectangular receiver, same installation and lighting. Portrait 2:3 composition. The sensor is mounted on the FRONT ROOM-SIDE face of the FIXED oak jamb at the right side of the open passage, its red optical window facing LEFT into the doorway. Show a physically credible small stainless steel L-bracket secured by two round-head screws to fixed wood, the compact rectangular receiver bolted to this bracket, a black cable leaving the sensor bottom in a gentle U-shaped service loop, and then entering the narrow grey surface cable raceway running vertically UP the fixed jamb. The mounting offset puts the optical axis IN FRONT of the moving oak door's travel plane; a small out-of-focus edge of the parked door on the RIGHT is allowed but must not obscure the mounting. Close enough to clearly see screw heads, bracket bends, cable gland and optical window, with crisp authentic engineering materials and no random extra metal. Include some blank wood above and below the sensor and a narrow strip of pale corridor on the left, same camera side as source. Natural perspective, no diagrams, no text, no icons, no arrows, no visible infrared beam, no fingers, no labels, no invented branding. This is a photographic macro view of the existing depicted receiver installation, not a new device or a different room.
+

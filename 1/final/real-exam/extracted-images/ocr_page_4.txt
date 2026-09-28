@@ -1,0 +1,47 @@
+45 PCON deananela Power Control Rate
+16.SMOD diamantla Serial Baud Mate
+47.GF EiDammnAnD General Purpose
+48.PD deanala Power Down Mode
+49.IDL einananala Power Idle Mode
+50 Mode wer wn
+6UZi0N - TálE PCON inura address
+6712→ lale Mode anansa interrupt la RESET Motion nar Idle
+51. 2192999 Power Down mode bač Idle mode
+PD
+Idle
+XLAT1
+- То те, нам.
+- To CPU
+To Timer, RAN
+I0 Ports etc
+52. anmwarea code an state
+8051
+push
+P1.1
+P1.0
+P2.0 -
+ReadyState:
+mov ro, #01H; ro = state1
+setb p1.1
+clr p1.0
+jB p2.0, GoState
+Simp BeadyState
+push
+GoState :
+mov ro, * 02H; ro=statel
+clr pr.1
+setb pl.o
+mov r1, $10
+timer:
+call delay
+djnz r1, timer
+jB p2.0, Gostate
+sjmp BeadyState
+delay:
+mov tmod, *OlH; timero mode 1
+mor tho, $ 11111111b; FFH
+mov tl0, # 111 0110b; F6H delay 10 us
+mor tcon, « lOH; start Timer
+wait: jnb tcon. 5, wait
+mor tcon, * OOH; Stop timer
+ret

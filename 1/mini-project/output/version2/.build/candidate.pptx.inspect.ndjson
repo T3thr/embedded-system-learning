@@ -1,0 +1,631 @@
+{"kind":"deck","id":"pr/j8kp4p","name":"Deck"}
+{"kind":"layout","layoutId":"7a743529-3352-45bf-873c-f8330edf3f53","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"f30555c8-21cd-44fc-baa7-fd470197bf36","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/zb1na9","slide":1,"title":"ระบบประตูเลื่อนอัตโนมัติ","textShapes":10}
+{"kind":"textbox","id":"sh/xkbmxs36","slide":1,"name":"s1-1","text":"ระบบประตูเลื่อนอัตโนมัติ","textPreview":"ระบบประตูเลื่อนอัตโนมัติ","textChars":24,"textLines":1,"bbox":[96,84,1728,80]}
+{"kind":"textbox","id":"sh/ahk32d4v","slide":1,"name":"s1-2","text":"ตรวจจับสิ่งกีดขวางและเปิดประตูกลับ","textPreview":"ตรวจจับสิ่งกีดขวางและเปิดประตูกลับ","textChars":34,"textLines":1,"bbox":[96,169,1728,51]}
+{"kind":"shape","id":"sh/bit4vilg","slide":1,"name":"s1-3","bbox":[96,241,1728,0.01]}
+{"kind":"textbox","id":"sh/kn2l8nmx","slide":1,"name":"s1-4","text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[1758,954,66,32]}
+{"kind":"textbox","id":"sh/lovm1s3i","slide":1,"name":"s1-5","text":"Sliding Door Safety Control","textPreview":"Sliding Door Safety Control","textChars":27,"textLines":1,"bbox":[96,296,1060,65]}
+{"kind":"textbox","id":"sh/ylk36x4r","slide":1,"name":"s1-6","text":"โครงงานระบบสมองกลฝังตัว\nไมโครคอนโทรลเลอร์ 8051","textPreview":"โครงงานระบบสมองกลฝังตัว | ไมโครคอนโทรลเลอร์ 8051","textChars":46,"textLines":2,"bbox":[96,399,1060,130]}
+{"kind":"textbox","id":"sh/zmt4z2lc","slide":1,"name":"s1-7","text":"กลุ่มที่ 1\n66362416  นายธีรภัทร ภู่ระย้า  ลำดับที่ 4\n66363116  นางสาวปราณปรียา ศรียอง  ลำดับที่ 7","textPreview":"กลุ่มที่ 1 | 66362416  นายธีรภัทร ภู่ระย้า  ลำดับที่ 4 | 66363116  นางสาวปราณปรียา ศรียอง  ลำดับที่ 7","textChars":97,"textLines":3,"bbox":[96,600,1100,160]}
+{"kind":"textbox","id":"sh/8bmlc72t","slide":1,"name":"s1-8","text":"อาจารย์ที่ปรึกษา ดร.แสงชัย มังกรทอง","textPreview":"อาจารย์ที่ปรึกษา ดร.แสงชัย มังกรทอง","textChars":35,"textLines":1,"bbox":[96,823,1140,50]}
+{"kind":"shape","id":"sh/9cvm5c3e","slide":1,"name":"diagram-9","bbox":[1190,403,615,354]}
+{"kind":"shape","id":"sh/lcre183u","slide":1,"name":"diagram-10","bbox":[1190,403,615,354]}
+{"kind":"shape","id":"sh/kbid83mp","slide":1,"name":"diagram-11","bbox":[1190,403,615,354]}
+{"kind":"shape","id":"sh/za9wzil4","slide":1,"name":"s1-12","bbox":[1190,569.11,12.3,21.78]}
+{"kind":"shape","id":"sh/y90v6d4j","slide":1,"name":"s1-13","bbox":[1486.08,569.11,12.3,21.78]}
+{"kind":"shape","id":"sh/90be5s36","slide":1,"name":"s1-14","bbox":[1190,682.57,12.3,21.78]}
+{"kind":"shape","id":"sh/8zidcn2l","slide":1,"name":"s1-15","bbox":[1486.08,682.57,12.3,21.78]}
+{"kind":"textbox","id":"sh/7y9w3il0","slide":1,"name":"s1-16","text":"มอเตอร์และสายพาน","textPreview":"มอเตอร์และสายพาน","textChars":16,"textLines":1,"bbox":[1365.71,380.31,386.57,34.49]}
+{"kind":"textbox","id":"sh/md0vadkf","slide":1,"name":"s1-17","text":"LC","textPreview":"LC","textChars":2,"textLines":1,"bbox":[1207.57,747.92,57.11,32.68]}
+{"kind":"textbox","id":"sh/p47eto32","slide":1,"name":"s1-18","text":"LO","textPreview":"LO","textChars":2,"textLines":1,"bbox":[1712.75,747.92,65.89,32.68]}
+{"kind":"notes","id":"nt/zb1na9","slide":1,"text":"อ้างอิง: PROPOSED_SOLUTION_DESIGN.md และ assignment/ASSIGNMENT_BREAKDOWN.md\n"}
+{"kind":"slide","id":"sl/hewj1t","slide":2,"title":"ปัญหาของประตูเดิมและแนวทางแก้ไข","textShapes":13}
+{"kind":"textbox","id":"sh/fy1grm54","slide":2,"name":"s2-19","text":"ปัญหาของประตูเดิมและแนวทางแก้ไข","textPreview":"ปัญหาของประตูเดิมและแนวทางแก้ไข","textChars":31,"textLines":1,"bbox":[96,84,1728,80]}
+{"kind":"textbox","id":"sh/0zax0rmp","slide":2,"name":"s2-20","text":"เด็กหรือสัตว์เลี้ยงอาจเดินตามเข้ามาในขณะที่ประตูกำลังปิด","textPreview":"เด็กหรือสัตว์เลี้ยงอาจเดินตามเข้ามาในขณะที่ประตูกำลังปิด","textChars":56,"textLines":1,"bbox":[96,169,1728,51]}
+{"kind":"shape","id":"sh/10jytwna","slide":2,"name":"s2-21","bbox":[96,241,1728,0.01]}
+{"kind":"textbox","id":"sh/qt8fuh4n","slide":2,"name":"s2-22","text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[1758,954,66,32]}
+{"kind":"textbox","id":"sh/ruhgnm58","slide":2,"name":"s2-23","text":"ประตูเดิมปิดตามเวลา","textPreview":"ประตูเดิมปิดตามเวลา","textChars":19,"textLines":1,"bbox":[96,283,814,60]}
+{"kind":"textbox","id":"sh/svqxw7md","slide":2,"name":"s2-24","text":"เพิ่มลำแสงตรวจจับสองระดับ","textPreview":"เพิ่มลำแสงตรวจจับสองระดับ","textChars":25,"textLines":1,"bbox":[1010,283,814,60]}
+{"kind":"shape","id":"sh/dwjypcny","slide":2,"name":"s2-25","bbox":[958,285,0.01,579]}
+{"kind":"shape","id":"sh/i58fqx4b","slide":2,"name":"diagram-26","bbox":[140,396,725,360]}
+{"kind":"shape","id":"sh/36hgj25w","slide":2,"name":"diagram-27","bbox":[140,396,725,360]}
+{"kind":"shape","id":"sh/72x8fipo","slide":2,"name":"s2-28","bbox":[414.46,516,134.64,0.01]}
+{"kind":"shape","id":"sh/61ormdo3","slide":2,"name":"s2-29","bbox":[408.46,510,12,12]}
+{"kind":"shape","id":"sh/t4fqhs7e","slide":2,"name":"s2-30","bbox":[248.75,591.69,39.36,35.08]}
+{"kind":"shape","id":"sh/s369on6t","slide":2,"name":"diagram-31","bbox":[242.54,631.38,55.93,95.08]}
+{"kind":"textbox","id":"sh/f6x8j25k","slide":2,"name":"s2-32","text":"มอเตอร์และสายพาน","textPreview":"มอเตอร์และสายพาน","textChars":16,"textLines":1,"bbox":[347.14,372.92,455.71,35.08]}
+{"kind":"textbox","id":"sh/u5orqxoz","slide":2,"name":"s2-33","text":"LC","textPreview":"LC","textChars":2,"textLines":1,"bbox":[160.71,746.77,67.32,33.23]}
+{"kind":"textbox","id":"sh/h8zqlcnq","slide":2,"name":"s2-34","text":"LO","textPreview":"LO","textChars":2,"textLines":1,"bbox":[756.25,746.77,77.68,33.23]}
+{"kind":"shape","id":"sh/g769s765","slide":2,"name":"diagram-35","bbox":[1050,396,725,360]}
+{"kind":"shape","id":"sh/vad87ypg","slide":2,"name":"diagram-36","bbox":[1050,396,725,360]}
+{"kind":"shape","id":"sh/a947etov","slide":2,"name":"diagram-37","bbox":[1050,396,725,360]}
+{"kind":"shape","id":"sh/epsbm18j","slide":2,"name":"s2-38","bbox":[1050,564.92,14.5,22.15]}
+{"kind":"shape","id":"sh/zq1cf6po","slide":2,"name":"s2-39","bbox":[1399.04,564.92,14.5,22.15]}
+{"kind":"shape","id":"sh/0rutobq9","slide":2,"name":"s2-40","bbox":[1050,680.31,14.5,22.15]}
+{"kind":"shape","id":"sh/1s3uhg7u","slide":2,"name":"s2-41","bbox":[1399.04,680.31,14.5,22.15]}
+{"kind":"shape","id":"sh/q1sbi187","slide":2,"name":"s2-42","bbox":[1324.46,516,134.64,0.01]}
+{"kind":"shape","id":"sh/r21cr69s","slide":2,"name":"s2-43","bbox":[1453.11,510,12,12]}
+{"kind":"shape","id":"sh/c3atkbqd","slide":2,"name":"s2-44","bbox":[1158.75,591.69,39.36,35.08]}
+{"kind":"shape","id":"sh/d4jutg7y","slide":2,"name":"diagram-45","bbox":[1152.54,631.38,55.93,95.08]}
+{"kind":"textbox","id":"sh/2x8beh8b","slide":2,"name":"s2-46","text":"มอเตอร์และสายพาน","textPreview":"มอเตอร์และสายพาน","textChars":16,"textLines":1,"bbox":[1257.14,372.92,455.71,35.08]}
+{"kind":"textbox","id":"sh/3yhcnm9w","slide":2,"name":"s2-47","text":"LC","textPreview":"LC","textChars":2,"textLines":1,"bbox":[1070.71,746.77,67.32,33.23]}
+{"kind":"textbox","id":"sh/5s7etkre","slide":2,"name":"s2-48","text":"LO","textPreview":"LO","textChars":2,"textLines":1,"bbox":[1666.25,746.77,77.68,33.23]}
+{"kind":"textbox","id":"sh/kryxkzat","slide":2,"name":"s2-49","text":"ไม่ทราบว่าทางผ่านยังมีสิ่งกีดขวาง\nบานประตูจึงอาจเคลื่อนเข้าหนีบ","textPreview":"ไม่ทราบว่าทางผ่านยังมีสิ่งกีดขวาง | บานประตูจึงอาจเคลื่อนเข้าหนีบ","textChars":63,"textLines":2,"bbox":[96,792,814,108]}
+{"kind":"textbox","id":"sh/jqpwru98","slide":2,"name":"s2-50","text":"ตัดแรงขับทันทีเมื่อตรวจพบ\nรอ 200 ms แล้วเปิดกลับจนสุด","textPreview":"ตัดแรงขับทันทีเมื่อตรวจพบ | รอ 200 ms แล้วเปิดกลับจนสุด","textChars":53,"textLines":2,"bbox":[1010,792,814,108]}
+{"kind":"notes","id":"nt/hewj1t","slide":2,"text":"แหล่งข้อมูล: PROPOSED_SOLUTION_DESIGN.md ข้อ 2–3 และภาพข้อกำหนดอาจารย์ หน้า 13–14\nรูปเป็นภาพอธิบายหลักการ ไม่ได้แสดงระยะตามมาตราส่วน ลำแสงจริงติดเยื้องระนาบบานเพื่อไม่ให้บานบังเซนเซอร์เอง การ coast ไม่ได้หยุดการเคลื่อนที่ทางกลทันที"}
+{"kind":"slide","id":"sl/06fxs7","slide":3,"title":"สถานะการทำงานและตำแหน่งประตู","textShapes":28}
+{"kind":"textbox","id":"sh/snypkbq9","slide":3,"name":"s3-51","text":"สถานะการทำงานและตำแหน่งประตู","textPreview":"สถานะการทำงานและตำแหน่งประตู","textChars":28,"textLines":1,"bbox":[96,84,1728,80]}
+{"kind":"textbox","id":"sh/rmp8r69o","slide":3,"name":"s3-52","text":"เส้นทางปกติประกอบด้วย ปิดสนิท กำลังเปิด เปิดค้าง และกำลังปิด","textPreview":"เส้นทางปกติประกอบด้วย ปิดสนิท กำลังเปิด เปิดค้าง และกำลังปิด","textChars":60,"textLines":1,"bbox":[96,169,1728,51]}
+{"kind":"shape","id":"sh/qlg7i183","slide":3,"name":"s3-53","bbox":[96,241,1728,0.01]}
+{"kind":"textbox","id":"sh/1crqxgrq","slide":3,"name":"s3-54","text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[1758,954,66,32]}
+{"kind":"shape","id":"sh/0ripobq5","slide":3,"name":"s3-55","bbox":[96,312,190,78]}
+{"kind":"textbox","id":"sh/fq98v69k","slide":3,"name":"s3-56","text":"START","textPreview":"START","textChars":5,"textLines":1,"bbox":[104,318,174,66]}
+{"kind":"shape","id":"sh/ep07m18f","slide":3,"name":"s3-57","bbox":[414,312,230,78]}
+{"kind":"textbox","id":"sh/hgnqlcrm","slide":3,"name":"s3-58","text":"CLOSED","textPreview":"CLOSED","textChars":6,"textLines":1,"bbox":[422,318,214,66]}
+{"kind":"shape","id":"sh/gvepcra1","slide":3,"name":"s3-59","bbox":[904,312,230,78]}
+{"kind":"textbox","id":"sh/ed8zyhgz","slide":3,"name":"s3-60","text":"OPENING","textPreview":"OPENING","textChars":7,"textLines":1,"bbox":[912,318,214,66]}
+{"kind":"shape","id":"sh/fe10r2xk","slide":3,"name":"s3-61","bbox":[96,603,190,78]}
+{"kind":"textbox","id":"sh/0fah07y5","slide":3,"name":"s3-62","text":"FAULT","textPreview":"FAULT","textChars":5,"textLines":1,"bbox":[104,609,174,66]}
+{"kind":"shape","id":"sh/1gjitcfq","slide":3,"name":"s3-63","bbox":[414,603,230,78]}
+{"kind":"textbox","id":"sh/2hsz2hgv","slide":3,"name":"s3-64","text":"CLOSING","textPreview":"CLOSING","textChars":7,"textLines":1,"bbox":[422,609,214,66]}
+{"kind":"shape","id":"sh/ni10vmxg","slide":3,"name":"s3-65","bbox":[904,603,230,78]}
+{"kind":"textbox","id":"sh/o3a14ry1","slide":3,"name":"s3-66","text":"HOLD","textPreview":"HOLD","textChars":4,"textLines":1,"bbox":[912,609,214,66]}
+{"kind":"shape","id":"sh/p4jixwfm","slide":3,"name":"s3-67","bbox":[414,814,230,78]}
+{"kind":"textbox","id":"sh/a5cj61g7","slide":3,"name":"s3-68","text":"REV_WAIT","textPreview":"REV_WAIT","textChars":8,"textLines":1,"bbox":[422,820,214,66]}
+{"kind":"shape","id":"sh/b6l0zmxs","slide":3,"name":"s3-69","bbox":[904,814,230,78]}
+{"kind":"textbox","id":"sh/7algn6d0","slide":3,"name":"s3-70","text":"REOPEN","textPreview":"REOPEN","textChars":6,"textLines":1,"bbox":[912,820,214,66]}
+{"kind":"shape","id":"sh/m9cze1cf","slide":3,"name":"s3-71","bbox":[286,351,128,0.01]}
+{"kind":"shape","id":"sh/9cnipwvq","slide":3,"name":"s3-72","bbox":[408,345,12,12]}
+{"kind":"textbox","id":"sh/8buhgru5","slide":3,"name":"s3-73","text":"LC = 0","textPreview":"LC = 0","textChars":6,"textLines":1,"bbox":[300,291,110,42]}
+{"kind":"shape","id":"sh/z6lgjmdo","slide":3,"name":"s3-74","bbox":[644,351,260,0.01]}
+{"kind":"shape","id":"sh/y5czahw3","slide":3,"name":"s3-75","bbox":[898,345,12,12]}
+{"kind":"textbox","id":"sh/l83ylwvu","slide":3,"name":"s3-76","text":"กดปุ่ม 20 ms","textPreview":"กดปุ่ม 20 ms","textChars":12,"textLines":1,"bbox":[670,284,205,42]}
+{"kind":"textbox","id":"sh/k7uhcru9","slide":3,"name":"s3-77","text":"หยุดครบ 200 ms","textPreview":"หยุดครบ 200 ms","textChars":14,"textLines":1,"bbox":[649,392,253,40]}
+{"kind":"shape","id":"sh/bi1gfmds","slide":3,"name":"s3-78","bbox":[1019,390,0.01,213]}
+{"kind":"shape","id":"sh/ahsz6hw7","slide":3,"name":"s3-79","bbox":[1013,597,12,12]}
+{"kind":"textbox","id":"sh/0nqdgnu5","slide":3,"name":"s3-80","text":"ถึง LO","textPreview":"ถึง LO","textChars":6,"textLines":1,"bbox":[1050,478,111,42]}
+{"kind":"shape","id":"sh/1ozep8ba","slide":3,"name":"s3-81","bbox":[644,642,260,0.01]}
+{"kind":"shape","id":"sh/elovedcz","slide":3,"name":"s3-82","bbox":[638,636,12,12]}
+{"kind":"textbox","id":"sh/fmhwnitk","slide":3,"name":"s3-83","text":"ว่างต่อเนื่อง 3 s","textPreview":"ว่างต่อเนื่อง 3 s","textChars":17,"textLines":1,"bbox":[655,687,240,42]}
+{"kind":"shape","id":"sh/obqxkna1","slide":3,"name":"s3-84","bbox":[529,390,0.01,213]}
+{"kind":"shape","id":"sh/pczetsbm","slide":3,"name":"s3-85","bbox":[523,384,12,12]}
+{"kind":"textbox","id":"sh/2p8fidsv","slide":3,"name":"s3-86","text":"ถึง LC","textPreview":"ถึง LC","textChars":6,"textLines":1,"bbox":[550,479,116,42]}
+{"kind":"shape","id":"sh/nqhwritg","slide":3,"name":"s3-87","bbox":[529,681,0.01,133]}
+{"kind":"shape","id":"sh/4f6d8jux","slide":3,"name":"s3-88","bbox":[523,808,12,12]}
+{"kind":"textbox","id":"sh/5gfehob2","slide":3,"name":"s3-89","text":"ถูกบัง","textPreview":"ถูกบัง","textChars":6,"textLines":1,"bbox":[551,734,143,40]}
+{"kind":"shape","id":"sh/xcr6hobm","slide":3,"name":"s3-90","bbox":[644,853,260,0.01]}
+{"kind":"shape","id":"sh/wbi5oju1","slide":3,"name":"s3-91","bbox":[898,847,12,12]}
+{"kind":"textbox","id":"sh/ba9ofytg","slide":3,"name":"s3-92","text":"ครบ 200 ms","textPreview":"ครบ 200 ms","textChars":10,"textLines":1,"bbox":[670,798,215,39]}
+{"kind":"shape","id":"sh/a9gnmtcv","slide":3,"name":"s3-93","bbox":[1019,681,0.01,133]}
+{"kind":"shape","id":"sh/9876doba","slide":3,"name":"s3-94","bbox":[1013,675,12,12]}
+{"kind":"textbox","id":"sh/o7y5kju5","slide":3,"name":"s3-95","text":"ถึง LO","textPreview":"ถึง LO","textChars":6,"textLines":1,"bbox":[1050,738,110,42]}
+{"kind":"shape","id":"sh/nmpobetk","slide":3,"name":"s3-96","bbox":[191,267,0.01,45]}
+{"kind":"shape","id":"sh/mlgni9cz","slide":3,"name":"s3-97","bbox":[191,267,989,0.01]}
+{"kind":"shape","id":"sh/1k7m94be","slide":3,"name":"s3-98","bbox":[1180,267,0.01,375]}
+{"kind":"shape","id":"sh/0jy5gzut","slide":3,"name":"s3-99","bbox":[1134,642,46,0.01]}
+{"kind":"shape","id":"sh/qpc3q5sr","slide":3,"name":"s3-100","bbox":[1128,636,12,12]}
+{"kind":"textbox","id":"sh/rqlkja9c","slide":3,"name":"s3-101","text":"เริ่มที่ LO","textPreview":"เริ่มที่ LO","textChars":11,"textLines":1,"bbox":[996,270,170,37]}
+{"kind":"shape","id":"sh/crelsfax","slide":3,"name":"s3-102","bbox":[191,681,0.01,39]}
+{"kind":"shape","id":"sh/dsn2lkr2","slide":3,"name":"s3-103","bbox":[185,675,12,12]}
+{"kind":"shape","id":"sh/ilc3m5sf","slide":3,"name":"s3-104","bbox":[191,390,0.01,213]}
+{"kind":"shape","id":"sh/3mlkfa90","slide":3,"name":"s3-105","bbox":[185,384,12,12]}
+{"kind":"textbox","id":"sh/4nulofal","slide":3,"name":"s3-106","text":"Reset\nผ่านเงื่อนไข","textPreview":"Reset | ผ่านเงื่อนไข","textChars":18,"textLines":2,"bbox":[215,455,170,87]}
+{"kind":"textbox","id":"sh/5o32h0r6","slide":3,"name":"s3-107","text":"E-stop\nเดินทางเกิน 5 s\nลิมิตผิดปกติ","textPreview":"E-stop | เดินทางเกิน 5 s | ลิมิตผิดปกติ","textChars":35,"textLines":3,"bbox":[96,721,272,135]}
+{"kind":"shape","id":"sh/uxs3ilsj","slide":3,"name":"s3-108","bbox":[1230,288,0.01,634]}
+{"kind":"shape","id":"sh/vi1kbq94","slide":3,"name":"diagram-109","bbox":[1340,288,255,136]}
+{"kind":"shape","id":"sh/j2h0jmpw","slide":3,"name":"diagram-110","bbox":[1340,288,255,136]}
+{"kind":"textbox","id":"sh/y18zah8b","slide":3,"name":"s3-111","text":"ปิดสนิท","textPreview":"ปิดสนิท","textChars":7,"textLines":1,"bbox":[1623,334,200,46]}
+{"kind":"shape","id":"sh/lozilw72","slide":3,"name":"diagram-112","bbox":[1340,443,255,136]}
+{"kind":"shape","id":"sh/k3qhcrqh","slide":3,"name":"diagram-113","bbox":[1340,443,255,136]}
+{"kind":"shape","id":"sh/7qh0n6ps","slide":3,"name":"s3-114","bbox":[1436.54,488.33,47.36,0.01]}
+{"kind":"shape","id":"sh/6p8ze187","slide":3,"name":"s3-115","bbox":[1477.89,482.33,12,12]}
+{"kind":"textbox","id":"sh/tsjipw7y","slide":3,"name":"s3-116","text":"กำลังเปิด","textPreview":"กำลังเปิด","textChars":9,"textLines":1,"bbox":[1623,489,200,46]}
+{"kind":"shape","id":"sh/8rqhgbqd","slide":3,"name":"diagram-117","bbox":[1340,598,255,136]}
+{"kind":"shape","id":"sh/nux0b2po","slide":3,"name":"diagram-118","bbox":[1340,598,255,136]}
+{"kind":"textbox","id":"sh/mtozix83","slide":3,"name":"s3-119","text":"เปิดสุด","textPreview":"เปิดสุด","textChars":7,"textLines":1,"bbox":[1623,644,200,46]}
+{"kind":"shape","id":"sh/cz2xc361","slide":3,"name":"diagram-120","bbox":[1340,753,255,136]}
+{"kind":"shape","id":"sh/d0bel8nm","slide":3,"name":"diagram-121","bbox":[1340,753,255,136]}
+{"kind":"shape","id":"sh/qdkfatov","slide":3,"name":"s3-122","bbox":[1436.54,798.33,47.36,0.01]}
+{"kind":"shape","id":"sh/rytwjy5g","slide":3,"name":"s3-123","bbox":[1430.54,792.33,12,12]}
+{"kind":"textbox","id":"sh/4b2x836p","slide":3,"name":"s3-124","text":"กำลังปิด","textPreview":"กำลังปิด","textChars":8,"textLines":1,"bbox":[1623,799,200,46]}
+{"kind":"textbox","id":"sh/pcbeh8na","slide":3,"name":"s3-125","text":"เมื่อเริ่มที่ LO ให้เข้า HOLD    START ไม่ทราบตำแหน่งเข้า FAULT    การกดปุ่มขณะปิดให้ผลเหมือนถูกบัง","textPreview":"เมื่อเริ่มที่ LO ให้เข้า HOLD    START ไม่ทราบตำแหน่งเข้า FAULT    การกดปุ่มขณะปิดให้ผลเหมือนถูกบัง","textChars":99,"textLines":1,"bbox":[96,916,1728,44]}
+{"kind":"notes","id":"nt/06fxs7","slide":3,"text":"อ้างอิง: PROPOSED_SOLUTION_DESIGN.md และ assignment/ASSIGNMENT_BREAKDOWN.md\n"}
+{"kind":"slide","id":"sl/67kdh5","slide":4,"title":"การเชื่อมต่อวงจรฮาร์ดแวร์","textShapes":28}
+{"kind":"textbox","id":"sh/76xgby14","slide":4,"name":"s4-126","text":"การเชื่อมต่อวงจรฮาร์ดแวร์","textPreview":"การเชื่อมต่อวงจรฮาร์ดแวร์","textChars":25,"textLines":1,"bbox":[96,84,1728,80]}
+{"kind":"textbox","id":"sh/876x43ip","slide":4,"name":"s4-127","text":"L293D รับคำสั่งทิศทางจาก 8051 และจ่ายกระแสให้มอเตอร์","textPreview":"L293D รับคำสั่งทิศทางจาก 8051 และจ่ายกระแสให้มอเตอร์","textChars":52,"textLines":1,"bbox":[96,169,1728,51]}
+{"kind":"shape","id":"sh/98fydoja","slide":4,"name":"s4-128","bbox":[96,241,1728,0.01]}
+{"kind":"textbox","id":"sh/u98z6t0v","slide":4,"name":"s4-129","text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[1758,954,66,32]}
+{"kind":"shape","id":"sh/vahgfy10","slide":4,"name":"s4-130","bbox":[748,355,398,241]}
+{"kind":"textbox","id":"sh/gbqh83il","slide":4,"name":"s4-131","text":"L293D","textPreview":"L293D","textChars":5,"textLines":1,"bbox":[770,383,354,56]}
+{"kind":"textbox","id":"sh/hczyh8j6","slide":4,"name":"s4-132","text":"ไอซีขับมอเตอร์","textPreview":"ไอซีขับมอเตอร์","textChars":14,"textLines":1,"bbox":[770,447,354,47]}
+{"kind":"textbox","id":"sh/id8zad0r","slide":4,"name":"s4-133","text":"IN1","textPreview":"IN1","textChars":3,"textLines":1,"bbox":[780,528,72,44]}
+{"kind":"textbox","id":"sh/3ehgji1c","slide":4,"name":"s4-134","text":"IN2","textPreview":"IN2","textChars":3,"textLines":1,"bbox":[868,528,72,44]}
+{"kind":"textbox","id":"sh/jaxkzmhw","slide":4,"name":"s4-135","text":"EN","textPreview":"EN","textChars":2,"textLines":1,"bbox":[1044,528,72,44]}
+{"kind":"shape","id":"sh/y9o36h0b","slide":4,"name":"diagram-136","bbox":[730,372,434,203]}
+{"kind":"shape","id":"sh/lcz21wz2","slide":4,"name":"s4-137","bbox":[210,421,158,158]}
+{"kind":"textbox","id":"sh/kbql8rih","slide":4,"name":"s4-138","text":"M","textPreview":"M","textChars":1,"textLines":1,"bbox":[231,457,117,70]}
+{"kind":"textbox","id":"sh/b6xkv2h0","slide":4,"name":"s4-139","text":"มอเตอร์ 12 V DC","textPreview":"มอเตอร์ 12 V DC","textChars":15,"textLines":1,"bbox":[96,616,540,52]}
+{"kind":"shape","id":"sh/a5o32h0f","slide":4,"name":"s4-140","bbox":[368,453,102,0.01]}
+{"kind":"shape","id":"sh/x8f2xczq","slide":4,"name":"s4-141","bbox":[470,438,124,30]}
+{"kind":"shape","id":"sh/w76l47i5","slide":4,"name":"s4-142","bbox":[594,453,136,0.01]}
+{"kind":"shape","id":"sh/v21476h4","slide":4,"name":"s4-143","bbox":[368,548,300,0.01]}
+{"kind":"shape","id":"sh/u183e10j","slide":4,"name":"s4-144","bbox":[668,543,0.01,5]}
+{"kind":"shape","id":"sh/qxcn65kr","slide":4,"name":"s4-145","bbox":[668,543,62,0.01]}
+{"kind":"shape","id":"sh/ryloza1c","slide":4,"name":"s4-146","bbox":[724,537,12,12]}
+{"kind":"textbox","id":"sh/czu58f2x","slide":4,"name":"s4-147","text":"27 Ω  10 W","textPreview":"27 Ω  10 W","textChars":10,"textLines":1,"bbox":[417,376,240,42]}
+{"kind":"shape","id":"sh/d0361kji","slide":4,"name":"s4-148","bbox":[650,752,522,166]}
+{"kind":"textbox","id":"sh/e1w7apkn","slide":4,"name":"s4-149","text":"บอร์ด 8051","textPreview":"บอร์ด 8051","textChars":10,"textLines":1,"bbox":[675,771,472,57]}
+{"kind":"textbox","id":"sh/z25o3a18","slide":4,"name":"s4-150","text":"P1 ควบคุมเอาต์พุต     P2 รับอินพุต","textPreview":"P1 ควบคุมเอาต์พุต     P2 รับอินพุต","textChars":34,"textLines":1,"bbox":[675,846,472,43]}
+{"kind":"shape","id":"sh/03epcf2t","slide":4,"name":"s4-151","bbox":[816,596,0.01,156]}
+{"kind":"shape","id":"sh/14n65kje","slide":4,"name":"s4-152","bbox":[810,590,12,12]}
+{"kind":"shape","id":"sh/u5snylkj","slide":4,"name":"s4-153","bbox":[904,596,0.01,156]}
+{"kind":"shape","id":"sh/v61orq14","slide":4,"name":"s4-154","bbox":[898,590,12,12]}
+{"kind":"textbox","id":"sh/xk7qdo3m","slide":4,"name":"s4-155","text":"P1.0","textPreview":"P1.0","textChars":4,"textLines":1,"bbox":[686,641,118,41]}
+{"kind":"textbox","id":"sh/wzy94jm1","slide":4,"name":"s4-156","text":"P1.1","textPreview":"P1.1","textChars":4,"textLines":1,"bbox":[923,602,118,41]}
+{"kind":"shape","id":"sh/byp8belg","slide":4,"name":"s4-157","bbox":[968,652,245,57]}
+{"kind":"textbox","id":"sh/axgr294v","slide":4,"name":"s4-158","text":"HCT14 → NC1","textPreview":"HCT14 → NC1","textChars":11,"textLines":1,"bbox":[980,660,221,41]}
+{"kind":"shape","id":"sh/lorah83y","slide":4,"name":"s4-159","bbox":[1090,709,0.01,43]}
+{"kind":"shape","id":"sh/kni983md","slide":4,"name":"s4-160","bbox":[1084,703,12,12]}
+{"kind":"shape","id":"sh/jm98fyls","slide":4,"name":"s4-161","bbox":[1090,619,0.01,33]}
+{"kind":"shape","id":"sh/yl0r6t47","slide":4,"name":"s4-162","bbox":[1080,619,10,0.01]}
+{"kind":"shape","id":"sh/1snq543e","slide":4,"name":"s4-163","bbox":[1080,596,0.01,23]}
+{"kind":"shape","id":"sh/0re9wzmt","slide":4,"name":"s4-164","bbox":[1074,590,12,12]}
+{"kind":"textbox","id":"sh/4nmt476h","slide":4,"name":"s4-165","text":"P1.2","textPreview":"P1.2","textChars":4,"textLines":1,"bbox":[1110,718,116,30]}
+{"kind":"shape","id":"sh/5ovudcn2","slide":4,"name":"s4-166","bbox":[1444,319,380,154]}
+{"kind":"textbox","id":"sh/il4b2xob","slide":4,"name":"s4-167","text":"ลิมิตและปุ่มกด","textPreview":"ลิมิตและปุ่มกด","textChars":14,"textLines":1,"bbox":[1464,330,340,43]}
+{"kind":"textbox","id":"sh/3mdcb25w","slide":4,"name":"s4-168","text":"LO  P2.3     LC  P2.4\nปุ่มเปิด  P2.0, P2.1","textPreview":"LO  P2.3     LC  P2.4 | ปุ่มเปิด  P2.0, P2.1","textChars":42,"textLines":2,"bbox":[1464,388,340,69]}
+{"kind":"shape","id":"sh/gj2t076l","slide":4,"name":"diagram-169","bbox":[1382,352,56,70]}
+{"kind":"shape","id":"sh/hkvu9cn6","slide":4,"name":"s4-170","bbox":[1290,447,154,0.01]}
+{"kind":"shape","id":"sh/uhkbyxof","slide":4,"name":"s4-171","bbox":[1290,447,0.01,344]}
+{"kind":"shape","id":"sh/vitc7250","slide":4,"name":"s4-172","bbox":[1172,791,118,0.01]}
+{"kind":"shape","id":"sh/8f2twn69","slide":4,"name":"s4-173","bbox":[1166,785,12,12]}
+{"kind":"shape","id":"sh/tgbu5snu","slide":4,"name":"s4-174","bbox":[1490,494,48,37]}
+{"kind":"textbox","id":"sh/bq9cfipw","slide":4,"name":"s4-175","text":"TX","textPreview":"TX","textChars":2,"textLines":1,"bbox":[1492,497,44,30]}
+{"kind":"shape","id":"sh/ap0vmd8b","slide":4,"name":"s4-176","bbox":[1740,494,48,37]}
+{"kind":"textbox","id":"sh/xcruhs7m","slide":4,"name":"s4-177","text":"RX","textPreview":"RX","textChars":2,"textLines":1,"bbox":[1742,497,44,30]}
+{"kind":"shape","id":"sh/wridonq1","slide":4,"name":"s4-178","bbox":[1538,512,202,0.01]}
+{"kind":"shape","id":"sh/jetcj2ps","slide":4,"name":"s4-179","bbox":[1734,506,12,12]}
+{"kind":"shape","id":"sh/ydkvqx87","slide":4,"name":"s4-180","bbox":[1444,548,380,157]}
+{"kind":"textbox","id":"sh/lgbuls7y","slide":4,"name":"s4-181","text":"ลำแสง 12 V","textPreview":"ลำแสง 12 V","textChars":10,"textLines":1,"bbox":[1464,561,340,40]}
+{"kind":"textbox","id":"sh/kf2dcnqd","slide":4,"name":"s4-182","text":"ผ่าน VO617A เป็น 5 V\nเข้าขา P2.2 และ P2.5","textPreview":"ผ่าน VO617A เป็น 5 V | เข้าขา P2.2 และ P2.5","textChars":41,"textLines":2,"bbox":[1464,617,340,70]}
+{"kind":"shape","id":"sh/7itwn2po","slide":4,"name":"s4-183","bbox":[1350,673,94,0.01]}
+{"kind":"shape","id":"sh/6hkvex8j","slide":4,"name":"s4-184","bbox":[1350,673,0.01,180]}
+{"kind":"shape","id":"sh/2p8725wn","slide":4,"name":"s4-185","bbox":[1172,853,178,0.01]}
+{"kind":"shape","id":"sh/3qhovad8","slide":4,"name":"s4-186","bbox":[1166,847,12,12]}
+{"kind":"textbox","id":"sh/orqp4vet","slide":4,"name":"s4-187","text":"สายอินพุต","textPreview":"สายอินพุต","textChars":9,"textLines":1,"bbox":[1387,764,380,48]}
+{"kind":"textbox","id":"sh/psz6x0ve","slide":4,"name":"s4-188","text":"5 V ลอจิก","textPreview":"5 V ลอจิก","textChars":9,"textLines":1,"bbox":[1040,270,270,43]}
+{"kind":"shape","id":"sh/ulo7ylwr","slide":4,"name":"s4-189","bbox":[1090,317,0.01,38]}
+{"kind":"shape","id":"sh/fmxo7qdc","slide":4,"name":"s4-190","bbox":[1084,349,12,12]}
+{"kind":"textbox","id":"sh/gn6p0vex","slide":4,"name":"s4-191","text":"12 V ภาคมอเตอร์","textPreview":"12 V ภาคมอเตอร์","textChars":15,"textLines":1,"bbox":[627,270,350,43]}
+{"kind":"shape","id":"sh/hof6t0vi","slide":4,"name":"s4-192","bbox":[820,317,0.01,38]}
+{"kind":"shape","id":"sh/yhs7apwv","slide":4,"name":"s4-193","bbox":[814,349,12,12]}
+{"kind":"textbox","id":"sh/zi183udg","slide":4,"name":"s4-194","text":"LED แดง P1.4\nLED เขียว P1.5\nBuzzer P1.7","textPreview":"LED แดง P1.4 | LED เขียว P1.5 | Buzzer P1.7","textChars":39,"textLines":3,"bbox":[130,751,382,133]}
+{"kind":"shape","id":"sh/9c3a9ofi","slide":4,"name":"s4-195","bbox":[526,835,124,0.01]}
+{"kind":"shape","id":"sh/8bu90jyd","slide":4,"name":"s4-196","bbox":[520,829,12,12]}
+{"kind":"textbox","id":"sh/nals7exs","slide":4,"name":"s4-197","text":"NC1 ตัด EN ด้วยฮาร์ดแวร์    NC2 แจ้ง P2.7    Reset ต่อ P2.6    กราวด์ลอจิกร่วมกับภาคมอเตอร์","textPreview":"NC1 ตัด EN ด้วยฮาร์ดแวร์    NC2 แจ้ง P2.7    Reset ต่อ P2.6    กราวด์ลอจิกร่วมกับภาคมอเตอร์","textChars":91,"textLines":1,"bbox":[96,929,1728,44]}
+{"kind":"notes","id":"nt/67kdh5","slide":4,"text":"อ้างอิง: PROPOSED_SOLUTION_DESIGN.md และ assignment/ASSIGNMENT_BREAKDOWN.md\n"}
+{"kind":"slide","id":"sl/8wu6k6","slide":5,"title":"แรงดันไฟฟ้าที่ใช้ในระบบ","textShapes":10}
+{"kind":"textbox","id":"sh/fe5knexg","slide":5,"name":"s5-198","text":"แรงดันไฟฟ้าที่ใช้ในระบบ","textPreview":"แรงดันไฟฟ้าที่ใช้ในระบบ","textChars":23,"textLines":1,"bbox":[96,84,1728,80]}
+{"kind":"textbox","id":"sh/gfe1wjyl","slide":5,"name":"s5-199","text":"แยกไฟเลี้ยงอุปกรณ์ออกจากระดับสัญญาณที่เข้าสู่ไมโครคอนโทรลเลอร์","textPreview":"แยกไฟเลี้ยงอุปกรณ์ออกจากระดับสัญญาณที่เข้าสู่ไมโครคอนโทรลเลอร์","textChars":62,"textLines":1,"bbox":[96,169,1728,51]}
+{"kind":"shape","id":"sh/h072pof6","slide":5,"name":"s5-200","bbox":[96,241,1728,0.01]}
+{"kind":"textbox","id":"sh/21gjytgr","slide":5,"name":"s5-201","text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[1758,954,66,32]}
+{"kind":"textbox","id":"sh/32pkryxc","slide":5,"name":"s5-202","text":"5 V","textPreview":"5 V","textChars":3,"textLines":1,"bbox":[96,300,760,100]}
+{"kind":"textbox","id":"sh/43y103yx","slide":5,"name":"s5-203","text":"วงจรลอจิก","textPreview":"วงจรลอจิก","textChars":9,"textLines":1,"bbox":[96,422,760,55]}
+{"kind":"textbox","id":"sh/p472t8fi","slide":5,"name":"s5-204","text":"บอร์ด 8051 และ SN74HCT14\nขา VCC1 ของ L293D\nฝั่งเอาต์พุตของ Optocoupler\nLED และ Buzzer","textPreview":"บอร์ด 8051 และ SN74HCT14 | ขา VCC1 ของ L293D | ฝั่งเอาต์พุตของ Optocoupler | LED และ Buzzer","textChars":85,"textLines":4,"bbox":[96,518,795,218]}
+{"kind":"shape","id":"sh/q5gj2tg3","slide":5,"name":"s5-205","bbox":[957,309,0.01,444]}
+{"kind":"textbox","id":"sh/r6pkvyx8","slide":5,"name":"s5-206","text":"12 V","textPreview":"12 V","textChars":4,"textLines":1,"bbox":[1060,300,764,100]}
+{"kind":"textbox","id":"sh/judsbqx0","slide":5,"name":"s5-207","text":"วงจรกำลังและเซนเซอร์","textPreview":"วงจรกำลังและเซนเซอร์","textChars":20,"textLines":1,"bbox":[1060,422,764,55]}
+{"kind":"textbox","id":"sh/it4b25gv","slide":5,"name":"s5-208","text":"ขา VCC2 ของ L293D\nแหล่งจ่ายมอเตอร์กระแสจำกัด 0.50 A\nเซนเซอร์ลำแสง E3Z-T61 สองคู่","textPreview":"ขา VCC2 ของ L293D | แหล่งจ่ายมอเตอร์กระแสจำกัด 0.50 A | เซนเซอร์ลำแสง E3Z-T61 สองคู่","textChars":80,"textLines":3,"bbox":[1060,518,764,218]}
+{"kind":"shape","id":"sh/5wvud0f6","slide":5,"name":"s5-209","bbox":[96,800,1728,108]}
+{"kind":"textbox","id":"sh/4vmt4vyl","slide":5,"name":"s5-210","text":"สัญญาณเข้า 8051 ต้องอยู่ในช่วง 0–5 V เท่านั้น","textPreview":"สัญญาณเข้า 8051 ต้องอยู่ในช่วง 0–5 V เท่านั้น","textChars":45,"textLines":1,"bbox":[124,820,1672,66]}
+{"kind":"notes","id":"nt/8wu6k6","slide":5,"text":"PROPOSED_SOLUTION_DESIGN.md ข้อ 4.3–4.4. มอเตอร์มีพิกัด 12 V แต่แรงดันขั้วมอเตอร์จริงต่ำกว่าแหล่งจ่ายเนื่องจาก L293D และตัวต้านทานอนุกรม ต้องวัดกระแสและความร้อนจริง"}
+{"kind":"slide","id":"sl/f9ybal","slide":6,"title":"เวลารอแต่ละช่วงและเหตุผลที่เลือก","textShapes":16}
+{"kind":"textbox","id":"sh/vi1wv6l8","slide":6,"name":"s6-211","text":"เวลารอแต่ละช่วงและเหตุผลที่เลือก","textPreview":"เวลารอแต่ละช่วงและเหตุผลที่เลือก","textChars":32,"textLines":1,"bbox":[96,84,1728,80]}
+{"kind":"textbox","id":"sh/gjad4b2t","slide":6,"name":"s6-212","text":"ค่าที่กำหนดใช้กับชุดสาธิต และต้องตรวจสอบการหยุดจริงก่อนใช้กับกลไก","textPreview":"ค่าที่กำหนดใช้กับชุดสาธิต และต้องตรวจสอบการหยุดจริงก่อนใช้กับกลไก","textChars":65,"textLines":1,"bbox":[96,169,1728,51]}
+{"kind":"shape","id":"sh/hkjexgje","slide":6,"name":"s6-213","bbox":[96,241,1728,0.01]}
+{"kind":"textbox","id":"sh/6t8vyhkr","slide":6,"name":"s6-214","text":"06","textPreview":"06","textChars":2,"textLines":1,"bbox":[1758,954,66,32]}
+{"kind":"textbox","id":"sh/7uhwrmlc","slide":6,"name":"s6-215","text":"20 ms","textPreview":"20 ms","textChars":5,"textLines":1,"bbox":[96,294,310,75]}
+{"kind":"textbox","id":"sh/8vad0r2x","slide":6,"name":"s6-216","text":"กรองสวิตช์","textPreview":"กรองสวิตช์","textChars":10,"textLines":1,"bbox":[461,294,394,60]}
+{"kind":"textbox","id":"sh/tgjetw3i","slide":6,"name":"s6-217","text":"ยืนยันการกดปุ่ม เพื่อลดผลจากหน้าสัมผัสกระเด้ง","textPreview":"ยืนยันการกดปุ่ม เพื่อลดผลจากหน้าสัมผัสกระเด้ง","textChars":45,"textLines":1,"bbox":[461,356,1320,47]}
+{"kind":"shape","id":"sh/yp8vuhkv","slide":6,"name":"s6-218","bbox":[96,422,1728,0.01]}
+{"kind":"textbox","id":"sh/jqhwnml0","slide":6,"name":"s6-219","text":"200 ms","textPreview":"200 ms","textChars":6,"textLines":1,"bbox":[96,440,310,75]}
+{"kind":"textbox","id":"sh/byhk3e5o","slide":6,"name":"s6-220","text":"พักมอเตอร์","textPreview":"พักมอเตอร์","textChars":10,"textLines":1,"bbox":[461,440,394,60]}
+{"kind":"textbox","id":"sh/ax83a943","slide":6,"name":"s6-221","text":"ตัดแรงขับก่อนกลับทิศ เพื่อให้มอเตอร์มีเวลาลดความเร็ว","textPreview":"ตัดแรงขับก่อนกลับทิศ เพื่อให้มอเตอร์มีเวลาลดความเร็ว","textChars":52,"textLines":1,"bbox":[461,502,1320,47]}
+{"kind":"shape","id":"sh/xkz25onu","slide":6,"name":"s6-222","bbox":[96,568,1728,0.01]}
+{"kind":"textbox","id":"sh/cjqlcjm9","slide":6,"name":"s6-223","text":"3 วินาที","textPreview":"3 วินาที","textChars":8,"textLines":1,"bbox":[96,586,310,75]}
+{"kind":"textbox","id":"sh/zm1k7e5k","slide":6,"name":"s6-224","text":"เปิดค้าง","textPreview":"เปิดค้าง","textChars":8,"textLines":1,"bbox":[461,586,394,60]}
+{"kind":"textbox","id":"sh/yl83e94z","slide":6,"name":"s6-225","text":"เริ่มนับใหม่เมื่อถูกบัง รอคนเดินพ้นก่อนเริ่มปิด","textPreview":"เริ่มนับใหม่เมื่อถูกบัง รอคนเดินพ้นก่อนเริ่มปิด","textChars":47,"textLines":1,"bbox":[461,648,1320,47]}
+{"kind":"shape","id":"sh/loj29onq","slide":6,"name":"s6-226","bbox":[96,714,1728,0.01]}
+{"kind":"textbox","id":"sh/knalgjm5","slide":6,"name":"s6-227","text":"5 วินาที","textPreview":"5 วินาที","textChars":8,"textLines":1,"bbox":[96,732,310,75]}
+{"kind":"textbox","id":"sh/fqxkvu5g","slide":6,"name":"s6-228","text":"จำกัดเวลาการเดินทาง","textPreview":"จำกัดเวลาการเดินทาง","textChars":19,"textLines":1,"bbox":[461,732,394,60]}
+{"kind":"textbox","id":"sh/epoj2p4v","slide":6,"name":"s6-229","text":"ไม่ถึงลิมิตตามกำหนด ให้ตัดแรงขับและเข้าสถานะขัดข้อง","textPreview":"ไม่ถึงลิมิตตามกำหนด ให้ตัดแรงขับและเข้าสถานะขัดข้อง","textChars":51,"textLines":1,"bbox":[461,794,1320,47]}
+{"kind":"textbox","id":"sh/ilcnaxoj","slide":6,"name":"s6-230","text":"ฉบับขยายเพิ่มการตรวจลิมิตต้นทาง: หากยังไม่ปล่อยภายใน 500 ms ให้เข้า FAULT","textPreview":"ฉบับขยายเพิ่มการตรวจลิมิตต้นทาง: หากยังไม่ปล่อยภายใน 500 ms ให้เข้า FAULT","textChars":73,"textLines":1,"bbox":[96,916,1728,44]}
+{"kind":"notes","id":"nt/f9ybal","slide":6,"text":"อ้างอิง: PROPOSED_SOLUTION_DESIGN.md และ assignment/ASSIGNMENT_BREAKDOWN.md\n"}
+{"kind":"slide","id":"sl/700p6x","slide":7,"title":"ค่าพอร์ตในแต่ละสถานะ","textShapes":5}
+{"kind":"textbox","id":"sh/p0fyhofa","slide":7,"name":"s7-231","text":"ค่าพอร์ตในแต่ละสถานะ","textPreview":"ค่าพอร์ตในแต่ละสถานะ","textChars":20,"textLines":1,"bbox":[96,84,1728,80]}
+{"kind":"textbox","id":"sh/2x4f69wj","slide":7,"name":"s7-232","text":"P0 แสดงรหัสสถานะ ส่วน P1 ควบคุมทิศทางมอเตอร์ ไฟ และเสียง","textPreview":"P0 แสดงรหัสสถานะ ส่วน P1 ควบคุมทิศทางมอเตอร์ ไฟ และเสียง","textChars":56,"textLines":1,"bbox":[96,169,1728,51]}
+{"kind":"shape","id":"sh/3yxwfex4","slide":7,"name":"s7-233","bbox":[96,241,1728,0.01]}
+{"kind":"textbox","id":"sh/gvmx4zed","slide":7,"name":"s7-234","text":"07","textPreview":"07","textChars":2,"textLines":1,"bbox":[1758,954,66,32]}
+{"kind":"textbox","id":"sh/ut4f2pwn","slide":7,"name":"s7-235","text":"RUN_N = 1 หมายถึงตัดแรงขับ     สัญญาณลงท้าย _N ทำงานที่ระดับ 0","textPreview":"RUN_N = 1 หมายถึงตัดแรงขับ     สัญญาณลงท้าย _N ทำงานที่ระดับ 0","textChars":62,"textLines":1,"bbox":[96,855,1728,45]}
+{"kind":"textbox","id":"sh/fudwbuxs","slide":7,"name":"s7-236","text":"P2 ตั้ง latch เป็น FFH เพื่ออ่านอินพุต    P1.3 และ P1.6 คงค่า 1    P0 ต้องมี pull-up ภายนอก","textPreview":"P2 ตั้ง latch เป็น FFH เพื่ออ่านอินพุต    P1.3 และ P1.6 คงค่า 1    P0 ต้องมี pull-up ภายนอก","textChars":91,"textLines":1,"bbox":[96,915,1728,44]}
+{"kind":"table","id":"tb/8ve9k7ql","slide":7,"name":"","rows":9,"cols":9,"preview":"สถานะ | P0 | P1 | IN1 | IN2 | RUN_N | RED_N | GREEN_N | BUZZ_N","bbox":[96,284,1728,549]}
+{"kind":"notes","id":"nt/700p6x","slide":7,"text":"อ้างอิง: PROPOSED_SOLUTION_DESIGN.md และ assignment/ASSIGNMENT_BREAKDOWN.md\n"}
+{"kind":"slide","id":"sl/h6u6w1","slide":8,"title":"เริ่มระบบและตรวจตำแหน่งประตู","textShapes":27}
+{"kind":"textbox","id":"sh/lg36dcf6","slide":8,"name":"s8-237","text":"เริ่มระบบและตรวจตำแหน่งประตู","textPreview":"เริ่มระบบและตรวจตำแหน่งประตู","textChars":28,"textLines":1,"bbox":[96,84,1728,80]}
+{"kind":"textbox","id":"sh/ytc72xgv","slide":8,"name":"s8-238","text":"โค้ดฉบับสอนใช้ชื่อ START ส่วนฉบับขยายใช้ INIT","textPreview":"โค้ดฉบับสอนใช้ชื่อ START ส่วนฉบับขยายใช้ INIT","textChars":45,"textLines":1,"bbox":[96,169,1728,51]}
+{"kind":"shape","id":"sh/zulob2xg","slide":8,"name":"s8-239","bbox":[96,241,1728,0.01]}
+{"kind":"textbox","id":"sh/crup07yp","slide":8,"name":"s8-240","text":"08","textPreview":"08","textChars":2,"textLines":1,"bbox":[1758,954,66,32]}
+{"kind":"shape","id":"sh/xs369cza","slide":8,"name":"s8-241","bbox":[138,292,510,71]}
+{"kind":"textbox","id":"sh/aps7yxgj","slide":8,"name":"s8-242","text":"เปิดเครื่อง","textPreview":"เปิดเครื่อง","textChars":11,"textLines":1,"bbox":[146,298,494,59]}
+{"kind":"shape","id":"sh/bqlo72h4","slide":8,"name":"s8-243","bbox":[138,429,510,88]}
+{"kind":"textbox","id":"sh/onapwnyt","slide":8,"name":"s8-244","text":"START","textPreview":"START","textChars":5,"textLines":1,"bbox":[146,435,494,76]}
+{"kind":"shape","id":"sh/poj65szy","slide":8,"name":"s8-245","bbox":[138,583,510,71]}
+{"kind":"textbox","id":"sh/50j2183i","slide":8,"name":"s8-246","text":"CLOSED หรือ HOLD","textPreview":"CLOSED หรือ HOLD","textChars":16,"textLines":1,"bbox":[146,589,494,59]}
+{"kind":"shape","id":"sh/4zal83mx","slide":8,"name":"s8-247","bbox":[393,363,0.01,66]}
+{"kind":"shape","id":"sh/jy1kzylc","slide":8,"name":"s8-248","bbox":[387,423,12,12]}
+{"kind":"shape","id":"sh/ixsj6t47","slide":8,"name":"s8-249","bbox":[393,517,0.01,66]}
+{"kind":"shape","id":"sh/hwz2xo3m","slide":8,"name":"s8-250","bbox":[387,577,12,12]}
+{"kind":"textbox","id":"sh/wvq143m1","slide":8,"name":"s8-251","text":"P0 = F8H    P1 = ECH","textPreview":"P0 = F8H    P1 = ECH","textChars":20,"textLines":1,"bbox":[116,707,574,57]}
+{"kind":"textbox","id":"sh/vuhkvylg","slide":8,"name":"s8-252","text":"ตัดแรงขับก่อนอ่านลิมิต\nลิมิตไม่ถูกต้อง ให้เข้า FAULT","textPreview":"ตัดแรงขับก่อนอ่านลิมิต | ลิมิตไม่ถูกต้อง ให้เข้า FAULT","textChars":52,"textLines":2,"bbox":[116,790,574,70]}
+{"kind":"textbox","id":"sh/ut8j2t4v","slide":8,"name":"s8-253","text":"รอให้สัญญาณนิ่ง 20 ms","textPreview":"รอให้สัญญาณนิ่ง 20 ms","textChars":21,"textLines":1,"bbox":[116,883,574,52]}
+{"kind":"shape","id":"sh/9sz2to3a","slide":8,"name":"s8-254","bbox":[735,282,1089,647]}
+{"kind":"textbox","id":"sh/87q10jmp","slide":8,"name":"s8-255","text":"โค้ดเริ่มต้นจากฉบับสอน","textPreview":"โค้ดเริ่มต้นจากฉบับสอน","textChars":22,"textLines":1,"bbox":[768,302,1016,47]}
+{"kind":"shape","id":"sh/knetwnyx","slide":8,"name":"s8-256","bbox":[768,365,1023,0.01]}
+{"kind":"textbox","id":"sh/lonu5sfi","slide":8,"name":"s8-257","text":"START:","textPreview":"START:","textChars":6,"textLines":1,"bbox":[768,384,1016,30.94]}
+{"kind":"textbox","id":"sh/ylcbudgr","slide":8,"name":"s8-258","text":"    MOV  P2,#0FFH","textPreview":"MOV  P2,#0FFH","textChars":17,"textLines":1,"bbox":[768,414.94,1016,30.94]}
+{"kind":"textbox","id":"sh/zmlc3ixc","slide":8,"name":"s8-259","text":"    SETB P1.2","textPreview":"SETB P1.2","textChars":13,"textLines":1,"bbox":[768,445.88,1016,30.94]}
+{"kind":"textbox","id":"sh/cjuts3y1","slide":8,"name":"s8-260","text":"    MOV  P1,#0ECH","textPreview":"MOV  P1,#0ECH","textChars":17,"textLines":1,"bbox":[768,476.82,1016,30.94]}
+{"kind":"textbox","id":"sh/xk3a18f6","slide":8,"name":"s8-261","text":"    MOV  P0,#0F8H","textPreview":"MOV  P0,#0F8H","textChars":17,"textLines":1,"bbox":[768,507.76,1016,30.94]}
+{"kind":"textbox","id":"sh/axcbqdgv","slide":8,"name":"s8-262","text":"    MOV  TMOD,#01H","textPreview":"MOV  TMOD,#01H","textChars":18,"textLines":1,"bbox":[768,538.71,1016,30.94]}
+{"kind":"textbox","id":"sh/bylszyxg","slide":8,"name":"s8-263","text":"    CALL Delay","textPreview":"CALL Delay","textChars":14,"textLines":1,"bbox":[768,569.65,1016,30.94]}
+{"kind":"textbox","id":"sh/wfyt47y5","slide":8,"name":"s8-264","text":"    JB   P2.7,StartFault","textPreview":"JB   P2.7,StartFault","textChars":24,"textLines":1,"bbox":[768,600.59,1016,30.94]}
+{"kind":"textbox","id":"sh/hg7udcfq","slide":8,"name":"s8-265","text":"    JNB  P2.3,StartOpen","textPreview":"JNB  P2.3,StartOpen","textChars":23,"textLines":1,"bbox":[768,631.53,1016,30.94]}
+{"kind":"textbox","id":"sh/ra9w36hs","slide":8,"name":"s8-266","text":"    JNB  P2.4,StartClosed","textPreview":"JNB  P2.4,StartClosed","textChars":25,"textLines":1,"bbox":[768,662.47,1016,30.94]}
+{"kind":"textbox","id":"sh/690fu107","slide":8,"name":"s8-267","text":"StartFault:","textPreview":"StartFault:","textChars":11,"textLines":1,"bbox":[768,693.41,1016,30.94]}
+{"kind":"textbox","id":"sh/tcre5gzy","slide":8,"name":"s8-268","text":"    LJMP FaultState","textPreview":"LJMP FaultState","textChars":19,"textLines":1,"bbox":[768,724.35,1016,30.94]}
+{"kind":"textbox","id":"sh/sbixwbid","slide":8,"name":"s8-269","text":"StartOpen:","textPreview":"StartOpen:","textChars":10,"textLines":1,"bbox":[768,755.29,1016,30.94]}
+{"kind":"textbox","id":"sh/fetw76ho","slide":8,"name":"s8-270","text":"    JNB  P2.4,StartFault","textPreview":"JNB  P2.4,StartFault","textChars":24,"textLines":1,"bbox":[768,786.24,1016,30.94]}
+{"kind":"textbox","id":"sh/ed0fy10j","slide":8,"name":"s8-271","text":"    LJMP HoldState","textPreview":"LJMP HoldState","textChars":18,"textLines":1,"bbox":[768,817.18,1016,30.94]}
+{"kind":"textbox","id":"sh/1gbe9gzu","slide":8,"name":"s8-272","text":"StartClosed:","textPreview":"StartClosed:","textChars":12,"textLines":1,"bbox":[768,848.12,1016,30.94]}
+{"kind":"textbox","id":"sh/gf2x0bi9","slide":8,"name":"s8-273","text":"    LJMP ClosedState","textPreview":"LJMP ClosedState","textChars":20,"textLines":1,"bbox":[768,879.06,1016,30.94]}
+{"kind":"notes","id":"nt/h6u6w1","slide":8,"text":"SLIDING_DOOR_CLASSROOM.asm: START ถึง StartClosed. ตัดบรรทัด R0 ที่ใช้บันทึกรหัสสถานะออกจากสไลด์เพื่อความกระชับ ไฟล์ฉบับเต็มอยู่ใน firmware"}
+{"kind":"slide","id":"sl/h06a10","slide":9,"title":"ซับรูทีนหน่วงเวลา 20 ms","textShapes":19}
+{"kind":"textbox","id":"sh/q5032hc7","slide":9,"name":"s9-274","text":"ซับรูทีนหน่วงเวลา 20 ms","textPreview":"ซับรูทีนหน่วงเวลา 20 ms","textChars":23,"textLines":1,"bbox":[96,84,1728,80]}
+{"kind":"textbox","id":"sh/dsrmxcvy","slide":9,"name":"s9-275","text":"ฉบับสอนใช้ Timer 0 โหมด 1 ที่คริสตัล 12 MHz แบบ 12 clocks","textPreview":"ฉบับสอนใช้ Timer 0 โหมด 1 ที่คริสตัล 12 MHz แบบ 12 clocks","textChars":57,"textLines":1,"bbox":[96,169,1728,51]}
+{"kind":"shape","id":"sh/cril47ud","slide":9,"name":"s9-276","bbox":[96,241,1728,0.01]}
+{"kind":"textbox","id":"sh/zut4zmdo","slide":9,"name":"s9-277","text":"09","textPreview":"09","textChars":2,"textLines":1,"bbox":[1758,954,66,32]}
+{"kind":"shape","id":"sh/et036hc3","slide":9,"name":"s9-278","bbox":[138,299,510,78]}
+{"kind":"textbox","id":"sh/1wbm1wvu","slide":9,"name":"s9-279","text":"CALL Delay","textPreview":"CALL Delay","textChars":10,"textLines":1,"bbox":[146,305,494,66]}
+{"kind":"shape","id":"sh/0v2l8ru9","slide":9,"name":"s9-280","bbox":[138,469,510,86]}
+{"kind":"textbox","id":"sh/nyt436d0","slide":9,"name":"s9-281","text":"Timer 0 นับครบ","textPreview":"Timer 0 นับครบ","textChars":14,"textLines":1,"bbox":[146,475,494,74]}
+{"kind":"shape","id":"sh/mxkna1cf","slide":9,"name":"s9-282","bbox":[138,647,510,78]}
+{"kind":"textbox","id":"sh/8jaxsbu1","slide":9,"name":"s9-283","text":"RET กลับไปทำงานต่อ","textPreview":"RET กลับไปทำงานต่อ","textChars":18,"textLines":1,"bbox":[146,653,494,66]}
+{"kind":"shape","id":"sh/9kjylgbm","slide":9,"name":"s9-284","bbox":[393,377,0.01,92]}
+{"kind":"shape","id":"sh/mhsfq1cb","slide":9,"name":"s9-285","bbox":[387,463,12,12]}
+{"kind":"shape","id":"sh/7i1gj6tw","slide":9,"name":"s9-286","bbox":[393,555,0.01,92]}
+{"kind":"shape","id":"sh/wnuxwbud","slide":9,"name":"s9-287","bbox":[387,641,12,12]}
+{"kind":"textbox","id":"sh/ho3ypgby","slide":9,"name":"s9-288","text":"ค่าเริ่มนับ B1E0H\n65536 − 20000 = 45536\nนับ 20000 รอบ รอบละ 1 µs","textPreview":"ค่าเริ่มนับ B1E0H | 65536 − 20000 = 45536 | นับ 20000 รอบ รอบละ 1 µs","textChars":64,"textLines":3,"bbox":[116,782,574,143]}
+{"kind":"shape","id":"sh/ulcfulc7","slide":9,"name":"s9-289","bbox":[735,282,1089,647]}
+{"kind":"textbox","id":"sh/vmlgn6ts","slide":9,"name":"s9-290","text":"ซับรูทีนที่ใช้ร่วมกันทุกสถานะ","textPreview":"ซับรูทีนที่ใช้ร่วมกันทุกสถานะ","textChars":29,"textLines":1,"bbox":[768,302,1016,47]}
+{"kind":"shape","id":"sh/4bux0vu9","slide":9,"name":"s9-291","bbox":[768,365,1023,0.01]}
+{"kind":"textbox","id":"sh/5c3yt0bu","slide":9,"name":"s9-292","text":"Delay:","textPreview":"Delay:","textChars":6,"textLines":1,"bbox":[768,384,1016,32]}
+{"kind":"textbox","id":"sh/d8jydg3y","slide":9,"name":"s9-293","text":"    CLR  TR0","textPreview":"CLR  TR0","textChars":12,"textLines":1,"bbox":[768,416,1016,32]}
+{"kind":"textbox","id":"sh/s7qx4vmd","slide":9,"name":"s9-294","text":"    MOV  TH0,#0B1H","textPreview":"MOV  TH0,#0B1H","textChars":18,"textLines":1,"bbox":[768,448,1016,32]}
+{"kind":"textbox","id":"sh/r6hgbql8","slide":9,"name":"s9-295","text":"    MOV  TL0,#0E0H","textPreview":"MOV  TL0,#0E0H","textChars":18,"textLines":1,"bbox":[768,480,1016,32]}
+{"kind":"textbox","id":"sh/q58f2l4n","slide":9,"name":"s9-296","text":"    CLR  TF0","textPreview":"CLR  TF0","textChars":12,"textLines":1,"bbox":[768,512,1016,32]}
+{"kind":"textbox","id":"sh/1wjyh03a","slide":9,"name":"s9-297","text":"    SETB TR0","textPreview":"SETB TR0","textChars":12,"textLines":1,"bbox":[768,544,1016,32]}
+{"kind":"textbox","id":"sh/0vax8v2p","slide":9,"name":"s9-298","text":"DelayWait:","textPreview":"DelayWait:","textChars":10,"textLines":1,"bbox":[768,576,1016,32]}
+{"kind":"textbox","id":"sh/fu1gfql4","slide":9,"name":"s9-299","text":"    JNB  TF0,DelayWait","textPreview":"JNB  TF0,DelayWait","textChars":22,"textLines":1,"bbox":[768,608,1016,32]}
+{"kind":"textbox","id":"sh/e9sf6l4j","slide":9,"name":"s9-300","text":"    CLR  TR0","textPreview":"CLR  TR0","textChars":12,"textLines":1,"bbox":[768,640,1016,32]}
+{"kind":"textbox","id":"sh/h0ze5w3q","slide":9,"name":"s9-301","text":"    CLR  TF0","textPreview":"CLR  TF0","textChars":12,"textLines":1,"bbox":[768,672,1016,32]}
+{"kind":"textbox","id":"sh/gz6xwbml","slide":9,"name":"s9-302","text":"    RET","textPreview":"RET","textChars":7,"textLines":1,"bbox":[768,704,1016,32]}
+{"kind":"notes","id":"nt/h06a10","slide":9,"text":"อ้างอิง: PROPOSED_SOLUTION_DESIGN.md และ assignment/ASSIGNMENT_BREAKDOWN.md\n"}
+{"kind":"slide","id":"sl/shjrzq","slide":10,"title":"ประตูปิดสนิท","textShapes":25}
+{"kind":"textbox","id":"sh/sj2dwjml","slide":10,"name":"s10-303","text":"ประตูปิดสนิท","textPreview":"ประตูปิดสนิท","textChars":12,"textLines":1,"bbox":[96,84,1728,80]}
+{"kind":"textbox","id":"sh/ri9cne50","slide":10,"name":"s10-304","text":"สถานะ CLOSED จากเฟิร์มแวร์ฉบับสอน","textPreview":"สถานะ CLOSED จากเฟิร์มแวร์ฉบับสอน","textChars":33,"textLines":1,"bbox":[96,169,1728,51]}
+{"kind":"shape","id":"sh/6h0vu94f","slide":10,"name":"s10-305","bbox":[96,241,1728,0.01]}
+{"kind":"textbox","id":"sh/1obuton2","slide":10,"name":"s10-306","text":"10","textPreview":"10","textChars":2,"textLines":1,"bbox":[1758,954,66,32]}
+{"kind":"shape","id":"sh/0n2d0jmh","slide":10,"name":"s10-307","bbox":[138,292,510,71]}
+{"kind":"textbox","id":"sh/fmtcry5w","slide":10,"name":"s10-308","text":"START หรือ CLOSING","textPreview":"START หรือ CLOSING","textChars":18,"textLines":1,"bbox":[146,298,494,59]}
+{"kind":"shape","id":"sh/elkvyt4b","slide":10,"name":"s10-309","bbox":[138,429,510,88]}
+{"kind":"textbox","id":"sh/hsruh4ny","slide":10,"name":"s10-310","text":"CLOSED","textPreview":"CLOSED","textChars":6,"textLines":1,"bbox":[146,435,494,76]}
+{"kind":"shape","id":"sh/writoz6d","slide":10,"name":"s10-311","bbox":[138,583,510,71]}
+{"kind":"textbox","id":"sh/ytoz2to7","slide":10,"name":"s10-312","text":"OPENING","textPreview":"OPENING","textChars":7,"textLines":1,"bbox":[146,589,494,59]}
+{"kind":"shape","id":"sh/zuxgvypc","slide":10,"name":"s10-313","bbox":[393,363,0.01,66]}
+{"kind":"shape","id":"sh/kv6h436x","slide":10,"name":"s10-314","bbox":[387,423,12,12]}
+{"kind":"shape","id":"sh/lwfyx87i","slide":10,"name":"s10-315","bbox":[393,517,0.01,66]}
+{"kind":"shape","id":"sh/mxoz6to3","slide":10,"name":"s10-316","bbox":[387,577,12,12]}
+{"kind":"textbox","id":"sh/7yxgzypo","slide":10,"name":"s10-317","text":"P0 = F9H    P1 = FCH","textPreview":"P0 = F9H    P1 = FCH","textChars":20,"textLines":1,"bbox":[116,707,574,57]}
+{"kind":"textbox","id":"sh/8j6h8369","slide":10,"name":"s10-318","text":"มอเตอร์หยุด ไฟและเสียงดับ\nรับคำสั่งจากปุ่มทั้งสองฝั่ง","textPreview":"มอเตอร์หยุด ไฟและเสียงดับ | รับคำสั่งจากปุ่มทั้งสองฝั่ง","textChars":53,"textLines":2,"bbox":[116,790,574,70]}
+{"kind":"textbox","id":"sh/9kzy187u","slide":10,"name":"s10-319","text":"หยุด 200 ms และกรองปุ่ม 20 ms","textPreview":"หยุด 200 ms และกรองปุ่ม 20 ms","textChars":29,"textLines":1,"bbox":[116,883,574,52]}
+{"kind":"shape","id":"sh/ul8zadoz","slide":10,"name":"s10-320","bbox":[735,282,1089,647]}
+{"kind":"textbox","id":"sh/vmhg3ipk","slide":10,"name":"s10-321","text":"โค้ดส่วนสำคัญของสถานะ","textPreview":"โค้ดส่วนสำคัญของสถานะ","textChars":21,"textLines":1,"bbox":[768,302,1016,47]}
+{"kind":"shape","id":"sh/rqhgrils","slide":10,"name":"s10-322","bbox":[768,365,1023,0.01]}
+{"kind":"textbox","id":"sh/6p8fyd47","slide":10,"name":"s10-323","text":"ClosedLoop:","textPreview":"ClosedLoop:","textChars":11,"textLines":1,"bbox":[768,384,1016,32]}
+{"kind":"textbox","id":"sh/tsjyts3y","slide":10,"name":"s10-324","text":"    JB   P2.7,ClosedFault","textPreview":"JB   P2.7,ClosedFault","textChars":25,"textLines":1,"bbox":[768,416,1016,32]}
+{"kind":"textbox","id":"sh/srax0nmd","slide":10,"name":"s10-325","text":"    JB   P2.4,ClosedFault","textPreview":"JB   P2.4,ClosedFault","textChars":25,"textLines":1,"bbox":[768,448,1016,32]}
+{"kind":"textbox","id":"sh/jmhgnilw","slide":10,"name":"s10-326","text":"    JNB  P2.0,ClosedPress","textPreview":"JNB  P2.0,ClosedPress","textChars":25,"textLines":1,"bbox":[768,480,1016,32]}
+{"kind":"textbox","id":"sh/il8fud4b","slide":10,"name":"s10-327","text":"    JNB  P2.1,ClosedPress","textPreview":"JNB  P2.1,ClosedPress","textChars":25,"textLines":1,"bbox":[768,512,1016,32]}
+{"kind":"textbox","id":"sh/5ozyp83m","slide":10,"name":"s10-328","text":"    SJMP ClosedLoop","textPreview":"SJMP ClosedLoop","textChars":19,"textLines":1,"bbox":[768,544,1016,32]}
+{"kind":"textbox","id":"sh/4nqxw3m1","slide":10,"name":"s10-329","text":"ClosedPress:","textPreview":"ClosedPress:","textChars":12,"textLines":1,"bbox":[768,576,1016,32]}
+{"kind":"textbox","id":"sh/vyxwjylk","slide":10,"name":"s10-330","text":"    CALL Delay","textPreview":"CALL Delay","textChars":14,"textLines":1,"bbox":[768,608,1016,32]}
+{"kind":"textbox","id":"sh/uxofqt4z","slide":10,"name":"s10-331","text":"    JNB  P2.0,ClosedGo","textPreview":"JNB  P2.0,ClosedGo","textChars":22,"textLines":1,"bbox":[768,640,1016,32]}
+{"kind":"textbox","id":"sh/0r2l4vyl","slide":10,"name":"s10-332","text":"    JNB  P2.1,ClosedGo","textPreview":"JNB  P2.1,ClosedGo","textChars":22,"textLines":1,"bbox":[768,672,1016,32]}
+{"kind":"textbox","id":"sh/lsbmd0f6","slide":10,"name":"s10-333","text":"    SJMP ClosedLoop","textPreview":"SJMP ClosedLoop","textChars":19,"textLines":1,"bbox":[768,704,1016,32]}
+{"kind":"textbox","id":"sh/ypk325gv","slide":10,"name":"s10-334","text":"ClosedGo:","textPreview":"ClosedGo:","textChars":9,"textLines":1,"bbox":[768,736,1016,32]}
+{"kind":"textbox","id":"sh/zqt4bax0","slide":10,"name":"s10-335","text":"    LJMP OpeningState","textPreview":"LJMP OpeningState","textChars":21,"textLines":1,"bbox":[768,768,1016,32]}
+{"kind":"textbox","id":"sh/8vml8fyx","slide":10,"name":"s10-336","text":"ClosedFault:","textPreview":"ClosedFault:","textChars":12,"textLines":1,"bbox":[768,800,1016,32]}
+{"kind":"textbox","id":"sh/9gvmhkfi","slide":10,"name":"s10-337","text":"    LJMP FaultState","textPreview":"LJMP FaultState","textChars":19,"textLines":1,"bbox":[768,832,1016,32]}
+{"kind":"notes","id":"nt/shjrzq","slide":10,"text":"แหล่งข้อมูล: firmware/SLIDING_DOOR_CLASSROOM.asm บล็อก ClosedState. แสดงเฉพาะส่วนสำคัญ ไม่ใช่โปรแกรมที่ประกอบได้ลำพัง ใช้ไฟล์ฉบับเต็มสำหรับ EdSim51.\nบล็อกต้นฉบับครบถ้วน:\nClosedState:\n    SETB P1.2\n    MOV  R0,#01H\n    MOV  P0,#0F9H\n    MOV  P1,#0FCH\n    MOV  R1,#10\nClosedSettle:\n    CALL Delay\n    DJNZ R1,ClosedSettle\nClosedLoop:\n    JB   P2.7,ClosedFault\n    JB   P2.4,ClosedFault\n    JNB  P2.0,ClosedPress\n    JNB  P2.1,ClosedPress\n    SJMP ClosedLoop\nClosedPress:\n    CALL Delay\n    JNB  P2.0,ClosedGo\n    JNB  P2.1,ClosedGo\n    SJMP ClosedLoop\nClosedGo:\n    LJMP OpeningState\nClosedFault:\n    LJMP FaultState\nส่วนเข้ารัฐก่อน ClosedLoop ถูกแสดงเป็นค่า P0/P1 และข้อความอธิบายด้านซ้าย ไฟล์เต็มมี ClosedSettle: CALL Delay และ DJNZ R1,ClosedSettle ซึ่งหน่วง 200 ms ก่อน ClosedLoop"}
+{"kind":"slide","id":"sl/y6icw1","slide":11,"title":"ประตูกำลังเปิด","textShapes":25}
+{"kind":"textbox","id":"sh/f2tc3mxs","slide":11,"name":"s11-338","text":"ประตูกำลังเปิด","textPreview":"ประตูกำลังเปิด","textChars":14,"textLines":1,"bbox":[96,84,1728,80]}
+{"kind":"textbox","id":"sh/g32tcred","slide":11,"name":"s11-339","text":"สถานะ OPENING จากเฟิร์มแวร์ฉบับสอน","textPreview":"สถานะ OPENING จากเฟิร์มแวร์ฉบับสอน","textChars":34,"textLines":1,"bbox":[96,169,1728,51]}
+{"kind":"shape","id":"sh/1ovu5wvy","slide":11,"name":"s11-340","bbox":[96,241,1728,0.01]}
+{"kind":"textbox","id":"sh/2p4be1w3","slide":11,"name":"s11-341","text":"11","textPreview":"11","textChars":2,"textLines":1,"bbox":[1758,954,66,32]}
+{"kind":"shape","id":"sh/nqdc76do","slide":11,"name":"s11-342","bbox":[138,292,510,71]}
+{"kind":"textbox","id":"sh/ormtgbe9","slide":11,"name":"s11-343","text":"CLOSED","textPreview":"CLOSED","textChars":6,"textLines":1,"bbox":[146,298,494,59]}
+{"kind":"shape","id":"sh/psvu9wvu","slide":11,"name":"s11-344","bbox":[138,429,510,88]}
+{"kind":"textbox","id":"sh/at4vi1wf","slide":11,"name":"s11-345","text":"OPENING","textPreview":"OPENING","textChars":7,"textLines":1,"bbox":[146,435,494,76]}
+{"kind":"shape","id":"sh/budcb6d0","slide":11,"name":"s11-346","bbox":[138,583,510,71]}
+{"kind":"textbox","id":"sh/3m14beh0","slide":11,"name":"s11-347","text":"HOLD","textPreview":"HOLD","textChars":4,"textLines":1,"bbox":[146,589,494,59]}
+{"kind":"shape","id":"sh/2lsn29gf","slide":11,"name":"s11-348","bbox":[393,363,0.01,66]}
+{"kind":"shape","id":"sh/pojmdoz6","slide":11,"name":"s11-349","bbox":[387,423,12,12]}
+{"kind":"shape","id":"sh/4na54jyl","slide":11,"name":"s11-350","bbox":[393,517,0.01,66]}
+{"kind":"shape","id":"sh/fih47eh4","slide":11,"name":"s11-351","bbox":[387,577,12,12]}
+{"kind":"textbox","id":"sh/uh8ny9gj","slide":11,"name":"s11-352","text":"P0 = FAH    P1 = D9H","textPreview":"P0 = FAH    P1 = D9H","textChars":20,"textLines":1,"bbox":[116,707,574,57]}
+{"kind":"textbox","id":"sh/hkjm94za","slide":11,"name":"s11-353","text":"จ่ายแรงขับในทิศเปิด\nไฟเขียวติดจนถึงลิมิต LO","textPreview":"จ่ายแรงขับในทิศเปิด | ไฟเขียวติดจนถึงลิมิต LO","textChars":43,"textLines":2,"bbox":[116,790,574,70]}
+{"kind":"textbox","id":"sh/gjq50jyp","slide":11,"name":"s11-354","text":"เกิน 5 วินาที ให้เข้า FAULT","textPreview":"เกิน 5 วินาที ให้เข้า FAULT","textChars":27,"textLines":1,"bbox":[116,883,574,52]}
+{"kind":"shape","id":"sh/zelojyx8","slide":11,"name":"s11-355","bbox":[735,282,1089,647]}
+{"kind":"textbox","id":"sh/edcnatgn","slide":11,"name":"s11-356","text":"โค้ดส่วนสำคัญของสถานะ","textPreview":"โค้ดส่วนสำคัญของสถานะ","textChars":21,"textLines":1,"bbox":[768,302,1016,47]}
+{"kind":"shape","id":"sh/a9w7ix0v","slide":11,"name":"s11-357","bbox":[768,365,1023,0.01]}
+{"kind":"textbox","id":"sh/va58b2hg","slide":11,"name":"s11-358","text":"OpeningState:","textPreview":"OpeningState:","textChars":13,"textLines":1,"bbox":[768,384,1016,32]}
+{"kind":"textbox","id":"sh/wbypk7i1","slide":11,"name":"s11-359","text":"    SETB P1.2","textPreview":"SETB P1.2","textChars":13,"textLines":1,"bbox":[768,416,1016,32]}
+{"kind":"textbox","id":"sh/xc7qdczm","slide":11,"name":"s11-360","text":"    MOV  P0,#0FAH","textPreview":"MOV  P0,#0FAH","textChars":17,"textLines":1,"bbox":[768,448,1016,32]}
+{"kind":"textbox","id":"sh/idg7mh07","slide":11,"name":"s11-361","text":"    MOV  P1,#0DDH","textPreview":"MOV  P1,#0DDH","textChars":17,"textLines":1,"bbox":[768,480,1016,32]}
+{"kind":"textbox","id":"sh/jyp8fmhs","slide":11,"name":"s11-362","text":"    MOV  P1,#0D9H","textPreview":"MOV  P1,#0D9H","textChars":17,"textLines":1,"bbox":[768,512,1016,32]}
+{"kind":"textbox","id":"sh/kzyporid","slide":11,"name":"s11-363","text":"    MOV  R1,#250","textPreview":"MOV  R1,#250","textChars":16,"textLines":1,"bbox":[768,544,1016,32]}
+{"kind":"textbox","id":"sh/507qhczi","slide":11,"name":"s11-364","text":"OpeningLoop:","textPreview":"OpeningLoop:","textChars":12,"textLines":1,"bbox":[768,576,1016,32]}
+{"kind":"textbox","id":"sh/ehc7ad0n","slide":11,"name":"s11-365","text":"    JB   P2.7,OpeningFault","textPreview":"JB   P2.7,OpeningFault","textChars":26,"textLines":1,"bbox":[768,608,1016,32]}
+{"kind":"textbox","id":"sh/zilo3i18","slide":11,"name":"s11-366","text":"    JNB  P2.3,OpeningDone","textPreview":"JNB  P2.3,OpeningDone","textChars":25,"textLines":1,"bbox":[768,640,1016,32]}
+{"kind":"textbox","id":"sh/hwba9gjq","slide":11,"name":"s11-367","text":"    CALL Delay","textPreview":"CALL Delay","textChars":14,"textLines":1,"bbox":[768,672,1016,32]}
+{"kind":"textbox","id":"sh/gv2tgb2l","slide":11,"name":"s11-368","text":"    DJNZ R1,OpeningLoop","textPreview":"DJNZ R1,OpeningLoop","textChars":23,"textLines":1,"bbox":[768,704,1016,32]}
+{"kind":"textbox","id":"sh/futs7q10","slide":11,"name":"s11-369","text":"OpeningFault:","textPreview":"OpeningFault:","textChars":13,"textLines":1,"bbox":[768,736,1016,32]}
+{"kind":"textbox","id":"sh/ut0belkf","slide":11,"name":"s11-370","text":"    LJMP FaultState","textPreview":"LJMP FaultState","textChars":19,"textLines":1,"bbox":[768,768,1016,32]}
+{"kind":"textbox","id":"sh/p0bad0j2","slide":11,"name":"s11-371","text":"OpeningDone:","textPreview":"OpeningDone:","textChars":12,"textLines":1,"bbox":[768,800,1016,32]}
+{"kind":"textbox","id":"sh/4z2tkv2h","slide":11,"name":"s11-372","text":"    LJMP HoldState","textPreview":"LJMP HoldState","textChars":18,"textLines":1,"bbox":[768,832,1016,32]}
+{"kind":"notes","id":"nt/y6icw1","slide":11,"text":"แหล่งข้อมูล: firmware/SLIDING_DOOR_CLASSROOM.asm บล็อก OpeningState. แสดงเฉพาะส่วนสำคัญ ไม่ใช่โปรแกรมที่ประกอบได้ลำพัง ใช้ไฟล์ฉบับเต็มสำหรับ EdSim51.\nบล็อกต้นฉบับครบถ้วน:\nOpeningState:\n    SETB P1.2\n    MOV  R0,#02H\n    MOV  P0,#0FAH\n    MOV  P1,#0DDH\n    MOV  P1,#0D9H\n    MOV  R1,#250\nOpeningLoop:\n    JB   P2.7,OpeningFault\n    JNB  P2.3,OpeningDone\n    CALL Delay\n    DJNZ R1,OpeningLoop\nOpeningFault:\n    LJMP FaultState\nOpeningDone:\n    LJMP HoldState\n"}
+{"kind":"slide","id":"sl/1gb1qu","slide":12,"title":"ประตูเปิดค้าง","textShapes":28}
+{"kind":"textbox","id":"sh/j21cbqlo","slide":12,"name":"s12-373","text":"ประตูเปิดค้าง","textPreview":"ประตูเปิดค้าง","textChars":13,"textLines":1,"bbox":[96,84,1728,80]}
+{"kind":"textbox","id":"sh/k3at4b29","slide":12,"name":"s12-374","text":"สถานะ HOLD จากเฟิร์มแวร์ฉบับสอน","textPreview":"สถานะ HOLD จากเฟิร์มแวร์ฉบับสอน","textChars":31,"textLines":1,"bbox":[96,169,1728,51]}
+{"kind":"shape","id":"sh/l4judg3u","slide":12,"name":"s12-375","bbox":[96,241,1728,0.01]}
+{"kind":"textbox","id":"sh/65cb6lkf","slide":12,"name":"s12-376","text":"12","textPreview":"12","textChars":2,"textLines":1,"bbox":[1758,954,66,32]}
+{"kind":"shape","id":"sh/76lcfqlk","slide":12,"name":"s12-377","bbox":[138,292,510,71]}
+{"kind":"textbox","id":"sh/87ut8v25","slide":12,"name":"s12-378","text":"OPENING หรือ REOPEN","textPreview":"OPENING หรือ REOPEN","textChars":19,"textLines":1,"bbox":[146,298,494,59]}
+{"kind":"shape","id":"sh/t83uh03q","slide":12,"name":"s12-379","bbox":[138,429,510,88]}
+{"kind":"textbox","id":"sh/u9cba5kb","slide":12,"name":"s12-380","text":"HOLD","textPreview":"HOLD","textChars":4,"textLines":1,"bbox":[146,435,494,76]}
+{"kind":"shape","id":"sh/valcjalw","slide":12,"name":"s12-381","bbox":[138,583,510,71]}
+{"kind":"textbox","id":"sh/fmh0za1o","slide":12,"name":"s12-382","text":"CLOSING","textPreview":"CLOSING","textChars":7,"textLines":1,"bbox":[146,589,494,59]}
+{"kind":"shape","id":"sh/el8jq503","slide":12,"name":"s12-383","bbox":[393,363,0.01,66]}
+{"kind":"shape","id":"sh/1ozi10ju","slide":12,"name":"s12-384","bbox":[387,423,12,12]}
+{"kind":"shape","id":"sh/gnq1svi9","slide":12,"name":"s12-385","bbox":[393,517,0.01,66]}
+{"kind":"shape","id":"sh/ryh0vq1s","slide":12,"name":"s12-386","bbox":[387,577,12,12]}
+{"kind":"textbox","id":"sh/6xojml07","slide":12,"name":"s12-387","text":"P0 = FBH    P1 = DCH","textPreview":"P0 = FBH    P1 = DCH","textChars":20,"textLines":1,"bbox":[116,707,574,57]}
+{"kind":"textbox","id":"sh/tkzix0jy","slide":12,"name":"s12-388","text":"มอเตอร์หยุด ไฟเขียวติด\nถูกบังหรือกดปุ่มให้เริ่มนับใหม่","textPreview":"มอเตอร์หยุด ไฟเขียวติด | ถูกบังหรือกดปุ่มให้เริ่มนับใหม่","textChars":54,"textLines":2,"bbox":[116,790,574,70]}
+{"kind":"textbox","id":"sh/szq1ovid","slide":12,"name":"s12-389","text":"ทางผ่านต้องว่างต่อเนื่อง 3 วินาที","textPreview":"ทางผ่านต้องว่างต่อเนื่อง 3 วินาที","textChars":33,"textLines":1,"bbox":[116,883,574,52]}
+{"kind":"shape","id":"sh/bu1k7uhw","slide":12,"name":"s12-390","bbox":[735,282,1089,647]}
+{"kind":"textbox","id":"sh/qtsjyp0b","slide":12,"name":"s12-391","text":"โค้ดส่วนสำคัญของสถานะ","textPreview":"โค้ดส่วนสำคัญของสถานะ","textChars":21,"textLines":1,"bbox":[768,302,1016,47]}
+{"kind":"shape","id":"sh/mpw36tkj","slide":12,"name":"s12-392","bbox":[768,365,1023,0.01]}
+{"kind":"textbox","id":"sh/na54zyl4","slide":12,"name":"s12-393","text":"HoldState:","textPreview":"HoldState:","textChars":10,"textLines":1,"bbox":[768,384,1016,29.22]}
+{"kind":"textbox","id":"sh/8bel8j2p","slide":12,"name":"s12-394","text":"    SETB P1.2","textPreview":"SETB P1.2","textChars":13,"textLines":1,"bbox":[768,413.22,1016,29.22]}
+{"kind":"textbox","id":"sh/9cnm1oja","slide":12,"name":"s12-395","text":"    MOV  P0,#0FBH","textPreview":"MOV  P0,#0FBH","textChars":17,"textLines":1,"bbox":[768,442.44,1016,29.22]}
+{"kind":"textbox","id":"sh/adw3atkv","slide":12,"name":"s12-396","text":"    MOV  P1,#0DCH","textPreview":"MOV  P1,#0DCH","textChars":17,"textLines":1,"bbox":[768,471.67,1016,29.22]}
+{"kind":"textbox","id":"sh/ve543y1g","slide":12,"name":"s12-397","text":"HoldRestart:","textPreview":"HoldRestart:","textChars":12,"textLines":1,"bbox":[768,500.89,1016,29.22]}
+{"kind":"textbox","id":"sh/wfe5c32l","slide":12,"name":"s12-398","text":"    MOV  R1,#150","textPreview":"MOV  R1,#150","textChars":16,"textLines":1,"bbox":[768,530.11,1016,29.22]}
+{"kind":"textbox","id":"sh/xg7m58j6","slide":12,"name":"s12-399","text":"HoldLoop:","textPreview":"HoldLoop:","textChars":9,"textLines":1,"bbox":[768,559.33,1016,29.22]}
+{"kind":"textbox","id":"sh/qhc3y9kb","slide":12,"name":"s12-400","text":"    JB   P2.7,HoldFault","textPreview":"JB   P2.7,HoldFault","textChars":23,"textLines":1,"bbox":[768,588.56,1016,29.22]}
+{"kind":"textbox","id":"sh/bil4rulw","slide":12,"name":"s12-401","text":"    JB   P2.3,HoldFault","textPreview":"JB   P2.3,HoldFault","textChars":23,"textLines":1,"bbox":[768,617.78,1016,29.22]}
+{"kind":"textbox","id":"sh/tcr6xc3e","slide":12,"name":"s12-402","text":"    JB   P2.2,HoldRestart","textPreview":"JB   P2.2,HoldRestart","textChars":25,"textLines":1,"bbox":[768,647,1016,29.22]}
+{"kind":"textbox","id":"sh/sbip47mt","slide":12,"name":"s12-403","text":"    JB   P2.5,HoldRestart","textPreview":"JB   P2.5,HoldRestart","textChars":25,"textLines":1,"bbox":[768,676.22,1016,29.22]}
+{"kind":"textbox","id":"sh/ra9ov2lo","slide":12,"name":"s12-404","text":"    JNB  P2.0,HoldRestart","textPreview":"JNB  P2.0,HoldRestart","textChars":25,"textLines":1,"bbox":[768,705.44,1016,29.22]}
+{"kind":"textbox","id":"sh/69072x43","slide":12,"name":"s12-405","text":"    JNB  P2.1,HoldRestart","textPreview":"JNB  P2.1,HoldRestart","textChars":25,"textLines":1,"bbox":[768,734.67,1016,29.22]}
+{"kind":"textbox","id":"sh/10b61c3q","slide":12,"name":"s12-406","text":"    CALL Delay","textPreview":"CALL Delay","textChars":14,"textLines":1,"bbox":[768,763.89,1016,29.22]}
+{"kind":"textbox","id":"sh/gf2p87m5","slide":12,"name":"s12-407","text":"    DJNZ R1,HoldLoop","textPreview":"DJNZ R1,HoldLoop","textChars":20,"textLines":1,"bbox":[768,793.11,1016,29.22]}
+{"kind":"textbox","id":"sh/fe9oz2lk","slide":12,"name":"s12-408","text":"    LJMP ClosingState","textPreview":"LJMP ClosingState","textChars":21,"textLines":1,"bbox":[768,822.33,1016,29.22]}
+{"kind":"textbox","id":"sh/ed076h4z","slide":12,"name":"s12-409","text":"HoldFault:","textPreview":"HoldFault:","textChars":10,"textLines":1,"bbox":[768,851.56,1016,29.22]}
+{"kind":"textbox","id":"sh/h476psn6","slide":12,"name":"s12-410","text":"    LJMP FaultState","textPreview":"LJMP FaultState","textChars":19,"textLines":1,"bbox":[768,880.78,1016,29.22]}
+{"kind":"notes","id":"nt/1gb1qu","slide":12,"text":"แหล่งข้อมูล: firmware/SLIDING_DOOR_CLASSROOM.asm บล็อก HoldState. แสดงเฉพาะส่วนสำคัญ ไม่ใช่โปรแกรมที่ประกอบได้ลำพัง ใช้ไฟล์ฉบับเต็มสำหรับ EdSim51.\nบล็อกต้นฉบับครบถ้วน:\nHoldState:\n    SETB P1.2\n    MOV  R0,#03H\n    MOV  P0,#0FBH\n    MOV  P1,#0DCH\nHoldRestart:\n    MOV  R1,#150\nHoldLoop:\n    JB   P2.7,HoldFault\n    JB   P2.3,HoldFault\n    JB   P2.2,HoldRestart\n    JB   P2.5,HoldRestart\n    JNB  P2.0,HoldRestart\n    JNB  P2.1,HoldRestart\n    CALL Delay\n    DJNZ R1,HoldLoop\n    LJMP ClosingState\nHoldFault:\n    LJMP FaultState\n"}
+{"kind":"slide","id":"sl/ubodl6","slide":13,"title":"ประตูกำลังปิด","textShapes":27}
+{"kind":"textbox","id":"sh/cfy5kjqt","slide":13,"name":"s13-411","text":"ประตูกำลังปิด","textPreview":"ประตูกำลังปิด","textChars":13,"textLines":1,"bbox":[96,84,1728,80]}
+{"kind":"textbox","id":"sh/bep4bepo","slide":13,"name":"s13-412","text":"สถานะ CLOSING จากเฟิร์มแวร์ฉบับสอน","textPreview":"สถานะ CLOSING จากเฟิร์มแวร์ฉบับสอน","textChars":34,"textLines":1,"bbox":[96,169,1728,51]}
+{"kind":"shape","id":"sh/atgni983","slide":13,"name":"s13-413","bbox":[96,241,1728,0.01]}
+{"kind":"textbox","id":"sh/ps7m947i","slide":13,"name":"s13-414","text":"13","textPreview":"13","textChars":2,"textLines":1,"bbox":[1758,954,66,32]}
+{"kind":"shape","id":"sh/ory5gzqx","slide":13,"name":"s13-415","bbox":[138,292,510,71]}
+{"kind":"textbox","id":"sh/nq547epc","slide":13,"name":"s13-416","text":"HOLD","textPreview":"HOLD","textChars":4,"textLines":1,"bbox":[146,298,494,59]}
+{"kind":"shape","id":"sh/2pwne98r","slide":13,"name":"s13-417","bbox":[138,429,510,88]}
+{"kind":"textbox","id":"sh/1onm5476","slide":13,"name":"s13-418","text":"CLOSING","textPreview":"CLOSING","textChars":7,"textLines":1,"bbox":[146,435,494,76]}
+{"kind":"shape","id":"sh/0nelczq1","slide":13,"name":"s13-419","bbox":[138,583,510,71]}
+{"kind":"textbox","id":"sh/ux8jq18v","slide":13,"name":"s13-420","text":"CLOSED หรือ REV_WAIT","textPreview":"CLOSED หรือ REV_WAIT","textChars":20,"textLines":1,"bbox":[146,589,494,59]}
+{"kind":"shape","id":"sh/vyh0z6pg","slide":13,"name":"s13-421","bbox":[393,363,0.01,66]}
+{"kind":"shape","id":"sh/wzq1sbql","slide":13,"name":"s13-422","bbox":[387,423,12,12]}
+{"kind":"shape","id":"sh/h0zi1g76","slide":13,"name":"s13-423","bbox":[393,517,0.01,66]}
+{"kind":"shape","id":"sh/mtojm18j","slide":13,"name":"s13-424","bbox":[387,577,12,12]}
+{"kind":"textbox","id":"sh/7ux0v694","slide":13,"name":"s13-425","text":"P0 = FCH    P1 = 6AH","textPreview":"P0 = FCH    P1 = 6AH","textChars":20,"textLines":1,"bbox":[116,707,574,57]}
+{"kind":"textbox","id":"sh/8v61obqp","slide":13,"name":"s13-426","text":"ปิดพร้อมไฟแดงและเสียงเตือน\nตรวจลำแสงก่อนตรวจลิมิตปิด","textPreview":"ปิดพร้อมไฟแดงและเสียงเตือน | ตรวจลำแสงก่อนตรวจลิมิตปิด","textChars":52,"textLines":2,"bbox":[116,790,574,70]}
+{"kind":"textbox","id":"sh/9wzixg7a","slide":13,"name":"s13-427","text":"พบสิ่งกีดขวางให้ตัดแรงขับก่อน","textPreview":"พบสิ่งกีดขวางให้ตัดแรงขับก่อน","textChars":29,"textLines":1,"bbox":[116,883,574,52]}
+{"kind":"shape","id":"sh/y5ozih8n","slide":13,"name":"s13-428","bbox":[735,282,1089,647]}
+{"kind":"textbox","id":"sh/z6x0rm98","slide":13,"name":"s13-429","text":"โค้ดส่วนสำคัญของสถานะ","textPreview":"โค้ดส่วนสำคัญของสถานะ","textChars":21,"textLines":1,"bbox":[768,302,1016,47]}
+{"kind":"shape","id":"sh/3atgzip0","slide":13,"name":"s13-430","bbox":[768,365,1023,0.01]}
+{"kind":"textbox","id":"sh/29kfqxof","slide":13,"name":"s13-431","text":"    MOV  R1,#250","textPreview":"MOV  R1,#250","textChars":16,"textLines":1,"bbox":[768,384,1016,30.94]}
+{"kind":"textbox","id":"sh/pcby1snq","slide":13,"name":"s13-432","text":"ClosingLoop:","textPreview":"ClosingLoop:","textChars":12,"textLines":1,"bbox":[768,414.94,1016,30.94]}
+{"kind":"textbox","id":"sh/ob2xsn6l","slide":13,"name":"s13-433","text":"    JB   P2.7,ClosingFault","textPreview":"JB   P2.7,ClosingFault","textChars":26,"textLines":1,"bbox":[768,445.88,1016,30.94]}
+{"kind":"textbox","id":"sh/bydg325w","slide":13,"name":"s13-434","text":"    JB   P2.2,ClosingStop","textPreview":"JB   P2.2,ClosingStop","textChars":25,"textLines":1,"bbox":[768,476.82,1016,30.94]}
+{"kind":"textbox","id":"sh/qx4fuxob","slide":13,"name":"s13-435","text":"    JB   P2.5,ClosingStop","textPreview":"JB   P2.5,ClosingStop","textChars":25,"textLines":1,"bbox":[768,507.76,1016,30.94]}
+{"kind":"textbox","id":"sh/d0vy5cn2","slide":13,"name":"s13-436","text":"    JNB  P2.0,ClosingStop","textPreview":"JNB  P2.0,ClosingStop","textChars":25,"textLines":1,"bbox":[768,538.71,1016,30.94]}
+{"kind":"textbox","id":"sh/czmxw76h","slide":13,"name":"s13-437","text":"    JNB  P2.1,ClosingStop","textPreview":"JNB  P2.1,ClosingStop","textChars":25,"textLines":1,"bbox":[768,569.65,1016,30.94]}
+{"kind":"textbox","id":"sh/r29wryps","slide":13,"name":"s13-438","text":"    JNB  P2.4,ClosingDone","textPreview":"JNB  P2.4,ClosingDone","textChars":25,"textLines":1,"bbox":[768,600.59,1016,30.94]}
+{"kind":"textbox","id":"sh/6h0fido7","slide":13,"name":"s13-439","text":"    CALL Delay","textPreview":"CALL Delay","textChars":14,"textLines":1,"bbox":[768,631.53,1016,30.94]}
+{"kind":"textbox","id":"sh/wnydszm5","slide":13,"name":"s13-440","text":"    DJNZ R1,ClosingLoop","textPreview":"DJNZ R1,ClosingLoop","textChars":23,"textLines":1,"bbox":[768,662.47,1016,30.94]}
+{"kind":"textbox","id":"sh/h87u14nq","slide":13,"name":"s13-441","text":"ClosingFault:","textPreview":"ClosingFault:","textChars":13,"textLines":1,"bbox":[768,693.41,1016,30.94]}
+{"kind":"textbox","id":"sh/ulwvq94z","slide":13,"name":"s13-442","text":"    LJMP FaultState","textPreview":"LJMP FaultState","textChars":19,"textLines":1,"bbox":[768,724.35,1016,30.94]}
+{"kind":"textbox","id":"sh/vmpcze5k","slide":13,"name":"s13-443","text":"ClosingStop:","textPreview":"ClosingStop:","textChars":12,"textLines":1,"bbox":[768,755.29,1016,30.94]}
+{"kind":"textbox","id":"sh/8jedozmt","slide":13,"name":"s13-444","text":"    SETB P1.2","textPreview":"SETB P1.2","textChars":13,"textLines":1,"bbox":[768,786.24,1016,30.94]}
+{"kind":"textbox","id":"sh/9knux4ne","slide":13,"name":"s13-445","text":"    LJMP RevWaitState","textPreview":"LJMP RevWaitState","textChars":21,"textLines":1,"bbox":[768,817.18,1016,30.94]}
+{"kind":"textbox","id":"sh/mhwbmp43","slide":13,"name":"s13-446","text":"ClosingDone:","textPreview":"ClosingDone:","textChars":12,"textLines":1,"bbox":[768,848.12,1016,30.94]}
+{"kind":"textbox","id":"sh/7i5cvu58","slide":13,"name":"s13-447","text":"    LJMP ClosedState","textPreview":"LJMP ClosedState","textChars":20,"textLines":1,"bbox":[768,879.06,1016,30.94]}
+{"kind":"notes","id":"nt/ubodl6","slide":13,"text":"แหล่งข้อมูล: firmware/SLIDING_DOOR_CLASSROOM.asm บล็อก ClosingState. แสดงเฉพาะส่วนสำคัญ ไม่ใช่โปรแกรมที่ประกอบได้ลำพัง ใช้ไฟล์ฉบับเต็มสำหรับ EdSim51.\nบล็อกต้นฉบับครบถ้วน:\nClosingState:\n    SETB P1.2\n    MOV  R0,#04H\n    MOV  P0,#0FCH\n    MOV  P1,#06EH\n    MOV  P1,#06AH\n    MOV  R1,#250\nClosingLoop:\n    JB   P2.7,ClosingFault\n    JB   P2.2,ClosingStop\n    JB   P2.5,ClosingStop\n    JNB  P2.0,ClosingStop\n    JNB  P2.1,ClosingStop\n    JNB  P2.4,ClosingDone\n    CALL Delay\n    DJNZ R1,ClosingLoop\nClosingFault:\n    LJMP FaultState\nClosingStop:\n    SETB P1.2\n    LJMP RevWaitState\nClosingDone:\n    LJMP ClosedState\nสไลด์แสดงจากการตั้ง R1 จนถึงปลายบล็อก ClosingDone ส่วนตั้งเอาต์พุตก่อนหน้านี้แสดงเป็นค่า P0/P1 ด้านซ้าย"}
+{"kind":"slide","id":"sl/fzfgdu","slide":14,"title":"พักมอเตอร์ก่อนกลับทิศ","textShapes":22}
+{"kind":"textbox","id":"sh/21g3y14f","slide":14,"name":"s14-448","text":"พักมอเตอร์ก่อนกลับทิศ","textPreview":"พักมอเตอร์ก่อนกลับทิศ","textChars":21,"textLines":1,"bbox":[96,84,1728,80]}
+{"kind":"textbox","id":"sh/p4rm9g3q","slide":14,"name":"s14-449","text":"สถานะ REV_WAIT จากเฟิร์มแวร์ฉบับสอน","textPreview":"สถานะ REV_WAIT จากเฟิร์มแวร์ฉบับสอน","textChars":35,"textLines":1,"bbox":[96,169,1728,51]}
+{"kind":"shape","id":"sh/o3il0bm5","slide":14,"name":"s14-450","bbox":[96,241,1728,0.01]}
+{"kind":"textbox","id":"sh/fyp43mlo","slide":14,"name":"s14-451","text":"14","textPreview":"14","textChars":2,"textLines":1,"bbox":[1758,954,66,32]}
+{"kind":"shape","id":"sh/exg3uh43","slide":14,"name":"s14-452","bbox":[138,292,510,71]}
+{"kind":"textbox","id":"sh/107m5w3u","slide":14,"name":"s14-453","text":"CLOSING","textPreview":"CLOSING","textChars":7,"textLines":1,"bbox":[146,298,494,59]}
+{"kind":"shape","id":"sh/0zylwrm9","slide":14,"name":"s14-454","bbox":[138,429,510,88]}
+{"kind":"textbox","id":"sh/ra54zmls","slide":14,"name":"s14-455","text":"REV_WAIT","textPreview":"REV_WAIT","textChars":8,"textLines":1,"bbox":[146,435,494,76]}
+{"kind":"shape","id":"sh/q9w3qh47","slide":14,"name":"s14-456","bbox":[138,583,510,71]}
+{"kind":"textbox","id":"sh/szu90jap","slide":14,"name":"s14-457","text":"REOPEN","textPreview":"REOPEN","textChars":6,"textLines":1,"bbox":[146,589,494,59]}
+{"kind":"shape","id":"sh/d03a9obu","slide":14,"name":"s14-458","bbox":[393,363,0.01,66]}
+{"kind":"shape","id":"sh/qxcrytsj","slide":14,"name":"s14-459","bbox":[387,423,12,12]}
+{"kind":"shape","id":"sh/ryls7et4","slide":14,"name":"s14-460","bbox":[393,517,0.01,66]}
+{"kind":"shape","id":"sh/4va9wjad","slide":14,"name":"s14-461","bbox":[387,577,12,12]}
+{"kind":"textbox","id":"sh/5wja5oby","slide":14,"name":"s14-462","text":"P0 = FDH    P1 = 6CH","textPreview":"P0 = FDH    P1 = 6CH","textChars":20,"textLines":1,"bbox":[116,707,574,57]}
+{"kind":"textbox","id":"sh/itsru9s7","slide":14,"name":"s14-463","text":"ตัดแรงขับพร้อมเสียงเตือน\nยังตรวจปุ่มหยุดฉุกเฉินระหว่างรอ","textPreview":"ตัดแรงขับพร้อมเสียงเตือน | ยังตรวจปุ่มหยุดฉุกเฉินระหว่างรอ","textChars":56,"textLines":2,"bbox":[116,790,574,70]}
+{"kind":"textbox","id":"sh/3u1s3ets","slide":14,"name":"s14-464","text":"พักมอเตอร์อย่างน้อย 200 ms","textPreview":"พักมอเตอร์อย่างน้อย 200 ms","textChars":26,"textLines":1,"bbox":[116,883,574,52]}
+{"kind":"shape","id":"sh/oret83ah","slide":14,"name":"s14-465","bbox":[735,282,1089,647]}
+{"kind":"textbox","id":"sh/psnah8r2","slide":14,"name":"s14-466","text":"โค้ดส่วนสำคัญของสถานะ","textPreview":"โค้ดส่วนสำคัญของสถานะ","textChars":21,"textLines":1,"bbox":[768,302,1016,47]}
+{"kind":"shape","id":"sh/x8ja18j6","slide":14,"name":"s14-467","bbox":[768,365,1023,0.01]}
+{"kind":"textbox","id":"sh/w7a9s321","slide":14,"name":"s14-468","text":"RevWaitState:","textPreview":"RevWaitState:","textChars":13,"textLines":1,"bbox":[768,384,1016,32]}
+{"kind":"textbox","id":"sh/b61szy1g","slide":14,"name":"s14-469","text":"    SETB P1.2","textPreview":"SETB P1.2","textChars":13,"textLines":1,"bbox":[768,416,1016,32]}
+{"kind":"textbox","id":"sh/alsrqtkv","slide":14,"name":"s14-470","text":"    MOV  P0,#0FDH","textPreview":"MOV  P0,#0FDH","textChars":17,"textLines":1,"bbox":[768,448,1016,32]}
+{"kind":"textbox","id":"sh/9kjax8ja","slide":14,"name":"s14-471","text":"    MOV  P1,#06CH","textPreview":"MOV  P1,#06CH","textChars":17,"textLines":1,"bbox":[768,480,1016,32]}
+{"kind":"textbox","id":"sh/oja9o32p","slide":14,"name":"s14-472","text":"    MOV  R1,#10","textPreview":"MOV  R1,#10","textChars":15,"textLines":1,"bbox":[768,512,1016,32]}
+{"kind":"textbox","id":"sh/nihsvyl4","slide":14,"name":"s14-473","text":"RevLoop:","textPreview":"RevLoop:","textChars":8,"textLines":1,"bbox":[768,544,1016,32]}
+{"kind":"textbox","id":"sh/mh8rmtkj","slide":14,"name":"s14-474","text":"    JB   P2.7,RevFault","textPreview":"JB   P2.7,RevFault","textChars":22,"textLines":1,"bbox":[768,576,1016,32]}
+{"kind":"textbox","id":"sh/1gzato3y","slide":14,"name":"s14-475","text":"    CALL Delay","textPreview":"CALL Delay","textChars":14,"textLines":1,"bbox":[768,608,1016,32]}
+{"kind":"textbox","id":"sh/0fq9kj2t","slide":14,"name":"s14-476","text":"    DJNZ R1,RevLoop","textPreview":"DJNZ R1,RevLoop","textChars":19,"textLines":1,"bbox":[768,640,1016,32]}
+{"kind":"textbox","id":"sh/qlo7up0b","slide":14,"name":"s14-477","text":"    LJMP ReopenState","textPreview":"LJMP ReopenState","textChars":20,"textLines":1,"bbox":[768,672,1016,32]}
+{"kind":"textbox","id":"sh/rmxonuhw","slide":14,"name":"s14-478","text":"RevFault:","textPreview":"RevFault:","textChars":9,"textLines":1,"bbox":[768,704,1016,32]}
+{"kind":"textbox","id":"sh/cn6pwzih","slide":14,"name":"s14-479","text":"    LJMP FaultState","textPreview":"LJMP FaultState","textChars":19,"textLines":1,"bbox":[768,736,1016,32]}
+{"kind":"notes","id":"nt/fzfgdu","slide":14,"text":"แหล่งข้อมูล: firmware/SLIDING_DOOR_CLASSROOM.asm บล็อก RevWaitState. แสดงเฉพาะส่วนสำคัญ ไม่ใช่โปรแกรมที่ประกอบได้ลำพัง ใช้ไฟล์ฉบับเต็มสำหรับ EdSim51.\nบล็อกต้นฉบับครบถ้วน:\nRevWaitState:\n    SETB P1.2\n    MOV  R0,#05H\n    MOV  P0,#0FDH\n    MOV  P1,#06CH\n    MOV  R1,#10\nRevLoop:\n    JB   P2.7,RevFault\n    CALL Delay\n    DJNZ R1,RevLoop\n    LJMP ReopenState\nRevFault:\n    LJMP FaultState\n"}
+{"kind":"slide","id":"sl/9cde55","slide":15,"title":"ประตูเปิดกลับ","textShapes":25}
+{"kind":"textbox","id":"sh/dczyxg3e","slide":15,"name":"s15-480","text":"ประตูเปิดกลับ","textPreview":"ประตูเปิดกลับ","textChars":13,"textLines":1,"bbox":[96,84,1728,80]}
+{"kind":"textbox","id":"sh/q98zmlkn","slide":15,"name":"s15-481","text":"สถานะ REOPEN จากเฟิร์มแวร์ฉบับสอน","textPreview":"สถานะ REOPEN จากเฟิร์มแวร์ฉบับสอน","textChars":33,"textLines":1,"bbox":[96,169,1728,51]}
+{"kind":"shape","id":"sh/rahgvql8","slide":15,"name":"s15-482","bbox":[96,241,1728,0.01]}
+{"kind":"textbox","id":"sh/0zqhsv2p","slide":15,"name":"s15-483","text":"15","textPreview":"15","textChars":2,"textLines":1,"bbox":[1758,954,66,32]}
+{"kind":"shape","id":"sh/10jy103a","slide":15,"name":"s15-484","bbox":[138,292,510,71]}
+{"kind":"textbox","id":"sh/ed8zqlkz","slide":15,"name":"s15-485","text":"REV_WAIT","textPreview":"REV_WAIT","textChars":8,"textLines":1,"bbox":[146,298,494,59]}
+{"kind":"shape","id":"sh/zehgzql4","slide":15,"name":"s15-486","bbox":[138,429,510,88]}
+{"kind":"textbox","id":"sh/o3ahwf21","slide":15,"name":"s15-487","text":"REOPEN","textPreview":"REOPEN","textChars":6,"textLines":1,"bbox":[146,435,494,76]}
+{"kind":"shape","id":"sh/94jy503m","slide":15,"name":"s15-488","bbox":[138,583,510,71]}
+{"kind":"textbox","id":"sh/xcvy14ru","slide":15,"name":"s15-489","text":"HOLD","textPreview":"HOLD","textChars":4,"textLines":1,"bbox":[146,589,494,59]}
+{"kind":"shape","id":"sh/wbmxsza9","slide":15,"name":"s15-490","bbox":[393,363,0.01,66]}
+{"kind":"shape","id":"sh/vadgzu9o","slide":15,"name":"s15-491","bbox":[387,423,12,12]}
+{"kind":"shape","id":"sh/a94fqps3","slide":15,"name":"s15-492","bbox":[393,517,0.01,66]}
+{"kind":"shape","id":"sh/5gfy54rq","slide":15,"name":"s15-493","bbox":[387,577,12,12]}
+{"kind":"textbox","id":"sh/kf6xwza5","slide":15,"name":"s15-494","text":"P0 = FEH    P1 = 69H","textPreview":"P0 = FEH    P1 = 69H","textChars":20,"textLines":1,"bbox":[116,707,574,57]}
+{"kind":"textbox","id":"sh/jexg3u9k","slide":15,"name":"s15-495","text":"เปิดกลับพร้อมไฟแดงและเสียง\nถึงลิมิต LO จึงหยุดเปิด","textPreview":"เปิดกลับพร้อมไฟแดงและเสียง | ถึงลิมิต LO จึงหยุดเปิด","textChars":50,"textLines":2,"bbox":[116,790,574,70]}
+{"kind":"textbox","id":"sh/id4fu9sz","slide":15,"name":"s15-496","text":"เกิน 5 วินาที ให้เข้า FAULT","textPreview":"เกิน 5 วินาที ให้เข้า FAULT","textChars":27,"textLines":1,"bbox":[116,883,574,52]}
+{"kind":"shape","id":"sh/lkbytkrm","slide":15,"name":"s15-497","bbox":[735,282,1089,647]}
+{"kind":"textbox","id":"sh/0j2xkfa1","slide":15,"name":"s15-498","text":"โค้ดส่วนสำคัญของสถานะ","textPreview":"โค้ดส่วนสำคัญของสถานะ","textChars":21,"textLines":1,"bbox":[768,302,1016,47]}
+{"kind":"shape","id":"sh/cn6x0fix","slide":15,"name":"s15-499","bbox":[768,365,1023,0.01]}
+{"kind":"textbox","id":"sh/dofy9kji","slide":15,"name":"s15-500","text":"ReopenState:","textPreview":"ReopenState:","textChars":12,"textLines":1,"bbox":[768,384,1016,32]}
+{"kind":"textbox","id":"sh/qlofy50r","slide":15,"name":"s15-501","text":"    SETB P1.2","textPreview":"SETB P1.2","textChars":13,"textLines":1,"bbox":[768,416,1016,32]}
+{"kind":"textbox","id":"sh/rmxg7a1c","slide":15,"name":"s15-502","text":"    MOV  P0,#0FEH","textPreview":"MOV  P0,#0FEH","textChars":17,"textLines":1,"bbox":[768,448,1016,32]}
+{"kind":"textbox","id":"sh/0r6h4fit","slide":15,"name":"s15-503","text":"    MOV  P1,#06DH","textPreview":"MOV  P1,#06DH","textChars":17,"textLines":1,"bbox":[768,480,1016,32]}
+{"kind":"textbox","id":"sh/1szydkze","slide":15,"name":"s15-504","text":"    MOV  P1,#069H","textPreview":"MOV  P1,#069H","textChars":17,"textLines":1,"bbox":[768,512,1016,32]}
+{"kind":"textbox","id":"sh/epof2p0n","slide":15,"name":"s15-505","text":"    MOV  R1,#250","textPreview":"MOV  R1,#250","textChars":16,"textLines":1,"bbox":[768,544,1016,32]}
+{"kind":"textbox","id":"sh/zqxgbu18","slide":15,"name":"s15-506","text":"ReopenLoop:","textPreview":"ReopenLoop:","textChars":11,"textLines":1,"bbox":[768,576,1016,32]}
+{"kind":"textbox","id":"sh/ovqh8zi5","slide":15,"name":"s15-507","text":"    JB   P2.7,ReopenFault","textPreview":"JB   P2.7,ReopenFault","textChars":25,"textLines":1,"bbox":[768,608,1016,32]}
+{"kind":"textbox","id":"sh/9gzyh4za","slide":15,"name":"s15-508","text":"    JNB  P2.3,ReopenDone","textPreview":"JNB  P2.3,ReopenDone","textChars":24,"textLines":1,"bbox":[768,640,1016,32]}
+{"kind":"textbox","id":"sh/ja107y1s","slide":15,"name":"s15-509","text":"    CALL Delay","textPreview":"CALL Delay","textChars":14,"textLines":1,"bbox":[768,672,1016,32]}
+{"kind":"textbox","id":"sh/ypsjetk7","slide":15,"name":"s15-510","text":"    DJNZ R1,ReopenLoop","textPreview":"DJNZ R1,ReopenLoop","textChars":22,"textLines":1,"bbox":[768,704,1016,32]}
+{"kind":"textbox","id":"sh/lc3i98ji","slide":15,"name":"s15-511","text":"ReopenFault:","textPreview":"ReopenFault:","textChars":12,"textLines":1,"bbox":[768,736,1016,32]}
+{"kind":"textbox","id":"sh/kbu1g32d","slide":15,"name":"s15-512","text":"    LJMP FaultState","textPreview":"LJMP FaultState","textChars":19,"textLines":1,"bbox":[768,768,1016,32]}
+{"kind":"textbox","id":"sh/bm103elg","slide":15,"name":"s15-513","text":"ReopenDone:","textPreview":"ReopenDone:","textChars":11,"textLines":1,"bbox":[768,800,1016,32]}
+{"kind":"textbox","id":"sh/alsjatkv","slide":15,"name":"s15-514","text":"    LJMP HoldState","textPreview":"LJMP HoldState","textChars":18,"textLines":1,"bbox":[768,832,1016,32]}
+{"kind":"notes","id":"nt/9cde55","slide":15,"text":"แหล่งข้อมูล: firmware/SLIDING_DOOR_CLASSROOM.asm บล็อก ReopenState. แสดงเฉพาะส่วนสำคัญ ไม่ใช่โปรแกรมที่ประกอบได้ลำพัง ใช้ไฟล์ฉบับเต็มสำหรับ EdSim51.\nบล็อกต้นฉบับครบถ้วน:\nReopenState:\n    SETB P1.2\n    MOV  R0,#06H\n    MOV  P0,#0FEH\n    MOV  P1,#06DH\n    MOV  P1,#069H\n    MOV  R1,#250\nReopenLoop:\n    JB   P2.7,ReopenFault\n    JNB  P2.3,ReopenDone\n    CALL Delay\n    DJNZ R1,ReopenLoop\nReopenFault:\n    LJMP FaultState\nReopenDone:\n    LJMP HoldState\n"}
+{"kind":"slide","id":"sl/ua2qqn","slide":16,"title":"หยุดเมื่อพบความผิดปกติ","textShapes":26}
+{"kind":"textbox","id":"sh/i987uhsn","slide":16,"name":"s16-515","text":"หยุดเมื่อพบความผิดปกติ","textPreview":"หยุดเมื่อพบความผิดปกติ","textChars":22,"textLines":1,"bbox":[96,84,1728,80]}
+{"kind":"textbox","id":"sh/5wj6pcby","slide":16,"name":"s16-516","text":"สถานะ FAULT จากเฟิร์มแวร์ฉบับสอน","textPreview":"สถานะ FAULT จากเฟิร์มแวร์ฉบับสอน","textChars":32,"textLines":1,"bbox":[96,169,1728,51]}
+{"kind":"shape","id":"sh/4vqpw7at","slide":16,"name":"s16-517","bbox":[96,241,1728,0.01]}
+{"kind":"textbox","id":"sh/ry1ormt4","slide":16,"name":"s16-518","text":"16","textPreview":"16","textChars":2,"textLines":1,"bbox":[1758,954,66,32]}
+{"kind":"shape","id":"sh/qxs7yhsj","slide":16,"name":"s16-519","bbox":[138,292,510,71]}
+{"kind":"textbox","id":"sh/d0j6twba","slide":16,"name":"s16-520","text":"พบความผิดปกติ","textPreview":"พบความผิดปกติ","textChars":13,"textLines":1,"bbox":[146,298,494,59]}
+{"kind":"shape","id":"sh/szap0rap","slide":16,"name":"s16-521","bbox":[138,429,510,88]}
+{"kind":"textbox","id":"sh/72xof2t0","slide":16,"name":"s16-522","text":"FAULT","textPreview":"FAULT","textChars":5,"textLines":1,"bbox":[146,435,494,76]}
+{"kind":"shape","id":"sh/61onmxsf","slide":16,"name":"s16-523","bbox":[138,583,510,71]}
+{"kind":"textbox","id":"sh/0be9knyh","slide":16,"name":"s16-524","text":"START","textPreview":"START","textChars":5,"textLines":1,"bbox":[146,589,494,59]}
+{"kind":"shape","id":"sh/1cnatsfm","slide":16,"name":"s16-525","bbox":[393,363,0.01,66]}
+{"kind":"shape","id":"sh/e9wridgb","slide":16,"name":"s16-526","bbox":[387,423,12,12]}
+{"kind":"shape","id":"sh/fa58rixw","slide":16,"name":"s16-527","bbox":[393,517,0.01,66]}
+{"kind":"shape","id":"sh/oze9onyd","slide":16,"name":"s16-528","bbox":[387,577,12,12]}
+{"kind":"textbox","id":"sh/p0naxsfy","slide":16,"name":"s16-529","text":"P0 = FFH    P1 = 6CH","textPreview":"P0 = FFH    P1 = 6CH","textChars":20,"textLines":1,"bbox":[116,707,574,57]}
+{"kind":"textbox","id":"sh/2dwrmxg7","slide":16,"name":"s16-530","text":"ตัดแรงขับ คงไฟแดงและเสียง\nต้องปล่อยแล้วกด Reset ใหม่","textPreview":"ตัดแรงขับ คงไฟแดงและเสียง | ต้องปล่อยแล้วกด Reset ใหม่","textChars":52,"textLines":2,"bbox":[116,790,574,70]}
+{"kind":"textbox","id":"sh/ne5sv2xs","slide":16,"name":"s16-531","text":"กลับไปตรวจตำแหน่งก่อนเริ่มงาน","textPreview":"กลับไปตรวจตำแหน่งก่อนเริ่มงาน","textChars":29,"textLines":1,"bbox":[116,883,574,52]}
+{"kind":"shape","id":"sh/4ju9c3y9","slide":16,"name":"s16-532","bbox":[735,282,1089,647]}
+{"kind":"textbox","id":"sh/543ql8fe","slide":16,"name":"s16-533","text":"โค้ดส่วนสำคัญของสถานะ","textPreview":"โค้ดส่วนสำคัญของสถานะ","textChars":21,"textLines":1,"bbox":[768,302,1016,47]}
+{"kind":"shape","id":"sh/lobyt036","slide":16,"name":"s16-534","bbox":[768,365,1023,0.01]}
+{"kind":"textbox","id":"sh/kn2x0vml","slide":16,"name":"s16-535","text":"FaultState:","textPreview":"FaultState:","textChars":11,"textLines":1,"bbox":[768,384,1016,32]}
+{"kind":"textbox","id":"sh/zmtgrql0","slide":16,"name":"s16-536","text":"    SETB P1.2","textPreview":"SETB P1.2","textChars":13,"textLines":1,"bbox":[768,416,1016,32]}
+{"kind":"textbox","id":"sh/ylkfyl4f","slide":16,"name":"s16-537","text":"    MOV  P0,#0FFH","textPreview":"MOV  P0,#0FFH","textChars":17,"textLines":1,"bbox":[768,448,1016,32]}
+{"kind":"textbox","id":"sh/tsvyxk32","slide":16,"name":"s16-538","text":"    MOV  P1,#06CH","textPreview":"MOV  P1,#06CH","textChars":17,"textLines":1,"bbox":[768,480,1016,32]}
+{"kind":"textbox","id":"sh/8r2x4fmx","slide":16,"name":"s16-539","text":"FaultRelease:","textPreview":"FaultRelease:","textChars":13,"textLines":1,"bbox":[768,512,1016,32]}
+{"kind":"textbox","id":"sh/7qtgvalc","slide":16,"name":"s16-540","text":"    JNB  P2.6,FaultRelease","textPreview":"JNB  P2.6,FaultRelease","textChars":26,"textLines":1,"bbox":[768,544,1016,32]}
+{"kind":"textbox","id":"sh/mpkf254r","slide":16,"name":"s16-541","text":"FaultLoop:","textPreview":"FaultLoop:","textChars":10,"textLines":1,"bbox":[768,576,1016,32]}
+{"kind":"textbox","id":"sh/hwvy1k3e","slide":16,"name":"s16-542","text":"    JNB  P2.6,FaultCheck","textPreview":"JNB  P2.6,FaultCheck","textChars":24,"textLines":1,"bbox":[768,608,1016,32]}
+{"kind":"textbox","id":"sh/gvmh8fmt","slide":16,"name":"s16-543","text":"    SJMP FaultLoop","textPreview":"SJMP FaultLoop","textChars":18,"textLines":1,"bbox":[768,640,1016,32]}
+{"kind":"textbox","id":"sh/e1gvmhkb","slide":16,"name":"s16-544","text":"FaultCheck:","textPreview":"FaultCheck:","textChars":11,"textLines":1,"bbox":[768,672,1016,32]}
+{"kind":"textbox","id":"sh/f2pcvm1w","slide":16,"name":"s16-545","text":"    CALL Delay","textPreview":"CALL Delay","textChars":14,"textLines":1,"bbox":[768,704,1016,32]}
+{"kind":"textbox","id":"sh/03ydor2h","slide":16,"name":"s16-546","text":"    JB   P2.6,FaultLoop","textPreview":"JB   P2.6,FaultLoop","textChars":23,"textLines":1,"bbox":[768,736,1016,32]}
+{"kind":"textbox","id":"sh/147uxwj2","slide":16,"name":"s16-547","text":"    JB   P2.7,FaultLoop","textPreview":"JB   P2.7,FaultLoop","textChars":23,"textLines":1,"bbox":[768,768,1016,32]}
+{"kind":"textbox","id":"sh/25gvqhk7","slide":16,"name":"s16-548","text":"    JB   P2.2,FaultLoop","textPreview":"JB   P2.2,FaultLoop","textChars":23,"textLines":1,"bbox":[768,800,1016,32]}
+{"kind":"textbox","id":"sh/n6pwzm1s","slide":16,"name":"s16-549","text":"    JB   P2.5,FaultLoop","textPreview":"JB   P2.5,FaultLoop","textChars":23,"textLines":1,"bbox":[768,832,1016,32]}
+{"kind":"textbox","id":"sh/o7ydsr2d","slide":16,"name":"s16-550","text":"    LJMP START","textPreview":"LJMP START","textChars":14,"textLines":1,"bbox":[768,864,1016,32]}
+{"kind":"notes","id":"nt/ua2qqn","slide":16,"text":"แหล่งข้อมูล: firmware/SLIDING_DOOR_CLASSROOM.asm บล็อก FaultState. แสดงเฉพาะส่วนสำคัญ ไม่ใช่โปรแกรมที่ประกอบได้ลำพัง ใช้ไฟล์ฉบับเต็มสำหรับ EdSim51.\nบล็อกต้นฉบับครบถ้วน:\nFaultState:\n    SETB P1.2\n    MOV  R0,#07H\n    MOV  P0,#0FFH\n    MOV  P1,#06CH\nFaultRelease:\n    JNB  P2.6,FaultRelease\nFaultLoop:\n    JNB  P2.6,FaultCheck\n    SJMP FaultLoop\nFaultCheck:\n    CALL Delay\n    JB   P2.6,FaultLoop\n    JB   P2.7,FaultLoop\n    JB   P2.2,FaultLoop\n    JB   P2.5,FaultLoop\n    LJMP START\n"}
+{"kind":"slide","id":"sl/1h7lx0","slide":17,"title":"เฟิร์มแวร์สองฉบับของโครงงาน","textShapes":10}
+{"kind":"textbox","id":"sh/wzi5s7mp","slide":17,"name":"s17-551","text":"เฟิร์มแวร์สองฉบับของโครงงาน","textPreview":"เฟิร์มแวร์สองฉบับของโครงงาน","textChars":27,"textLines":1,"bbox":[96,84,1728,80]}
+{"kind":"textbox","id":"sh/by94z254","slide":17,"name":"s17-552","text":"แยกรูปแบบการสอนออกจากฉบับที่เพิ่มการตรวจความผิดปกติ","textPreview":"แยกรูปแบบการสอนออกจากฉบับที่เพิ่มการตรวจความผิดปกติ","textChars":51,"textLines":1,"bbox":[96,169,1728,51]}
+{"kind":"shape","id":"sh/ax0nqx4j","slide":17,"name":"s17-553","bbox":[96,241,1728,0.01]}
+{"kind":"textbox","id":"sh/9wrmxsny","slide":17,"name":"s17-554","text":"17","textPreview":"17","textChars":2,"textLines":1,"bbox":[1758,954,66,32]}
+{"kind":"textbox","id":"sh/ovi5o7mt","slide":17,"name":"s17-555","text":"ฉบับสอน","textPreview":"ฉบับสอน","textChars":7,"textLines":1,"bbox":[96,303,815,60]}
+{"kind":"textbox","id":"sh/na94v258","slide":17,"name":"s17-556","text":"SLIDING_DOOR_CLASSROOM.asm","textPreview":"SLIDING_DOOR_CLASSROOM.asm","textChars":26,"textLines":1,"bbox":[96,388,814,48]}
+{"kind":"textbox","id":"sh/m90nmx4n","slide":17,"name":"s17-557","text":"ตั้งค่าพอร์ตทีละสถานะ\nเรียก Delay รอบละ 20 ms\nใช้ JB และ JNB ตรวจอินพุต\nผ่านการจำลอง 20 เคส","textPreview":"ตั้งค่าพอร์ตทีละสถานะ | เรียก Delay รอบละ 20 ms | ใช้ JB และ JNB ตรวจอินพุต | ผ่านการจำลอง 20 เคส","textChars":91,"textLines":4,"bbox":[96,494,814,229]}
+{"kind":"shape","id":"sh/187mtsn2","slide":17,"name":"s17-558","bbox":[958,301,0.01,539]}
+{"kind":"textbox","id":"sh/07y5knmh","slide":17,"name":"s17-559","text":"ฉบับขยาย","textPreview":"ฉบับขยาย","textChars":8,"textLines":1,"bbox":[1050,303,774,60]}
+{"kind":"textbox","id":"sh/exknqpkv","slide":17,"name":"s17-560","text":"SLIDING_DOOR.asm","textPreview":"SLIDING_DOOR.asm","textChars":16,"textLines":1,"bbox":[1050,388,774,48]}
+{"kind":"textbox","id":"sh/fytozalg","slide":17,"name":"s17-561","text":"ใช้ Timer 0 สร้างจังหวะ 10 ms\nอ่านสัญญาณอันตรายระหว่างรอ\nเพิ่มการตรวจลิมิตค้าง 500 ms\nผ่านการจำลอง 36 เคส","textPreview":"ใช้ Timer 0 สร้างจังหวะ 10 ms | อ่านสัญญาณอันตรายระหว่างรอ | เพิ่มการตรวจลิมิตค้าง 500 ms | ผ่านการจำลอง 36 เคส","textChars":105,"textLines":4,"bbox":[1050,494,774,229]}
+{"kind":"textbox","id":"sh/gj25sf21","slide":17,"name":"s17-562","text":"สไลด์โค้ดก่อนหน้านี้อ้างอิงฉบับสอน ผลทดสอบ 36 เคสเป็นของฉบับขยาย","textPreview":"สไลด์โค้ดก่อนหน้านี้อ้างอิงฉบับสอน ผลทดสอบ 36 เคสเป็นของฉบับขยาย","textChars":64,"textLines":1,"bbox":[96,846,1728,44]}
+{"kind":"notes","id":"nt/1h7lx0","slide":17,"text":"อ้างอิง: PROPOSED_SOLUTION_DESIGN.md และ assignment/ASSIGNMENT_BREAKDOWN.md\n"}
+{"kind":"slide","id":"sl/g3l7ht","slide":18,"title":"ผลการจำลองฉบับขยาย","textShapes":5}
+{"kind":"textbox","id":"sh/b6l03qxg","slide":18,"name":"s18-563","text":"ผลการจำลองฉบับขยาย","textPreview":"ผลการจำลองฉบับขยาย","textChars":18,"textLines":1,"bbox":[96,84,1728,80]}
+{"kind":"textbox","id":"sh/w7uhwvy1","slide":18,"name":"s18-564","text":"รายงาน TEST_RESULTS.md จาก assembler และ CPU ของ EdSim51 2.1.39","textPreview":"รายงาน TEST_RESULTS.md จาก assembler และ CPU ของ EdSim51 2.1.39","textChars":63,"textLines":1,"bbox":[96,169,1728,51]}
+{"kind":"shape","id":"sh/x83i50fm","slide":18,"name":"s18-565","bbox":[96,241,1728,0.01]}
+{"kind":"textbox","id":"sh/m1sz6lgz","slide":18,"name":"s18-566","text":"18","textPreview":"18","textChars":2,"textLines":1,"bbox":[1758,954,66,32]}
+{"kind":"textbox","id":"sh/n210zqxk","slide":18,"name":"s18-567","text":"ผ่าน 36 เคส","textPreview":"ผ่าน 36 เคส","textChars":11,"textLines":1,"bbox":[96,283,1728,94]}
+{"kind":"textbox","id":"sh/943i1gfq","slide":18,"name":"s18-568","text":"ตรวจ 41,686,115 คำสั่ง    P2 latch คง FFH    IN1 และ IN2 ไม่เป็น 1 พร้อมกันหลังเขียน P1 ครั้งแรก","textPreview":"ตรวจ 41,686,115 คำสั่ง    P2 latch คง FFH    IN1 และ IN2 ไม่เป็น 1 พร้อมกันหลังเขียน P1 ครั้งแรก","textChars":96,"textLines":1,"bbox":[96,901,1728,44]}
+{"kind":"table","id":"tb/58fyxwry","slide":18,"name":"","rows":6,"cols":3,"preview":"ช่วงเวลาที่ตรวจ | ค่าออกแบบ | ค่าจำลอง","bbox":[96,420,1728,432]}
+{"kind":"notes","id":"nt/g3l7ht","slide":18,"text":"แหล่งข้อมูล firmware/TEST_RESULTS.md รัน 17 กันยายน 2026 บน SLIDING_DOOR.asm SHA-256 9989f89bccc8c6af84f2e05fbcdc22459bacb68977841a27fc619eeb3781e2a0. เป็นการจำลอง headless ไม่ใช่ผลวัดวงจรจริง. CLOSED age 210.009 ms, reset qualification 29.691 ms."}
+{"kind":"slide","id":"sl/rsbqa7","slide":19,"title":"ผลการจำลองฉบับสอน","textShapes":6}
+{"kind":"textbox","id":"sh/k7a5gbi1","slide":19,"name":"s19-569","text":"ผลการจำลองฉบับสอน","textPreview":"ผลการจำลองฉบับสอน","textChars":17,"textLines":1,"bbox":[96,84,1728,80]}
+{"kind":"textbox","id":"sh/j61o761g","slide":19,"name":"s19-570","text":"รายงาน TEST_RESULTS_CLASSROOM.md ตรงกับรูปแบบโค้ดบนสไลด์","textPreview":"รายงาน TEST_RESULTS_CLASSROOM.md ตรงกับรูปแบบโค้ดบนสไลด์","textChars":56,"textLines":1,"bbox":[96,169,1728,51]}
+{"kind":"shape","id":"sh/i5sne1kv","slide":19,"name":"s19-571","bbox":[96,241,1728,0.01]}
+{"kind":"textbox","id":"sh/x4z65wja","slide":19,"name":"s19-572","text":"19","textPreview":"19","textChars":2,"textLines":1,"bbox":[1758,954,66,32]}
+{"kind":"textbox","id":"sh/w3q5cr2p","slide":19,"name":"s19-573","text":"ผ่าน 20 เคส","textPreview":"ผ่าน 20 เคส","textChars":11,"textLines":1,"bbox":[96,283,1728,94]}
+{"kind":"textbox","id":"sh/a18nahkj","slide":19,"name":"s19-574","text":"ตรวจ 22,006,035 คำสั่ง และยืนยันว่าการเปลี่ยนทิศเกิดขณะตัดแรงขับเท่านั้น","textPreview":"ตรวจ 22,006,035 คำสั่ง และยืนยันว่าการเปลี่ยนทิศเกิดขณะตัดแรงขับเท่านั้น","textChars":72,"textLines":1,"bbox":[96,838,1728,52]}
+{"kind":"textbox","id":"sh/9gzm1wje","slide":19,"name":"s19-575","text":"ผลทั้งสองฉบับเป็นเวลาจำลอง ไม่ยืนยันแรงหนีบ ระยะหยุด หรือความปลอดภัยของประตูจริง","textPreview":"ผลทั้งสองฉบับเป็นเวลาจำลอง ไม่ยืนยันแรงหนีบ ระยะหยุด หรือความปลอดภัยของประตูจริง","textChars":80,"textLines":1,"bbox":[96,898,1728,44]}
+{"kind":"table","id":"tb/axgjm9kr","slide":19,"name":"","rows":5,"cols":3,"preview":"ช่วงเวลาที่ตรวจ | ค่าออกแบบ | ค่าจำลอง","bbox":[96,420,1728,400]}
+{"kind":"notes","id":"nt/rsbqa7","slide":19,"text":"อ้างอิง: PROPOSED_SOLUTION_DESIGN.md และ assignment/ASSIGNMENT_BREAKDOWN.md\n"}
+{"kind":"slide","id":"sl/esum5n","slide":20,"title":"สรุปและการทดสอบขั้นต่อไป","textShapes":8}
+{"kind":"textbox","id":"sh/dkja1c72","slide":20,"name":"s20-576","text":"สรุปและการทดสอบขั้นต่อไป","textPreview":"สรุปและการทดสอบขั้นต่อไป","textChars":24,"textLines":1,"bbox":[96,84,1728,80]}
+{"kind":"textbox","id":"sh/qh8rqxob","slide":20,"name":"s20-577","text":"ผลจำลองยืนยันลำดับควบคุม ส่วนการหยุดของบานประตูต้องตรวจบนชุดจริง","textPreview":"ผลจำลองยืนยันลำดับควบคุม ส่วนการหยุดของบานประตูต้องตรวจบนชุดจริง","textChars":64,"textLines":1,"bbox":[96,169,1728,51]}
+{"kind":"shape","id":"sh/rihsz2pw","slide":20,"name":"s20-578","bbox":[96,241,1728,0.01]}
+{"kind":"textbox","id":"sh/4fq9on6l","slide":20,"name":"s20-579","text":"20","textPreview":"20","textChars":2,"textLines":1,"bbox":[1758,954,66,32]}
+{"kind":"textbox","id":"sh/pgzaxs76","slide":20,"name":"s20-580","text":"สิ่งที่โครงงานทำได้","textPreview":"สิ่งที่โครงงานทำได้","textChars":19,"textLines":1,"bbox":[96,300,1728,60]}
+{"kind":"textbox","id":"sh/2t8rmx8f","slide":20,"name":"s20-581","text":"ตรวจสิ่งกีดขวางด้วยลำแสงสองระดับ\nตัดแรงขับ พักมอเตอร์ และเปิดกลับตามลำดับสถานะ","textPreview":"ตรวจสิ่งกีดขวางด้วยลำแสงสองระดับ | ตัดแรงขับ พักมอเตอร์ และเปิดกลับตามลำดับสถานะ","textChars":78,"textLines":2,"bbox":[96,395,1728,120]}
+{"kind":"shape","id":"sh/3ehsvip0","slide":20,"name":"s20-582","bbox":[96,553,1728,0.01]}
+{"kind":"textbox","id":"sh/obut0r6p","slide":20,"name":"s20-583","text":"สิ่งที่ต้องวัดก่อนใช้งาน","textPreview":"สิ่งที่ต้องวัดก่อนใช้งาน","textChars":24,"textLines":1,"bbox":[96,600,1728,60]}
+{"kind":"textbox","id":"sh/9c3a9w7a","slide":20,"name":"s20-584","text":"กระแสมอเตอร์ขณะเริ่มหมุนและติดขัด\nเวลาหยุดจริงเทียบกับค่า 200 ms และระยะหยุดของบาน\nแรงดันอินพุต ความร้อน และช่องว่างที่ลำแสงตรวจไม่ครอบคลุม","textPreview":"กระแสมอเตอร์ขณะเริ่มหมุนและติดขัด | เวลาหยุดจริงเทียบกับค่า 200 ms และระยะหยุดของบาน | แรงดันอินพุต ความร้อน และช่องว่างที่ลำแสงตรวจไม่คร...","textChars":139,"textLines":3,"bbox":[96,695,1728,178]}
+{"kind":"textbox","id":"sh/l0rqlsb6","slide":20,"name":"s20-585","text":"ชุดนี้เป็นประตูจำลองน้ำหนักเบา ระยะวิ่งออกแบบ 200 mm ไม่ใช่การรับรองประตูสำหรับใช้งานจริง","textPreview":"ชุดนี้เป็นประตูจำลองน้ำหนักเบา ระยะวิ่งออกแบบ 200 mm ไม่ใช่การรับรองประตูสำหรับใช้งานจริง","textChars":89,"textLines":1,"bbox":[96,917,1728,44]}
+{"kind":"notes","id":"nt/esum5n","slide":20,"text":"อ้างอิง: PROPOSED_SOLUTION_DESIGN.md และ assignment/ASSIGNMENT_BREAKDOWN.md\n"}

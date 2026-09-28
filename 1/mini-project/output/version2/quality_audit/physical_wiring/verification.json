@@ -1,0 +1,36 @@
+{
+  "changed_existing_parts": [
+    "[Content_Types].xml",
+    "ppt/slides/slide4.xml",
+    "ppt/slides/_rels/slide4.xml.rels",
+    "ppt/notesSlides/notesSlide4.xml"
+  ],
+  "unchanged_slides": [
+    1,
+    2,
+    3,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "slide_count": 19,
+  "device_images_on_slide4": 10,
+  "old_sha256": "1cd7f8883c5a189b9ca5f1c3a1cbc62d0a4e35be95892e1f216970897fc07287",
+  "new_sha256": "e3cfa699064c62558889810969d70665b0fcd21f7269a07e2fd4a5d320ff4a67",
+  "hardware_bench_test_performed": false,
+  "published_in_place": "/Users/3rapat/student/internship/CODEFIN/project/cwms/vahalla-wealth/private-docs/other-project/uni-work/embedded-system/1/mini-project/output/mini-project_Sliding_Door_Safety_Control.pptx",
+  "other_presentations_unchanged": true,
+  "rendered_preview_count": 19
+}

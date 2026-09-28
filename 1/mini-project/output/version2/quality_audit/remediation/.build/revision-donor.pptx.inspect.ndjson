@@ -1,0 +1,78 @@
+{"kind":"deck","id":"pr/z2adya","name":"Deck"}
+{"kind":"layout","layoutId":"fb3e5477-607e-40cf-9280-3db7b5c5b210","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"3a77b134-2de1-4dea-b30b-e9b09b993417","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/8bh1sr","slide":1,"title":"Slide 1","textShapes":0}
+{"kind":"notes","id":"nt/8bh1sr","slide":1,"text":""}
+{"kind":"slide","id":"sl/3aij1o","slide":2,"title":"ปัญหาเดิมและแนวทางแก้ไข","textShapes":14}
+{"kind":"textbox","id":"sh/ry9cvu54","slide":2,"name":"shape-1","text":"ปัญหาเดิมและแนวทางแก้ไข","textPreview":"ปัญหาเดิมและแนวทางแก้ไข","textChars":23,"textLines":1,"bbox":[96,80,1728,60]}
+{"kind":"textbox","id":"sh/szid4z6p","slide":2,"name":"shape-2","text":"เปรียบเทียบการตอบสนองเมื่อมีสิ่งกีดขวางค้างอยู่ในช่องประตู","textPreview":"เปรียบเทียบการตอบสนองเมื่อมีสิ่งกีดขวางค้างอยู่ในช่องประตู","textChars":58,"textLines":1,"bbox":[96,146,1728,46]}
+{"kind":"shape","id":"sh/t0rex4nu","slide":2,"name":"shape-3","bbox":[104,218,1712,0.01]}
+{"kind":"textbox","id":"sh/i9gvypo7","slide":2,"name":"shape-4","text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[1780,1010,52,36]}
+{"kind":"shape","id":"sh/ja9cru5s","slide":2,"name":"shape-5","bbox":[960,256,0.01,650]}
+{"kind":"textbox","id":"sh/4bid0z6d","slide":2,"name":"shape-6","text":"ระบบเดิม: ตรวจไม่พบวัตถุเตี้ย","textPreview":"ระบบเดิม: ตรวจไม่พบวัตถุเตี้ย","textChars":29,"textLines":1,"bbox":[104,250,800,50]}
+{"kind":"textbox","id":"sh/5crut4ny","slide":2,"name":"shape-7","text":"หมดเวลาแล้วปิด แม้สิ่งกีดขวางยังอยู่ในทางผ่าน","textPreview":"หมดเวลาแล้วปิด แม้สิ่งกีดขวางยังอยู่ในทางผ่าน","textChars":45,"textLines":1,"bbox":[104,303,800,42]}
+{"kind":"textbox","id":"sh/25kva9or","slide":2,"name":"shape-8","text":"ระบบที่เสนอ: ตรวจจับสองระดับ","textPreview":"ระบบที่เสนอ: ตรวจจับสองระดับ","textChars":28,"textLines":1,"bbox":[1016,250,800,50]}
+{"kind":"textbox","id":"sh/36tw3e5c","slide":2,"name":"shape-9","text":"ตรวจพบลำแสงถูกบังขณะปิด แล้วสั่งเปิดประตูกลับ","textPreview":"ตรวจพบลำแสงถูกบังขณะปิด แล้วสั่งเปิดประตูกลับ","textChars":45,"textLines":1,"bbox":[1016,303,800,42]}
+{"kind":"shape","id":"sh/gb61kvil","slide":2,"name":"orthogonal-10","bbox":[476,563,49,10]}
+{"kind":"shape","id":"sh/nexkfq1w","slide":2,"name":"shape-11","bbox":[104,811,232,86]}
+{"kind":"textbox","id":"sh/2dojm50r","slide":2,"name":"shape-12","text":"หมดเวลาเปิดค้าง","textPreview":"หมดเวลาเปิดค้าง","textChars":15,"textLines":1,"bbox":[112,819,216,70]}
+{"kind":"shape","id":"sh/pgz2h0j2","slide":2,"name":"orthogonal-13","bbox":[336,849,46,10]}
+{"kind":"shape","id":"sh/of61ovih","slide":2,"name":"shape-14","bbox":[388,811,232,86]}
+{"kind":"textbox","id":"sh/bihkja18","slide":2,"name":"shape-15","text":"วัตถุเตี้ยไม่ถูกตรวจพบ","textPreview":"วัตถุเตี้ยไม่ถูกตรวจพบ","textChars":22,"textLines":1,"bbox":[396,819,216,70]}
+{"kind":"shape","id":"sh/ah8jq50n","slide":2,"name":"orthogonal-16","bbox":[620,849,46,10]}
+{"kind":"shape","id":"sh/69cvydo7","slide":2,"name":"shape-17","bbox":[672,811,232,86]}
+{"kind":"textbox","id":"sh/7alw7yps","slide":2,"name":"shape-18","text":"ปิดต่อ เสี่ยงหนีบ","textPreview":"ปิดต่อ เสี่ยงหนีบ","textChars":17,"textLines":1,"bbox":[680,819,216,70]}
+{"kind":"shape","id":"sh/8bud036d","slide":2,"name":"shape-19","bbox":[1016,811,232,86]}
+{"kind":"textbox","id":"sh/tc3e987i","slide":2,"name":"shape-20","text":"ลำแสงถูกบัง","textPreview":"ลำแสงถูกบัง","textChars":11,"textLines":1,"bbox":[1024,819,216,70]}
+{"kind":"shape","id":"sh/ylcvut8v","slide":2,"name":"orthogonal-21","bbox":[1248,849,46,10]}
+{"kind":"shape","id":"sh/jmlw3ypg","slide":2,"name":"shape-22","bbox":[1300,811,232,86]}
+{"kind":"textbox","id":"sh/knudw361","slide":2,"name":"shape-23","text":"ตัดแรงขับทันที\nพร้อมเสียงเตือน","textPreview":"ตัดแรงขับทันที | พร้อมเสียงเตือน","textChars":30,"textLines":2,"bbox":[1308,819,216,70]}
+{"kind":"shape","id":"sh/lo3e587m","slide":2,"name":"orthogonal-24","bbox":[1532,849,46,10]}
+{"kind":"shape","id":"sh/ihwv6xof","slide":2,"name":"shape-25","bbox":[1584,811,232,86]}
+{"kind":"textbox","id":"sh/3i5wfip0","slide":2,"name":"shape-26","text":"พัก 200 ms\nแล้วเปิดกลับจนสุด","textPreview":"พัก 200 ms | แล้วเปิดกลับจนสุด","textChars":28,"textLines":2,"bbox":[1592,819,216,70]}
+{"kind":"textbox","id":"sh/dcry5wr2","slide":2,"name":"shape-27","text":"การตัดแรงขับเริ่มเมื่อระบบตรวจพบ ส่วนระยะหยุดของบานประตูต้องวัดกับกลไกจริง","textPreview":"การตัดแรงขับเริ่มเมื่อระบบตรวจพบ ส่วนระยะหยุดของบานประตูต้องวัดกับกลไกจริง","textChars":74,"textLines":1,"bbox":[104,928,1648,54]}
+{"kind":"image","id":"im/4rilofqt","slide":2,"name":"","alt":"ระบบเดิม วัตถุเตี้ยอยู่ต่ำกว่าลำแสงระดับสูง","bbox":[108,363,362,414]}
+{"kind":"image","id":"im/5sr2xk7e","slide":2,"name":"","alt":"ระบบเดิม ประตูปิดต่อจนเข้าใกล้สิ่งกีดขวาง","bbox":[538,363,362,414]}
+{"kind":"image","id":"im/ip03mp8n","slide":2,"name":"","alt":"ระบบที่เสนอ ลำแสงระดับล่างตรวจพบวัตถุเตี้ยและเปิดประตูกลับ","bbox":[1235,363,362,414]}
+{"kind":"notes","id":"nt/3aij1o","slide":2,"text":"ข้อมูล: PROPOSED_SOLUTION_DESIGN.md และ firmware ภายใน mini-project\nภาพระบบเดิมสมมุติเป็นประตูปิดตามเวลาและตรวจจับเฉพาะระดับสูง ส่วนระบบที่เสนอใช้ลำแสงสองระดับ ภาพจำลองเดิมสร้างด้วย ImageGen ไม่ใช่ผลทดสอบแรงหนีบ การตัดแรงขับไม่ใช่การหยุดทางกลทันที"}
+{"kind":"slide","id":"sl/lwfnjt","slide":3,"title":"Slide 3","textShapes":0}
+{"kind":"notes","id":"nt/lwfnjt","slide":3,"text":""}
+{"kind":"slide","id":"sl/a7sfkz","slide":4,"title":"Slide 4","textShapes":0}
+{"kind":"notes","id":"nt/a7sfkz","slide":4,"text":""}
+{"kind":"slide","id":"sl/97kwmm","slide":5,"title":"แรงดันไฟฟ้าและระดับสัญญาณ","textShapes":20}
+{"kind":"textbox","id":"sh/610bql0b","slide":5,"name":"shape-28","text":"แรงดันไฟฟ้าและระดับสัญญาณ","textPreview":"แรงดันไฟฟ้าและระดับสัญญาณ","textChars":25,"textLines":1,"bbox":[96,80,1728,60]}
+{"kind":"textbox","id":"sh/t4ralgz2","slide":5,"name":"shape-29","text":"แยกไฟเลี้ยงอุปกรณ์ออกจากแรงดันที่เข้าขาไมโครคอนโทรลเลอร์","textPreview":"แยกไฟเลี้ยงอุปกรณ์ออกจากแรงดันที่เข้าขาไมโครคอนโทรลเลอร์","textChars":56,"textLines":1,"bbox":[96,146,1728,46]}
+{"kind":"shape","id":"sh/83itsbih","slide":5,"name":"shape-30","bbox":[104,218,1712,0.01]}
+{"kind":"textbox","id":"sh/je9sf6h0","slide":5,"name":"shape-31","text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[1780,1010,52,36]}
+{"kind":"shape","id":"sh/ydgrm10f","slide":5,"name":"shape-32","bbox":[104,270,800,485]}
+{"kind":"shape","id":"sh/lgrahgz6","slide":5,"name":"shape-33","bbox":[1016,270,800,485]}
+{"kind":"textbox","id":"sh/kfitobil","slide":5,"name":"shape-34","text":"5 V","textPreview":"5 V","textChars":3,"textLines":1,"bbox":[136,296,712,62]}
+{"kind":"textbox","id":"sh/bapsbm1o","slide":5,"name":"shape-35","text":"วงจรลอจิกและการควบคุม","textPreview":"วงจรลอจิกและการควบคุม","textChars":21,"textLines":1,"bbox":[136,370,712,50]}
+{"kind":"textbox","id":"sh/a9gri10j","slide":5,"name":"shape-36","text":"12 V","textPreview":"12 V","textChars":4,"textLines":1,"bbox":[1048,296,712,62]}
+{"kind":"textbox","id":"sh/cnu10vah","slide":5,"name":"shape-37","text":"ภาคมอเตอร์และเซนเซอร์","textPreview":"ภาคมอเตอร์และเซนเซอร์","textChars":21,"textLines":1,"bbox":[1048,370,712,50]}
+{"kind":"textbox","id":"sh/alsjylsb","slide":5,"name":"shape-38","text":"8051 และ SN74HCT14","textPreview":"8051 และ SN74HCT14","textChars":18,"textLines":1,"bbox":[268,451,590,48]}
+{"kind":"textbox","id":"sh/oja1wbal","slide":5,"name":"shape-39","text":"L293D ขา VCC1","textPreview":"L293D ขา VCC1","textChars":13,"textLines":1,"bbox":[268,520,590,48]}
+{"kind":"textbox","id":"sh/2hsju1sf","slide":5,"name":"shape-40","text":"เอาต์พุต Optocoupler และอินพุต P2","textPreview":"เอาต์พุต Optocoupler และอินพุต P2","textChars":33,"textLines":1,"bbox":[268,589,590,48]}
+{"kind":"textbox","id":"sh/8fe18fap","slide":5,"name":"shape-41","text":"LED และวงจรขับ Buzzer","textPreview":"LED และวงจรขับ Buzzer","textChars":21,"textLines":1,"bbox":[268,658,590,48]}
+{"kind":"textbox","id":"sh/hwji10je","slide":5,"name":"shape-42","text":"L293D ขา VCC2","textPreview":"L293D ขา VCC2","textChars":13,"textLines":1,"bbox":[1182,457,590,48]}
+{"kind":"textbox","id":"sh/vu10za18","slide":5,"name":"shape-43","text":"มอเตอร์ผ่านไดรเวอร์และตัวต้านทาน","textPreview":"มอเตอร์ผ่านไดรเวอร์และตัวต้านทาน","textChars":32,"textLines":1,"bbox":[1182,539,590,48]}
+{"kind":"textbox","id":"sh/tszix0j2","slide":5,"name":"shape-44","text":"เซนเซอร์ E3Z-T61 จำนวนสองคู่","textPreview":"เซนเซอร์ E3Z-T61 จำนวนสองคู่","textChars":28,"textLines":1,"bbox":[1182,621,590,48]}
+{"kind":"textbox","id":"sh/87q1ov2x","slide":5,"name":"shape-45","text":"แหล่งจ่ายมอเตอร์จำกัดกระแส 0.50 A","textPreview":"แหล่งจ่ายมอเตอร์จำกัดกระแส 0.50 A","textChars":33,"textLines":1,"bbox":[1182,690,590,42]}
+{"kind":"shape","id":"sh/76h0vq1c","slide":5,"name":"shape-46","bbox":[160,806,400,76]}
+{"kind":"textbox","id":"sh/658zmlkr","slide":5,"name":"shape-47","text":"RX 12 V","textPreview":"RX 12 V","textChars":7,"textLines":1,"bbox":[168,814,384,60]}
+{"kind":"shape","id":"sh/l4zitgj6","slide":5,"name":"shape-48","bbox":[760,806,400,76]}
+{"kind":"textbox","id":"sh/k3qhkb2l","slide":5,"name":"shape-49","text":"VO617A","textPreview":"VO617A","textChars":6,"textLines":1,"bbox":[768,814,384,60]}
+{"kind":"shape","id":"sh/a94fuh0j","slide":5,"name":"shape-50","bbox":[1360,806,400,76]}
+{"kind":"textbox","id":"sh/baxg3mh4","slide":5,"name":"shape-51","text":"P2  ระดับ 0–5 V","textPreview":"P2  ระดับ 0–5 V","textChars":15,"textLines":1,"bbox":[1368,814,384,60]}
+{"kind":"shape","id":"sh/wb6xwrip","slide":5,"name":"orthogonal-52","bbox":[560,839,200,10]}
+{"kind":"shape","id":"sh/xcfy5wzu","slide":5,"name":"orthogonal-53","bbox":[1160,839,200,10]}
+{"kind":"textbox","id":"sh/m54fqh07","slide":5,"name":"shape-54","text":"อินเวอร์เตอร์ SN74HCT14 กลับเฟสสัญญาณ RUN_N ที่ 5 V เท่านั้น","textPreview":"อินเวอร์เตอร์ SN74HCT14 กลับเฟสสัญญาณ RUN_N ที่ 5 V เท่านั้น","textChars":60,"textLines":1,"bbox":[104,907,1712,44]}
+{"kind":"textbox","id":"sh/n6dgzmhs","slide":5,"name":"shape-55","text":"Optocoupler แยกทางสัญญาณเซนเซอร์ ส่วนลอจิกและภาคขับมอเตอร์ใช้กราวด์ร่วมตามแบบ","textPreview":"Optocoupler แยกทางสัญญาณเซนเซอร์ ส่วนลอจิกและภาคขับมอเตอร์ใช้กราวด์ร่วมตามแบบ","textChars":77,"textLines":1,"bbox":[104,948,1712,44]}
+{"kind":"image","id":"im/2p0bqxor","slide":5,"name":"","alt":"8051 และ SN74HCT14","bbox":[146,445,86,61]}
+{"kind":"image","id":"im/or2ts76x","slide":5,"name":"","alt":"L293D ขา VCC1","bbox":[146,514,86,61]}
+{"kind":"image","id":"im/qdkbuho3","slide":5,"name":"","alt":"เอาต์พุต Optocoupler และอินพุต P2","bbox":[146,583,86,61]}
+{"kind":"image","id":"im/cf2tw76t","slide":5,"name":"","alt":"LED และวงจรขับ Buzzer","bbox":[146,652,86,61]}
+{"kind":"image","id":"im/6xgbidoj","slide":5,"name":"","alt":"L293D ขา VCC2","bbox":[1054,445,92,72]}
+{"kind":"image","id":"im/vexwjqps","slide":5,"name":"","alt":"มอเตอร์ผ่านไดรเวอร์และตัวต้านทาน","bbox":[1054,527,92,72]}
+{"kind":"image","id":"im/xgfel07y","slide":5,"name":"","alt":"เซนเซอร์ E3Z-T61 จำนวนสองคู่","bbox":[1054,609,92,72]}
+{"kind":"notes","id":"nt/97kwmm","slide":5,"text":"ข้อมูล: PROPOSED_SOLUTION_DESIGN.md และ firmware ภายใน mini-project\n"}

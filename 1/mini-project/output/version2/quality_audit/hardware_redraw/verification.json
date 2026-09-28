@@ -1,0 +1,17 @@
+{
+  "changed_parts": [
+    "ppt/slides/slide1.xml",
+    "ppt/slides/slide4.xml",
+    "ppt/notesSlides/notesSlide4.xml"
+  ],
+  "cover_group_removed": true,
+  "hardware_pin_labels_verified": true,
+  "native_hardware_diagram": true,
+  "slide_two_unchanged": true,
+  "published": true,
+  "target": "/Users/3rapat/student/internship/CODEFIN/project/cwms/vahalla-wealth/private-docs/other-project/uni-work/embedded-system/1/mini-project/output/mini-project_Sliding_Door_Safety_Control.pptx",
+  "sha256": "1cd7f8883c5a189b9ca5f1c3a1cbc62d0a4e35be95892e1f216970897fc07287",
+  "previews": 19,
+  "visual_review": "Cover and hardware slide inspected; other slide XML unchanged.",
+  "native_powerpoint_opened": false
+}

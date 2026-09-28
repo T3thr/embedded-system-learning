@@ -1,0 +1,26 @@
+{
+  "original_sha256": "84aa0e64d8e5e7403041c7a691fb8e7157a19aa3dd5422992770041a92b958ea",
+  "changed_package_parts": [
+    "ppt/slides/slide2.xml",
+    "ppt/notesSlides/notesSlide2.xml",
+    "ppt/slides/slide3.xml",
+    "ppt/slides/slide4.xml",
+    "ppt/slides/slide5.xml",
+    "ppt/slides/slide6.xml",
+    "ppt/slides/slide7.xml",
+    "ppt/slides/slide8.xml",
+    "ppt/slides/slide9.xml",
+    "ppt/slides/slide10.xml",
+    "ppt/slides/slide11.xml",
+    "ppt/slides/slide12.xml",
+    "ppt/slides/slide13.xml",
+    "ppt/slides/slide14.xml",
+    "ppt/slides/slide15.xml",
+    "ppt/slides/slide16.xml",
+    "ppt/slides/slide17.xml",
+    "ppt/slides/slide18.xml",
+    "ppt/slides/slide19.xml",
+    "ppt/slides/_rels/slide2.xml.rels",
+    "ppt/slides/_rels/slide5.xml.rels"
+  ]
+}

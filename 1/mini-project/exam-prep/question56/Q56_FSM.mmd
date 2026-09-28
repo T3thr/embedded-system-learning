@@ -1,0 +1,30 @@
+stateDiagram-v2
+    direction LR
+    state Boot <<choice>>
+    [*] --> Boot
+    Boot --> CLOSED: [ESTOP=0, LC=0, LO=1]
+    Boot --> OPEN_HOLD: [ESTOP=0, LO=0, LC=1]
+    Boot --> FAULT: [ตำแหน่งไม่ชัดเจน หรือ ESTOP=1]
+
+    state OPERATING {
+        CLOSED: STOP · แดงติด · P1=ECH
+        OPENING: CW · เขียวติด · P1=D9H
+        OPEN_HOLD: STOP · เขียวติด · P1=DCH
+        CLOSING: CCW · แดงติด · P1=EAH
+        REV_WAIT: Coast · ไฟดับ · P1=FCH
+        REOPENING: CW · เขียวติด · P1=D9H
+        SAFETY_HOLD: STOP · ส้มติด · P1=BCH
+        CLOSED --> OPENING: กด PB_IN หรือ PB_OUT คงที่ 20 ms
+        OPENING --> OPEN_HOLD: [LO=0]
+        OPEN_HOLD --> CLOSING: กดปิดใหม่ [พร้อมปิด]
+        CLOSING --> CLOSED: [LC=0 และไม่มีเหตุเปิดกลับ]
+        CLOSING --> REV_WAIT: [BEAM_DET=0] / S=1
+        CLOSING --> REV_WAIT: กดเปิด [BEAM_DET=1] / S=0
+        REV_WAIT --> REOPENING: after (200 ms)
+        REOPENING --> SAFETY_HOLD: [LO=0 และ S=1]
+        REOPENING --> OPEN_HOLD: [LO=0 และ S=0]
+        SAFETY_HOLD --> CLOSING: กดปิดใหม่ [พร้อมปิด]
+    }
+    OPERATING --> FAULT: ESTOP=1 หรือ LO=LC=0 หรือหมดเวลาวิ่ง
+    FAULT: Coast · ไฟดับ · P0=FFH · P1=FCH
+    FAULT --> Boot: รีเซ็ตด้วยมือ [ESTOP=0]

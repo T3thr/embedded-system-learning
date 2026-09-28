@@ -1,0 +1,120 @@
+{"kind":"deck","id":"pr/0hwxse","name":"Deck"}
+{"kind":"layout","layoutId":"6fcb3664-98c8-49fb-b07f-6923b7075fc1","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"29569aed-a23f-433c-afa7-9c874b53a254","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/gxk6k2","slide":1,"title":"Slide 1","textShapes":0}
+{"kind":"notes","id":"nt/gxk6k2","slide":1,"text":""}
+{"kind":"slide","id":"sl/dnk5b1","slide":2,"title":"Slide 2","textShapes":0}
+{"kind":"notes","id":"nt/dnk5b1","slide":2,"text":""}
+{"kind":"slide","id":"sl/i0byju","slide":3,"title":"Slide 3","textShapes":0}
+{"kind":"notes","id":"nt/i0byju","slide":3,"text":""}
+{"kind":"slide","id":"sl/k7tcgh","slide":4,"title":"ผังการเชื่อมต่อฮาร์ดแวร์","textShapes":71}
+{"kind":"textbox","id":"sh/ahkbe143","slide":4,"name":"shape-1","text":"ผังการเชื่อมต่อฮาร์ดแวร์","textPreview":"ผังการเชื่อมต่อฮาร์ดแวร์","textChars":24,"textLines":1,"bbox":[96,80,1728,60]}
+{"kind":"textbox","id":"sh/xkvu9gne","slide":4,"name":"shape-2","text":"ผังสัญญาณหลัก ตัวเลขในวงเล็บคือหมายเลขขาไอซี ส่วนตำแหน่งขาบนตัวถังแสดงในหน้าจัดสรรพอร์ต","textPreview":"ผังสัญญาณหลัก ตัวเลขในวงเล็บคือหมายเลขขาไอซี ส่วนตำแหน่งขาบนตัวถังแสดงในหน้าจัดสรรพอร์ต","textChars":87,"textLines":1,"bbox":[96,146,1728,46]}
+{"kind":"shape","id":"sh/wjmtgbm9","slide":4,"name":"shape-3","bbox":[104,218,1712,0.01]}
+{"kind":"textbox","id":"sh/netc365c","slide":4,"name":"shape-4","text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[1780,1010,52,36]}
+{"kind":"textbox","id":"sh/mdkba14r","slide":4,"name":"shape-5","text":"อินพุต","textPreview":"อินพุต","textChars":6,"textLines":1,"bbox":[104,232,416,42]}
+{"kind":"textbox","id":"sh/9gbu5wni","slide":4,"name":"shape-6","text":"ตัวควบคุม","textPreview":"ตัวควบคุม","textChars":9,"textLines":1,"bbox":[704,232,400,42]}
+{"kind":"textbox","id":"sh/8f2tcbmx","slide":4,"name":"shape-7","text":"ภาคขับและเอาต์พุต","textPreview":"ภาคขับและเอาต์พุต","textChars":17,"textLines":1,"bbox":[1152,232,664,42]}
+{"kind":"shape","id":"sh/7axcfqlw","slide":4,"name":"shape-8","bbox":[704,280,400,560]}
+{"kind":"textbox","id":"sh/694vml4b","slide":4,"name":"shape-9","text":"AT89S52","textPreview":"AT89S52","textChars":7,"textLines":1,"bbox":[720,284,368,40]}
+{"kind":"textbox","id":"sh/c7i90zex","slide":4,"name":"shape-10","text":"ไมโครคอนโทรลเลอร์ 8051  12 MHz","textPreview":"ไมโครคอนโทรลเลอร์ 8051  12 MHz","textChars":30,"textLines":1,"bbox":[720,317,368,28]}
+{"kind":"shape","id":"sh/d8ra94fi","slide":4,"name":"shape-11","bbox":[104,333,416,54]}
+{"kind":"textbox","id":"sh/q5gry9wr","slide":4,"name":"shape-12","text":"ปุ่มเปิดด้านนอก (เข้า)","textPreview":"ปุ่มเปิดด้านนอก (เข้า)","textChars":22,"textLines":1,"bbox":[116,330,392,36]}
+{"kind":"textbox","id":"sh/b6987exc","slide":4,"name":"shape-13","text":"กดปุ่มแล้วสัญญาณเป็น 0","textPreview":"กดปุ่มแล้วสัญญาณเป็น 0","textChars":22,"textLines":1,"bbox":[116,357,392,30]}
+{"kind":"shape","id":"sh/43y9wzel","slide":4,"name":"shape-14","bbox":[520,360,184,0.01]}
+{"kind":"textbox","id":"sh/p47q54f6","slide":4,"name":"shape-15","text":"P2.1 (22)","textPreview":"P2.1 (22)","textChars":9,"textLines":1,"bbox":[710,340,178,40]}
+{"kind":"shape","id":"sh/2hgrupwv","slide":4,"name":"shape-16","bbox":[104,393,416,54]}
+{"kind":"textbox","id":"sh/3ip83uxg","slide":4,"name":"shape-17","text":"ปุ่มเปิดด้านใน (ออก)","textPreview":"ปุ่มเปิดด้านใน (ออก)","textChars":20,"textLines":1,"bbox":[116,390,392,36]}
+{"kind":"textbox","id":"sh/gfy9sfep","slide":4,"name":"shape-18","text":"กดปุ่มแล้วสัญญาณเป็น 0","textPreview":"กดปุ่มแล้วสัญญาณเป็น 0","textChars":22,"textLines":1,"bbox":[116,417,392,30]}
+{"kind":"shape","id":"sh/hg7q1kfa","slide":4,"name":"shape-19","bbox":[520,420,184,0.01]}
+{"kind":"textbox","id":"sh/x0fy9c3m","slide":4,"name":"shape-20","text":"P2.0 (21)","textPreview":"P2.0 (21)","textChars":9,"textLines":1,"bbox":[710,400,178,40]}
+{"kind":"shape","id":"sh/wz6xgr2h","slide":4,"name":"shape-21","bbox":[104,453,416,54]}
+{"kind":"textbox","id":"sh/vyxg7mlw","slide":4,"name":"shape-22","text":"ลิมิตสวิตช์เปิดสุด","textPreview":"ลิมิตสวิตช์เปิดสุด","textChars":18,"textLines":1,"bbox":[116,450,392,36]}
+{"kind":"textbox","id":"sh/ax4fehkb","slide":4,"name":"shape-23","text":"LO = 0 เมื่อประตูเปิดสุด","textPreview":"LO = 0 เมื่อประตูเปิดสุด","textChars":24,"textLines":1,"bbox":[116,477,392,30]}
+{"kind":"shape","id":"sh/9wvy5c3q","slide":4,"name":"shape-24","bbox":[520,480,184,0.01]}
+{"kind":"textbox","id":"sh/8vmxc725","slide":4,"name":"shape-25","text":"P2.3 (24)","textPreview":"P2.3 (24)","textChars":9,"textLines":1,"bbox":[710,460,178,40]}
+{"kind":"shape","id":"sh/nudg32lk","slide":4,"name":"shape-26","bbox":[104,513,416,54]}
+{"kind":"textbox","id":"sh/mt4faxkz","slide":4,"name":"shape-27","text":"ลิมิตสวิตช์ปิดสุด","textPreview":"ลิมิตสวิตช์ปิดสุด","textChars":17,"textLines":1,"bbox":[116,510,392,36]}
+{"kind":"textbox","id":"sh/tszyhw3u","slide":4,"name":"shape-28","text":"LC = 0 เมื่อประตูปิดสุด","textPreview":"LC = 0 เมื่อประตูปิดสุด","textChars":23,"textLines":1,"bbox":[116,537,392,30]}
+{"kind":"shape","id":"sh/srqhob29","slide":4,"name":"shape-29","bbox":[520,540,184,0.01]}
+{"kind":"textbox","id":"sh/qx0vit0r","slide":4,"name":"shape-30","text":"P2.4 (25)","textPreview":"P2.4 (25)","textChars":9,"textLines":1,"bbox":[710,520,178,40]}
+{"kind":"shape","id":"sh/bytcby1c","slide":4,"name":"shape-31","bbox":[104,573,416,54]}
+{"kind":"textbox","id":"sh/cz2dk3ix","slide":4,"name":"shape-32","text":"E3Z-T61 ล่าง ผ่าน VO617A","textPreview":"E3Z-T61 ล่าง ผ่าน VO617A","textChars":24,"textLines":1,"bbox":[116,570,392,36]}
+{"kind":"textbox","id":"sh/d0bud8ji","slide":4,"name":"shape-33","text":"รับลำแสง = 0   ถูกบัง = 1","textPreview":"รับลำแสง = 0   ถูกบัง = 1","textChars":25,"textLines":1,"bbox":[116,597,392,30]}
+{"kind":"shape","id":"sh/290vet0v","slide":4,"name":"shape-34","bbox":[520,600,184,0.01]}
+{"kind":"textbox","id":"sh/3a9c7y1g","slide":4,"name":"shape-35","text":"P2.2 (23)","textPreview":"P2.2 (23)","textChars":9,"textLines":1,"bbox":[710,580,178,40]}
+{"kind":"shape","id":"sh/ovidg3i1","slide":4,"name":"shape-36","bbox":[104,633,416,54]}
+{"kind":"textbox","id":"sh/pwru98jm","slide":4,"name":"shape-37","text":"E3Z-T61 บน ผ่าน VO617A","textPreview":"E3Z-T61 บน ผ่าน VO617A","textChars":22,"textLines":1,"bbox":[116,630,392,36]}
+{"kind":"textbox","id":"sh/m5kvqd0z","slide":4,"name":"shape-38","text":"รับลำแสง = 0   ถูกบัง = 1","textPreview":"รับลำแสง = 0   ถูกบัง = 1","textChars":25,"textLines":1,"bbox":[116,657,392,30]}
+{"kind":"shape","id":"sh/n6dwji1k","slide":4,"name":"shape-39","bbox":[520,660,184,0.01]}
+{"kind":"textbox","id":"sh/7i9sfu50","slide":4,"name":"shape-40","text":"P2.5 (26)","textPreview":"P2.5 (26)","textChars":9,"textLines":1,"bbox":[710,640,178,40]}
+{"kind":"shape","id":"sh/6x0r6p4f","slide":4,"name":"shape-41","bbox":[104,693,416,54]}
+{"kind":"textbox","id":"sh/tkbahkn6","slide":4,"name":"shape-42","text":"ปุ่ม Reset","textPreview":"ปุ่ม Reset","textChars":10,"textLines":1,"bbox":[116,690,392,36]}
+{"kind":"textbox","id":"sh/8ji98zml","slide":4,"name":"shape-43","text":"กดเพื่อขอเริ่มใหม่หลังเกิด FAULT","textPreview":"กดเพื่อขอเริ่มใหม่หลังเกิด FAULT","textChars":32,"textLines":1,"bbox":[116,717,392,30]}
+{"kind":"shape","id":"sh/ju98ba54","slide":4,"name":"shape-44","bbox":[520,720,184,0.01]}
+{"kind":"textbox","id":"sh/yt0r254j","slide":4,"name":"shape-45","text":"P2.6 (27)","textPreview":"P2.6 (27)","textChars":9,"textLines":1,"bbox":[710,700,178,40]}
+{"kind":"shape","id":"sh/lwrqdknu","slide":4,"name":"shape-46","bbox":[104,753,416,54]}
+{"kind":"textbox","id":"sh/kvi94fm9","slide":4,"name":"shape-47","text":"E-stop หน้าสัมผัส NC2","textPreview":"E-stop หน้าสัมผัส NC2","textChars":21,"textLines":1,"bbox":[116,750,392,36]}
+{"kind":"textbox","id":"sh/3qtsne58","slide":4,"name":"shape-48","text":"กดปุ่มหรือสายเปิด = 1","textPreview":"กดปุ่มหรือสายเปิด = 1","textChars":21,"textLines":1,"bbox":[116,777,392,30]}
+{"kind":"shape","id":"sh/ipkre94n","slide":4,"name":"shape-49","bbox":[520,780,184,0.01]}
+{"kind":"textbox","id":"sh/0vep8b25","slide":4,"name":"shape-50","text":"P2.7 (28)","textPreview":"P2.7 (28)","textChars":9,"textLines":1,"bbox":[710,760,178,40]}
+{"kind":"textbox","id":"sh/1wn6hg3q","slide":4,"name":"shape-51","text":"อินพุตมีตัวต้านทานดึงขึ้น 10 kΩ ไปยัง 5 V\nVO617A แยกสัญญาณเซนเซอร์ 12 V ก่อนเข้า P2","textPreview":"อินพุตมีตัวต้านทานดึงขึ้น 10 kΩ ไปยัง 5 V | VO617A แยกสัญญาณเซนเซอร์ 12 V ก่อนเข้า P2","textChars":83,"textLines":2,"bbox":[104,816,556,66]}
+{"kind":"shape","id":"sh/etwn61kz","slide":4,"name":"shape-52","bbox":[1464,280,352,270]}
+{"kind":"textbox","id":"sh/zu5of6lk","slide":4,"name":"shape-53","text":"L293D","textPreview":"L293D","textChars":5,"textLines":1,"bbox":[1480,292,320,45]}
+{"kind":"textbox","id":"sh/ozepcb21","slide":4,"name":"shape-54","text":"P1.0 (1)","textPreview":"P1.0 (1)","textChars":8,"textLines":1,"bbox":[926,340,166,40]}
+{"kind":"textbox","id":"sh/90n6lg3m","slide":4,"name":"shape-55","text":"P1.1 (2)","textPreview":"P1.1 (2)","textChars":8,"textLines":1,"bbox":[926,400,166,40]}
+{"kind":"textbox","id":"sh/mxw7a1kb","slide":4,"name":"shape-56","text":"P1.2 (3)","textPreview":"P1.2 (3)","textChars":8,"textLines":1,"bbox":[926,460,166,40]}
+{"kind":"textbox","id":"sh/ny5oj6lw","slide":4,"name":"shape-57","text":"P1.4 (5)","textPreview":"P1.4 (5)","textChars":8,"textLines":1,"bbox":[926,610,166,40]}
+{"kind":"textbox","id":"sh/w3ypgv2d","slide":4,"name":"shape-58","text":"P1.5 (6)","textPreview":"P1.5 (6)","textChars":8,"textLines":1,"bbox":[926,670,166,40]}
+{"kind":"textbox","id":"sh/xo76p03y","slide":4,"name":"shape-59","text":"P1.7 (8)","textPreview":"P1.7 (8)","textChars":8,"textLines":1,"bbox":[926,730,166,40]}
+{"kind":"shape","id":"sh/l8jydwrq","slide":4,"name":"shape-60","bbox":[1104,360,360,0.01]}
+{"kind":"shape","id":"sh/k7axkrq5","slide":4,"name":"shape-61","bbox":[1104,420,360,0.01]}
+{"kind":"textbox","id":"sh/j61wbm9k","slide":4,"name":"shape-62","text":"IN1","textPreview":"IN1","textChars":3,"textLines":1,"bbox":[1152,326,190,32]}
+{"kind":"textbox","id":"sh/y5sfih8z","slide":4,"name":"shape-63","text":"IN2","textPreview":"IN2","textChars":3,"textLines":1,"bbox":[1152,386,190,32]}
+{"kind":"textbox","id":"sh/tc3yhwr2","slide":4,"name":"shape-64","text":"1A (2)","textPreview":"1A (2)","textChars":6,"textLines":1,"bbox":[1480,340,160,40]}
+{"kind":"textbox","id":"sh/8buxorqh","slide":4,"name":"shape-65","text":"2A (7)","textPreview":"2A (7)","textChars":6,"textLines":1,"bbox":[1480,400,160,40]}
+{"kind":"textbox","id":"sh/7algf69w","slide":4,"name":"shape-66","text":"1,2EN (1)","textPreview":"1,2EN (1)","textChars":9,"textLines":1,"bbox":[1480,460,180,40]}
+{"kind":"shape","id":"sh/69sfm18b","slide":4,"name":"shape-67","bbox":[1104,480,48,0.01]}
+{"kind":"shape","id":"sh/9gze5cri","slide":4,"name":"shape-68","bbox":[1152,456,112,48]}
+{"kind":"textbox","id":"sh/ofqxc7qx","slide":4,"name":"shape-69","text":"NOT","textPreview":"NOT","textChars":3,"textLines":1,"bbox":[1152,460,112,40]}
+{"kind":"shape","id":"sh/elovmdov","slide":4,"name":"shape-70","bbox":[1264,480,48,0.01]}
+{"kind":"shape","id":"sh/zmxcfipg","slide":4,"name":"shape-71","bbox":[1312,456,96,48]}
+{"kind":"textbox","id":"sh/0n6don61","slide":4,"name":"shape-72","text":"NC1","textPreview":"NC1","textChars":3,"textLines":1,"bbox":[1312,460,96,40]}
+{"kind":"shape","id":"sh/18fuh87m","slide":4,"name":"shape-73","bbox":[1408,480,56,0.01]}
+{"kind":"textbox","id":"sh/m9ovqdor","slide":4,"name":"shape-74","text":"RUN_N","textPreview":"RUN_N","textChars":5,"textLines":1,"bbox":[1104,430,130,28]}
+{"kind":"textbox","id":"sh/naxcjipc","slide":4,"name":"shape-75","text":"E-stop","textPreview":"E-stop","textChars":6,"textLines":1,"bbox":[1302,425,122,32]}
+{"kind":"textbox","id":"sh/obqdsn6x","slide":4,"name":"shape-76","text":"SN74HCT14\nเข้า (1)  ออก (2)","textPreview":"SN74HCT14 | เข้า (1)  ออก (2)","textChars":27,"textLines":2,"bbox":[1136,506,160,62]}
+{"kind":"textbox","id":"sh/9czuls7i","slide":4,"name":"shape-77","text":"EN ดึงลงด้วย 10 kΩ\nกด E-stop แล้วตัด EN","textPreview":"EN ดึงลงด้วย 10 kΩ | กด E-stop แล้วตัด EN","textChars":39,"textLines":2,"bbox":[1310,506,214,62]}
+{"kind":"textbox","id":"sh/2d4beton","slide":4,"name":"shape-78","text":"1Y (3)","textPreview":"1Y (3)","textChars":6,"textLines":1,"bbox":[1470,507,142,36]}
+{"kind":"textbox","id":"sh/3edc7yp8","slide":4,"name":"shape-79","text":"2Y (6)","textPreview":"2Y (6)","textChars":6,"textLines":1,"bbox":[1666,507,142,36]}
+{"kind":"shape","id":"sh/7214je1o","slide":4,"name":"shape-80","bbox":[1540,550,0.01,45]}
+{"kind":"shape","id":"sh/m1sna903","slide":4,"name":"shape-81","bbox":[1502,595,76,32]}
+{"kind":"textbox","id":"sh/9o3mloju","slide":4,"name":"shape-82","text":"27 Ω","textPreview":"27 Ω","textChars":4,"textLines":1,"bbox":[1584,580,110,36]}
+{"kind":"textbox","id":"sh/8nu5cji9","slide":4,"name":"shape-83","text":"10 W","textPreview":"10 W","textChars":4,"textLines":1,"bbox":[1592,610,92,32]}
+{"kind":"shape","id":"sh/vql4ny1k","slide":4,"name":"orthogonal-84","bbox":[1540,627,72,93]}
+{"kind":"shape","id":"sh/upcnet0z","slide":4,"name":"orthogonal-85","bbox":[1688,550,52,170]}
+{"kind":"shape","id":"sh/hs3mpojq","slide":4,"name":"shape-86","bbox":[1612,682,76,76]}
+{"kind":"textbox","id":"sh/wru5g3i5","slide":4,"name":"shape-87","text":"M","textPreview":"M","textChars":1,"textLines":1,"bbox":[1612,692,76,56]}
+{"kind":"textbox","id":"sh/buh4bu1g","slide":4,"name":"shape-88","text":"มอเตอร์ DC 12 V","textPreview":"มอเตอร์ DC 12 V","textChars":15,"textLines":1,"bbox":[1472,768,344,44]}
+{"kind":"textbox","id":"sh/at832pkv","slide":4,"name":"shape-89","text":"แหล่งจ่ายจำกัดกระแส 0.50 A","textPreview":"แหล่งจ่ายจำกัดกระแส 0.50 A","textChars":26,"textLines":1,"bbox":[1472,808,344,34]}
+{"kind":"shape","id":"sh/gz61cvit","slide":4,"name":"shape-90","bbox":[1104,630,48,0.01]}
+{"kind":"shape","id":"sh/10f250ze","slide":4,"name":"shape-91","bbox":[1152,603,272,54]}
+{"kind":"textbox","id":"sh/exojal0n","slide":4,"name":"shape-92","text":"LED แดง","textPreview":"LED แดง","textChars":7,"textLines":1,"bbox":[1164,601,248,34]}
+{"kind":"textbox","id":"sh/fyxk3qh8","slide":4,"name":"shape-93","text":"ต่อ 5 V ผ่าน R 2.2 kΩ","textPreview":"ต่อ 5 V ผ่าน R 2.2 kΩ","textChars":21,"textLines":1,"bbox":[1164,627,248,30]}
+{"kind":"shape","id":"sh/sbm18vih","slide":4,"name":"shape-94","bbox":[1104,690,48,0.01]}
+{"kind":"shape","id":"sh/tcf210z2","slide":4,"name":"shape-95","bbox":[1152,663,272,54]}
+{"kind":"textbox","id":"sh/694j6l0r","slide":4,"name":"shape-96","text":"LED เขียว","textPreview":"LED เขียว","textChars":9,"textLines":1,"bbox":[1164,661,248,34]}
+{"kind":"textbox","id":"sh/radkzqhw","slide":4,"name":"shape-97","text":"ต่อ 5 V ผ่าน R 2.2 kΩ","textPreview":"ต่อ 5 V ผ่าน R 2.2 kΩ","textChars":21,"textLines":1,"bbox":[1164,687,248,30]}
+{"kind":"shape","id":"sh/c7q1kfy1","slide":4,"name":"shape-98","bbox":[1104,750,48,0.01]}
+{"kind":"shape","id":"sh/x8z2dkzm","slide":4,"name":"shape-99","bbox":[1152,723,272,54]}
+{"kind":"textbox","id":"sh/ipsn6pkv","slide":4,"name":"shape-100","text":"Buzzer 5 V","textPreview":"Buzzer 5 V","textChars":10,"textLines":1,"bbox":[1164,721,248,34]}
+{"kind":"textbox","id":"sh/jqlofu1g","slide":4,"name":"shape-101","text":"ขับผ่าน SN74HCT14 และ 2N7000","textPreview":"ขับผ่าน SN74HCT14 และ 2N7000","textChars":28,"textLines":1,"bbox":[1164,747,248,30]}
+{"kind":"textbox","id":"sh/kru58z21","slide":4,"name":"shape-102","text":"LED และ Buzzer ทำงานเมื่อขา P1 เป็น 0","textPreview":"LED และ Buzzer ทำงานเมื่อขา P1 เป็น 0","textChars":37,"textLines":1,"bbox":[1128,815,330,36]}
+{"kind":"shape","id":"sh/5s36h4jm","slide":4,"name":"shape-103","bbox":[104,895,1712,0.01]}
+{"kind":"textbox","id":"sh/a1sn2pkz","slide":4,"name":"shape-104","text":"ไฟลอจิก 5 V","textPreview":"ไฟลอจิก 5 V","textChars":11,"textLines":1,"bbox":[104,902,536,38]}
+{"kind":"textbox","id":"sh/v21oba1k","slide":4,"name":"shape-105","text":"AT89S52 (40)   SN74HCT14 (14)\nL293D VCC1 (16)","textPreview":"AT89S52 (40)   SN74HCT14 (14) | L293D VCC1 (16)","textChars":45,"textLines":2,"bbox":[104,936,536,50]}
+{"kind":"textbox","id":"sh/w3a54f25","slide":4,"name":"shape-106","text":"ไฟมอเตอร์และเซนเซอร์ 12 V","textPreview":"ไฟมอเตอร์และเซนเซอร์ 12 V","textChars":25,"textLines":1,"bbox":[676,902,536,38]}
+{"kind":"textbox","id":"sh/x4j6dkjq","slide":4,"name":"shape-107","text":"L293D VCC2 (8) และ E3Z-T61\n12 V ของเซนเซอร์ไม่ต่อเข้าขา AT89S52","textPreview":"L293D VCC2 (8) และ E3Z-T61 | 12 V ของเซนเซอร์ไม่ต่อเข้าขา AT89S52","textChars":63,"textLines":2,"bbox":[676,936,536,50]}
+{"kind":"textbox","id":"sh/mx8ny5k3","slide":4,"name":"shape-108","text":"กราวด์ร่วมของลอจิกและภาคขับ","textPreview":"กราวด์ร่วมของลอจิกและภาคขับ","textChars":27,"textLines":1,"bbox":[1248,902,568,38]}
+{"kind":"textbox","id":"sh/ny1o7a18","slide":4,"name":"shape-109","text":"AT89S52 (20)   SN74HCT14 (7)\nL293D (4, 5, 12, 13)","textPreview":"AT89S52 (20)   SN74HCT14 (7) | L293D (4, 5, 12, 13)","textChars":49,"textLines":2,"bbox":[1248,936,568,50]}
+{"kind":"notes","id":"nt/k7tcgh","slide":4,"text":"ข้อมูล: PROPOSED_SOLUTION_DESIGN.md และ firmware ภายใน mini-project\nผังเชื่อมต่อเชิงหน้าที่ ไม่ใช่ลายวงจรพิมพ์หรือภาพตำแหน่งขาบนตัวถัง อ้างอิงข้อกำหนดระบบหัวข้อ 4.2–4.5 ชื่ออุปกรณ์และหมายเลขขาตรงกับแบบ แสดงวงจรหลัก โดยไม่ได้แสดงตัวเก็บประจุ วงจรคริสตัล วงจรรีเซ็ตเริ่มระบบ และขาที่ไม่ได้ใช้ทั้งหมด"}

@@ -1,0 +1,212 @@
+/* components.css — assembly viewer, truth tables, Q&A flashcards */
+
+.asm-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.asm-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: var(--space-3);
+}
+
+.asm-code {
+  margin: 0;
+  max-height: 520px;
+  overflow: auto;
+  padding: var(--space-3);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  background: var(--paper);
+  color: var(--ink-soft);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  white-space: pre;
+}
+
+.asm-code .ln {
+  display: block;
+  padding: 0 0.25rem;
+  border-left: 3px solid transparent;
+}
+
+.asm-code .ln:hover,
+.asm-code .ln.is-active {
+  background: color-mix(in srgb, var(--accent-primary) 10%, transparent);
+  border-left-color: var(--accent-primary);
+}
+
+.asm-code .op { color: var(--accent-primary); font-weight: 600; }
+.asm-code .reg { color: var(--domain-12v); }
+.asm-code .cmt { color: var(--ink-muted); }
+.asm-code .lbl { color: var(--state-safe); font-weight: 600; }
+
+.cycle-card {
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  background: var(--paper-subtle);
+  padding: var(--space-3);
+  min-height: 100%;
+}
+
+.cycle-card h4 { margin-top: 0; }
+
+.cycle-table,
+.truth-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+.cycle-table th,
+.cycle-table td,
+.truth-table th,
+.truth-table td {
+  border: 1px solid var(--card-border);
+  padding: 0.35rem 0.45rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.cycle-table th,
+.truth-table th {
+  background: var(--paper-subtle);
+  color: var(--ink-soft);
+  font-weight: 600;
+}
+
+.truth-table tr.is-active td {
+  background: color-mix(in srgb, var(--accent-primary) 12%, transparent);
+}
+
+.formula-block {
+  margin: var(--space-3) 0;
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--ink);
+}
+
+.qna-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.qna-list {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.qna-card {
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  background: var(--card-bg);
+  overflow: hidden;
+}
+
+.qna-q {
+  width: 100%;
+  text-align: left;
+  border: 0;
+  background: var(--paper-subtle);
+  color: var(--ink);
+  padding: var(--space-4);
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  align-items: flex-start;
+}
+
+.qna-q:hover { color: var(--accent-primary); }
+
+.qna-badge {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--ink-muted);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-full);
+  padding: 0.1rem 0.45rem;
+  background: var(--card-bg);
+}
+
+.qna-a {
+  padding: var(--space-4);
+  border-top: 1px solid var(--card-border);
+  color: var(--ink-soft);
+}
+
+.qna-a[hidden] { display: none; }
+
+.qna-ref {
+  display: block;
+  margin-top: var(--space-3);
+  padding-top: var(--space-2);
+  border-top: 1px dashed var(--card-border);
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+.test-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.stat-tile {
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  background: var(--paper-subtle);
+  padding: var(--space-3);
+  text-align: center;
+}
+
+.stat-tile strong {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 1.35rem;
+  color: var(--accent-primary);
+}
+
+.stat-tile span {
+  color: var(--ink-muted);
+  font-size: 0.8125rem;
+}
+
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+.compare-card {
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  background: var(--paper-subtle);
+}
+
+.compare-card h4 { margin-top: 0; }
+.compare-card ul { margin: 0; padding-left: 1.1rem; color: var(--ink-soft); }
+
+@media (max-width: 1199px) {
+  .asm-layout,
+  .compare-grid,
+  .test-summary {
+    grid-template-columns: 1fr;
+  }
+}

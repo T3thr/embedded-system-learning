@@ -1,0 +1,93 @@
+[
+  {
+    "state": "CLOSED",
+    "shaft": "STOP",
+    "bits": [
+      0,
+      0,
+      1,
+      0,
+      1,
+      1
+    ],
+    "p1_hex": "ECH"
+  },
+  {
+    "state": "OPENING",
+    "shaft": "CW",
+    "bits": [
+      1,
+      0,
+      0,
+      1,
+      0,
+      1
+    ],
+    "p1_hex": "D9H"
+  },
+  {
+    "state": "OPEN_HOLD",
+    "shaft": "STOP",
+    "bits": [
+      0,
+      0,
+      1,
+      1,
+      0,
+      1
+    ],
+    "p1_hex": "DCH"
+  },
+  {
+    "state": "CLOSING",
+    "shaft": "CCW",
+    "bits": [
+      0,
+      1,
+      0,
+      0,
+      1,
+      1
+    ],
+    "p1_hex": "EAH"
+  },
+  {
+    "state": "REV_WAIT",
+    "shaft": "Coast",
+    "bits": [
+      0,
+      0,
+      1,
+      1,
+      1,
+      1
+    ],
+    "p1_hex": "FCH"
+  },
+  {
+    "state": "REOPENING",
+    "shaft": "CW",
+    "bits": [
+      1,
+      0,
+      0,
+      1,
+      0,
+      1
+    ],
+    "p1_hex": "D9H"
+  },
+  {
+    "state": "RFID_HOLD",
+    "shaft": "STOP",
+    "bits": [
+      0,
+      0,
+      1,
+      1,
+      1,
+      0
+    ],
+    "p1_hex": "BCH"
+  }
+]

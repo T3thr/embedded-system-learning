@@ -1,0 +1,269 @@
+{"kind":"deck","id":"pr/dofk1z","name":"Deck"}
+{"kind":"layout","layoutId":"c9620bbf-baaf-4f07-9baa-e02c794458f4","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"d912a9f5-34d7-42eb-a42b-878bc23b3205","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/7imwoz","slide":1,"title":"305341  EMBEDDED SYSTEMS 1","textShapes":6}
+{"kind":"textbox","id":"sh/x0jm943a","slide":1,"name":"rfid-1","text":"305341  EMBEDDED SYSTEMS 1","textPreview":"305341  EMBEDDED SYSTEMS 1","textChars":26,"textLines":1,"bbox":[104,98,1500,58]}
+{"kind":"textbox","id":"sh/axsnepkz","slide":1,"name":"rfid-2","text":"ประตูบานเลื่อนเดี่ยวในบ้าน\nเปิดกลับเมื่อตรวจพบแท็ก RFID","textPreview":"ประตูบานเลื่อนเดี่ยวในบ้าน | เปิดกลับเมื่อตรวจพบแท็ก RFID","textChars":55,"textLines":2,"bbox":[96,250,1728,180]}
+{"kind":"textbox","id":"sh/by147ul4","slide":1,"name":"rfid-3","text":"Home Single-Panel Sliding Door","textPreview":"Home Single-Panel Sliding Door","textChars":30,"textLines":1,"bbox":[104,454,1510,62]}
+{"kind":"shape","id":"sh/obq5cf2t","slide":1,"name":"rfid-4","bbox":[104,568,1712,0.01]}
+{"kind":"textbox","id":"sh/pwzm5k3e","slide":1,"name":"rfid-5","text":"กดเปิดเอง  กดปิดเอง\nพบแท็กขณะปิดแล้วเปิดกลับและรอคนสั่ง","textPreview":"กดเปิดเอง  กดปิดเอง | พบแท็กขณะปิดแล้วเปิดกลับและรอคนสั่ง","textChars":55,"textLines":2,"bbox":[104,615,1550,123]}
+{"kind":"textbox","id":"sh/2983apkn","slide":1,"name":"rfid-6","text":"66362416  นายธีรภัทร ภู่ระย้า\n66363116  นางสาวปราณปรียา ศรียอง\nอาจารย์ที่ปรึกษา ดร.แสงชัย มังกรทอง","textPreview":"66362416  นายธีรภัทร ภู่ระย้า | 66363116  นางสาวปราณปรียา ศรียอง | อาจารย์ที่ปรึกษา ดร.แสงชัย มังกรทอง","textChars":98,"textLines":3,"bbox":[104,820,1370,139]}
+{"kind":"textbox","id":"sh/nah43al8","slide":1,"name":"rfid-7","text":"Version 2","textPreview":"Version 2","textChars":9,"textLines":1,"bbox":[1570,890,250,55]}
+{"kind":"notes","id":"nt/7imwoz","slide":1,"text":"โครงงานนี้ปรับเป็นประตูบานเลื่อนเดี่ยวในบ้านตามองค์ประกอบใน Lab 2 ใช้ปุ่มเปิดสองด้านและปุ่มสั่งปิดโดยคนในบ้าน ระบบ RFID เป็นแนวทางที่เสนอเพื่อให้ประตูเปิดกลับเมื่ออ่านพบแท็กของเด็กหรือสัตว์เลี้ยงขณะกำลังปิด จากนั้นเปิดค้างจนมีคนตรวจทางผ่านและกดปิดใหม่ งานนี้เป็นแบบสำหรับชุดสาธิต ยังไม่ได้ยืนยันว่าเครื่องอ่านรุ่นใดจะครอบคลุมช่องประตูจริง และไม่ใช่ระบบความปลอดภัยที่ผ่านการรับรอง\nอ้างอิง: Lab 2 for Mini-Project หน้า 11–13"}
+{"kind":"slide","id":"sl/eb97l8","slide":2,"title":"ปัญหาการหนีบและแนวทาง RFID","textShapes":6}
+{"kind":"textbox","id":"sh/7yxonm5s","slide":2,"name":"rfid-8","text":"ปัญหาการหนีบและแนวทาง RFID","textPreview":"ปัญหาการหนีบและแนวทาง RFID","textChars":26,"textLines":1,"bbox":[96,66,1728,75]}
+{"kind":"textbox","id":"sh/8j65wr6d","slide":2,"name":"rfid-9","text":"ปุ่มปิดยังเป็นคำสั่งจากคน ระบบช่วยยกเลิกการปิดเมื่ออ่านพบแท็ก","textPreview":"ปุ่มปิดยังเป็นคำสั่งจากคน ระบบช่วยยกเลิกการปิดเมื่ออ่านพบแท็ก","textChars":61,"textLines":1,"bbox":[96,147,1728,48]}
+{"kind":"shape","id":"sh/9kf6pwni","slide":2,"name":"rfid-10","bbox":[104,220,1712,0.01]}
+{"kind":"textbox","id":"sh/yt4nqhov","slide":2,"name":"rfid-11","text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[1758,995,66,45]}
+{"kind":"textbox","id":"sh/zuxojm5g","slide":2,"name":"rfid-12","text":"ปัญหา: ปิดขณะมีสัตว์เลี้ยงขวาง","textPreview":"ปัญหา: ปิดขณะมีสัตว์เลี้ยงขวาง","textChars":30,"textLines":1,"bbox":[434,238,516,57]}
+{"kind":"textbox","id":"sh/kv65sr61","slide":2,"name":"rfid-13","text":"RFID: เปิดกลับและค้างรอคนสั่ง","textPreview":"RFID: เปิดกลับและค้างรอคนสั่ง","textChars":29,"textLines":1,"bbox":[970,238,516,57]}
+{"kind":"textbox","id":"sh/ap4nmxoz","slide":2,"name":"rfid-14","text":"ลำดับเมื่อพบแท็ก: ตัดแรงขับ  →  Coast 200 ms  →  เปิดกลับจนสุด  →  RFID_HOLD","textPreview":"ลำดับเมื่อพบแท็ก: ตัดแรงขับ  →  Coast 200 ms  →  เปิดกลับจนสุด  →  RFID_HOLD","textChars":76,"textLines":1,"bbox":[104,943,1635,45]}
+{"kind":"image","id":"im/sza14zmd","slide":2,"name":"","alt":"ภาพจำลองประตูบ้านสองสถานการณ์ ปัญหาการหนีบและการเปิดค้างหลังพบแท็ก","bbox":[104,315,1712,592]}
+{"kind":"notes","id":"nt/eb97l8","slide":2,"text":"ฝั่งซ้ายเป็นปัญหาของการกดสั่งปิดในขณะที่เด็กหรือสัตว์เลี้ยงยังอยู่ในช่องทางผ่าน บานประตูที่เลื่อนซ้ายกำลังลดพื้นที่ว่างทางซ้าย ฝั่งขวาแสดงสภาพหลังระบบอ่านพบแท็ก ตัดแรงขับ พักอย่างน้อย 200 ms และเปิดกลับจนถึงลิมิตเปิดแล้ว ไฟส้มติดเฉพาะ RFID_HOLD คนในบ้านต้องตรวจทางผ่าน ให้แท็กพ้นบริเวณอ่าน แล้วปล่อยและกด PB_CLOSE ใหม่ ภาพสองฝั่งเป็นภาพจำลองแนวคิด ไม่ใช่ภาพต้นแบบที่สร้างแล้ว และไม่ได้ระบุรัศมีอ่าน RFID\nอ้างอิง: ข้อกำหนด Version 2 ของโครงงาน"}
+{"kind":"slide","id":"sl/a305ta","slide":3,"title":"ตำแหน่งอุปกรณ์และทิศทางของกลไก","textShapes":7}
+{"kind":"textbox","id":"sh/ax0bm9w3","slide":3,"name":"rfid-15","text":"ตำแหน่งอุปกรณ์และทิศทางของกลไก","textPreview":"ตำแหน่งอุปกรณ์และทิศทางของกลไก","textChars":30,"textLines":1,"bbox":[96,66,1728,75]}
+{"kind":"textbox","id":"sh/x0raxofu","slide":3,"name":"rfid-16","text":"มอง CW และ CCW จากปลายเพลาขับมู่เล่ย์ และกำหนดให้เปิดไปทางขวา","textPreview":"มอง CW และ CCW จากปลายเพลาขับมู่เล่ย์ และกำหนดให้เปิดไปทางขวา","textChars":61,"textLines":1,"bbox":[96,147,1728,48]}
+{"kind":"shape","id":"sh/wzitoje9","slide":3,"name":"rfid-17","bbox":[104,220,1712,0.01]}
+{"kind":"textbox","id":"sh/j2tszyxk","slide":3,"name":"rfid-18","text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[1758,995,66,45]}
+{"kind":"textbox","id":"sh/l4bu1ofq","slide":3,"name":"rfid-19","text":"CW\nเปิดไปขวา","textPreview":"CW | เปิดไปขวา","textChars":12,"textLines":2,"bbox":[1560,330,240,115]}
+{"kind":"textbox","id":"sh/k32tsje5","slide":3,"name":"rfid-20","text":"CCW\nปิดไปซ้าย","textPreview":"CCW | ปิดไปซ้าย","textChars":13,"textLines":2,"bbox":[1560,510,240,115]}
+{"kind":"textbox","id":"sh/f6psnuxg","slide":3,"name":"rfid-21","text":"LC = ปิดสุด\nLO = เปิดสุด","textPreview":"LC = ปิดสุด | LO = เปิดสุด","textChars":24,"textLines":2,"bbox":[1550,719,264,100]}
+{"kind":"textbox","id":"sh/e5gbupwv","slide":3,"name":"rfid-22","text":"ตัวมอเตอร์ Pololu #3041 ใช้กับชุดสาธิตขนาดเล็ก ต้องยืนยันแรงบิดก่อนต่อกับบานจริง","textPreview":"ตัวมอเตอร์ Pololu #3041 ใช้กับชุดสาธิตขนาดเล็ก ต้องยืนยันแรงบิดก่อนต่อกับบานจริง","textChars":80,"textLines":1,"bbox":[104,943,1635,45]}
+{"kind":"image","id":"im/jmx8fy5c","slide":3,"name":"","alt":"ภาพจำลองกลไกประตูบานเดี่ยวและตำแหน่งปุ่ม RFID ลิมิต มอเตอร์และสายพาน","bbox":[104,245,1430,694]}
+{"kind":"notes","id":"nt/a305ta","slide":3,"text":"องค์ประกอบตาม Lab 2 ได้แก่บานเลื่อนหนึ่งบาน ราง มอเตอร์ เพลา มู่เล่ย์ สายพาน ปุ่มเปิดด้านในและด้านนอก และลิมิตสองปลายทาง แบบนี้กำหนด LC เป็นตำแหน่งปิดทางซ้ายและ LO เป็นตำแหน่งเปิดทางขวา โดยยึดบานกับสายพานช่วงบน เมื่อมองจากปลายเพลา การหมุน CW ทำให้สายพานช่วงบนเคลื่อนไปทางขวา และ CCW ทำให้ปิดไปทางซ้าย ขั้วมอเตอร์และมุมมองต้องตรวจจริงก่อนใช้งาน ภาพแสดงตำแหน่ง RFID และไฟส้ม แต่ไม่ได้ใช้รูปลักษณ์ของภาพยืนยันรุ่นหรือระยะตรวจจับ\nอ้างอิง: Lab 2 for Mini-Project หน้า 11–13"}
+{"kind":"slide","id":"sl/nmehcm","slide":4,"title":"คนเป็นผู้สั่งเปิดและปิดทุกครั้ง","textShapes":18}
+{"kind":"textbox","id":"sh/ux83y507","slide":4,"name":"rfid-23","text":"คนเป็นผู้สั่งเปิดและปิดทุกครั้ง","textPreview":"คนเป็นผู้สั่งเปิดและปิดทุกครั้ง","textChars":31,"textLines":1,"bbox":[96,66,1728,75]}
+{"kind":"textbox","id":"sh/h0zm9kzy","slide":4,"name":"rfid-24","text":"การพ้นเขตอ่าน RFID เพียงอย่างเดียวไม่ทำให้ประตูปิด","textPreview":"การพ้นเขตอ่าน RFID เพียงอย่างเดียวไม่ทำให้ประตูปิด","textChars":50,"textLines":1,"bbox":[96,147,1728,48]}
+{"kind":"shape","id":"sh/gzql0fid","slide":4,"name":"rfid-25","bbox":[104,220,1712,0.01]}
+{"kind":"textbox","id":"sh/7ah43ahw","slide":4,"name":"rfid-26","text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[1758,995,66,45]}
+{"kind":"textbox","id":"sh/69o3u50b","slide":4,"name":"rfid-27","text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[104,292,280,72]}
+{"kind":"textbox","id":"sh/twzm50zm","slide":4,"name":"rfid-28","text":"กดปุ่มเปิด","textPreview":"กดปุ่มเปิด","textChars":10,"textLines":1,"bbox":[104,390,355,57]}
+{"kind":"textbox","id":"sh/8vqlwfi1","slide":4,"name":"rfid-29","text":"PB_IN หรือ PB_OUT","textPreview":"PB_IN หรือ PB_OUT","textChars":17,"textLines":1,"bbox":[104,455,355,67]}
+{"kind":"shape","id":"sh/r614fuh0","slide":4,"name":"orthogonal-30","bbox":[446,408,88,14]}
+{"kind":"textbox","id":"sh/q5sn6pgf","slide":4,"name":"rfid-31","text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[554,292,280,72]}
+{"kind":"textbox","id":"sh/876h4zul","slide":4,"name":"rfid-32","text":"เปิดจนสุด","textPreview":"เปิดจนสุด","textChars":9,"textLines":1,"bbox":[554,390,355,57]}
+{"kind":"textbox","id":"sh/98fyd4v6","slide":4,"name":"rfid-33","text":"รอใน OPEN_HOLD","textPreview":"รอใน OPEN_HOLD","textChars":14,"textLines":1,"bbox":[554,455,355,67]}
+{"kind":"shape","id":"sh/m5oz2pcf","slide":4,"name":"orthogonal-34","bbox":[896,408,88,14]}
+{"kind":"textbox","id":"sh/n6xgbud0","slide":4,"name":"rfid-35","text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[1004,292,280,72]}
+{"kind":"textbox","id":"sh/036h0fu9","slide":4,"name":"rfid-36","text":"คนกดปิดใหม่","textPreview":"คนกดปิดใหม่","textChars":11,"textLines":1,"bbox":[1004,390,355,57]}
+{"kind":"textbox","id":"sh/l4fy9kvu","slide":4,"name":"rfid-37","text":"ต้องไม่พบแท็ก","textPreview":"ต้องไม่พบแท็ก","textChars":13,"textLines":1,"bbox":[1004,455,355,67]}
+{"kind":"shape","id":"sh/yh4zypcj","slide":4,"name":"orthogonal-38","bbox":[1346,408,88,14]}
+{"kind":"textbox","id":"sh/z2dg7udo","slide":4,"name":"rfid-39","text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[1454,292,280,72]}
+{"kind":"textbox","id":"sh/cfmhwfud","slide":4,"name":"rfid-40","text":"เลื่อนปิด","textPreview":"เลื่อนปิด","textChars":9,"textLines":1,"bbox":[1454,390,355,57]}
+{"kind":"textbox","id":"sh/dgvy5kvy","slide":4,"name":"rfid-41","text":"CCW จน LC = 0","textPreview":"CCW จน LC = 0","textChars":13,"textLines":1,"bbox":[1454,455,355,67]}
+{"kind":"shape","id":"sh/tk36dcja","slide":4,"name":"rfid-42","bbox":[104,575,1712,0.01]}
+{"kind":"textbox","id":"sh/szu5k72p","slide":4,"name":"rfid-43","text":"หากพบแท็กขณะปิด","textPreview":"หากพบแท็กขณะปิด","textChars":15,"textLines":1,"bbox":[104,634,660,61]}
+{"kind":"textbox","id":"sh/7ylob21k","slide":4,"name":"rfid-44","text":"Coast 200 ms   →   เปิดกลับจนสุด   →   RFID_HOLD","textPreview":"Coast 200 ms   →   เปิดกลับจนสุด   →   RFID_HOLD","textChars":48,"textLines":1,"bbox":[104,730,1660,71]}
+{"kind":"textbox","id":"sh/6xcnixkz","slide":4,"name":"rfid-45","text":"ไฟส้มติดค้าง ไม่มีการนับเวลาปิดอัตโนมัติ","textPreview":"ไฟส้มติดค้าง ไม่มีการนับเวลาปิดอัตโนมัติ","textChars":40,"textLines":1,"bbox":[104,838,1670,66]}
+{"kind":"notes","id":"nt/nmehcm","slide":4,"text":"เริ่มจากประตูปิด คนกด PB_OUT เพื่อเข้าหรือ PB_IN เพื่อออก ระบบเปิดจน LO ทำงานแล้วอยู่ OPEN_HOLD โดยไม่มีเวลาเปิดค้างเพื่อสั่งปิดอัตโนมัติ เมื่อคนกด PB_CLOSE ใหม่ และไม่พบแท็ก จึงเริ่มปิด ถ้าขณะปิดอ่านพบแท็ก ระบบตัดแรงขับทันทีที่ลูปควบคุมรับสัญญาณ พัก 200 ms เปิดกลับจนสุด แล้วอยู่ RFID_HOLD ไฟส้มค้างจนได้รับการกดปิดใหม่ที่ผ่านเงื่อนไข หากกดตอนยังพบแท็กให้ทิ้งคำสั่งนั้น ไม่เก็บไว้ปิดภายหลัง"}
+{"kind":"slide","id":"sl/kvsb28","slide":5,"title":"อินเทอร์เฟซ RFID ที่เสนอ","textShapes":13}
+{"kind":"textbox","id":"sh/gvyhsf2p","slide":5,"name":"rfid-46","text":"อินเทอร์เฟซ RFID ที่เสนอ","textPreview":"อินเทอร์เฟซ RFID ที่เสนอ","textChars":24,"textLines":1,"bbox":[96,66,1728,75]}
+{"kind":"textbox","id":"sh/fupgjal4","slide":5,"name":"rfid-47","text":"ยังไม่เลือกรุ่นเครื่องอ่านและแท็ก จึงยังไม่กำหนดระยะอ่านหรือแรงดันไฟเลี้ยงเครื่องอ่าน","textPreview":"ยังไม่เลือกรุ่นเครื่องอ่านและแท็ก จึงยังไม่กำหนดระยะอ่านหรือแรงดันไฟเลี้ยงเครื่องอ่าน","textChars":85,"textLines":1,"bbox":[96,147,1728,48]}
+{"kind":"shape","id":"sh/etgzq5kj","slide":5,"name":"rfid-48","bbox":[104,220,1712,0.01]}
+{"kind":"textbox","id":"sh/t87yh03y","slide":5,"name":"rfid-49","text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[1758,995,66,45]}
+{"kind":"shape","id":"sh/s7yhov2d","slide":5,"name":"rfid-50","bbox":[104,300,485,224]}
+{"kind":"textbox","id":"sh/r6pgfqls","slide":5,"name":"rfid-51","text":"Reader และ Tag","textPreview":"Reader และ Tag","textChars":14,"textLines":1,"bbox":[124,324,445,64]}
+{"kind":"textbox","id":"sh/65gzmlk7","slide":5,"name":"rfid-52","text":"เลือกรุ่นร่วมกัน\nอ่านแท็กที่กำหนด","textPreview":"เลือกรุ่นร่วมกัน | อ่านแท็กที่กำหนด","textChars":33,"textLines":2,"bbox":[124,400,445,98]}
+{"kind":"shape","id":"sh/54nyd032","slide":5,"name":"rfid-53","bbox":[714,300,490,224]}
+{"kind":"textbox","id":"sh/43exkv2h","slide":5,"name":"rfid-54","text":"ชุดแปลงผลอ่านแท็ก","textPreview":"ชุดแปลงผลอ่านแท็ก","textChars":17,"textLines":1,"bbox":[734,324,450,64]}
+{"kind":"textbox","id":"sh/6lsrat8n","slide":5,"name":"rfid-55","text":"เอาต์พุตแยกวงจร\nดึงลง GND เมื่อพบแท็ก","textPreview":"เอาต์พุตแยกวงจร | ดึงลง GND เมื่อพบแท็ก","textChars":37,"textLines":2,"bbox":[734,400,450,98]}
+{"kind":"shape","id":"sh/7m1sjy98","slide":5,"name":"rfid-56","bbox":[1330,300,486,224]}
+{"kind":"textbox","id":"sh/8na9c3qd","slide":5,"name":"rfid-57","text":"AT89S52","textPreview":"AT89S52","textChars":7,"textLines":1,"bbox":[1350,324,446,64]}
+{"kind":"textbox","id":"sh/tojal8ry","slide":5,"name":"rfid-58","text":"P2.2 ขา 23\nRFID_DET","textPreview":"P2.2 ขา 23 | RFID_DET","textChars":19,"textLines":2,"bbox":[1350,400,446,98]}
+{"kind":"shape","id":"sh/yxsr6tsb","slide":5,"name":"orthogonal-59","bbox":[589,403,125,14]}
+{"kind":"shape","id":"sh/jy18fy9w","slide":5,"name":"orthogonal-60","bbox":[1204,403,126,14]}
+{"kind":"textbox","id":"sh/kza983qh","slide":5,"name":"rfid-61","text":"0 = ตรวจพบแท็ก","textPreview":"0 = ตรวจพบแท็ก","textChars":14,"textLines":1,"bbox":[104,617,744,66]}
+{"kind":"textbox","id":"sh/lkjqhor2","slide":5,"name":"rfid-62","text":"1 = ไม่พบแท็ก","textPreview":"1 = ไม่พบแท็ก","textChars":13,"textLines":1,"bbox":[104,705,744,66]}
+{"kind":"textbox","id":"sh/at8r29sf","slide":5,"name":"rfid-63","text":"ด้าน 8051 ใช้ Pull-up 10 kΩ ไปยัง 5 V\nสัญญาณต้องค้างพอให้ลูปควบคุมอ่านได้\nP2 latch คง FFH เพื่ออ่านอินพุต","textPreview":"ด้าน 8051 ใช้ Pull-up 10 kΩ ไปยัง 5 V | สัญญาณต้องค้างพอให้ลูปควบคุมอ่านได้ | P2 latch คง FFH เพื่ออ่านอินพุต","textChars":105,"textLines":3,"bbox":[970,603,836,171]}
+{"kind":"textbox","id":"sh/buh8be90","slide":5,"name":"rfid-64","text":"สายขาดหรือเครื่องอ่านดับอาจให้ค่า 1 เช่นเดียวกับไม่พบแท็ก แบบนี้ยังไม่ตรวจยืนยันสุขภาพเครื่องอ่าน","textPreview":"สายขาดหรือเครื่องอ่านดับอาจให้ค่า 1 เช่นเดียวกับไม่พบแท็ก แบบนี้ยังไม่ตรวจยืนยันสุขภาพเครื่องอ่าน","textChars":97,"textLines":1,"bbox":[104,876,1635,45]}
+{"kind":"notes","id":"nt/kvsb28","slide":5,"text":"เครื่องอ่าน RFID ไม่ใช่สวิตช์ดิจิทัลทุกรุ่น จึงต้องมีตัวแปลงข้อมูลการอ่านแท็กที่กำหนดให้เป็น RFID_DET แบบระดับสัญญาณค้าง สำหรับด้าน 8051 เสนอให้ใช้หน้าสัมผัสแห้ง หรือเอาต์พุตแยกวงจรที่ดึงลงกราวด์ได้ โดยมีตัวต้านทาน 10 กิโลโอห์มดึงขึ้น 5 โวลต์ เมื่อพบแท็กจึงเป็นศูนย์ ไม่ต่อ UART, RS-232, RS-485 หรือ GPIO ที่ไม่ทราบแรงดันเข้าขา P2.2 โดยตรง ในระยะนี้จะจำลอง RFID_DET เป็นอินพุตดิจิทัลเพื่อทดสอบ FSM แรงดันเครื่องอ่าน ระยะอ่าน เวลาแปลงผล และพฤติกรรมเมื่อไฟดับต้องเลือกและวัดภายหลัง\nอ้างอิงหลักการ RFID: https://www.impinj.com/products/technology/how-do-rain-rfid-systems-work\nขา AT89S52: https://ww1.microchip.com/downloads/en/DeviceDoc/doc1919.pdf"}
+{"kind":"slide","id":"sl/kj8zq0","slide":6,"title":"วงจรขับมอเตอร์และการตัดแรงขับ","textShapes":21}
+{"kind":"textbox","id":"sh/kzy94nu9","slide":6,"name":"rfid-65","text":"วงจรขับมอเตอร์และการตัดแรงขับ","textPreview":"วงจรขับมอเตอร์และการตัดแรงขับ","textChars":29,"textLines":1,"bbox":[96,66,1728,75]}
+{"kind":"textbox","id":"sh/jep8bido","slide":6,"name":"rfid-66","text":"L293D ใช้ไฟลอจิก 5 V และไฟภาคมอเตอร์ 12 V แยกกัน","textPreview":"L293D ใช้ไฟลอจิก 5 V และไฟภาคมอเตอร์ 12 V แยกกัน","textChars":48,"textLines":1,"bbox":[96,147,1728,48]}
+{"kind":"shape","id":"sh/ydwr2dc3","slide":6,"name":"rfid-67","bbox":[104,220,1712,0.01]}
+{"kind":"textbox","id":"sh/xcnq98vi","slide":6,"name":"rfid-68","text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[1758,995,66,45]}
+{"kind":"textbox","id":"sh/a9w7ydcr","slide":6,"name":"rfid-69","text":"Pololu #3041","textPreview":"Pololu #3041","textChars":12,"textLines":1,"bbox":[104,695,420,49]}
+{"kind":"textbox","id":"sh/98nq58vm","slide":6,"name":"rfid-70","text":"12 V   อัตราทด 100.37:1","textPreview":"12 V   อัตราทด 100.37:1","textChars":23,"textLines":1,"bbox":[104,749,460,47]}
+{"kind":"shape","id":"sh/o7epw3u1","slide":6,"name":"orthogonal-71","bbox":[663.45,323.7,65,1]}
+{"kind":"shape","id":"sh/axo7eh43","slide":6,"name":"orthogonal-72","bbox":[663.45,323.7,65,1]}
+{"kind":"textbox","id":"sh/byx87m5o","slide":6,"name":"rfid-73","text":"1  EN","textPreview":"1  EN","textChars":5,"textLines":1,"bbox":[522.45,302.7,139,42]}
+{"kind":"shape","id":"sh/wz6pg7m9","slide":6,"name":"orthogonal-74","bbox":[663.45,366.36,65,1]}
+{"kind":"shape","id":"sh/x0fq9cnu","slide":6,"name":"orthogonal-75","bbox":[663.45,366.36,65,1]}
+{"kind":"textbox","id":"sh/m9o7ax47","slide":6,"name":"rfid-76","text":"2  IN1","textPreview":"2  IN1","textChars":6,"textLines":1,"bbox":[522.45,345.36,139,42]}
+{"kind":"shape","id":"sh/nax8325s","slide":6,"name":"orthogonal-77","bbox":[663.45,409.02,65,1]}
+{"kind":"shape","id":"sh/ob6pc7mx","slide":6,"name":"orthogonal-78","bbox":[663.45,409.02,65,1]}
+{"kind":"textbox","id":"sh/9cfq5cni","slide":6,"name":"rfid-79","text":"3  OUT1","textPreview":"3  OUT1","textChars":7,"textLines":1,"bbox":[522.45,388.02,139,42]}
+{"kind":"shape","id":"sh/e5476xov","slide":6,"name":"orthogonal-80","bbox":[663.45,539.74,65,1]}
+{"kind":"shape","id":"sh/z6d8zi5g","slide":6,"name":"orthogonal-81","bbox":[663.45,539.74,65,1]}
+{"kind":"textbox","id":"sh/jy9wruhw","slide":6,"name":"rfid-82","text":"6  OUT2","textPreview":"6  OUT2","textChars":7,"textLines":1,"bbox":[522.45,518.74,139,42]}
+{"kind":"shape","id":"sh/ix0vipgb","slide":6,"name":"orthogonal-83","bbox":[663.45,582.66,65,1]}
+{"kind":"shape","id":"sh/50ret4z2","slide":6,"name":"orthogonal-84","bbox":[663.45,582.66,65,1]}
+{"kind":"textbox","id":"sh/4zidkzyh","slide":6,"name":"rfid-85","text":"7  IN2","textPreview":"7  IN2","textChars":6,"textLines":1,"bbox":[522.45,561.66,139,42]}
+{"kind":"shape","id":"sh/r29wveh8","slide":6,"name":"orthogonal-86","bbox":[663.45,629.29,65,1]}
+{"kind":"shape","id":"sh/610vm9gn","slide":6,"name":"orthogonal-87","bbox":[663.45,629.29,65,1]}
+{"kind":"textbox","id":"sh/t4bex4zy","slide":6,"name":"rfid-88","text":"8  +12 V","textPreview":"8  +12 V","textChars":8,"textLines":1,"bbox":[522.45,608.29,139,42]}
+{"kind":"shape","id":"sh/s3idozyt","slide":6,"name":"orthogonal-89","bbox":[905.06,323.7,80,1]}
+{"kind":"shape","id":"sh/76pwjaho","slide":6,"name":"orthogonal-90","bbox":[905.06,323.7,80,1]}
+{"kind":"textbox","id":"sh/m5gva50j","slide":6,"name":"rfid-91","text":"16  +5 V","textPreview":"16  +5 V","textChars":8,"textLines":1,"bbox":[989.06,302.7,190,42]}
+{"kind":"textbox","id":"sh/cbutkbe1","slide":6,"name":"rfid-92","text":"L293D","textPreview":"L293D","textChars":5,"textLines":1,"bbox":[695,679,246,52]}
+{"kind":"textbox","id":"sh/xc3atgfm","slide":6,"name":"rfid-93","text":"GND: 4, 5, 12, 13","textPreview":"GND: 4, 5, 12, 13","textChars":17,"textLines":1,"bbox":[652,742,399,47]}
+{"kind":"textbox","id":"sh/a9cbi1gb","slide":6,"name":"rfid-94","text":"OUT1 ต่อมอเตอร์ผ่าน R 27 Ω 10 W\nOUT2 ต่ออีกขั้วของมอเตอร์","textPreview":"OUT1 ต่อมอเตอร์ผ่าน R 27 Ω 10 W | OUT2 ต่ออีกขั้วของมอเตอร์","textChars":57,"textLines":2,"bbox":[104,835,944,86]}
+{"kind":"textbox","id":"sh/balsr6xg","slide":6,"name":"rfid-95","text":"เส้นทาง Enable","textPreview":"เส้นทาง Enable","textChars":14,"textLines":1,"bbox":[1180,282,620,56]}
+{"kind":"textbox","id":"sh/o7utgry5","slide":6,"name":"rfid-96","text":"P1.2  RUN_N\nSN74HCT14 ขา 1 และ 2\nE-stop หน้าสัมผัส NC1\nL293D ขา 1 EN","textPreview":"P1.2  RUN_N | SN74HCT14 ขา 1 และ 2 | E-stop หน้าสัมผัส NC1 | L293D ขา 1 EN","textChars":68,"textLines":4,"bbox":[1180,363,620,197]}
+{"kind":"textbox","id":"sh/p83apwfq","slide":6,"name":"rfid-97","text":"EN มี R 10 kΩ ดึงลง GND","textPreview":"EN มี R 10 kΩ ดึงลง GND","textChars":23,"textLines":1,"bbox":[1180,585,620,50]}
+{"kind":"textbox","id":"sh/2lsbe1gz","slide":6,"name":"rfid-98","text":"ไฟสถานะ Active-LOW","textPreview":"ไฟสถานะ Active-LOW","textChars":18,"textLines":1,"bbox":[1180,680,620,53]}
+{"kind":"textbox","id":"sh/n6lsn6xk","slide":6,"name":"rfid-99","text":"5 V ผ่าน R 2.2 kΩ และ LED\nขา Cathode ต่อ P1.4, P1.5, P1.6","textPreview":"5 V ผ่าน R 2.2 kΩ และ LED | ขา Cathode ต่อ P1.4, P1.5, P1.6","textChars":57,"textLines":2,"bbox":[1180,756,620,94]}
+{"kind":"textbox","id":"sh/83etsve9","slide":6,"name":"rfid-100","text":"ตั้งแหล่งจ่าย 12 V จำกัดกระแส 0.50 A และวัดกระแสกับอุณหภูมิจริงก่อนต่อกลไก","textPreview":"ตั้งแหล่งจ่าย 12 V จำกัดกระแส 0.50 A และวัดกระแสกับอุณหภูมิจริงก่อนต่อกลไก","textChars":74,"textLines":1,"bbox":[104,943,1635,45]}
+{"kind":"image","id":"im/14je5wju","slide":6,"name":"","alt":"ภาพตัวถัง L293D ที่เห็น 16 ขา รอยบากอยู่ด้านบน","bbox":[690,285,254,381]}
+{"kind":"image","id":"im/e18fah03","slide":6,"name":"","alt":"ภาพมอเตอร์ HPCB จากหน้าผลิตภัณฑ์ Pololu 3041","bbox":[104,400,357,285]}
+{"kind":"notes","id":"nt/kj8zq0","slide":6,"text":"L293D ขา 2 รับ IN1 จาก P1.0 ขา 7 รับ IN2 จาก P1.1 ขา 3 และ 6 ต่อมอเตอร์โดยมีตัวต้านทานกำลัง 27 โอห์ม 10 วัตต์อนุกรมหนึ่งด้าน ขา 1 เป็น Enable แบบทำงานเมื่อสูง จึงใช้ SN74HCT14 กลับค่า RUN_N จาก P1.2 และผ่านหน้าสัมผัส NC1 ของ E-stop มี pull-down 10 กิโลโอห์มที่ EN เพื่อให้ตัดแรงขับเมื่อ NC1 เปิด พอร์ตที่มี _N และไฟทุกดวงต่อแบบ active-low ขา P1.4, P1.5, P1.6 รับกระแส LED ผ่าน R2.2k ต่อตัว กลไกจริงต้องยืนยัน CW และ CCW เพราะ H-bridge กำหนดขั้วไฟแต่ไม่ได้รู้ทิศติดตั้งมอเตอร์\nรายละเอียดประกอบ: L293D GND4,5,12,13; VCC1=16; VCC2=8; unused 9,10,15ลงGNDและ11,14เว้น ส่วน HCT14 VCC14=5V,GND7; unused inputsผูกGND ต้องมี100nFใกล้ขาไฟไอซีแต่ละตัวและคร่อมมอเตอร์,470µF25Vใกล้ราง12V แยกทางกลับกระแสมอเตอร์ก่อนรวมกราวด์หนึ่งจุด MCU VCC40=5V,GND20,EA31=5V,XTAL18/19=12MHzและวงจรRST9\nอ้างอิง: https://www.ti.com/lit/ds/symlink/l293d.pdf\nhttps://www.ti.com/lit/ds/symlink/sn74hct14.pdf\nhttps://www.pololu.com/product/3041"}
+{"kind":"slide","id":"sl/bkz46n","slide":7,"title":"การจัดสรรพอร์ตของ AT89S52","textShapes":7}
+{"kind":"textbox","id":"sh/pc7m18b2","slide":7,"name":"rfid-101","text":"การจัดสรรพอร์ตของ AT89S52","textPreview":"การจัดสรรพอร์ตของ AT89S52","textChars":25,"textLines":1,"bbox":[96,66,1728,75]}
+{"kind":"textbox","id":"sh/29g36tcb","slide":7,"name":"rfid-102","text":"ตัวเลขวงเล็บคือหมายเลขขา DIP-40 โดยมองจากด้านบนของตัวถัง","textPreview":"ตัวเลขวงเล็บคือหมายเลขขา DIP-40 โดยมองจากด้านบนของตัวถัง","textChars":56,"textLines":1,"bbox":[96,147,1728,48]}
+{"kind":"shape","id":"sh/3ap4zytw","slide":7,"name":"rfid-103","bbox":[104,220,1712,0.01]}
+{"kind":"textbox","id":"sh/g7yl43u5","slide":7,"name":"rfid-104","text":"06","textPreview":"06","textChars":2,"textLines":1,"bbox":[1758,995,66,45]}
+{"kind":"textbox","id":"sh/187mxobq","slide":7,"name":"rfid-105","text":"Port 2 อินพุต","textPreview":"Port 2 อินพุต","textChars":13,"textLines":1,"bbox":[104,243,820,53]}
+{"kind":"textbox","id":"sh/e5g32tcf","slide":7,"name":"rfid-106","text":"Port 1 เอาต์พุต","textPreview":"Port 1 เอาต์พุต","textChars":15,"textLines":1,"bbox":[1004,243,812,53]}
+{"kind":"textbox","id":"sh/l4bm9sbu","slide":7,"name":"rfid-107","text":"P2.5 ไม่ใช้งาน   P2 latch = FFH","textPreview":"P2.5 ไม่ใช้งาน   P2 latch = FFH","textChars":31,"textLines":1,"bbox":[104,869,820,58]}
+{"kind":"textbox","id":"sh/5cnyh8by","slide":7,"name":"rfid-108","text":"P1.3 และ P1.7 คงเป็น 1","textPreview":"P1.3 และ P1.7 คงเป็น 1","textChars":22,"textLines":1,"bbox":[1004,869,812,58]}
+{"kind":"table","id":"tb/e9k7mtgf","slide":7,"name":"","rows":8,"cols":3,"preview":"ขา | สัญญาณ | ระดับทำงาน","bbox":[104,311,820,528]}
+{"kind":"table","id":"tb/hg76l4z2","slide":7,"name":"","rows":7,"cols":3,"preview":"ขา | สัญญาณ | หน้าที่","bbox":[1004,311,812,462]}
+{"kind":"notes","id":"nt/bkz46n","slide":7,"text":"อินพุตปุ่มเปิดสองตัวและปุ่มปิดเป็นหน้าสัมผัส NO ลงกราวด์ ลิมิตใช้ COM และ NO ส่วน E-stop ใช้ NC2 ลงกราวด์และมี pull-up เมื่อกด E-stop หรือสายเปิดจึงอ่านได้หนึ่ง P2.5 ไม่ใช้งานใน Version 2 และ P1.6 เปลี่ยนเป็นไฟส้ม LED_RFID ทุกขาอินพุตมีตัวต้านทานดึงขึ้น 10k ไป5V เขียน P2=FFH เพื่อใช้พอร์ตแบบ quasi-bidirectional เป็นอินพุต P2.6 ทำหน้าที่ปิดเฉพาะสถานะเปิดค้างและทำหน้าที่รีเซ็ตเฉพาะเมื่อระบบหยุดจากความผิดปกติ ไม่ให้การรีเซ็ตสั่งปิดทันที\nอ้างอิง: https://ww1.microchip.com/downloads/en/DeviceDoc/doc1919.pdf"}
+{"kind":"slide","id":"sl/cxqagw","slide":8,"title":"FSM การทำงานปกติ 7 สถานะ","textShapes":28}
+{"kind":"textbox","id":"sh/nalobmt0","slide":8,"name":"rfid-109","text":"FSM การทำงานปกติ 7 สถานะ","textPreview":"FSM การทำงานปกติ 7 สถานะ","textChars":24,"textLines":1,"bbox":[96,66,1728,75]}
+{"kind":"textbox","id":"sh/8bupkral","slide":8,"name":"rfid-110","text":"เอาต์พุตภายในสถานะกำหนดตาม Moore machine ส่วนข้อความบนเส้นคือเงื่อนไขเปลี่ยนสถานะ","textPreview":"เอาต์พุตภายในสถานะกำหนดตาม Moore machine ส่วนข้อความบนเส้นคือเงื่อนไขเปลี่ยนสถานะ","textChars":81,"textLines":1,"bbox":[96,147,1728,48]}
+{"kind":"shape","id":"sh/9cn6dwb6","slide":8,"name":"rfid-111","bbox":[104,220,1712,0.01]}
+{"kind":"textbox","id":"sh/ylc7ehsj","slide":8,"name":"rfid-112","text":"07","textPreview":"07","textChars":2,"textLines":1,"bbox":[1758,995,66,45]}
+{"kind":"shape","id":"sh/z6lo7mt4","slide":8,"name":"rfid-113","bbox":[104,320,336,126]}
+{"kind":"textbox","id":"sh/07upgra9","slide":8,"name":"rfid-114","text":"CLOSED","textPreview":"CLOSED","textChars":6,"textLines":1,"bbox":[114,335,316,48]}
+{"kind":"textbox","id":"sh/l8369cbu","slide":8,"name":"rfid-115","text":"STOP   ไฟแดง","textPreview":"STOP   ไฟแดง","textChars":12,"textLines":1,"bbox":[114,388,316,41]}
+{"kind":"shape","id":"sh/qhsnaxs7","slide":8,"name":"rfid-116","bbox":[560,320,336,126]}
+{"kind":"textbox","id":"sh/bi1o32ts","slide":8,"name":"rfid-117","text":"OPENING","textPreview":"OPENING","textChars":7,"textLines":1,"bbox":[570,335,316,48]}
+{"kind":"textbox","id":"sh/jidsjqhw","slide":8,"name":"rfid-118","text":"CW   ไฟเขียว","textPreview":"CW   ไฟเขียว","textChars":12,"textLines":1,"bbox":[570,388,316,41]}
+{"kind":"shape","id":"sh/ih4rqlgb","slide":8,"name":"rfid-119","bbox":[1016,320,336,126]}
+{"kind":"textbox","id":"sh/5kvalgzm","slide":8,"name":"rfid-120","text":"OPEN_HOLD","textPreview":"OPEN_HOLD","textChars":9,"textLines":1,"bbox":[1026,335,316,48]}
+{"kind":"textbox","id":"sh/4jm9svyh","slide":8,"name":"rfid-121","text":"STOP   ไฟเขียว","textPreview":"STOP   ไฟเขียว","textChars":14,"textLines":1,"bbox":[1026,388,316,41]}
+{"kind":"shape","id":"sh/r6xsnqhs","slide":8,"name":"rfid-122","bbox":[1472,320,336,126]}
+{"kind":"textbox","id":"sh/qlorulg7","slide":8,"name":"rfid-123","text":"CLOSING","textPreview":"CLOSING","textChars":7,"textLines":1,"bbox":[1482,335,316,48]}
+{"kind":"textbox","id":"sh/d8fap0zy","slide":8,"name":"rfid-124","text":"CCW   ไฟแดง","textPreview":"CCW   ไฟแดง","textChars":11,"textLines":1,"bbox":[1482,388,316,41]}
+{"kind":"shape","id":"sh/s769wvyd","slide":8,"name":"rfid-125","bbox":[1472,720,336,126]}
+{"kind":"textbox","id":"sh/7at8b6ho","slide":8,"name":"rfid-126","text":"REV_WAIT","textPreview":"REV_WAIT","textChars":8,"textLines":1,"bbox":[1482,735,316,48]}
+{"kind":"textbox","id":"sh/mpkri1g3","slide":8,"name":"rfid-127","text":"Coast   200 ms","textPreview":"Coast   200 ms","textChars":14,"textLines":1,"bbox":[1482,788,316,41]}
+{"kind":"shape","id":"sh/a5svq90r","slide":8,"name":"rfid-128","bbox":[1016,720,336,126]}
+{"kind":"textbox","id":"sh/b61cze1c","slide":8,"name":"rfid-129","text":"REOPENING","textPreview":"REOPENING","textChars":9,"textLines":1,"bbox":[1026,735,316,48]}
+{"kind":"textbox","id":"sh/c7adszih","slide":8,"name":"rfid-130","text":"CW   ไฟเขียว","textPreview":"CW   ไฟเขียว","textChars":12,"textLines":1,"bbox":[1026,788,316,41]}
+{"kind":"shape","id":"sh/x8ju14j2","slide":8,"name":"rfid-131","bbox":[560,720,336,126]}
+{"kind":"textbox","id":"sh/218bmp0f","slide":8,"name":"rfid-132","text":"RFID_HOLD","textPreview":"RFID_HOLD","textChars":9,"textLines":1,"bbox":[570,735,316,48]}
+{"kind":"textbox","id":"sh/n2hcvu10","slide":8,"name":"rfid-133","text":"STOP   ไฟส้ม","textPreview":"STOP   ไฟส้ม","textChars":12,"textLines":1,"bbox":[570,788,316,41]}
+{"kind":"shape","id":"sh/o3qdozil","slide":8,"name":"orthogonal-134","bbox":[440,376,120,14]}
+{"kind":"shape","id":"sh/p4jux4j6","slide":8,"name":"orthogonal-135","bbox":[896,376,120,14]}
+{"kind":"shape","id":"sh/ed8bip0j","slide":8,"name":"orthogonal-136","bbox":[1352,376,120,14]}
+{"kind":"textbox","id":"sh/fehcru14","slide":8,"name":"rfid-137","text":"OPEN_EVT","textPreview":"OPEN_EVT","textChars":8,"textLines":1,"bbox":[438,330,125,36]}
+{"kind":"textbox","id":"sh/h476dc7i","slide":8,"name":"rfid-138","text":"LO = 0","textPreview":"LO = 0","textChars":6,"textLines":1,"bbox":[896,330,120,36]}
+{"kind":"textbox","id":"sh/g3ypk76d","slide":8,"name":"rfid-139","text":"CLOSE_EVT\nRFID = 1","textPreview":"CLOSE_EVT | RFID = 1","textChars":18,"textLines":2,"bbox":[1352,304,120,64]}
+{"kind":"shape","id":"sh/v2pobmps","slide":8,"name":"orthogonal-140","bbox":[265,251,1375,69]}
+{"kind":"textbox","id":"sh/u1gniho7","slide":8,"name":"rfid-141","text":"LC = 0 และไม่พบเหตุเปิดกลับ","textPreview":"LC = 0 และไม่พบเหตุเปิดกลับ","textChars":27,"textLines":1,"bbox":[646,270,500,34]}
+{"kind":"shape","id":"sh/t0769c7m","slide":8,"name":"orthogonal-142","bbox":[1633,446,14,274]}
+{"kind":"textbox","id":"sh/8fe5g761","slide":8,"name":"rfid-143","text":"RFID = 0\nหรือ OPEN_EVT","textPreview":"RFID = 0 | หรือ OPEN_EVT","textChars":22,"textLines":2,"bbox":[1654,519,165,80]}
+{"kind":"shape","id":"sh/7e5o72pg","slide":8,"name":"orthogonal-144","bbox":[1352,776,120,14]}
+{"kind":"textbox","id":"sh/6dwnexov","slide":8,"name":"rfid-145","text":"ครบ 200 ms","textPreview":"ครบ 200 ms","textChars":10,"textLines":1,"bbox":[1334,837,161,38]}
+{"kind":"shape","id":"sh/lcn65s7q","slide":8,"name":"orthogonal-146","bbox":[896,776,120,14]}
+{"kind":"textbox","id":"sh/kbe5cn65","slide":8,"name":"rfid-147","text":"LO = 0\nrfid_seen = 1","textPreview":"LO = 0 | rfid_seen = 1","textChars":20,"textLines":2,"bbox":[895,860,204,66]}
+{"kind":"shape","id":"sh/03m5w72p","slide":8,"name":"orthogonal-148","bbox":[728,446,837,274]}
+{"kind":"textbox","id":"sh/l4v6pc3a","slide":8,"name":"rfid-149","text":"CLOSE_EVT ใหม่\nRFID = 1 และปล่อยปุ่มเปิด","textPreview":"CLOSE_EVT ใหม่ | RFID = 1 และปล่อยปุ่มเปิด","textChars":40,"textLines":2,"bbox":[748,480,400,66]}
+{"kind":"shape","id":"sh/y14nuxkz","slide":8,"name":"orthogonal-150","bbox":[1184,446,1,274]}
+{"kind":"shape","id":"sh/z2don2l4","slide":8,"name":"orthogonal-151","bbox":[1184,446,1,274]}
+{"kind":"shape","id":"sh/87650721","slide":8,"name":"orthogonal-152","bbox":[1177,446,14,20]}
+{"kind":"textbox","id":"sh/98f6tc3m","slide":8,"name":"rfid-153","text":"LO = 0\nrfid_seen = 0","textPreview":"LO = 0 | rfid_seen = 0","textChars":20,"textLines":2,"bbox":[1210,609,229,70]}
+{"kind":"textbox","id":"sh/m54nyhkv","slide":8,"name":"rfid-154","text":"OPEN_EVT และ CLOSE_EVT\nคือการกดครั้งใหม่ หลังปล่อยปุ่ม\nและกรองสัญญาณ 20 ms","textPreview":"OPEN_EVT และ CLOSE_EVT | คือการกดครั้งใหม่ หลังปล่อยปุ่ม | และกรองสัญญาณ 20 ms","textChars":74,"textLines":3,"bbox":[104,640,420,128]}
+{"kind":"textbox","id":"sh/n6xormlg","slide":8,"name":"rfid-155","text":"ทุกสถานะ: E-stop ตัด EN โดยฮาร์ดแวร์   ลิมิตขัดแย้งหรือเดินทางเกิน 5 s ให้หยุดและรอรีเซ็ต","textPreview":"ทุกสถานะ: E-stop ตัด EN โดยฮาร์ดแวร์   ลิมิตขัดแย้งหรือเดินทางเกิน 5 s ให้หยุดและรอรีเซ็ต","textChars":89,"textLines":1,"bbox":[104,943,1635,45]}
+{"kind":"notes","id":"nt/cxqagw","slide":8,"text":"สถานะปกติมีเจ็ดสถานะ เอาต์พุตมอเตอร์และไฟขึ้นกับสถานะในตารางเท่านั้น ใช้ตัวแปร rfid_seen จดจำสาเหตุการเปิดกลับเพื่อแยก RFID_HOLD ออกจาก OPEN_HOLD หากเปิดกลับเพราะคนกดปุ่มเปิด ไฟส้มจะไม่ติด เมื่อ CLOSING พบ RFID หรือคำสั่งเปิดให้เข้า REV_WAIT แล้ว REOPENING โดยต้องผ่าน200msก่อนกลับทิศ หากพบ RFID พร้อม LC ให้เลือกเปิดกลับก่อน กรณีไม่มีเส้นที่เงื่อนไขเป็นจริงให้คงสถานะเดิม เส้นไขว้ที่เว้นช่องไม่ต่อถึงกัน\nทุกสถานะอยู่ภายใต้วงจรตัด EN และ latch fault แยกจาก FSM ปกติ E-stop ลิมิตสองตัวพร้อมกัน หรือการเดินทางเกิน5s ตัดแรงขับและต้องรีเซ็ตด้วยมือ ไม่เพิ่มเป็นสถานะปกติลำดับที่แปด\nLee & Seshia: Moore outputs depend on state; events and guards control transitions."}
+{"kind":"slide","id":"sl/lwgr3q","slide":9,"title":"ตารางเอาต์พุตของแต่ละสถานะ","textShapes":5}
+{"kind":"textbox","id":"sh/214vmtkr","slide":9,"name":"rfid-156","text":"ตารางเอาต์พุตของแต่ละสถานะ","textPreview":"ตารางเอาต์พุตของแต่ละสถานะ","textChars":26,"textLines":1,"bbox":[96,66,1728,75]}
+{"kind":"textbox","id":"sh/p4vux832","slide":9,"name":"rfid-157","text":"ค่า 0 และ 1 ในตารางคือระดับที่ขา P1 ส่วนไฟทุกดวงติดเมื่อขาเป็น 0","textPreview":"ค่า 0 และ 1 ในตารางคือระดับที่ขา P1 ส่วนไฟทุกดวงติดเมื่อขาเป็น 0","textChars":64,"textLines":1,"bbox":[96,147,1728,48]}
+{"kind":"shape","id":"sh/o3mdo32h","slide":9,"name":"rfid-158","bbox":[104,220,1712,0.01]}
+{"kind":"textbox","id":"sh/bqxczyl8","slide":9,"name":"rfid-159","text":"08","textPreview":"08","textChars":2,"textLines":1,"bbox":[1758,995,66,45]}
+{"kind":"textbox","id":"sh/xsfu183e","slide":9,"name":"rfid-160","text":"P1.3 = 1   P1.7 = 1","textPreview":"P1.3 = 1   P1.7 = 1","textChars":19,"textLines":1,"bbox":[104,886,780,49]}
+{"kind":"textbox","id":"sh/wr6ds32t","slide":9,"name":"rfid-161","text":"STOP และ Coast ใช้ EN = 0","textPreview":"STOP และ Coast ใช้ EN = 0","textChars":25,"textLines":1,"bbox":[1000,886,810,49]}
+{"kind":"table","id":"tb/n69on2p4","slide":9,"name":"","rows":8,"cols":9,"preview":"สถานะ | เพลา | IN1 | IN2 | RUN_N | RED | GREEN | RFID | P1","bbox":[104,288,1712,576]}
+{"kind":"notes","id":"nt/lwgr3q","slide":9,"text":"ตารางนี้ใช้เมื่อไม่มี fault และ E-stop อยู่ในสภาพปกติ กำหนด P1.3 และ P1.7 เป็น1คงที่ แล้วรวมบิตเพื่อได้ค่า P1 ทั้งไบต์ ตัวอย่าง CLOSED เป็น ECH โดย IN1และIN2เป็น0, RUN_Nเป็น1ตัดแรงขับ และไฟแดงเป็น0จึงติด OPENING กับ REOPENING ใช้ D9H เหมือนกัน RFID_HOLD ใช้ BCH และเป็นสถานะเดียวที่ไฟส้มเป็น0 STOP ในที่นี้เป็นคำสั่งหยุดขับและสถานะนิ่งที่ต้องการ ไม่ได้แปลว่าความเร็วทางกลเป็นศูนย์ทันทีเมื่อ EN ลงต่ำ\nอ้างอิงพฤติกรรม H-bridge: https://www.ti.com/lit/ds/symlink/l293d.pdf"}
+{"kind":"slide","id":"sl/s2034s","slide":10,"title":"เหตุการณ์และเงื่อนไขเปลี่ยนสถานะ","textShapes":4}
+{"kind":"textbox","id":"sh/h0j29obi","slide":10,"name":"rfid-162","text":"เหตุการณ์และเงื่อนไขเปลี่ยนสถานะ","textPreview":"เหตุการณ์และเงื่อนไขเปลี่ยนสถานะ","textChars":32,"textLines":1,"bbox":[96,66,1728,75]}
+{"kind":"textbox","id":"sh/ux8jy9cr","slide":10,"name":"rfid-163","text":"P2 เป็นอินพุต จึงไม่มีค่าคงที่หนึ่งไบต์ประจำสถานะ ต้องอ่านแต่ละบิตตามเงื่อนไข","textPreview":"P2 เป็นอินพุต จึงไม่มีค่าคงที่หนึ่งไบต์ประจำสถานะ ต้องอ่านแต่ละบิตตามเงื่อนไข","textChars":77,"textLines":1,"bbox":[96,147,1728,48]}
+{"kind":"shape","id":"sh/fy1k7etc","slide":10,"name":"rfid-164","bbox":[104,220,1712,0.01]}
+{"kind":"textbox","id":"sh/43al4jut","slide":10,"name":"rfid-165","text":"09","textPreview":"09","textChars":2,"textLines":1,"bbox":[1758,995,66,45]}
+{"kind":"textbox","id":"sh/21s32tc3","slide":10,"name":"rfid-166","text":"คำสั่งปิดยังต้องมี OPEN ทั้งสองปุ่มปล่อยอยู่ และระบบไม่อยู่ใน fault","textPreview":"คำสั่งปิดยังต้องมี OPEN ทั้งสองปุ่มปล่อยอยู่ และระบบไม่อยู่ใน fault","textChars":67,"textLines":1,"bbox":[104,943,1635,45]}
+{"kind":"table","id":"tb/czmhcb65","slide":10,"name":"","rows":10,"cols":3,"preview":"สถานะเดิม | เหตุการณ์หรือ Guard | สถานะถัดไป","bbox":[104,270,1712,610]}
+{"kind":"notes","id":"nt/s2034s","slide":10,"text":"ให้ตรวจเงื่อนไขหยุดฉุกเฉินก่อนเงื่อนไขปกติ ใน CLOSING ตรวจ RFID และปุ่มเปิดก่อน LC และก่อนtimeout ส่วน OPENING หรือ REOPENING ให้ถึง LO แล้วหยุด P2.6 จะถูกใช้ได้เมื่อเข้ารอสั่งปิดแล้วเห็นการปล่อยปุ่มก่อน จากนั้นกดใหม่และไม่มีแท็ก รวมทั้งปล่อยปุ่มเปิดทั้งสองด้าน ตัวแปร rfid_seen ตั้งเป็น1เมื่อ RFID เป็นสาเหตุใน CLOSING และคงค่าแม้แท็กหายระหว่างเปิดกลับ หากเป็นคำสั่งเปิดโดยคนเพียงอย่างเดียวให้เป็น0 เงื่อนไขที่ไม่ตรงกับแถวใดคงสถานะเดิม ตารางเป็นการระบุ guards ของพอร์ต ไม่ใช่การเขียนค่าออกไปยัง P2"}
+{"kind":"slide","id":"sl/n3uxay","slide":11,"title":"เวลาควบคุมและการหยุดฉุกเฉิน","textShapes":16}
+{"kind":"textbox","id":"sh/ut4j2dk7","slide":11,"name":"rfid-167","text":"เวลาควบคุมและการหยุดฉุกเฉิน","textPreview":"เวลาควบคุมและการหยุดฉุกเฉิน","textChars":27,"textLines":1,"bbox":[96,66,1728,75]}
+{"kind":"textbox","id":"sh/hwf2x83i","slide":11,"name":"rfid-168","text":"AT89S52 แบบ 12T ที่ 12.000 MHz มี machine cycle เท่ากับ 1.0 µs","textPreview":"AT89S52 แบบ 12T ที่ 12.000 MHz มี machine cycle เท่ากับ 1.0 µs","textChars":62,"textLines":1,"bbox":[96,147,1728,48]}
+{"kind":"shape","id":"sh/gv6l432x","slide":11,"name":"rfid-169","bbox":[104,220,1712,0.01]}
+{"kind":"textbox","id":"sh/76dkrylg","slide":11,"name":"rfid-170","text":"10","textPreview":"10","textChars":2,"textLines":1,"bbox":[1758,995,66,45]}
+{"kind":"textbox","id":"sh/654jyt4v","slide":11,"name":"rfid-171","text":"20 ms","textPreview":"20 ms","textChars":5,"textLines":1,"bbox":[104,289,540,106]}
+{"kind":"textbox","id":"sh/tsv2t83m","slide":11,"name":"rfid-172","text":"กรองปุ่ม","textPreview":"กรองปุ่ม","textChars":8,"textLines":1,"bbox":[104,413,540,58]}
+{"kind":"textbox","id":"sh/87m10321","slide":11,"name":"rfid-173","text":"นับเฉพาะระดับคงที่\nสร้างเหตุการณ์หนึ่งครั้งต่อการกด","textPreview":"นับเฉพาะระดับคงที่ | สร้างเหตุการณ์หนึ่งครั้งต่อการกด","textChars":51,"textLines":2,"bbox":[104,494,540,105]}
+{"kind":"textbox","id":"sh/r2hk3ilk","slide":11,"name":"rfid-174","text":"200 ms","textPreview":"200 ms","textChars":6,"textLines":1,"bbox":[690,289,540,106]}
+{"kind":"textbox","id":"sh/q1o3axkf","slide":11,"name":"rfid-175","text":"พักก่อนกลับทิศ","textPreview":"พักก่อนกลับทิศ","textChars":14,"textLines":1,"bbox":[690,413,540,58]}
+{"kind":"textbox","id":"sh/cjydwv6h","slide":11,"name":"rfid-176","text":"RUN_N = 1 ตลอดช่วงพัก\nยังอ่าน RFID และ E-stop","textPreview":"RUN_N = 1 ตลอดช่วงพัก | ยังอ่าน RFID และ E-stop","textChars":45,"textLines":2,"bbox":[690,494,540,105]}
+{"kind":"textbox","id":"sh/xk7e50n2","slide":11,"name":"rfid-177","text":"5 s","textPreview":"5 s","textChars":3,"textLines":1,"bbox":[1276,289,540,106]}
+{"kind":"textbox","id":"sh/ahgvulor","slide":11,"name":"rfid-178","text":"จำกัดเวลาวิ่ง","textPreview":"จำกัดเวลาวิ่ง","textChars":13,"textLines":1,"bbox":[1276,413,540,58]}
+{"kind":"textbox","id":"sh/bipw3q5c","slide":11,"name":"rfid-179","text":"เกินเวลาแล้วตัดแรงขับ\nรอคนตรวจและกดรีเซ็ต","textPreview":"เกินเวลาแล้วตัดแรงขับ | รอคนตรวจและกดรีเซ็ต","textChars":41,"textLines":2,"bbox":[1276,494,540,105]}
+{"kind":"shape","id":"sh/ofydsb6l","slide":11,"name":"rfid-180","bbox":[104,649,1712,0.01]}
+{"kind":"textbox","id":"sh/pg7e1gn6","slide":11,"name":"rfid-181","text":"Timer 0 Mode 1","textPreview":"Timer 0 Mode 1","textChars":14,"textLines":1,"bbox":[104,703,580,55]}
+{"kind":"textbox","id":"sh/2twvqlof","slide":11,"name":"rfid-182","text":"65536 − 1000 = FC18H\nTH0 = FCH   TL0 = 18H","textPreview":"65536 − 1000 = FC18H | TH0 = FCH   TL0 = 18H","textChars":42,"textLines":2,"bbox":[104,781,760,99]}
+{"kind":"textbox","id":"sh/ne5wz650","slide":11,"name":"rfid-183","text":"E-stop มี 2 หน้าสัมผัส NC\nNC1 ตัด EN   NC2 แจ้ง P2.7\nปลดปุ่มแล้วต้องรีเซ็ตด้วยมือ","textPreview":"E-stop มี 2 หน้าสัมผัส NC | NC1 ตัด EN   NC2 แจ้ง P2.7 | ปลดปุ่มแล้วต้องรีเซ็ตด้วยมือ","textChars":81,"textLines":3,"bbox":[970,711,820,175]}
+{"kind":"textbox","id":"sh/0redob6p","slide":11,"name":"rfid-184","text":"ไม่มีตัวนับ 3 วินาทีเพื่อปิดประตู และ 200 ms ไม่ใช่ผลวัดว่าเพลาหยุดสนิท","textPreview":"ไม่มีตัวนับ 3 วินาทีเพื่อปิดประตู และ 200 ms ไม่ใช่ผลวัดว่าเพลาหยุดสนิท","textChars":71,"textLines":1,"bbox":[104,943,1635,45]}
+{"kind":"notes","id":"nt/n3uxay","slide":11,"text":"เสนอให้ใช้ Timer0 mode1 สำหรับ tick1ms แทนการรอแบบ blocking จึงยังอ่าน RFID และ E-stop ระหว่างกรองปุ่มหรือพักมอเตอร์ได้ ค่าเริ่มนับ FC18H มาจาก65536ลบ1000 อย่างไรก็ตามการโหลดค่าใน ISR มีเวลา overhead จึงต้องตรวจเวลาในEdSim51และบนขาจริงก่อนอ้างความแม่นยำ เวลากรองปุ่ม20msใช้20ticks เวลาพัก200msใช้200ticks และtimeoutการเคลื่อนที่5sใช้5000ticks เวลาพักเป็นค่ากำหนดขั้นต่ำที่ยังต้องยืนยันกับแรงเฉื่อยจริง E-stop NC1 ตัด EN โดยฮาร์ดแวร์ ส่วน NC2 แจ้ง P2.7 ปลด E-stop แล้วไม่ให้มอเตอร์เริ่มเอง ต้องปล่อยและกด P2.6 ใหม่พร้อมลิมิตบอกปลายทางเพียงตัวเดียว\nอ้างอิง timer: https://ww1.microchip.com/downloads/en/DeviceDoc/doc1919.pdf\nhttps://www.ti.com/lit/ds/symlink/sn74hct14.pdf"}
+{"kind":"slide","id":"sl/jtxjcj","slide":12,"title":"RFID_HOLD รับเฉพาะการกดปิดครั้งใหม่","textShapes":12}
+{"kind":"textbox","id":"sh/10vyx0za","slide":12,"name":"rfid-185","text":"RFID_HOLD รับเฉพาะการกดปิดครั้งใหม่","textPreview":"RFID_HOLD รับเฉพาะการกดปิดครั้งใหม่","textChars":35,"textLines":1,"bbox":[96,66,1728,75]}
+{"kind":"textbox","id":"sh/ed4fmlgz","slide":12,"name":"rfid-186","text":"ไฟส้มติดค้างจนคำสั่งปิดผ่านเงื่อนไขทั้งหมด","textPreview":"ไฟส้มติดค้างจนคำสั่งปิดผ่านเงื่อนไขทั้งหมด","textChars":42,"textLines":1,"bbox":[96,147,1728,48]}
+{"kind":"shape","id":"sh/zedgvqhk","slide":12,"name":"rfid-187","bbox":[104,220,1712,0.01]}
+{"kind":"textbox","id":"sh/cb2xkvyt","slide":12,"name":"rfid-188","text":"11","textPreview":"11","textChars":2,"textLines":1,"bbox":[1758,995,66,45]}
+{"kind":"textbox","id":"sh/dcbytgze","slide":12,"name":"rfid-189","text":"1  เข้าสู่ RFID_HOLD","textPreview":"1  เข้าสู่ RFID_HOLD","textChars":20,"textLines":1,"bbox":[104,290,780,53]}
+{"kind":"textbox","id":"sh/q9kfilgn","slide":12,"name":"rfid-190","text":"เพลา STOP และไฟส้มติด\nล้างคำสั่งปิดที่เกิดก่อนหน้านี้","textPreview":"เพลา STOP และไฟส้มติด | ล้างคำสั่งปิดที่เกิดก่อนหน้านี้","textChars":53,"textLines":2,"bbox":[104,354,780,132]}
+{"kind":"textbox","id":"sh/ratgrqh8","slide":12,"name":"rfid-191","text":"2  ปล่อยปุ่มก่อน","textPreview":"2  ปล่อยปุ่มก่อน","textChars":16,"textLines":1,"bbox":[1004,290,812,53]}
+{"kind":"textbox","id":"sh/472xgbyx","slide":12,"name":"rfid-192","text":"PB_CLOSE = 1 คงที่อย่างน้อย 20 ms\nจึงพร้อมรับการกดครั้งใหม่","textPreview":"PB_CLOSE = 1 คงที่อย่างน้อย 20 ms | จึงพร้อมรับการกดครั้งใหม่","textChars":59,"textLines":2,"bbox":[1004,354,812,132]}
+{"kind":"textbox","id":"sh/p8bypgz2","slide":12,"name":"rfid-193","text":"3  คนตรวจทางผ่านแล้วกดใหม่","textPreview":"3  คนตรวจทางผ่านแล้วกดใหม่","textChars":26,"textLines":1,"bbox":[104,625,780,53]}
+{"kind":"textbox","id":"sh/lcfqtgjq","slide":12,"name":"rfid-194","text":"PB_CLOSE = 0 คงที่ 20 ms\nRFID_DET = 1 และปล่อยปุ่มเปิดทั้งสอง","textPreview":"PB_CLOSE = 0 คงที่ 20 ms | RFID_DET = 1 และปล่อยปุ่มเปิดทั้งสอง","textChars":61,"textLines":2,"bbox":[104,689,780,132]}
+{"kind":"textbox","id":"sh/0bmp0bi5","slide":12,"name":"rfid-195","text":"4  ยอมให้เข้าสู่ CLOSING","textPreview":"4  ยอมให้เข้าสู่ CLOSING","textChars":24,"textLines":1,"bbox":[1004,625,812,53]}
+{"kind":"textbox","id":"sh/zad8r61k","slide":12,"name":"rfid-196","text":"ไฟส้มดับ ไฟแดงติด เพลาหมุน CCW\nพบแท็กอีกครั้งให้หยุดและเปิดกลับอีกครั้ง","textPreview":"ไฟส้มดับ ไฟแดงติด เพลาหมุน CCW | พบแท็กอีกครั้งให้หยุดและเปิดกลับอีกครั้ง","textChars":71,"textLines":2,"bbox":[1004,689,812,132]}
+{"kind":"textbox","id":"sh/y947y10z","slide":12,"name":"rfid-197","text":"กดค้างไว้ตอนยังมีแท็ก แล้วแท็กหายไป: ประตูยังค้างเปิด","textPreview":"กดค้างไว้ตอนยังมีแท็ก แล้วแท็กหายไป: ประตูยังค้างเปิด","textChars":53,"textLines":1,"bbox":[104,943,1635,45]}
+{"kind":"notes","id":"nt/jtxjcj","slide":12,"text":"เมื่อเข้าสู่RFID_HOLDต้องล้างclose_armedก่อนเพื่อไม่รับการกดที่เริ่มระหว่างเปิดกลับ หลังจากเห็นPB_CLOSEปล่อยอย่างน้อย20msจึงarm แล้วรอการกดต่ำคงที่20ms สร้างclose_eventเพียงครั้งเดียว ถ้าขณะนั้นRFID_DETเป็น0หรือปุ่มเปิดยังถูกกด ให้ทิ้งเหตุการณ์และยกเลิกarm ต้องปล่อยและกดใหม่ ไม่ตั้งคำสั่งค้างรอจนแท็กหาย PB_CLOSEบนP2.6มีบทบาทresetเฉพาะfaultและต้องตรวจเงื่อนไขกู้คืนต่างหาก\nกฎนี้ทดสอบกับแบบจำลองลอจิก Python โดยยังไม่ใช่ผลจำลองเครื่องอ่านหรือกลไกจริง"}
+{"kind":"slide","id":"sl/pa8jrf","slide":13,"title":"ตัวอย่างลอจิก 8051 ขณะกำลังปิด","textShapes":8}
+{"kind":"textbox","id":"sh/50rulwj2","slide":13,"name":"rfid-198","text":"ตัวอย่างลอจิก 8051 ขณะกำลังปิด","textPreview":"ตัวอย่างลอจิก 8051 ขณะกำลังปิด","textChars":30,"textLines":1,"bbox":[96,66,1728,75]}
+{"kind":"textbox","id":"sh/ixgvqhkr","slide":13,"name":"rfid-199","text":"ตัวอย่างส่วนตัดแรงขับ ไม่ใช่เฟิร์มแวร์ฉบับสมบูรณ์ที่ผ่านการจำลองแล้ว","textPreview":"ตัวอย่างส่วนตัดแรงขับ ไม่ใช่เฟิร์มแวร์ฉบับสมบูรณ์ที่ผ่านการจำลองแล้ว","textChars":68,"textLines":1,"bbox":[96,147,1728,48]}
+{"kind":"shape","id":"sh/jypcjm1c","slide":13,"name":"rfid-200","bbox":[104,220,1712,0.01]}
+{"kind":"textbox","id":"sh/s3idwr2t","slide":13,"name":"rfid-201","text":"12","textPreview":"12","textChars":2,"textLines":1,"bbox":[1758,995,66,45]}
+{"kind":"shape","id":"sh/t4rupwje","slide":13,"name":"rfid-202","bbox":[731,266,1085,648]}
+{"kind":"textbox","id":"sh/610vuhkn","slide":13,"name":"rfid-203","text":"CLOSING\nP1 = EAH\nเพลา CCW","textPreview":"CLOSING | P1 = EAH | เพลา CCW","textChars":25,"textLines":3,"bbox":[104,306,546,173]}
+{"kind":"textbox","id":"sh/729cnm18","slide":13,"name":"rfid-204","text":"เมื่อ RFID_DET = 0\nตัด EN ก่อนเปลี่ยนทิศทาง\nแล้วเข้าพัก REV_WAIT","textPreview":"เมื่อ RFID_DET = 0 | ตัด EN ก่อนเปลี่ยนทิศทาง | แล้วเข้าพัก REV_WAIT","textChars":64,"textLines":3,"bbox":[104,545,549,173]}
+{"kind":"textbox","id":"sh/g72d0b2p","slide":13,"name":"rfid-205","text":"REV_WAIT\nP1 = FCH\nเพลา Coast","textPreview":"REV_WAIT | P1 = FCH | เพลา Coast","textChars":28,"textLines":3,"bbox":[104,760,549,137]}
+{"kind":"textbox","id":"sh/h8betgja","slide":13,"name":"rfid-206","text":"ClosingLoop:\n    JB   P2.2,CheckOpen\n    SETB P1.2\n    MOV  P1,#0FCH\n    SETB RFID_SEEN\n    LCALL ENTER_REV_WAIT\n    SJMP MAIN\n\nCheckOpen:\n    LCALL CHECK_OPEN_EVENT\n    JC   REVERSE_MANUAL\n    JNB  P2.4,ENTER_CLOSED\n    SJMP MAIN","textPreview":"ClosingLoop: |     JB   P2.2,CheckOpen |     SETB P1.2 |     MOV  P1,#0FCH |     SETB RFID_SEEN |     LCALL ENTER_REV_WAIT |     SJMP MAI...","textChars":230,"textLines":13,"bbox":[772,298,1000,575]}
+{"kind":"textbox","id":"sh/x4nmxcza","slide":13,"name":"rfid-207","text":"RFID_DET อ่านโดยไม่หน่วงกรอง 20 ms แบบปุ่ม ส่วนเวลาตอบสนองจริงรวมเวลาอ่าน RFID และลูปควบคุม","textPreview":"RFID_DET อ่านโดยไม่หน่วงกรอง 20 ms แบบปุ่ม ส่วนเวลาตอบสนองจริงรวมเวลาอ่าน RFID และลูปควบคุม","textChars":91,"textLines":1,"bbox":[104,943,1635,45]}
+{"kind":"notes","id":"nt/pa8jrf","slide":13,"text":"ตัวอย่างนี้เป็นส่วนลูปในCLOSING หลังผ่านการตรวจE-stopและลิมิตขัดแย้งในลูปหลัก หากP2.2ต่ำให้SETB P1.2ก่อนเพื่อปิดEnable จากนั้นเขียนP1=FCHเพื่อหยุดทิศทางและดับไฟทั้งหมด ตั้งrfid_seenและเปลี่ยนSTATEเป็นREV_WAIT พร้อมเริ่มตัวนับ200ms หากไม่พบแท็กจึงตรวจปุ่มเปิดและลิมิตปิดตามลำดับ ส่วนTimer0 ISRและการกรองปุ่มต้องทำงานต่อเนื่อง โดยไม่เรียกblockingdelay200ms ตัวแปรSTATE,RFID_SEENและซับรูทีนENTER_REV_WAITต้องนิยามในเฟิร์มแวร์จริงก่อนassemble ไฟล์ตัวอย่างที่แนบอธิบายสัญญาของซับรูทีนไว้ครบและไม่ได้อ้างว่ารันEdSim51แล้ว"}
+{"kind":"slide","id":"sl/51plxp","slide":14,"title":"ผลตรวจลอจิกและแผนทดสอบชุดจริง","textShapes":7}
+{"kind":"textbox","id":"sh/kbax4jax","slide":14,"name":"rfid-208","text":"ผลตรวจลอจิกและแผนทดสอบชุดจริง","textPreview":"ผลตรวจลอจิกและแผนทดสอบชุดจริง","textChars":29,"textLines":1,"bbox":[96,66,1728,75]}
+{"kind":"textbox","id":"sh/jq1gvytc","slide":14,"name":"rfid-209","text":"ตรวจเหตุการณ์และค่าพอร์ตด้วยแบบจำลอง FSM ใน Python","textPreview":"ตรวจเหตุการณ์และค่าพอร์ตด้วยแบบจำลอง FSM ใน Python","textChars":50,"textLines":1,"bbox":[96,147,1728,48]}
+{"kind":"shape","id":"sh/ypsf2tsr","slide":14,"name":"rfid-210","bbox":[104,220,1712,0.01]}
+{"kind":"textbox","id":"sh/tg3y18be","slide":14,"name":"rfid-211","text":"13","textPreview":"13","textChars":2,"textLines":1,"bbox":[1758,995,66,45]}
+{"kind":"textbox","id":"sh/8fux83at","slide":14,"name":"rfid-212","text":"21 / 21","textPreview":"21 / 21","textChars":7,"textLines":1,"bbox":[104,272,600,125]}
+{"kind":"textbox","id":"sh/7e1gzyt8","slide":14,"name":"rfid-213","text":"กรณีตรวจลอจิกผ่าน","textPreview":"กรณีตรวจลอจิกผ่าน","textChars":17,"textLines":1,"bbox":[104,411,640,61]}
+{"kind":"textbox","id":"sh/6dsf6tsn","slide":14,"name":"rfid-214","text":"ตรวจด้วย Python\nเวลาในแบบจำลองทีละ 1 ms\nยังไม่ใช่ผล EdSim51 หรือชุดจริง","textPreview":"ตรวจด้วย Python | เวลาในแบบจำลองทีละ 1 ms | ยังไม่ใช่ผล EdSim51 หรือชุดจริง","textChars":71,"textLines":3,"bbox":[104,507,670,178]}
+{"kind":"textbox","id":"sh/gjuxc3a5","slide":14,"name":"rfid-215","text":"รุ่น RFID ยังไม่เลือก และยังไม่มีผลทดสอบครอบคลุมพื้นที่ตรวจจับ","textPreview":"รุ่น RFID ยังไม่เลือก และยังไม่มีผลทดสอบครอบคลุมพื้นที่ตรวจจับ","textChars":62,"textLines":1,"bbox":[104,943,1635,45]}
+{"kind":"table","id":"tb/gnetkfa9","slide":14,"name":"","rows":6,"cols":2,"preview":"สิ่งที่ต้องทดสอบต่อ | วิธีตรวจ","bbox":[834,285,982,570]}
+{"kind":"notes","id":"nt/51plxp","slide":14,"text":"สร้างแบบจำลองFSMที่เดินเวลาอุดมคติทีละ1msและตรวจ21กรณี ได้แก่ค่าพอร์ตทุกสถานะ ความหมายไฟส้ม คำสั่งเปิด ลิมิต การปิดด้วยการกดใหม่ การกดค้าง การทิ้งคำสั่งขณะพบแท็ก ลำดับความสำคัญของRFIDก่อนLC ระยะพักขั้นต่ำ การเก็บสาเหตุRFIDจนเปิดกลับสุด E-stopการรีเซ็ตและtimeout ผลผ่าน21กรณีแสดงความสอดคล้องของลอจิกอ้างอิงเท่านั้น ยังไม่ตรวจinstructiontimingของ8051 ไม่จำลองRFIDทางฟิสิกส์ และไม่ได้วัดกระแสมอเตอร์ แผนทดสอบฮาร์ดแวร์ต้องใช้วัตถุจำลองแทนเด็กหรือสัตว์ก่อนเสมอ"}
+{"kind":"slide","id":"sl/5qzc1m","slide":15,"title":"ขอบเขตที่ทำได้และสิ่งที่ต้องยืนยัน","textShapes":10}
+{"kind":"textbox","id":"sh/fyl03i5g","slide":15,"name":"rfid-216","text":"ขอบเขตที่ทำได้และสิ่งที่ต้องยืนยัน","textPreview":"ขอบเขตที่ทำได้และสิ่งที่ต้องยืนยัน","textChars":34,"textLines":1,"bbox":[96,66,1728,75]}
+{"kind":"textbox","id":"sh/gzuhcn61","slide":15,"name":"rfid-217","text":"RFID เป็นการตรวจแท็กที่กำหนด ไม่ใช่การตรวจสิ่งกีดขวางทุกชนิด","textPreview":"RFID เป็นการตรวจแท็กที่กำหนด ไม่ใช่การตรวจสิ่งกีดขวางทุกชนิด","textChars":60,"textLines":1,"bbox":[96,147,1728,48]}
+{"kind":"shape","id":"sh/103i5snm","slide":15,"name":"rfid-218","bbox":[104,220,1712,0.01]}
+{"kind":"textbox","id":"sh/21wzedo7","slide":15,"name":"rfid-219","text":"14","textPreview":"14","textChars":2,"textLines":1,"bbox":[1758,995,66,45]}
+{"kind":"textbox","id":"sh/n2507i5s","slide":15,"name":"rfid-220","text":"แบบควบคุมที่กำหนดแล้ว","textPreview":"แบบควบคุมที่กำหนดแล้ว","textChars":21,"textLines":1,"bbox":[104,293,806,53]}
+{"kind":"textbox","id":"sh/o3e1gn6d","slide":15,"name":"rfid-221","text":"ปุ่มเปิดสองด้านและปุ่มปิดหนึ่งจุด\nFSM 7 สถานะ พร้อมพอร์ตและเอาต์พุต\nRFID_HOLD รอการกดปิดใหม่เสมอ","textPreview":"ปุ่มเปิดสองด้านและปุ่มปิดหนึ่งจุด | FSM 7 สถานะ พร้อมพอร์ตและเอาต์พุต | RFID_HOLD รอการกดปิดใหม่เสมอ","textChars":96,"textLines":3,"bbox":[104,357,806,132]}
+{"kind":"textbox","id":"sh/p4ni9sni","slide":15,"name":"rfid-222","text":"สิ่งที่ยังต้องวัดกับอุปกรณ์","textPreview":"สิ่งที่ยังต้องวัดกับอุปกรณ์","textChars":27,"textLines":1,"bbox":[1004,293,812,53]}
+{"kind":"textbox","id":"sh/a5wjixo3","slide":15,"name":"rfid-223","text":"พื้นที่อ่านและเวลาตอบสนอง RFID\nความเร็ว ระยะหยุด และกระแสมอเตอร์\nกรณีแท็กอ่านไม่สำเร็จหรือเครื่องอ่านเสีย","textPreview":"พื้นที่อ่านและเวลาตอบสนอง RFID | ความเร็ว ระยะหยุด และกระแสมอเตอร์ | กรณีแท็กอ่านไม่สำเร็จหรือเครื่องอ่านเสีย","textChars":105,"textLines":3,"bbox":[1004,357,812,132]}
+{"kind":"shape","id":"sh/b650b25o","slide":15,"name":"rfid-224","bbox":[104,605,1712,0.01]}
+{"kind":"textbox","id":"sh/v2p0rals","slide":15,"name":"rfid-225","text":"หลักการใช้งาน","textPreview":"หลักการใช้งาน","textChars":13,"textLines":1,"bbox":[104,665,1660,58]}
+{"kind":"textbox","id":"sh/uhgzy5kn","slide":15,"name":"rfid-226","text":"ตรวจทางผ่านให้ปลอดภัย แล้วกดปิดเอง\nการไม่พบแท็กเพียงอย่างเดียวไม่ยืนยันว่าทางผ่านว่าง","textPreview":"ตรวจทางผ่านให้ปลอดภัย แล้วกดปิดเอง | การไม่พบแท็กเพียงอย่างเดียวไม่ยืนยันว่าทางผ่านว่าง","textChars":85,"textLines":2,"bbox":[104,755,1668,133]}
+{"kind":"textbox","id":"sh/h4rit0jy","slide":15,"name":"rfid-227","text":"แบบเสนอสำหรับ Mini-Project ยังไม่มีผลรับรองความปลอดภัยของประตูใช้งานจริง","textPreview":"แบบเสนอสำหรับ Mini-Project ยังไม่มีผลรับรองความปลอดภัยของประตูใช้งานจริง","textChars":72,"textLines":1,"bbox":[104,943,1635,45]}
+{"kind":"notes","id":"nt/5qzc1m","slide":15,"text":"สรุปว่าประตูบ้านชุดนี้รับปุ่มเปิดสองด้านและปุ่มปิดโดยคน ไม่มีการปิดเองตามเวลา เมื่ออ่านพบแท็กขณะปิดจะตัดแรงขับ พัก เปิดกลับ และเปิดค้างพร้อมไฟส้มตามลำดับเจ็ดสถานะ สิ่งที่ตรวจแล้วคือความสอดคล้องของลอจิกในแบบจำลอง ส่วนเครื่องอ่านจริงต้องเลือกร่วมกับแท็กและวัดพื้นที่อ่านทั้งช่องประตู รวมถึงความล่าช้าและกรณีอ่านหลุด วัตถุที่ไม่ติดแท็กหรือแท็กที่อ่านไม่สำเร็จจะไม่ทำให้RFID_DETทำงานตามที่หวัง และสัญญาณ1ยังแยกเครื่องอ่านเสียออกจากไม่พบแท็กไม่ได้ จึงนำเสนอเป็นแนวคิดชุดสาธิต ไม่กล่าวอ้างว่าเป็นระบบป้องกันหนีบที่รับรองแล้ว\nแหล่งข้อมูลหลัก: Lab 2 for Mini-Project หน้า 11–13; Lee & Seshia, Introduction to Embedded Systems; https://ww1.microchip.com/downloads/en/DeviceDoc/doc1919.pdf; https://www.ti.com/lit/ds/symlink/l293d.pdf; https://www.pololu.com/product/3041; https://www.impinj.com/products/technology/how-do-rain-rfid-systems-work"}

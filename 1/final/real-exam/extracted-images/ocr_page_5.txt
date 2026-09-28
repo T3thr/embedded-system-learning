@@ -1,0 +1,102 @@
+53. anmwa6ea code ann state
+8051
+P1.4
+P1.3
+P1.2
+P1.1
+P1.0
+P2.0
+54. annmagr5ea code ann state
+Ready
+push
+push
+Prepare
+stop
+Wait
+umer
+push
+ESP32
+8051 P1.4
+-P2.1
+P1.3
+P1.2
+P1.1
+P1.0
+P2.0
+ReadyState:
+mov IØ, #Ø1H ; Ø =state 1
+clr p1.4
+alr P1.3
+setb p1.2
+setb P1.1
+clr pl.Ø
+jB p2.Ø, PrepareState
+sjmp ReadyState
+PrepareState:
+mov rØ, #Ø2H ; IØ =state 2
+clr pl.4
+setb P1.3
+clr pl.2
+setb P1.1
+olr pl.ø
+mov r1, #Ø2 ; deley 2Ø usec
+timerP:
+call delay
+dinz r1, timerp
+jB p2. Ø, GoState
+sjmp GoState
+GoState:
+mov IØ,#Ø3H ;rø =state 3
+setb pl.4
+clr P1.3
+clr pl.2
+clr P1.1
+setb pl.Ø
+mov r1,#1ø ; deley 1øø usec
+timer:
+call delay
+djnz rl, timer
+jB p2.Ø, GoState
+sjmp Readystate
+PrepareState:
+mov rØ,#Ø2H ;rØ =state 2
+clr pl.4
+setb P1.3
+clr p1.2
+setb P1.1
+clr pl.ø
+jB p2.1, GoState ; wait stop signal
+SJmp PrepareState
+ReadyState:
+mov IØ,#Ø1H ;rø =state 1
+clr pl.4
+clr P1.3
+setb p1.2
+setb P1.1
+clr pl.ø
+jB p2.Ø, Preparestate
+sjmp ReadyState
+GoState:
+mov rø,#Ø3H ;IØ =state 3
+setb p1.4
+clr P1.3
+clr p1.2
+clr P1.1
+setb p1.0
+mov r1, #Ø5 ; deley 5ø usec
+timer:
+call delay
+djnz r1, timer
+sjmp WaitState
+WaitState:
+mov IØ,#Ø4H ;IØ =state 4
+clr pl.4
+clr P1.3
+setb p1.2
+setb P1.1
+clr pl.ø
+mov r1,#Ø5 ; deley 5ø usec
+timerw:
+call delay
+djnz r1, timerw
+sjmp readystate

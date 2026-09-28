@@ -1,0 +1,27 @@
+{
+  "slide_count": 19,
+  "forbidden_text": [],
+  "safe_boundary_findings": [],
+  "inset_findings": [],
+  "folio_findings": [],
+  "chart_count": 4,
+  "embedded_chart_workbooks": 4,
+  "code_source_mismatches": [],
+  "timing_values_present": true,
+  "font_sizes_pt": [
+    11.0,
+    12.0,
+    14.0,
+    18.0,
+    24.0,
+    36.0
+  ],
+  "protected_files_unchanged": {
+    "embedded-system/1/mini-project/output/version2/Sliding_Door_Safety_Control_Version_2_Final.pptx": true,
+    "embedded-system/1/mini-project/output/version2/Sliding_Door_Safety_Control_Version_2_Refined.pptx": true
+  },
+  "sha256": "e3848bdda1f9430d6497c70456fd0ec77afbbc943447d56911f84450627b53c4",
+  "passed": true,
+  "target": "/Users/3rapat/student/internship/CODEFIN/project/cwms/vahalla-wealth/private-docs/other-project/uni-work/embedded-system/1/mini-project/output/Sliding_Door_Safety_Control_Redesigned.pptx",
+  "published": true
+}

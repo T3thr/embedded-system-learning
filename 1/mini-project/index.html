@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="แพลตฟอร์มเรียนรู้ 8051 — สตูดิโอซ้อมนำเสนอ 8 นาที และแซนด์บ็อกซ์ประตูเลื่อนนิรภัย" />
+  <title>8051 Sliding Door Studio · 305341 Embedded Systems 1</title>
+  <link rel="stylesheet" href="assets/css/design-system.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+  <link rel="stylesheet" href="assets/css/presentation.css" />
+  <link rel="stylesheet" href="assets/css/simulator.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+</head>
+<body data-mode="portal" data-mobile-pane="slides">
+  <div class="app-shell">
+    <header class="top-nav">
+      <button class="icon-btn hamburger" id="drawer-open" type="button" aria-label="เปิดเมนู">☰</button>
+      <div class="brand">
+        <span class="brand-mark">8051</span>
+        <span>
+          Sliding Door Safety Control
+          <span class="brand-sub">305341 · Group 1 · ดร.แสงชัย มังกรทอง</span>
+        </span>
+      </div>
+      <div class="nav-spacer"></div>
+      <div class="nav-actions">
+        <div class="mode-switch" role="tablist" aria-label="โหมด">
+          <button class="mode-btn" type="button" data-mode-btn="portal" role="tab">ภาพรวม</button>
+          <button class="mode-btn" type="button" data-mode-btn="studio" role="tab">Studio 8 นาที</button>
+          <button class="mode-btn" type="button" data-mode-btn="sandbox" role="tab">Sandbox 8051</button>
+        </div>
+        <button class="icon-btn" type="button" data-theme-toggle aria-label="สลับธีม">☾</button>
+      </div>
+    </header>
+
+    <main class="main-stage">
+      <!-- PORTAL -->
+      <section class="view-panel" data-view="portal" id="view-portal">
+        <h1>ประตูเลื่อนบานเดี่ยวตรวจจับสิ่งกีดขวางและเปิดกลับ</h1>
+        <p class="soft">
+          แพลตฟอร์มวิชาการสำหรับซ้อมนำเสนอ 8 นาที และทดลอง FSM 8 สถานะบนแบบจำลอง 8051 classic 12T
+          ที่ 12.000 MHz · ไม่มี dependency · เปิดใช้งานออฟไลน์ได้ทันที
+        </p>
+        <div class="portal-grid">
+          <button class="portal-card" type="button" data-goto="studio">
+            <span class="portal-kicker">MODE A · PRESENTATION STUDIO</span>
+            <h2>สตูดิโอซ้อมนำเสนอ 8 นาที</h2>
+            <p class="soft">คู่สไลด์ 19 หน้าจากไฟล์ final.pdf กับบทพูดภาษาไทย สอนพื้นฐานสอดแทรก และ Pace Gauge 125 คำ/นาที</p>
+            <ul class="portal-list">
+              <li>สไลด์จาก mini-project_Sliding_Door_Safety_Control_final.pdf</li>
+              <li>การ์ดสอนพื้นฐาน Lecture 1–4 ระหว่างนำเสนอ</li>
+              <li>Teleprompter + บันทึกผู้บรรยาย</li>
+              <li>คีย์บอร์ด ← → และ Space</li>
+              <li>จำลองสอบปากเปล่า 6 คำถามหลัก</li>
+            </ul>
+          </button>
+          <button class="portal-card" type="button" data-goto="sandbox">
+            <span class="portal-kicker">MODE B · ENGINEERING SANDBOX</span>
+            <h2>แซนด์บ็อกซ์ประตูและฮาร์ดแวร์ 8051</h2>
+            <p class="soft">จำลองบานเลื่อน 200 mm ลำแสงคู่ 20/80 mm ลิมิต LO/LC และแผง LED พอร์ต P0–P2 แบบสด</p>
+            <ul class="portal-list">
+              <li>FSM 8 สถานะตาม PROPOSED_SOLUTION_DESIGN</li>
+              <li>Invariant: coast ก่อนกลับทิศ · P2 latch FFH</li>
+              <li>ตัวตรวจ Assembly ฉบับสอน/ฉบับขยาย</li>
+              <li>ตาราง state/output และคาบเวลา</li>
+            </ul>
+          </button>
+        </div>
+
+        <div class="pane-card section-gap">
+          <div class="pane-head"><h3>Ground truth ทางวิศวกรรม</h3></div>
+          <div class="pane-body">
+            <div class="compare-grid">
+              <div class="compare-card">
+                <h4>ระบบและเวลา</h4>
+                <ul>
+                  <li>classic 8051 12T @ 12.000 MHz → 1 machine cycle = <span class="unit-tag">1 µs</span></li>
+                  <li>qualification <span class="unit-tag">20 ms</span> · coast <span class="unit-tag">200 ms</span></li>
+                  <li>source release <span class="unit-tag">500 ms</span> · clear <span class="unit-tag">3.00 s</span> · travel <span class="unit-tag">5.00 s</span></li>
+                  <li>มอเตอร์ 12 V + R <span class="unit-tag">27 Ω 10 W</span> · I<sub>lim</sub> <span class="unit-tag">0.50 A</span></li>
+                </ul>
+              </div>
+              <div class="compare-card">
+                <h4>พอร์ตและเฟิร์มแวร์</h4>
+                <ul>
+                  <li>P0 = F8H OR state · P1 driver/LEDs · P2 latch FFH</li>
+                  <li>CLASSROOM: Delay 20 ms · 20 cases</li>
+                  <li>EXTENDED: Timer0 tick 10 ms · 36 cases</li>
+                  <li>E-Stop NC1 ตัด EN ทางฮาร์ดแวร์ · NC2 → P2.7</li>
+                </ul>
+              </div>
+            </div>
+            <div class="domain-key">
+              <span><i class="d5"></i>5 V logic (MCU, LED, opto out)</span>
+              <span><i class="d12"></i>12 V motor / sensor rail</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STUDIO -->
+      <section class="view-panel" data-view="studio" id="view-studio" hidden>
+        <div class="mobile-tabs" role="tablist" aria-label="สไลด์/บทพูด">
+          <button class="mode-btn is-active" type="button" data-mobile-pane="slides">สไลด์</button>
+          <button class="mode-btn" type="button" data-mobile-pane="script">บทพูด</button>
+        </div>
+
+        <div class="studio-toolbar">
+          <div class="timer-display" id="timer-display">08:00</div>
+          <div class="timer-controls">
+            <button class="btn btn-primary" id="timer-toggle" type="button">เริ่ม 8:00</button>
+            <button class="btn" id="timer-reset" type="button">รีเซ็ต</button>
+            <button class="btn" id="pacer-toggle" type="button">Pacer 125 wpm</button>
+          </div>
+          <div class="key-hint">
+            <kbd>←</kbd><kbd>→</kbd> เปลี่ยนสไลด์ · <kbd>Space</kbd> เริ่ม/พักจับเวลา
+          </div>
+        </div>
+
+        <div class="milestone-bar" id="milestone-bar" aria-hidden="true"></div>
+        <div class="milestone-labels" id="milestone-labels"></div>
+        <p class="muted" id="timer-status" style="margin-top:0">ช่วง 00:00–01:00 · ปูพื้นฐานและปัญหา · เหลือ 08:00</p>
+
+        <div class="dual-pane studio">
+          <div class="pane-card pane-slides">
+            <div class="pane-head">
+              <h2 id="slide-title">1. ระบบประตูเลื่อนอัตโนมัติพร้อมตรวจจับสิ่งกีดขวาง</h2>
+              <span class="slide-counter" id="slide-counter">1 / 19</span>
+            </div>
+            <div class="pane-body">
+              <div class="slide-frame">
+                <img id="slide-image" src="output/final-preview/slide-01.png" alt="สไลด์ 1" />
+              </div>
+              <div class="slide-meta">
+                <div class="slide-nav">
+                  <button class="btn" id="slide-prev" type="button">← ก่อนหน้า</button>
+                  <button class="btn btn-primary" id="slide-next" type="button">ถัดไป →</button>
+                </div>
+                <div id="slide-milestone"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pane-card pane-script">
+            <div class="pane-head studio-tabs-head">
+              <div class="studio-tab-bar" role="tablist" aria-label="โหมดการซ้อมและเรียนรู้">
+                <button class="studio-tab-btn is-active" type="button" data-studio-tab="script" role="tab" aria-selected="true">
+                  <span class="tab-icon">🎙️</span>
+                  <span>บทพูดซ้อมนำเสนอ</span>
+                </button>
+                <button class="studio-tab-btn" type="button" data-studio-tab="lecture" role="tab" aria-selected="false">
+                  <span class="tab-icon">🎓</span>
+                  <span>บรรยายสอนนิสิต (30–60 นาที)</span>
+                </button>
+                <button class="studio-tab-btn" type="button" data-studio-tab="hardware" role="tab" aria-selected="false">
+                  <span class="tab-icon">🔬</span>
+                  <span>อุปกรณ์ &amp; วงจรฮาร์ดแวร์</span>
+                </button>
+                <button class="studio-tab-btn" type="button" data-studio-tab="defense" role="tab" aria-selected="false">
+                  <span class="tab-icon">🛡️</span>
+                  <span>ซ้อมตอบคำถามข้อสอบ</span>
+                </button>
+              </div>
+              <div class="studio-script-meta">
+                <span class="muted mono" style="font-size:0.75rem">
+                  <span id="script-slide-count">19</span> สไลด์ ·
+                  <span id="script-word-total">0</span> คำ
+                </span>
+              </div>
+            </div>
+            <div class="pane-body">
+              <!-- TAB 1: SCRIPT & TELEPROMPTER -->
+              <div class="studio-tab-panel is-active" id="panel-script">
+                <div class="pacer-row">
+                  <div class="pace-gauge" id="pace-gauge" title="Pace gauge"></div>
+                  <div class="pacer-stats">
+                    <span id="pacer-status">จังหวะตรงเป้า 125 คำ/นาที</span>
+                    <span id="pacer-spoken">0 คำ</span>
+                    <span id="pacer-ideal">เป้า 0 คำ</span>
+                    <span id="pacer-wpm">พัก</span>
+                  </div>
+                </div>
+                <div id="slide-cues" style="margin-bottom:0.5rem"></div>
+                <div class="teleprompter" id="script-body"></div>
+                <div class="notes-box" id="speaker-notes"></div>
+              </div>
+
+              <!-- TAB 2: LECTURE MASTERCLASS (30-60 MIN) -->
+              <div class="studio-tab-panel" id="panel-lecture" hidden>
+                <div class="masterclass-container" id="lecture-body"></div>
+              </div>
+
+              <!-- TAB 3: HARDWARE & CIRCUIT SPECS -->
+              <div class="studio-tab-panel" id="panel-hardware" hidden>
+                <div class="hardware-specs-container" id="hardware-body"></div>
+              </div>
+
+              <!-- TAB 4: ORAL DEFENSE Q&A -->
+              <div class="studio-tab-panel" id="panel-defense" hidden>
+                <div class="defense-qna-container" id="defense-body"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SANDBOX -->
+      <section class="view-panel" data-view="sandbox" id="view-sandbox" hidden>
+        <div class="mobile-tabs" role="tablist" aria-label="ประตู/พอร์ต">
+          <button class="mode-btn is-active" type="button" data-mobile-pane="door">ประตู</button>
+          <button class="mode-btn" type="button" data-mobile-pane="ports">พอร์ต</button>
+        </div>
+
+        <div class="dual-pane sandbox-top">
+          <div class="pane-card pane-door">
+            <div class="pane-head">
+              <h2>2.5D Sliding Door · 200 mm</h2>
+              <span class="chip mono">สถานะ: <strong id="sim-state">INIT</strong></span>
+            </div>
+            <div class="pane-body">
+              <div class="door-stage">
+                <canvas class="door-canvas" id="door-canvas" aria-label="จำลองประตูเลื่อน"></canvas>
+              </div>
+              <div class="door-hud">
+                <span class="chip">คลิกในช่องเพื่อวาง/ลบสิ่งกีดขวางบนลำแสง</span>
+                <span class="chip is-safe">B_LOW 20 mm</span>
+                <span class="chip is-safe">B_HIGH 80 mm</span>
+                <span class="chip">LO / LC</span>
+              </div>
+              <div class="control-row">
+                <button class="btn" id="btn-pb-in" type="button">PB_IN</button>
+                <button class="btn" id="btn-pb-out" type="button">PB_OUT</button>
+                <button class="btn btn-toggle" id="btn-beam-low" type="button">บัง B_LOW</button>
+                <button class="btn btn-toggle" id="btn-beam-high" type="button">บัง B_HIGH</button>
+                <button class="btn btn-toggle" id="btn-reset" type="button">RESET</button>
+                <button class="btn btn-estop" id="btn-estop" type="button">E-STOP</button>
+                <button class="btn" id="btn-clear-obstacles" type="button">ล้างสิ่งกีดขวาง</button>
+                <button class="btn" id="btn-reset-sim" type="button">รีเซ็ตระบบ</button>
+              </div>
+              <div class="domain-key">
+                <span><i class="d5"></i>5 V logic</span>
+                <span><i class="d12"></i>12 V motor/sensor</span>
+                <span>R 27 Ω 10 W · I<sub>lim</sub> 0.50 A</span>
+              </div>
+              <div class="log-console" id="sim-log" aria-live="polite"></div>
+            </div>
+          </div>
+
+          <div class="pane-card pane-ports">
+            <div class="pane-head">
+              <h2>Live 8051 Port Twin</h2>
+              <span class="muted mono" style="font-size:0.75rem">Moore outputs</span>
+            </div>
+            <div class="pane-body">
+              <div class="port-grid" id="port-panel"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dual-pane sandbox-bottom">
+          <div class="pane-card">
+            <div class="pane-head">
+              <h2>Assembly Inspector</h2>
+              <span class="muted mono" id="asm-title" style="font-size:0.75rem"></span>
+            </div>
+            <div class="pane-body">
+              <div class="asm-tabs">
+                <button class="btn is-active" type="button" data-asm-edition="classroom">CLASSROOM</button>
+                <button class="btn" type="button" data-asm-edition="extended">EXTENDED</button>
+              </div>
+              <div class="asm-tabs" id="asm-block-tabs"></div>
+              <div class="asm-layout">
+                <pre class="asm-code" id="asm-code"></pre>
+                <div class="cycle-card" id="asm-side"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pane-card">
+            <div class="pane-head">
+              <h2>State Truth Table</h2>
+              <span class="muted mono" style="font-size:0.75rem">P0 = F8H OR state</span>
+            </div>
+            <div class="pane-body">
+              <table class="truth-table">
+                <thead>
+                  <tr>
+                    <th>State</th>
+                    <th>P0</th>
+                    <th>P1</th>
+                    <th>IN1·IN2·RUN_N·RED_N·GREEN_N·BUZZ_N</th>
+                  </tr>
+                </thead>
+                <tbody id="state-truth-body"></tbody>
+              </table>
+              <div class="formula-block">
+                t = count × 1 µs<br />
+                Delay 20 ms → B1E0H = 65536 − 20000<br />
+                Timer0 mode2 250 µs × 40 = 10 ms tick
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pane-card section-gap">
+          <div class="pane-head">
+            <h2>Oral Defense Simulator · 6 คำถามหลัก</h2>
+            <div class="qna-toolbar" style="margin:0">
+              <button class="btn" id="qna-shuffle" type="button">สุ่มลำดับ</button>
+              <button class="btn" id="qna-reveal-all" type="button">แสดงทั้งหมด</button>
+            </div>
+          </div>
+          <div class="pane-body">
+            <p class="soft">จำลองคำถามสอบปากเปล่าเชิงลึกของ ดร.แสงชัย มังกรทอง — คลิกการ์ดเพื่อเปิดแนวทางการตอบ</p>
+            <div id="qna-root"></div>
+          </div>
+        </div>
+
+        <div class="pane-card section-gap">
+          <div class="pane-head"><h2>ผลทดสอบ Firmware (EdSim51)</h2></div>
+          <div class="pane-body">
+            <div class="test-summary" id="test-tiles"></div>
+            <div class="compare-grid">
+              <div class="compare-card">
+                <h4>CLASSROOM · 20 cases</h4>
+                <ul>
+                  <li>polling Delay 20 ms · JB/JNB state blocks</li>
+                  <li>22,006,035 instructions stepped</li>
+                  <li>coast 200.179 ms · clear 3.004059 s · timeout 5.004761 s</li>
+                  <li>กลับทิศเฉพาะขณะตัดแรงขับเท่านั้น</li>
+                </ul>
+              </div>
+              <div class="compare-card">
+                <h4>EXTENDED · 36 cases</h4>
+                <ul>
+                  <li>Timer0 ISR 10 ms · POLL_RAW safety</li>
+                  <li>41,686,115 instructions stepped</li>
+                  <li>qual 24.854 ms · coast 209.795 ms · clear 3.019788 s</li>
+                  <li>P2 latch FFH ทุก instruction · ไม่ขับ IN1=IN2=1</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="mobile-drawer" id="mobile-drawer">
+    <div class="mobile-drawer-panel">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <strong>เมนู</strong>
+        <button class="icon-btn" id="drawer-close" type="button" aria-label="ปิด">✕</button>
+      </div>
+      <nav class="mobile-drawer-nav">
+        <button type="button" data-goto="portal">ภาพรวม</button>
+        <button type="button" data-goto="studio">Studio 8 นาที</button>
+        <button type="button" data-goto="sandbox">Sandbox 8051</button>
+      </nav>
+    </div>
+  </div>
+
+  <script src="assets/js/core/theme.js"></script>
+  <script src="assets/js/core/router.js"></script>
+  <script src="assets/js/presentation/slides-data.js"></script>
+  <script src="assets/js/presentation/timer.js"></script>
+  <script src="assets/js/presentation/pacer.js"></script>
+  <script src="assets/js/presentation/teleprompter.js"></script>
+  <script src="assets/js/simulator/fsm-engine.js"></script>
+  <script src="assets/js/simulator/door-physics.js"></script>
+  <script src="assets/js/simulator/register-view.js"></script>
+  <script src="assets/js/learning/assembly-viewer.js"></script>
+  <script src="assets/js/learning/defense-qna.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

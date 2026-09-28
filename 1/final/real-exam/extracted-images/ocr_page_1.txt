@@ -1,0 +1,16 @@
+Count = FFFFH - Value + 1
+Count = FFFFH - 7+1
+= FFF9H
+4 ОСК ШИ Timer
+Internal clock 8051
+5.clock ыиици counter
+External clock
+Load count in TO or T1
+ISR Address
+inlü TEO or TF1 bit i9h 0
+numn FFFfH is 0000H Gin TFO, TF1 bit 69w1
+7.TCON diaaana Timer Control Register
+8. TMOD ciaanan Timer Mode Register
+} Timer Low
+RETI
+11. Timer nanda TCON and TMOD register

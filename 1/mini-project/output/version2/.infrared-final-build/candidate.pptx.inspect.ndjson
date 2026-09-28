@@ -1,0 +1,571 @@
+{"kind":"deck","id":"pr/3fuzf7","name":"Deck"}
+{"kind":"layout","layoutId":"9d3a259a-2ed8-4e02-be46-fae57a94c4ab","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"da2c7b31-eb35-4a1d-aa30-2986dbc7f8c6","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/lipnd9","slide":1,"title":"305341  EMBEDDED SYSTEMS 1","textShapes":8}
+{"kind":"textbox","id":"sh/cruxo3qt","slide":1,"name":"ir-1","text":"305341  EMBEDDED SYSTEMS 1","textPreview":"305341  EMBEDDED SYSTEMS 1","textChars":26,"textLines":1,"bbox":[80,79,1120,35]}
+{"kind":"textbox","id":"sh/bqlgvy98","slide":1,"name":"ir-2","text":"ประตูบานเลื่อนเดี่ยวในบ้าน","textPreview":"ประตูบานเลื่อนเดี่ยวในบ้าน","textChars":26,"textLines":1,"bbox":[80,188,1120,57]}
+{"kind":"textbox","id":"sh/apcfmt8n","slide":1,"name":"ir-3","text":"เปิดกลับเมื่อตรวจพบสิ่งกีดขวางด้วยโฟโต้เซนเซอร์","textPreview":"เปิดกลับเมื่อตรวจพบสิ่งกีดขวางด้วยโฟโต้เซนเซอร์","textChars":47,"textLines":1,"bbox":[80,251,1120,62]}
+{"kind":"textbox","id":"sh/po3et8r2","slide":1,"name":"ir-4","text":"กดเปิดเอง  กดปิดเอง  พบสิ่งกีดขวางขณะปิดแล้วเปิดกลับและรอคนสั่ง","textPreview":"กดเปิดเอง  กดปิดเอง  พบสิ่งกีดขวางขณะปิดแล้วเปิดกลับและรอคนสั่ง","textChars":63,"textLines":1,"bbox":[80,354,1120,43]}
+{"kind":"shape","id":"sh/onaxk3qh","slide":1,"name":"ir-5","bbox":[272,434,736,0.01]}
+{"kind":"textbox","id":"sh/nm1wry9w","slide":1,"name":"ir-6","text":"66362416  นายธีรภัทร ภู่ระย้า","textPreview":"66362416  นายธีรภัทร ภู่ระย้า","textChars":29,"textLines":1,"bbox":[145,488,480,46]}
+{"kind":"textbox","id":"sh/2lsfitsr","slide":1,"name":"ir-7","text":"66363116  นางสาวปราณปรียา ศรียอง","textPreview":"66363116  นางสาวปราณปรียา ศรียอง","textChars":32,"textLines":1,"bbox":[655,488,480,46]}
+{"kind":"textbox","id":"sh/9kny5srm","slide":1,"name":"ir-8","text":"อาจารย์ที่ปรึกษา","textPreview":"อาจารย์ที่ปรึกษา","textChars":16,"textLines":1,"bbox":[80,571,1120,28]}
+{"kind":"textbox","id":"sh/8jexwnq1","slide":1,"name":"ir-9","text":"ดร.แสงชัย มังกรทอง","textPreview":"ดร.แสงชัย มังกรทอง","textChars":18,"textLines":1,"bbox":[80,610,1120,34]}
+{"kind":"notes","id":"nt/lipnd9","slide":1,"text":"โครงงานนี้ศึกษาการควบคุมประตูบานเลื่อนเดี่ยวด้วยไมโครคอนโทรลเลอร์ AT89S52 ผู้ใช้กดปุ่มเพื่อเปิดและกดปุ่มเพื่อปิดเอง โฟโต้เซนเซอร์มีหน้าที่ตรวจสิ่งกีดขวางระหว่างที่ประตูกำลังปิด เมื่อพบสิ่งกีดขวาง ระบบจะตัดแรงขับ พักก่อนกลับทิศ เปิดประตูกลับจนสุด และรอให้คนตรวจทางผ่านแล้วกดปิดครั้งใหม่\n\nภาพบ้านใช้แสดงบริบทการใช้งาน ส่วนกลไกที่ออกแบบเป็นชุดสาธิตระยะวิ่ง 200 มิลลิเมตร ยังไม่ใช่การรับรองว่าสามารถขับประตูบ้านขนาดจริงได้"}
+{"kind":"slide","id":"sl/hapatd","slide":2,"title":"สถานการณ์ปัญหาและการตรวจจับด้วยลำแสง","textShapes":10}
+{"kind":"textbox","id":"sh/upkjudo3","slide":2,"name":"ir-10","text":"สถานการณ์ปัญหาและการตรวจจับด้วยลำแสง","textPreview":"สถานการณ์ปัญหาและการตรวจจับด้วยลำแสง","textChars":36,"textLines":1,"bbox":[80,55,1120,52]}
+{"kind":"textbox","id":"sh/hsvips7e","slide":2,"name":"ir-11","text":"ประตูบ้านกดเปิดและกดปิดเอง ลำแสงใช้ตรวจสิ่งกีดขวางระหว่างปิด","textPreview":"ประตูบ้านกดเปิดและกดปิดเอง ลำแสงใช้ตรวจสิ่งกีดขวางระหว่างปิด","textChars":60,"textLines":1,"bbox":[80,115,1120,32]}
+{"kind":"shape","id":"sh/wrm1wn6t","slide":2,"name":"ir-12","bbox":[80,164,1120,0.01]}
+{"kind":"textbox","id":"sh/jud0ripk","slide":2,"name":"ir-13","text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[1156,662,44,25]}
+{"kind":"textbox","id":"sh/5gvits7q","slide":2,"name":"ir-14","text":"01  คนกดเปิดและปิด","textPreview":"01  คนกดเปิดและปิด","textChars":18,"textLines":1,"bbox":[80,567,352,32]}
+{"kind":"textbox","id":"sh/4fm10n65","slide":2,"name":"ir-15","text":"PB_IN · PB_OUT · PB_CLOSE","textPreview":"PB_IN · PB_OUT · PB_CLOSE","textChars":25,"textLines":1,"bbox":[80,601,352,36]}
+{"kind":"textbox","id":"sh/rixkv2pw","slide":2,"name":"ir-16","text":"02  เสี่ยงหนีบระหว่างปิด","textPreview":"02  เสี่ยงหนีบระหว่างปิด","textChars":24,"textLines":1,"bbox":[464,567,352,32]}
+{"kind":"textbox","id":"sh/6h4j2xob","slide":2,"name":"ir-17","text":"LC ตรวจปลายทาง ไม่ตรวจสิ่งกีดขวาง","textPreview":"LC ตรวจปลายทาง ไม่ตรวจสิ่งกีดขวาง","textChars":33,"textLines":1,"bbox":[464,601,352,36]}
+{"kind":"textbox","id":"sh/gnapwf2x","slide":2,"name":"ir-18","text":"03  พบสิ่งกีดขวางแล้วเปิดกลับ","textPreview":"03  พบสิ่งกีดขวางแล้วเปิดกลับ","textChars":29,"textLines":1,"bbox":[848,567,352,32]}
+{"kind":"textbox","id":"sh/1oj65kji","slide":2,"name":"ir-19","text":"Coast 200 ms → เปิดสุด → SAFETY_HOLD","textPreview":"Coast 200 ms → เปิดสุด → SAFETY_HOLD","textChars":36,"textLines":1,"bbox":[848,601,352,36]}
+{"kind":"textbox","id":"sh/els7u5kr","slide":2,"name":"ir-20","text":"แนวแสงแสดงด้วยเส้นประ   ประตูเปิดค้างจนคนตรวจทางผ่านและกดปิดใหม่","textPreview":"แนวแสงแสดงด้วยเส้นประ   ประตูเปิดค้างจนคนตรวจทางผ่านและกดปิดใหม่","textChars":64,"textLines":1,"bbox":[80,653,1090,27]}
+{"kind":"image","id":"im/zatcfuhs","slide":2,"name":"","alt":"storyboard.png","bbox":[80,184,1120,373]}
+{"kind":"notes","id":"nt/hapatd","slide":2,"text":"ภาพแรกแสดงการใช้งานปกติ คนกด PB_IN หรือ PB_OUT เพื่อเปิด และกด PB_CLOSE เพื่อปิด ไม่มีการนับเวลาปิดเอง ภาพกลางแสดงแมวเดินเข้าทางผ่านขณะบานประตูกำลังเลื่อนปิด สวิตช์ LC ตรวจได้เฉพาะตำแหน่งปิดสุด จึงไม่สามารถบอกได้ว่ามีสิ่งกีดขวางอยู่ระหว่างทาง\n\nภาพขวาแสดงแนวทางแก้ไขด้วยหัวส่งและหัวรับอินฟราเรด เมื่อสิ่งกีดขวางตัดแนวแสง ระบบจะตัดแรงขับ พักอย่างน้อย 200 มิลลิวินาที เปิดกลับจนสุด และเข้า SAFETY_HOLD พร้อมไฟส้มติดค้าง แม้สิ่งกีดขวางออกไปแล้ว ประตูก็ยังไม่ปิดเอง\n\nยึดหัวส่งและหัวรับกับกรอบคงที่ โดยแนวตรวจจับอยู่ด้านหน้าระนาบที่บานวิ่ง เพื่อไม่ให้บานตัดลำแสงเอง เส้นประในภาพใช้แสดงแสงอินฟราเรดที่ตาเปล่ามองไม่เห็น ภาพเป็นภาพประกอบแนวคิด ไม่ใช่ผลทดสอบจริง\nอ้างอิงหลักการ: https://www.ia.omron.com/support/guide/43/introduction.html"}
+{"kind":"slide","id":"sl/nzvj8l","slide":3,"title":"สถาปัตยกรรมแบบจำลองสถานะ FSM","textShapes":42}
+{"kind":"textbox","id":"sh/2h0zml8b","slide":3,"name":"ir-21","text":"สถาปัตยกรรมแบบจำลองสถานะ FSM","textPreview":"สถาปัตยกรรมแบบจำลองสถานะ FSM","textChars":28,"textLines":1,"bbox":[80,55,1120,52]}
+{"kind":"textbox","id":"sh/pkrix0rm","slide":3,"name":"ir-22","text":"มองเข้าหาปลายเพลา: CW เปิดไปทางขวา และ CCW ปิดไปทางซ้าย","textPreview":"มองเข้าหาปลายเพลา: CW เปิดไปทางขวา และ CCW ปิดไปทางซ้าย","textChars":55,"textLines":1,"bbox":[80,115,1120,32]}
+{"kind":"shape","id":"sh/4jihovqh","slide":3,"name":"ir-23","bbox":[80,164,1120,0.01]}
+{"kind":"textbox","id":"sh/fu9gr69k","slide":3,"name":"ir-24","text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[1156,662,44,25]}
+{"kind":"shape","id":"sh/utgzil8z","slide":3,"name":"ir-25","bbox":[80,228,214,147]}
+{"kind":"textbox","id":"sh/hgritgrq","slide":3,"name":"ir-26","text":"CLOSED","textPreview":"CLOSED","textChars":6,"textLines":1,"bbox":[88,236,198,27]}
+{"kind":"textbox","id":"sh/7qpgn69o","slide":3,"name":"ir-27","text":"STOP","textPreview":"STOP","textChars":4,"textLines":1,"bbox":[187,271,100,28]}
+{"kind":"textbox","id":"sh/6pgze183","slide":3,"name":"ir-28","text":"P1=ECH","textPreview":"P1=ECH","textChars":6,"textLines":1,"bbox":[183,305,107,26]}
+{"kind":"textbox","id":"sh/oza5s7ux","slide":3,"name":"ir-29","text":"ไฟแดง","textPreview":"ไฟแดง","textChars":5,"textLines":1,"bbox":[187,337,97,24]}
+{"kind":"shape","id":"sh/903m1cvi","slide":3,"name":"ir-30","bbox":[148,330,0.01,16]}
+{"kind":"shape","id":"sh/mxs3qxcr","slide":3,"name":"ir-31","bbox":[158,330,0.01,16]}
+{"kind":"shape","id":"sh/ny14z2dc","slide":3,"name":"ir-32","bbox":[382,228,214,147]}
+{"kind":"textbox","id":"sh/0valonul","slide":3,"name":"ir-33","text":"OPENING","textPreview":"OPENING","textChars":7,"textLines":1,"bbox":[390,236,198,27]}
+{"kind":"textbox","id":"sh/ets3mdcv","slide":3,"name":"ir-34","text":"CW","textPreview":"CW","textChars":2,"textLines":1,"bbox":[489,271,100,28]}
+{"kind":"textbox","id":"sh/zu14vid0","slide":3,"name":"ir-35","text":"P1=D9H","textPreview":"P1=D9H","textChars":6,"textLines":1,"bbox":[485,305,107,26]}
+{"kind":"textbox","id":"sh/kre50ru5","slide":3,"name":"ir-36","text":"ไฟเขียว","textPreview":"ไฟเขียว","textChars":7,"textLines":1,"bbox":[489,337,97,24]}
+{"kind":"shape","id":"sh/lsnm9wva","slide":3,"name":"route-37","bbox":[445.45,318.01,33.51,37.98]}
+{"kind":"shape","id":"sh/t8jmdcnu","slide":3,"name":"route-38","bbox":[445.45,349.21,7.64,7.71]}
+{"kind":"shape","id":"sh/s7alkrm9","slide":3,"name":"ir-39","bbox":[684,228,214,147]}
+{"kind":"textbox","id":"sh/7614bm5o","slide":3,"name":"ir-40","text":"OPEN_HOLD","textPreview":"OPEN_HOLD","textChars":9,"textLines":1,"bbox":[692,236,198,27]}
+{"kind":"textbox","id":"sh/5kzmpcni","slide":3,"name":"ir-41","text":"STOP","textPreview":"STOP","textChars":4,"textLines":1,"bbox":[791,271,100,28]}
+{"kind":"textbox","id":"sh/kjqlg7mx","slide":3,"name":"ir-42","text":"P1=DCH","textPreview":"P1=DCH","textChars":6,"textLines":1,"bbox":[787,305,107,26]}
+{"kind":"textbox","id":"sh/jih4n25c","slide":3,"name":"ir-43","text":"ไฟเขียว","textPreview":"ไฟเขียว","textChars":7,"textLines":1,"bbox":[791,337,97,24]}
+{"kind":"shape","id":"sh/ih83ex47","slide":3,"name":"ir-44","bbox":[752,330,0.01,16]}
+{"kind":"shape","id":"sh/xgzmlsnm","slide":3,"name":"ir-45","bbox":[762,330,0.01,16]}
+{"kind":"shape","id":"sh/wfqlc7m1","slide":3,"name":"ir-46","bbox":[986,228,214,147]}
+{"kind":"textbox","id":"sh/m9kb69gn","slide":3,"name":"ir-47","text":"CLOSING","textPreview":"CLOSING","textChars":7,"textLines":1,"bbox":[994,236,198,27]}
+{"kind":"textbox","id":"sh/obmt8jyd","slide":3,"name":"ir-48","text":"CCW","textPreview":"CCW","textChars":3,"textLines":1,"bbox":[1093,271,100,28]}
+{"kind":"textbox","id":"sh/9cva14zy","slide":3,"name":"ir-49","text":"P1=EAH","textPreview":"P1=EAH","textChars":6,"textLines":1,"bbox":[1089,305,107,26]}
+{"kind":"textbox","id":"sh/e5kr2pgb","slide":3,"name":"ir-50","text":"ไฟแดง","textPreview":"ไฟแดง","textChars":5,"textLines":1,"bbox":[1093,337,97,24]}
+{"kind":"shape","id":"sh/z6tsvuhw","slide":3,"name":"route-51","bbox":[1045,320.55,37.95,35.44]}
+{"kind":"shape","id":"sh/07294zyh","slide":3,"name":"route-52","bbox":[1073.5,320.55,7.97,7.11]}
+{"kind":"shape","id":"sh/18bax4z2","slide":3,"name":"ir-53","bbox":[986,473,214,147]}
+{"kind":"textbox","id":"sh/qh0rypgf","slide":3,"name":"ir-54","text":"REV_WAIT","textPreview":"REV_WAIT","textChars":8,"textLines":1,"bbox":[994,481,198,27]}
+{"kind":"textbox","id":"sh/juto3qlg","slide":3,"name":"ir-55","text":"Coast","textPreview":"Coast","textChars":5,"textLines":1,"bbox":[1093,516,100,28]}
+{"kind":"textbox","id":"sh/itk7ulkb","slide":3,"name":"ir-56","text":"P1=FCH","textPreview":"P1=FCH","textChars":6,"textLines":1,"bbox":[1089,550,107,26]}
+{"kind":"textbox","id":"sh/5wv650jm","slide":3,"name":"ir-57","text":"200 ms","textPreview":"200 ms","textChars":6,"textLines":1,"bbox":[1093,582,97,24]}
+{"kind":"shape","id":"sh/4vmpwv21","slide":3,"name":"ir-58","bbox":[1054,575,0.01,16]}
+{"kind":"shape","id":"sh/v6tozqlk","slide":3,"name":"ir-59","bbox":[1064,575,0.01,16]}
+{"kind":"shape","id":"sh/u5k7qlkz","slide":3,"name":"ir-60","bbox":[684,473,214,147]}
+{"kind":"textbox","id":"sh/hsb61g3q","slide":3,"name":"ir-61","text":"REOPENING","textPreview":"REOPENING","textChars":9,"textLines":1,"bbox":[692,481,198,27]}
+{"kind":"textbox","id":"sh/729ov6l8","slide":3,"name":"ir-62","text":"CW","textPreview":"CW","textChars":2,"textLines":1,"bbox":[791,516,100,28]}
+{"kind":"textbox","id":"sh/m10nm1k3","slide":3,"name":"ir-63","text":"P1=D9H","textPreview":"P1=D9H","textChars":6,"textLines":1,"bbox":[787,550,107,26]}
+{"kind":"textbox","id":"sh/c7ylw7il","slide":3,"name":"ir-64","text":"ไฟเขียว","textPreview":"ไฟเขียว","textChars":7,"textLines":1,"bbox":[791,582,97,24]}
+{"kind":"shape","id":"sh/x87m5cj6","slide":3,"name":"route-65","bbox":[747.45,563.01,33.51,37.98]}
+{"kind":"shape","id":"sh/a5g3ux0v","slide":3,"name":"route-66","bbox":[747.45,594.21,7.64,7.71]}
+{"kind":"shape","id":"sh/b6p43210","slide":3,"name":"ir-67","bbox":[382,473,214,147]}
+{"kind":"textbox","id":"sh/kbyl0rix","slide":3,"name":"ir-68","text":"SAFETY_HOLD","textPreview":"SAFETY_HOLD","textChars":11,"textLines":1,"bbox":[390,481,198,27]}
+{"kind":"textbox","id":"sh/y9g3yh0r","slide":3,"name":"ir-69","text":"STOP","textPreview":"STOP","textChars":4,"textLines":1,"bbox":[489,516,100,28]}
+{"kind":"textbox","id":"sh/zap47m1c","slide":3,"name":"ir-70","text":"P1=BCH","textPreview":"P1=BCH","textChars":6,"textLines":1,"bbox":[485,550,107,26]}
+{"kind":"textbox","id":"sh/0felonid","slide":3,"name":"ir-71","text":"ไฟส้ม","textPreview":"ไฟส้ม","textChars":5,"textLines":1,"bbox":[489,582,97,24]}
+{"kind":"shape","id":"sh/1gn2xsjy","slide":3,"name":"ir-72","bbox":[450,575,0.01,16]}
+{"kind":"shape","id":"sh/hwf21ob2","slide":3,"name":"ir-73","bbox":[460,575,0.01,16]}
+{"kind":"shape","id":"sh/gb61sjah","slide":3,"name":"route-74","bbox":[294,296,88,8]}
+{"kind":"shape","id":"sh/fax0zetw","slide":3,"name":"route-75","bbox":[596,296,88,8]}
+{"kind":"shape","id":"sh/u9ojq9sb","slide":3,"name":"route-76","bbox":[898,296,88,8]}
+{"kind":"textbox","id":"sh/p0f25oby","slide":3,"name":"ir-77","text":"PB_OPEN","textPreview":"PB_OPEN","textChars":7,"textLines":1,"bbox":[296,265,85,24]}
+{"kind":"textbox","id":"sh/4z61wjad","slide":3,"name":"ir-78","text":"LO=0","textPreview":"LO=0","textChars":4,"textLines":1,"bbox":[597,265,85,24]}
+{"kind":"textbox","id":"sh/3yxk3ets","slide":3,"name":"ir-79","text":"PB_CLOSE\nBEAM=1","textPreview":"PB_CLOSE | BEAM=1","textChars":15,"textLines":2,"bbox":[899,245,85,48]}
+{"kind":"shape","id":"sh/2xojutsn","slide":3,"name":"route-80","bbox":[183,195,910,33]}
+{"kind":"textbox","id":"sh/d4z298ba","slide":3,"name":"ir-81","text":"LC = 0 และไม่มีเหตุเปิดกลับ","textPreview":"LC = 0 และไม่มีเหตุเปิดกลับ","textChars":27,"textLines":1,"bbox":[423,200,440,24]}
+{"kind":"shape","id":"sh/c3q103ap","slide":3,"name":"route-82","bbox":[1089,375,8,98]}
+{"kind":"textbox","id":"sh/ax07e14v","slide":3,"name":"ir-83","text":"BEAM = 0\nหรือ PB_OPEN","textPreview":"BEAM = 0 | หรือ PB_OPEN","textChars":21,"textLines":2,"bbox":[1104,395,100,51]}
+{"kind":"shape","id":"sh/by98765g","slide":3,"name":"route-84","bbox":[898,542,88,8]}
+{"kind":"textbox","id":"sh/czipgbm1","slide":3,"name":"ir-85","text":"200 ms","textPreview":"200 ms","textChars":6,"textLines":1,"bbox":[902,566,81,28]}
+{"kind":"shape","id":"sh/x0rq9gn6","slide":3,"name":"route-86","bbox":[596,542,88,8]}
+{"kind":"textbox","id":"sh/y107il4r","slide":3,"name":"ir-87","text":"LO = 0\nS = 1","textPreview":"LO = 0 | S = 1","textChars":12,"textLines":2,"bbox":[600,566,80,47]}
+{"kind":"shape","id":"sh/z298b65c","slide":3,"name":"route-88","bbox":[489,375,558,98]}
+{"kind":"textbox","id":"sh/k3ipkbmx","slide":3,"name":"ir-89","text":"กด PB_CLOSE ใหม่ และ BEAM = 1","textPreview":"กด PB_CLOSE ใหม่ และ BEAM = 1","textChars":29,"textLines":1,"bbox":[494,383,332,27]}
+{"kind":"shape","id":"sh/l4bqdgni","slide":3,"name":"route-90","bbox":[791,375,1,98]}
+{"kind":"shape","id":"sh/m5k7ml43","slide":3,"name":"route-91","bbox":[787,375,8,98]}
+{"kind":"textbox","id":"sh/76t8fq5o","slide":3,"name":"ir-92","text":"LO = 0\nS = 0","textPreview":"LO = 0 | S = 0","textChars":12,"textLines":2,"bbox":[808,425,169,43]}
+{"kind":"textbox","id":"sh/ri94bi9o","slide":3,"name":"ir-93","text":"PB_OPEN: PB_IN หรือ PB_OUT\nS = 1 เมื่อพบสิ่งกีดขวาง\nSTOP และ Coast: ตัดแรงขับ","textPreview":"PB_OPEN: PB_IN หรือ PB_OUT | S = 1 เมื่อพบสิ่งกีดขวาง | STOP และ Coast: ตัดแรงขับ","textChars":77,"textLines":3,"bbox":[80,464,279,111]}
+{"kind":"textbox","id":"sh/6xg32d8j","slide":3,"name":"ir-94","text":"คำสั่งปิดต้องเป็นการกดใหม่หลังปล่อยปุ่ม 20 ms · E-stop และ fault ตัดแรงขับเหนือ FSM","textPreview":"คำสั่งปิดต้องเป็นการกดใหม่หลังปล่อยปุ่ม 20 ms · E-stop และ fault ตัดแรงขับเหนือ FSM","textChars":83,"textLines":1,"bbox":[80,638,1090,27]}
+{"kind":"image","id":"im/xw765s7m","slide":3,"name":"","alt":"motor.jpg","bbox":[90,269,89,89]}
+{"kind":"image","id":"im/mdczil43","slide":3,"name":"","alt":"motor.jpg","bbox":[392,269,89,89]}
+{"kind":"image","id":"im/t072p4ny","slide":3,"name":"","alt":"motor.jpg","bbox":[694,269,89,89]}
+{"kind":"image","id":"im/cbmxs7ut","slide":3,"name":"","alt":"motor.jpg","bbox":[996,269,89,89]}
+{"kind":"image","id":"im/0j2d0nul","slide":3,"name":"","alt":"motor.jpg","bbox":[996,514,89,89]}
+{"kind":"image","id":"im/3ylwf2pw","slide":3,"name":"","alt":"motor.jpg","bbox":[694,514,89,89]}
+{"kind":"image","id":"im/etwze18j","slide":3,"name":"","alt":"motor.jpg","bbox":[392,514,89,89]}
+{"kind":"notes","id":"nt/nzvj8l","slide":3,"text":"แผนภาพนี้ใช้เจ็ดสถานะ โดยคำสั่งมอเตอร์และไฟแสดงผลขึ้นกับสถานะตามแนวคิด Moore machine ภาพเพลามอเตอร์แสดงข้อตกลงทิศทางเมื่อมองเข้าหาปลายเพลา: CW ใช้เปิด และ CCW ใช้ปิด ส่วน STOP และ Coast หมายถึงตัดแรงขับ ไม่ใช่การเบรกทางไฟฟ้า\n\nเส้นด้านบนเป็นลำดับปกติ CLOSED ไป OPENING ไป OPEN_HOLD และ CLOSING การออกจาก OPEN_HOLD ต้องมีคำสั่งปิดครั้งใหม่และลำแสงปกติ เมื่อพบลำแสงขาดระหว่างปิด ให้เข้า REV_WAIT พักอย่างน้อย 200 มิลลิวินาที แล้วเปิดกลับใน REOPENING จนถึง LO\n\nS ในภาพเป็นชื่อย่อของตัวแปร safety_seen ซึ่งจดจำว่าเปิดกลับเพราะพบสิ่งกีดขวางหรือไม่ ถ้า S = 1 ให้จบที่ SAFETY_HOLD และติดไฟส้ม หากเปิดกลับเพราะคนกดปุ่มเปิด ให้ S = 0 และจบที่ OPEN_HOLD ทั้งสองสถานะรอการกดปิดครั้งใหม่ การปล่อยและกดปุ่มผ่านตัวกรอง 20 มิลลิวินาที และต้องปล่อยปุ่มเปิดทั้งสองก่อนสั่งปิด\n\nE-stop ลิมิตทำงานขัดแย้ง หรือการเคลื่อนที่เกิน 5 วินาที มีลำดับความสำคัญเหนือแผนภาพนี้และตัดแรงขับค้างไว้ เมื่อเริ่มระบบจะยอมรับเฉพาะตำแหน่งปลายทางที่ทราบ หากอยู่กลางทางให้หยุดรอตรวจ\nค่าพอร์ตคำนวณจากผังบิตจริง ไม่ใช้ค่า Hex ที่ขัดกับบิต RUN_N หรือ LED\nภาพมอเตอร์: https://www.pololu.com/product/3041\nพอร์ต: https://ww1.microchip.com/downloads/en/DeviceDoc/doc1919.pdf"}
+{"kind":"slide","id":"sl/pxil8b","slide":4,"title":"โครงสร้างเชิงกลและทิศทางเพลามอเตอร์","textShapes":8}
+{"kind":"textbox","id":"sh/jqdgne18","slide":4,"name":"ir-95","text":"โครงสร้างเชิงกลและทิศทางเพลามอเตอร์","textPreview":"โครงสร้างเชิงกลและทิศทางเพลามอเตอร์","textChars":35,"textLines":1,"bbox":[80,55,1120,52]}
+{"kind":"textbox","id":"sh/krmhgj2t","slide":4,"name":"ir-96","text":"ระยะวิ่งตามแบบ 200 mm ขับด้วยสายพานและมู่เล่ย์","textPreview":"ระยะวิ่งตามแบบ 200 mm ขับด้วยสายพานและมู่เล่ย์","textChars":46,"textLines":1,"bbox":[80,115,1120,32]}
+{"kind":"shape","id":"sh/5svyp4je","slide":4,"name":"ir-97","bbox":[80,164,1120,0.01]}
+{"kind":"textbox","id":"sh/6t4zi9kj","slide":4,"name":"ir-98","text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[1156,662,44,25]}
+{"kind":"shape","id":"sh/7uxgre14","slide":4,"name":"ir-99","bbox":[80,188,544,425]}
+{"kind":"textbox","id":"sh/tgfytoja","slide":4,"name":"ir-100","text":"ชุดสาธิตระยะวิ่ง 200 mm","textPreview":"ชุดสาธิตระยะวิ่ง 200 mm","textChars":23,"textLines":1,"bbox":[104,200,496,32]}
+{"kind":"textbox","id":"sh/uhozmt0v","slide":4,"name":"ir-101","text":"ยึดบานกับสายพานช่วงบน\nติดหัวส่งและหัวรับบนกรอบคงที่","textPreview":"ยึดบานกับสายพานช่วงบน | ติดหัวส่งและหัวรับบนกรอบคงที่","textChars":51,"textLines":2,"bbox":[104,540,496,57]}
+{"kind":"shape","id":"sh/fixgvy1g","slide":4,"name":"ir-102","bbox":[656,188,544,425]}
+{"kind":"shape","id":"sh/bi1gn618","slide":4,"name":"ir-103","bbox":[676,210,0.01,25]}
+{"kind":"textbox","id":"sh/ahszu10n","slide":4,"name":"ir-104","text":"การกำหนดทิศทาง","textPreview":"การกำหนดทิศทาง","textChars":14,"textLines":1,"bbox":[690,202,490,44]}
+{"kind":"textbox","id":"sh/wjuhwbit","slide":4,"name":"ir-105","text":"LC ซ้าย: P2.4    LO ขวา: P2.3\nPololu #3041 · 12 V · 100.37:1\nมู่เล่ย์พิตช์ Ø 8 mm ตามแบบกลไก","textPreview":"LC ซ้าย: P2.4    LO ขวา: P2.3 | Pololu #3041 · 12 V · 100.37:1 | มู่เล่ย์พิตช์ Ø 8 mm ตามแบบกลไก","textChars":92,"textLines":3,"bbox":[680,470,496,104]}
+{"kind":"textbox","id":"sh/ne1gjm1c","slide":4,"name":"ir-106","text":"ตรวจทิศเพลาและแรงบิดกับชุดประกอบจริงก่อนใช้งาน","textPreview":"ตรวจทิศเพลาและแรงบิดกับชุดประกอบจริงก่อนใช้งาน","textChars":46,"textLines":1,"bbox":[80,631,1090,27]}
+{"kind":"table","id":"tb/y54jqlkz","slide":4,"name":"","rows":4,"cols":2,"preview":"เพลา | บานประตู","bbox":[680,260,496,188]}
+{"kind":"image","id":"im/lw3654z6","slide":4,"name":"","alt":"mechanism.png","bbox":[90,232,524,295]}
+{"kind":"notes","id":"nt/pxil8b","slide":4,"text":"กลไกที่เสนอเป็นชุดสาธิตระยะวิ่ง 200 มิลลิเมตร ใช้มอเตอร์ Pololu หมายเลข 3041 แรงดัน 12 โวลต์ อัตราทด 100.37 ต่อ 1 ขับสายพานผ่านมู่เล่ย์พิตช์เส้นผ่านศูนย์กลาง 8 มิลลิเมตร ต้องเลือกสายพานและมู่เล่ย์ให้มีพิตช์ตรงกัน และตรวจแรงบิดกับชุดประกอบจริง\n\nในข้อตกลงของโครงงาน เมื่อมองเข้าหาปลายเพลา CW ทำให้บานเปิดไปทางขวา และ CCW ทำให้บานปิดไปทางซ้าย ยึดบานกับสายพานช่วงบนตามแบบ แต่ต้องตรวจทิศจริงและขั้วมอเตอร์ก่อนเริ่มทดลอง LC อยู่ปลายซ้ายต่อ P2.4 ส่วน LO อยู่ปลายขวาต่อ P2.3 หัวส่งและหัวรับต้องอยู่บนกรอบคงที่และจัดแนวให้ตรงกัน ภาพประกอบไม่ใช่แบบผลิตที่ระบุสเกลครบถ้วน\nอ้างอิงมอเตอร์: https://www.pololu.com/product/3041"}
+{"kind":"slide","id":"sl/eutw1s","slide":5,"title":"ผังการเชื่อมต่อฮาร์ดแวร์และวงจรจริง","textShapes":49}
+{"kind":"textbox","id":"sh/f6hkru9s","slide":5,"name":"ir-107","text":"ผังการเชื่อมต่อฮาร์ดแวร์และวงจรจริง","textPreview":"ผังการเชื่อมต่อฮาร์ดแวร์และวงจรจริง","textChars":35,"textLines":1,"bbox":[80,55,1120,52]}
+{"kind":"textbox","id":"sh/g7ql0zad","slide":5,"name":"ir-108","text":"ขาไอซีมองจากด้านบน  เส้นสีน้ำเงินคือสัญญาณ  สีส้มคือภาคมอเตอร์  สีเขียวคือกราวด์","textPreview":"ขาไอซีมองจากด้านบน  เส้นสีน้ำเงินคือสัญญาณ  สีส้มคือภาคมอเตอร์  สีเขียวคือกราวด์","textChars":80,"textLines":1,"bbox":[80,115,1120,32]}
+{"kind":"shape","id":"sh/h8z2t4ry","slide":5,"name":"ir-109","bbox":[80,164,1120,0.01]}
+{"kind":"textbox","id":"sh/298329sj","slide":5,"name":"ir-110","text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[1156,662,44,25]}
+{"kind":"shape","id":"sh/3ahkve94","slide":5,"name":"ir-111","bbox":[80,187,744,445]}
+{"kind":"shape","id":"sh/4bql4jap","slide":5,"name":"ir-112","bbox":[848,187,352,445]}
+{"kind":"textbox","id":"sh/7axwz6ds","slide":5,"name":"ir-113","text":"L293D","textPreview":"L293D","textChars":5,"textLines":1,"bbox":[424,190,137,32]}
+{"kind":"textbox","id":"sh/694v61w7","slide":5,"name":"ir-114","text":"AT89S52","textPreview":"AT89S52","textChars":7,"textLines":1,"bbox":[426,423,137,24]}
+{"kind":"textbox","id":"sh/tcfe1gvy","slide":5,"name":"ir-115","text":"SN74HCT14","textPreview":"SN74HCT14","textChars":9,"textLines":1,"bbox":[110,597,160,24]}
+{"kind":"textbox","id":"sh/j6dwvmdw","slide":5,"name":"ir-116","text":"Pololu #3041","textPreview":"Pololu #3041","textChars":12,"textLines":1,"bbox":[97,352,195,27]}
+{"kind":"textbox","id":"sh/i54v21wb","slide":5,"name":"ir-117","text":"12 V  อัตราทด 100.37:1","textPreview":"12 V  อัตราทด 100.37:1","textChars":22,"textLines":1,"bbox":[97,383,211,27]}
+{"kind":"textbox","id":"sh/k7md4reh","slide":5,"name":"ir-118","text":"27 Ω 10 W","textPreview":"27 Ω 10 W","textChars":9,"textLines":1,"bbox":[292,282,121,24]}
+{"kind":"shape","id":"sh/b2dwrmdk","slide":5,"name":"route-119","bbox":[280,303,11,9]}
+{"kind":"shape","id":"sh/ahkvyhwz","slide":5,"name":"route-120","bbox":[410,294.23,13,17.77]}
+{"kind":"shape","id":"sh/edkfahg7","slide":5,"name":"route-121","bbox":[280,316,143,122]}
+{"kind":"shape","id":"sh/zetwjmhs","slide":5,"name":"route-122","bbox":[92,271.88,370,184.96]}
+{"kind":"shape","id":"sh/0f2xcryx","slide":5,"name":"route-123","bbox":[371,384.39,91,79.78]}
+{"kind":"shape","id":"sh/10belwzi","slide":5,"name":"ir-124","bbox":[367,456.83,8,0.01]}
+{"kind":"shape","id":"sh/m1kfehg3","slide":5,"name":"ir-125","bbox":[371,451.83,0.01,10]}
+{"kind":"shape","id":"sh/n2twnmho","slide":5,"name":"ir-126","bbox":[367,438,8,0.01]}
+{"kind":"shape","id":"sh/o3mxgry9","slide":5,"name":"ir-127","bbox":[371,433,0.01,10]}
+{"kind":"shape","id":"sh/94vepwzu","slide":5,"name":"route-128","bbox":[103,471.4,359,152.6]}
+{"kind":"textbox","id":"sh/a54fi1gf","slide":5,"name":"ir-129","text":"P1.0 (1) IN1","textPreview":"P1.0 (1) IN1","textChars":12,"textLines":1,"bbox":[109,239,172,24]}
+{"kind":"textbox","id":"sh/v6dgr6hk","slide":5,"name":"ir-130","text":"P1.1 (2) IN2","textPreview":"P1.1 (2) IN2","textChars":12,"textLines":1,"bbox":[265,411,157,24]}
+{"kind":"textbox","id":"sh/50fih0j2","slide":5,"name":"ir-131","text":"P1.2 (3)","textPreview":"P1.2 (3)","textChars":8,"textLines":1,"bbox":[207,541,110,24]}
+{"kind":"textbox","id":"sh/kz6h8vih","slide":5,"name":"ir-132","text":"RUN_N","textPreview":"RUN_N","textChars":5,"textLines":1,"bbox":[207,564,110,24]}
+{"kind":"shape","id":"sh/jyx0fq1w","slide":5,"name":"route-133","bbox":[85,206,338,319.77]}
+{"kind":"shape","id":"sh/ixoz6l0b","slide":5,"name":"ir-134","bbox":[99,525.77,8,0.01]}
+{"kind":"shape","id":"sh/t4zilkjy","slide":5,"name":"ir-135","bbox":[103,520.77,0.01,10]}
+{"kind":"shape","id":"sh/s3qhcfid","slide":5,"name":"ir-136","bbox":[247,203,6,6]}
+{"kind":"shape","id":"sh/72h0ja1s","slide":5,"name":"ir-137","bbox":[277,203,6,6]}
+{"kind":"shape","id":"sh/61oza50n","slide":5,"name":"ir-138","bbox":[250,206,30,0.01]}
+{"kind":"textbox","id":"sh/hszipkza","slide":5,"name":"ir-139","text":"NC1 ของ E-stop","textPreview":"NC1 ของ E-stop","textChars":14,"textLines":1,"bbox":[130,181,218,24]}
+{"kind":"textbox","id":"sh/cnuloj2x","slide":5,"name":"ir-140","text":"หยุดฉุกเฉิน","textPreview":"หยุดฉุกเฉิน","textChars":11,"textLines":1,"bbox":[640,367,157,29]}
+{"kind":"textbox","id":"sh/do32ho3i","slide":5,"name":"ir-141","text":"NC2 → P2.7","textPreview":"NC2 → P2.7","textChars":10,"textLines":1,"bbox":[651,397,153,24]}
+{"kind":"textbox","id":"sh/qlc3m9kr","slide":5,"name":"ir-142","text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[126,493.4,22,22]}
+{"kind":"textbox","id":"sh/rmlkfelc","slide":5,"name":"ir-143","text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[126,526.77,22,22]}
+{"kind":"shape","id":"sh/4zalkj2l","slide":5,"name":"ir-144","bbox":[514.18,250.29,28,0.01]}
+{"kind":"textbox","id":"sh/pkj2d436","slide":5,"name":"ir-145","text":"16  +5 V","textPreview":"16  +5 V","textChars":8,"textLines":1,"bbox":[545.18,238.29,125,25]}
+{"kind":"shape","id":"sh/2xsji9kv","slide":5,"name":"ir-146","bbox":[405,407,18,0.01]}
+{"kind":"textbox","id":"sh/3y1kbel0","slide":5,"name":"ir-147","text":"8  +12 V","textPreview":"8  +12 V","textChars":8,"textLines":1,"bbox":[277,395,125,25]}
+{"kind":"shape","id":"sh/ofelg325","slide":5,"name":"route-148","bbox":[405,316.83,18,22.61]}
+{"kind":"shape","id":"sh/9gnmp8jq","slide":5,"name":"ir-149","bbox":[405,342.44,0.01,8]}
+{"kind":"shape","id":"sh/jm9wv694","slide":5,"name":"ir-150","bbox":[396,350.44,18,0.01]}
+{"kind":"shape","id":"sh/il0f218j","slide":5,"name":"ir-151","bbox":[399,354.44,12,0.01]}
+{"kind":"shape","id":"sh/5orexw7u","slide":5,"name":"ir-152","bbox":[402,358.44,6,0.01]}
+{"kind":"shape","id":"sh/4nix4bq9","slide":5,"name":"route-153","bbox":[514.18,316.83,20,22.61]}
+{"kind":"shape","id":"sh/rqtwz6p0","slide":5,"name":"ir-154","bbox":[534.18,342.44,0.01,8]}
+{"kind":"shape","id":"sh/6pkf618f","slide":5,"name":"ir-155","bbox":[525.18,350.44,18,0.01]}
+{"kind":"shape","id":"sh/tsbe1g76","slide":5,"name":"ir-156","bbox":[528.18,354.44,12,0.01]}
+{"kind":"shape","id":"sh/sr2x8bql","slide":5,"name":"ir-157","bbox":[531.18,358.44,6,0.01]}
+{"kind":"textbox","id":"sh/nupw3m9w","slide":5,"name":"ir-158","text":"4,5 GND","textPreview":"4,5 GND","textChars":7,"textLines":1,"bbox":[321,335,96,24]}
+{"kind":"textbox","id":"sh/mtgvuh8b","slide":5,"name":"ir-159","text":"12,13 GND","textPreview":"12,13 GND","textChars":9,"textLines":1,"bbox":[544,339,139,24]}
+{"kind":"shape","id":"sh/qpoz2psz","slide":5,"name":"route-160","bbox":[514.08,446,122.92,98.14]}
+{"kind":"textbox","id":"sh/bax0bu94","slide":5,"name":"ir-161","text":"P2.7 (28) ESTOP","textPreview":"P2.7 (28) ESTOP","textChars":15,"textLines":1,"bbox":[643,434,176,24]}
+{"kind":"shape","id":"sh/cb6h4fap","slide":5,"name":"route-162","bbox":[514.08,468,122.92,83.59]}
+{"kind":"textbox","id":"sh/dcfidkra","slide":5,"name":"ir-163","text":"P2.6 (27) ไม่ใช้","textPreview":"P2.6 (27) ไม่ใช้","textChars":16,"textLines":1,"bbox":[643,456,176,24]}
+{"kind":"shape","id":"sh/2l4zy5sn","slide":5,"name":"route-164","bbox":[514.08,490,122.92,69.05]}
+{"kind":"textbox","id":"sh/3md07a98","slide":5,"name":"ir-165","text":"P2.5 (26) PB_CLOSE","textPreview":"P2.5 (26) PB_CLOSE","textChars":18,"textLines":1,"bbox":[643,478,176,24]}
+{"kind":"shape","id":"sh/onmh0fat","slide":5,"name":"route-166","bbox":[514.08,512,122.92,54.39]}
+{"kind":"textbox","id":"sh/pofi9kre","slide":5,"name":"ir-167","text":"P2.4 (25) LC","textPreview":"P2.4 (25) LC","textChars":12,"textLines":1,"bbox":[643,500,176,24]}
+{"kind":"shape","id":"sh/eh4zu5sr","slide":5,"name":"route-168","bbox":[514.08,534,122.92,39.73]}
+{"kind":"textbox","id":"sh/fidg3atc","slide":5,"name":"ir-169","text":"P2.3 (24) LO","textPreview":"P2.3 (24) LO","textChars":12,"textLines":1,"bbox":[643,522,176,24]}
+{"kind":"shape","id":"sh/xcj298bu","slide":5,"name":"route-170","bbox":[514.08,556,122.92,25.08]}
+{"kind":"textbox","id":"sh/wbal03u9","slide":5,"name":"ir-171","text":"P2.2 (23) BEAM_DET","textPreview":"P2.2 (23) BEAM_DET","textChars":18,"textLines":1,"bbox":[643,544,176,24]}
+{"kind":"shape","id":"sh/va1k7yto","slide":5,"name":"route-172","bbox":[514.08,578,122.92,10.53]}
+{"kind":"textbox","id":"sh/a9s3ytc3","slide":5,"name":"ir-173","text":"P2.1 (22) PB_OUT","textPreview":"P2.1 (22) PB_OUT","textChars":16,"textLines":1,"bbox":[643,566,176,24]}
+{"kind":"shape","id":"sh/98j25obi","slide":5,"name":"route-174","bbox":[514.08,595.76,122.92,4.24]}
+{"kind":"textbox","id":"sh/87alwjux","slide":5,"name":"ir-175","text":"P2.0 (21) PB_IN","textPreview":"P2.0 (21) PB_IN","textChars":15,"textLines":1,"bbox":[643,588,176,24]}
+{"kind":"shape","id":"sh/n6hk3etc","slide":5,"name":"route-176","bbox":[514.08,435,105.92,21.83]}
+{"kind":"textbox","id":"sh/m58jutc7","slide":5,"name":"ir-177","text":"40 +5 V","textPreview":"40 +5 V","textChars":7,"textLines":1,"bbox":[568,409,94,24]}
+{"kind":"shape","id":"sh/l4z21obm","slide":5,"name":"route-178","bbox":[417,595.76,45,10.24]}
+{"kind":"shape","id":"sh/0jq1sju1","slide":5,"name":"ir-179","bbox":[417,606,0.01,8]}
+{"kind":"shape","id":"sh/cj2pkz69","slide":5,"name":"ir-180","bbox":[408,614,18,0.01]}
+{"kind":"shape","id":"sh/xkbqdknu","slide":5,"name":"ir-181","bbox":[411,618,12,0.01]}
+{"kind":"shape","id":"sh/ah07ipo3","slide":5,"name":"ir-182","bbox":[414,622,6,0.01]}
+{"kind":"textbox","id":"sh/bit8bu5o","slide":5,"name":"ir-183","text":"20 GND","textPreview":"20 GND","textChars":6,"textLines":1,"bbox":[314,583,95,24]}
+{"kind":"textbox","id":"sh/kn2poz65","slide":5,"name":"ir-184","text":"อินพุตต่อที่ Port 2","textPreview":"อินพุตต่อที่ Port 2","textChars":19,"textLines":1,"bbox":[871,200,304,30]}
+{"kind":"textbox","id":"sh/lobqh4nq","slide":5,"name":"ir-185","text":"ชื่อขาที่ปลายเส้นตรงกับขาไอซีด้านซ้าย","textPreview":"ชื่อขาที่ปลายเส้นตรงกับขาไอซีด้านซ้าย","textChars":37,"textLines":1,"bbox":[871,239,304,27]}
+{"kind":"textbox","id":"sh/zmt8fu50","slide":5,"name":"ir-186","text":"PB_IN","textPreview":"PB_IN","textChars":5,"textLines":1,"bbox":[869,264,98,22]}
+{"kind":"shape","id":"sh/8bmpsj6h","slide":5,"name":"route-187","bbox":[874,336,17,17]}
+{"kind":"shape","id":"sh/9cvql4n2","slide":5,"name":"route-188","bbox":[901,339,57,14]}
+{"kind":"textbox","id":"sh/j6xsbip4","slide":5,"name":"ir-189","text":"P2.0","textPreview":"P2.0","textChars":4,"textLines":1,"bbox":[910,360,62,23]}
+{"kind":"shape","id":"sh/i5obid8j","slide":5,"name":"ir-190","bbox":[874,353,0.01,8]}
+{"kind":"shape","id":"sh/58fad87a","slide":5,"name":"ir-191","bbox":[865,361,18,0.01]}
+{"kind":"shape","id":"sh/476tk3qp","slide":5,"name":"ir-192","bbox":[868,365,12,0.01]}
+{"kind":"shape","id":"sh/vixsnyp8","slide":5,"name":"ir-193","bbox":[871,369,6,0.01]}
+{"kind":"textbox","id":"sh/hkfap87y","slide":5,"name":"ir-194","text":"PB_OUT","textPreview":"PB_OUT","textChars":6,"textLines":1,"bbox":[971,264,98,22]}
+{"kind":"shape","id":"sh/wj69g3qd","slide":5,"name":"route-195","bbox":[976,336,17,17]}
+{"kind":"shape","id":"sh/fehsj2pc","slide":5,"name":"route-196","bbox":[1003,339,57,14]}
+{"kind":"textbox","id":"sh/ed8bqx8r","slide":5,"name":"ir-197","text":"P2.1","textPreview":"P2.1","textChars":4,"textLines":1,"bbox":[1012,360,62,23]}
+{"kind":"shape","id":"sh/36tcf6x8","slide":5,"name":"ir-198","bbox":[976,353,0.01,8]}
+{"kind":"shape","id":"sh/i5kv61wn","slide":5,"name":"ir-199","bbox":[967,361,18,0.01]}
+{"kind":"shape","id":"sh/58vuhgfe","slide":5,"name":"ir-200","bbox":[970,365,12,0.01]}
+{"kind":"shape","id":"sh/472d8bet","slide":5,"name":"ir-201","bbox":[973,369,6,0.01]}
+{"kind":"textbox","id":"sh/q94valwz","slide":5,"name":"ir-202","text":"PB_CLOSE","textPreview":"PB_CLOSE","textChars":8,"textLines":1,"bbox":[1073,264,98,22]}
+{"kind":"shape","id":"sh/dcvelgva","slide":5,"name":"route-203","bbox":[1078,336,17,17]}
+{"kind":"shape","id":"sh/sbmdcbe5","slide":5,"name":"route-204","bbox":[1105,339,57,14]}
+{"kind":"textbox","id":"sh/7e9c7mx0","slide":5,"name":"ir-205","text":"P2.5","textPreview":"P2.5","textChars":4,"textLines":1,"bbox":[1114,360,62,23]}
+{"kind":"shape","id":"sh/6d0vyhwv","slide":5,"name":"ir-206","bbox":[1078,353,0.01,8]}
+{"kind":"shape","id":"sh/c7e1sjq1","slide":5,"name":"ir-207","bbox":[1069,361,18,0.01]}
+{"kind":"shape","id":"sh/d8nilorm","slide":5,"name":"ir-208","bbox":[1072,365,12,0.01]}
+{"kind":"shape","id":"sh/q5wjqt8b","slide":5,"name":"ir-209","bbox":[1075,369,6,0.01]}
+{"kind":"shape","id":"sh/b650je9w","slide":5,"name":"ir-210","bbox":[871,400,305,0.01]}
+{"kind":"textbox","id":"sh/p4nihorq","slide":5,"name":"ir-211","text":"LO","textPreview":"LO","textChars":2,"textLines":1,"bbox":[885,401,90,23]}
+{"kind":"shape","id":"sh/21cjm98z","slide":5,"name":"route-212","bbox":[892,472,18,31]}
+{"kind":"shape","id":"sh/32l0fe9k","slide":5,"name":"ir-213","bbox":[892,503,0.01,8]}
+{"kind":"shape","id":"sh/8zy103q9","slide":5,"name":"ir-214","bbox":[883,511,18,0.01]}
+{"kind":"shape","id":"sh/9072t87u","slide":5,"name":"ir-215","bbox":[886,515,12,0.01]}
+{"kind":"shape","id":"sh/hw3id8zy","slide":5,"name":"ir-216","bbox":[889,519,6,0.01]}
+{"kind":"shape","id":"sh/gvu1k3id","slide":5,"name":"route-217","bbox":[932,472,64,31]}
+{"kind":"textbox","id":"sh/vul0byh8","slide":5,"name":"ir-218","text":"P2.3","textPreview":"P2.3","textChars":4,"textLines":1,"bbox":[940,511,75,23]}
+{"kind":"textbox","id":"sh/9s3i98z2","slide":5,"name":"ir-219","text":"LC","textPreview":"LC","textChars":2,"textLines":1,"bbox":[1035,401,90,23]}
+{"kind":"shape","id":"sh/8ru1g3ih","slide":5,"name":"route-220","bbox":[1042,472,18,31]}
+{"kind":"shape","id":"sh/7ql07yhw","slide":5,"name":"ir-221","bbox":[1042,503,0.01,8]}
+{"kind":"shape","id":"sh/mpsjet0b","slide":5,"name":"ir-222","bbox":[1033,511,18,0.01]}
+{"kind":"shape","id":"sh/loji5ojq","slide":5,"name":"ir-223","bbox":[1036,515,12,0.01]}
+{"kind":"shape","id":"sh/kna1cjil","slide":5,"name":"ir-224","bbox":[1039,519,6,0.01]}
+{"kind":"shape","id":"sh/at8f6pg3","slide":5,"name":"route-225","bbox":[1082,472,64,31]}
+{"kind":"textbox","id":"sh/buhgfuxo","slide":5,"name":"ir-226","text":"P2.4","textPreview":"P2.4","textChars":4,"textLines":1,"bbox":[1090,511,75,23]}
+{"kind":"textbox","id":"sh/25of2pg7","slide":5,"name":"ir-227","text":"E3Z-T61","textPreview":"E3Z-T61","textChars":7,"textLines":1,"bbox":[866,533,99,25]}
+{"kind":"textbox","id":"sh/n6xgbahs","slide":5,"name":"ir-228","text":"VO617A","textPreview":"VO617A","textChars":6,"textLines":1,"bbox":[969,535,93,25]}
+{"kind":"shape","id":"sh/o7qx4fyd","slide":5,"name":"route-229","bbox":[960,583,18,8]}
+{"kind":"shape","id":"sh/pszydkfi","slide":5,"name":"route-230","bbox":[1040,583,45,8]}
+{"kind":"textbox","id":"sh/e1ofy5gv","slide":5,"name":"ir-231","text":"P2.2","textPreview":"P2.2","textChars":4,"textLines":1,"bbox":[1090,558,95,23]}
+{"kind":"textbox","id":"sh/f2xg7ahg","slide":5,"name":"ir-232","text":"ผ่าน HCT14\nวงจรหน้า 6","textPreview":"ผ่าน HCT14 | วงจรหน้า 6","textChars":21,"textLines":2,"bbox":[1085,586,101,43]}
+{"kind":"textbox","id":"sh/ruhcj61c","slide":5,"name":"ir-233","text":"COM และปุ่ม NO ต่อ GND · P2 มี pull-up 10 kΩ · EN มี pull-down 10 kΩ · วงจรภาคขับขยายในหน้า 7","textPreview":"COM และปุ่ม NO ต่อ GND · P2 มี pull-up 10 kΩ · EN มี pull-down 10 kΩ · วงจรภาคขับขยายในหน้า 7","textChars":93,"textLines":1,"bbox":[80,644,1090,27]}
+{"kind":"image","id":"im/srax0329","slide":5,"name":"","alt":"driver.png","bbox":[423,232,91.18,191]}
+{"kind":"image","id":"im/nuxwfelk","slide":5,"name":"","alt":"mcu_fixed.png","bbox":[462,448,52.08,166]}
+{"kind":"image","id":"im/mtofm94z","slide":5,"name":"","alt":"inverter.png","bbox":[147,503,49.16,95]}
+{"kind":"image","id":"im/vul8vq58","slide":5,"name":"","alt":"motor-rear.jpg","bbox":[95,270,194,78]}
+{"kind":"image","id":"im/ihc7q54z","slide":5,"name":"","alt":"resistor.png","bbox":[289,281,124,62]}
+{"kind":"image","id":"im/bq9knyds","slide":5,"name":"","alt":"estop.png","bbox":[658,248,93,112]}
+{"kind":"image","id":"im/xobyl0n6","slide":5,"name":"","alt":"button.jpg","bbox":[881,283,27,59]}
+{"kind":"image","id":"im/187etw3y","slide":5,"name":"","alt":"button.jpg","bbox":[983,283,27,59]}
+{"kind":"image","id":"im/q1sre983","slide":5,"name":"","alt":"button.jpg","bbox":[1085,283,27,59]}
+{"kind":"image","id":"im/x07m1cva","slide":5,"name":"","alt":"limit.png","bbox":[885,421,88,76]}
+{"kind":"image","id":"im/36xozqlc","slide":5,"name":"","alt":"limit.png","bbox":[1035,421,88,76]}
+{"kind":"image","id":"im/xw3q1ony","slide":5,"name":"","alt":"sensor.png","bbox":[872,553,88,73]}
+{"kind":"image","id":"im/cvu98j6d","slide":5,"name":"","alt":"opto.jpg","bbox":[978,564,61,61]}
+{"kind":"notes","id":"nt/eutw1s","slide":5,"text":"ภาพนี้แสดงตำแหน่งอุปกรณ์และสายควบคุมหลัก โดยมองไอซีจากด้านบนและเริ่มนับขาจากเครื่องหมายขา 1 สีน้ำเงินใช้กับลอจิก 5 โวลต์และสัญญาณควบคุม สีส้มใช้กับภาคมอเตอร์ 12 โวลต์ สีเขียวคือกราวด์ จุดที่เส้นข้ามกันและเว้นช่องว่างไม่ได้เชื่อมทางไฟฟ้า\n\nAT89S52 คือไอซี DIP-40 ด้านล่างกลางภาพ P1.0 และ P1.1 ต่อไปยัง IN1 และ IN2 ของ L293D ส่วน P1.2 เป็น RUN_N ผ่าน SN74HCT14 และหน้าสัมผัส NC1 ของปุ่มหยุดฉุกเฉินก่อนเข้า EN มอเตอร์ต่อผ่านตัวต้านทาน 27 โอห์ม 10 วัตต์ สวิตช์และปุ่มด้านขวาใช้ชื่อสัญญาณตรงกับปลายสาย Port 2 ด้านซ้าย เช่น PB_CLOSE ต่อ P2.5 ขา 26\n\nCOM ของลิมิตและขาหนึ่งของปุ่มต่อกราวด์ ส่วน NO ต่อพอร์ตพร้อม pull-up เมื่อกดจึงอ่านเป็น 0 E-stop ใช้ NC2 อีกชุดแจ้ง P2.7 เมื่อกดหรือสายเปิดจะอ่านเป็น 1 เซนเซอร์เข้าสู่ P2.2 ผ่านวงจรในหน้าถัดไป\n\nผังนี้ขยายเฉพาะการเชื่อมต่อที่ใช้ควบคุมประตู วงจรขั้นต่ำของ AT89S52 ยังต้องมี VCC ขา 40 กราวด์ขา 20, EA ขา 31 ต่อ 5 โวลต์เพื่อใช้โปรแกรมภายใน, คริสตัล 12 MHz ระหว่าง XTAL1 ขา 19 และ XTAL2 ขา 18 พร้อมตัวเก็บประจุที่เหมาะกับคริสตัล, วงจรรีเซ็ต RST ขา 9 ตามข้อกำหนดผู้ผลิต และตัวเก็บประจุบายพาสใกล้ขาไฟ\n\nภาพชิ้นส่วนใช้ระบุตัวอุปกรณ์และตำแหน่งขา ไม่ใช่ภาพถ่ายวงจรที่ประกอบและผ่านการทดสอบแล้ว\nพอร์ต: https://ww1.microchip.com/downloads/en/DeviceDoc/doc1919.pdf\nภาคขับ: https://www.ti.com/lit/ds/symlink/l293d.pdf\nภาพมอเตอร์: https://www.pololu.com/product/3041/pictures"}
+{"kind":"slide","id":"sl/gujare","slide":6,"title":"วงจรโฟโต้สวิตช์และการแยกสัญญาณทางแสง","textShapes":28}
+{"kind":"textbox","id":"sh/a18by5wz","slide":6,"name":"ir-234","text":"วงจรโฟโต้สวิตช์และการแยกสัญญาณทางแสง","textPreview":"วงจรโฟโต้สวิตช์และการแยกสัญญาณทางแสง","textChars":36,"textLines":1,"bbox":[80,55,1120,52]}
+{"kind":"textbox","id":"sh/x4ju9kvq","slide":6,"name":"ir-235","text":"เลือก NPN แบบ Light-ON แล้วกลับลอจิกเป็น BEAM_DET = 0 เมื่อแสงขาด","textPreview":"เลือก NPN แบบ Light-ON แล้วกลับลอจิกเป็น BEAM_DET = 0 เมื่อแสงขาด","textChars":65,"textLines":1,"bbox":[80,115,1120,32]}
+{"kind":"shape","id":"sh/w3at0fe5","slide":6,"name":"ir-236","bbox":[80,164,1120,0.01]}
+{"kind":"textbox","id":"sh/j61cbadw","slide":6,"name":"ir-237","text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[1156,662,44,25]}
+{"kind":"shape","id":"sh/i5sb25wb","slide":6,"name":"ir-238","bbox":[80,188,352,420]}
+{"kind":"shape","id":"sh/5sjudkvm","slide":6,"name":"ir-239","bbox":[464,188,352,420]}
+{"kind":"shape","id":"sh/krat4feh","slide":6,"name":"ir-240","bbox":[848,188,352,420]}
+{"kind":"textbox","id":"sh/zahszqdc","slide":6,"name":"ir-241","text":"โฟโต้เซนเซอร์ 12 V","textPreview":"โฟโต้เซนเซอร์ 12 V","textChars":18,"textLines":1,"bbox":[100,202,310,37]}
+{"kind":"textbox","id":"sh/y9obqlwr","slide":6,"name":"ir-242","text":"ออปโตคัปเปลอร์","textPreview":"ออปโตคัปเปลอร์","textChars":14,"textLines":1,"bbox":[484,202,310,37]}
+{"kind":"textbox","id":"sh/8fax4ze1","slide":6,"name":"ir-243","text":"อินเวอร์เตอร์และ 8051","textPreview":"อินเวอร์เตอร์และ 8051","textChars":21,"textLines":1,"bbox":[868,202,310,37]}
+{"kind":"textbox","id":"sh/mtsf2pwv","slide":6,"name":"ir-244","text":"E3Z-T61  NPN Light-ON","textPreview":"E3Z-T61  NPN Light-ON","textChars":21,"textLines":1,"bbox":[105,248,308,29]}
+{"kind":"textbox","id":"sh/nu1gvudg","slide":6,"name":"ir-245","text":"น้ำตาล: +12 V_S\nน้ำเงิน: 0 V_S\nดำ: เอาต์พุต NPN","textPreview":"น้ำตาล: +12 V_S | น้ำเงิน: 0 V_S | ดำ: เอาต์พุต NPN","textChars":47,"textLines":3,"bbox":[104,506,304,88]}
+{"kind":"textbox","id":"sh/xk3y14vi","slide":6,"name":"ir-246","text":"VO617A","textPreview":"VO617A","textChars":6,"textLines":1,"bbox":[571,484,143,28]}
+{"kind":"textbox","id":"sh/ahcf69w7","slide":6,"name":"ir-247","text":"1 A","textPreview":"1 A","textChars":3,"textLines":1,"bbox":[539,350,53,24]}
+{"kind":"textbox","id":"sh/vilgzeds","slide":6,"name":"ir-248","text":"2 K","textPreview":"2 K","textChars":3,"textLines":1,"bbox":[539,424,53,24]}
+{"kind":"textbox","id":"sh/cnqxwfet","slide":6,"name":"ir-249","text":"4 C","textPreview":"4 C","textChars":3,"textLines":1,"bbox":[698,350,53,24]}
+{"kind":"textbox","id":"sh/dozepkve","slide":6,"name":"ir-250","text":"3 E","textPreview":"3 E","textChars":3,"textLines":1,"bbox":[698,424,53,24]}
+{"kind":"textbox","id":"sh/t8rmdc36","slide":6,"name":"ir-251","text":"+12 V_S","textPreview":"+12 V_S","textChars":7,"textLines":1,"bbox":[479,267,141,24]}
+{"kind":"shape","id":"sh/s7y5472l","slide":6,"name":"ir-252","bbox":[527,295,0.01,20]}
+{"kind":"shape","id":"sh/r6p4b2l0","slide":6,"name":"ir-253","bbox":[527,315,0.01,8]}
+{"kind":"shape","id":"sh/65g32xkf","slide":6,"name":"ir-254","bbox":[522,323,10,26]}
+{"kind":"shape","id":"sh/1crmhwj2","slide":6,"name":"ir-255","bbox":[527,349,0.01,8]}
+{"kind":"textbox","id":"sh/gbi58r2h","slide":6,"name":"ir-256","text":"1.5 kΩ","textPreview":"1.5 kΩ","textChars":6,"textLines":1,"bbox":[538,315,98,42]}
+{"kind":"shape","id":"sh/fa94fm1w","slide":6,"name":"route-257","bbox":[527,357,38,23]}
+{"kind":"shape","id":"sh/e90n6hkr","slide":6,"name":"route-258","bbox":[309,417,256,77]}
+{"kind":"textbox","id":"sh/p0bmlwje","slide":6,"name":"ir-259","text":"ดำ: NPN OUT","textPreview":"ดำ: NPN OUT","textChars":11,"textLines":1,"bbox":[433,462,137,24]}
+{"kind":"shape","id":"sh/oz25cr2t","slide":6,"name":"route-260","bbox":[725,380,129,4]}
+{"kind":"shape","id":"sh/mlcj6t0b","slide":6,"name":"ir-261","bbox":[773,377,6,6]}
+{"kind":"shape","id":"sh/nmlkfy1g","slide":6,"name":"ir-262","bbox":[776,357,0.01,23]}
+{"kind":"shape","id":"sh/87u183i1","slide":6,"name":"ir-263","bbox":[776,315,0.01,8]}
+{"kind":"shape","id":"sh/98n2h8jm","slide":6,"name":"ir-264","bbox":[771,323,10,26]}
+{"kind":"shape","id":"sh/a9wjad07","slide":6,"name":"ir-265","bbox":[776,349,0.01,8]}
+{"kind":"textbox","id":"sh/va5kjy1s","slide":6,"name":"ir-266","text":"10 kΩ","textPreview":"10 kΩ","textChars":5,"textLines":1,"bbox":[708,316,92,24]}
+{"kind":"shape","id":"sh/wbe1c3id","slide":6,"name":"ir-267","bbox":[776,295,0.01,20]}
+{"kind":"textbox","id":"sh/xcn2l8zy","slide":6,"name":"ir-268","text":"+5 V","textPreview":"+5 V","textChars":4,"textLines":1,"bbox":[751,267,75,24]}
+{"kind":"shape","id":"sh/idwjed0j","slide":6,"name":"route-269","bbox":[725,417,23,53]}
+{"kind":"shape","id":"sh/je5kniho","slide":6,"name":"ir-270","bbox":[748,470,0.01,8]}
+{"kind":"shape","id":"sh/ru1kri9s","slide":6,"name":"ir-271","bbox":[739,478,18,0.01]}
+{"kind":"shape","id":"sh/qtsjydsn","slide":6,"name":"ir-272","bbox":[742,482,12,0.01]}
+{"kind":"shape","id":"sh/dw32tsry","slide":6,"name":"ir-273","bbox":[745,486,6,0.01]}
+{"kind":"textbox","id":"sh/svu10nad","slide":6,"name":"ir-274","text":"0 V_L","textPreview":"0 V_L","textChars":5,"textLines":1,"bbox":[719,493,95,24]}
+{"kind":"textbox","id":"sh/excj2dsj","slide":6,"name":"ir-275","text":"SN74HCT14","textPreview":"SN74HCT14","textChars":9,"textLines":1,"bbox":[878,254,194,28]}
+{"kind":"shape","id":"sh/1032xsra","slide":6,"name":"route-276","bbox":[854,369.42,47,14.58]}
+{"kind":"shape","id":"sh/0zu14nap","slide":6,"name":"route-277","bbox":[879,396.62,287,129.38]}
+{"kind":"shape","id":"sh/v2h0jyt0","slide":6,"name":"ir-278","bbox":[1006.56,315.34,20,0.01]}
+{"kind":"textbox","id":"sh/u18jqtsf","slide":6,"name":"ir-279","text":"+5 V","textPreview":"+5 V","textChars":4,"textLines":1,"bbox":[1029.56,303.34,125,25]}
+{"kind":"shape","id":"sh/k76h0zqx","slide":6,"name":"route-280","bbox":[894,477.41,7,11.59]}
+{"kind":"shape","id":"sh/l8fyt47i","slide":6,"name":"ir-281","bbox":[894,489,0.01,8]}
+{"kind":"shape","id":"sh/y5ofyp87","slide":6,"name":"ir-282","bbox":[885,497,18,0.01]}
+{"kind":"shape","id":"sh/z6xgru9s","slide":6,"name":"ir-283","bbox":[888,501,12,0.01]}
+{"kind":"shape","id":"sh/c3mxwfq1","slide":6,"name":"ir-284","bbox":[891,505,6,0.01]}
+{"kind":"textbox","id":"sh/x4fypkrm","slide":6,"name":"ir-285","text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[883,348.42,21,22]}
+{"kind":"textbox","id":"sh/ah4fu58v","slide":6,"name":"ir-286","text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[883,397.62,21,22]}
+{"kind":"shape","id":"sh/b2dgna9g","slide":6,"name":"ir-287","bbox":[1065,330,0.01,14]}
+{"kind":"shape","id":"sh/wzqh8jq5","slide":6,"name":"ir-288","bbox":[1056,344,18,0.01]}
+{"kind":"shape","id":"sh/h0zy1o7q","slide":6,"name":"ir-289","bbox":[1056,350,18,0.01]}
+{"kind":"shape","id":"sh/5kbq5kvy","slide":6,"name":"ir-290","bbox":[1065,350,0.01,14]}
+{"kind":"textbox","id":"sh/4j2pwfed","slide":6,"name":"ir-291","text":"100 nF","textPreview":"100 nF","textChars":6,"textLines":1,"bbox":[1079,331,100,30]}
+{"kind":"shape","id":"sh/jito3ads","slide":6,"name":"ir-292","bbox":[1065,364,0.01,8]}
+{"kind":"shape","id":"sh/ihk7u5w7","slide":6,"name":"ir-293","bbox":[1056,372,18,0.01]}
+{"kind":"shape","id":"sh/hgb610vm","slide":6,"name":"ir-294","bbox":[1059,376,12,0.01]}
+{"kind":"shape","id":"sh/wf2psve1","slide":6,"name":"ir-295","bbox":[1062,380,6,0.01]}
+{"kind":"shape","id":"sh/vetozadg","slide":6,"name":"ir-296","bbox":[1065,316,0.01,14]}
+{"kind":"textbox","id":"sh/udk7q5wb","slide":6,"name":"ir-297","text":"5 V","textPreview":"5 V","textChars":3,"textLines":1,"bbox":[1090,288,85,24]}
+{"kind":"textbox","id":"sh/9cr6x0vq","slide":6,"name":"ir-298","text":"P2.2 (23)","textPreview":"P2.2 (23)","textChars":9,"textLines":1,"bbox":[1014,477,171,26]}
+{"kind":"textbox","id":"sh/8bipove5","slide":6,"name":"ir-299","text":"0 = แสงขาด\n1 = แสงผ่าน","textPreview":"0 = แสงขาด | 1 = แสงผ่าน","textChars":22,"textLines":2,"bbox":[1014,550,172,51]}
+{"kind":"textbox","id":"sh/yhgny1c3","slide":6,"name":"ir-300","text":"C 100 nF ต่อใกล้ขาไฟไอซี · ต้องแยกแหล่งจ่าย 12 V_S จากลอจิก จึงคงการแยกทางไฟฟ้า","textPreview":"C 100 nF ต่อใกล้ขาไฟไอซี · ต้องแยกแหล่งจ่าย 12 V_S จากลอจิก จึงคงการแยกทางไฟฟ้า","textChars":79,"textLines":1,"bbox":[80,641,1090,27]}
+{"kind":"image","id":"im/2pg36lg7","slide":6,"name":"","alt":"sensor.png","bbox":[110,276,266,222]}
+{"kind":"image","id":"im/fm5kb6hg","slide":6,"name":"","alt":"opto_top.png","bbox":[565,365,160,68.88]}
+{"kind":"image","id":"im/kbelwvqd","slide":6,"name":"","alt":"inverter.png","bbox":[901,293,105.56,204]}
+{"kind":"notes","id":"nt/gujare","slide":6,"text":"วงจรที่เสนออ้างอิงโฟโต้เซนเซอร์ Omron E3Z-T61 แบบ NPN และตั้งให้ทำงานแบบ Light-ON เมื่อแสงผ่าน เอาต์พุต NPN จะรับกระแสจากแหล่งจ่าย 12 V_S ผ่านตัวต้านทาน 1.5 กิโลโอห์มและ LED ภายใน VO617A ออปโตคัปเปลอร์จึงดึงขา RAW ลงต่ำ จากนั้น SN74HCT14 กลับลอจิกให้ BEAM_DET เป็น 1\n\nเมื่อแสงขาด ออปโตคัปเปลอร์หยุดนำกระแส ตัวต้านทาน 10 กิโลโอห์มดึง RAW ขึ้น และอินเวอร์เตอร์ให้ BEAM_DET เป็น 0 วิธีนี้สาย NPN ฝั่งเซนเซอร์เปิดหรือไฟเซนเซอร์หายจะถูกตีความว่าลำแสงขาด แต่ไม่ตรวจพบความเสียหายทุกชนิด เช่น สัญญาณค้าง หรือสายหลังอินเวอร์เตอร์ขาด\n\nVO617A ใช้ขา 1 เป็นแอโนด ขา 2 เป็นแคโทด ขา 4 เป็นคอลเลกเตอร์ และขา 3 เป็นอิมิตเตอร์ HCT14 ใช้เกตขา 3 เข้าและขา 4 ออก ตัวเก็บประจุ 100 นาโนฟารัดใช้บายพาสไฟเลี้ยงใกล้ไอซี ไม่ใช้หน่วงสัญญาณ BEAM_DET ค่า R 1.5 กิโลโอห์ม 0.25 วัตต์ต้องตรวจร่วมกับกระแส LED, CTR และอุณหภูมิของอุปกรณ์จริง\n\nหากต้องการแยกทางไฟฟ้าจริง แหล่งจ่ายเซนเซอร์ต้องแยกจากลอจิก และไม่ต่อ 0 V_S เข้ากับ 0 V_L หากใช้กราวด์ร่วมกัน ออปโตจะไม่คงการแยกทางไฟฟ้าระหว่างภาค\nอ้างอิง: https://www.ia.omron.com/data_pdf/cat/e3z_ds_e_18_8_csm438.pdf?id=407\nhttps://www.vishay.com/docs/83430/vo617a.pdf\nhttps://www.ti.com/lit/ds/symlink/sn74hct14.pdf"}
+{"kind":"slide","id":"sl/hnhua5","slide":7,"title":"วงจรขับมอเตอร์และระบบตัดแรงขับฉุกเฉิน","textShapes":27}
+{"kind":"textbox","id":"sh/76dw7qd4","slide":7,"name":"ir-301","text":"วงจรขับมอเตอร์และระบบตัดแรงขับฉุกเฉิน","textPreview":"วงจรขับมอเตอร์และระบบตัดแรงขับฉุกเฉิน","textChars":37,"textLines":1,"bbox":[80,55,1120,52]}
+{"kind":"textbox","id":"sh/8rmxgve9","slide":7,"name":"ir-302","text":"RUN_N = 1 ตัด Enable  และปล่อยให้มอเตอร์ไหล 200 ms ก่อนกลับทิศ","textPreview":"RUN_N = 1 ตัด Enable  และปล่อยให้มอเตอร์ไหล 200 ms ก่อนกลับทิศ","textChars":62,"textLines":1,"bbox":[80,115,1120,32]}
+{"kind":"shape","id":"sh/tsve90vu","slide":7,"name":"ir-303","bbox":[80,164,1120,0.01]}
+{"kind":"textbox","id":"sh/utofi5wf","slide":7,"name":"ir-304","text":"06","textPreview":"06","textChars":2,"textLines":1,"bbox":[1156,662,44,25]}
+{"kind":"shape","id":"sh/vuxwbad0","slide":7,"name":"ir-305","bbox":[80,188,1120,414]}
+{"kind":"textbox","id":"sh/bytwz6xw","slide":7,"name":"ir-306","text":"AT89S52","textPreview":"AT89S52","textChars":7,"textLines":1,"bbox":[107,259,195,33]}
+{"kind":"textbox","id":"sh/byhsbq9o","slide":7,"name":"ir-307","text":"SN74HCT14","textPreview":"SN74HCT14","textChars":9,"textLines":1,"bbox":[390,501,161,24]}
+{"kind":"textbox","id":"sh/ax8rils3","slide":7,"name":"ir-308","text":"L293D","textPreview":"L293D","textChars":5,"textLines":1,"bbox":[692,201,182,33]}
+{"kind":"shape","id":"sh/x0zad0ru","slide":7,"name":"route-309","bbox":[95,235,614,86.97]}
+{"kind":"shape","id":"sh/czq9kva9","slide":7,"name":"route-310","bbox":[115,331.92,594,247.08]}
+{"kind":"shape","id":"sh/nux8n69s","slide":7,"name":"route-311","bbox":[142,341.72,267,207.28]}
+{"kind":"textbox","id":"sh/2torels7","slide":7,"name":"ir-312","text":"P1.0 (1) IN1","textPreview":"P1.0 (1) IN1","textChars":12,"textLines":1,"bbox":[298,203,262,26]}
+{"kind":"textbox","id":"sh/pwzapgri","slide":7,"name":"ir-313","text":"P1.1 (2) IN2","textPreview":"P1.1 (2) IN2","textChars":12,"textLines":1,"bbox":[474,552,175,24]}
+{"kind":"textbox","id":"sh/ovq9gbad","slide":7,"name":"ir-314","text":"P1.2 (3) RUN_N","textPreview":"P1.2 (3) RUN_N","textChars":14,"textLines":1,"bbox":[249,552,200,24]}
+{"kind":"shape","id":"sh/f6x8j69g","slide":7,"name":"route-315","bbox":[386,253,323,126.47]}
+{"kind":"shape","id":"sh/e5ora1sv","slide":7,"name":"ir-316","bbox":[516,250,6,6]}
+{"kind":"shape","id":"sh/i14rm1c3","slide":7,"name":"ir-317","bbox":[545,250,6,6]}
+{"kind":"shape","id":"sh/j2dsv6d8","slide":7,"name":"ir-318","bbox":[519,253,29,0.01]}
+{"kind":"textbox","id":"sh/43mtobut","slide":7,"name":"ir-319","text":"NC1","textPreview":"NC1","textChars":3,"textLines":1,"bbox":[510,199,60,26]}
+{"kind":"textbox","id":"sh/q5obq1cz","slide":7,"name":"ir-320","text":"E-stop","textPreview":"E-stop","textChars":6,"textLines":1,"bbox":[539,520,94,27]}
+{"kind":"shape","id":"sh/r6xsz6dk","slide":7,"name":"ir-321","bbox":[633,269.1,6,6]}
+{"kind":"shape","id":"sh/sr6tsbu5","slide":7,"name":"route-322","bbox":[564,272.1,72,21]}
+{"kind":"shape","id":"sh/dsfa1gvq","slide":7,"name":"ir-323","bbox":[564,293.1,0.01,8]}
+{"kind":"shape","id":"sh/etobulcv","slide":7,"name":"ir-324","bbox":[559,301.1,10,26]}
+{"kind":"shape","id":"sh/fuxs3qdg","slide":7,"name":"ir-325","bbox":[564,327.1,0.01,8]}
+{"kind":"shape","id":"sh/903m94ju","slide":7,"name":"ir-326","bbox":[564,335.1,0.01,8]}
+{"kind":"shape","id":"sh/ozalgjip","slide":7,"name":"ir-327","bbox":[555,343.1,18,0.01]}
+{"kind":"shape","id":"sh/ny147e14","slide":7,"name":"ir-328","bbox":[558,347.1,12,0.01]}
+{"kind":"shape","id":"sh/mxs3e90j","slide":7,"name":"ir-329","bbox":[561,351.1,6,0.01]}
+{"kind":"textbox","id":"sh/x43mdoj6","slide":7,"name":"ir-330","text":"10 kΩ","textPreview":"10 kΩ","textChars":5,"textLines":1,"bbox":[479,300.1,78,25]}
+{"kind":"shape","id":"sh/w3u5kjil","slide":7,"name":"ir-331","bbox":[844.1,272.1,14,0.01]}
+{"kind":"textbox","id":"sh/b2l4be10","slide":7,"name":"ir-332","text":"16 +5 V","textPreview":"16 +5 V","textChars":7,"textLines":1,"bbox":[861.1,260.1,125,25]}
+{"kind":"shape","id":"sh/a1c3i90f","slide":7,"name":"ir-333","bbox":[697,504.29,12,0.01]}
+{"kind":"textbox","id":"sh/lsnmhoj2","slide":7,"name":"ir-334","text":"8 +12 V","textPreview":"8 +12 V","textChars":7,"textLines":1,"bbox":[569,492.29,125,25]}
+{"kind":"textbox","id":"sh/k7u5o3ih","slide":7,"name":"ir-335","text":"1 EN1","textPreview":"1 EN1","textChars":5,"textLines":1,"bbox":[602,245.1,79,24]}
+{"kind":"textbox","id":"sh/gnypg72p","slide":7,"name":"ir-336","text":"2 IN1","textPreview":"2 IN1","textChars":5,"textLines":1,"bbox":[601,312.08,72,24]}
+{"kind":"textbox","id":"sh/ho769s3a","slide":7,"name":"ir-337","text":"7 IN2","textPreview":"7 IN2","textChars":5,"textLines":1,"bbox":[601,474.8,73,24]}
+{"kind":"textbox","id":"sh/vmpo72lk","slide":7,"name":"ir-338","text":"Pololu #3041 · 12 V","textPreview":"Pololu #3041 · 12 V","textChars":19,"textLines":1,"bbox":[935,516,245,27]}
+{"kind":"textbox","id":"sh/t0765s3e","slide":7,"name":"ir-339","text":"27 Ω 10 W","textPreview":"27 Ω 10 W","textChars":9,"textLines":1,"bbox":[986,280,156,27]}
+{"kind":"shape","id":"sh/6xw7adkn","slide":7,"name":"route-340","bbox":[687,195,269,163]}
+{"kind":"shape","id":"sh/7y5o3il8","slide":7,"name":"route-341","bbox":[1167,358,17,87]}
+{"kind":"shape","id":"sh/cvipor2x","slide":7,"name":"route-342","bbox":[677,437.49,508,153.51]}
+{"kind":"textbox","id":"sh/dwrqhcji","slide":7,"name":"ir-343","text":"3 OUT1","textPreview":"3 OUT1","textChars":6,"textLines":1,"bbox":[956,244,124,24]}
+{"kind":"textbox","id":"sh/nqdsnq5k","slide":7,"name":"ir-344","text":"6 OUT2","textPreview":"6 OUT2","textChars":6,"textLines":1,"bbox":[890,568,125,24]}
+{"kind":"shape","id":"sh/mpkrel4f","slide":7,"name":"route-345","bbox":[694,370.69,15,33.49]}
+{"kind":"shape","id":"sh/9cvapgnq","slide":7,"name":"ir-346","bbox":[694,406.19,0.01,8]}
+{"kind":"shape","id":"sh/orm9gbm5","slide":7,"name":"ir-347","bbox":[685,414.19,18,0.01]}
+{"kind":"shape","id":"sh/bedsrqlw","slide":7,"name":"ir-348","bbox":[688,418.19,12,0.01]}
+{"kind":"shape","id":"sh/ad4bil4b","slide":7,"name":"ir-349","bbox":[691,422.19,6,0.01]}
+{"kind":"shape","id":"sh/xgvat032","slide":7,"name":"route-350","bbox":[844.1,370.69,18,33.49]}
+{"kind":"shape","id":"sh/wfmtkvmh","slide":7,"name":"ir-351","bbox":[862.1,406.19,0.01,8]}
+{"kind":"shape","id":"sh/ri9sf65s","slide":7,"name":"ir-352","bbox":[853.1,414.19,18,0.01]}
+{"kind":"shape","id":"sh/qh0r6147","slide":7,"name":"ir-353","bbox":[856.1,418.19,12,0.01]}
+{"kind":"shape","id":"sh/ud8ve9of","slide":7,"name":"ir-354","bbox":[859.1,422.19,6,0.01]}
+{"kind":"textbox","id":"sh/vehcnu50","slide":7,"name":"ir-355","text":"4,5","textPreview":"4,5","textChars":3,"textLines":1,"bbox":[613,405,64,24]}
+{"kind":"textbox","id":"sh/gfqdgz6l","slide":7,"name":"ir-356","text":"12,13","textPreview":"12,13","textChars":5,"textLines":1,"bbox":[848,420,85,24]}
+{"kind":"shape","id":"sh/hgzep4n6","slide":7,"name":"ir-357","bbox":[485.58,360.21,15,0.01]}
+{"kind":"textbox","id":"sh/698vapoj","slide":7,"name":"ir-358","text":"+5 V","textPreview":"+5 V","textChars":4,"textLines":1,"bbox":[503.58,348.21,125,25]}
+{"kind":"shape","id":"sh/7ahcjup4","slide":7,"name":"route-359","bbox":[365,477.79,44,8.21]}
+{"kind":"shape","id":"sh/8bqdcz6p","slide":7,"name":"ir-360","bbox":[365,486,0.01,8]}
+{"kind":"shape","id":"sh/tczul47a","slide":7,"name":"ir-361","bbox":[356,494,18,0.01]}
+{"kind":"shape","id":"sh/ylov6pon","slide":7,"name":"ir-362","bbox":[359,498,12,0.01]}
+{"kind":"shape","id":"sh/j6xcfaps","slide":7,"name":"ir-363","bbox":[362,502,6,0.01]}
+{"kind":"shape","id":"sh/lcn61cbm","slide":7,"name":"ir-364","bbox":[382,360.21,8,0.01]}
+{"kind":"shape","id":"sh/0bep87u1","slide":7,"name":"ir-365","bbox":[386,355.21,0.01,10]}
+{"kind":"shape","id":"sh/za5oz2tw","slide":7,"name":"ir-366","bbox":[582,253,8,0.01]}
+{"kind":"shape","id":"sh/y9w76hcb","slide":7,"name":"ir-367","bbox":[586,248,0.01,10]}
+{"kind":"shape","id":"sh/d8n6xcvq","slide":7,"name":"ir-368","bbox":[582,272.1,8,0.01]}
+{"kind":"shape","id":"sh/c7ep47u5","slide":7,"name":"ir-369","bbox":[586,267.1,0.01,10]}
+{"kind":"shape","id":"sh/rm5ov2dk","slide":7,"name":"ir-370","bbox":[683,272.1,8,0.01]}
+{"kind":"shape","id":"sh/qlc72xcz","slide":7,"name":"ir-371","bbox":[687,267.1,0.01,10]}
+{"kind":"shape","id":"sh/pk36tsve","slide":7,"name":"ir-372","bbox":[683,304.08,8,0.01]}
+{"kind":"shape","id":"sh/4jup0nu9","slide":7,"name":"ir-373","bbox":[687,299.08,0.01,10]}
+{"kind":"shape","id":"sh/g7mlwz25","slide":7,"name":"ir-374","bbox":[673,470.8,8,0.01]}
+{"kind":"shape","id":"sh/h8v2p4jq","slide":7,"name":"ir-375","bbox":[677,465.8,0.01,10]}
+{"kind":"textbox","id":"sh/ul43u9kz","slide":7,"name":"ir-376","text":"กระแส DC ที่ 12 V:  I ≤ 12 ÷ 27 ≈ 0.44 A","textPreview":"กระแส DC ที่ 12 V:  I ≤ 12 ÷ 27 ≈ 0.44 A","textChars":40,"textLines":1,"bbox":[80,617,562,32]}
+{"kind":"textbox","id":"sh/f6dkne1k","slide":7,"name":"ir-377","text":"ต้องวัดกระแสกลับทิศและความร้อนจริง","textPreview":"ต้องวัดกระแสกลับทิศและความร้อนจริง","textChars":34,"textLines":1,"bbox":[671,617,529,32]}
+{"kind":"textbox","id":"sh/4b6l0j21","slide":7,"name":"ir-378","text":"กราวด์ลอจิกและมอเตอร์ร่วมกัน · NC2 แจ้ง P2.7 · EN = 0 คือปล่อยไหล ไม่ใช่เบรกทางไฟฟ้า","textPreview":"กราวด์ลอจิกและมอเตอร์ร่วมกัน · NC2 แจ้ง P2.7 · EN = 0 คือปล่อยไหล ไม่ใช่เบรกทางไฟฟ้า","textChars":84,"textLines":1,"bbox":[80,656,1090,27]}
+{"kind":"image","id":"im/dkfq9wve","slide":7,"name":"","alt":"mcu_fixed.png","bbox":[202,310,70.59,225]}
+{"kind":"image","id":"im/cj6p0rut","slide":7,"name":"","alt":"inverter.png","bbox":[409,344,76.58,148]}
+{"kind":"image","id":"im/3ud832dc","slide":7,"name":"","alt":"driver.png","bbox":[709,245,135.1,283]}
+{"kind":"image","id":"im/uhsbihwf","slide":7,"name":"","alt":"estop.png","bbox":[527,389,91,108]}
+{"kind":"image","id":"im/t8vup0by","slide":7,"name":"","alt":"motor-rear.jpg","bbox":[951,409,222,90]}
+{"kind":"image","id":"im/j2tcj6tw","slide":7,"name":"","alt":"resistor.png","bbox":[952,303,220,110]}
+{"kind":"notes","id":"nt/hnhua5","slide":7,"text":"P1.0 ต่อ L293D ขา 2 และ P1.1 ต่อขา 7 เพื่อกำหนดทิศทาง P1.2 เป็น RUN_N ผ่านอินเวอร์เตอร์ SN74HCT14 ขา 1 เข้าและขา 2 ออก แล้วผ่าน NC1 ของปุ่มหยุดฉุกเฉินเข้า EN ขา 1 เมื่อ RUN_N เป็น 1 หรือหน้าสัมผัส NC1 เปิด ตัวต้านทาน pull-down 10 กิโลโอห์มทำให้ EN เป็น 0 และตัดแรงขับ\n\nL293D ใช้ไฟลอจิก 5 โวลต์ที่ขา 16 และไฟมอเตอร์ 12 โวลต์ที่ขา 8 ขา 4, 5, 12 และ 13 ต่อกราวด์ร่วมกับลอจิกและมอเตอร์ OUT1 ขา 3 ต่อผ่าน R 27 โอห์ม 10 วัตต์เข้ามอเตอร์ และ OUT2 ขา 6 ต่ออีกขั้วของมอเตอร์ ภาพแสดงขั้วบัดกรีมอเตอร์จริง ส่วนสายสีส้มคือเส้นทางวงจรภาคกำลัง\n\nที่แรงดัน 12 โวลต์ ขอบเขตกระแส DC จาก R เพียงตัวเดียวคือประมาณ 0.44 แอมแปร์ และกำลังที่ R ประมาณ 5.33 วัตต์ ต้องเผื่อแรงดันจ่าย tolerance และการระบายความร้อน ค่านี้ไม่ใช่หลักประกันกระแสกระชากขณะกลับทิศ ต้องวัดจริง\n\nขา L293D ที่ไม่ได้ใช้คือ 9, 10 และ 15 ให้ผูกกราวด์ ส่วนขา 11 และ 14 ไม่ต่อ HCT14 ใช้ขา 14 เป็นไฟ 5 โวลต์ ขา 7 เป็นกราวด์ และผูกอินพุตเกตที่ไม่ใช้ไว้กับระดับคงที่ ใช้ C 100 nF ใกล้ขาไฟไอซีและ C 470 µF 25 V ใกล้ภาคมอเตอร์ตามแบบเสนอ ไฟ LED ต่อ 5 โวลต์ผ่าน R 2.2 กิโลโอห์มและ LED เข้าพอร์ตเพื่อให้ติดเมื่อบิตเป็น 0\n\nEN เป็น 0 หมายถึงเอาต์พุตอิมพีแดนซ์สูง ไม่ได้ตัดไฟ 12 โวลต์ออกจากตัวไอซี และไม่ใช่การเบรกทางไฟฟ้า\nอ้างอิง: https://www.ti.com/lit/ds/symlink/l293d.pdf\nhttps://www.ti.com/lit/ds/symlink/sn74hct14.pdf\nhttps://www.pololu.com/product/3041"}
+{"kind":"slide","id":"sl/bzwo5j","slide":8,"title":"การจัดสรรขาและพอร์ต AT89S52","textShapes":8}
+{"kind":"textbox","id":"sh/p0vy1srm","slide":8,"name":"ir-379","text":"การจัดสรรขาและพอร์ต AT89S52","textPreview":"การจัดสรรขาและพอร์ต AT89S52","textChars":27,"textLines":1,"bbox":[80,55,1120,52]}
+{"kind":"textbox","id":"sh/2x4fqdsv","slide":8,"name":"ir-380","text":"ขา DIP-40 แยกอินพุต เอาต์พุต และรหัสสถานะสำหรับตรวจลอจิก","textPreview":"ขา DIP-40 แยกอินพุต เอาต์พุต และรหัสสถานะสำหรับตรวจลอจิก","textChars":56,"textLines":1,"bbox":[80,115,1120,32]}
+{"kind":"shape","id":"sh/3ydgzi9g","slide":8,"name":"ir-381","bbox":[80,164,1120,0.01]}
+{"kind":"textbox","id":"sh/cnmxw7ad","slide":8,"name":"ir-382","text":"07","textPreview":"07","textChars":2,"textLines":1,"bbox":[1156,662,44,25]}
+{"kind":"shape","id":"sh/dovy5cry","slide":8,"name":"ir-383","bbox":[80,188,352,410]}
+{"kind":"textbox","id":"sh/q14fuxs7","slide":8,"name":"ir-384","text":"Port 2 · Inputs","textPreview":"Port 2 · Inputs","textChars":15,"textLines":1,"bbox":[98,202,316,35]}
+{"kind":"shape","id":"sh/r2dg329s","slide":8,"name":"ir-385","bbox":[464,188,352,410]}
+{"kind":"textbox","id":"sh/0r6x07a9","slide":8,"name":"ir-386","text":"Port 1 · Outputs","textPreview":"Port 1 · Outputs","textChars":16,"textLines":1,"bbox":[482,202,316,35]}
+{"kind":"shape","id":"sh/1sfy9cru","slide":8,"name":"ir-387","bbox":[848,188,352,410]}
+{"kind":"textbox","id":"sh/dsje5c7y","slide":8,"name":"ir-388","text":"Port 0 · Debug","textPreview":"Port 0 · Debug","textChars":14,"textLines":1,"bbox":[866,202,316,35]}
+{"kind":"textbox","id":"sh/lwje9c7a","slide":8,"name":"ir-389","text":"000 ถึง 110: สถานะ 0–6\n111: หยุดจาก fault\nPull-up 10 kΩ ทุกบิต","textPreview":"000 ถึง 110: สถานะ 0–6 | 111: หยุดจาก fault | Pull-up 10 kΩ ทุกบิต","textChars":62,"textLines":3,"bbox":[872,430,304,124]}
+{"kind":"textbox","id":"sh/0vad07qp","slide":8,"name":"ir-390","text":"P2 latch = FFH · P2.6 ไม่ใช้ · P1.3 และ P1.7 = 1 · P0 เป็น open-drain","textPreview":"P2 latch = FFH · P2.6 ไม่ใช้ · P1.3 และ P1.7 = 1 · P0 เป็น open-drain","textChars":69,"textLines":1,"bbox":[80,631,1090,27]}
+{"kind":"table","id":"tb/fa14juhc","slide":8,"name":"","rows":8,"cols":2,"preview":"ขา | สัญญาณ","bbox":[96,257,320,296]}
+{"kind":"table","id":"tb/0ba5sfyh","slide":8,"name":"","rows":7,"cols":2,"preview":"ขา | สัญญาณ","bbox":[480,257,320,259]}
+{"kind":"table","id":"tb/1cjmlkz2","slide":8,"name":"","rows":4,"cols":2,"preview":"ขา | บิตสถานะ","bbox":[864,257,320,148]}
+{"kind":"notes","id":"nt/bzwo5j","slide":8,"text":"Port 2 รับอินพุตจากปุ่ม เซนเซอร์ ลิมิต และ E-stop ต้องเขียนค่า latch เป็น FFH เพื่อใช้อ่านอินพุต ปุ่มเปิดภายในใช้ P2.0 ปุ่มเปิดภายนอกใช้ P2.1 โฟโต้เซนเซอร์ใช้ P2.2 และปุ่มปิดใช้ P2.5 ขา 26 ส่วน P2.6 ไม่ใช้ E-stop ใช้ P2.7 และมีลอจิกต่างจากปุ่ม NO คืออ่าน 1 เมื่อกดหรือหน้าสัมผัสเปิด\n\nPort 1 ควบคุมมอเตอร์สามบิตและไฟสามสี ไฟติดเมื่อเอาต์พุตเป็น 0 บิต P1.3 และ P1.7 คงไว้ที่ 1 ส่วน Port 0 ใช้สามบิตแสดงรหัสสถานะ 0 ถึง 6 และรหัส 7 ใช้แสดงการหยุดจาก fault P0 เป็น open-drain จึงต้องมี pull-up 10 กิโลโอห์มแยกทุกบิต ขา P0.0 ถึง P0.2 คือ 39, 38 และ 37 ตามลำดับ\nอ้างอิง: https://ww1.microchip.com/downloads/en/DeviceDoc/doc1919.pdf"}
+{"kind":"slide","id":"sl/q5owj8","slide":9,"title":"ตารางสถานะและค่าเอาต์พุตพอร์ต 1","textShapes":6}
+{"kind":"textbox","id":"sh/wze1cn6t","slide":9,"name":"ir-391","text":"ตารางสถานะและค่าเอาต์พุตพอร์ต 1","textPreview":"ตารางสถานะและค่าเอาต์พุตพอร์ต 1","textChars":31,"textLines":1,"bbox":[80,55,1120,52]}
+{"kind":"textbox","id":"sh/by5kjip8","slide":9,"name":"ir-392","text":"คำนวณค่า Hex จากตำแหน่งบิตจริง โดยไฟสถานะติดเมื่อบิตเป็น 0","textPreview":"คำนวณค่า Hex จากตำแหน่งบิตจริง โดยไฟสถานะติดเมื่อบิตเป็น 0","textChars":58,"textLines":1,"bbox":[80,115,1120,32]}
+{"kind":"shape","id":"sh/axwjadon","slide":9,"name":"ir-393","bbox":[80,164,1120,0.01]}
+{"kind":"textbox","id":"sh/9wn2hs72","slide":9,"name":"ir-394","text":"08","textPreview":"08","textChars":2,"textLines":1,"bbox":[1156,662,44,25]}
+{"kind":"textbox","id":"sh/nu5kfipc","slide":9,"name":"ir-395","text":"ไฟติดเมื่อบิตเป็น 0","textPreview":"ไฟติดเมื่อบิตเป็น 0","textChars":19,"textLines":1,"bbox":[80,593,544,32]}
+{"kind":"textbox","id":"sh/mtcj6dor","slide":9,"name":"ir-396","text":"P1.3 = 1 และ P1.7 = 1 ทุกสถานะ","textPreview":"P1.3 = 1 และ P1.7 = 1 ทุกสถานะ","textChars":30,"textLines":1,"bbox":[656,593,544,32]}
+{"kind":"textbox","id":"sh/ts72tcnm","slide":9,"name":"ir-397","text":"ค่าที่แสดงมาจากการรวมบิตตามผังพอร์ต ไม่ใช่รหัสหมายเลขสถานะ","textPreview":"ค่าที่แสดงมาจากการรวมบิตตามผังพอร์ต ไม่ใช่รหัสหมายเลขสถานะ","textChars":58,"textLines":1,"bbox":[80,631,1090,27]}
+{"kind":"table","id":"tb/t0by58ze","slide":9,"name":"","rows":8,"cols":9,"preview":"State | Shaft | IN1 | IN2 | RUN_N | RED_N | GRN_N | ORG_N | P1 Hex","bbox":[80,218,1120,368]}
+{"kind":"notes","id":"nt/q5owj8","slide":9,"text":"ตารางนี้คำนวณค่าพอร์ตจากตำแหน่งบิตจริง คือ IN1 ที่บิต 0, IN2 ที่บิต 1, RUN_N ที่บิต 2 และไฟแดง เขียว ส้มที่บิต 4, 5, 6 โดยคงบิต 3 และ 7 เป็น 1\n\nตัวอย่าง CLOSED ต้องให้ IN1 และ IN2 เป็น 0, RUN_N เป็น 1 และไฟแดงติด จึงได้ 11101100 ฐานสอง หรือ ECH ส่วน SAFETY_HOLD ตัดแรงขับและติดไฟส้ม จึงได้ BCH ค่าทั้งเจ็ดแถวคือ EC, D9, DC, EA, FC, D9 และ BC ไม่ใช่เลขรหัสสถานะบน Port 0\n\nค่า F3H, E5H, F5H และ D7H ที่ระบุในข้อกำหนดเดิมบางแถวไม่ตรงกับตำแหน่งบิตนี้ จึงต้องแก้เพื่อให้ค่าพอร์ตสอดคล้องกับวงจร เมื่อเกิด fault จะบังคับ P1 เป็น FCH และแสดงรหัส 7 ที่ Port 0\nอ้างอิง: https://ww1.microchip.com/downloads/en/DeviceDoc/doc1919.pdf\nhttps://www.ti.com/lit/ds/symlink/l293d.pdf"}
+{"kind":"slide","id":"sl/7dhlks","slide":10,"title":"เหตุการณ์และเงื่อนไขเปลี่ยนสถานะ","textShapes":4}
+{"kind":"textbox","id":"sh/dsbil872","slide":10,"name":"ir-398","text":"เหตุการณ์และเงื่อนไขเปลี่ยนสถานะ","textPreview":"เหตุการณ์และเงื่อนไขเปลี่ยนสถานะ","textChars":32,"textLines":1,"bbox":[80,55,1120,52]}
+{"kind":"textbox","id":"sh/qpkzadob","slide":10,"name":"ir-399","text":"รับคำสั่งจากการกดใหม่ และตรวจลำแสงก่อนอนุญาตให้ปิด","textPreview":"รับคำสั่งจากการกดใหม่ และตรวจลำแสงก่อนอนุญาตให้ปิด","textChars":50,"textLines":1,"bbox":[80,115,1120,32]}
+{"kind":"shape","id":"sh/bqtgjipw","slide":10,"name":"ir-400","bbox":[80,164,1120,0.01]}
+{"kind":"textbox","id":"sh/0fmhgn6d","slide":10,"name":"ir-401","text":"09","textPreview":"09","textChars":2,"textLines":1,"bbox":[1156,662,44,25]}
+{"kind":"textbox","id":"sh/ytkzedo7","slide":10,"name":"ir-402","text":"ทุกคำสั่งปิดต้องปล่อยปุ่มเปิดทั้งสอง · JB ตรวจบิตเป็น 1 และ JNB ตรวจบิตเป็น 0","textPreview":"ทุกคำสั่งปิดต้องปล่อยปุ่มเปิดทั้งสอง · JB ตรวจบิตเป็น 1 และ JNB ตรวจบิตเป็น 0","textChars":77,"textLines":1,"bbox":[80,613,1090,27]}
+{"kind":"table","id":"tb/8jilczm9","slide":10,"name":"","rows":10,"cols":3,"preview":"ปัจจุบัน | เหตุการณ์และ Guard | ถัดไป","bbox":[80,193,1120,400]}
+{"kind":"notes","id":"nt/7dhlks","slide":10,"text":"OPEN_EVT คือการกดปุ่มเปิดครั้งใหม่จาก PB_IN หรือ PB_OUT ส่วน CLOSE_EVT คือการกด PB_CLOSE ครั้งใหม่ หลังปล่อยปุ่มและผ่านตัวกรอง 20 มิลลิวินาที การสั่งปิดต้องตรวจว่าลำแสงปกติและปุ่มเปิดทั้งสองถูกปล่อย\n\nถ้าคนกดปิดขณะลำแสงขาด ระบบทิ้งคำสั่งนั้น ต้องปล่อยและกดใหม่ ไม่เก็บคำสั่งรอให้สิ่งกีดขวางพ้นแล้วปิดเอง ขณะ CLOSING ให้ตรวจ BEAM_DET ก่อน LC เมื่อพบสิ่งกีดขวาง ให้จำ safety_seen เป็น 1 หากเปิดกลับเพราะคนกดปุ่มเปิด ให้ค่าเป็น 0 แล้วเลือกสถานะปลายทางเมื่อถึง LO ตามตาราง\n\nJB กระโดดเมื่อบิตเป็น 1 ส่วน JNB กระโดดเมื่อบิตเป็น 0 ตารางนี้เป็นลำดับปกติของประตู การตรวจ E-stop และ fault มีลำดับสูงกว่า"}
+{"kind":"slide","id":"sl/us9z77","slide":11,"title":"ข้อกำหนดเวลาและจังหวะกลับทิศมอเตอร์","textShapes":22}
+{"kind":"textbox","id":"sh/pkfe547e","slide":11,"name":"ir-403","text":"ข้อกำหนดเวลาและจังหวะกลับทิศมอเตอร์","textPreview":"ข้อกำหนดเวลาและจังหวะกลับทิศมอเตอร์","textChars":35,"textLines":1,"bbox":[80,55,1120,52]}
+{"kind":"textbox","id":"sh/2xofa983","slide":11,"name":"ir-404","text":"กรองเฉพาะปุ่มกด และตัดแรงขับก่อนเปลี่ยนทิศมอเตอร์","textPreview":"กรองเฉพาะปุ่มกด และตัดแรงขับก่อนเปลี่ยนทิศมอเตอร์","textChars":49,"textLines":1,"bbox":[80,115,1120,32]}
+{"kind":"shape","id":"sh/3yxw3upo","slide":11,"name":"ir-405","bbox":[80,164,1120,0.01]}
+{"kind":"textbox","id":"sh/cnqxgj65","slide":11,"name":"ir-406","text":"10","textPreview":"10","textChars":2,"textLines":1,"bbox":[1156,662,44,25]}
+{"kind":"shape","id":"sh/doze9o7q","slide":11,"name":"ir-407","bbox":[80,188,352,157]}
+{"kind":"shape","id":"sh/ql8fe98z","slide":11,"name":"ir-408","bbox":[100,210,0.01,25]}
+{"kind":"textbox","id":"sh/bmhw7epk","slide":11,"name":"ir-409","text":"20 ms · กรองปุ่ม","textPreview":"20 ms · กรองปุ่ม","textChars":16,"textLines":1,"bbox":[114,202,298,44]}
+{"kind":"textbox","id":"sh/srmx4fql","slide":11,"name":"ir-410","text":"ปล่อยและกดใหม่ให้คงที่\nTimer 0 ที่ 12 MHz","textPreview":"ปล่อยและกดใหม่ให้คงที่ | Timer 0 ที่ 12 MHz","textChars":41,"textLines":2,"bbox":[104,266,304,61]}
+{"kind":"shape","id":"sh/tsvexk76","slide":11,"name":"ir-411","bbox":[464,188,352,157]}
+{"kind":"shape","id":"sh/hcnqtsfq","slide":11,"name":"ir-412","bbox":[484,210,0.01,25]}
+{"kind":"textbox","id":"sh/wbepk7y5","slide":11,"name":"ir-413","text":"200 ms · Coast","textPreview":"200 ms · Coast","textChars":14,"textLines":1,"bbox":[498,202,298,44]}
+{"kind":"textbox","id":"sh/va58r2x0","slide":11,"name":"ir-414","text":"EN = 0 ตลอดช่วงพัก\nไม่ใช่การเบรกทางไฟฟ้า","textPreview":"EN = 0 ตลอดช่วงพัก | ไม่ใช่การเบรกทางไฟฟ้า","textChars":40,"textLines":2,"bbox":[488,266,304,61]}
+{"kind":"shape","id":"sh/u9w7ixgf","slide":11,"name":"ir-415","bbox":[848,188,352,157]}
+{"kind":"shape","id":"sh/5g7qxcf2","slide":11,"name":"ir-416","bbox":[868,210,0.01,25]}
+{"kind":"textbox","id":"sh/4fypo7yh","slide":11,"name":"ir-417","text":"เวลาตอบสนอง","textPreview":"เวลาตอบสนอง","textChars":11,"textLines":1,"bbox":[882,202,298,44]}
+{"kind":"textbox","id":"sh/je58v2xw","slide":11,"name":"ir-418","text":"รวมเซนเซอร์และลูปควบคุม\nวัดเวลาตั้งแต่ตรวจพบถึง EN = 0","textPreview":"รวมเซนเซอร์และลูปควบคุม | วัดเวลาตั้งแต่ตรวจพบถึง EN = 0","textChars":54,"textLines":2,"bbox":[872,266,304,61]}
+{"kind":"shape","id":"sh/idw7mxgb","slide":11,"name":"ir-419","bbox":[80,370,1120,231]}
+{"kind":"shape","id":"sh/tk7q1wfy","slide":11,"name":"ir-420","bbox":[390,398,0.01,178]}
+{"kind":"textbox","id":"sh/sjy9sryd","slide":11,"name":"ir-421","text":"t0","textPreview":"t0","textChars":2,"textLines":1,"bbox":[373,375,43,24]}
+{"kind":"shape","id":"sh/cn6tovmp","slide":11,"name":"ir-422","bbox":[470,398,0.01,178]}
+{"kind":"textbox","id":"sh/dofax0na","slide":11,"name":"ir-423","text":"t1","textPreview":"t1","textChars":2,"textLines":1,"bbox":[453,375,43,24]}
+{"kind":"shape","id":"sh/qlorml4j","slide":11,"name":"ir-424","bbox":[970,398,0.01,178]}
+{"kind":"textbox","id":"sh/bmxsvq54","slide":11,"name":"ir-425","text":"t2","textPreview":"t2","textChars":2,"textLines":1,"bbox":[953,375,43,24]}
+{"kind":"shape","id":"sh/0rqtsvml","slide":11,"name":"ir-426","bbox":[1045,398,0.01,178]}
+{"kind":"textbox","id":"sh/lcza10n6","slide":11,"name":"ir-427","text":"t3","textPreview":"t3","textChars":2,"textLines":1,"bbox":[1028,375,43,24]}
+{"kind":"textbox","id":"sh/ypobq54v","slide":11,"name":"ir-428","text":"BEAM_DET","textPreview":"BEAM_DET","textChars":8,"textLines":1,"bbox":[103,414,200,25]}
+{"kind":"textbox","id":"sh/zqhsza5g","slide":11,"name":"ir-429","text":"RUN_N","textPreview":"RUN_N","textChars":5,"textLines":1,"bbox":[103,464,200,25]}
+{"kind":"textbox","id":"sh/gvm9gbmh","slide":11,"name":"ir-430","text":"IN1 IN2","textPreview":"IN1 IN2","textChars":7,"textLines":1,"bbox":[103,518,200,25]}
+{"kind":"shape","id":"sh/hgvapgn2","slide":11,"name":"route-431","bbox":[302,417,848,21]}
+{"kind":"shape","id":"sh/jalwvepk","slide":11,"name":"route-432","bbox":[302,467,848,21]}
+{"kind":"shape","id":"sh/i9cvm9oz","slide":11,"name":"ir-433","bbox":[302,516,168,31]}
+{"kind":"textbox","id":"sh/5c3exo7q","slide":11,"name":"ir-434","text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[361,519,50,24]}
+{"kind":"shape","id":"sh/kbudoj65","slide":11,"name":"ir-435","bbox":[470,516,500,31]}
+{"kind":"textbox","id":"sh/v61crupo","slide":11,"name":"ir-436","text":"00","textPreview":"00","textChars":2,"textLines":1,"bbox":[695,519,50,24]}
+{"kind":"shape","id":"sh/alsvi9o3","slide":11,"name":"ir-437","bbox":[970,516,180,31]}
+{"kind":"textbox","id":"sh/x8jut47e","slide":11,"name":"ir-438","text":"10","textPreview":"10","textChars":2,"textLines":1,"bbox":[1035,519,50,24]}
+{"kind":"textbox","id":"sh/w7adkz6t","slide":11,"name":"ir-439","text":"ตัดขับก่อนเปลี่ยนค่า IN","textPreview":"ตัดขับก่อนเปลี่ยนค่า IN","textChars":23,"textLines":1,"bbox":[494,552,340,25]}
+{"kind":"textbox","id":"sh/ni1cnupc","slide":11,"name":"ir-440","text":"≥ 200 ms","textPreview":"≥ 200 ms","textChars":8,"textLines":1,"bbox":[647,393,176,25]}
+{"kind":"textbox","id":"sh/mh8vepor","slide":11,"name":"ir-441","text":"ไดอะแกรมแสดงลำดับ ไม่ใช่ผลวัด · เปลี่ยนทิศเป็น 10 ขณะ EN = 0 แล้วจึงเริ่มขับ","textPreview":"ไดอะแกรมแสดงลำดับ ไม่ใช่ผลวัด · เปลี่ยนทิศเป็น 10 ขณะ EN = 0 แล้วจึงเริ่มขับ","textChars":76,"textLines":1,"bbox":[80,631,1090,27]}
+{"kind":"notes","id":"nt/us9z77","slide":11,"text":"ระบบกรองการปล่อยและกดปุ่ม 20 มิลลิวินาที แต่ไม่ใช้การหน่วงแบบเดียวกันกับสัญญาณสิ่งกีดขวาง สำหรับ AT89S52 แบบ 12T ที่คริสตัล 12 MHz หนึ่ง machine cycle เท่ากับ 1 ไมโครวินาที Timer 0 แบบ 16 บิตสามารถโหลด FC18H เพื่อนับ 1,000 cycle แต่ต้องคิดเวลาที่ใช้ใน ISR และการโหลดค่าใหม่ด้วย\n\nกราฟแสดงลำดับควบคุม ไม่ใช่ผลที่วัดจากออสซิลโลสโคป t0 คือการตรวจพบลำแสงขาด t1 คือการตั้ง RUN_N เป็น 1 เพื่อตัด Enable แล้วตั้ง IN1 และ IN2 เป็น 00 หลังพักอย่างน้อย 200 มิลลิวินาทีจึงเตรียมทิศ 10 ที่ t2 โดยยังไม่เปิด Enable จากนั้นเริ่มขับที่ t3\n\nช่วง Coast คือปล่อยให้มอเตอร์ไหลเพื่อลดแรงกระชากก่อนกลับทิศ ไม่ใช่การเบรกและไม่รับประกันว่าเพลาหยุดสนิท เวลาตอบสนองจริงรวมเซนเซอร์ ออปโต อินเวอร์เตอร์ ลูปควบคุม และไดรเวอร์ จึงต้องวัดก่อนระบุตัวเลข\nอ้างอิง: https://ww1.microchip.com/downloads/en/DeviceDoc/doc1919.pdf\nhttps://www.ti.com/lit/ds/symlink/l293d.pdf"}
+{"kind":"slide","id":"sl/h7wv88","slide":12,"title":"SAFETY_HOLD และการกดปิดครั้งใหม่","textShapes":10}
+{"kind":"textbox","id":"sh/ahojut0z","slide":12,"name":"ir-442","text":"SAFETY_HOLD และการกดปิดครั้งใหม่","textPreview":"SAFETY_HOLD และการกดปิดครั้งใหม่","textChars":32,"textLines":1,"bbox":[80,55,1120,52]}
+{"kind":"textbox","id":"sh/xkfi5ojq","slide":12,"name":"ir-443","text":"เปิดค้างจนคนตรวจทางผ่าน ปล่อยปุ่มเดิม แล้วกดปิดอีกครั้ง","textPreview":"เปิดค้างจนคนตรวจทางผ่าน ปล่อยปุ่มเดิม แล้วกดปิดอีกครั้ง","textChars":55,"textLines":1,"bbox":[80,115,1120,32]}
+{"kind":"shape","id":"sh/cj61wji5","slide":12,"name":"ir-444","bbox":[80,164,1120,0.01]}
+{"kind":"textbox","id":"sh/zmx07yhg","slide":12,"name":"ir-445","text":"11","textPreview":"11","textChars":2,"textLines":1,"bbox":[1156,662,44,25]}
+{"kind":"shape","id":"sh/ylojyt0b","slide":12,"name":"ir-446","bbox":[80,208,352,342]}
+{"kind":"shape","id":"sh/lozi98zm","slide":12,"name":"ir-447","bbox":[100,230,0.01,25]}
+{"kind":"textbox","id":"sh/kn6103i1","slide":12,"name":"ir-448","text":"01  หยุดค้างและเตือน","textPreview":"01  หยุดค้างและเตือน","textChars":20,"textLines":1,"bbox":[114,222,298,44]}
+{"kind":"textbox","id":"sh/fqd0vu1c","slide":12,"name":"ir-449","text":"SAFETY_HOLD\nเพลา STOP · ไฟส้มติด\n\nทิ้งคำสั่งปิดก่อนหน้า\nยังไม่พร้อมรับปุ่มที่กดค้าง","textPreview":"SAFETY_HOLD | เพลา STOP · ไฟส้มติด |  | ทิ้งคำสั่งปิดก่อนหน้า | ยังไม่พร้อมรับปุ่มที่กดค้าง","textChars":83,"textLines":5,"bbox":[104,286,304,246]}
+{"kind":"shape","id":"sh/epkzm90r","slide":12,"name":"ir-450","bbox":[464,208,352,342]}
+{"kind":"shape","id":"sh/sf65kzy1","slide":12,"name":"ir-451","bbox":[484,230,0.01,25]}
+{"kind":"textbox","id":"sh/tgfmt4fm","slide":12,"name":"ir-452","text":"02  ปล่อยปุ่มเดิม","textPreview":"02  ปล่อยปุ่มเดิม","textChars":17,"textLines":1,"bbox":[498,222,298,44]}
+{"kind":"textbox","id":"sh/6d4ni9gb","slide":12,"name":"ir-453","text":"PB_CLOSE = 1\nคงที่อย่างน้อย 20 ms\n\nจึงพร้อมรับการกดครั้งใหม่\nหลังเข้าสู่สถานะเปิดค้าง","textPreview":"PB_CLOSE = 1 | คงที่อย่างน้อย 20 ms |  | จึงพร้อมรับการกดครั้งใหม่ | หลังเข้าสู่สถานะเปิดค้าง","textChars":85,"textLines":5,"bbox":[488,286,304,246]}
+{"kind":"shape","id":"sh/7ex4rexg","slide":12,"name":"ir-454","bbox":[848,208,352,342]}
+{"kind":"shape","id":"sh/gj65ojyd","slide":12,"name":"ir-455","bbox":[868,230,0.01,25]}
+{"kind":"textbox","id":"sh/hkfmxofy","slide":12,"name":"ir-456","text":"03  ตรวจแล้วกดปิดใหม่","textPreview":"03  ตรวจแล้วกดปิดใหม่","textChars":21,"textLines":1,"bbox":[882,222,298,44]}
+{"kind":"textbox","id":"sh/uhonm9g7","slide":12,"name":"ir-457","text":"BEAM_DET = 1\nPB_CLOSE กดใหม่เป็น 0\n\nกรองการกด 20 ms\nจึงเข้าสู่ CLOSING","textPreview":"BEAM_DET = 1 | PB_CLOSE กดใหม่เป็น 0 |  | กรองการกด 20 ms | จึงเข้าสู่ CLOSING","textChars":70,"textLines":5,"bbox":[872,286,304,246]}
+{"kind":"textbox","id":"sh/fix4vexs","slide":12,"name":"ir-458","text":"ลำแสงกลับมาปกติอย่างเดียว ประตูยังคงเปิดค้าง","textPreview":"ลำแสงกลับมาปกติอย่างเดียว ประตูยังคงเปิดค้าง","textChars":44,"textLines":1,"bbox":[80,579,1120,40]}
+{"kind":"notes","id":"nt/h7wv88","slide":12,"text":"เมื่อประตูเปิดกลับถึง LO หลังพบสิ่งกีดขวาง ระบบเข้า SAFETY_HOLD ตัดแรงขับ ติดไฟส้มค้าง และล้างสิทธิ์ของคำสั่งปิดก่อนหน้า หากปุ่มปิดถูกกดค้างมาก่อน ระบบจะไม่ยอมรับเป็นคำสั่งใหม่\n\nต้องตรวจพบ PB_CLOSE เป็น 1 ต่อเนื่องอย่างน้อย 20 มิลลิวินาที โดยเริ่มนับหลังเข้าถึงสถานะเปิดค้าง จึงพร้อมรับการกดครั้งถัดไป คนตรวจช่องทางผ่านให้ว่าง แล้วกดใหม่จนอ่านเป็น 0 คงที่ 20 มิลลิวินาที พร้อมกับ BEAM_DET เป็น 1 และปุ่มเปิดถูกปล่อย ประตูจึงเริ่มปิด\n\nถ้ากดขณะลำแสงขาด ให้ทิ้งคำสั่งและรอปล่อยใหม่ ลำแสงกลับมาปกติเพียงอย่างเดียวไม่ใช่คำสั่งปิด"}
+{"kind":"slide","id":"sl/rf7432","slide":13,"title":"แอสเซมบลี 8051 สำหรับตัดแรงขับ","textShapes":9}
+{"kind":"textbox","id":"sh/ojupk7yp","slide":13,"name":"ir-459","text":"แอสเซมบลี 8051 สำหรับตัดแรงขับ","textPreview":"แอสเซมบลี 8051 สำหรับตัดแรงขับ","textChars":30,"textLines":1,"bbox":[80,55,1120,52]}
+{"kind":"textbox","id":"sh/nil8r2x4","slide":13,"name":"ir-460","text":"ตรวจ P2.2 แล้วตัด Enable ก่อนเข้าสู่ช่วง Coast","textPreview":"ตรวจ P2.2 แล้วตัด Enable ก่อนเข้าสู่ช่วง Coast","textChars":46,"textLines":1,"bbox":[80,115,1120,32]}
+{"kind":"shape","id":"sh/mxc7ixgj","slide":13,"name":"ir-461","bbox":[80,164,1120,0.01]}
+{"kind":"textbox","id":"sh/xonqxcf6","slide":13,"name":"ir-462","text":"12","textPreview":"12","textChars":2,"textLines":1,"bbox":[1156,662,44,25]}
+{"kind":"shape","id":"sh/wne9o7yl","slide":13,"name":"ir-463","bbox":[80,188,402,414]}
+{"kind":"textbox","id":"sh/bm58v2xg","slide":13,"name":"ir-464","text":"พบลำแสงขาดขณะปิด","textPreview":"พบลำแสงขาดขณะปิด","textChars":16,"textLines":1,"bbox":[104,210,354,40]}
+{"kind":"textbox","id":"sh/alw7mxgv","slide":13,"name":"ir-465","text":"1  ตัด Enable ก่อน\n2  ตั้งเอาต์พุต Coast\n3  จำเหตุการณ์ที่เกิดขึ้น\n4  เริ่มจับเวลาแล้วกลับ MAIN","textPreview":"1  ตัด Enable ก่อน | 2  ตั้งเอาต์พุต Coast | 3  จำเหตุการณ์ที่เกิดขึ้น | 4  เริ่มจับเวลาแล้วกลับ MAIN","textChars":95,"textLines":4,"bbox":[104,278,354,156]}
+{"kind":"textbox","id":"sh/ls7q1wfi","slide":13,"name":"ir-466","text":"REV_WAIT  P1 = FCH\nREOPENING P1 = D9H","textPreview":"REV_WAIT  P1 = FCH | REOPENING P1 = D9H","textChars":37,"textLines":2,"bbox":[104,478,354,70]}
+{"kind":"shape","id":"sh/kre9sryx","slide":13,"name":"ir-467","bbox":[514,188,686,414]}
+{"kind":"textbox","id":"sh/2pcval03","slide":13,"name":"ir-468","text":"ClosingLoop:\n    JB    P2.2, CheckCloseLimit\n    SETB  P1.2\n    MOV   P1, #0FCH\n    SETB  SAFETY_SEEN\n    LCALL ENTER_REV_WAIT\n    LJMP  MAIN\n\nCheckCloseLimit:\n    LCALL CHECK_OPEN_EVENT\n    JC    Enter_Manual_Reopen\n    JNB   P2.4, Enter_Closed\n    LJMP  MAIN","textPreview":"ClosingLoop: |     JB    P2.2, CheckCloseLimit |     SETB  P1.2 |     MOV   P1, #0FCH |     SETB  SAFETY_SEEN |     LCALL ENTER_REV_WAIT ...","textChars":260,"textLines":13,"bbox":[542,210,630,325]}
+{"kind":"textbox","id":"sh/nq5wjq1o","slide":13,"name":"ir-469","text":"ENTER_REV_WAIT เริ่มนับ 200 ms แล้วคืนทันที","textPreview":"ENTER_REV_WAIT เริ่มนับ 200 ms แล้วคืนทันที","textChars":43,"textLines":1,"bbox":[542,551,630,30]}
+{"kind":"textbox","id":"sh/oredcvi9","slide":13,"name":"ir-470","text":"MAIN ตรวจ E-stop ก่อน · ส่วนนี้ตรวจลำแสงก่อนเหตุเปิด · ตัวอย่างไม่ใช่เฟิร์มแวร์ครบชุด","textPreview":"MAIN ตรวจ E-stop ก่อน · ส่วนนี้ตรวจลำแสงก่อนเหตุเปิด · ตัวอย่างไม่ใช่เฟิร์มแวร์ครบชุด","textChars":85,"textLines":1,"bbox":[80,631,1090,27]}
+{"kind":"notes","id":"nt/rf7432","slide":13,"text":"ตัวอย่างนี้เป็นส่วนของตัวจัดการสถานะ CLOSING เมื่อ P2.2 เป็น 0 ให้ SETB P1.2 ก่อนเพื่อสั่งตัด Enable จากนั้นเขียน P1 เป็น FCH ตั้ง SAFETY_SEEN และเรียก ENTER_REV_WAIT เพื่อเริ่มจับเวลาแล้วกลับ MAIN ทันที วิธีนี้ทำให้ลูปหลักยังตรวจ E-stop และความผิดปกติได้ระหว่าง Coast\n\nเมื่อครบอย่างน้อย 200 มิลลิวินาที ตัวจัดการ REV_WAIT จะเตรียมทิศเปิดโดยเขียน P1 เป็น DDH ซึ่งยังคง RUN_N เป็น 1 จากนั้น CLR P1.2 ให้ได้ D9H แล้วเข้าสู่ REOPENING จน LO ทำงาน โค้ดในสไลด์แสดงเฉพาะส่วนสำคัญ ไม่ใช่เฟิร์มแวร์ครบชุดหรือหลักฐานว่าผ่านการประกอบโปรแกรมแล้ว\n\nMAIN ต้องตรวจ E-stop ก่อน ส่วนใน CLOSING ให้ตรวจลำแสงก่อนคำสั่งเปิดและลิมิตปิดตามลำดับ\nอ้างอิงชุดคำสั่งและพอร์ต: https://ww1.microchip.com/downloads/en/DeviceDoc/doc1919.pdf"}
+{"kind":"slide","id":"sl/ynd8og","slide":14,"title":"ผลตรวจลอจิกและแผนทดสอบบนชุดจริง","textShapes":8}
+{"kind":"textbox","id":"sh/5kzix4je","slide":14,"name":"ir-471","text":"ผลตรวจลอจิกและแผนทดสอบบนชุดจริง","textPreview":"ผลตรวจลอจิกและแผนทดสอบบนชุดจริง","textChars":31,"textLines":1,"bbox":[80,55,1120,52]}
+{"kind":"textbox","id":"sh/ih8zm9k3","slide":14,"name":"ir-472","text":"แยกผลที่ได้จากแบบจำลองออกจากการวัดวงจรและกลไกจริง","textPreview":"แยกผลที่ได้จากแบบจำลองออกจากการวัดวงจรและกลไกจริง","textChars":49,"textLines":1,"bbox":[80,115,1120,32]}
+{"kind":"shape","id":"sh/3ih0vu18","slide":14,"name":"ir-473","bbox":[80,164,1120,0.01]}
+{"kind":"textbox","id":"sh/wfqhkz2x","slide":14,"name":"ir-474","text":"13","textPreview":"13","textChars":2,"textLines":1,"bbox":[1156,662,44,25]}
+{"kind":"shape","id":"sh/hgzit4ji","slide":14,"name":"ir-475","bbox":[80,188,544,414]}
+{"kind":"shape","id":"sh/utozipkr","slide":14,"name":"ir-476","bbox":[100,210,0.01,25]}
+{"kind":"textbox","id":"sh/vex0ru1c","slide":14,"name":"ir-477","text":"ผลจากแบบจำลอง FSM","textPreview":"ผลจากแบบจำลอง FSM","textChars":17,"textLines":1,"bbox":[114,202,490,44]}
+{"kind":"textbox","id":"sh/0ba1wj21","slide":14,"name":"ir-478","text":"21 จาก 21 กรณีผ่าน","textPreview":"21 จาก 21 กรณีผ่าน","textChars":18,"textLines":1,"bbox":[104,273,496,54]}
+{"kind":"textbox","id":"sh/1cji5ojm","slide":14,"name":"ir-479","text":"Python · ก้าวเวลาครั้งละ 1 ms\nตรวจพอร์ต เหตุการณ์ และการค้างเปิด\n\nยังไม่ใช่ผล EdSim51 ของเฟิร์มแวร์ชุดนี้\nยังไม่ใช่ผลวัดวงจรหรือระยะหยุด","textPreview":"Python · ก้าวเวลาครั้งละ 1 ms | ตรวจพอร์ต เหตุการณ์ และการค้างเปิด |  | ยังไม่ใช่ผล EdSim51 ของเฟิร์มแวร์ชุดนี้ | ยังไม่ใช่ผลวัดวงจรหรือร...","textChars":136,"textLines":5,"bbox":[104,351,496,169]}
+{"kind":"shape","id":"sh/l4n29cbm","slide":14,"name":"ir-480","bbox":[656,188,544,414]}
+{"kind":"shape","id":"sh/k3e107u1","slide":14,"name":"ir-481","bbox":[676,210,0.01,25]}
+{"kind":"textbox","id":"sh/z25k72tg","slide":14,"name":"ir-482","text":"การทดสอบบนโต๊ะทดลอง","textPreview":"การทดสอบบนโต๊ะทดลอง","textChars":19,"textLines":1,"bbox":[690,202,490,44]}
+{"kind":"textbox","id":"sh/x0ni5sbq","slide":14,"name":"ir-483","text":"ขั้นต่อไป: ทดสอบเฟิร์มแวร์ใน EdSim51 แล้ววัดชุดจริงด้วยวัตถุจำลอง","textPreview":"ขั้นต่อไป: ทดสอบเฟิร์มแวร์ใน EdSim51 แล้ววัดชุดจริงด้วยวัตถุจำลอง","textChars":65,"textLines":1,"bbox":[80,631,1090,27]}
+{"kind":"table","id":"tb/143e1w36","slide":14,"name":"","rows":6,"cols":2,"preview":"สิ่งที่ตรวจ | วิธีวัด","bbox":[680,270,496,264]}
+{"kind":"notes","id":"nt/ynd8og","slide":14,"text":"ผลที่ตรวจสอบแล้วในชุดนี้มาจากการรันแบบจำลอง FSM ด้วย Python จำนวน 21 กรณี ผ่านทั้งหมด แบบจำลองก้าวเวลาครั้งละ 1 มิลลิวินาที ตรวจค่าพอร์ต การเปิดปิด ช่วง Coast การจำเหตุสิ่งกีดขวาง การกดปุ่มค้าง การไม่ปิดอัตโนมัติ และการหยุดจาก fault\n\nผลนี้ยังไม่ใช่การจำลองคำสั่งเฟิร์มแวร์ใน EdSim51 และยังไม่ใช่ผลวัดวงจรจริง จึงแยกออกจากรายการทดสอบบนโต๊ะทดลองด้านขวา ขั้นถัดไปคือทำเฟิร์มแวร์ครบชุด ทดสอบใน EdSim51 แล้ววัดเวลาจาก BEAM_DET ถึง RUN_N และ EN รวมถึงระยะไหล กระแสกลับทิศ และความร้อน\n\nการทดสอบด้านความปลอดภัยต้องใช้วัตถุจำลองและจำกัดกระแสแหล่งจ่าย ไม่ใช้เด็กหรือสัตว์ทดลองการหนีบ"}
+{"kind":"slide","id":"sl/qzu0wj","slide":15,"title":"ขอบเขตการตรวจจับและความปลอดภัย","textShapes":10}
+{"kind":"textbox","id":"sh/zepojqt0","slide":15,"name":"ir-484","text":"ขอบเขตการตรวจจับและความปลอดภัย","textPreview":"ขอบเขตการตรวจจับและความปลอดภัย","textChars":30,"textLines":1,"bbox":[80,55,1120,52]}
+{"kind":"textbox","id":"sh/0fypsval","slide":15,"name":"ir-485","text":"การตรวจจับขึ้นกับแนวลำแสงและตำแหน่งติดตั้งเซนเซอร์","textPreview":"การตรวจจับขึ้นกับแนวลำแสงและตำแหน่งติดตั้งเซนเซอร์","textChars":50,"textLines":1,"bbox":[80,115,1120,32]}
+{"kind":"shape","id":"sh/1g76l0bq","slide":15,"name":"ir-486","bbox":[80,164,1120,0.01]}
+{"kind":"textbox","id":"sh/qpw7mls3","slide":15,"name":"ir-487","text":"14","textPreview":"14","textChars":2,"textLines":1,"bbox":[1156,662,44,25]}
+{"kind":"shape","id":"sh/rq5of6to","slide":15,"name":"ir-488","bbox":[80,188,352,343]}
+{"kind":"shape","id":"sh/crypoba9","slide":15,"name":"ir-489","bbox":[100,210,0.01,25]}
+{"kind":"textbox","id":"sh/ds76hgbu","slide":15,"name":"ir-490","text":"ตรวจได้ตามแนวแสง","textPreview":"ตรวจได้ตามแนวแสง","textChars":16,"textLines":1,"bbox":[114,202,298,44]}
+{"kind":"textbox","id":"sh/2lwni1s7","slide":15,"name":"ir-491","text":"วัตถุทึบที่บังลำแสง\nไม่ต้องสวมแท็กหรือปลอกคอ\n\nติดตั้งให้เหมาะกับระดับขา\nและตรวจจุดอับในช่องประตู","textPreview":"วัตถุทึบที่บังลำแสง | ไม่ต้องสวมแท็กหรือปลอกคอ |  | ติดตั้งให้เหมาะกับระดับขา | และตรวจจุดอับในช่องประตู","textChars":96,"textLines":5,"bbox":[104,266,304,247]}
+{"kind":"shape","id":"sh/3m5ob6ts","slide":15,"name":"ir-492","bbox":[464,188,352,343]}
+{"kind":"shape","id":"sh/r2xojalo","slide":15,"name":"ir-493","bbox":[484,210,0.01,25]}
+{"kind":"textbox","id":"sh/q1o7q54j","slide":15,"name":"ir-494","text":"ข้อจำกัดของโฟโต้เซนเซอร์","textPreview":"ข้อจำกัดของโฟโต้เซนเซอร์","textChars":24,"textLines":1,"bbox":[498,202,298,44]}
+{"kind":"textbox","id":"sh/dof6lk3u","slide":15,"name":"ir-495","text":"ลำแสงเดียวไม่ครอบคลุมทุกจุด\nต้องจัดแนวหัวส่งและหัวรับ\n\nวัตถุใสหรือเงาต้องเลือก\nเซนเซอร์ให้เหมาะและทดสอบ","textPreview":"ลำแสงเดียวไม่ครอบคลุมทุกจุด | ต้องจัดแนวหัวส่งและหัวรับ |  | วัตถุใสหรือเงาต้องเลือก | เซนเซอร์ให้เหมาะและทดสอบ","textChars":103,"textLines":5,"bbox":[488,266,304,247]}
+{"kind":"shape","id":"sh/cn6psfm9","slide":15,"name":"ir-496","bbox":[848,188,352,343]}
+{"kind":"shape","id":"sh/zqh8nul0","slide":15,"name":"ir-497","bbox":[868,210,0.01,25]}
+{"kind":"textbox","id":"sh/epo7up4f","slide":15,"name":"ir-498","text":"การหยุดเมื่อระบบผิดปกติ","textPreview":"การหยุดเมื่อระบบผิดปกติ","textChars":23,"textLines":1,"bbox":[882,202,298,44]}
+{"kind":"textbox","id":"sh/1szqp436","slide":15,"name":"ir-499","text":"สาย NPN ขาดหรือไฟเซนเซอร์หาย\nให้ BEAM_DET = 0\nยังไม่ตรวจสัญญาณค้างทุกแบบ\n\nชุดสาธิตระยะวิ่ง 200 mm\nไม่แทนระบบประตูนิรภัย\nที่ผ่านการรับรอง SIL","textPreview":"สาย NPN ขาดหรือไฟเซนเซอร์หาย | ให้ BEAM_DET = 0 | ยังไม่ตรวจสัญญาณค้างทุกแบบ |  | ชุดสาธิตระยะวิ่ง 200 mm | ไม่แทนระบบประตูนิรภัย | ที่ผ่...","textChars":140,"textLines":7,"bbox":[872,266,304,247]}
+{"kind":"textbox","id":"sh/0rqpwzml","slide":15,"name":"ir-500","text":"ตรวจทางผ่านให้ปลอดภัย แล้วจึงกดปิดเอง","textPreview":"ตรวจทางผ่านให้ปลอดภัย แล้วจึงกดปิดเอง","textChars":37,"textLines":1,"bbox":[80,571,1120,46]}
+{"kind":"notes","id":"nt/qzu0wj","slide":15,"text":"โฟโต้เซนเซอร์ Through-Beam ตรวจวัตถุทึบที่ตัดแนวลำแสง จึงไม่ต้องสวมแท็กหรือปลอกคอ แต่ลำแสงเดียวไม่ได้ครอบคลุมพื้นที่ทั้งหมดของช่องประตู ต้องจัดแนวหัวส่งกับหัวรับ เลือกระดับติดตั้ง และตรวจจุดอับด้วยวัตถุจำลอง วัตถุใสหรือผิวเงาต้องเลือกเซนเซอร์ที่เหมาะและทดสอบ ไม่ใช่เปลี่ยนโหมดสะท้อนแสงทั่วไปแล้วรับประกันได้ทันที\n\nวงจร Light-ON ที่เสนอทำให้สาย NPN ฝั่งเซนเซอร์ขาดหรือไฟเซนเซอร์หายถูกตีความเป็น BEAM_DET = 0 แต่ไม่ครอบคลุมสายฝั่งลอจิกขาด เอาต์พุตค้าง หรือความขัดข้องทุกแบบ ระบบไม่มีวงจรตรวจสอบซ้ำซ้อนหรือเอาต์พุตนิรภัยที่ผ่านการรับรอง\n\nชุดนี้จึงเป็นต้นแบบเพื่อการศึกษาระยะวิ่ง 200 มิลลิเมตร การนำไปใช้กับประตูบ้านจริงต้องออกแบบและทดสอบความปลอดภัยเพิ่มเติม หลักการใช้งานยังคงให้คนตรวจทางผ่านก่อนกดปิดทุกครั้ง\nอ้างอิง: https://www.ia.omron.com/support/guide/43/introduction.html\nhttps://www.ia.omron.com/data_pdf/cat/e3z_ds_e_18_8_csm438.pdf?id=407"}

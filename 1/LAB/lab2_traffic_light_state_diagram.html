@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab 2: State Machine Diagram - Traffic Light with AI Camera</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #0b0f19;
+      --bg-card: rgba(22, 30, 49, 0.75);
+      --border-card: rgba(255, 255, 255, 0.08);
+      --primary: #38bdf8;
+      --primary-glow: rgba(56, 189, 248, 0.35);
+      --success: #22c55e;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --font-body: 'Sarabun', 'Inter', sans-serif;
+      --font-heading: 'Chakra Petch', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.12) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(34, 197, 94, 0.08) 0px, transparent 50%);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      padding: 24px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    header {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-card);
+      border-radius: 20px;
+      padding: 28px 36px;
+      margin-bottom: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    .header-title h1 {
+      font-family: var(--font-heading);
+      font-size: 26px;
+      color: #38bdf8;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .header-title p {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-top: 4px;
+    }
+
+    .student-badge {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(99, 102, 241, 0.15));
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 12px 20px;
+      border-radius: 14px;
+      text-align: right;
+    }
+
+    .student-badge .name {
+      font-weight: 600;
+      color: #ffffff;
+      font-size: 16px;
+    }
+
+    .student-badge .id {
+      color: #38bdf8;
+      font-family: monospace;
+      font-size: 15px;
+      letter-spacing: 1px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-card);
+      border-radius: 20px;
+      padding: 28px;
+      margin-bottom: 28px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .card-title {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      color: #ffffff;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid var(--border-card);
+      padding-bottom: 12px;
+    }
+
+    .prompt-box {
+      background: rgba(56, 189, 248, 0.08);
+      border-left: 4px solid #38bdf8;
+      padding: 16px 20px;
+      border-radius: 8px;
+      margin-bottom: 24px;
+      font-size: 15px;
+      color: #e2e8f0;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border-card);
+      padding-bottom: 12px;
+    }
+
+    .tab-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-card);
+      color: var(--text-muted);
+      padding: 10px 20px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn.active {
+      background: var(--primary);
+      color: #04101e;
+      border-color: var(--primary);
+      box-shadow: 0 0 15px var(--primary-glow);
+    }
+
+    /* Simulation Layout */
+    .sim-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    @media (max-width: 992px) {
+      .sim-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .diagram-view {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .diagram-view img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .diagram-view img:hover {
+      transform: scale(1.01);
+    }
+
+    /* Interactive Simulation Box */
+    .sim-box {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid var(--border-card);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .sim-status {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 12px 18px;
+      border-radius: 12px;
+    }
+
+    .status-badge {
+      font-family: var(--font-heading);
+      font-size: 17px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 8px;
+      background: #0284c7;
+      color: #ffffff;
+    }
+
+    .lights-panel {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 20px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* Traffic Lights Styling */
+    .traffic-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .unit-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .car-light-box {
+      background: #11141a;
+      padding: 10px;
+      border-radius: 20px;
+      border: 2px solid #2d3748;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    }
+
+    .ped-light-box {
+      background: #11141a;
+      padding: 10px;
+      border-radius: 16px;
+      border: 2px solid #2d3748;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    }
+
+    .lamp {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #1c2433;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .lamp.red.on {
+      background: #ef4444;
+      box-shadow: 0 0 24px #ef4444;
+    }
+
+    .lamp.yellow.on {
+      background: #f59e0b;
+      box-shadow: 0 0 24px #f59e0b;
+    }
+
+    .lamp.green.on {
+      background: #22c55e;
+      box-shadow: 0 0 24px #22c55e;
+    }
+
+    .ped-lamp svg {
+      width: 24px;
+      height: 24px;
+      fill: #475569;
+      transition: fill 0.3s;
+    }
+
+    .lamp.red.on svg {
+      fill: #ffffff;
+    }
+
+    .lamp.green.on svg {
+      fill: #ffffff;
+    }
+
+    /* Push button */
+    .button-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hardware-btn {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      background: #334155;
+      border: 3px solid #64748b;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #ffffff;
+      font-family: var(--font-heading);
+      font-size: 11px;
+      font-weight: 700;
+      transition: all 0.2s;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    .hardware-btn .btn-lamp {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #0284c7;
+      margin-bottom: 4px;
+      transition: all 0.3s;
+    }
+
+    .hardware-btn.active .btn-lamp {
+      background: #ef4444;
+      box-shadow: 0 0 14px #ef4444;
+    }
+
+    .hardware-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .hardware-btn:active {
+      transform: translateY(1px);
+    }
+
+    /* AI Camera Control Card */
+    .ai-card {
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .ai-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-heading);
+      font-size: 15px;
+      color: #38bdf8;
+      margin-bottom: 8px;
+    }
+
+    .ai-status-text {
+      font-size: 13.5px;
+      color: #cbd5e1;
+      margin-bottom: 12px;
+    }
+
+    .action-btn {
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      border: none;
+      color: #ffffff;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .action-btn:hover {
+      box-shadow: 0 0 16px rgba(37, 99, 235, 0.5);
+      transform: translateY(-1px);
+    }
+
+    .action-btn:disabled {
+      background: #475569;
+      cursor: not-allowed;
+      box-shadow: none;
+      transform: none;
+      opacity: 0.6;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 14px;
+      font-size: 14px;
+    }
+
+    th, td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-card);
+    }
+
+    th {
+      background: rgba(255, 255, 255, 0.03);
+      color: #38bdf8;
+      font-family: var(--font-heading);
+      font-weight: 600;
+    }
+
+    tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .badge-red {
+      color: #ef4444;
+      font-weight: 600;
+    }
+
+    .badge-green {
+      color: #22c55e;
+      font-weight: 600;
+    }
+
+    .badge-yellow {
+      color: #f59e0b;
+      font-weight: 600;
+    }
+
+    .actions-bar {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-download {
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid #38bdf8;
+      color: #38bdf8;
+      padding: 10px 18px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .btn-download:hover {
+      background: #38bdf8;
+      color: #0b0f19;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="header-title">
+        <h1>ปฏิบัติการที่ 2 (Lab 2): State Machine Diagram</h1>
+        <p>Traffic Light with AI Camera (ระบบสัญญาณไฟจราจรข้ามถนนอัจฉริยะ)</p>
+      </div>
+      <div class="student-badge">
+        <div class="name">นายธีรภัทร ภู่ระย้า 66362416 กลุ่ม 1 ลำดับ 4</div>
+      </div>
+    </header>
+
+    <!-- Question Box -->
+    <div class="prompt-box">
+      <strong>📌 โจทย์ที่อาจารย์มอบหมาย (Ajarn Sangchai Monkornthong):</strong><br>
+      "จงวาด State Diagram ของ traffics light กรณี ให้สัญญาณไฟแดง รถและคนไฟแดง ขณะ รอรถหยุด เมื่อ รถหยุดแล้วกล้องจะส่งสัญญาณ เพื่อให้เปิดไฟเขียว สำหรับ คนข้าม"
+    </div>
+
+    <!-- Main Card -->
+    <div class="card">
+      <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('tab4')">ไดอะแกรม 4 สถานะ (ตามโครงสร้าง Slide 10)</button>
+        <button class="tab-btn" onclick="switchTab('tab5')">ไดอะแกรม 5 สถานะ (Full Architecture มีไฟเหลืองเตือน)</button>
+      </div>
+
+      <!-- Tab 4 Content -->
+      <div id="tab4-content" class="tab-pane">
+        <div class="sim-grid">
+          <div class="diagram-view">
+            <img src="./lab2_traffic_light_state_diagram.png" alt="State Diagram 4-State Model" title="คลิกเพื่อดูรูปขนาดเต็ม" onclick="window.open(this.src)">
+          </div>
+
+          <!-- Interactive Simulator -->
+          <div class="sim-box">
+            <div class="sim-status">
+              <div>
+                <div style="font-size: 12px; color: var(--text-muted);">Current State (สถานะปัจจุบัน)</div>
+                <div class="status-badge" id="current-state-display">Ready State</div>
+              </div>
+              <div id="timer-display" style="font-family: monospace; font-size: 16px; color: #f59e0b;">Timer: --</div>
+            </div>
+
+            <!-- Lights Display -->
+            <div class="lights-panel">
+              <!-- Pedestrian Light -->
+              <div class="traffic-unit">
+                <div class="unit-title">ไฟคนข้าม</div>
+                <div class="ped-light-box">
+                  <div class="lamp red on" id="ped-red">
+                    <svg viewBox="0 0 24 24"><path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm2.5 7h-5c-.8 0-1.5.7-1.5 1.5v6.5h2v6h4v-6h2v-6.5c0-.8-.7-1.5-1.5-1.5z"/></svg>
+                  </div>
+                  <div class="lamp green" id="ped-green">
+                    <svg viewBox="0 0 24 24"><path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9L7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3c1.3 1.5 3.3 2.5 5.5 2.5v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7z"/></svg>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Push Button -->
+              <div class="button-unit">
+                <div class="unit-title">ปุ่มกดข้าม</div>
+                <button class="hardware-btn" id="hw-button" onclick="userPressButton()">
+                  <div class="btn-lamp"></div>
+                  PUSH
+                </button>
+              </div>
+
+              <!-- Car Light -->
+              <div class="traffic-unit">
+                <div class="unit-title">ไฟสัญญาณรถ</div>
+                <div class="car-light-box">
+                  <div class="lamp red" id="car-red"></div>
+                  <div class="lamp yellow" id="car-yellow"></div>
+                  <div class="lamp green on" id="car-green"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- AI Camera Box -->
+            <div class="ai-card">
+              <div class="ai-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                AI Camera Simulation (กล้องตรวจจับยานพาหนะ)
+              </div>
+              <div class="ai-status-text" id="ai-status-text">
+                สถานะ: พร้อมตรวจจับ (รอคนกดปุ่ม)
+              </div>
+              <button class="action-btn" id="btn-camera-trigger" disabled onclick="triggerCameraStopSignal()">
+                ส่งสัญญาณ Stop จากกล้อง AI (รถหยุดสนิทแล้ว)
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="actions-bar">
+          <a href="./lab2_traffic_light_state_diagram.png" download="Theerapat_66362416_Lab2_StateDiagram.png" class="btn-download">
+            📥 ดาวน์โหลดรูปภาพไดอะแกรม (Primary Submission PNG)
+          </a>
+        </div>
+      </div>
+
+      <!-- Tab 5 Content -->
+      <div id="tab5-content" class="tab-pane" style="display: none;">
+        <div class="sim-grid">
+          <div class="diagram-view">
+            <img src="./lab2_traffic_light_state_diagram_5states.png" alt="State Diagram 5-State Model" title="คลิกเพื่อดูรูปขนาดเต็ม" onclick="window.open(this.src)">
+          </div>
+          <div>
+            <h3 style="color: #38bdf8; margin-bottom: 12px; font-family: var(--font-heading);">จุดเด่นของโมเดล 5 สถานะ (Enhanced 5-State Model)</h3>
+            <p style="color: var(--text-muted); font-size: 14.5px; margin-bottom: 16px;">
+              ในชีวิตจริง รถวิ่งด้วยความเร็วสูง ไม่สามารถเปลี่ยนจากไฟเขียวเป็นไฟแดงทันทีได้ ระบบจึงมี <strong>Prepare State (ไฟเหลือง)</strong> เตือนให้รถชะลอความเร็วก่อน จากนั้นจึงเปลี่ยนเข้าสู่ <strong>Wait Stop State (ไฟแดงคู่ รถแดง + คนแดง)</strong> เพื่อให้กล้อง AI ตรวจจับจนแน่ใจว่ารถหยุดสนิทจริง ๆ แล้วจึงปล่อยคนเดินข้ามถนน (Go State)
+            </p>
+            <div class="actions-bar">
+              <a href="./lab2_traffic_light_state_diagram_5states.png" download="Theerapat_66362416_Lab2_5States_Enhanced.png" class="btn-download">
+                📥 ดาวน์โหลดรูปภาพไดอะแกรม 5 สถานะ (PNG)
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 Steps Documentation according to Professor's Rubric -->
+    <div class="card">
+      <div class="card-title">
+        <span>📋 รายละเอียดเชิงวิชาการตามเกณฑ์ 5 ขั้นตอนของอาจารย์ (Grading Rubric)</span>
+      </div>
+
+      <!-- 1 & 2. Define State & Describe State -->
+      <h3 style="color: #38bdf8; margin: 18px 0 10px; font-family: var(--font-heading);">1. Define State & 2. Describe State (การกำหนดและอธิบายสถานะ)</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>ชื่อ State</th>
+            <th>ไฟสัญญาณรถ</th>
+            <th>ไฟสัญญาณคนข้าม</th>
+            <th>ไฟปุ่มกด (Push Button)</th>
+            <th>คำอธิบายหน้าที่การทำงาน</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Ready State</strong></td>
+            <td><span class="badge-green">GREEN (เขียว)</span></td>
+            <td><span class="badge-red">RED (แดง)</span></td>
+            <td>Inactive (สีฟ้า/ดับ)</td>
+            <td>สถานะปกติ รถวิ่งผ่านได้ตลอดเวลา คนยังข้ามไม่ได้ ปุ่มกดพร้อมรับคำสั่ง</td>
+          </tr>
+          <tr>
+            <td><strong>Prepare / Wait Stop State</strong></td>
+            <td><span class="badge-red">RED (แดง)</span></td>
+            <td><span class="badge-red">RED (แดง)</span></td>
+            <td>Active (สีแดง/ติด)</td>
+            <td><strong>[ตรงตามโจทย์]</strong> สัญญาณไฟแดงทั้งรถและคน (แดงคู่) เพื่อรอให้รถเบรกหยุดนิ่งสนิท กล้อง AI กำลังตรวจวัดความเร็ว</td>
+          </tr>
+          <tr>
+            <td><strong>Go State</strong></td>
+            <td><span class="badge-red">RED (แดง)</span></td>
+            <td><span class="badge-green">GREEN (เขียว)</span></td>
+            <td>Active (สีแดง/ติด)</td>
+            <td>กล้องส่งสัญญาณว่ารถหยุดแล้ว ปล่อยสัญญาณไฟเขียวให้คนเดินข้ามถนนได้อย่างปลอดภัย</td>
+          </tr>
+          <tr>
+            <td><strong>Wait State</strong></td>
+            <td><span class="badge-green">GREEN (เขียว)</span></td>
+            <td><span class="badge-red">RED (แดง)</span></td>
+            <td>Active (สีแดง/ติด)</td>
+            <td>สถานะ Cooldown ระบายรถหลังคนข้ามเสร็จ ป้องกันคนกดปุ่มซ้ำทันทีจนรถติดสะสม</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- 3. Draw Transition (Ref to diagram above) -->
+      <h3 style="color: #38bdf8; margin: 28px 0 10px; font-family: var(--font-heading);">3. Draw Transition (เส้นเชื่อมการเปลี่ยนสถานะ)</h3>
+      <p style="color: var(--text-muted); font-size: 14.5px;">
+        ไดอะแกรมแสดงเส้นเชื่อมระหว่าง State อย่างถูกต้อง มี Initial State ชี้เข้า Ready, Transition ขาลงและขากลับ, รวมถึง Self-Loop ของเหตุการณ์ <code>push</code> ในสถานะที่ไม่รับคำสั่งซ้ำ
+      </p>
+
+      <!-- 4 & 5. Define Transition & Define Guard Condition -->
+      <h3 style="color: #38bdf8; margin: 28px 0 10px; font-family: var(--font-heading);">4. Define Transition & 5. Define Guard Condition (การกำหนดเงื่อนไขและการทริกเกอร์)</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>From State (ต้นทาง)</th>
+            <th>To State (ปลายทาง)</th>
+            <th>Trigger / Event (เหตุการณ์)</th>
+            <th>Guard Condition (เงื่อนไขความปลอดภัย)</th>
+            <th>Action / Output (การตอบสนอง)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Ready</td>
+            <td>Prepare</td>
+            <td><code>push</code> (คนกดปุ่ม)</td>
+            <td>-</td>
+            <td>ไฟปุ่มกดติดแดง, ไฟรถเปลี่ยนเป็นไฟแดง (หรือเหลืองใน 5-state)</td>
+          </tr>
+          <tr>
+            <td>Prepare</td>
+            <td>Go</td>
+            <td><code>stop</code> (สัญญาณจากกล้อง AI)</td>
+            <td><code>[car_stopped == true]</code> (รถหยุดสนิทจริง)</td>
+            <td>ไฟคนข้ามเปลี่ยนเป็น <strong>ไฟเขียว</strong>, เริ่มนับเวลาคนข้าม</td>
+          </tr>
+          <tr>
+            <td>Go</td>
+            <td>Wait</td>
+            <td><code>timer</code> (หมดเวลาคนข้าม)</td>
+            <td><code>[cross_time >= 15s]</code></td>
+            <td>ไฟคนข้ามกลับเป็นไฟแดง, ไฟรถเปลี่ยนเป็น <strong>ไฟเขียว</strong></td>
+          </tr>
+          <tr>
+            <td>Wait</td>
+            <td>Ready</td>
+            <td><code>timer</code> (ครบเวลาระบายรถ)</td>
+            <td><code>[cooldown_time >= 20s]</code></td>
+            <td>ไฟปุ่มกดกลับเป็นสีฟ้า/พร้อมใช้งานสำหรับรอบถัดไป</td>
+          </tr>
+          <tr>
+            <td>Prepare / Go / Wait</td>
+            <td>(Self Loop)</td>
+            <td><code>push</code> (กดซ้ำ)</td>
+            <td>-</td>
+            <td>เพิกเฉยคำสั่ง (Ignore) เพื่อรักษาจังหวะการทำงานให้ปลอดภัย</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    let currentState = 'Ready';
+    let timerId = null;
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-pane').forEach(pane => pane.style.display = 'none');
+      
+      if (tabId === 'tab4') {
+        document.querySelectorAll('.tab-btn')[0].classList.add('active');
+        document.getElementById('tab4-content').style.display = 'block';
+      } else {
+        document.querySelectorAll('.tab-btn')[1].classList.add('active');
+        document.getElementById('tab5-content').style.display = 'block';
+      }
+    }
+
+    function setLights(car, ped, btnActive) {
+      // Car light
+      document.getElementById('car-red').classList.toggle('on', car === 'red');
+      document.getElementById('car-yellow').classList.toggle('on', car === 'yellow');
+      document.getElementById('car-green').classList.toggle('on', car === 'green');
+
+      // Ped light
+      document.getElementById('ped-red').classList.toggle('on', ped === 'red');
+      document.getElementById('ped-green').classList.toggle('on', ped === 'green');
+
+      // Button
+      document.getElementById('hw-button').classList.toggle('active', btnActive);
+    }
+
+    function updateStateUI(stateName) {
+      currentState = stateName;
+      document.getElementById('current-state-display').innerText = stateName + ' State';
+      
+      const cameraBtn = document.getElementById('btn-camera-trigger');
+      const aiStatus = document.getElementById('ai-status-text');
+
+      if (stateName === 'Ready') {
+        setLights('green', 'red', false);
+        cameraBtn.disabled = true;
+        aiStatus.innerHTML = 'สถานะ: ปกติ (รอคนเดินเท้ากดปุ่มข้ามถนน)';
+        document.getElementById('timer-display').innerText = 'Timer: --';
+      } else if (stateName === 'Prepare') {
+        // According to assignment: Red car + Red ped while waiting for car to stop
+        setLights('red', 'red', true);
+        cameraBtn.disabled = false;
+        aiStatus.innerHTML = '<span style="color: #ef4444; font-weight: bold;">⚠️ รถไฟแดง + คนไฟแดง: กำลังตรวจจับรถชะลอความเร็วและหยุดนิ่ง...</span>';
+        document.getElementById('timer-display').innerText = 'รอสัญญาณกล้อง AI...';
+      } else if (stateName === 'Go') {
+        setLights('red', 'green', true);
+        cameraBtn.disabled = true;
+        aiStatus.innerHTML = '<span style="color: #22c55e;">✅ รถหยุดสนิทแล้ว (กล้องส่ง stop) -> เปิดไฟเขียวคนข้าม!</span>';
+        startCountdown(10, 'Wait');
+      } else if (stateName === 'Wait') {
+        setLights('green', 'red', true);
+        cameraBtn.disabled = true;
+        aiStatus.innerHTML = 'สถานะ: กำลังระบายการจราจร (Cooldown 8 วินาที ห้ามกดแทรก)';
+        startCountdown(8, 'Ready');
+      }
+    }
+
+    function userPressButton() {
+      if (currentState === 'Ready') {
+        updateStateUI('Prepare');
+        // Auto trigger camera stop after 3 seconds for smooth simulation
+        setTimeout(() => {
+          if (currentState === 'Prepare') {
+            document.getElementById('ai-status-text').innerHTML += '<br><small style="color: #38bdf8;">(ระบบจำลอง: รถเบรกนิ่งแล้ว คลิกปุ่มด้านล่างหรือรอ 1 วินาที)</small>';
+          }
+        }, 1500);
+      } else {
+        // Self loop
+        console.log('Push ignored in ' + currentState + ' state (Self-loop)');
+      }
+    }
+
+    function triggerCameraStopSignal() {
+      if (currentState === 'Prepare') {
+        updateStateUI('Go');
+      }
+    }
+
+    function startCountdown(seconds, nextState) {
+      clearInterval(timerId);
+      let remaining = seconds;
+      document.getElementById('timer-display').innerText = `Timer: ${remaining}s`;
+
+      timerId = setInterval(() => {
+        remaining--;
+        if (remaining > 0) {
+          document.getElementById('timer-display').innerText = `Timer: ${remaining}s`;
+        } else {
+          clearInterval(timerId);
+          document.getElementById('timer-display').innerText = `Timer: 0s`;
+          updateStateUI(nextState);
+        }
+      }, 1000);
+    }
+
+    // Initialize
+    updateStateUI('Ready');
+  </script>
+</body>
+</html>

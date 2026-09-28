@@ -11,3 +11,10 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.log
+
+# Local tooling: agent worktrees and machine-specific build symlinks
+.claude/
+node_modules
+
+# Graded answer sheet showing another student's name and ID: keep local only
+1/final/real-exam/2025/Final-Embedded .pdf

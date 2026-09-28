@@ -1,0 +1,18 @@
+27. Ti interrupt in feel conns processor 8 bit complete
+28. Ri interrupt nuinela roninsto processor 8 bit complete
+29.SCON gigananaladela Serial Control Megister
+30.SMO,1 deananadle Serial Mode Bits
+SO made na.
+32. SM2 deananaáeela Serial Mode Bits 2
+33.REN deananadela Reciever Enable
+38 ee Transmitted bit &
+34.RB8 deanananaels Received bit 8
+37. 8051 fl 5 interrupt las vecter amterrupt alans
+INTO, TFO, INTI, TF1, Serial (AI or TI)
+38 Interrupt DenTal register IP As IE
+39.IP ejaanannanial Interrupt Piority Register
+A0.IE izarmnAndala Interrupt Enable Register
+41. INTO, Serial,TF1,TFO, INT1 775 Priority
+3
+42. F 2{42A24 ANnal Idle Mode, Power Down Mode
+133221/AME DanE register PCON

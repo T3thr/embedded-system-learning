@@ -1,0 +1,7 @@
+{
+  "test_environment": "Python reference FSM, ideal 1 ms steps; not EdSim51, not hardware",
+  "tests_run": 21,
+  "failures": 0,
+  "errors": 0,
+  "passed": true
+}
