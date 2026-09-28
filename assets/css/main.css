@@ -191,6 +191,11 @@ body {
   position: relative;
 }
 
+/* The hidden attribute must win over component display rules (e.g. display: flex) */
+[hidden] {
+  display: none !important;
+}
+
 img, svg, video, canvas, iframe {
   max-width: 100%;
   height: auto;
@@ -276,6 +281,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  line-height: 1.15; /* two lines stay under the 38 px controls, so the header is always --nav-height */
 }
 
 .brand-title span:first-child {

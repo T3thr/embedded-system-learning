@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ข้อสอบจริง Final 2025 (21 ข้อ) | 305341 Embedded Systems 1</title>
+  <meta name="description" content="ข้อสอบปลายภาคจริง 305341 Embedded Systems 1 ภาคเรียนที่ 1/2568 (2025) ครบ 21 ข้อ ถอดจากกระดาษข้อสอบและตรวจทานกับ Lecture 5, Lecture 6 และ Lab 5 พร้อมเฉลย Flowchart, State chart และโค้ด 8051 Assembly">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../../../../assets/css/main.css?v=2.3">
+  <link rel="stylesheet" href="../../../../assets/css/solution.css?v=2.3">
+  <link rel="stylesheet" href="exam2025.css?v=1.0">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="../../../../index.html" class="brand">
+        <div class="brand-icon"><i class="fas fa-microchip"></i></div>
+        <div class="brand-title">
+          <span>EMBEDDED SYSTEMS</span>
+          <span>LEARNING PORTAL</span>
+        </div>
+      </a>
+      <ul class="nav-menu">
+{{NAV}}
+      </ul>
+      <div class="nav-controls">
+        <button id="theme-toggle" class="btn-icon" title="สลับโหมดมืด/สว่าง"><i class="fas fa-sun"></i></button>
+        <button class="btn-icon mobile-nav-toggle" title="เมนูนำทาง"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-drawer" id="mobile-drawer" style="display: none;">
+    <ul>
+{{DRAWER}}
+    </ul>
+  </div>
+
+  <main class="container" style="padding-bottom: 4rem;">
+    <nav class="breadcrumbs">
+      <a href="../../../../index.html"><i class="fas fa-home"></i> หน้าแรก</a>
+      <span class="separator"><i class="fas fa-chevron-right"></i></span>
+      <a href="../../../index.html">305341 Embedded Systems 1</a>
+      <span class="separator"><i class="fas fa-chevron-right"></i></span>
+      <a href="../../index.html">Final Hub</a>
+      <span class="separator"><i class="fas fa-chevron-right"></i></span>
+      <span class="current">ชุดที่ 2: ข้อสอบจริง 2025</span>
+    </nav>
+
+    <section class="hero" style="padding: 1rem 0 1.25rem; text-align: left;">
+      <div class="hero-badge">
+        <i class="fas fa-file-signature"></i> REAL FINAL EXAM 1/2568 (2025) — 21 ข้อ
+      </div>
+      <h1 class="hero-title" style="font-size: 2.25rem;">ข้อสอบปลายภาคจริง 2025 — เฉลยครบ 21 ข้อ</h1>
+      <p class="hero-subtitle" style="margin: 0 0 1.25rem; max-width: 920px;">
+        วิชา <strong>305341 ระบบสมองกลฝังตัว 1</strong> ถอดโจทย์จากกระดาษข้อสอบพิมพ์และสมุดบันทึก "Embedded Final 1/68"
+        ทุกคำตอบอ้างอิงกลับไปยัง <strong>Lecture 5</strong> (Timer/Counter), <strong>Lecture 6</strong> (Serial/Interrupt),
+        <strong>Lab 5 State Machine</strong> และ <strong>Mazidi บทที่ 16</strong> (DC Motor/PWM)
+        ใช้คริสตอล 12 MHz: <code>1 Machine Cycle = 12 / 12 MHz = 1 µs = 1 count</code> ทุกข้อมีปุ่ม <strong>บทเรียนเชิงลึกจากศูนย์</strong> (10 หัวข้อ) และมีเครื่องมือจำลอง 6 ชิ้นฝังอยู่ในข้อที่เกี่ยวข้อง
+      </p>
+      <div class="archive-switch">
+        <a href="../../real-exam-recalled/index.html"><i class="fas fa-layer-group"></i> ชุดที่ 1: เฉลย 56 ข้อ (Recalled)</a>
+        <a href="index.html" class="current"><i class="fas fa-file-signature"></i> ชุดที่ 2: ข้อสอบจริง 2025 (21 ข้อ)</a>
+        <a href="../../index.html"><i class="fas fa-th-large"></i> กลับ Final Hub</a>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon blue"><i class="fas fa-stopwatch"></i></div>
+          <div class="stat-info"><h4>ตอนที่ 1 — Timers</h4><p>ข้อ 1–4 ({{C_TIMER}} ข้อ)</p></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon purple"><i class="fas fa-sliders-h"></i></div>
+          <div class="stat-info"><h4>ตอนที่ 2 — Control &amp; Modes</h4><p>ข้อ 5–9 ({{C_CONTROL}} ข้อ)</p></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon green"><i class="fas fa-network-wired"></i></div>
+          <div class="stat-info"><h4>ตอนที่ 3 — Serial &amp; IRQ</h4><p>ข้อ 10–16 ({{C_SERIAL}} ข้อ)</p></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon amber"><i class="fas fa-project-diagram"></i></div>
+          <div class="stat-info"><h4>ตอนที่ 4 — Motors &amp; FSM</h4><p>ข้อ 17–21 ({{C_FSM}} ข้อ)</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="provenance" id="sources">
+      <h2><i class="fas fa-fingerprint" style="color: var(--accent-purple);"></i> ที่มาของข้อสอบและการตรวจสอบไขว้</h2>
+      <ul>
+        <li><strong>กระดาษข้อสอบพิมพ์</strong> (ภาพถ่าย 3 หน้า เก็บไว้ในเครื่องผู้จัดทำ ไม่เผยแพร่ เพราะมีชื่อและรหัสนักศึกษา): หน้า 1 และ 3 เห็นโจทย์พิมพ์ครบ 21 ข้อ ข้อ 21 มีคะแนน [5] พร้อมรูป State chart, สัญญาณคนข้าม Ready/Go และ Hardware Diagram (P1.1, P1.0, P2.0) หัวกระดาษพิมพ์ระบุ 305385 Embedded System วันที่ 1 ต.ค. 2567</li>
+        <li><strong>สมุดบันทึกหลังสอบ "Embedded Final 1/68"</strong> 4 หน้า: ลำดับและถ้อยคำโจทย์ตรงกับกระดาษพิมพ์ทุกข้อ ใช้เป็นแหล่ง "คำตอบที่จดไว้" ในการ์ดแต่ละข้อ</li>
+        <li>กระดาษคำตอบที่ตรวจแล้วใน PDF บอกได้ว่าคำตอบแบบใด<strong>ถูกหักคะแนน</strong> จึงสรุปเป็นกล่อง "กับดัก" ในข้อ 2, 3, 5, 10, 14, 15, 18 (ไม่คัดลอกชื่อหรือรหัสนักศึกษา)</li>
+        <li>ถอดความฉบับตัวอักษร: <a href="RAW_QUESTIONS_2025.md">RAW_QUESTIONS_2025.md</a></li>
+      </ul>
+      <div class="source-grid">
+        <figure class="exam-photo"><img src="S__324124684_0.jpg" alt="สมุดบันทึกหน้า 1: ข้อ 1 ถึง 4" loading="lazy"><figcaption>สมุดหน้า 1 · ข้อ 1–4</figcaption></figure>
+        <figure class="exam-photo"><img src="S__324124685_0.jpg" alt="สมุดบันทึกหน้า 2: ข้อ 5 ถึง 9" loading="lazy"><figcaption>สมุดหน้า 2 · ข้อ 5–9</figcaption></figure>
+        <figure class="exam-photo"><img src="S__324124686_0.jpg" alt="สมุดบันทึกหน้า 3: ข้อ 10 ถึง 16" loading="lazy"><figcaption>สมุดหน้า 3 · ข้อ 10–16</figcaption></figure>
+        <figure class="exam-photo"><img src="S__324124687_0.jpg" alt="สมุดบันทึกหน้า 4: ข้อ 17 ถึง 21" loading="lazy"><figcaption>สมุดหน้า 4 · ข้อ 17–21</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="toolbar">
+      <div class="toolbar-top">
+        <div class="search-box">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" id="search-input" class="search-input" placeholder="ค้นหาข้อสอบ, รีจิสเตอร์ (TMOD, TCON, SCON, IE) หรือหัวข้อ...">
+        </div>
+        <div style="font-size: 0.88rem; color: var(--text-muted); white-space: nowrap;">
+          แสดงผล: <strong id="match-count" style="color: var(--accent-blue);">21</strong> ข้อ
+        </div>
+      </div>
+      <div class="filter-pills-wrapper">
+        <div class="filter-pills">
+          <button class="filter-btn active" data-category="all">ทั้งหมด (21)</button>
+          <button class="filter-btn" data-category="timer">Timers &amp; Counters ({{C_TIMER}})</button>
+          <button class="filter-btn" data-category="control">Control &amp; Modes ({{C_CONTROL}})</button>
+          <button class="filter-btn" data-category="serial">Serial &amp; Interrupts ({{C_SERIAL}})</button>
+          <button class="filter-btn" data-category="fsm">Priority, Motors &amp; FSM ({{C_FSM}})</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="content-layout">
+      <aside class="sidebar-toc">
+        <div class="toc-title"><i class="fas fa-list-ul"></i> สารบัญ 21 ข้อ</div>
+        <ul class="toc-list">
+{{TOC}}
+        </ul>
+      </aside>
+
+      <div class="solutions-container">
+{{CARDS}}
+
+        <div class="box-info" style="margin-top: 0.5rem;">
+          <div class="box-info-header"><i class="fas fa-route"></i> ฝึกต่อจากชุดที่ 1 (56 ข้อ)</div>
+          <p>หัวข้อเดียวกันที่มีเฉลยเชิงลึกเพิ่มเติม: <a href="../../real-exam-recalled/index.html#q24">Delay 20 µs (ข้อ 24)</a> · <a href="../../real-exam-recalled/index.html#q25">Square Wave 1 kHz (ข้อ 25)</a> · <a href="../../real-exam-recalled/index.html#q38">Vector Interrupt (ข้อ 38)</a> · <a href="../../real-exam-recalled/index.html#q41">เรียง Priority (ข้อ 41)</a> · <a href="../../real-exam-recalled/index.html#q52">FSM Ready/Go (ข้อ 52)</a> · <a href="../../interactive-tools/index.html#timer-calc">Timer Calculator</a></p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <button id="mobile-toc-toggle" class="floating-toc-btn" title="เปิดสารบัญข้อสอบ">
+    <i class="fas fa-list-ul"></i> สารบัญ (21 ข้อ)
+  </button>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <div>
+        <p><strong>Embedded Systems Learning Platform</strong> &bull; Real Final Exam 2025 (21 ข้อ) — 305341 Embedded Systems 1</p>
+      </div>
+      <div class="footer-links">
+        <a href="../../../../index.html">หน้าแรก</a>
+        <a href="../../../index.html">305341 Embedded 1</a>
+        <a href="../../index.html">Final Hub</a>
+        <a href="../../real-exam-recalled/index.html">ชุดที่ 1: 56 ข้อ</a>
+        <a href="../../interactive-tools/index.html">Interactive Lab</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../../../assets/js/main.js?v=2.3"></script>
+  <script src="sim8051.js?v=1.0"></script>
+  <script src="exam2025.js?v=1.2"></script>
+</body>
+</html>

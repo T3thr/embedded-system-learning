@@ -22,7 +22,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 GITHUB = "https://github.com/T3thr/embedded-system-learning"
-ASSET_VER = "3.1"  # bump whenever assets/css or assets/js change
+ASSET_VER = "3.2"  # bump whenever assets/css or assets/js change
 
 # One menu for the whole site.
 # Top-level links: (label, target relative to ROOT, key)

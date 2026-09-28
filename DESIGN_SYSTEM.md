@@ -2,12 +2,13 @@
 
 | Field | Value |
 | :--- | :--- |
-| Version | 3.1 (asset query string `?v=3.1`): site-wide grouped mega menu |
+| Version | 3.2 (asset query string `?v=3.2`): site-wide grouped mega menu, fixed 63 px header |
 | Date | 2026-09-28 |
 | Scope | 11 portal pages: root, course dashboard, Midterm section (4 pages), Final section (5 pages) |
 | Source of truth | [main.css](file:///Users/3rapat/student/internship/CODEFIN/project/cwms/vahalla-wealth/private-docs/other-project/uni-work/embedded-system/assets/css/main.css), [solution.css](file:///Users/3rapat/student/internship/CODEFIN/project/cwms/vahalla-wealth/private-docs/other-project/uni-work/embedded-system/assets/css/solution.css), [main.js](file:///Users/3rapat/student/internship/CODEFIN/project/cwms/vahalla-wealth/private-docs/other-project/uni-work/embedded-system/assets/js/main.js) |
 | Page chrome generator | [sync_chrome.py](file:///Users/3rapat/student/internship/CODEFIN/project/cwms/vahalla-wealth/private-docs/other-project/uni-work/embedded-system/tools/sync_chrome.py) |
-| Verification | [check-layout.mjs](file:///Users/3rapat/student/internship/CODEFIN/project/cwms/vahalla-wealth/private-docs/other-project/uni-work/embedded-system/tools/check-layout.mjs) + [layout-check.html](file:///Users/3rapat/student/internship/CODEFIN/project/cwms/vahalla-wealth/private-docs/other-project/uni-work/embedded-system/tools/layout-check.html), [audit_content.py](file:///Users/3rapat/student/internship/CODEFIN/project/cwms/vahalla-wealth/private-docs/other-project/uni-work/embedded-system/tools/audit_content.py) |
+| Generated page | [tools/exam2025/](file:///Users/3rapat/student/internship/CODEFIN/project/cwms/vahalla-wealth/private-docs/other-project/uni-work/embedded-system/tools/exam2025/build.py) builds `1/final/real-exam/2025/index.html` (lessons, widgets, figures) |
+| Verification | [check_asm.py](file:///Users/3rapat/student/internship/CODEFIN/project/cwms/vahalla-wealth/private-docs/other-project/uni-work/embedded-system/tools/check_asm.py), [check-layout.mjs](file:///Users/3rapat/student/internship/CODEFIN/project/cwms/vahalla-wealth/private-docs/other-project/uni-work/embedded-system/tools/check-layout.mjs) + [layout-check.html](file:///Users/3rapat/student/internship/CODEFIN/project/cwms/vahalla-wealth/private-docs/other-project/uni-work/embedded-system/tools/layout-check.html), [audit_content.py](file:///Users/3rapat/student/internship/CODEFIN/project/cwms/vahalla-wealth/private-docs/other-project/uni-work/embedded-system/tools/audit_content.py) |
 
 When this document and the CSS disagree, the CSS is correct and this document is out of date: fix the document in the same change.
 
@@ -139,7 +140,7 @@ At 480 px and below the root font size drops to 15 px; interactive controls keep
 | Token | Value |
 | :--- | :--- |
 | `--container-max` | 1240px |
-| `--nav-height` | 63px (12 px padding × 2 + 38 px control + 1 px border) |
+| `--nav-height` | 63px (12 px padding × 2 + 38 px control + 1 px border; brand title line-height 1.15 keeps it constant) |
 
 | Breakpoint | Effect |
 | :--- | :--- |
@@ -337,6 +338,16 @@ Do not hand-write card footers. Re-run the generator after adding, removing or r
 
 ---
 
+## 7b. Deep Lessons & Interactive Widgets
+
+The 2025 real-exam page is **generated**: edit `tools/exam2025/lessons_p*.py`, `widgets.py` or `figures.py`, then run `python3 tools/exam2025/build.py` (it pipes the result through `sync_chrome.py`). Never hand-edit that `index.html`.
+
+- **Deep lesson**: `<details class="deep-lesson">` after the official tier. Sections in order: terminology (with Thai pronunciation), physics & silicon, analogy **plus its stated limits**, step-by-step derivation, assembly analysis (only when the question has code: cycles from the MCS-51 table and PSW flags), what-if, traps, drill with `<details class="drill-answer">`, full-mark blueprint, sources with page numbers.
+- **Source honesty**: a fact that comes from the 8051 datasheet or MCS-51 instruction table rather than the course material carries `<span class="src-tag">`. The Mazidi book in this repo is the AVR edition; cite its chapters as concept references.
+- **Widgets** (`.widget`, markup in `widgets.py`, behavior in `exam2025.js`) use native labelled controls, work by keyboard, and expose their pure calculations on `window.Exam2025` so results can be asserted.
+- **Simulator** (`sim8051.js`): counts machine cycles per the MCS-51 table and ticks Timer 0 once per cycle. Timing figures quoted in lessons (for example the 288 µs Go state) must come from this model, not estimates.
+- `[hidden]` always wins over component `display` rules (base rule in `main.css`).
+
 ## 8. Contributor Checklist (humans and AI agents)
 
 ### 8.1 Adding an exam set or lab module
@@ -350,6 +361,7 @@ Do not hand-write card footers. Re-run the generator after adding, removing or r
 7. If you changed anything in `assets/`, bump `ASSET_VER` in `sync_chrome.py` and run it again.
 8. **Verify:**
    - `python3 tools/audit_content.py` must end with `RESULT: PASS`
+   - `python3 tools/check_asm.py <page>` for any page with assembly must end with `RESULT: PASS`
    - `python3 -m http.server 8000 --directory <embedded-system>` then `node tools/check-layout.mjs` must end with `RESULT: PASS`
    - Look at the page in both themes at 390 px and 1280 px.
 9. **Update this document** if you added a token, component or rule.

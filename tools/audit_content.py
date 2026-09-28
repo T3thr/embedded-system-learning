@@ -27,6 +27,9 @@ TEXT_FILES = PAGES + [
     "assets/css/main.css", "assets/css/solution.css", "assets/js/main.js",
     "tools/layout-check.html", "tools/check-layout.mjs", "tools/audit_content.py", "tools/sync_chrome.py",
     "DESIGN_SYSTEM.md",
+    "1/final/real-exam/2025/exam2025.css", "1/final/real-exam/2025/exam2025.js", "1/final/real-exam/2025/sim8051.js",
+    "tools/exam2025/build.py", "tools/exam2025/widgets.py", "tools/exam2025/figures.py", "tools/exam2025/template.html",
+    "tools/exam2025/lessons_p1.py", "tools/exam2025/lessons_p2.py", "tools/exam2025/lessons_p3.py", "tools/check_asm.py",
 ]
 DOLLAR = chr(36)
 EMOJI = re.compile("[\U0001F300-\U0001FAFF\U0001F000-\U0001F2FF\u2600-\u27BF\u2B50\u2B06\u2705\u274C\uFE0F\u200D]")
